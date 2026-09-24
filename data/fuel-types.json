@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "fuelTypes": [
+    {
+      "code": "PETROL",
+      "name": "Petrol",
+      "shortName": "Petrol",
+      "description": "Gasoline-powered vehicle using a spark-ignition internal combustion engine."
+    },
+    {
+      "code": "DIESEL",
+      "name": "Diesel",
+      "shortName": "Diesel",
+      "description": "Diesel-powered vehicle using a compression-ignition internal combustion engine."
+    },
+    {
+      "code": "HYBRID",
+      "name": "Hybrid",
+      "shortName": "Hybrid",
+      "description": "Vehicle combining an internal combustion engine with one or more electric motors."
+    },
+    {
+      "code": "PLUG_IN_HYBRID",
+      "name": "Plug-in Hybrid",
+      "shortName": "PHEV",
+      "description": "Hybrid vehicle with a rechargeable battery that can be charged from an external power source."
+    },
+    {
+      "code": "ELECTRIC",
+      "name": "Electric",
+      "shortName": "EV",
+      "description": "Vehicle powered by one or more electric motors using rechargeable batteries."
+    },
+    {
+      "code": "HYDROGEN",
+      "name": "Hydrogen",
+      "shortName": "Hydrogen",
+      "description": "Vehicle powered by hydrogen-based energy, typically using a fuel-cell electric system."
+    },
+    {
+      "code": "CNG",
+      "name": "Compressed Natural Gas",
+      "shortName": "CNG",
+      "description": "Vehicle powered by compressed natural gas."
+    },
+    {
+      "code": "LPG",
+      "name": "Liquefied Petroleum Gas",
+      "shortName": "LPG",
+      "description": "Vehicle powered by liquefied petroleum gas."
+    },
+    {
+      "code": "FLEX_FUEL",
+      "name": "Flex Fuel",
+      "shortName": "Flex Fuel",
+      "description": "Vehicle designed to operate on gasoline or gasoline-ethanol fuel blends."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "shortName": "Unknown",
+      "description": "Fuel type has not yet been verified."
+    }
+  ]
+}
