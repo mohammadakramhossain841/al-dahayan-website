@@ -1,1 +1,127 @@
-
+{
+  "locations": [
+    {
+      "id": "LOC-001",
+      "name": "Main Branch",
+      "arabicName": "الفرع الرئيسي",
+      "type": "branch",
+      "country": "Saudi Arabia",
+      "city": "",
+      "district": "",
+      "address": "",
+      "latitude": null,
+      "longitude": null,
+      "phone": "",
+      "whatsapp": "",
+      "email": "",
+      "workingHours": {
+        "saturday": "",
+        "sunday": "",
+        "monday": "",
+        "tuesday": "",
+        "wednesday": "",
+        "thursday": "",
+        "friday": ""
+      },
+      "services": [
+        "Parts Inquiry",
+        "Customer Support",
+        "OEM Parts",
+        "Vehicle Parts Identification",
+        "VIN Search Support"
+      ],
+      "active": true
+    },
+    {
+      "id": "LOC-002",
+      "name": "Sales Branch",
+      "arabicName": "فرع المبيعات",
+      "type": "sales",
+      "country": "Saudi Arabia",
+      "city": "",
+      "district": "",
+      "address": "",
+      "latitude": null,
+      "longitude": null,
+      "phone": "",
+      "whatsapp": "",
+      "email": "",
+      "workingHours": {
+        "saturday": "",
+        "sunday": "",
+        "monday": "",
+        "tuesday": "",
+        "wednesday": "",
+        "thursday": "",
+        "friday": ""
+      },
+      "services": [
+        "Parts Sales Inquiry",
+        "Customer Connection",
+        "OEM Parts",
+        "Availability Inquiry"
+      ],
+      "active": true
+    },
+    {
+      "id": "LOC-003",
+      "name": "Warehouse",
+      "arabicName": "المستودع",
+      "type": "warehouse",
+      "country": "Saudi Arabia",
+      "city": "",
+      "district": "",
+      "address": "",
+      "latitude": null,
+      "longitude": null,
+      "phone": "",
+      "whatsapp": "",
+      "email": "",
+      "workingHours": {
+        "saturday": "",
+        "sunday": "",
+        "monday": "",
+        "tuesday": "",
+        "wednesday": "",
+        "thursday": "",
+        "friday": ""
+      },
+      "services": [
+        "Inventory",
+        "Stock Management",
+        "Parts Availability"
+      ],
+      "active": true
+    },
+    {
+      "id": "LOC-004",
+      "name": "Additional Branch",
+      "arabicName": "فرع إضافي",
+      "type": "branch",
+      "country": "Saudi Arabia",
+      "city": "",
+      "district": "",
+      "address": "",
+      "latitude": null,
+      "longitude": null,
+      "phone": "",
+      "whatsapp": "",
+      "email": "",
+      "workingHours": {
+        "saturday": "",
+        "sunday": "",
+        "monday": "",
+        "tuesday": "",
+        "wednesday": "",
+        "thursday": "",
+        "friday": ""
+      },
+      "services": [
+        "Parts Inquiry",
+        "Customer Support",
+        "Availability Inquiry"
+      ],
+      "active": false
+    }
+  ]
+}
