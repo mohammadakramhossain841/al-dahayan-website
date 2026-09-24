@@ -1,0 +1,195 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Rules for bulk updating existing Toyota and Lexus OEM catalog records through CSV or XLSX import.",
+  "supportedFormats": [
+    "csv",
+    "xlsx"
+  ],
+  "updateModes": [
+    "existing_records_only",
+    "mixed_create_and_update"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.import",
+    "requireUpdatePermission": true,
+    "updatePermission": "oem.edit",
+    "requireConfirmation": true
+  },
+  "recordMatching": {
+    "primaryMatchField": "oemNumber",
+    "allowIdMatching": true,
+    "allowOemNumberMatching": true,
+    "requireExactNormalizedMatch": true,
+    "allowFuzzyMatching": false,
+    "allowAutomaticMatchByPartName": false,
+    "ambiguousMatchAction": "review"
+  },
+  "updatePolicy": {
+    "allowExistingRecordUpdates": true,
+    "allowNewRecordCreation": false,
+    "allowMixedCreateAndUpdate": false,
+    "defaultAction": "update",
+    "preserveUnmappedFields": true,
+    "overwriteOnlyImportedFields": true,
+    "emptyImportedValueAction": "preserve_existing"
+  },
+  "protectedFields": {
+    "oemNumber": {
+      "editable": false,
+      "requireSeparatePermission": true
+    },
+    "id": {
+      "editable": false
+    },
+    "createdAt": {
+      "editable": false
+    },
+    "createdBy": {
+      "editable": false
+    }
+  },
+  "allowedUpdateFields": [
+    "partName",
+    "arabicName",
+    "category",
+    "subcategory",
+    "description",
+    "arabicDescription",
+    "models",
+    "modelYears",
+    "engineCodes",
+    "bodyTypes",
+    "marketSpecs",
+    "compatibleOemNumbers",
+    "supersededOemNumbers",
+    "partType",
+    "condition",
+    "genuine",
+    "aftermarket",
+    "primaryImage",
+    "galleryImages",
+    "regularPrice",
+    "salePrice",
+    "discountPercent",
+    "currency",
+    "priceVisibility",
+    "stockStatus",
+    "quantity",
+    "locationIds",
+    "status",
+    "verificationLevel",
+    "verificationSource"
+  ],
+  "validation": {
+    "validateFileBeforeProcessing": true,
+    "validateColumnsBeforeProcessing": true,
+    "validateRecordsBeforeUpdate": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "requirePreview": true,
+    "requireChangeSummary": true,
+    "requireFinalConfirmation": true,
+    "generateValidationReport": true
+  },
+  "duplicateProtection": {
+    "enabled": true,
+    "detectDuplicateOemNumbersInImport": true,
+    "detectDuplicateRecordsInCatalog": true,
+    "duplicateAction": "review",
+    "doNotAutomaticallyMerge": true
+  },
+  "pricing": {
+    "validateRegularPrice": true,
+    "validateSalePrice": true,
+    "salePriceCannotExceedRegularPrice": true,
+    "validateDiscountPercent": true,
+    "minimumPrice": 0,
+    "defaultCurrency": "SAR"
+  },
+  "inventory": {
+    "validateStockStatus": true,
+    "validateQuantity": true,
+    "quantityCannotBeNegative": true,
+    "preserveExistingLocationsWhenNotImported": true
+  },
+  "compatibility": {
+    "validateVehicleCompatibility": true,
+    "allowUnverifiedCompatibility": true,
+    "doNotAutomaticallyMarkCompatibilityVerified": true,
+    "preserveExistingCompatibilityWhenNotImported": true
+  },
+  "verification": {
+    "preserveExistingVerificationByDefault": true,
+    "allowVerificationUpdate": true,
+    "doNotAutomaticallySetVerified": true,
+    "requireSourceForVerified": true
+  },
+  "status": {
+    "allowStatusUpdate": true,
+    "allowedStatuses": [
+      "draft",
+      "active",
+      "archived",
+      "disabled"
+    ],
+    "validateStatusTransition": true,
+    "doNotAutomaticallyPublishInvalidRecords": true
+  },
+  "images": {
+    "allowImageUpdate": true,
+    "validateImageReferences": true,
+    "preserveExistingImagesWhenNotImported": true,
+    "allowPhysicalFileDeletion": false
+  },
+  "batchProcessing": {
+    "enabled": true,
+    "batchSize": 100,
+    "maximumRecordsPerImport": 5000,
+    "stopOnCriticalError": true,
+    "continueAfterRowWarning": true,
+    "continueAfterRowError": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeImport": true,
+    "storePreviousValues": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.edit"
+  },
+  "audit": {
+    "enabled": true,
+    "createImportAuditRecord": true,
+    "recordPreviousValues": true,
+    "recordNewValues": true,
+    "recordChangedFields": true,
+    "recordSourceFile": true,
+    "recordImportId": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "result": {
+    "showTotalRows": true,
+    "showMatchedRows": true,
+    "showUpdatedRows": true,
+    "showSkippedRows": true,
+    "showWarningRows": true,
+    "showErrorRows": true,
+    "showDuplicateRows": true,
+    "generateImportReport": true,
+    "generateChangeReport": true
+  },
+  "safety": {
+    "neverPermanentlyDeleteRecords": true,
+    "neverOverwriteUnmappedFields": true,
+    "neverAutomaticallyMergeDuplicates": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "neverAutomaticallyVerifyRecords": true,
+    "preserveAuditHistory": true,
+    "preserveChangeHistory": true
+  }
+}
