@@ -1,0 +1,87 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk operation history rules for tracking changes made to Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+  "trackedOperations": [
+    "bulk_import",
+    "bulk_update",
+    "bulk_price_update",
+    "bulk_stock_update",
+    "bulk_compatibility_update",
+    "bulk_status_update",
+    "bulk_verification_update",
+    "bulk_image_update",
+    "bulk_archive",
+    "bulk_restore",
+    "bulk_category_update",
+    "bulk_metadata_update"
+  ],
+  "historyRecord": {
+    "requiredFields": [
+      "historyId",
+      "operationId",
+      "recordId",
+      "action",
+      "changedAt"
+    ],
+    "includeOemNumber": true,
+    "includePreviousData": true,
+    "includeNewData": true,
+    "includeChangedFields": true,
+    "includeSource": true,
+    "includeUser": true,
+    "includeReason": true
+  },
+  "versioning": {
+    "createVersionBeforeUpdate": true,
+    "createVersionAfterUpdate": true,
+    "incrementVersionNumber": true,
+    "preservePreviousVersions": true,
+    "allowVersionComparison": true
+  },
+  "comparison": {
+    "allowBeforeAfterComparison": true,
+    "showChangedFieldsOnly": true,
+    "showAddedFields": true,
+    "showRemovedFields": true,
+    "showModifiedFields": true
+  },
+  "rollback": {
+    "allowRollback": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.edit",
+    "requireConfirmation": true,
+    "createRollbackHistoryRecord": true
+  },
+  "retention": {
+    "retainHistory": true,
+    "allowAutomaticHistoryDeletion": false,
+    "allowManualHistoryDeletion": false
+  },
+  "security": {
+    "publicAccess": false,
+    "requireAuthentication": true,
+    "requireAdminPermission": true,
+    "preventHistoryModification": true
+  },
+  "search": {
+    "allowHistorySearch": true,
+    "searchFields": [
+      "recordId",
+      "oemNumber",
+      "operationId",
+      "action",
+      "userId"
+    ],
+    "allowDateRangeFilter": true,
+    "allowActionFilter": true
+  },
+  "reporting": {
+    "generateHistoryReport": true,
+    "includeTotalChanges": true,
+    "includeChangedRecords": true,
+    "includeRollbackCount": true,
+    "includeFailedOperations": true
+  }
+}
