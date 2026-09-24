@@ -1,1 +1,845 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Parts Inquiry | Al-Dahayan Trading Company</title>
+
+  <meta
+    name="description"
+    content="Send a Toyota or Lexus spare parts inquiry to Al-Dahayan Trading Company."
+  >
+
+  <meta
+    name="keywords"
+    content="Toyota spare parts inquiry, Lexus spare parts inquiry, OEM inquiry, Saudi Arabia, Al-Dahayan"
+  >
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body data-page="inquiry">
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="../index.html" class="brand">
+        <span class="brand-name">AL-DAHAYAN</span>
+        <span class="brand-subtitle">
+          Trading Company
+        </span>
+      </a>
+
+      <nav class="main-navigation" aria-label="Main Navigation">
+        <a href="../index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="parts.html">Parts</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="vin-search.html">VIN Search</a>
+        <a href="inventory.html">Inventory</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="inquiry.html" class="active">Inquiry</a>
+      </nav>
+
+      <div class="language-switcher">
+        <button
+          type="button"
+          data-language="en"
+          class="language-btn"
+        >
+          EN
+        </button>
+
+        <button
+          type="button"
+          data-language="ar"
+          class="language-btn"
+        >
+          AR
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="hero">
+      <div class="container hero-content">
+
+        <span class="hero-eyebrow">
+          Customer Inquiry
+        </span>
+
+        <h1>
+          Tell Us What Part You Need
+        </h1>
+
+        <p>
+          Send your OEM number, vehicle details or VIN to
+          Al-Dahayan for parts availability and sourcing
+          assistance.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         INQUIRY FORM
+    ========================== -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="section-eyebrow">
+            Parts Request
+          </span>
+
+          <h2>
+            Submit Your Inquiry
+          </h2>
+
+          <p>
+            Please provide the available information below.
+            More vehicle or part details can help identify
+            the correct component.
+          </p>
+
+        </div>
+
+
+        <div class="search-panel">
+
+          <form
+            id="inquiry-form"
+            data-inquiry-form
+            novalidate
+          >
+
+            <!-- =========================
+                 CUSTOMER INFORMATION
+            ========================== -->
+            <div class="form-section">
+
+              <h3>
+                Customer Information
+              </h3>
+
+
+              <div class="form-grid">
+
+                <div class="form-group">
+
+                  <label for="customer-name">
+                    Full Name *
+                  </label>
+
+                  <input
+                    type="text"
+                    id="customer-name"
+                    name="customerName"
+                    data-inquiry-name
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="customer-phone">
+                    Phone / WhatsApp *
+                  </label>
+
+                  <input
+                    type="tel"
+                    id="customer-phone"
+                    name="phone"
+                    data-inquiry-phone
+                    placeholder="+966..."
+                    autocomplete="tel"
+                    required
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="customer-email">
+                    Email
+                  </label>
+
+                  <input
+                    type="email"
+                    id="customer-email"
+                    name="email"
+                    data-inquiry-email
+                    placeholder="your@email.com"
+                    autocomplete="email"
+                  >
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- =========================
+                 PART INFORMATION
+            ========================== -->
+            <div class="form-section">
+
+              <h3>
+                Part Information
+              </h3>
+
+
+              <div class="form-grid">
+
+                <div class="form-group">
+
+                  <label for="oem-number">
+                    OEM Part Number
+                  </label>
+
+                  <input
+                    type="text"
+                    id="oem-number"
+                    name="oem"
+                    data-inquiry-oem
+                    placeholder="Example: 12261-XXXXX"
+                    autocomplete="off"
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="part-name">
+                    Part Name
+                  </label>
+
+                  <input
+                    type="text"
+                    id="part-name"
+                    name="partName"
+                    data-inquiry-part-name
+                    placeholder="Example: Engine Part"
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="quantity">
+                    Required Quantity
+                  </label>
+
+                  <input
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    data-inquiry-quantity
+                    min="1"
+                    step="1"
+                    value="1"
+                  >
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- =========================
+                 VEHICLE INFORMATION
+            ========================== -->
+            <div class="form-section">
+
+              <h3>
+                Vehicle Information
+              </h3>
+
+
+              <div class="form-grid">
+
+                <div class="form-group">
+
+                  <label for="vehicle-make">
+                    Make
+                  </label>
+
+                  <select
+                    id="vehicle-make"
+                    name="make"
+                    data-inquiry-make
+                  >
+
+                    <option value="">
+                      Select Make
+                    </option>
+
+                    <option value="Toyota">
+                      Toyota
+                    </option>
+
+                    <option value="Lexus">
+                      Lexus
+                    </option>
+
+                  </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="vehicle-model">
+                    Model
+                  </label>
+
+                  <input
+                    type="text"
+                    id="vehicle-model"
+                    name="model"
+                    data-inquiry-model
+                    placeholder="Example: Camry"
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="vehicle-year">
+                    Year
+                  </label>
+
+                  <input
+                    type="number"
+                    id="vehicle-year"
+                    name="year"
+                    data-inquiry-year
+                    min="1980"
+                    max="2035"
+                    placeholder="Example: 2022"
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="vehicle-engine">
+                    Engine
+                  </label>
+
+                  <input
+                    type="text"
+                    id="vehicle-engine"
+                    name="engine"
+                    data-inquiry-engine
+                    placeholder="Example: 2.5L"
+                  >
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- =========================
+                 VIN INFORMATION
+            ========================== -->
+            <div class="form-section">
+
+              <h3>
+                VIN Information
+              </h3>
+
+
+              <div class="form-group">
+
+                <label for="inquiry-vin">
+                  VIN Number
+                </label>
+
+                <input
+                  type="text"
+                  id="inquiry-vin"
+                  name="vin"
+                  data-inquiry-vin
+                  placeholder="Enter 17-character VIN if available"
+                  maxlength="17"
+                  autocomplete="off"
+                  spellcheck="false"
+                >
+
+                <small>
+                  VIN is optional but can help with vehicle
+                  identification and compatibility.
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <!-- =========================
+                 MESSAGE
+            ========================== -->
+            <div class="form-section">
+
+              <h3>
+                Additional Information
+              </h3>
+
+
+              <div class="form-group">
+
+                <label for="inquiry-message">
+                  Message
+                </label>
+
+                <textarea
+                  id="inquiry-message"
+                  name="message"
+                  data-inquiry-message
+                  rows="6"
+                  placeholder="Tell us anything else about the part you need..."
+                ></textarea>
+
+              </div>
+
+            </div>
+
+
+            <!-- =========================
+                 CONSENT
+            ========================== -->
+            <div class="form-group form-checkbox">
+
+              <label>
+
+                <input
+                  type="checkbox"
+                  name="contactConsent"
+                  data-inquiry-consent
+                  required
+                >
+
+                <span>
+                  I agree to be contacted regarding this inquiry.
+                </span>
+
+              </label>
+
+            </div>
+
+
+            <!-- =========================
+                 ACTIONS
+            ========================== -->
+            <div class="form-actions">
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-inquiry-submit
+              >
+                Submit Inquiry
+              </button>
+
+              <button
+                type="reset"
+                class="btn btn-secondary"
+                data-inquiry-reset
+              >
+                Clear Form
+              </button>
+
+            </div>
+
+
+            <!-- =========================
+                 STATUS
+            ========================== -->
+            <div
+              class="search-status"
+              data-inquiry-status
+              aria-live="polite"
+            ></div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         WHAT HAPPENS NEXT
+    ========================== -->
+    <section class="section section-light">
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="section-eyebrow">
+            After Your Inquiry
+          </span>
+
+          <h2>
+            What Happens Next?
+          </h2>
+
+        </div>
+
+
+        <div class="service-grid">
+
+          <article class="service-card">
+
+            <span class="service-number">
+              01
+            </span>
+
+            <h3>
+              Request Received
+            </h3>
+
+            <p>
+              Your inquiry information is prepared for
+              customer connection.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <span class="service-number">
+              02
+            </span>
+
+            <h3>
+              Parts Review
+            </h3>
+
+            <p>
+              The requested OEM, vehicle or VIN information
+              can be reviewed.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <span class="service-number">
+              03
+            </span>
+
+            <h3>
+              Availability Check
+            </h3>
+
+            <p>
+              Current stock or sourcing information can
+              be checked.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <span class="service-number">
+              04
+            </span>
+
+            <h3>
+              Direct Contact
+            </h3>
+
+            <p>
+              Al-Dahayan can continue the conversation through
+              the available contact channel.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         ALTERNATIVE SEARCH
+    ========================== -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="section-eyebrow">
+            Before Contacting Us
+          </span>
+
+          <h2>
+            You Can Search First
+          </h2>
+
+          <p>
+            Use the platform's search tools to find available
+            information before submitting an inquiry.
+          </p>
+
+        </div>
+
+
+        <div class="trust-grid">
+
+          <article class="trust-card">
+
+            <h3>
+              OEM Search
+            </h3>
+
+            <p>
+              Search directly using the original equipment
+              part number.
+            </p>
+
+            <a
+              href="parts.html"
+              class="btn btn-secondary"
+            >
+              Search Parts
+            </a>
+
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              Vehicle Search
+            </h3>
+
+            <p>
+              Search using Toyota or Lexus vehicle information.
+            </p>
+
+            <a
+              href="vehicles.html"
+              class="btn btn-secondary"
+            >
+              Search Vehicle
+            </a>
+
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              VIN Search
+            </h3>
+
+            <p>
+              Use your vehicle identification number to
+              identify the vehicle.
+            </p>
+
+            <a
+              href="vin-search.html"
+              class="btn btn-secondary"
+            >
+              Search VIN
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         FINAL CTA
+    ========================== -->
+    <section class="cta-section">
+      <div class="container cta-content">
+
+        <div>
+
+          <span class="section-eyebrow">
+            Al-Dahayan Trading Company
+          </span>
+
+          <h2>
+            Need Help Finding the Right Part?
+          </h2>
+
+          <p>
+            Provide your OEM number, vehicle details or VIN
+            and connect with the Al-Dahayan team.
+          </p>
+
+        </div>
+
+
+        <div class="cta-actions">
+
+          <a
+            href="contact.html"
+            class="btn btn-primary"
+          >
+            Contact Us
+          </a>
+
+          <a
+            href="services.html"
+            class="btn btn-secondary"
+          >
+            View Services
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="site-footer">
+
+    <div class="container footer-grid">
+
+      <div>
+
+        <h3>
+          AL-DAHAYAN
+        </h3>
+
+        <p>
+          Toyota & Lexus automotive spare parts platform
+          serving customers in Saudi Arabia.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Quick Links
+        </h3>
+
+        <a href="../index.html">
+          Home
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="parts.html">
+          Parts
+        </a>
+
+        <a href="vehicles.html">
+          Vehicles
+        </a>
+
+        <a href="vin-search.html">
+          VIN Search
+        </a>
+
+        <a href="inventory.html">
+          Inventory
+        </a>
+
+        <a href="services.html">
+          Services
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Customer Connection
+        </h3>
+
+        <p>
+          Search parts, check availability and send your
+          requirements directly to Al-Dahayan.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <p>
+        © 2026 Al-Dahayan Trading Company.
+        All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/language.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/inquiry.js"></script>
+  <script src="../js/contact.js"></script>
+  <script src="../js/app.js"></script>
+
+</body>
+</html>
