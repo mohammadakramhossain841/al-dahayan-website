@@ -1,655 +1,263 @@
+/* =========================================
+   AL-DAHAYAN PARTS SEARCH
+========================================= */
+
 (function () {
   "use strict";
 
-  let partsData = [];
-  let categoriesData = [];
-  let isLoaded = false;
+  let initialized = false;
+  let parts = [];
+  let categories = [];
+  let filteredParts = [];
 
-  async function initializePartsSearch() {
-    await loadPartsData();
-    await loadCategoriesData();
-    setupPartsSearchInterface();
+  const state = {
+    query: "",
+    oem: "",
+    brand: "",
+    model: "",
+    category: ""
+  };
+
+  function normalize(value) {
+    return String(value ?? "")
+      .trim()
+      .toLowerCase();
   }
 
-  async function loadPartsData() {
-    try {
-      const filePath = getDataPath(
-        APP_CONFIG.dataFiles.oemParts
-      );
+  function escapeHTML(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
 
-      const response = await fetch(filePath);
+  function getPartId(part) {
+    return (
+      part.id ||
+      part.partId ||
+      part.part_id ||
+      ""
+    );
+  }
 
-      if (!response.ok) {
-        throw new Error(
-          `Failed to load parts data: ${response.status}`
-        );
-      }
+  function getOEM(part) {
+    return (
+      part.oem ||
+      part.oemNumber ||
+      part.oem_number ||
+      part.partNumber ||
+      part.part_number ||
+      ""
+    );
+  }
 
-      const data = await response.json();
+  function getPartName(part) {
+    return (
+      part.name ||
+      part.partName ||
+      part.part_name ||
+      part.description ||
+      ""
+    );
+  }
 
-      partsData = normalizeArray(data);
-      isLoaded = true;
+  function getBrand(part) {
+    return (
+      part.brand ||
+      part.make ||
+      part.manufacturer ||
+      ""
+    );
+  }
 
-      return partsData;
-    } catch (error) {
-      console.error(
-        "Al-Dahayan Parts Search: Unable to load parts data.",
-        error
-      );
+  function getModel(part) {
+    return (
+      part.model ||
+      part.vehicleModel ||
+      part.vehicle_model ||
+      ""
+    );
+  }
 
-      partsData = [];
-      isLoaded = false;
+  function getCategory(part) {
+    return (
+      part.category ||
+      part.categoryName ||
+      part.category_name ||
+      ""
+    );
+  }
 
-      return [];
+  function getYear(part) {
+    return (
+      part.year ||
+      part.modelYear ||
+      part.model_year ||
+      ""
+    );
+  }
+
+  function getImage(part) {
+    return (
+      part.image ||
+      part.imageUrl ||
+      part.image_url ||
+      ""
+    );
+  }
+
+  function uniqueSorted(values) {
+    return [
+      ...new Set(
+        values
+          .filter(Boolean)
+          .map((value) => String(value).trim())
+      )
+    ].sort((a, b) =>
+      a.localeCompare(b, undefined, {
+        numeric: true,
+        sensitivity: "base"
+      })
+    );
+  }
+
+  async function loadParts() {
+    if (parts.length) {
+      return parts;
     }
-  }
 
-  async function loadCategoriesData() {
-    try {
-      const filePath = getDataPath(
-        APP_CONFIG.dataFiles.partCategories
+    if (typeof window.getDataPath !== "function") {
+      throw new Error(
+        "getDataPath() is not available."
       );
-
-      const response = await fetch(filePath);
-
-      if (!response.ok) {
-        throw new Error(
-          `Failed to load categories data: ${response.status}`
-        );
-      }
-
-      const data = await response.json();
-
-      categoriesData = normalizeArray(data);
-
-      return categoriesData;
-    } catch (error) {
-      console.error(
-        "Al-Dahayan Parts Search: Unable to load category data.",
-        error
-      );
-
-      categoriesData = [];
-
-      return [];
     }
-  }
 
-  function normalizeArray(data) {
+    const response = await fetch(
+      window.getDataPath("oem-parts.json"),
+      {
+        cache: "no-cache"
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to load oem-parts.json: ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+
     if (Array.isArray(data)) {
-      return data;
+      parts = data;
+    } else if (Array.isArray(data.parts)) {
+      parts = data.parts;
+    } else if (Array.isArray(data.oemParts)) {
+      parts = data.oemParts;
+    } else if (Array.isArray(data.data)) {
+      parts = data.data;
+    } else {
+      parts = [];
     }
 
-    if (Array.isArray(data?.parts)) {
-      return data.parts;
-    }
+    filteredParts = [...parts];
 
-    if (Array.isArray(data?.oemParts)) {
-      return data.oemParts;
-    }
-
-    if (Array.isArray(data?.categories)) {
-      return data.categories;
-    }
-
-    if (Array.isArray(data?.partCategories)) {
-      return data.partCategories;
-    }
-
-    return [];
+    return parts;
   }
 
-  function setupPartsSearchInterface() {
-    setupSearchForms();
-    setupFilterControls();
-  }
+  async function loadCategories() {
+    if (categories.length) {
+      return categories;
+    }
 
-  function setupSearchForms() {
-    const forms = document.querySelectorAll(
-      "[data-parts-search-form], #partsSearchForm, .parts-search-form"
-    );
+    if (typeof window.getDataPath !== "function") {
+      return [];
+    }
 
-    forms.forEach((form) => {
-      if (form.dataset.partsInitialized === "true") {
-        return;
-      }
-
-      form.dataset.partsInitialized = "true";
-
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const filters = getFiltersFromForm(form);
-
-        performPartsSearch(filters);
-      });
-    });
-
-    const inputs = document.querySelectorAll(
-      "[data-parts-search-input], #partsSearch, #oemPartNumber, .parts-search-input"
-    );
-
-    inputs.forEach((input) => {
-      if (input.dataset.partsInputInitialized === "true") {
-        return;
-      }
-
-      input.dataset.partsInputInitialized = "true";
-
-      input.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-          event.preventDefault();
-
-          performPartsSearch({
-            query: input.value
-          });
+    try {
+      const response = await fetch(
+        window.getDataPath(
+          "part-categories.json"
+        ),
+        {
+          cache: "no-cache"
         }
-      });
-    });
+      );
+
+      if (!response.ok) {
+        return [];
+      }
+
+      const data = await response.json();
+
+      if (Array.isArray(data)) {
+        categories = data;
+      } else if (Array.isArray(data.categories)) {
+        categories = data.categories;
+      } else if (Array.isArray(data.data)) {
+        categories = data.data;
+      } else {
+        categories = [];
+      }
+
+    } catch (error) {
+      console.warn(
+        "Al-Dahayan Parts Search: categories unavailable.",
+        error
+      );
+
+      categories = [];
+    }
+
+    return categories;
   }
 
-  function setupFilterControls() {
-    const categorySelects = document.querySelectorAll(
-      "[data-part-category], #partCategory"
-    );
-
-    categorySelects.forEach((select) => {
-      populateSelect(
-        select,
-        getCategories(),
-        "Select Category"
-      );
-    });
-
-    const brandSelects = document.querySelectorAll(
-      "[data-part-brand], #partBrand"
-    );
-
-    brandSelects.forEach((select) => {
-      populateSelect(
-        select,
-        getBrands(),
-        "Select Brand"
-      );
-    });
-
-    const modelSelects = document.querySelectorAll(
-      "[data-part-model], #partModel"
-    );
-
-    modelSelects.forEach((select) => {
-      populateSelect(
-        select,
-        getModels(),
-        "Select Model"
-      );
-    });
-  }
-
-  function getFiltersFromForm(form) {
+  function getElements() {
     return {
-      query: getFieldValue(
-        form,
-        "query",
-        "partsSearch"
+      form: document.querySelector(
+        "[data-parts-search-form]"
       ),
 
-      oemNumber: getFieldValue(
-        form,
-        "oemNumber",
-        "oemPartNumber"
+      query: document.querySelector(
+        "[data-parts-query]"
       ),
 
-      category: getFieldValue(
-        form,
-        "category",
-        "partCategory"
+      oem: document.querySelector(
+        "[data-part-oem]"
       ),
 
-      brand: getFieldValue(
-        form,
-        "brand",
-        "partBrand"
+      brand: document.querySelector(
+        "[data-part-brand]"
       ),
 
-      model: getFieldValue(
-        form,
-        "model",
-        "partModel"
+      model: document.querySelector(
+        "[data-part-model]"
+      ),
+
+      category: document.querySelector(
+        "[data-part-category]"
+      ),
+
+      reset: document.querySelector(
+        "[data-parts-reset], [data-part-reset]"
+      ),
+
+      suggestions: document.querySelector(
+        "[data-parts-suggestions]"
+      ),
+
+      summary: document.querySelector(
+        "[data-parts-result-summary]"
+      ),
+
+      results: document.querySelector(
+        "[data-parts-results]"
       )
     };
   }
 
-  function getFieldValue(
-    form,
-    name,
-    id
-  ) {
-    const element =
-      form.querySelector(`[name="${name}"]`) ||
-      form.querySelector(`#${id}`);
-
-    return element
-      ? String(element.value || "").trim()
-      : "";
-  }
-
-  function performPartsSearch(filters = {}) {
-    const results = filterParts(filters);
-
-    displayPartResults(results);
-
-    document.dispatchEvent(
-      new CustomEvent(
-        "alDahayanPartsSearchCompleted",
-        {
-          detail: {
-            filters,
-            results
-          }
-        }
-      )
-    );
-
-    return results;
-  }
-
-  function filterParts(filters = {}) {
-    if (!isLoaded) {
-      return [];
-    }
-
-    const query =
-      normalizeText(filters.query);
-
-    const oemNumber =
-      normalizeOEM(filters.oemNumber);
-
-    const category =
-      normalizeText(filters.category);
-
-    const brand =
-      normalizeText(filters.brand);
-
-    const model =
-      normalizeText(filters.model);
-
-    return partsData.filter((part) => {
-      const partOEM =
-        normalizeOEM(
-          part.oemNumber ||
-          part.partNumber ||
-          part.partNo
-        );
-
-      const partCategory =
-        normalizeText(
-          part.category ||
-          part.categoryName
-        );
-
-      const partBrand =
-        normalizeText(
-          part.brand ||
-          part.make ||
-          part.manufacturer
-        );
-
-      const partModel =
-        normalizeText(
-          part.model ||
-          part.modelName
-        );
-
-      const searchableText =
-        normalizeText(
-          [
-            part.name,
-            part.partName,
-            part.description,
-            part.oemNumber,
-            part.partNumber,
-            part.partNo,
-            part.category,
-            part.brand,
-            part.make,
-            part.model
-          ]
-            .filter(Boolean)
-            .join(" ")
-        );
-
-      return (
-        (!query ||
-          searchableText.includes(query)) &&
-        (!oemNumber ||
-          partOEM.includes(oemNumber)) &&
-        (!category ||
-          partCategory === category) &&
-        (!brand ||
-          partBrand === brand) &&
-        (!model ||
-          partModel === model)
-      );
-    });
-  }
-
-  function getPartByOEM(oemNumber) {
-    const normalizedOEM =
-      normalizeOEM(oemNumber);
-
-    if (!normalizedOEM) {
-      return null;
-    }
-
-    return (
-      partsData.find((part) => {
-        const partNumber =
-          normalizeOEM(
-            part.oemNumber ||
-            part.partNumber ||
-            part.partNo
-          );
-
-        return partNumber === normalizedOEM;
-      }) || null
-    );
-  }
-
-  function getPartById(id) {
-    if (!id) {
-      return null;
-    }
-
-    return (
-      partsData.find(
-        (part) =>
-          String(part.id) ===
-          String(id)
-      ) || null
-    );
-  }
-
-  function getCategories() {
-    const partCategories =
-      partsData.map(
-        (part) =>
-          part.category ||
-          part.categoryName
-      );
-
-    const dataCategories =
-      categoriesData.map(
-        (category) =>
-          category.name ||
-          category.categoryName ||
-          category.id
-      );
-
-    return getUniqueValues([
-      ...partCategories,
-      ...dataCategories
-    ]);
-  }
-
-  function getBrands() {
-    return getUniqueValues(
-      partsData.map(
-        (part) =>
-          part.brand ||
-          part.make ||
-          part.manufacturer
-      )
-    );
-  }
-
-  function getModels() {
-    return getUniqueValues(
-      partsData.map(
-        (part) =>
-          part.model ||
-          part.modelName
-      )
-    );
-  }
-
-  function getSuggestions(
-    query,
-    limit = 8
-  ) {
-    if (!isLoaded) {
-      return [];
-    }
-
-    const normalizedQuery =
-      normalizeText(query);
-
-    if (!normalizedQuery) {
-      return [];
-    }
-
-    return partsData
-      .filter((part) => {
-        const searchableText =
-          normalizeText(
-            [
-              part.name,
-              part.partName,
-              part.oemNumber,
-              part.partNumber,
-              part.partNo,
-              part.category,
-              part.brand,
-              part.model
-            ]
-              .filter(Boolean)
-              .join(" ")
-          );
-
-        return searchableText.includes(
-          normalizedQuery
-        );
-      })
-      .slice(0, limit);
-  }
-
-  function displayPartResults(
-    results,
-    container = null
-  ) {
-    const target =
-      container ||
-      document.querySelector(
-        "[data-parts-results], #partsResults, .parts-results"
-      );
-
-    if (!target) {
-      return;
-    }
-
-    target.innerHTML = "";
-
-    if (!results.length) {
-      const empty =
-        document.createElement("div");
-
-      empty.className =
-        "parts-search-empty";
-
-      empty.textContent =
-        getCurrentLanguage() === "ar"
-          ? "لم يتم العثور على قطع غيار مطابقة."
-          : "No matching parts found.";
-
-      target.appendChild(empty);
-
-      return;
-    }
-
-    results.forEach((part) => {
-      target.appendChild(
-        createPartCard(part)
-      );
-    });
-  }
-
-  function createPartCard(part) {
-    const card =
-      document.createElement("article");
-
-    card.className =
-      "part-search-result";
-
-    const name =
-      part.name ||
-      part.partName ||
-      "Automotive Part";
-
-    const oem =
-      part.oemNumber ||
-      part.partNumber ||
-      part.partNo ||
-      "";
-
-    const category =
-      part.category ||
-      part.categoryName ||
-      "";
-
-    const brand =
-      part.brand ||
-      part.make ||
-      "";
-
-    const model =
-      part.model ||
-      part.modelName ||
-      "";
-
-    const description =
-      part.description ||
-      "";
-
-    card.innerHTML = `
-      <div class="part-result-content">
-
-        <h3>
-          ${escapeHTML(name)}
-        </h3>
-
-        ${
-          oem
-            ? `
-              <p class="part-oem">
-                <strong>OEM:</strong>
-                ${escapeHTML(oem)}
-              </p>
-            `
-            : ""
-        }
-
-        ${
-          category
-            ? `
-              <p class="part-category">
-                <strong>Category:</strong>
-                ${escapeHTML(category)}
-              </p>
-            `
-            : ""
-        }
-
-        ${
-          brand
-            ? `
-              <p class="part-brand">
-                <strong>Brand:</strong>
-                ${escapeHTML(brand)}
-              </p>
-            `
-            : ""
-        }
-
-        ${
-          model
-            ? `
-              <p class="part-model">
-                <strong>Model:</strong>
-                ${escapeHTML(model)}
-              </p>
-            `
-            : ""
-        }
-
-        ${
-          description
-            ? `
-              <p class="part-description">
-                ${escapeHTML(description)}
-              </p>
-            `
-            : ""
-        }
-
-        <button
-          type="button"
-          class="part-select-button"
-          data-part-id="${escapeHTML(
-            part.id || ""
-          )}"
-        >
-          ${
-            getCurrentLanguage() === "ar"
-              ? "عرض التفاصيل"
-              : "View Details"
-          }
-        </button>
-
-      </div>
-    `;
-
-    const button =
-      card.querySelector(
-        "[data-part-id]"
-      );
-
-    if (button) {
-      button.addEventListener(
-        "click",
-        () => {
-          showPartDetails(part);
-        }
-      );
-    }
-
-    return card;
-  }
-
-  function showPartDetails(part) {
-    document.dispatchEvent(
-      new CustomEvent(
-        "alDahayanPartDetailsRequested",
-        {
-          detail: {
-            part
-          }
-        }
-      )
-    );
-
-    if (
-      typeof window
-        .AlDahayanPartsSearch
-        ?.onPartSelected ===
-      "function"
-    ) {
-      window.AlDahayanPartsSearch.onPartSelected(
-        part
-      );
-    }
-  }
-
-  function populateSelect(
+  function setSelectOptions(
     select,
     values,
     placeholder
@@ -658,19 +266,15 @@
       return;
     }
 
+    const currentValue = select.value;
+
     select.innerHTML = "";
 
     const option =
       document.createElement("option");
 
     option.value = "";
-
-    option.textContent =
-      getCurrentLanguage() === "ar"
-        ? getArabicPlaceholder(
-            placeholder
-          )
-        : placeholder;
+    option.textContent = placeholder;
 
     select.appendChild(option);
 
@@ -683,129 +287,778 @@
 
       select.appendChild(item);
     });
+
+    if (values.includes(currentValue)) {
+      select.value = currentValue;
+    }
   }
 
-  function normalizeText(value) {
-    return String(value || "")
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ");
-  }
+  function updateFilterOptions() {
+    const elements = getElements();
 
-  function normalizeOEM(value) {
-    return String(value || "")
-      .toUpperCase()
-      .replace(/[\s\-_.]/g, "");
-  }
+    const brands = uniqueSorted(
+      parts.map(getBrand)
+    );
 
-  function getUniqueValues(values) {
-    return [
-      ...new Set(
-        values
-          .filter(
-            (value) =>
-              value !== undefined &&
-              value !== null
-          )
-          .map((value) =>
-            String(value).trim()
-          )
-          .filter(Boolean)
-      )
-    ].sort();
-  }
+    const models = uniqueSorted(
+      parts.map(getModel)
+    );
 
-  function getArabicPlaceholder(
-    placeholder
-  ) {
-    const translations = {
-      "Select Category": "اختر الفئة",
-      "Select Brand": "اختر العلامة التجارية",
-      "Select Model": "اختر الموديل"
-    };
+    const partCategories = uniqueSorted(
+      parts.map(getCategory)
+    );
 
-    return (
-      translations[placeholder] ||
-      placeholder
+    setSelectOptions(
+      elements.brand,
+      brands,
+      "All Brands"
+    );
+
+    setSelectOptions(
+      elements.model,
+      models,
+      "All Models"
+    );
+
+    setSelectOptions(
+      elements.category,
+      partCategories,
+      "All Categories"
     );
   }
 
-  function getCurrentLanguage() {
-    return (
-      document.documentElement.getAttribute(
-        "lang"
-      ) ||
-      APP_CONFIG?.site?.defaultLanguage ||
-      "en"
-    );
-  }
+  function applyFilters() {
+    const query = normalize(state.query);
+    const oem = normalize(state.oem);
+    const brand = normalize(state.brand);
+    const model = normalize(state.model);
+    const category = normalize(state.category);
 
-  function escapeHTML(value) {
-    if (
-      typeof window
-        .AlDahayanUtils
-        ?.escapeHTML === "function"
-    ) {
-      return window.AlDahayanUtils.escapeHTML(
-        value
+    filteredParts = parts.filter((part) => {
+      const partOEM = normalize(
+        getOEM(part)
       );
+
+      const partName = normalize(
+        getPartName(part)
+      );
+
+      const partBrand = normalize(
+        getBrand(part)
+      );
+
+      const partModel = normalize(
+        getModel(part)
+      );
+
+      const partCategory = normalize(
+        getCategory(part)
+      );
+
+      const searchableText = [
+        partOEM,
+        partName,
+        partBrand,
+        partModel,
+        partCategory,
+        normalize(getYear(part)),
+        normalize(part.description),
+        normalize(part.engine)
+      ].join(" ");
+
+      const matchesQuery =
+        !query ||
+        searchableText.includes(query);
+
+      const matchesOEM =
+        !oem ||
+        partOEM.includes(oem);
+
+      const matchesBrand =
+        !brand ||
+        partBrand === brand;
+
+      const matchesModel =
+        !model ||
+        partModel === model;
+
+      const matchesCategory =
+        !category ||
+        partCategory === category;
+
+      return (
+        matchesQuery &&
+        matchesOEM &&
+        matchesBrand &&
+        matchesModel &&
+        matchesCategory
+      );
+    });
+
+    renderResults();
+  }
+
+  function renderSummary() {
+    const elements = getElements();
+
+    if (!elements.summary) {
+      return;
     }
 
-    const div =
-      document.createElement("div");
+    const count =
+      filteredParts.length;
 
-    div.textContent =
-      String(value ?? "");
+    elements.summary.textContent =
+      `${count} part${count === 1 ? "" : "s"} found`;
+  }
 
-    return div.innerHTML;
+  function renderPartCard(part) {
+    const id = getPartId(part);
+    const oem = getOEM(part);
+    const name = getPartName(part);
+    const brand = getBrand(part);
+    const model = getModel(part);
+    const category = getCategory(part);
+    const year = getYear(part);
+    const image = getImage(part);
+
+    const imageHTML = image
+      ? `
+        <div class="part-card-image">
+          <img
+            src="${escapeHTML(image)}"
+            alt="${escapeHTML(name)}"
+            loading="lazy"
+          >
+        </div>
+      `
+      : "";
+
+    return `
+      <article
+        class="part-card"
+        data-part-id="${escapeHTML(id)}"
+      >
+
+        ${imageHTML}
+
+        <div class="part-card-content">
+
+          <div class="part-card-header">
+            ${
+              oem
+                ? `
+                  <span class="part-card-oem">
+                    ${escapeHTML(oem)}
+                  </span>
+                `
+                : ""
+            }
+
+            ${
+              category
+                ? `
+                  <span class="part-card-category">
+                    ${escapeHTML(category)}
+                  </span>
+                `
+                : ""
+            }
+          </div>
+
+          <h3 class="part-card-title">
+            ${escapeHTML(name)}
+          </h3>
+
+          ${
+            brand || model
+              ? `
+                <p class="part-card-vehicle">
+                  ${
+                    brand
+                      ? `<strong>${escapeHTML(brand)}</strong>`
+                      : ""
+                  }
+                  ${
+                    model
+                      ? ` ${escapeHTML(model)}`
+                      : ""
+                  }
+                  ${
+                    year
+                      ? ` (${escapeHTML(year)})`
+                      : ""
+                  }
+                </p>
+              `
+              : ""
+          }
+
+          <div class="part-card-actions">
+
+            <button
+              type="button"
+              class="part-card-button"
+              data-view-part
+              data-part-id="${escapeHTML(id)}"
+            >
+              View Details
+            </button>
+
+            <button
+              type="button"
+              class="part-card-button secondary"
+              data-inquire-part
+              data-part-id="${escapeHTML(id)}"
+            >
+              Inquiry
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+    `;
+  }
+
+  function renderResults() {
+    const elements = getElements();
+
+    renderSummary();
+
+    if (!elements.results) {
+      return;
+    }
+
+    if (!filteredParts.length) {
+      elements.results.innerHTML = `
+        <div class="search-empty">
+          <h3>No parts found</h3>
+          <p>
+            Try another OEM number, part name,
+            brand, model, or category.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+    elements.results.innerHTML =
+      filteredParts
+        .map(renderPartCard)
+        .join("");
+  }
+
+  function findPartById(id) {
+    const target = normalize(id);
+
+    return (
+      parts.find(
+        (part) =>
+          normalize(getPartId(part)) ===
+          target
+      ) || null
+    );
+  }
+
+  function findByOEM(oem) {
+    const target = normalize(oem);
+
+    if (!target) {
+      return null;
+    }
+
+    return (
+      parts.find(
+        (part) =>
+          normalize(getOEM(part)) ===
+          target
+      ) || null
+    );
+  }
+
+  function searchByOEM(oem) {
+    const target = normalize(oem);
+
+    if (!target) {
+      return [];
+    }
+
+    return parts.filter(
+      (part) =>
+        normalize(getOEM(part)).includes(target)
+    );
+  }
+
+  function getPartDetails(id) {
+    return findPartById(id);
+  }
+
+  function showSuggestions() {
+    const elements = getElements();
+
+    if (!elements.suggestions) {
+      return;
+    }
+
+    const query =
+      normalize(state.query);
+
+    if (query.length < 2) {
+      elements.suggestions.innerHTML = "";
+      elements.suggestions.hidden = true;
+      return;
+    }
+
+    const matches = parts
+      .filter((part) => {
+        const text = [
+          getOEM(part),
+          getPartName(part),
+          getBrand(part),
+          getModel(part)
+        ]
+          .map(normalize)
+          .join(" ");
+
+        return text.includes(query);
+      })
+      .slice(0, 8);
+
+    if (!matches.length) {
+      elements.suggestions.innerHTML = "";
+      elements.suggestions.hidden = true;
+      return;
+    }
+
+    elements.suggestions.innerHTML =
+      matches
+        .map((part) => {
+          const id = getPartId(part);
+          const oem = getOEM(part);
+          const name = getPartName(part);
+
+          return `
+            <button
+              type="button"
+              class="search-suggestion"
+              data-part-suggestion
+              data-part-id="${escapeHTML(id)}"
+            >
+              <strong>
+                ${escapeHTML(oem || name)}
+              </strong>
+
+              ${
+                oem && name
+                  ? `
+                    <span>
+                      ${escapeHTML(name)}
+                    </span>
+                  `
+                  : ""
+              }
+            </button>
+          `;
+        })
+        .join("");
+
+    elements.suggestions.hidden = false;
+  }
+
+  function hideSuggestions() {
+    const elements = getElements();
+
+    if (!elements.suggestions) {
+      return;
+    }
+
+    elements.suggestions.hidden = true;
+  }
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const elements = getElements();
+
+    state.query =
+      elements.query?.value || "";
+
+    state.oem =
+      elements.oem?.value || "";
+
+    state.brand =
+      elements.brand?.value || "";
+
+    state.model =
+      elements.model?.value || "";
+
+    state.category =
+      elements.category?.value || "";
+
+    hideSuggestions();
+
+    applyFilters();
+  }
+
+  function handleQueryInput() {
+    const elements = getElements();
+
+    state.query =
+      elements.query?.value || "";
+
+    showSuggestions();
+
+    applyFilters();
+  }
+
+  function handleFilterChange() {
+    const elements = getElements();
+
+    state.oem =
+      elements.oem?.value || "";
+
+    state.brand =
+      elements.brand?.value || "";
+
+    state.model =
+      elements.model?.value || "";
+
+    state.category =
+      elements.category?.value || "";
+
+    applyFilters();
+  }
+
+  function resetSearch() {
+    const elements = getElements();
+
+    state.query = "";
+    state.oem = "";
+    state.brand = "";
+    state.model = "";
+    state.category = "";
+
+    if (elements.form) {
+      elements.form.reset();
+    }
+
+    updateFilterOptions();
+    hideSuggestions();
+
+    filteredParts = [...parts];
+
+    renderResults();
+  }
+
+  function handleViewPart(id) {
+    const part =
+      findPartById(id);
+
+    if (!part) {
+      return;
+    }
+
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanPartSelected",
+        {
+          detail: {
+            part,
+            id
+          }
+        }
+      )
+    );
+  }
+
+  function handleInquiry(part) {
+    if (!part) {
+      return;
+    }
+
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanPartInquiry",
+        {
+          detail: {
+            part
+          }
+        }
+      )
+    );
+
+    const inquiryPage =
+      typeof window.getPagePath === "function"
+        ? window.getPagePath("inquiry.html")
+        : "../pages/inquiry.html";
+
+    const id = getPartId(part);
+
+    if (id) {
+      window.location.href =
+        `${inquiryPage}?part=${encodeURIComponent(id)}`;
+    } else {
+      window.location.href =
+        inquiryPage;
+    }
+  }
+
+  function bindEvents() {
+    const elements = getElements();
+
+    elements.form?.addEventListener(
+      "submit",
+      handleFormSubmit
+    );
+
+    elements.query?.addEventListener(
+      "input",
+      handleQueryInput
+    );
+
+    elements.oem?.addEventListener(
+      "input",
+      handleFilterChange
+    );
+
+    elements.brand?.addEventListener(
+      "change",
+      handleFilterChange
+    );
+
+    elements.model?.addEventListener(
+      "change",
+      handleFilterChange
+    );
+
+    elements.category?.addEventListener(
+      "change",
+      handleFilterChange
+    );
+
+    elements.reset?.addEventListener(
+      "click",
+      resetSearch
+    );
+
+    elements.results?.addEventListener(
+      "click",
+      (event) => {
+        const viewButton =
+          event.target.closest(
+            "[data-view-part]"
+          );
+
+        if (viewButton) {
+          handleViewPart(
+            viewButton.getAttribute(
+              "data-part-id"
+            )
+          );
+
+          return;
+        }
+
+        const inquiryButton =
+          event.target.closest(
+            "[data-inquire-part]"
+          );
+
+        if (inquiryButton) {
+          const part =
+            findPartById(
+              inquiryButton.getAttribute(
+                "data-part-id"
+              )
+            );
+
+          handleInquiry(part);
+        }
+      }
+    );
+
+    elements.suggestions?.addEventListener(
+      "click",
+      (event) => {
+        const button =
+          event.target.closest(
+            "[data-part-suggestion]"
+          );
+
+        if (!button) {
+          return;
+        }
+
+        const part =
+          findPartById(
+            button.getAttribute(
+              "data-part-id"
+            )
+          );
+
+        if (!part) {
+          return;
+        }
+
+        if (elements.query) {
+          elements.query.value =
+            getOEM(part) ||
+            getPartName(part);
+        }
+
+        state.query =
+          elements.query?.value || "";
+
+        hideSuggestions();
+
+        applyFilters();
+      }
+    );
+
+    document.addEventListener(
+      "click",
+      (event) => {
+        if (
+          !event.target.closest(
+            "[data-parts-search-form]"
+          )
+        ) {
+          hideSuggestions();
+        }
+      }
+    );
+  }
+
+  async function initializePartsSearch() {
+    if (initialized) {
+      return;
+    }
+
+    initialized = true;
+
+    try {
+      await Promise.all([
+        loadParts(),
+        loadCategories()
+      ]);
+
+      updateFilterOptions();
+      bindEvents();
+      renderResults();
+
+      document.dispatchEvent(
+        new CustomEvent(
+          "alDahayanPartsSearchReady",
+          {
+            detail: {
+              count: parts.length
+            }
+          }
+        )
+      );
+
+    } catch (error) {
+      console.error(
+        "Al-Dahayan Parts Search:",
+        error
+      );
+
+      const elements = getElements();
+
+      if (elements.results) {
+        elements.results.innerHTML = `
+          <div class="search-error">
+            <h3>Unable to load parts</h3>
+            <p>
+              Please try again later.
+            </p>
+          </div>
+        `;
+      }
+
+      if (elements.summary) {
+        elements.summary.textContent =
+          "Parts data unavailable";
+      }
+    }
   }
 
   window.AlDahayanPartsSearch = {
-    initialize:
-      initializePartsSearch,
+    init: initializePartsSearch,
 
-    loadPartsData,
+    load: loadParts,
 
-    loadCategoriesData,
+    search: function (filters = {}) {
+      state.query =
+        filters.query || "";
 
-    performPartsSearch,
+      state.oem =
+        filters.oem || "";
 
-    filterParts,
+      state.brand =
+        filters.brand || "";
 
-    getPartByOEM,
+      state.model =
+        filters.model || "";
 
-    getPartById,
+      state.category =
+        filters.category || "";
 
-    getSuggestions,
+      applyFilters();
 
-    getCategories,
+      return [...filteredParts];
+    },
 
-    getBrands,
+    reset: resetSearch,
 
-    getModels,
+    getAll: function () {
+      return [...parts];
+    },
 
-    showPartDetails,
+    getResults: function () {
+      return [...filteredParts];
+    },
 
-    getAllParts: () => [
-      ...partsData
-    ],
+    findById: findPartById,
 
-    getAllCategories: () => [
-      ...categoriesData
-    ],
+    findByOEM: findByOEM,
 
-    isLoaded: () => isLoaded
+    searchByOEM: searchByOEM,
+
+    getDetails: getPartDetails,
+
+    getCategories: function () {
+      return [...categories];
+    },
+
+    getBrands: function () {
+      return uniqueSorted(
+        parts.map(getBrand)
+      );
+    },
+
+    getModels: function () {
+      return uniqueSorted(
+        parts.map(getModel)
+      );
+    },
+
+    getState: function () {
+      return {
+        ...state
+      };
+    }
   };
 
-  if (
-    document.readyState ===
-    "loading"
-  ) {
-    document.addEventListener(
-      "DOMContentLoaded",
-      initializePartsSearch
-    );
-  } else {
-    initializePartsSearch();
-  }
+  window.initializePartsSearch =
+    initializePartsSearch;
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializePartsSearch
+  );
+
 })();
