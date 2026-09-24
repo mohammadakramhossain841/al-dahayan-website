@@ -1,448 +1,1782 @@
-/* =========================================
-   AL-DAHAYAN REUSABLE COMPONENT STYLES
-========================================= */
+/* =========================================================
+   AL-DAHAYAN TRADING COMPANY
+   Main Website Stylesheet
+   Toyota & Lexus Automotive Spare Parts Platform
+   ========================================================= */
 
-/* -----------------------------------------
-   Component Base
------------------------------------------ */
+
+/* =========================================================
+   1. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+    --primary: #0b1f33;
+    --primary-light: #163653;
+    --accent: #c89b3c;
+    --accent-light: #e0bd70;
+
+    --white: #ffffff;
+    --black: #111111;
+
+    --text: #25313d;
+    --text-light: #667381;
+
+    --background: #f6f8fa;
+    --surface: #ffffff;
+    --border: #e2e7ec;
+
+    --success: #16834a;
+    --danger: #c0392b;
+
+    --container: 1200px;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
+
+    --transition: 0.25s ease;
+}
+
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--background);
+    color: var(--text);
+
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+/* =========================================================
+   3. GLOBAL CONTAINER
+   ========================================================= */
+
+.container {
+    width: min(
+        calc(100% - 40px),
+        var(--container)
+    );
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   4. HEADER
+   ========================================================= */
+
+.site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+
+    min-width: 190px;
+}
+
+.brand-name {
+    color: var(--primary);
+
+    font-size: 22px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.brand-subtitle {
+    color: var(--accent);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    margin-top: 5px;
+}
+
+.main-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 24px;
+}
+
+.main-navigation a {
+    color: var(--text);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: color var(--transition);
+}
+
+.main-navigation a:hover {
+    color: var(--accent);
+}
+
+.header-inquiry {
+    background: var(--primary);
+    color: var(--white);
+
+    padding: 11px 18px;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background var(--transition),
+        transform var(--transition);
+}
+
+.header-inquiry:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   5. HERO SECTION
+   ========================================================= */
+
+.hero-section {
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary) 0%,
+            var(--primary-light) 100%
+        );
+
+    color: var(--white);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::after {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    right: -160px;
+    top: -160px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 50%;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.hero-label {
+    display: inline-block;
+
+    color: var(--accent-light);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: clamp(42px, 6vw, 72px);
+
+    line-height: 1.08;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 25px;
+}
+
+.hero-content h1 span {
+    display: block;
+    color: var(--accent-light);
+}
+
+.hero-content p {
+    max-width: 680px;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 18px;
+    line-height: 1.8;
+
+    margin-bottom: 35px;
+}
+
+.hero-actions,
+.connection-actions,
+.cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   6. BUTTONS
+   ========================================================= */
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 0 24px;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--accent-light);
+}
+
+.btn-secondary {
+    background: transparent;
+
+    color: inherit;
+
+    border: 1px solid currentColor;
+}
+
+
+/* =========================================================
+   7. SECTION COMMON
+   ========================================================= */
+
+section {
+    padding: 90px 0;
+}
+
+.section-heading {
+    text-align: center;
+
+    max-width: 720px;
+
+    margin: 0 auto 50px;
+}
+
+.section-heading span,
+.section-label {
+    color: var(--accent);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+.section-heading h2 {
+    color: var(--primary);
+
+    font-size: clamp(30px, 4vw, 44px);
+
+    line-height: 1.2;
+
+    margin: 10px 0 15px;
+}
+
+.section-heading p {
+    color: var(--text-light);
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   8. SEARCH SECTION
+   ========================================================= */
+
+.search-section {
+    background: var(--white);
+}
+
+.search-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+.search-card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    padding: 32px;
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+.search-card:hover {
+    transform: translateY(-6px);
+
+    border-color: var(--accent);
+
+    box-shadow: var(--shadow-md);
+}
+
+.search-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--primary);
+
+    color: var(--accent-light);
+
+    border-radius: var(--radius-md);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    margin-bottom: 22px;
+}
+
+.search-card h3 {
+    color: var(--primary);
+
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+.search-card p {
+    color: var(--text-light);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   9. COMPANY SECTION
+   ========================================================= */
+
+.company-section {
+    background: var(--background);
+}
+
+.company-container {
+    display: flex;
+    justify-content: center;
+}
+
+.company-content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.company-content h2 {
+    color: var(--primary);
+
+    font-size: clamp(32px, 4vw, 48px);
+
+    line-height: 1.2;
+
+    margin: 12px 0 22px;
+}
+
+.company-content p {
+    color: var(--text-light);
+
+    font-size: 16px;
+
+    margin-bottom: 15px;
+}
+
+.text-link {
+    display: inline-block;
+
+    color: var(--primary);
+
+    font-size: 14px;
+    font-weight: 800;
+
+    margin-top: 12px;
+
+    transition: color var(--transition);
+}
+
+.text-link:hover {
+    color: var(--accent);
+}
+
+
+/* =========================================================
+   10. SERVICES
+   ========================================================= */
+
+.services-section {
+    background: var(--white);
+}
+
+.services-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.service-card {
+    padding: 30px;
+
+    background: var(--background);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: var(--shadow-md);
+}
+
+.service-card h3 {
+    color: var(--primary);
+
+    font-size: 18px;
+
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    color: var(--text-light);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   11. CUSTOMER CONNECTION
+   ========================================================= */
+
+.connection-section {
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #102d49
+        );
+
+    color: var(--white);
+}
+
+.connection-container {
+    display: flex;
+    justify-content: center;
+}
+
+.connection-content {
+    max-width: 800px;
+
+    text-align: center;
+}
+
+.connection-content .section-label {
+    color: var(--accent-light);
+}
+
+.connection-content h2 {
+    font-size: clamp(32px, 5vw, 52px);
+
+    line-height: 1.15;
+
+    margin: 12px 0 20px;
+}
+
+.connection-content p {
+    color: rgba(255, 255, 255, 0.8);
+
+    font-size: 17px;
+
+    margin-bottom: 30px;
+}
+
+.connection-actions {
+    justify-content: center;
+}
+
+
+/* =========================================================
+   12. TRUST SECTION
+   ========================================================= */
+
+.trust-section {
+    background: var(--background);
+}
+
+.trust-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.trust-item {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    padding: 28px;
+
+    text-align: center;
+}
+
+.trust-item strong {
+    display: block;
+
+    color: var(--primary);
+
+    font-size: 17px;
+
+    margin-bottom: 10px;
+}
+
+.trust-item p {
+    color: var(--text-light);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   13. FINAL CTA
+   ========================================================= */
+
+.final-cta {
+    background: var(--white);
+
+    text-align: center;
+}
+
+.final-cta h2 {
+    color: var(--primary);
+
+    font-size: clamp(30px, 4vw, 44px);
+
+    line-height: 1.2;
+
+    margin-bottom: 15px;
+}
+
+.final-cta p {
+    color: var(--text-light);
+
+    margin-bottom: 25px;
+}
+
+.cta-actions {
+    justify-content: center;
+}
+
+.final-cta .btn-secondary {
+    color: var(--primary);
+
+    border-color: var(--primary);
+}
+
+
+/* =========================================================
+   14. FOOTER
+   ========================================================= */
+
+.site-footer {
+    background: var(--primary);
+
+    color: var(--white);
+}
+
+.footer-container {
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr;
+
+    gap: 50px;
+
+    padding-top: 65px;
+    padding-bottom: 55px;
+}
+
+.footer-company h3 {
+    font-size: 22px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 8px;
+}
+
+.footer-company p {
+    color: rgba(255, 255, 255, 0.68);
+
+    font-size: 14px;
+
+    margin-bottom: 6px;
+}
+
+.footer-links,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    color: var(--accent-light);
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+.footer-links a,
+.footer-contact a,
+.footer-contact p {
+    color: rgba(255, 255, 255, 0.68);
+
+    font-size: 13px;
+
+    transition: color var(--transition);
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: var(--white);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    padding: 20px 0;
+
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.5);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   15. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .main-navigation {
+        gap: 14px;
+    }
+
+    .main-navigation a {
+        font-size: 13px;
+    }
+
+    .search-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .services-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .trust-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .footer-container {
+        grid-template-columns:
+            1fr 1fr;
+    }
+}
+
+
+/* =========================================================
+   16. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 720px) {
+
+    .container {
+        width: min(
+            calc(100% - 28px),
+            var(--container)
+        );
+    }
+
+    section {
+        padding: 65px 0;
+    }
+
+    .site-header {
+        position: relative;
+    }
+
+    .header-container {
+        min-height: auto;
+
+        padding: 18px 0;
+
+        flex-wrap: wrap;
+    }
+
+    .brand {
+        min-width: auto;
+    }
+
+    .main-navigation {
+        order: 3;
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+        padding-bottom: 5px;
+    }
+
+    .main-navigation a {
+        white-space: nowrap;
+    }
+
+    .header-inquiry {
+        margin-left: auto;
+    }
+
+    .hero-section {
+        min-height: 560px;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .search-grid,
+    .services-grid,
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-card,
+    .service-card,
+    .trust-item {
+        padding: 24px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+}
+
+
+/* =========================================================
+   17. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+
+    .hero-content h1 {
+        font-size: 35px;
+    }
+
+    .hero-actions,
+    .connection-actions,
+    .cta-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .header-inquiry {
+        padding: 9px 12px;
+
+        font-size: 12px;
+    }
+
+    .brand-name {
+        font-size: 19px;
+    }
+}
+
+
+/* =========================================================
+   18. ACCESSIBILITY
+   ========================================================= */
+
+:focus-visible {
+    outline: 3px solid var(--accent);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   19. RTL SUPPORT
+   ========================================================= */
+
+html[dir="rtl"] {
+    direction: rtl;
+}
+
+html[dir="rtl"] .hero-content,
+html[dir="rtl"] .company-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .main-navigation {
+    direction: rtl;
+}
+
+html[dir="rtl"] .brand {
+    text-align: right;
+}
+
+html[dir="rtl"] .footer-company,
+html[dir="rtl"] .footer-links,
+html[dir="rtl"] .footer-contact {
+    text-align: right;
+}
+
+
+/* =========================================================
+   20. REUSABLE COMPONENT BASE
+   ========================================================= */
 
 [data-component] {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 [data-component] *,
 [data-component] *::before,
 [data-component] *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 
-/* -----------------------------------------
-   Buttons
------------------------------------------ */
-
-.modal-button,
-.whatsapp-button,
-.inquiry-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 10px 18px;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  font: inherit;
-  font-weight: 600;
-  line-height: 1.2;
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease,
-    opacity 0.2s ease;
-}
-
-.modal-button:hover,
-.whatsapp-button:hover,
-.inquiry-button:hover {
-  transform: translateY(-1px);
-}
-
-.modal-button:focus-visible,
-.whatsapp-button:focus-visible,
-.inquiry-button:focus-visible {
-  outline: 3px solid rgba(0, 115, 230, 0.25);
-  outline-offset: 2px;
-}
-
-
-/* -----------------------------------------
-   Modal
------------------------------------------ */
+/* =========================================================
+   21. MODAL COMPONENT
+   ========================================================= */
 
 .modal-component {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
 }
 
 .modal-component[hidden] {
-  display: none;
+    display: none;
 }
 
 .modal-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(3px);
+    position: absolute;
+    inset: 0;
+
+    background: rgba(11, 31, 51, 0.72);
+
+    backdrop-filter: blur(3px);
 }
 
 .modal-container {
-  position: relative;
-  z-index: 1;
-  width: min(100%, 620px);
-  max-height: min(720px, 90vh);
-  overflow: auto;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.2);
+    position: relative;
+    z-index: 1;
+
+    width: min(100%, 620px);
+    max-height: 90vh;
+
+    overflow: auto;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-lg);
 }
 
 .modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 20px 22px;
-  border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 24px;
+
+    border-bottom: 1px solid var(--border);
 }
 
 .modal-title {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.4;
-  color: #111827;
+    margin: 0;
+
+    color: var(--primary);
+
+    font-size: 22px;
+    font-weight: 800;
+
+    line-height: 1.3;
 }
 
 .modal-close {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: 0;
-  border-radius: 8px;
-  background: transparent;
-  color: #374151;
-  font-size: 28px;
-  line-height: 1;
-  cursor: pointer;
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: var(--radius-sm);
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: 28px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background var(--transition),
+        color var(--transition);
 }
 
 .modal-close:hover {
-  background: #f3f4f6;
-}
-
-.modal-close:focus-visible {
-  outline: 3px solid rgba(0, 115, 230, 0.25);
-  outline-offset: 2px;
+    background: var(--background);
+    color: var(--accent);
 }
 
 .modal-body {
-  padding: 22px;
-  color: #374151;
-  line-height: 1.7;
+    padding: 24px;
+
+    color: var(--text);
+
+    line-height: 1.7;
 }
 
 .modal-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  padding: 16px 22px;
-  border-top: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    padding: 18px 24px;
+
+    border-top: 1px solid var(--border);
 }
 
 .modal-button {
-  background: #111827;
-  color: #ffffff;
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 0 20px;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
 }
 
 .modal-button:hover {
-  background: #1f2937;
+    transform: translateY(-2px);
+}
+
+.modal-button:not(.secondary) {
+    background: var(--primary);
+    color: var(--white);
+
+    border: 1px solid var(--primary);
+}
+
+.modal-button:not(.secondary):hover {
+    background: var(--primary-light);
 }
 
 .modal-button.secondary {
-  background: #ffffff;
-  color: #374151;
-  border-color: #d1d5db;
+    background: var(--white);
+
+    color: var(--primary);
+
+    border: 1px solid var(--border);
 }
 
 .modal-button.secondary:hover {
-  background: #f9fafb;
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 
-/* -----------------------------------------
-   Loading Component
------------------------------------------ */
+/* =========================================================
+   22. LOADING COMPONENT
+   ========================================================= */
 
 .loading-component {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 24px;
-  color: #6b7280;
-  text-align: center;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 25px;
+
+    color: var(--text-light);
+
+    text-align: center;
 }
 
 .loading-spinner {
-  width: 22px;
-  height: 22px;
-  border: 3px solid #e5e7eb;
-  border-top-color: #111827;
-  border-radius: 50%;
-  animation: alDahayanSpin 0.8s linear infinite;
+    width: 22px;
+    height: 22px;
+
+    border: 3px solid var(--border);
+
+    border-top-color: var(--accent);
+
+    border-radius: 50%;
+
+    animation:
+        alDahayanSpin 0.8s linear infinite;
 }
 
 @keyframes alDahayanSpin {
-  to {
-    transform: rotate(360deg);
-  }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 
-/* -----------------------------------------
-   Stock Badge
------------------------------------------ */
+/* =========================================================
+   23. STOCK BADGE
+   ========================================================= */
 
 .stock-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 28px;
-  padding: 5px 10px;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  line-height: 1;
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    min-height: 28px;
+
+    padding: 5px 11px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    line-height: 1;
 }
 
 .stock-badge.available {
-  background: #ecfdf5;
-  color: #047857;
+    background: rgba(22, 131, 74, 0.1);
+    color: var(--success);
 }
 
 .stock-badge.low {
-  background: #fffbeb;
-  color: #b45309;
+    background: rgba(200, 155, 60, 0.12);
+    color: #9a741f;
 }
 
 .stock-badge.out,
 .stock-badge.unavailable {
-  background: #fef2f2;
-  color: #b91c1c;
+    background: rgba(192, 57, 43, 0.1);
+    color: var(--danger);
 }
 
 .stock-badge.unknown {
-  background: #f3f4f6;
-  color: #4b5563;
+    background: var(--background);
+    color: var(--text-light);
 }
 
 
-/* -----------------------------------------
-   Cards
------------------------------------------ */
-
-.vehicle-card,
-.part-card,
-.contact-card,
-.price-display,
-.part-details {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
-}
+/* =========================================================
+   24. VEHICLE & PART CARDS
+   ========================================================= */
 
 .vehicle-card,
 .part-card {
-  overflow: hidden;
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-sm);
+
+    overflow: hidden;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+.vehicle-card:hover,
+.part-card:hover {
+    transform: translateY(-4px);
+
+    border-color: var(--accent);
+
+    box-shadow: var(--shadow-md);
 }
 
 .vehicle-card-content,
 .part-card-content {
-  padding: 18px;
+    padding: 20px;
 }
 
 .vehicle-card-title,
 .part-card-title {
-  margin: 0 0 8px;
-  color: #111827;
-  font-size: 1.05rem;
-  font-weight: 700;
+    margin-bottom: 8px;
+
+    color: var(--primary);
+
+    font-size: 18px;
+    font-weight: 800;
 }
 
 .vehicle-card-meta,
 .part-card-meta {
-  color: #6b7280;
-  font-size: 0.9rem;
-  line-height: 1.6;
+    color: var(--text-light);
+
+    font-size: 13px;
+
+    line-height: 1.7;
 }
 
 
-/* -----------------------------------------
-   Breadcrumbs
------------------------------------------ */
+/* =========================================================
+   25. PART DETAILS
+   ========================================================= */
 
-.breadcrumbs {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  color: #6b7280;
-  font-size: 0.9rem;
+.part-details {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    padding: 24px;
+
+    box-shadow: var(--shadow-sm);
 }
 
-.breadcrumbs a {
-  color: inherit;
-  text-decoration: none;
+.part-details-title {
+    color: var(--primary);
+
+    font-size: 22px;
+    font-weight: 800;
+
+    margin-bottom: 12px;
 }
 
-.breadcrumbs a:hover {
-  color: #111827;
-  text-decoration: underline;
+.part-details-description {
+    color: var(--text-light);
+
+    font-size: 14px;
+
+    line-height: 1.7;
 }
 
-.breadcrumb-separator {
-  color: #9ca3af;
+
+/* =========================================================
+   26. PRICE DISPLAY
+   ========================================================= */
+
+.price-display {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    padding: 18px;
+
+    box-shadow: var(--shadow-sm);
+}
+
+.price-display-value {
+    color: var(--primary);
+
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.price-display-inquiry {
+    color: var(--text-light);
+
+    font-size: 13px;
+
+    margin-top: 5px;
 }
 
 
-/* -----------------------------------------
-   Search / Filter Components
------------------------------------------ */
+/* =========================================================
+   27. CONTACT CARD
+   ========================================================= */
 
-.search-box,
+.contact-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    padding: 22px;
+
+    box-shadow: var(--shadow-sm);
+}
+
+.contact-card-title {
+    color: var(--primary);
+
+    font-size: 19px;
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+.contact-card a {
+    color: var(--primary);
+
+    transition: color var(--transition);
+}
+
+.contact-card a:hover {
+    color: var(--accent);
+}
+
+
+/* =========================================================
+   28. WHATSAPP BUTTON
+   ========================================================= */
+
+.whatsapp-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 46px;
+
+    padding: 0 20px;
+
+    background: var(--success);
+
+    color: var(--white);
+
+    border-radius: var(--radius-sm);
+
+    font-size: 14px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition:
+        transform var(--transition),
+        opacity var(--transition);
+}
+
+.whatsapp-button:hover {
+    color: var(--white);
+
+    opacity: 0.9;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   29. SEARCH BOX
+   ========================================================= */
+
+.search-box {
+    width: 100%;
+}
+
+.search-box input {
+    width: 100%;
+
+    min-height: 48px;
+
+    padding: 0 15px;
+
+    background: var(--white);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.search-box input:focus {
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px rgba(200, 155, 60, 0.12);
+}
+
+
+/* =========================================================
+   30. VEHICLE & PART FILTERS
+   ========================================================= */
+
 .vehicle-filter,
 .part-filter {
-  width: 100%;
+    width: 100%;
 }
 
-.search-box input,
 .vehicle-filter input,
 .vehicle-filter select,
 .part-filter input,
 .part-filter select {
-  width: 100%;
-  min-height: 44px;
-  padding: 10px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  background: #ffffff;
-  color: #111827;
-  font: inherit;
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 0 13px;
+
+    background: var(--white);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
-.search-box input:focus,
 .vehicle-filter input:focus,
 .vehicle-filter select:focus,
 .part-filter input:focus,
 .part-filter select:focus {
-  border-color: #111827;
-  outline: 3px solid rgba(17, 24, 39, 0.08);
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px rgba(200, 155, 60, 0.12);
 }
 
 
-/* -----------------------------------------
-   Contact Card
------------------------------------------ */
+/* =========================================================
+   31. BREADCRUMBS
+   ========================================================= */
 
-.contact-card {
-  padding: 20px;
+.breadcrumbs {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    color: var(--text-light);
+
+    font-size: 13px;
 }
 
-.contact-card-title {
-  margin: 0 0 12px;
-  color: #111827;
-  font-size: 1.1rem;
-  font-weight: 700;
+.breadcrumbs a {
+    color: var(--primary);
+
+    transition: color var(--transition);
 }
 
-.contact-card a {
-  color: inherit;
-  text-decoration: none;
+.breadcrumbs a:hover {
+    color: var(--accent);
 }
 
-.contact-card a:hover {
-  text-decoration: underline;
-}
-
-
-/* -----------------------------------------
-   Price Display
------------------------------------------ */
-
-.price-display {
-  padding: 16px;
-}
-
-.price-display-value {
-  color: #111827;
-  font-size: 1.35rem;
-  font-weight: 700;
-}
-
-.price-display-inquiry {
-  color: #6b7280;
-  font-size: 0.9rem;
+.breadcrumb-separator {
+    color: var(--text-light);
 }
 
 
-/* -----------------------------------------
-   Responsive
------------------------------------------ */
+/* =========================================================
+   32. INQUIRY FORM
+   ========================================================= */
 
-@media (max-width: 768px) {
-
-  .modal-component {
-    padding: 12px;
-  }
-
-  .modal-container {
-    max-height: 94vh;
-    border-radius: 12px;
-  }
-
-  .modal-header {
-    padding: 16px;
-  }
-
-  .modal-body {
-    padding: 16px;
-  }
-
-  .modal-footer {
-    flex-direction: column-reverse;
-    align-items: stretch;
-    padding: 14px 16px;
-  }
-
-  .modal-button {
+.inquiry-form {
     width: 100%;
-  }
+}
 
-  .breadcrumbs {
-    font-size: 0.84rem;
-  }
+.inquiry-form label {
+    display: block;
 
+    margin-bottom: 6px;
+
+    color: var(--primary);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.inquiry-form input,
+.inquiry-form select,
+.inquiry-form textarea {
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 10px 13px;
+
+    background: var(--white);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.inquiry-form textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+.inquiry-form input:focus,
+.inquiry-form select:focus,
+.inquiry-form textarea:focus {
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px rgba(200, 155, 60, 0.12);
 }
 
 
-/* -----------------------------------------
-   RTL Support
------------------------------------------ */
+/* =========================================================
+   33. LANGUAGE SWITCHER
+   ========================================================= */
+
+.language-switcher {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+.language-switcher button,
+.language-switcher a {
+    min-height: 34px;
+
+    padding: 0 10px;
+
+    background: var(--white);
+
+    color: var(--primary);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+}
+
+.language-switcher button:hover,
+.language-switcher a:hover {
+    background: var(--primary);
+
+    color: var(--white);
+
+    border-color: var(--primary);
+}
+
+
+/* =========================================================
+   34. COMPONENT FOCUS
+   ========================================================= */
+
+.modal-button:focus-visible,
+.modal-close:focus-visible,
+.whatsapp-button:focus-visible,
+.language-switcher button:focus-visible,
+.language-switcher a:focus-visible {
+    outline: 3px solid var(--accent);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   35. COMPONENT RTL
+   ========================================================= */
 
 html[dir="rtl"] .modal-header {
-  text-align: right;
+    text-align: right;
 }
 
 html[dir="rtl"] .modal-footer {
-  justify-content: flex-start;
+    justify-content: flex-start;
 }
 
-html[dir="rtl"] .breadcrumbs {
-  direction: rtl;
+html[dir="rtl"] .modal-body,
+html[dir="rtl"] .contact-card,
+html[dir="rtl"] .part-details {
+    text-align: right;
 }
+
+
+/* =========================================================
+   36. COMPONENT RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 720px) {
+
+    .modal-component {
+        padding: 12px;
+    }
+
+    .modal-container {
+        max-height: 94vh;
+
+        border-radius: var(--radius-md);
+    }
+
+    .modal-header {
+        padding: 16px 18px;
+    }
+
+    .modal-body {
+        padding: 18px;
+    }
+
+    .modal-footer {
+        padding: 14px 18px;
+
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+    .modal-button {
+        width: 100%;
+    }
+
+    .vehicle-card-content,
+    .part-card-content,
+    .contact-card,
+    .part-details {
+        padding: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   37. FINAL COMPONENT ACCESSIBILITY
+   ========================================================= */
+
+.modal-button:disabled,
+.whatsapp-button:disabled,
+.btn:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   END OF AL-DAHAYAN MAIN STYLESHEET
+   ========================================================= */
