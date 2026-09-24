@@ -1,0 +1,59 @@
+{
+  "version": "1.0.0",
+  "driveTypes": [
+    {
+      "code": "FWD",
+      "name": "Front-Wheel Drive",
+      "shortName": "FWD",
+      "description": "Engine power is delivered to the front wheels."
+    },
+    {
+      "code": "RWD",
+      "name": "Rear-Wheel Drive",
+      "shortName": "RWD",
+      "description": "Engine power is delivered to the rear wheels."
+    },
+    {
+      "code": "AWD",
+      "name": "All-Wheel Drive",
+      "shortName": "AWD",
+      "description": "Power can be delivered to all four wheels through an all-wheel-drive system."
+    },
+    {
+      "code": "4WD",
+      "name": "Four-Wheel Drive",
+      "shortName": "4WD",
+      "description": "A four-wheel-drive system designed to provide drive to all four wheels."
+    },
+    {
+      "code": "4X4",
+      "name": "Four-by-Four",
+      "shortName": "4x4",
+      "description": "Common designation for vehicles capable of driving all four wheels."
+    },
+    {
+      "code": "E-AWD",
+      "name": "Electric All-Wheel Drive",
+      "shortName": "E-AWD",
+      "description": "All-wheel drive provided through electrically powered drive units."
+    },
+    {
+      "code": "E-FWD",
+      "name": "Electric Front-Wheel Drive",
+      "shortName": "E-FWD",
+      "description": "Front-wheel drive provided by an electric drive system."
+    },
+    {
+      "code": "E-RWD",
+      "name": "Electric Rear-Wheel Drive",
+      "shortName": "E-RWD",
+      "description": "Rear-wheel drive provided by an electric drive system."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "shortName": "Unknown",
+      "description": "Drive type has not yet been verified."
+    }
+  ]
+}
