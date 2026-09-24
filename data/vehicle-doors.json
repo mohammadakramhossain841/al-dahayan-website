@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "doorOptions": [
+    {
+      "code": "2",
+      "name": "2 Doors",
+      "doorCount": 2,
+      "description": "Vehicle configuration with two passenger doors."
+    },
+    {
+      "code": "3",
+      "name": "3 Doors",
+      "doorCount": 3,
+      "description": "Vehicle configuration with three doors, including a rear liftgate where applicable."
+    },
+    {
+      "code": "4",
+      "name": "4 Doors",
+      "doorCount": 4,
+      "description": "Vehicle configuration with four passenger doors."
+    },
+    {
+      "code": "5",
+      "name": "5 Doors",
+      "doorCount": 5,
+      "description": "Vehicle configuration with four passenger doors plus a rear liftgate."
+    },
+    {
+      "code": "6",
+      "name": "6 Doors",
+      "doorCount": 6,
+      "description": "Vehicle configuration with six doors."
+    },
+    {
+      "code": "SLIDING",
+      "name": "Sliding Door",
+      "doorCount": null,
+      "description": "Vehicle equipped with one or more sliding side doors."
+    },
+    {
+      "code": "MULTIPLE",
+      "name": "Multiple Door Configuration",
+      "doorCount": null,
+      "description": "Vehicle has a specialized or market-dependent door configuration."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "doorCount": null,
+      "description": "Door configuration has not yet been verified."
+    }
+  ]
+}
