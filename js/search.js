@@ -1,237 +1,213 @@
 (function () {
   "use strict";
 
-  let parts = [];
+  let partsData = [];
+  let isLoaded = false;
 
   async function initializeSearch() {
     await loadPartsData();
-    setupSearchForms();
-    setupSearchInputs();
+    setupSearchInterface();
   }
 
   async function loadPartsData() {
     try {
-      const fileName =
-        window.APP_CONFIG?.dataFiles?.oemParts ||
-        "oem-parts.json";
+      const filePath = getDataPath(
+        APP_CONFIG.dataFiles.oemParts
+      );
 
-      const path =
-        window.getDataPath?.(fileName) ||
-        `./data/${fileName}`;
-
-      const response = await fetch(path);
+      const response = await fetch(filePath);
 
       if (!response.ok) {
         throw new Error(
-          `Unable to load parts data: ${response.status}`
+          `Failed to load parts data: ${response.status}`
         );
       }
 
       const data = await response.json();
 
-      parts = Array.isArray(data)
+      partsData = Array.isArray(data)
         ? data
         : Array.isArray(data.parts)
-        ? data.parts
-        : [];
+          ? data.parts
+          : Array.isArray(data.oemParts)
+            ? data.oemParts
+            : [];
 
-      return parts;
+      isLoaded = true;
+
+      return partsData;
     } catch (error) {
-      console.error("Parts data loading error:", error);
-      parts = [];
+      console.error(
+        "Al-Dahayan Search: Unable to load parts data.",
+        error
+      );
+
+      partsData = [];
+      isLoaded = false;
+
       return [];
     }
   }
 
-  function setupSearchForms() {
-    const forms = document.querySelectorAll(
-      "[data-search-form], .search-form"
+  function setupSearchInterface() {
+    const searchInputs = document.querySelectorAll(
+      "[data-search-input], #partSearch, #oemSearch, .part-search-input"
     );
 
-    forms.forEach((form) => {
-      form.addEventListener("submit", handleSearchSubmit);
-    });
-  }
+    searchInputs.forEach((input) => {
+      if (input.dataset.searchInitialized === "true") {
+        return;
+      }
 
-  function setupSearchInputs() {
-    const inputs = document.querySelectorAll(
-      "[data-search-input]"
-    );
+      input.dataset.searchInitialized = "true";
 
-    inputs.forEach((input) => {
-      input.addEventListener("input", handleSearchInput);
-    });
-  }
-
-  function handleSearchSubmit(event) {
-    event.preventDefault();
-
-    const form = event.currentTarget;
-
-    const input =
-      form.querySelector("[data-search-input]") ||
-      form.querySelector("input[name='search']") ||
-      form.querySelector("input[type='search']") ||
-      form.querySelector("input");
-
-    if (!input) {
-      return;
-    }
-
-    const query = input.value.trim();
-
-    if (!query) {
-      showSearchMessage(
-        "Please enter an OEM part number or search keyword."
+      input.addEventListener(
+        "input",
+        debounceSearch(handleSearchInput)
       );
-      return;
-    }
 
-    const results = searchParts(query);
-
-    displaySearchResults(results);
-
-    document.dispatchEvent(
-      new CustomEvent("partsSearchCompleted", {
-        detail: {
-          query: query,
-          results: results
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          performSearch(input.value);
         }
-      })
+      });
+    });
+
+    const searchForms = document.querySelectorAll(
+      "[data-search-form], .part-search-form"
     );
+
+    searchForms.forEach((form) => {
+      if (form.dataset.searchInitialized === "true") {
+        return;
+      }
+
+      form.dataset.searchInitialized = "true";
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const input = form.querySelector(
+          "input[type='search'], input[type='text'], [data-search-input]"
+        );
+
+        performSearch(input ? input.value : "");
+      });
+    });
   }
 
   function handleSearchInput(event) {
-    const input = event.currentTarget;
-    const query = input.value.trim();
+    const query = event.target.value.trim();
 
     if (query.length < 2) {
-      clearSearchSuggestions();
+      clearSuggestions(event.target);
       return;
     }
 
-    const results = searchParts(query).slice(0, 6);
+    const results = searchParts(query).slice(0, 8);
 
-    displaySearchSuggestions(results);
+    showSuggestions(event.target, results);
+  }
+
+  function performSearch(query) {
+    const normalizedQuery = String(query || "").trim();
+
+    if (!normalizedQuery) {
+      displayResults([]);
+      return [];
+    }
+
+    const results = searchParts(normalizedQuery);
+
+    displayResults(results);
+
+    return results;
   }
 
   function searchParts(query) {
-    const normalizedQuery = normalizeSearchText(query);
+    if (!isLoaded) {
+      return [];
+    }
+
+    const normalizedQuery = normalizeText(query);
 
     if (!normalizedQuery) {
       return [];
     }
 
-    return parts.filter((part) => {
-      const searchableText = getPartSearchText(part);
+    return partsData.filter((part) => {
+      const searchableFields = [
+        part.partNumber,
+        part.oemNumber,
+        part.partNo,
+        part.name,
+        part.partName,
+        part.description,
+        part.category,
+        part.brand,
+        part.make,
+        part.model
+      ];
 
-      return searchableText.includes(normalizedQuery);
+      return searchableFields.some((field) =>
+        normalizeText(field).includes(normalizedQuery)
+      );
     });
   }
 
-  function getPartSearchText(part) {
-    const values = [
-      part.partNumber,
-      part.oemNumber,
-      part.partNo,
-      part.oem,
-      part.name,
-      part.partName,
-      part.description,
-      part.category,
-      part.brand,
-      part.model
-    ];
+  function getPartByOEM(oemNumber) {
+    const normalizedOEM = normalizeOEM(oemNumber);
 
-    return values
-      .filter(Boolean)
-      .map(normalizeSearchText)
-      .join(" ");
-  }
+    if (!normalizedOEM) {
+      return null;
+    }
 
-  function normalizeSearchText(value) {
-    return String(value || "")
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ");
-  }
-
-  function displaySearchResults(results) {
-    const containers = document.querySelectorAll(
-      "[data-search-results]"
-    );
-
-    containers.forEach((container) => {
-      container.innerHTML = "";
-
-      if (!results.length) {
-        showSearchMessage(
-          "No matching parts found.",
-          container
+    return (
+      partsData.find((part) => {
+        return (
+          normalizeOEM(part.oemNumber) === normalizedOEM ||
+          normalizeOEM(part.partNumber) === normalizedOEM ||
+          normalizeOEM(part.partNo) === normalizedOEM
         );
-        return;
-      }
-
-      results.forEach((part) => {
-        const card = createPartResultCard(part);
-        container.appendChild(card);
-      });
-    });
+      }) || null
+    );
   }
 
-  function displaySearchSuggestions(results) {
-    const containers = document.querySelectorAll(
-      "[data-search-suggestions]"
-    );
+  function getSuggestions(query, limit = 8) {
+    return searchParts(query).slice(0, limit);
+  }
 
-    containers.forEach((container) => {
-      container.innerHTML = "";
+  function displayResults(results, container = null) {
+    const target =
+      container ||
+      document.querySelector(
+        "[data-search-results], #searchResults, .search-results"
+      );
 
-      if (!results.length) {
-        container.hidden = true;
-        return;
-      }
+    if (!target) {
+      return;
+    }
 
-      results.forEach((part) => {
-        const item = document.createElement("button");
+    target.innerHTML = "";
 
-        item.type = "button";
-        item.className = "search-suggestion";
+    if (!results.length) {
+      const emptyMessage = document.createElement("div");
 
-        item.textContent =
-          part.oemNumber ||
-          part.partNumber ||
-          part.partNo ||
-          part.name ||
-          "Part";
+      emptyMessage.className = "search-empty";
 
-        item.addEventListener("click", () => {
-          const input = document.querySelector(
-            "[data-search-input]"
-          );
+      emptyMessage.textContent =
+        getCurrentLanguage() === "ar"
+          ? "لم يتم العثور على قطع مطابقة."
+          : "No matching parts found.";
 
-          if (input) {
-            input.value =
-              part.oemNumber ||
-              part.partNumber ||
-              part.partNo ||
-              "";
+      target.appendChild(emptyMessage);
 
-            input.dispatchEvent(
-              new Event("input", {
-                bubbles: true
-              })
-            );
-          }
+      return;
+    }
 
-          displaySearchResults([part]);
-          container.hidden = true;
-        });
-
-        container.appendChild(item);
-      });
-
-      container.hidden = false;
+    results.forEach((part) => {
+      target.appendChild(createPartResultCard(part));
     });
   }
 
@@ -240,126 +216,257 @@
 
     card.className = "part-search-result";
 
-    const partNumber =
+    const title =
+      part.name ||
+      part.partName ||
+      part.partNumber ||
+      part.oemNumber ||
+      "Automotive Part";
+
+    const oemNumber =
       part.oemNumber ||
       part.partNumber ||
       part.partNo ||
-      "N/A";
+      "";
 
-    const name =
-      part.name ||
-      part.partName ||
-      "Automotive Spare Part";
-
-    const category =
-      part.category ||
-      "Automotive Parts";
+    const description =
+      part.description || "";
 
     card.innerHTML = `
       <div class="part-search-result-content">
-        <span class="part-search-result-category">
-          ${escapeHTML(category)}
-        </span>
+        <h3>${escapeHTML(title)}</h3>
 
-        <h3>${escapeHTML(name)}</h3>
+        ${
+          oemNumber
+            ? `<p class="part-oem">
+                <strong>OEM:</strong>
+                ${escapeHTML(oemNumber)}
+              </p>`
+            : ""
+        }
 
-        <p>
-          <strong>OEM:</strong>
-          ${escapeHTML(partNumber)}
-        </p>
+        ${
+          part.category
+            ? `<p class="part-category">
+                ${escapeHTML(part.category)}
+              </p>`
+            : ""
+        }
+
+        ${
+          description
+            ? `<p class="part-description">
+                ${escapeHTML(description)}
+              </p>`
+            : ""
+        }
 
         <button
           type="button"
-          class="btn btn-primary"
-          data-part-number="${escapeHTML(partNumber)}"
+          class="part-select-button"
+          data-part-select="${escapeHTML(
+            oemNumber
+          )}"
         >
-          View Part
+          ${
+            getCurrentLanguage() === "ar"
+              ? "عرض التفاصيل"
+              : "View Details"
+          }
         </button>
       </div>
     `;
 
     const button = card.querySelector(
-      "[data-part-number]"
+      "[data-part-select]"
     );
 
     if (button) {
       button.addEventListener("click", () => {
-        openPartDetails(part);
+        selectPart(part);
       });
     }
 
     return card;
   }
 
-  function openPartDetails(part) {
+  function selectPart(part) {
     document.dispatchEvent(
-      new CustomEvent("partSelected", {
+      new CustomEvent("alDahayanPartSelected", {
         detail: {
           part: part
         }
       })
     );
 
-    const partNumber =
-      part.oemNumber ||
-      part.partNumber ||
-      part.partNo;
-
-    if (partNumber) {
-      const encodedPartNumber =
-        encodeURIComponent(partNumber);
-
-      const target =
-        `./pages/parts.html?oem=${encodedPartNumber}`;
-
-      window.location.href = target;
+    if (typeof window.AlDahayanPartsSearch?.showPartDetails === "function") {
+      window.AlDahayanPartsSearch.showPartDetails(part);
     }
   }
 
-  function showSearchMessage(message, container = null) {
-    const targets = container
-      ? [container]
-      : document.querySelectorAll(
-          "[data-search-results]"
-        );
+  function showSuggestions(input, results) {
+    clearSuggestions(input);
 
-    targets.forEach((target) => {
-      target.innerHTML = `
-        <div class="search-message">
-          ${escapeHTML(message)}
-        </div>
+    if (!results.length) {
+      return;
+    }
+
+    const wrapper = document.createElement("div");
+
+    wrapper.className = "search-suggestions";
+
+    results.forEach((part) => {
+      const item = document.createElement("button");
+
+      item.type = "button";
+      item.className = "search-suggestion-item";
+
+      const title =
+        part.name ||
+        part.partName ||
+        part.partNumber ||
+        part.oemNumber ||
+        "Part";
+
+      const number =
+        part.oemNumber ||
+        part.partNumber ||
+        part.partNo ||
+        "";
+
+      item.innerHTML = `
+        <span>${escapeHTML(title)}</span>
+        ${
+          number
+            ? `<small>${escapeHTML(number)}</small>`
+            : ""
+        }
       `;
+
+      item.addEventListener("click", () => {
+        input.value = number || title;
+
+        clearSuggestions(input);
+
+        performSearch(input.value);
+      });
+
+      wrapper.appendChild(item);
     });
+
+    const parent = input.parentElement;
+
+    if (parent) {
+      parent.style.position = "relative";
+      parent.appendChild(wrapper);
+    }
   }
 
-  function clearSearchSuggestions() {
-    const containers = document.querySelectorAll(
-      "[data-search-suggestions]"
-    );
+  function clearSuggestions(input) {
+    const parent = input?.parentElement;
 
-    containers.forEach((container) => {
-      container.innerHTML = "";
-      container.hidden = true;
-    });
+    if (!parent) {
+      return;
+    }
+
+    const existing =
+      parent.querySelector(".search-suggestions");
+
+    if (existing) {
+      existing.remove();
+    }
+  }
+
+  function getCategories() {
+    return getUniqueValues(
+      partsData.map((part) => part.category)
+    );
+  }
+
+  function getBrands() {
+    return getUniqueValues(
+      partsData.map(
+        (part) =>
+          part.brand ||
+          part.make
+      )
+    );
+  }
+
+  function getModels() {
+    return getUniqueValues(
+      partsData.map((part) => part.model)
+    );
+  }
+
+  function getUniqueValues(values) {
+    return [
+      ...new Set(
+        values
+          .filter(Boolean)
+          .map((value) => String(value).trim())
+          .filter(Boolean)
+      )
+    ].sort();
+  }
+
+  function normalizeText(value) {
+    return String(value || "")
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ");
+  }
+
+  function normalizeOEM(value) {
+    return String(value || "")
+      .toUpperCase()
+      .replace(/[\s\-_.]/g, "");
   }
 
   function escapeHTML(value) {
-    return String(value || "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+    if (typeof window.AlDahayanUtils?.escapeHTML === "function") {
+      return window.AlDahayanUtils.escapeHTML(value);
+    }
+
+    const div = document.createElement("div");
+
+    div.textContent = String(value ?? "");
+
+    return div.innerHTML;
   }
 
-  function getParts() {
-    return [...parts];
+  function getCurrentLanguage() {
+    return (
+      document.documentElement.getAttribute("lang") ||
+      APP_CONFIG?.site?.defaultLanguage ||
+      "en"
+    );
+  }
+
+  function debounceSearch(callback, delay = 250) {
+    let timeout;
+
+    return function (...args) {
+      clearTimeout(timeout);
+
+      timeout = setTimeout(() => {
+        callback.apply(this, args);
+      }, delay);
+    };
   }
 
   window.AlDahayanSearch = {
     initialize: initializeSearch,
-    search: searchParts,
-    getParts
+    loadPartsData,
+    searchParts,
+    performSearch,
+    getSuggestions,
+    getPartByOEM,
+    getCategories,
+    getBrands,
+    getModels,
+    getAllParts: () => [...partsData],
+    isLoaded: () => isLoaded
   };
 
   window.initializeSearch = initializeSearch;
