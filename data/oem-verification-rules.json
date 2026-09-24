@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Verification rules for Toyota and Lexus OEM catalog records and compatibility information.",
+  "verificationLevels": [
+    {
+      "code": "unverified",
+      "label": "Unverified",
+      "labelArabic": "غير موثق",
+      "publicCompatibility": false
+    },
+    {
+      "code": "reviewed",
+      "label": "Reviewed",
+      "labelArabic": "تمت المراجعة",
+      "publicCompatibility": true
+    },
+    {
+      "code": "verified",
+      "label": "Verified",
+      "labelArabic": "موثق",
+      "publicCompatibility": true
+    }
+  ],
+  "verificationSources": [
+    "OEM Catalog",
+    "Manufacturer Documentation",
+    "Authorized Distributor",
+    "Supplier Documentation",
+    "Verified Internal Record",
+    "Manual Review",
+    "Other"
+  ],
+  "requiredReviewFields": [
+    "oemNumber",
+    "brand",
+    "partName",
+    "category"
+  ],
+  "compatibilityVerification": {
+    "requireModelVerification": false,
+    "requireGenerationVerification": false,
+    "requireYearVerification": false,
+    "requireEngineVerification": false,
+    "requireMarketVerification": false,
+    "allowPartialVerification": true
+  },
+  "rules": [
+    {
+      "code": "MISSING_SOURCE",
+      "severity": "warning",
+      "description": "Verification is marked reviewed or verified but no verification source is recorded."
+    },
+    {
+      "code": "UNVERIFIED_COMPATIBILITY",
+      "severity": "warning",
+      "description": "Compatibility information has not been verified."
+    },
+    {
+      "code": "PARTIAL_COMPATIBILITY",
+      "severity": "warning",
+      "description": "Only part of the vehicle compatibility information has been verified."
+    },
+    {
+      "code": "CONFLICTING_DATA",
+      "severity": "error",
+      "description": "Different sources contain conflicting OEM or compatibility information."
+    }
+  ],
+  "adminActions": {
+    "markReviewed": true,
+    "markVerified": true,
+    "revokeVerification": true,
+    "editVerificationSource": true,
+    "addVerificationNote": true,
+    "viewVerificationHistory": true
+  },
+  "audit": {
+    "recordVerifier": true,
+    "recordTimestamp": true,
+    "recordSource": true,
+    "recordNotes": true,
+    "keepHistory": true
+  }
+}
