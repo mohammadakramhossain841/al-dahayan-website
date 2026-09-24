@@ -1,0 +1,202 @@
+{
+  "version": "1.0.0",
+  "market": "global-foundation",
+  "engines": [
+    {
+      "code": "1NZ-FE",
+      "fuel": "Petrol",
+      "displacement": "1.5L",
+      "configuration": "I4",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "2ZR-FE",
+      "fuel": "Petrol",
+      "displacement": "1.8L",
+      "configuration": "I4",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "2ZR-FXE",
+      "fuel": "Hybrid",
+      "displacement": "1.8L",
+      "configuration": "I4",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "1ZR-FE",
+      "fuel": "Petrol",
+      "displacement": "1.6L",
+      "configuration": "I4",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "1AR-FE",
+      "fuel": "Petrol",
+      "displacement": "2.7L",
+      "configuration": "I4",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "2AR-FE",
+      "fuel": "Petrol",
+      "displacement": "2.5L",
+      "configuration": "I4",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "2AR-FXE",
+      "fuel": "Hybrid",
+      "displacement": "2.5L",
+      "configuration": "I4",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "A25A-FKS",
+      "fuel": "Petrol",
+      "displacement": "2.5L",
+      "configuration": "I4",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "A25A-FXS",
+      "fuel": "Hybrid",
+      "displacement": "2.5L",
+      "configuration": "I4",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "M20A-FKS",
+      "fuel": "Petrol",
+      "displacement": "2.0L",
+      "configuration": "I4",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "M20A-FXS",
+      "fuel": "Hybrid",
+      "displacement": "2.0L",
+      "configuration": "I4",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "T24A-FTS",
+      "fuel": "Petrol",
+      "displacement": "2.4L",
+      "configuration": "I4 Turbo",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "1GR-FE",
+      "fuel": "Petrol",
+      "displacement": "4.0L",
+      "configuration": "V6",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "2GR-FE",
+      "fuel": "Petrol",
+      "displacement": "3.5L",
+      "configuration": "V6",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "2GR-FKS",
+      "fuel": "Petrol",
+      "displacement": "3.5L",
+      "configuration": "V6",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "2GR-FXS",
+      "fuel": "Hybrid",
+      "displacement": "3.5L",
+      "configuration": "V6",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "V35A-FTS",
+      "fuel": "Petrol",
+      "displacement": "3.4L",
+      "configuration": "V6 Twin Turbo",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "1UR-FSE",
+      "fuel": "Petrol",
+      "displacement": "4.6L",
+      "configuration": "V8",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "2UR-GSE",
+      "fuel": "Petrol",
+      "displacement": "5.0L",
+      "configuration": "V8",
+      "brands": ["Lexus"]
+    },
+    {
+      "code": "3UR-FE",
+      "fuel": "Petrol",
+      "displacement": "5.7L",
+      "configuration": "V8",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "1VD-FTV",
+      "fuel": "Diesel",
+      "displacement": "4.5L",
+      "configuration": "V8 Twin Turbo Diesel",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "1GD-FTV",
+      "fuel": "Diesel",
+      "displacement": "2.8L",
+      "configuration": "I4 Turbo Diesel",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "2GD-FTV",
+      "fuel": "Diesel",
+      "displacement": "2.4L",
+      "configuration": "I4 Turbo Diesel",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "2KD-FTV",
+      "fuel": "Diesel",
+      "displacement": "2.5L",
+      "configuration": "I4 Turbo Diesel",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "1KD-FTV",
+      "fuel": "Diesel",
+      "displacement": "3.0L",
+      "configuration": "I4 Turbo Diesel",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "2JZ-GE",
+      "fuel": "Petrol",
+      "displacement": "3.0L",
+      "configuration": "I6",
+      "brands": ["Toyota", "Lexus"]
+    },
+    {
+      "code": "2JZ-GTE",
+      "fuel": "Petrol",
+      "displacement": "3.0L",
+      "configuration": "I6 Twin Turbo",
+      "brands": ["Toyota"]
+    },
+    {
+      "code": "1LR-GUE",
+      "fuel": "Petrol",
+      "displacement": "4.8L",
+      "configuration": "V10",
+      "brands": ["Lexus"]
+    }
+  ]
+}
