@@ -1,1 +1,147 @@
-
+{
+  "vehicles": [
+    {
+      "id": "TOY-CAM-2024-25",
+      "make": "Toyota",
+      "model": "Camry",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "2.5L"
+      ],
+      "market": "Saudi Arabia"
+    },
+    {
+      "id": "TOY-COR-2024-25",
+      "make": "Toyota",
+      "model": "Corolla",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "1.8L",
+        "2.0L"
+      ],
+      "market": "Saudi Arabia"
+    },
+    {
+      "id": "TOY-YAR-2024-25",
+      "make": "Toyota",
+      "model": "Yaris",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "1.3L",
+        "1.5L"
+      ],
+      "market": "Saudi Arabia"
+    },
+    {
+      "id": "TOY-HIL-2024-25",
+      "make": "Toyota",
+      "model": "Hilux",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "2.7L",
+        "2.4L Diesel",
+        "2.8L Diesel"
+      ],
+      "market": "Saudi Arabia"
+    },
+    {
+      "id": "TOY-LAN-2024-25",
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "3.5L Twin Turbo",
+        "4.0L"
+      ],
+      "market": "Saudi Arabia"
+    },
+    {
+      "id": "TOY-RAV-2024-25",
+      "make": "Toyota",
+      "model": "RAV4",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "2.0L",
+        "2.5L Hybrid"
+      ],
+      "market": "Saudi Arabia"
+    },
+    {
+      "id": "TOY-FOR-2024-25",
+      "make": "Toyota",
+      "model": "Fortuner",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "2.7L",
+        "2.8L Diesel"
+      ],
+      "market": "Saudi Arabia"
+    },
+    {
+      "id": "TOY-HIG-2024-25",
+      "make": "Toyota",
+      "model": "Highlander",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "2.4L Turbo",
+        "2.5L Hybrid"
+      ],
+      "market": "Saudi Arabia"
+    },
+    {
+      "id": "LEX-ES-2024-25",
+      "make": "Lexus",
+      "model": "ES",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "2.5L",
+        "3.5L"
+      ],
+      "market": "Saudi Arabia"
+    },
+    {
+      "id": "LEX-RX-2024-25",
+      "make": "Lexus",
+      "model": "RX",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "2.4L Turbo",
+        "2.5L Hybrid"
+      ],
+      "market": "Saudi Arabia"
+    },
+    {
+      "id": "LEX-LX-2024-25",
+      "make": "Lexus",
+      "model": "LX",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "3.5L Twin Turbo"
+      ],
+      "market": "Saudi Arabia"
+    },
+    {
+      "id": "LEX-IS-2024-25",
+      "make": "Lexus",
+      "model": "IS",
+      "yearFrom": 2024,
+      "yearTo": 2025,
+      "engine": [
+        "2.0L Turbo",
+        "3.5L"
+      ],
+      "market": "Saudi Arabia"
+    }
+  ]
+}
