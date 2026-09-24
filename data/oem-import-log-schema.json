@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Al-Dahayan OEM Import History Schema",
+  "description": "Schema for tracking CSV and Excel OEM catalog import operations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "importId",
+    "sourceType",
+    "fileName",
+    "status",
+    "startedAt"
+  ],
+  "properties": {
+    "importId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "csv",
+        "excel",
+        "manual",
+        "api"
+      ]
+    },
+    "fileName": {
+      "type": "string"
+    },
+    "fileSize": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "uploaded",
+        "validating",
+        "validated",
+        "importing",
+        "completed",
+        "completed_with_warnings",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "totalRows": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "newRecords": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "updatedRecords": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "skippedRecords": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "errorRecords": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "warningRecords": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "duplicateRecords": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "validationErrors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/issue"
+      }
+    },
+    "validationWarnings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/issue"
+      }
+    },
+    "uploadedBy": {
+      "type": "string"
+    },
+    "uploadedByName": {
+      "type": "string"
+    },
+    "startedAt": {
+      "type": "string"
+    },
+    "completedAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row",
+        "code",
+        "message"
+      ],
+      "properties": {
+        "row": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "field": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "oemNumber": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
