@@ -1,1 +1,144 @@
-
+{
+  "categories": [
+    {
+      "id": "CAT-001",
+      "name": "Engine Parts",
+      "arabicName": "قطع غيار المحرك",
+      "description": "Engine components and related parts",
+      "active": true
+    },
+    {
+      "id": "CAT-002",
+      "name": "Filters",
+      "arabicName": "الفلاتر",
+      "description": "Oil, air, fuel and cabin filters",
+      "active": true
+    },
+    {
+      "id": "CAT-003",
+      "name": "Brake System",
+      "arabicName": "نظام الفرامل",
+      "description": "Brake pads, discs, calipers and related parts",
+      "active": true
+    },
+    {
+      "id": "CAT-004",
+      "name": "Suspension",
+      "arabicName": "نظام التعليق",
+      "description": "Shock absorbers, control arms and suspension parts",
+      "active": true
+    },
+    {
+      "id": "CAT-005",
+      "name": "Steering",
+      "arabicName": "نظام التوجيه",
+      "description": "Steering system components",
+      "active": true
+    },
+    {
+      "id": "CAT-006",
+      "name": "Electrical",
+      "arabicName": "الكهرباء",
+      "description": "Electrical and electronic automotive components",
+      "active": true
+    },
+    {
+      "id": "CAT-007",
+      "name": "Cooling System",
+      "arabicName": "نظام التبريد",
+      "description": "Radiators, water pumps, hoses and cooling components",
+      "active": true
+    },
+    {
+      "id": "CAT-008",
+      "name": "Transmission",
+      "arabicName": "ناقل الحركة",
+      "description": "Transmission and gearbox components",
+      "active": true
+    },
+    {
+      "id": "CAT-009",
+      "name": "Fuel System",
+      "arabicName": "نظام الوقود",
+      "description": "Fuel pumps, injectors and fuel system components",
+      "active": true
+    },
+    {
+      "id": "CAT-010",
+      "name": "Air Conditioning",
+      "arabicName": "نظام تكييف الهواء",
+      "description": "Automotive air conditioning components",
+      "active": true
+    },
+    {
+      "id": "CAT-011",
+      "name": "Body Parts",
+      "arabicName": "قطع الهيكل",
+      "description": "Exterior body and structural components",
+      "active": true
+    },
+    {
+      "id": "CAT-012",
+      "name": "Lighting",
+      "arabicName": "الإضاءة",
+      "description": "Headlamps, tail lamps and lighting components",
+      "active": true
+    },
+    {
+      "id": "CAT-013",
+      "name": "Glass",
+      "arabicName": "الزجاج",
+      "description": "Windshield, window and automotive glass parts",
+      "active": true
+    },
+    {
+      "id": "CAT-014",
+      "name": "Bumpers",
+      "arabicName": "الصدامات",
+      "description": "Front and rear bumper components",
+      "active": true
+    },
+    {
+      "id": "CAT-015",
+      "name": "Clutch",
+      "arabicName": "نظام القابض",
+      "description": "Clutch and clutch system components",
+      "active": true
+    },
+    {
+      "id": "CAT-016",
+      "name": "Wheel & Hub",
+      "arabicName": "العجلات والمحاور",
+      "description": "Wheel hubs, bearings and related components",
+      "active": true
+    },
+    {
+      "id": "CAT-017",
+      "name": "Exhaust System",
+      "arabicName": "نظام العادم",
+      "description": "Exhaust and emission system components",
+      "active": true
+    },
+    {
+      "id": "CAT-018",
+      "name": "Interior Parts",
+      "arabicName": "قطع المقصورة الداخلية",
+      "description": "Interior vehicle components and accessories",
+      "active": true
+    },
+    {
+      "id": "CAT-019",
+      "name": "Gaskets & Seals",
+      "arabicName": "الجوانات والأختام",
+      "description": "Gaskets, seals and sealing components",
+      "active": true
+    },
+    {
+      "id": "CAT-020",
+      "name": "Accessories",
+      "arabicName": "الإكسسوارات",
+      "description": "Automotive accessories and related items",
+      "active": true
+    }
+  ]
+}
