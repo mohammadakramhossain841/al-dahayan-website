@@ -1,0 +1,604 @@
+{
+  "bodyComponents": [
+    {
+      "id": "BDC-001",
+      "code": "BODY_ASSEMBLY",
+      "name": "Body Assembly",
+      "category": "BODY"
+    },
+    {
+      "id": "BDC-002",
+      "code": "BODY_SHELL",
+      "name": "Body Shell",
+      "category": "BODY"
+    },
+    {
+      "id": "BDC-003",
+      "code": "HOOD",
+      "name": "Hood",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "BDC-004",
+      "code": "HOOD_PANEL",
+      "name": "Hood Panel",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "BDC-005",
+      "code": "HOOD_HINGE",
+      "name": "Hood Hinge",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "BDC-006",
+      "code": "HOOD_LATCH",
+      "name": "Hood Latch",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "BDC-007",
+      "code": "HOOD_LATCH_CABLE",
+      "name": "Hood Latch Cable",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "BDC-008",
+      "code": "HOOD_STRUT",
+      "name": "Hood Strut",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "BDC-009",
+      "code": "FRONT_FENDER",
+      "name": "Front Fender",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "BDC-010",
+      "code": "LEFT_FRONT_FENDER",
+      "name": "Left Front Fender",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "BDC-011",
+      "code": "RIGHT_FRONT_FENDER",
+      "name": "Right Front Fender",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "BDC-012",
+      "code": "FENDER_LINER",
+      "name": "Fender Liner",
+      "category": "BODY_PROTECTION"
+    },
+    {
+      "id": "BDC-013",
+      "code": "FRONT_BUMPER",
+      "name": "Front Bumper",
+      "category": "BUMPER"
+    },
+    {
+      "id": "BDC-014",
+      "code": "FRONT_BUMPER_COVER",
+      "name": "Front Bumper Cover",
+      "category": "BUMPER"
+    },
+    {
+      "id": "BDC-015",
+      "code": "FRONT_BUMPER_REINFORCEMENT",
+      "name": "Front Bumper Reinforcement",
+      "category": "BUMPER"
+    },
+    {
+      "id": "BDC-016",
+      "code": "FRONT_BUMPER_ABSORBER",
+      "name": "Front Bumper Absorber",
+      "category": "BUMPER"
+    },
+    {
+      "id": "BDC-017",
+      "code": "FRONT_BUMPER_GRILLE",
+      "name": "Front Bumper Grille",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-018",
+      "code": "FRONT_BUMPER_BRACKET",
+      "name": "Front Bumper Bracket",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "BDC-019",
+      "code": "REAR_BUMPER",
+      "name": "Rear Bumper",
+      "category": "BUMPER"
+    },
+    {
+      "id": "BDC-020",
+      "code": "REAR_BUMPER_COVER",
+      "name": "Rear Bumper Cover",
+      "category": "BUMPER"
+    },
+    {
+      "id": "BDC-021",
+      "code": "REAR_BUMPER_REINFORCEMENT",
+      "name": "Rear Bumper Reinforcement",
+      "category": "BUMPER"
+    },
+    {
+      "id": "BDC-022",
+      "code": "REAR_BUMPER_ABSORBER",
+      "name": "Rear Bumper Absorber",
+      "category": "BUMPER"
+    },
+    {
+      "id": "BDC-023",
+      "code": "REAR_BUMPER_BRACKET",
+      "name": "Rear Bumper Bracket",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "BDC-024",
+      "code": "FRONT_GRILLE",
+      "name": "Front Grille",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-025",
+      "code": "GRILLE_EMBLEM",
+      "name": "Grille Emblem",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-026",
+      "code": "GRILLE_SHUTTER",
+      "name": "Active Grille Shutter",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-027",
+      "code": "GRILLE_SHUTTER_ACTUATOR",
+      "name": "Grille Shutter Actuator",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "BDC-028",
+      "code": "HEADLIGHT_ASSEMBLY",
+      "name": "Headlight Assembly",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-029",
+      "code": "LEFT_HEADLIGHT",
+      "name": "Left Headlight",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-030",
+      "code": "RIGHT_HEADLIGHT",
+      "name": "Right Headlight",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-031",
+      "code": "HEADLIGHT_HOUSING",
+      "name": "Headlight Housing",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-032",
+      "code": "HEADLIGHT_LENS",
+      "name": "Headlight Lens",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-033",
+      "code": "HEADLIGHT_BULB",
+      "name": "Headlight Bulb",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-034",
+      "code": "HEADLIGHT_LED_MODULE",
+      "name": "Headlight LED Module",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-035",
+      "code": "HEADLIGHT_CONTROL_MODULE",
+      "name": "Headlight Control Module",
+      "category": "ELECTRONIC"
+    },
+    {
+      "id": "BDC-036",
+      "code": "DAYTIME_RUNNING_LIGHT",
+      "name": "Daytime Running Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-037",
+      "code": "FRONT_FOG_LIGHT",
+      "name": "Front Fog Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-038",
+      "code": "FOG_LIGHT_BEZEL",
+      "name": "Fog Light Bezel",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-039",
+      "code": "FRONT_TURN_SIGNAL",
+      "name": "Front Turn Signal",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-040",
+      "code": "SIDE_MARKER_LIGHT",
+      "name": "Side Marker Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-041",
+      "code": "REAR_COMBINATION_LAMP",
+      "name": "Rear Combination Lamp",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-042",
+      "code": "LEFT_TAILLIGHT",
+      "name": "Left Taillight",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-043",
+      "code": "RIGHT_TAILLIGHT",
+      "name": "Right Taillight",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-044",
+      "code": "TAILLIGHT_LENS",
+      "name": "Taillight Lens",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-045",
+      "code": "REAR_FOG_LIGHT",
+      "name": "Rear Fog Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-046",
+      "code": "REAR_TURN_SIGNAL",
+      "name": "Rear Turn Signal",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-047",
+      "code": "CENTER_HIGH_MOUNT_STOP_LAMP",
+      "name": "Center High-Mount Stop Lamp",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-048",
+      "code": "LICENSE_PLATE_LAMP",
+      "name": "License Plate Lamp",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-049",
+      "code": "REAR_REFLECTOR",
+      "name": "Rear Reflector",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "BDC-050",
+      "code": "FRONT_DOOR_SHELL",
+      "name": "Front Door Shell",
+      "category": "DOOR"
+    },
+    {
+      "id": "BDC-051",
+      "code": "REAR_DOOR_SHELL",
+      "name": "Rear Door Shell",
+      "category": "DOOR"
+    },
+    {
+      "id": "BDC-052",
+      "code": "DOOR_HINGE",
+      "name": "Door Hinge",
+      "category": "DOOR_HARDWARE"
+    },
+    {
+      "id": "BDC-053",
+      "code": "DOOR_LATCH",
+      "name": "Door Latch",
+      "category": "DOOR_HARDWARE"
+    },
+    {
+      "id": "BDC-054",
+      "code": "DOOR_LOCK_ACTUATOR",
+      "name": "Door Lock Actuator",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "BDC-055",
+      "code": "DOOR_HANDLE",
+      "name": "Door Handle",
+      "category": "DOOR_HARDWARE"
+    },
+    {
+      "id": "BDC-056",
+      "code": "DOOR_MIRROR",
+      "name": "Door Mirror",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-057",
+      "code": "SIDE_MIRROR_GLASS",
+      "name": "Side Mirror Glass",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-058",
+      "code": "SIDE_MIRROR_COVER",
+      "name": "Side Mirror Cover",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-059",
+      "code": "SIDE_MIRROR_ACTUATOR",
+      "name": "Side Mirror Actuator",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "BDC-060",
+      "code": "SIDE_MIRROR_FOLDING_MOTOR",
+      "name": "Side Mirror Folding Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "BDC-061",
+      "code": "DOOR_WINDOW_GLASS",
+      "name": "Door Window Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "BDC-062",
+      "code": "WINDOW_REGULATOR",
+      "name": "Window Regulator",
+      "category": "DOOR_HARDWARE"
+    },
+    {
+      "id": "BDC-063",
+      "code": "WINDOW_REGULATOR_MOTOR",
+      "name": "Window Regulator Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "BDC-064",
+      "code": "DOOR_WEATHERSTRIP",
+      "name": "Door Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "BDC-065",
+      "code": "WINDOW_RUN_CHANNEL",
+      "name": "Window Run Channel",
+      "category": "GLASS_HARDWARE"
+    },
+    {
+      "id": "BDC-066",
+      "code": "WINDOW_MOULDING",
+      "name": "Window Moulding",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-067",
+      "code": "WINDSHIELD",
+      "name": "Windshield",
+      "category": "GLASS"
+    },
+    {
+      "id": "BDC-068",
+      "code": "WINDSHIELD_MOULDING",
+      "name": "Windshield Moulding",
+      "category": "GLASS_HARDWARE"
+    },
+    {
+      "id": "BDC-069",
+      "code": "WINDSHIELD_WEATHERSTRIP",
+      "name": "Windshield Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "BDC-070",
+      "code": "REAR_GLASS",
+      "name": "Rear Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "BDC-071",
+      "code": "REAR_GLASS_MOULDING",
+      "name": "Rear Glass Moulding",
+      "category": "GLASS_HARDWARE"
+    },
+    {
+      "id": "BDC-072",
+      "code": "QUARTER_GLASS",
+      "name": "Quarter Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "BDC-073",
+      "code": "ROOF_PANEL",
+      "name": "Roof Panel",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "BDC-074",
+      "code": "ROOF_RAIL",
+      "name": "Roof Rail",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-075",
+      "code": "ROOF_RACK",
+      "name": "Roof Rack",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-076",
+      "code": "SUNROOF_ASSEMBLY",
+      "name": "Sunroof Assembly",
+      "category": "ROOF"
+    },
+    {
+      "id": "BDC-077",
+      "code": "SUNROOF_GLASS",
+      "name": "Sunroof Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "BDC-078",
+      "code": "SUNROOF_MOTOR",
+      "name": "Sunroof Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "BDC-079",
+      "code": "TRUNK_LID",
+      "name": "Trunk Lid",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "BDC-080",
+      "code": "TRUNK_HINGE",
+      "name": "Trunk Hinge",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "BDC-081",
+      "code": "TRUNK_LATCH",
+      "name": "Trunk Latch",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "BDC-082",
+      "code": "TAILGATE",
+      "name": "Tailgate",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "BDC-083",
+      "code": "TAILGATE_HINGE",
+      "name": "Tailgate Hinge",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "BDC-084",
+      "code": "TAILGATE_LATCH",
+      "name": "Tailgate Latch",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "BDC-085",
+      "code": "REAR_SPOILER",
+      "name": "Rear Spoiler",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-086",
+      "code": "ROOF_SPOILER",
+      "name": "Roof Spoiler",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-087",
+      "code": "SIDE_SKIRT",
+      "name": "Side Skirt",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-088",
+      "code": "WHEEL_ARCH_MOULDING",
+      "name": "Wheel Arch Moulding",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-089",
+      "code": "BODY_SIDE_MOULDING",
+      "name": "Body Side Moulding",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-090",
+      "code": "DOOR_MOULDING",
+      "name": "Door Moulding",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-091",
+      "code": "BODY_EMBLEM",
+      "name": "Body Emblem",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-092",
+      "code": "MODEL_EMBLEM",
+      "name": "Model Emblem",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "BDC-093",
+      "code": "LICENSE_PLATE_BRACKET",
+      "name": "License Plate Bracket",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "BDC-094",
+      "code": "BODY_FASTENER",
+      "name": "Body Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "BDC-095",
+      "code": "BODY_CLIP",
+      "name": "Body Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "BDC-096",
+      "code": "BODY_SEAL",
+      "name": "Body Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "BDC-097",
+      "code": "BODY_WEATHERSTRIP",
+      "name": "Body Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "BDC-098",
+      "code": "BODY_MOUNT",
+      "name": "Body Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "BDC-099",
+      "code": "BODY_REPAIR_KIT",
+      "name": "Body Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "BDC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Body Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
