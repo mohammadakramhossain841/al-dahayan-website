@@ -1,0 +1,59 @@
+{
+  "version": "1.0.0",
+  "seatOptions": [
+    {
+      "code": "2",
+      "name": "2 Seats",
+      "seatCount": 2,
+      "description": "Vehicle configuration designed for two occupants."
+    },
+    {
+      "code": "4",
+      "name": "4 Seats",
+      "seatCount": 4,
+      "description": "Vehicle configuration designed for four occupants."
+    },
+    {
+      "code": "5",
+      "name": "5 Seats",
+      "seatCount": 5,
+      "description": "Common passenger vehicle configuration with seating for five occupants."
+    },
+    {
+      "code": "6",
+      "name": "6 Seats",
+      "seatCount": 6,
+      "description": "Vehicle configuration designed for six occupants."
+    },
+    {
+      "code": "7",
+      "name": "7 Seats",
+      "seatCount": 7,
+      "description": "Common SUV and MPV configuration with seating for seven occupants."
+    },
+    {
+      "code": "8",
+      "name": "8 Seats",
+      "seatCount": 8,
+      "description": "Large passenger vehicle configuration with seating for eight occupants."
+    },
+    {
+      "code": "9",
+      "name": "9 Seats",
+      "seatCount": 9,
+      "description": "Large passenger vehicle configuration with seating for nine occupants."
+    },
+    {
+      "code": "10_PLUS",
+      "name": "10+ Seats",
+      "seatCount": null,
+      "description": "Passenger vehicle configuration with ten or more seats."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "seatCount": null,
+      "description": "Seat configuration has not yet been verified."
+    }
+  ]
+}
