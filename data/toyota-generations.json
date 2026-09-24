@@ -1,0 +1,346 @@
+{
+  "version": "1.0.0",
+  "brand": "Toyota",
+  "market": "global-foundation",
+  "yearRange": {
+    "from": 2008,
+    "to": 2026
+  },
+  "models": [
+    {
+      "model": "Corolla",
+      "generations": [
+        {
+          "generation": 10,
+          "code": "E140/E150",
+          "years": "2006-2013"
+        },
+        {
+          "generation": 11,
+          "code": "E170/E180",
+          "years": "2013-2019"
+        },
+        {
+          "generation": 12,
+          "code": "E210",
+          "years": "2018-2026"
+        }
+      ]
+    },
+    {
+      "model": "Camry",
+      "generations": [
+        {
+          "generation": 6,
+          "code": "XV40",
+          "years": "2006-2011"
+        },
+        {
+          "generation": 7,
+          "code": "XV50",
+          "years": "2011-2017"
+        },
+        {
+          "generation": 8,
+          "code": "XV70",
+          "years": "2017-2024"
+        },
+        {
+          "generation": 9,
+          "code": "XV80",
+          "years": "2024-2026"
+        }
+      ]
+    },
+    {
+      "model": "Yaris",
+      "generations": [
+        {
+          "generation": 2,
+          "code": "XP90",
+          "years": "2005-2011"
+        },
+        {
+          "generation": 3,
+          "code": "XP150",
+          "years": "2013-2020"
+        },
+        {
+          "generation": 4,
+          "code": "XP210",
+          "years": "2020-2026"
+        }
+      ]
+    },
+    {
+      "model": "Vios",
+      "generations": [
+        {
+          "generation": 2,
+          "code": "XP90",
+          "years": "2007-2013"
+        },
+        {
+          "generation": 3,
+          "code": "XP150",
+          "years": "2013-2022"
+        },
+        {
+          "generation": 4,
+          "code": "AC100",
+          "years": "2022-2026"
+        }
+      ]
+    },
+    {
+      "model": "Prius",
+      "generations": [
+        {
+          "generation": 2,
+          "code": "XW20",
+          "years": "2003-2009"
+        },
+        {
+          "generation": 3,
+          "code": "XW30",
+          "years": "2009-2015"
+        },
+        {
+          "generation": 4,
+          "code": "XW50",
+          "years": "2015-2022"
+        },
+        {
+          "generation": 5,
+          "code": "XW60",
+          "years": "2022-2026"
+        }
+      ]
+    },
+    {
+      "model": "RAV4",
+      "generations": [
+        {
+          "generation": 3,
+          "code": "XA30",
+          "years": "2005-2012"
+        },
+        {
+          "generation": 4,
+          "code": "XA40",
+          "years": "2012-2018"
+        },
+        {
+          "generation": 5,
+          "code": "XA50",
+          "years": "2018-2026"
+        }
+      ]
+    },
+    {
+      "model": "Highlander",
+      "generations": [
+        {
+          "generation": 2,
+          "code": "XU40",
+          "years": "2007-2013"
+        },
+        {
+          "generation": 3,
+          "code": "XU50",
+          "years": "2013-2019"
+        },
+        {
+          "generation": 4,
+          "code": "XU70",
+          "years": "2019-2026"
+        }
+      ]
+    },
+    {
+      "model": "Land Cruiser",
+      "generations": [
+        {
+          "generation": 9,
+          "code": "J200",
+          "years": "2007-2021"
+        },
+        {
+          "generation": 10,
+          "code": "J300",
+          "years": "2021-2026"
+        }
+      ]
+    },
+    {
+      "model": "Land Cruiser Prado",
+      "generations": [
+        {
+          "generation": 4,
+          "code": "J150",
+          "years": "2009-2023"
+        },
+        {
+          "generation": 5,
+          "code": "J250",
+          "years": "2024-2026"
+        }
+      ]
+    },
+    {
+      "model": "Fortuner",
+      "generations": [
+        {
+          "generation": 1,
+          "code": "AN50/AN60",
+          "years": "2005-2015"
+        },
+        {
+          "generation": 2,
+          "code": "AN150/AN160",
+          "years": "2015-2026"
+        }
+      ]
+    },
+    {
+      "model": "Hilux",
+      "generations": [
+        {
+          "generation": 7,
+          "code": "AN10/AN20/AN30",
+          "years": "2004-2015"
+        },
+        {
+          "generation": 8,
+          "code": "AN120/AN130",
+          "years": "2015-2026"
+        }
+      ]
+    },
+    {
+      "model": "Hiace",
+      "generations": [
+        {
+          "generation": 5,
+          "code": "H200",
+          "years": "2004-2019"
+        },
+        {
+          "generation": 6,
+          "code": "H300",
+          "years": "2019-2026"
+        }
+      ]
+    },
+    {
+      "model": "Avalon",
+      "generations": [
+        {
+          "generation": 3,
+          "code": "XX40",
+          "years": "2005-2012"
+        },
+        {
+          "generation": 4,
+          "code": "XX50",
+          "years": "2012-2018"
+        },
+        {
+          "generation": 5,
+          "code": "XX50",
+          "years": "2018-2022"
+        }
+      ]
+    },
+    {
+      "model": "C-HR",
+      "generations": [
+        {
+          "generation": 1,
+          "code": "AX10/AX50",
+          "years": "2016-2023"
+        },
+        {
+          "generation": 2,
+          "code": "AX20",
+          "years": "2023-2026"
+        }
+      ]
+    },
+    {
+      "model": "Crown",
+      "generations": [
+        {
+          "generation": 15,
+          "code": "S220",
+          "years": "2018-2022"
+        },
+        {
+          "generation": 16,
+          "code": "S235",
+          "years": "2022-2026"
+        }
+      ]
+    },
+    {
+      "model": "Sequoia",
+      "generations": [
+        {
+          "generation": 2,
+          "code": "XK60",
+          "years": "2008-2022"
+        },
+        {
+          "generation": 3,
+          "code": "XK80",
+          "years": "2022-2026"
+        }
+      ]
+    },
+    {
+      "model": "Tundra",
+      "generations": [
+        {
+          "generation": 2,
+          "code": "XK50",
+          "years": "2007-2021"
+        },
+        {
+          "generation": 3,
+          "code": "XK70",
+          "years": "2021-2026"
+        }
+      ]
+    },
+    {
+      "model": "Sienna",
+      "generations": [
+        {
+          "generation": 3,
+          "code": "XL30",
+          "years": "2010-2020"
+        },
+        {
+          "generation": 4,
+          "code": "XL40",
+          "years": "2020-2026"
+        }
+      ]
+    },
+    {
+      "model": "4Runner",
+      "generations": [
+        {
+          "generation": 5,
+          "code": "N280",
+          "years": "2009-2024"
+        },
+        {
+          "generation": 6,
+          "code": "N500",
+          "years": "2024-2026"
+        }
+      ]
+    }
+  ]
+}
