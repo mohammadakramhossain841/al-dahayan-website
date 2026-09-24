@@ -1,0 +1,604 @@
+{
+  "wiperWasherComponents": [
+    {
+      "id": "VWWC-001",
+      "code": "FRONT_WIPER_SYSTEM",
+      "name": "Front Wiper System",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-002",
+      "code": "REAR_WIPER_SYSTEM",
+      "name": "Rear Wiper System",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-003",
+      "code": "WIPER_MOTOR",
+      "name": "Wiper Motor",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-004",
+      "code": "FRONT_WIPER_MOTOR",
+      "name": "Front Wiper Motor",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-005",
+      "code": "REAR_WIPER_MOTOR",
+      "name": "Rear Wiper Motor",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-006",
+      "code": "WIPER_LINKAGE",
+      "name": "Wiper Linkage",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-007",
+      "code": "WIPER_TRANSMISSION",
+      "name": "Wiper Transmission",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-008",
+      "code": "WIPER_PIVOT",
+      "name": "Wiper Pivot",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-009",
+      "code": "WIPER_ARM",
+      "name": "Wiper Arm",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-010",
+      "code": "FRONT_WIPER_ARM",
+      "name": "Front Wiper Arm",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-011",
+      "code": "REAR_WIPER_ARM",
+      "name": "Rear Wiper Arm",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-012",
+      "code": "WIPER_BLADE",
+      "name": "Wiper Blade",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-013",
+      "code": "FRONT_WIPER_BLADE",
+      "name": "Front Wiper Blade",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-014",
+      "code": "REAR_WIPER_BLADE",
+      "name": "Rear Wiper Blade",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-015",
+      "code": "WIPER_RUBBER_REFILL",
+      "name": "Wiper Rubber Refill",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-016",
+      "code": "WIPER_BLADE_ADAPTER",
+      "name": "Wiper Blade Adapter",
+      "category": "WIPER_HARDWARE"
+    },
+    {
+      "id": "VWWC-017",
+      "code": "WIPER_ARM_NUT",
+      "name": "Wiper Arm Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWWC-018",
+      "code": "WIPER_ARM_CAP",
+      "name": "Wiper Arm Cap",
+      "category": "TRIM"
+    },
+    {
+      "id": "VWWC-019",
+      "code": "WIPER_PIVOT_COVER",
+      "name": "Wiper Pivot Cover",
+      "category": "TRIM"
+    },
+    {
+      "id": "VWWC-020",
+      "code": "WIPER_MOTOR_BRACKET",
+      "name": "Wiper Motor Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VWWC-021",
+      "code": "WASHER_SYSTEM",
+      "name": "Windshield Washer System",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-022",
+      "code": "WASHER_RESERVOIR",
+      "name": "Washer Reservoir",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-023",
+      "code": "WASHER_RESERVOIR_CAP",
+      "name": "Washer Reservoir Cap",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-024",
+      "code": "WASHER_PUMP",
+      "name": "Washer Pump",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-025",
+      "code": "FRONT_WASHER_PUMP",
+      "name": "Front Washer Pump",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-026",
+      "code": "REAR_WASHER_PUMP",
+      "name": "Rear Washer Pump",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-027",
+      "code": "WASHER_NOZZLE",
+      "name": "Washer Nozzle",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-028",
+      "code": "FRONT_WASHER_NOZZLE",
+      "name": "Front Washer Nozzle",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-029",
+      "code": "REAR_WASHER_NOZZLE",
+      "name": "Rear Washer Nozzle",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-030",
+      "code": "HEATED_WASHER_NOZZLE",
+      "name": "Heated Washer Nozzle",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-031",
+      "code": "WASHER_HOSE",
+      "name": "Washer Hose",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-032",
+      "code": "WASHER_FLUID_LINE",
+      "name": "Washer Fluid Line",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-033",
+      "code": "WASHER_HOSE_CONNECTOR",
+      "name": "Washer Hose Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VWWC-034",
+      "code": "WASHER_HOSE_CLIP",
+      "name": "Washer Hose Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWWC-035",
+      "code": "WASHER_FILTER",
+      "name": "Washer Fluid Filter",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-036",
+      "code": "WASHER_LEVEL_SENSOR",
+      "name": "Washer Fluid Level Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VWWC-037",
+      "code": "WASHER_LEVEL_SWITCH",
+      "name": "Washer Fluid Level Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VWWC-038",
+      "code": "WIPER_SWITCH",
+      "name": "Wiper Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VWWC-039",
+      "code": "WIPER_COMBINATION_SWITCH",
+      "name": "Wiper Combination Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VWWC-040",
+      "code": "WIPER_CONTROL_MODULE",
+      "name": "Wiper Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VWWC-041",
+      "code": "WIPER_RELAY",
+      "name": "Wiper Relay",
+      "category": "RELAY"
+    },
+    {
+      "id": "VWWC-042",
+      "code": "WIPER_FUSE",
+      "name": "Wiper Fuse",
+      "category": "FUSE"
+    },
+    {
+      "id": "VWWC-043",
+      "code": "WIPER_WIRING_HARNESS",
+      "name": "Wiper Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VWWC-044",
+      "code": "WIPER_CONNECTOR",
+      "name": "Wiper Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VWWC-045",
+      "code": "WIPER_MOTOR_CONNECTOR",
+      "name": "Wiper Motor Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VWWC-046",
+      "code": "WASHER_PUMP_CONNECTOR",
+      "name": "Washer Pump Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VWWC-047",
+      "code": "WIPER_MOTOR_SEAL",
+      "name": "Wiper Motor Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VWWC-048",
+      "code": "WIPER_PIVOT_SEAL",
+      "name": "Wiper Pivot Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VWWC-049",
+      "code": "WASHER_RESERVOIR_GROMMET",
+      "name": "Washer Reservoir Grommet",
+      "category": "SEAL"
+    },
+    {
+      "id": "VWWC-050",
+      "code": "WASHER_PUMP_GROMMET",
+      "name": "Washer Pump Grommet",
+      "category": "SEAL"
+    },
+    {
+      "id": "VWWC-051",
+      "code": "WIPER_ARM_BUSHING",
+      "name": "Wiper Arm Bushing",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VWWC-052",
+      "code": "WIPER_LINKAGE_BUSHING",
+      "name": "Wiper Linkage Bushing",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VWWC-053",
+      "code": "WIPER_LINKAGE_JOINT",
+      "name": "Wiper Linkage Joint",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VWWC-054",
+      "code": "WIPER_LINKAGE_CLIP",
+      "name": "Wiper Linkage Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWWC-055",
+      "code": "WIPER_LINKAGE_ROD",
+      "name": "Wiper Linkage Rod",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-056",
+      "code": "WIPER_CRANK_ARM",
+      "name": "Wiper Crank Arm",
+      "category": "WIPER"
+    },
+    {
+      "id": "VWWC-057",
+      "code": "RAIN_SENSOR",
+      "name": "Rain Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VWWC-058",
+      "code": "RAIN_LIGHT_SENSOR",
+      "name": "Rain and Light Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VWWC-059",
+      "code": "RAIN_SENSOR_MODULE",
+      "name": "Rain Sensor Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VWWC-060",
+      "code": "AUTO_WIPER_MODULE",
+      "name": "Automatic Wiper Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VWWC-061",
+      "code": "WIPER_SPEED_CONTROL",
+      "name": "Wiper Speed Control",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VWWC-062",
+      "code": "INTERMITTENT_WIPER_CONTROL",
+      "name": "Intermittent Wiper Control",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VWWC-063",
+      "code": "WIPER_PARK_SWITCH",
+      "name": "Wiper Park Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VWWC-064",
+      "code": "WIPER_PARK_POSITION_SENSOR",
+      "name": "Wiper Park Position Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VWWC-065",
+      "code": "WASHER_FLUID",
+      "name": "Windshield Washer Fluid",
+      "category": "FLUID"
+    },
+    {
+      "id": "VWWC-066",
+      "code": "WASHER_RESERVOIR_BRACKET",
+      "name": "Washer Reservoir Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VWWC-067",
+      "code": "WASHER_PUMP_BRACKET",
+      "name": "Washer Pump Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VWWC-068",
+      "code": "WASHER_NOZZLE_BRACKET",
+      "name": "Washer Nozzle Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VWWC-069",
+      "code": "WIPER_MOTOR_MOUNT",
+      "name": "Wiper Motor Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VWWC-070",
+      "code": "WIPER_ARM_MOUNT",
+      "name": "Wiper Arm Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VWWC-071",
+      "code": "WIPER_COWL_PANEL",
+      "name": "Wiper Cowl Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VWWC-072",
+      "code": "WIPER_COWL_COVER",
+      "name": "Wiper Cowl Cover",
+      "category": "BODY"
+    },
+    {
+      "id": "VWWC-073",
+      "code": "WIPER_COWL_SEAL",
+      "name": "Wiper Cowl Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VWWC-074",
+      "code": "WASHER_RESERVOIR",
+      "name": "Washer Reservoir Assembly",
+      "category": "WASHER"
+    },
+    {
+      "id": "VWWC-075",
+      "code": "WASHER_RESERVOIR_GROMMET",
+      "name": "Washer Reservoir Grommet",
+      "category": "SEAL"
+    },
+    {
+      "id": "VWWC-076",
+      "code": "WASHER_PUMP_SEAL",
+      "name": "Washer Pump Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VWWC-077",
+      "code": "WIPER_BLADE_CLIP",
+      "name": "Wiper Blade Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWWC-078",
+      "code": "WIPER_BLADE_ADAPTER",
+      "name": "Wiper Blade Adapter",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VWWC-079",
+      "code": "WIPER_ARM_ADAPTER",
+      "name": "Wiper Arm Adapter",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VWWC-080",
+      "code": "WIPER_ARM_CAP",
+      "name": "Wiper Arm Nut Cap",
+      "category": "TRIM"
+    },
+    {
+      "id": "VWWC-081",
+      "code": "WIPER_SERVICE_KIT",
+      "name": "Wiper Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VWWC-082",
+      "code": "WASHER_SERVICE_KIT",
+      "name": "Washer Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VWWC-083",
+      "code": "WIPER_REPAIR_KIT",
+      "name": "Wiper Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VWWC-084",
+      "code": "WASHER_REPAIR_KIT",
+      "name": "Washer Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VWWC-085",
+      "code": "WIPER_DIAGNOSTIC_COMPONENT",
+      "name": "Wiper Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VWWC-086",
+      "code": "WASHER_DIAGNOSTIC_COMPONENT",
+      "name": "Washer Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VWWC-087",
+      "code": "WIPER_FUSE_BOX",
+      "name": "Wiper Fuse Box",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VWWC-088",
+      "code": "WASHER_FUSE",
+      "name": "Washer Fuse",
+      "category": "FUSE"
+    },
+    {
+      "id": "VWWC-089",
+      "code": "WIPER_FASTENER",
+      "name": "Wiper Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWWC-090",
+      "code": "WASHER_FASTENER",
+      "name": "Washer Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWWC-091",
+      "code": "WIPER_CONNECTOR_TERMINAL",
+      "name": "Wiper Connector Terminal",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VWWC-092",
+      "code": "WASHER_CONNECTOR_TERMINAL",
+      "name": "Washer Connector Terminal",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VWWC-093",
+      "code": "WIPER_GROUND_WIRE",
+      "name": "Wiper Ground Wire",
+      "category": "WIRING"
+    },
+    {
+      "id": "VWWC-094",
+      "code": "WASHER_GROUND_WIRE",
+      "name": "Washer Ground Wire",
+      "category": "WIRING"
+    },
+    {
+      "id": "VWWC-095",
+      "code": "WIPER_MOTOR_REPAIR_COMPONENT",
+      "name": "Wiper Motor Repair Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VWWC-096",
+      "code": "WASHER_PUMP_REPAIR_COMPONENT",
+      "name": "Washer Pump Repair Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VWWC-097",
+      "code": "WIPER_SYSTEM_MOUNTING_HARDWARE",
+      "name": "Wiper System Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VWWC-098",
+      "code": "WASHER_SYSTEM_MOUNTING_HARDWARE",
+      "name": "Washer System Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VWWC-099",
+      "code": "WIPER_WASHER_COMPONENT",
+      "name": "Wiper Washer Service Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VWWC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Wiper Washer Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
