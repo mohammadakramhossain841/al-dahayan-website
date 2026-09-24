@@ -1,0 +1,123 @@
+{
+  "fuelEconomySpecifications": [
+    {
+      "id": "FE-001",
+      "code": "CITY_CONSUMPTION_L_100KM",
+      "name": "City Fuel Consumption",
+      "unit": "L/100km",
+      "description": "Fuel consumption during city driving"
+    },
+    {
+      "id": "FE-002",
+      "code": "HIGHWAY_CONSUMPTION_L_100KM",
+      "name": "Highway Fuel Consumption",
+      "unit": "L/100km",
+      "description": "Fuel consumption during highway driving"
+    },
+    {
+      "id": "FE-003",
+      "code": "COMBINED_CONSUMPTION_L_100KM",
+      "name": "Combined Fuel Consumption",
+      "unit": "L/100km",
+      "description": "Combined city and highway fuel consumption"
+    },
+    {
+      "id": "FE-004",
+      "code": "CITY_ECONOMY_KM_L",
+      "name": "City Fuel Economy",
+      "unit": "km/L",
+      "description": "Distance traveled per liter during city driving"
+    },
+    {
+      "id": "FE-005",
+      "code": "HIGHWAY_ECONOMY_KM_L",
+      "name": "Highway Fuel Economy",
+      "unit": "km/L",
+      "description": "Distance traveled per liter during highway driving"
+    },
+    {
+      "id": "FE-006",
+      "code": "COMBINED_ECONOMY_KM_L",
+      "name": "Combined Fuel Economy",
+      "unit": "km/L",
+      "description": "Combined distance traveled per liter"
+    },
+    {
+      "id": "FE-007",
+      "code": "CITY_CONSUMPTION_MPG",
+      "name": "City Fuel Economy",
+      "unit": "mpg",
+      "description": "City fuel economy in miles per gallon"
+    },
+    {
+      "id": "FE-008",
+      "code": "HIGHWAY_CONSUMPTION_MPG",
+      "name": "Highway Fuel Economy",
+      "unit": "mpg",
+      "description": "Highway fuel economy in miles per gallon"
+    },
+    {
+      "id": "FE-009",
+      "code": "COMBINED_CONSUMPTION_MPG",
+      "name": "Combined Fuel Economy",
+      "unit": "mpg",
+      "description": "Combined fuel economy in miles per gallon"
+    },
+    {
+      "id": "FE-010",
+      "code": "EV_RANGE_KM",
+      "name": "Electric Driving Range",
+      "unit": "km",
+      "description": "Estimated electric-only driving range"
+    },
+    {
+      "id": "FE-011",
+      "code": "EV_RANGE_MILES",
+      "name": "Electric Driving Range",
+      "unit": "miles",
+      "description": "Estimated electric-only driving range in miles"
+    },
+    {
+      "id": "FE-012",
+      "code": "ENERGY_CONSUMPTION_KWH_100KM",
+      "name": "Energy Consumption",
+      "unit": "kWh/100km",
+      "description": "Electric energy consumption per 100 kilometers"
+    },
+    {
+      "id": "FE-013",
+      "code": "ENERGY_ECONOMY_KM_KWH",
+      "name": "Energy Economy",
+      "unit": "km/kWh",
+      "description": "Distance traveled per kWh of electric energy"
+    },
+    {
+      "id": "FE-014",
+      "code": "HYBRID_COMBINED_CONSUMPTION_L_100KM",
+      "name": "Hybrid Combined Consumption",
+      "unit": "L/100km",
+      "description": "Combined fuel consumption for hybrid vehicles"
+    },
+    {
+      "id": "FE-015",
+      "code": "PLUG_IN_HYBRID_RANGE_KM",
+      "name": "Plug-in Hybrid Electric Range",
+      "unit": "km",
+      "description": "Electric-only range for plug-in hybrid vehicles"
+    },
+    {
+      "id": "FE-016",
+      "code": "FUEL_TANK_RANGE_KM",
+      "name": "Estimated Fuel Tank Range",
+      "unit": "km",
+      "description": "Estimated driving range from a full fuel tank"
+    },
+    {
+      "id": "FE-017",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "unit": null,
+      "description": "Fuel economy specification not available"
+    }
+  ]
+}
