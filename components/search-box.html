@@ -1,1 +1,139 @@
+<!-- =========================================
+     AL-DAHAYAN REUSABLE SEARCH BOX
+========================================= -->
 
+<section
+  class="search-box-component"
+  data-component="search-box"
+  aria-labelledby="search-box-title"
+>
+
+  <div class="search-box-header">
+
+    <div>
+      <span class="search-box-eyebrow">
+        Parts Search
+      </span>
+
+      <h2 id="search-box-title" class="search-box-title">
+        Find Toyota & Lexus Parts
+      </h2>
+
+      <p class="search-box-description">
+        Search by OEM part number, part name, or keyword.
+      </p>
+    </div>
+
+  </div>
+
+
+  <form
+    class="search-box-form"
+    data-search-form
+    role="search"
+    autocomplete="off"
+  >
+
+    <div class="search-box-field">
+
+      <label
+        for="global-part-search"
+        class="search-box-label"
+      >
+        OEM Part Number or Keyword
+      </label>
+
+      <input
+        type="search"
+        id="global-part-search"
+        name="search"
+        class="search-box-input"
+        data-search-input
+        placeholder="Example: 12261-54130"
+        aria-label="Search OEM part number or keyword"
+        autocomplete="off"
+        spellcheck="false"
+      />
+
+      <div
+        class="search-suggestions"
+        data-search-suggestions
+        role="listbox"
+        aria-label="Search suggestions"
+        hidden
+      ></div>
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="search-box-button"
+      data-search-submit
+    >
+      Search Parts
+    </button>
+
+  </form>
+
+
+  <!-- Search Status -->
+  <div
+    class="search-box-status"
+    data-search-status
+    role="status"
+    aria-live="polite"
+    hidden
+  ></div>
+
+
+  <!-- Search Results -->
+  <div
+    class="search-box-results"
+    data-search-results
+    aria-live="polite"
+  ></div>
+
+
+  <!-- Quick Search -->
+  <div class="search-box-quick">
+
+    <span class="search-box-quick-label">
+      Quick Search
+    </span>
+
+    <button
+      type="button"
+      class="search-quick-button"
+      data-quick-search="Toyota"
+    >
+      Toyota
+    </button>
+
+    <button
+      type="button"
+      class="search-quick-button"
+      data-quick-search="Lexus"
+    >
+      Lexus
+    </button>
+
+    <button
+      type="button"
+      class="search-quick-button"
+      data-quick-search="Engine"
+    >
+      Engine Parts
+    </button>
+
+    <button
+      type="button"
+      class="search-quick-button"
+      data-quick-search="Brake"
+    >
+      Brake Parts
+    </button>
+
+  </div>
+
+</section>
