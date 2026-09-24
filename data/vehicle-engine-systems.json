@@ -1,0 +1,704 @@
+{
+  "engineSystems": [
+    {
+      "id": "ENG-001",
+      "code": "ENGINE_ASSEMBLY",
+      "name": "Engine Assembly",
+      "category": "SYSTEM_TYPE",
+      "description": "Complete internal combustion engine assembly"
+    },
+    {
+      "id": "ENG-002",
+      "code": "ENGINE_BLOCK",
+      "name": "Engine Block",
+      "category": "CORE_COMPONENT",
+      "description": "Main structural body of the engine"
+    },
+    {
+      "id": "ENG-003",
+      "code": "CYLINDER_BLOCK",
+      "name": "Cylinder Block",
+      "category": "CORE_COMPONENT",
+      "description": "Engine block containing the cylinder bores"
+    },
+    {
+      "id": "ENG-004",
+      "code": "CYLINDER_HEAD",
+      "name": "Cylinder Head",
+      "category": "CORE_COMPONENT",
+      "description": "Upper engine component containing valves and related assemblies"
+    },
+    {
+      "id": "ENG-005",
+      "code": "CYLINDER_HEAD_GASKET",
+      "name": "Cylinder Head Gasket",
+      "category": "GASKET",
+      "description": "Seals the cylinder head to the engine block"
+    },
+    {
+      "id": "ENG-006",
+      "code": "PISTON",
+      "name": "Piston",
+      "category": "INTERNAL_COMPONENT",
+      "description": "Reciprocating component inside the engine cylinder"
+    },
+    {
+      "id": "ENG-007",
+      "code": "PISTON_RING",
+      "name": "Piston Ring",
+      "category": "INTERNAL_COMPONENT",
+      "description": "Ring fitted to a piston for sealing and oil control"
+    },
+    {
+      "id": "ENG-008",
+      "code": "CONNECTING_ROD",
+      "name": "Connecting Rod",
+      "category": "INTERNAL_COMPONENT",
+      "description": "Connects the piston to the crankshaft"
+    },
+    {
+      "id": "ENG-009",
+      "code": "CONNECTING_ROD_BEARING",
+      "name": "Connecting Rod Bearing",
+      "category": "BEARING",
+      "description": "Bearing supporting the connecting rod on the crankshaft"
+    },
+    {
+      "id": "ENG-010",
+      "code": "CRANKSHAFT",
+      "name": "Crankshaft",
+      "category": "INTERNAL_COMPONENT",
+      "description": "Converts piston movement into rotational movement"
+    },
+    {
+      "id": "ENG-011",
+      "code": "CRANKSHAFT_MAIN_BEARING",
+      "name": "Crankshaft Main Bearing",
+      "category": "BEARING",
+      "description": "Supports the crankshaft within the engine block"
+    },
+    {
+      "id": "ENG-012",
+      "code": "CRANKSHAFT_PULLEY",
+      "name": "Crankshaft Pulley",
+      "category": "DRIVE_COMPONENT",
+      "description": "Pulley mounted on the crankshaft for accessory drive"
+    },
+    {
+      "id": "ENG-013",
+      "code": "HARMONIC_BALANCER",
+      "name": "Harmonic Balancer",
+      "category": "DRIVE_COMPONENT",
+      "description": "Reduces crankshaft torsional vibration"
+    },
+    {
+      "id": "ENG-014",
+      "code": "CAMSHAFT",
+      "name": "Camshaft",
+      "category": "VALVE_TRAIN",
+      "description": "Controls engine valve opening and closing"
+    },
+    {
+      "id": "ENG-015",
+      "code": "CAMSHAFT_BEARING",
+      "name": "Camshaft Bearing",
+      "category": "BEARING",
+      "description": "Supports the camshaft where applicable"
+    },
+    {
+      "id": "ENG-016",
+      "code": "CAMSHAFT_POSITION_SENSOR",
+      "name": "Camshaft Position Sensor",
+      "category": "SENSOR",
+      "description": "Detects camshaft position for engine control"
+    },
+    {
+      "id": "ENG-017",
+      "code": "CRANKSHAFT_POSITION_SENSOR",
+      "name": "Crankshaft Position Sensor",
+      "category": "SENSOR",
+      "description": "Detects crankshaft position and speed"
+    },
+    {
+      "id": "ENG-018",
+      "code": "INTAKE_VALVE",
+      "name": "Intake Valve",
+      "category": "VALVE_TRAIN",
+      "description": "Controls intake air or air-fuel mixture entry into the cylinder"
+    },
+    {
+      "id": "ENG-019",
+      "code": "EXHAUST_VALVE",
+      "name": "Exhaust Valve",
+      "category": "VALVE_TRAIN",
+      "description": "Controls exhaust gas exit from the cylinder"
+    },
+    {
+      "id": "ENG-020",
+      "code": "VALVE_SPRING",
+      "name": "Valve Spring",
+      "category": "VALVE_TRAIN",
+      "description": "Returns the valve to its closed position"
+    },
+    {
+      "id": "ENG-021",
+      "code": "VALVE_GUIDE",
+      "name": "Valve Guide",
+      "category": "VALVE_TRAIN",
+      "description": "Guides the movement of an engine valve"
+    },
+    {
+      "id": "ENG-022",
+      "code": "VALVE_SEAT",
+      "name": "Valve Seat",
+      "category": "VALVE_TRAIN",
+      "description": "Sealing surface for an engine valve"
+    },
+    {
+      "id": "ENG-023",
+      "code": "VALVE_LIFTER",
+      "name": "Valve Lifter",
+      "category": "VALVE_TRAIN",
+      "description": "Transfers camshaft movement to the valve train"
+    },
+    {
+      "id": "ENG-024",
+      "code": "ROCKER_ARM",
+      "name": "Rocker Arm",
+      "category": "VALVE_TRAIN",
+      "description": "Transfers valve train movement to applicable valves"
+    },
+    {
+      "id": "ENG-025",
+      "code": "HYDRAULIC_LASH_ADJUSTER",
+      "name": "Hydraulic Lash Adjuster",
+      "category": "VALVE_TRAIN",
+      "description": "Automatically maintains valve clearance on applicable engines"
+    },
+    {
+      "id": "ENG-026",
+      "code": "TIMING_BELT",
+      "name": "Timing Belt",
+      "category": "TIMING",
+      "description": "Synchronizes crankshaft and camshaft rotation"
+    },
+    {
+      "id": "ENG-027",
+      "code": "TIMING_CHAIN",
+      "name": "Timing Chain",
+      "category": "TIMING",
+      "description": "Chain used to synchronize engine timing components"
+    },
+    {
+      "id": "ENG-028",
+      "code": "TIMING_CHAIN_TENSIONER",
+      "name": "Timing Chain Tensioner",
+      "category": "TIMING",
+      "description": "Maintains proper timing chain tension"
+    },
+    {
+      "id": "ENG-029",
+      "code": "TIMING_CHAIN_GUIDE",
+      "name": "Timing Chain Guide",
+      "category": "TIMING",
+      "description": "Guides and stabilizes the timing chain"
+    },
+    {
+      "id": "ENG-030",
+      "code": "TIMING_BELT_TENSIONER",
+      "name": "Timing Belt Tensioner",
+      "category": "TIMING",
+      "description": "Maintains proper timing belt tension"
+    },
+    {
+      "id": "ENG-031",
+      "code": "TIMING_IDLER",
+      "name": "Timing Idler",
+      "category": "TIMING",
+      "description": "Guides the timing belt or chain where applicable"
+    },
+    {
+      "id": "ENG-032",
+      "code": "VARIABLE_VALVE_TIMING_SYSTEM",
+      "name": "Variable Valve Timing System",
+      "category": "VALVE_CONTROL",
+      "description": "Controls valve timing according to engine operating conditions"
+    },
+    {
+      "id": "ENG-033",
+      "code": "VVT_ACTUATOR",
+      "name": "VVT Actuator",
+      "category": "VALVE_CONTROL",
+      "description": "Adjusts camshaft timing in applicable variable valve timing systems"
+    },
+    {
+      "id": "ENG-034",
+      "code": "VVT_SOLENOID",
+      "name": "VVT Solenoid",
+      "category": "VALVE_CONTROL",
+      "description": "Controls oil flow for applicable variable valve timing systems"
+    },
+    {
+      "id": "ENG-035",
+      "code": "ENGINE_OIL_PUMP",
+      "name": "Engine Oil Pump",
+      "category": "LUBRICATION",
+      "description": "Circulates engine oil through the lubrication system"
+    },
+    {
+      "id": "ENG-036",
+      "code": "ENGINE_OIL_FILTER",
+      "name": "Engine Oil Filter",
+      "category": "LUBRICATION",
+      "description": "Filters contaminants from engine oil"
+    },
+    {
+      "id": "ENG-037",
+      "code": "OIL_FILTER_HOUSING",
+      "name": "Oil Filter Housing",
+      "category": "LUBRICATION",
+      "description": "Housing for the applicable engine oil filter"
+    },
+    {
+      "id": "ENG-038",
+      "code": "OIL_PAN",
+      "name": "Engine Oil Pan",
+      "category": "LUBRICATION",
+      "description": "Stores engine oil at the bottom of the engine"
+    },
+    {
+      "id": "ENG-039",
+      "code": "OIL_PAN_GASKET",
+      "name": "Oil Pan Gasket",
+      "category": "GASKET",
+      "description": "Seals the oil pan to the engine"
+    },
+    {
+      "id": "ENG-040",
+      "code": "OIL_PRESSURE_SENSOR",
+      "name": "Oil Pressure Sensor",
+      "category": "SENSOR",
+      "description": "Measures engine oil pressure"
+    },
+    {
+      "id": "ENG-041",
+      "code": "OIL_LEVEL_SENSOR",
+      "name": "Oil Level Sensor",
+      "category": "SENSOR",
+      "description": "Measures engine oil level where equipped"
+    },
+    {
+      "id": "ENG-042",
+      "code": "OIL_COOLER",
+      "name": "Engine Oil Cooler",
+      "category": "LUBRICATION",
+      "description": "Reduces engine oil temperature"
+    },
+    {
+      "id": "ENG-043",
+      "code": "OIL_COOLER_GASKET",
+      "name": "Oil Cooler Gasket",
+      "category": "GASKET",
+      "description": "Seals applicable engine oil cooler connections"
+    },
+    {
+      "id": "ENG-044",
+      "code": "OIL_FILLER_CAP",
+      "name": "Oil Filler Cap",
+      "category": "LUBRICATION",
+      "description": "Cap sealing the engine oil filler opening"
+    },
+    {
+      "id": "ENG-045",
+      "code": "OIL_DIPSTICK",
+      "name": "Oil Dipstick",
+      "category": "LUBRICATION",
+      "description": "Manual engine oil level measurement device"
+    },
+    {
+      "id": "ENG-046",
+      "code": "CRANKCASE_VENTILATION_SYSTEM",
+      "name": "Crankcase Ventilation System",
+      "category": "ENGINE_CONTROL",
+      "description": "Controls crankcase gases and pressure"
+    },
+    {
+      "id": "ENG-047",
+      "code": "PCV_VALVE",
+      "name": "PCV Valve",
+      "category": "ENGINE_CONTROL",
+      "description": "Controls crankcase ventilation flow on applicable engines"
+    },
+    {
+      "id": "ENG-048",
+      "code": "ENGINE_AIR_FILTER",
+      "name": "Engine Air Filter",
+      "category": "AIR_INTAKE",
+      "description": "Filters intake air before it enters the engine"
+    },
+    {
+      "id": "ENG-049",
+      "code": "AIR_FILTER_HOUSING",
+      "name": "Air Filter Housing",
+      "category": "AIR_INTAKE",
+      "description": "Housing containing the engine air filter"
+    },
+    {
+      "id": "ENG-050",
+      "code": "INTAKE_MANIFOLD",
+      "name": "Intake Manifold",
+      "category": "AIR_INTAKE",
+      "description": "Distributes intake air to engine cylinders"
+    },
+    {
+      "id": "ENG-051",
+      "code": "INTAKE_MANIFOLD_GASKET",
+      "name": "Intake Manifold Gasket",
+      "category": "GASKET",
+      "description": "Seals the intake manifold to the engine"
+    },
+    {
+      "id": "ENG-052",
+      "code": "THROTTLE_BODY",
+      "name": "Throttle Body",
+      "category": "AIR_INTAKE",
+      "description": "Controls airflow entering the engine"
+    },
+    {
+      "id": "ENG-053",
+      "code": "THROTTLE_POSITION_SENSOR",
+      "name": "Throttle Position Sensor",
+      "category": "SENSOR",
+      "description": "Measures throttle opening position"
+    },
+    {
+      "id": "ENG-054",
+      "code": "IDLE_AIR_CONTROL_VALVE",
+      "name": "Idle Air Control Valve",
+      "category": "AIR_INTAKE",
+      "description": "Controls idle airflow on applicable engines"
+    },
+    {
+      "id": "ENG-055",
+      "code": "MASS_AIR_FLOW_SENSOR",
+      "name": "Mass Air Flow Sensor",
+      "category": "SENSOR",
+      "description": "Measures intake air mass"
+    },
+    {
+      "id": "ENG-056",
+      "code": "MANIFOLD_ABSOLUTE_PRESSURE_SENSOR",
+      "name": "Manifold Absolute Pressure Sensor",
+      "category": "SENSOR",
+      "description": "Measures intake manifold pressure"
+    },
+    {
+      "id": "ENG-057",
+      "code": "INTAKE_AIR_TEMPERATURE_SENSOR",
+      "name": "Intake Air Temperature Sensor",
+      "category": "SENSOR",
+      "description": "Measures intake air temperature"
+    },
+    {
+      "id": "ENG-058",
+      "code": "ENGINE_COOLING_SYSTEM",
+      "name": "Engine Cooling System",
+      "category": "COOLING",
+      "description": "Controls engine operating temperature"
+    },
+    {
+      "id": "ENG-059",
+      "code": "RADIATOR",
+      "name": "Radiator",
+      "category": "COOLING",
+      "description": "Transfers engine coolant heat to surrounding air"
+    },
+    {
+      "id": "ENG-060",
+      "code": "WATER_PUMP",
+      "name": "Water Pump",
+      "category": "COOLING",
+      "description": "Circulates engine coolant through the cooling system"
+    },
+    {
+      "id": "ENG-061",
+      "code": "THERMOSTAT",
+      "name": "Thermostat",
+      "category": "COOLING",
+      "description": "Controls coolant flow according to engine temperature"
+    },
+    {
+      "id": "ENG-062",
+      "code": "THERMOSTAT_HOUSING",
+      "name": "Thermostat Housing",
+      "category": "COOLING",
+      "description": "Housing for the engine thermostat"
+    },
+    {
+      "id": "ENG-063",
+      "code": "COOLANT_TEMPERATURE_SENSOR",
+      "name": "Coolant Temperature Sensor",
+      "category": "SENSOR",
+      "description": "Measures engine coolant temperature"
+    },
+    {
+      "id": "ENG-064",
+      "code": "RADIATOR_FAN",
+      "name": "Radiator Fan",
+      "category": "COOLING",
+      "description": "Provides airflow through the radiator"
+    },
+    {
+      "id": "ENG-065",
+      "code": "RADIATOR_FAN_MOTOR",
+      "name": "Radiator Fan Motor",
+      "category": "ELECTRICAL",
+      "description": "Drives the radiator cooling fan"
+    },
+    {
+      "id": "ENG-066",
+      "code": "COOLANT_RESERVOIR",
+      "name": "Coolant Reservoir",
+      "category": "COOLING",
+      "description": "Stores and manages coolant expansion volume"
+    },
+    {
+      "id": "ENG-067",
+      "code": "COOLANT_HOSE",
+      "name": "Coolant Hose",
+      "category": "COOLING",
+      "description": "Carries coolant between engine cooling components"
+    },
+    {
+      "id": "ENG-068",
+      "code": "ENGINE_MOUNT",
+      "name": "Engine Mount",
+      "category": "MOUNTING",
+      "description": "Supports the engine and isolates vibration from the vehicle body"
+    },
+    {
+      "id": "ENG-069",
+      "code": "ENGINE_MOUNT_BRACKET",
+      "name": "Engine Mount Bracket",
+      "category": "MOUNTING",
+      "description": "Bracket connecting the engine mount to the engine or chassis"
+    },
+    {
+      "id": "ENG-070",
+      "code": "SPARK_PLUG",
+      "name": "Spark Plug",
+      "category": "IGNITION",
+      "description": "Provides ignition spark in applicable gasoline engines"
+    },
+    {
+      "id": "ENG-071",
+      "code": "GLOW_PLUG",
+      "name": "Glow Plug",
+      "category": "IGNITION",
+      "description": "Provides heat for cold-start assistance in applicable diesel engines"
+    },
+    {
+      "id": "ENG-072",
+      "code": "IGNITION_COIL",
+      "name": "Ignition Coil",
+      "category": "IGNITION",
+      "description": "Generates high voltage for spark ignition"
+    },
+    {
+      "id": "ENG-073",
+      "code": "IGNITION_COIL_BOOT",
+      "name": "Ignition Coil Boot",
+      "category": "IGNITION",
+      "description": "Insulating boot used with applicable ignition coils"
+    },
+    {
+      "id": "ENG-074",
+      "code": "ENGINE_CONTROL_MODULE",
+      "name": "Engine Control Module",
+      "category": "ELECTRONIC",
+      "description": "Electronic control unit managing engine operation"
+    },
+    {
+      "id": "ENG-075",
+      "code": "ENGINE_WIRING_HARNESS",
+      "name": "Engine Wiring Harness",
+      "category": "ELECTRICAL",
+      "description": "Electrical wiring connecting engine sensors, actuators and control modules"
+    },
+    {
+      "id": "ENG-076",
+      "code": "ENGINE_KNOCK_SENSOR",
+      "name": "Knock Sensor",
+      "category": "SENSOR",
+      "description": "Detects engine vibration associated with combustion knock"
+    },
+    {
+      "id": "ENG-077",
+      "code": "ENGINE_SPEED_SENSOR",
+      "name": "Engine Speed Sensor",
+      "category": "SENSOR",
+      "description": "Measures engine rotational speed where separately equipped"
+    },
+    {
+      "id": "ENG-078",
+      "code": "ENGINE_VACUUM_PUMP",
+      "name": "Engine Vacuum Pump",
+      "category": "AUXILIARY",
+      "description": "Provides vacuum for applicable vehicle systems"
+    },
+    {
+      "id": "ENG-079",
+      "code": "BALANCE_SHAFT",
+      "name": "Balance Shaft",
+      "category": "INTERNAL_COMPONENT",
+      "description": "Reduces engine vibration on applicable engine designs"
+    },
+    {
+      "id": "ENG-080",
+      "code": "FLYWHEEL",
+      "name": "Flywheel",
+      "category": "DRIVE_COMPONENT",
+      "description": "Stores rotational energy and connects the engine to applicable manual transmissions"
+    },
+    {
+      "id": "ENG-081",
+      "code": "FLEXPLATE",
+      "name": "Flexplate",
+      "category": "DRIVE_COMPONENT",
+      "description": "Connects the engine crankshaft to an automatic transmission torque converter"
+    },
+    {
+      "id": "ENG-082",
+      "code": "STARTER_MOTOR",
+      "name": "Starter Motor",
+      "category": "ELECTRICAL",
+      "description": "Cranks the engine during starting"
+    },
+    {
+      "id": "ENG-083",
+      "code": "STARTER_SOLENOID",
+      "name": "Starter Solenoid",
+      "category": "ELECTRICAL",
+      "description": "Controls starter motor engagement"
+    },
+    {
+      "id": "ENG-084",
+      "code": "ALTERNATOR",
+      "name": "Alternator",
+      "category": "ELECTRICAL",
+      "description": "Generates electrical power and charges the vehicle battery"
+    },
+    {
+      "id": "ENG-085",
+      "code": "SERPENTINE_BELT",
+      "name": "Serpentine Belt",
+      "category": "DRIVE_COMPONENT",
+      "description": "Drives applicable engine accessories"
+    },
+    {
+      "id": "ENG-086",
+      "code": "BELT_TENSIONER",
+      "name": "Accessory Belt Tensioner",
+      "category": "DRIVE_COMPONENT",
+      "description": "Maintains tension on the accessory drive belt"
+    },
+    {
+      "id": "ENG-087",
+      "code": "IDLER_PULLEY",
+      "name": "Idler Pulley",
+      "category": "DRIVE_COMPONENT",
+      "description": "Guides the accessory drive belt"
+    },
+    {
+      "id": "ENG-088",
+      "code": "TURBOCHARGER",
+      "name": "Turbocharger",
+      "category": "FORCED_INDUCTION",
+      "description": "Uses exhaust energy to increase intake air supply"
+    },
+    {
+      "id": "ENG-089",
+      "code": "SUPERCHARGER",
+      "name": "Supercharger",
+      "category": "FORCED_INDUCTION",
+      "description": "Mechanically driven system that increases intake air supply"
+    },
+    {
+      "id": "ENG-090",
+      "code": "INTERCOOLER",
+      "name": "Intercooler",
+      "category": "FORCED_INDUCTION",
+      "description": "Cools compressed intake air on applicable engines"
+    },
+    {
+      "id": "ENG-091",
+      "code": "TURBOCHARGER_BOOST_SENSOR",
+      "name": "Turbocharger Boost Sensor",
+      "category": "SENSOR",
+      "description": "Measures boost or intake pressure on applicable engines"
+    },
+    {
+      "id": "ENG-092",
+      "code": "WASTEGATE",
+      "name": "Wastegate",
+      "category": "FORCED_INDUCTION",
+      "description": "Controls turbocharger exhaust gas flow on applicable systems"
+    },
+    {
+      "id": "ENG-093",
+      "code": "ENGINE_CRANKCASE",
+      "name": "Engine Crankcase",
+      "category": "CORE_COMPONENT",
+      "description": "Lower engine structure containing crankshaft and related components"
+    },
+    {
+      "id": "ENG-094",
+      "code": "REAR_MAIN_SEAL",
+      "name": "Rear Main Seal",
+      "category": "SEAL",
+      "description": "Seals the rear end of the crankshaft"
+    },
+    {
+      "id": "ENG-095",
+      "code": "FRONT_CRANKSHAFT_SEAL",
+      "name": "Front Crankshaft Seal",
+      "category": "SEAL",
+      "description": "Seals the front end of the crankshaft"
+    },
+    {
+      "id": "ENG-096",
+      "code": "CAMSHAFT_SEAL",
+      "name": "Camshaft Seal",
+      "category": "SEAL",
+      "description": "Seals the camshaft where applicable"
+    },
+    {
+      "id": "ENG-097",
+      "code": "ENGINE_COVER",
+      "name": "Engine Cover",
+      "category": "EXTERIOR_COMPONENT",
+      "description": "Protective or acoustic cover fitted to applicable engines"
+    },
+    {
+      "id": "ENG-098",
+      "code": "VALVE_COVER",
+      "name": "Valve Cover",
+      "category": "EXTERIOR_COMPONENT",
+      "description": "Covers the upper valve train area"
+    },
+    {
+      "id": "ENG-099",
+      "code": "VALVE_COVER_GASKET",
+      "name": "Valve Cover Gasket",
+      "category": "GASKET",
+      "description": "Seals the valve cover to the cylinder head"
+    },
+    {
+      "id": "ENG-100",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "category": "UNKNOWN",
+      "description": "Engine-system specification not available"
+    }
+  ]
+}
