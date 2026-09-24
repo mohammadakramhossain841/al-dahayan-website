@@ -1,1 +1,47 @@
-
+{
+  "inquiries": [
+    {
+      "id": "INQ-001",
+      "oemNumber": "",
+      "partNumber": "",
+      "partName": "",
+      "make": "",
+      "model": "",
+      "year": null,
+      "engine": "",
+      "vin": "",
+      "quantity": 1,
+      "customer": {
+        "name": "",
+        "phone": "",
+        "whatsapp": "",
+        "email": "",
+        "city": "",
+        "country": ""
+      },
+      "message": "",
+      "source": "website",
+      "preferredContact": "whatsapp",
+      "status": "new",
+      "priority": "normal",
+      "assignedTo": "",
+      "notes": "",
+      "createdAt": null,
+      "updatedAt": null
+    }
+  ],
+  "statusDefinitions": {
+    "new": "New inquiry",
+    "in_progress": "Inquiry is being handled",
+    "awaiting_customer": "Waiting for customer response",
+    "quoted": "Price or availability information provided",
+    "completed": "Inquiry completed",
+    "cancelled": "Inquiry cancelled"
+  },
+  "priorityDefinitions": {
+    "low": "Low priority",
+    "normal": "Normal priority",
+    "high": "High priority",
+    "urgent": "Urgent customer request"
+  }
+}
