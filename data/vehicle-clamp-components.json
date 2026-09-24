@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_clamp_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VCL-001",
+      "code": "HOSE_CLAMP",
+      "name": "Hose Clamp",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-002",
+      "code": "RADIATOR_HOSE_CLAMP",
+      "name": "Radiator Hose Clamp",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCL-003",
+      "code": "HEATER_HOSE_CLAMP",
+      "name": "Heater Hose Clamp",
+      "category": "HVAC"
+    },
+    {
+      "id": "VCL-004",
+      "code": "FUEL_HOSE_CLAMP",
+      "name": "Fuel Hose Clamp",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCL-005",
+      "code": "VACUUM_HOSE_CLAMP",
+      "name": "Vacuum Hose Clamp",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-006",
+      "code": "AIR_INTAKE_HOSE_CLAMP",
+      "name": "Air Intake Hose Clamp",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-007",
+      "code": "TURBO_HOSE_CLAMP",
+      "name": "Turbo Hose Clamp",
+      "category": "TURBO"
+    },
+    {
+      "id": "VCL-008",
+      "code": "INTERCOOLER_HOSE_CLAMP",
+      "name": "Intercooler Hose Clamp",
+      "category": "TURBO"
+    },
+    {
+      "id": "VCL-009",
+      "code": "AC_HOSE_CLAMP",
+      "name": "A/C Hose Clamp",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCL-010",
+      "code": "BRAKE_HOSE_CLAMP",
+      "name": "Brake Hose Clamp",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-011",
+      "code": "CLUTCH_HOSE_CLAMP",
+      "name": "Clutch Hose Clamp",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCL-012",
+      "code": "WASHER_HOSE_CLAMP",
+      "name": "Washer Hose Clamp",
+      "category": "WIPER_WASHER"
+    },
+    {
+      "id": "VCL-013",
+      "code": "COOLANT_PIPE_CLAMP",
+      "name": "Coolant Pipe Clamp",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCL-014",
+      "code": "OIL_HOSE_CLAMP",
+      "name": "Oil Hose Clamp",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-015",
+      "code": "TRANSMISSION_HOSE_CLAMP",
+      "name": "Transmission Hose Clamp",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VCL-016",
+      "code": "POWER_STEERING_HOSE_CLAMP",
+      "name": "Power Steering Hose Clamp",
+      "category": "STEERING"
+    },
+    {
+      "id": "VCL-017",
+      "code": "AIR_SUSPENSION_LINE_CLAMP",
+      "name": "Air Suspension Line Clamp",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VCL-018",
+      "code": "EXHAUST_HOSE_CLAMP",
+      "name": "Exhaust Hose Clamp",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VCL-019",
+      "code": "EVAP_HOSE_CLAMP",
+      "name": "EVAP Hose Clamp",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VCL-020",
+      "code": "DEF_HOSE_CLAMP",
+      "name": "DEF Hose Clamp",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VCL-021",
+      "code": "DPF_HOSE_CLAMP",
+      "name": "DPF Hose Clamp",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VCL-022",
+      "code": "EGR_HOSE_CLAMP",
+      "name": "EGR Hose Clamp",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VCL-023",
+      "code": "BATTERY_CABLE_CLAMP",
+      "name": "Battery Cable Clamp",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VCL-024",
+      "code": "BATTERY_TERMINAL_CLAMP",
+      "name": "Battery Terminal Clamp",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VCL-025",
+      "code": "WIRING_HARNESS_CLAMP",
+      "name": "Wiring Harness Clamp",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCL-026",
+      "code": "CABLE_CLAMP",
+      "name": "Cable Clamp",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCL-027",
+      "code": "BRAKE_LINE_CLAMP",
+      "name": "Brake Line Clamp",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-028",
+      "code": "FUEL_LINE_CLAMP",
+      "name": "Fuel Line Clamp",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCL-029",
+      "code": "AC_PIPE_CLAMP",
+      "name": "A/C Pipe Clamp",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCL-030",
+      "code": "COOLANT_LINE_CLAMP",
+      "name": "Coolant Line Clamp",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCL-031",
+      "code": "SPRING_HOSE_CLAMP",
+      "name": "Spring Hose Clamp",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-032",
+      "code": "WORM_DRIVE_CLAMP",
+      "name": "Worm Drive Hose Clamp",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-033",
+      "code": "CONSTANT_TENSION_CLAMP",
+      "name": "Constant Tension Clamp",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-034",
+      "code": "EAR_CLAMP",
+      "name": "Ear Clamp",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-035",
+      "code": "OETIKER_STYLE_CLAMP",
+      "name": "Oetiker-Style Clamp",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-036",
+      "code": "T_BOLT_CLAMP",
+      "name": "T-Bolt Clamp",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-037",
+      "code": "V_BAND_CLAMP",
+      "name": "V-Band Clamp",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VCL-038",
+      "code": "EXHAUST_BAND_CLAMP",
+      "name": "Exhaust Band Clamp",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VCL-039",
+      "code": "EXHAUST_FLANGE_CLAMP",
+      "name": "Exhaust Flange Clamp",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VCL-040",
+      "code": "PIPE_COUPLING_CLAMP",
+      "name": "Pipe Coupling Clamp",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-041",
+      "code": "P_CLAMP",
+      "name": "P-Clamp",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCL-042",
+      "code": "RUBBER_CUSHION_CLAMP",
+      "name": "Rubber-Cushioned Clamp",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCL-043",
+      "code": "METAL_CABLE_CLAMP",
+      "name": "Metal Cable Clamp",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCL-044",
+      "code": "PLASTIC_CABLE_CLAMP",
+      "name": "Plastic Cable Clamp",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCL-045",
+      "code": "HARNESS_RETENTION_CLAMP",
+      "name": "Harness Retention Clamp",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCL-046",
+      "code": "PIPE_SUPPORT_CLAMP",
+      "name": "Pipe Support Clamp",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-047",
+      "code": "FUEL_PIPE_SUPPORT_CLAMP",
+      "name": "Fuel Pipe Support Clamp",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCL-048",
+      "code": "BRAKE_PIPE_SUPPORT_CLAMP",
+      "name": "Brake Pipe Support Clamp",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-049",
+      "code": "COOLANT_PIPE_SUPPORT_CLAMP",
+      "name": "Coolant Pipe Support Clamp",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCL-050",
+      "code": "AC_PIPE_SUPPORT_CLAMP",
+      "name": "A/C Pipe Support Clamp",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCL-051",
+      "code": "EXHAUST_SUPPORT_CLAMP",
+      "name": "Exhaust Support Clamp",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VCL-052",
+      "code": "BATTERY_HOLD_DOWN_CLAMP",
+      "name": "Battery Hold-Down Clamp",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VCL-053",
+      "code": "AIR_FILTER_CLAMP",
+      "name": "Air Filter Housing Clamp",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-054",
+      "code": "INTAKE_BOX_CLAMP",
+      "name": "Intake Box Clamp",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-055",
+      "code": "TURBO_INLET_CLAMP",
+      "name": "Turbo Inlet Clamp",
+      "category": "TURBO"
+    },
+    {
+      "id": "VCL-056",
+      "code": "INTERCOOLER_PIPE_CLAMP",
+      "name": "Intercooler Pipe Clamp",
+      "category": "TURBO"
+    },
+    {
+      "id": "VCL-057",
+      "code": "THROTTLE_BODY_CLAMP",
+      "name": "Throttle Body Clamp",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-058",
+      "code": "PCV_HOSE_CLAMP",
+      "name": "PCV Hose Clamp",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-059",
+      "code": "VACUUM_LINE_CLAMP",
+      "name": "Vacuum Line Clamp",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-060",
+      "code": "FUEL_INJECTOR_CLAMP",
+      "name": "Fuel Injector Retaining Clamp",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCL-061",
+      "code": "FUEL_RAIL_CLAMP",
+      "name": "Fuel Rail Clamp",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCL-062",
+      "code": "FUEL_FILTER_CLAMP",
+      "name": "Fuel Filter Clamp",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCL-063",
+      "code": "EVAP_LINE_CLAMP",
+      "name": "EVAP Line Clamp",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VCL-064",
+      "code": "EGR_PIPE_CLAMP",
+      "name": "EGR Pipe Clamp",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VCL-065",
+      "code": "DEF_LINE_CLAMP",
+      "name": "DEF Line Clamp",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VCL-066",
+      "code": "SCR_PIPE_CLAMP",
+      "name": "SCR Pipe Clamp",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VCL-067",
+      "code": "DPF_PIPE_CLAMP",
+      "name": "DPF Pipe Clamp",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VCL-068",
+      "code": "HV_WIRING_CLAMP",
+      "name": "High Voltage Wiring Clamp",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-069",
+      "code": "BATTERY_PACK_CLAMP",
+      "name": "Battery Pack Clamp",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-070",
+      "code": "INVERTER_PIPE_CLAMP",
+      "name": "Inverter Pipe Clamp",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-071",
+      "code": "EV_COOLANT_CLAMP",
+      "name": "EV Coolant Hose Clamp",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-072",
+      "code": "AIR_SUSPENSION_CLAMP",
+      "name": "Air Suspension Line Clamp",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VCL-073",
+      "code": "BRAKE_CALIPER_LINE_CLAMP",
+      "name": "Brake Caliper Line Clamp",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-074",
+      "code": "STEERING_HOSE_CLAMP",
+      "name": "Steering Hose Clamp",
+      "category": "STEERING"
+    },
+    {
+      "id": "VCL-075",
+      "code": "POWER_STEERING_PIPE_CLAMP",
+      "name": "Power Steering Pipe Clamp",
+      "category": "STEERING"
+    },
+    {
+      "id": "VCL-076",
+      "code": "AC_REFRIGERANT_LINE_CLAMP",
+      "name": "A/C Refrigerant Line Clamp",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCL-077",
+      "code": "WASHER_RESERVOIR_HOSE_CLAMP",
+      "name": "Washer Reservoir Hose Clamp",
+      "category": "WIPER_WASHER"
+    },
+    {
+      "id": "VCL-078",
+      "code": "SUNROOF_DRAIN_CLAMP",
+      "name": "Sunroof Drain Hose Clamp",
+      "category": "ROOF"
+    },
+    {
+      "id": "VCL-079",
+      "code": "ROOF_RAIL_CLAMP",
+      "name": "Roof Rail Clamp",
+      "category": "ROOF"
+    },
+    {
+      "id": "VCL-080",
+      "code": "EXHAUST_HEAT_SHIELD_CLAMP",
+      "name": "Exhaust Heat Shield Clamp",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VCL-081",
+      "code": "BODY_PANEL_CLAMP",
+      "name": "Body Panel Clamp",
+      "category": "BODY"
+    },
+    {
+      "id": "VCL-082",
+      "code": "BUMPER_CLAMP",
+      "name": "Bumper Clamp",
+      "category": "BODY"
+    },
+    {
+      "id": "VCL-083",
+      "code": "FENDER_CLAMP",
+      "name": "Fender Clamp",
+      "category": "BODY"
+    },
+    {
+      "id": "VCL-084",
+      "code": "GRILLE_CLAMP",
+      "name": "Grille Clamp",
+      "category": "BODY"
+    },
+    {
+      "id": "VCL-085",
+      "code": "TRIM_CLAMP",
+      "name": "Trim Clamp",
+      "category": "BODY"
+    },
+    {
+      "id": "VCL-086",
+      "code": "GLASS_MOULDING_CLAMP",
+      "name": "Glass Moulding Clamp",
+      "category": "GLASS"
+    },
+    {
+      "id": "VCL-087",
+      "code": "WEATHERSTRIP_CLAMP",
+      "name": "Weatherstrip Clamp",
+      "category": "BODY"
+    },
+    {
+      "id": "VCL-088",
+      "code": "MIRROR_WIRING_CLAMP",
+      "name": "Mirror Wiring Clamp",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VCL-089",
+      "code": "SEAT_WIRING_CLAMP",
+      "name": "Seat Wiring Clamp",
+      "category": "SEAT"
+    },
+    {
+      "id": "VCL-090",
+      "code": "DOOR_WIRING_CLAMP",
+      "name": "Door Wiring Clamp",
+      "category": "DOOR"
+    },
+    {
+      "id": "VCL-091",
+      "code": "CAMERA_WIRING_CLAMP",
+      "name": "Camera Wiring Clamp",
+      "category": "ADAS"
+    },
+    {
+      "id": "VCL-092",
+      "code": "RADAR_WIRING_CLAMP",
+      "name": "Radar Wiring Clamp",
+      "category": "ADAS"
+    },
+    {
+      "id": "VCL-093",
+      "code": "SENSOR_WIRING_CLAMP",
+      "name": "Sensor Wiring Clamp",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCL-094",
+      "code": "HARNESS_BUNDLE_CLAMP",
+      "name": "Harness Bundle Clamp",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCL-095",
+      "code": "PIPE_BUNDLE_CLAMP",
+      "name": "Pipe Bundle Clamp",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-096",
+      "code": "RUBBER_CUSHION_CLAMP",
+      "name": "Rubber Cushion Clamp",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VCL-097",
+      "code": "SERVICE_CLAMP_KIT",
+      "name": "Clamp Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VCL-098",
+      "code": "REPAIR_CLAMP_KIT",
+      "name": "Clamp Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VCL-099",
+      "code": "UNIVERSAL_CLAMP",
+      "name": "Universal Vehicle Clamp",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Clamp Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
