@@ -1,0 +1,87 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Lifecycle and publication status rules for Toyota and Lexus OEM catalog records.",
+  "statuses": [
+    {
+      "code": "draft",
+      "label": "Draft",
+      "labelArabic": "مسودة",
+      "public": false,
+      "searchable": false,
+      "inquiryAllowed": false
+    },
+    {
+      "code": "active",
+      "label": "Active",
+      "labelArabic": "نشط",
+      "public": true,
+      "searchable": true,
+      "inquiryAllowed": true
+    },
+    {
+      "code": "archived",
+      "label": "Archived",
+      "labelArabic": "مؤرشف",
+      "public": false,
+      "searchable": false,
+      "inquiryAllowed": false
+    },
+    {
+      "code": "disabled",
+      "label": "Disabled",
+      "labelArabic": "معطل",
+      "public": false,
+      "searchable": false,
+      "inquiryAllowed": false
+    }
+  ],
+  "transitionRules": {
+    "draft": [
+      "active",
+      "archived",
+      "disabled"
+    ],
+    "active": [
+      "draft",
+      "archived",
+      "disabled"
+    ],
+    "archived": [
+      "draft",
+      "active"
+    ],
+    "disabled": [
+      "draft",
+      "active",
+      "archived"
+    ]
+  },
+  "publicationRules": {
+    "requireRequiredFields": true,
+    "requireValidOemNumber": true,
+    "requireValidBrand": true,
+    "requireValidCategory": true,
+    "requireCompatibilityReview": false,
+    "allowUnverifiedCompatibility": true,
+    "requireImage": false,
+    "requirePrice": false,
+    "requireStock": false
+  },
+  "adminActions": {
+    "create": true,
+    "edit": true,
+    "publish": true,
+    "unpublish": true,
+    "archive": true,
+    "restore": true,
+    "disable": true,
+    "permanentDelete": false
+  },
+  "audit": {
+    "recordStatusChanges": true,
+    "recordUser": true,
+    "recordTimestamp": true,
+    "recordReason": true
+  }
+}
