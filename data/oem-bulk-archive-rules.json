@@ -1,0 +1,96 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk archive and restore rules for Toyota and Lexus OEM catalog records.",
+  "supportedActions": [
+    "archive",
+    "restore"
+  ],
+  "updateModes": [
+    "selected",
+    "filtered"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "archivePermission": "oem.archive",
+    "restorePermission": "oem.restore",
+    "requireConfirmation": true
+  },
+  "selectionRules": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 1000,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requirePreview": true,
+    "requireFinalConfirmation": true
+  },
+  "archiveRules": {
+    "setStatus": "archived",
+    "preserveRecordId": true,
+    "preserveOemNumber": true,
+    "preservePartName": true,
+    "preserveBrand": true,
+    "preserveCategory": true,
+    "preserveCompatibility": true,
+    "preserveImages": true,
+    "preservePricing": true,
+    "preserveInventory": true,
+    "preserveVerification": true,
+    "preserveAuditHistory": true
+  },
+  "restoreRules": {
+    "allowRestore": true,
+    "defaultRestoredStatus": "draft",
+    "restorePreviousStatusAutomatically": false,
+    "requireValidationBeforeRestore": true,
+    "requireCompatibilityCheck": false
+  },
+  "protectedRecords": {
+    "preventArchiveOfVerifiedRecords": false,
+    "requireExtraConfirmationForVerifiedRecords": true,
+    "preventArchiveWithOpenInquiries": true,
+    "preventArchiveWithActiveInventory": false
+  },
+  "validation": {
+    "validateBeforeAction": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "showAffectedRecords": true,
+    "showOldAndNewStatus": true,
+    "generatePreview": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousStatus": true,
+    "recordNewStatus": true,
+    "recordAffectedRecords": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeAction": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalArchived": true,
+    "showTotalRestored": true,
+    "showTotalSkipped": true,
+    "showTotalFailed": true,
+    "showValidationWarnings": true,
+    "generateArchiveReport": true
+  },
+  "safety": {
+    "neverPermanentlyDeleteRecords": true,
+    "neverDeleteImagesAutomatically": true,
+    "neverDeleteInventoryHistory": true,
+    "neverDeletePricingHistory": true,
+    "neverDeleteCompatibilityHistory": true,
+    "neverDeleteAuditHistory": true
+  }
+}
