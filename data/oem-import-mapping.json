@@ -1,0 +1,84 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Field mapping between OEM catalog import files and the normalized Al-Dahayan OEM catalog structure.",
+  "sourceFormats": [
+    "csv",
+    "xlsx"
+  ],
+  "mapping": {
+    "id": "id",
+    "oemNumber": "oemNumber",
+    "partName": "partName",
+    "arabicName": "arabicName",
+    "brand": "brand",
+    "category": "category",
+    "subcategory": "subcategory",
+    "description": "description",
+    "arabicDescription": "arabicDescription",
+    "models": "models",
+    "modelYears": "modelYears",
+    "engineCodes": "engineCodes",
+    "bodyTypes": "bodyTypes",
+    "marketSpecs": "marketSpecs",
+    "compatibleOemNumbers": "compatibleOemNumbers",
+    "supersededOemNumbers": "supersededOemNumbers",
+    "partType": "partType",
+    "condition": "condition",
+    "genuine": "genuine",
+    "aftermarket": "aftermarket",
+    "primaryImage": "images.primary",
+    "galleryImages": "images.gallery",
+    "regularPrice": "pricing.regularPrice",
+    "salePrice": "pricing.salePrice",
+    "discountPercent": "pricing.discountPercent",
+    "currency": "pricing.currency",
+    "priceVisibility": "pricing.visibility",
+    "stockStatus": "inventory.stockStatus",
+    "quantity": "inventory.quantity",
+    "locationIds": "inventory.locationIds",
+    "status": "status",
+    "verificationLevel": "verification.level",
+    "verificationSource": "verification.source",
+    "createdAt": "createdAt",
+    "updatedAt": "updatedAt"
+  },
+  "normalization": {
+    "trimWhitespace": true,
+    "normalizeOemNumber": true,
+    "normalizeBrand": true,
+    "normalizeCategory": true,
+    "normalizeBooleanValues": true,
+    "normalizeArrayValues": true,
+    "preserveArabicText": true,
+    "preserveOriginalOemNumber": true
+  },
+  "booleanValues": {
+    "true": [
+      "true",
+      "yes",
+      "y",
+      "1"
+    ],
+    "false": [
+      "false",
+      "no",
+      "n",
+      "0"
+    ]
+  },
+  "arraySeparators": [
+    "|",
+    ";"
+  ],
+  "emptyValueHandling": {
+    "emptyString": null,
+    "whitespaceOnly": null,
+    "missingColumn": "use_default",
+    "invalidValue": "validation_error"
+  },
+  "unknownFields": {
+    "allow": false,
+    "action": "report"
+  }
+}
