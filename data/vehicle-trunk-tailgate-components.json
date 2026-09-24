@@ -1,0 +1,604 @@
+{
+  "trunkTailgateComponents": [
+    {
+      "id": "VTTC-001",
+      "code": "TRUNK_TAILGATE_SYSTEM",
+      "name": "Trunk and Tailgate System",
+      "category": "TRUNK_TAILGATE"
+    },
+    {
+      "id": "VTTC-002",
+      "code": "TRUNK_LID",
+      "name": "Trunk Lid",
+      "category": "TRUNK"
+    },
+    {
+      "id": "VTTC-003",
+      "code": "TRUNK_LID_PANEL",
+      "name": "Trunk Lid Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VTTC-004",
+      "code": "TRUNK_LID_OUTER_PANEL",
+      "name": "Trunk Lid Outer Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VTTC-005",
+      "code": "TRUNK_LID_INNER_PANEL",
+      "name": "Trunk Lid Inner Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VTTC-006",
+      "code": "TRUNK_LID_FRAME",
+      "name": "Trunk Lid Frame",
+      "category": "BODY"
+    },
+    {
+      "id": "VTTC-007",
+      "code": "TAILGATE",
+      "name": "Tailgate",
+      "category": "TAILGATE"
+    },
+    {
+      "id": "VTTC-008",
+      "code": "TAILGATE_PANEL",
+      "name": "Tailgate Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VTTC-009",
+      "code": "TAILGATE_OUTER_PANEL",
+      "name": "Tailgate Outer Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VTTC-010",
+      "code": "TAILGATE_INNER_PANEL",
+      "name": "Tailgate Inner Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VTTC-011",
+      "code": "TAILGATE_FRAME",
+      "name": "Tailgate Frame",
+      "category": "BODY"
+    },
+    {
+      "id": "VTTC-012",
+      "code": "TRUNK_HINGE",
+      "name": "Trunk Hinge",
+      "category": "HINGE"
+    },
+    {
+      "id": "VTTC-013",
+      "code": "LEFT_TRUNK_HINGE",
+      "name": "Left Trunk Hinge",
+      "category": "HINGE"
+    },
+    {
+      "id": "VTTC-014",
+      "code": "RIGHT_TRUNK_HINGE",
+      "name": "Right Trunk Hinge",
+      "category": "HINGE"
+    },
+    {
+      "id": "VTTC-015",
+      "code": "TAILGATE_HINGE",
+      "name": "Tailgate Hinge",
+      "category": "HINGE"
+    },
+    {
+      "id": "VTTC-016",
+      "code": "TAILGATE_HINGE_PIN",
+      "name": "Tailgate Hinge Pin",
+      "category": "HINGE"
+    },
+    {
+      "id": "VTTC-017",
+      "code": "TRUNK_LATCH",
+      "name": "Trunk Latch",
+      "category": "LATCH"
+    },
+    {
+      "id": "VTTC-018",
+      "code": "TAILGATE_LATCH",
+      "name": "Tailgate Latch",
+      "category": "LATCH"
+    },
+    {
+      "id": "VTTC-019",
+      "code": "TRUNK_LATCH_ASSEMBLY",
+      "name": "Trunk Latch Assembly",
+      "category": "LATCH"
+    },
+    {
+      "id": "VTTC-020",
+      "code": "TAILGATE_LATCH_ASSEMBLY",
+      "name": "Tailgate Latch Assembly",
+      "category": "LATCH"
+    },
+    {
+      "id": "VTTC-021",
+      "code": "TRUNK_LOCK",
+      "name": "Trunk Lock",
+      "category": "LOCK"
+    },
+    {
+      "id": "VTTC-022",
+      "code": "TAILGATE_LOCK",
+      "name": "Tailgate Lock",
+      "category": "LOCK"
+    },
+    {
+      "id": "VTTC-023",
+      "code": "TRUNK_LOCK_CYLINDER",
+      "name": "Trunk Lock Cylinder",
+      "category": "LOCK"
+    },
+    {
+      "id": "VTTC-024",
+      "code": "TRUNK_LOCK_ACTUATOR",
+      "name": "Trunk Lock Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VTTC-025",
+      "code": "TAILGATE_LOCK_ACTUATOR",
+      "name": "Tailgate Lock Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VTTC-026",
+      "code": "POWER_TAILGATE_ACTUATOR",
+      "name": "Power Tailgate Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VTTC-027",
+      "code": "POWER_TAILGATE_MOTOR",
+      "name": "Power Tailgate Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VTTC-028",
+      "code": "POWER_TRUNK_MOTOR",
+      "name": "Power Trunk Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VTTC-029",
+      "code": "TRUNK_GAS_STRUT",
+      "name": "Trunk Gas Strut",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VTTC-030",
+      "code": "TAILGATE_GAS_STRUT",
+      "name": "Tailgate Gas Strut",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VTTC-031",
+      "code": "TRUNK_LIFT_SUPPORT",
+      "name": "Trunk Lift Support",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VTTC-032",
+      "code": "TAILGATE_LIFT_SUPPORT",
+      "name": "Tailgate Lift Support",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VTTC-033",
+      "code": "TRUNK_RELEASE_HANDLE",
+      "name": "Trunk Release Handle",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VTTC-034",
+      "code": "TAILGATE_RELEASE_HANDLE",
+      "name": "Tailgate Release Handle",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VTTC-035",
+      "code": "TRUNK_RELEASE_SWITCH",
+      "name": "Trunk Release Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VTTC-036",
+      "code": "TAILGATE_RELEASE_SWITCH",
+      "name": "Tailgate Release Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VTTC-037",
+      "code": "TRUNK_BUTTON",
+      "name": "Trunk Open Button",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VTTC-038",
+      "code": "TAILGATE_BUTTON",
+      "name": "Tailgate Open Button",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VTTC-039",
+      "code": "HANDS_FREE_TAILGATE_SENSOR",
+      "name": "Hands-Free Tailgate Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VTTC-040",
+      "code": "TAILGATE_POSITION_SENSOR",
+      "name": "Tailgate Position Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VTTC-041",
+      "code": "TRUNK_AJAR_SWITCH",
+      "name": "Trunk Ajar Switch",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VTTC-042",
+      "code": "TAILGATE_AJAR_SWITCH",
+      "name": "Tailgate Ajar Switch",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VTTC-043",
+      "code": "TRUNK_AJAR_SENSOR",
+      "name": "Trunk Ajar Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VTTC-044",
+      "code": "TAILGATE_AJAR_SENSOR",
+      "name": "Tailgate Ajar Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VTTC-045",
+      "code": "TRUNK_WIRING_HARNESS",
+      "name": "Trunk Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VTTC-046",
+      "code": "TAILGATE_WIRING_HARNESS",
+      "name": "Tailgate Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VTTC-047",
+      "code": "TRUNK_CONNECTOR",
+      "name": "Trunk Electrical Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VTTC-048",
+      "code": "TAILGATE_CONNECTOR",
+      "name": "Tailgate Electrical Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VTTC-049",
+      "code": "TRUNK_LOCK_CABLE",
+      "name": "Trunk Lock Cable",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VTTC-050",
+      "code": "TAILGATE_LOCK_CABLE",
+      "name": "Tailgate Lock Cable",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VTTC-051",
+      "code": "TRUNK_WEATHERSTRIP",
+      "name": "Trunk Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "VTTC-052",
+      "code": "TAILGATE_WEATHERSTRIP",
+      "name": "Tailgate Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "VTTC-053",
+      "code": "TRUNK_SEAL",
+      "name": "Trunk Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VTTC-054",
+      "code": "TAILGATE_SEAL",
+      "name": "Tailgate Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VTTC-055",
+      "code": "TRUNK_GASKET",
+      "name": "Trunk Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VTTC-056",
+      "code": "TAILGATE_GASKET",
+      "name": "Tailgate Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VTTC-057",
+      "code": "TRUNK_TRIM_PANEL",
+      "name": "Trunk Trim Panel",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VTTC-058",
+      "code": "TAILGATE_TRIM_PANEL",
+      "name": "Tailgate Trim Panel",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VTTC-059",
+      "code": "TRUNK_FLOOR_PANEL",
+      "name": "Trunk Floor Panel",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VTTC-060",
+      "code": "TRUNK_FLOOR_COVER",
+      "name": "Trunk Floor Cover",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VTTC-061",
+      "code": "TRUNK_SIDE_TRIM",
+      "name": "Trunk Side Trim",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VTTC-062",
+      "code": "TRUNK_CARGO_NET",
+      "name": "Trunk Cargo Net",
+      "category": "CARGO"
+    },
+    {
+      "id": "VTTC-063",
+      "code": "TRUNK_CARGO_HOOK",
+      "name": "Trunk Cargo Hook",
+      "category": "CARGO"
+    },
+    {
+      "id": "VTTC-064",
+      "code": "TRUNK_CARGO_COVER",
+      "name": "Trunk Cargo Cover",
+      "category": "CARGO"
+    },
+    {
+      "id": "VTTC-065",
+      "code": "TRUNK_LUGGAGE_BOARD",
+      "name": "Trunk Luggage Board",
+      "category": "CARGO"
+    },
+    {
+      "id": "VTTC-066",
+      "code": "TAILGATE_HANDLE",
+      "name": "Tailgate Handle",
+      "category": "HANDLE"
+    },
+    {
+      "id": "VTTC-067",
+      "code": "TRUNK_HANDLE",
+      "name": "Trunk Handle",
+      "category": "HANDLE"
+    },
+    {
+      "id": "VTTC-068",
+      "code": "TAILGATE_HANDLE_COVER",
+      "name": "Tailgate Handle Cover",
+      "category": "HANDLE"
+    },
+    {
+      "id": "VTTC-069",
+      "code": "TRUNK_HANDLE_GASKET",
+      "name": "Trunk Handle Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VTTC-070",
+      "code": "TAILGATE_HANDLE_GASKET",
+      "name": "Tailgate Handle Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VTTC-071",
+      "code": "TAILGATE_CAMERA",
+      "name": "Tailgate Camera",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VTTC-072",
+      "code": "TAILGATE_CAMERA_BRACKET",
+      "name": "Tailgate Camera Bracket",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VTTC-073",
+      "code": "TRUNK_LIGHT",
+      "name": "Trunk Compartment Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VTTC-074",
+      "code": "TAILGATE_LIGHT",
+      "name": "Tailgate Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VTTC-075",
+      "code": "TRUNK_LIGHT_SWITCH",
+      "name": "Trunk Light Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VTTC-076",
+      "code": "TAILGATE_LIGHT_WIRING",
+      "name": "Tailgate Light Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VTTC-077",
+      "code": "TRUNK_LID_EMBLEM",
+      "name": "Trunk Lid Emblem",
+      "category": "TRIM"
+    },
+    {
+      "id": "VTTC-078",
+      "code": "TAILGATE_EMBLEM",
+      "name": "Tailgate Emblem",
+      "category": "TRIM"
+    },
+    {
+      "id": "VTTC-079",
+      "code": "TAILGATE_MOULDING",
+      "name": "Tailgate Moulding",
+      "category": "TRIM"
+    },
+    {
+      "id": "VTTC-080",
+      "code": "TRUNK_LID_MOULDING",
+      "name": "Trunk Lid Moulding",
+      "category": "TRIM"
+    },
+    {
+      "id": "VTTC-081",
+      "code": "TRUNK_HINGE_BOLT",
+      "name": "Trunk Hinge Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VTTC-082",
+      "code": "TAILGATE_HINGE_BOLT",
+      "name": "Tailgate Hinge Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VTTC-083",
+      "code": "TRUNK_LATCH_BOLT",
+      "name": "Trunk Latch Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VTTC-084",
+      "code": "TAILGATE_LATCH_BOLT",
+      "name": "Tailgate Latch Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VTTC-085",
+      "code": "TRUNK_CLIP",
+      "name": "Trunk Trim Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VTTC-086",
+      "code": "TAILGATE_CLIP",
+      "name": "Tailgate Trim Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VTTC-087",
+      "code": "POWER_TAILGATE_CONTROL_MODULE",
+      "name": "Power Tailgate Control Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VTTC-088",
+      "code": "POWER_TRUNK_CONTROL_MODULE",
+      "name": "Power Trunk Control Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VTTC-089",
+      "code": "TRUNK_TAILGATE_REPAIR_KIT",
+      "name": "Trunk Tailgate Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VTTC-090",
+      "code": "TRUNK_TAILGATE_SERVICE_KIT",
+      "name": "Trunk Tailgate Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VTTC-091",
+      "code": "TRUNK_LATCH_REPAIR_KIT",
+      "name": "Trunk Latch Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VTTC-092",
+      "code": "TAILGATE_LATCH_REPAIR_KIT",
+      "name": "Tailgate Latch Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VTTC-093",
+      "code": "TRUNK_DIAGNOSTIC_COMPONENT",
+      "name": "Trunk Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VTTC-094",
+      "code": "TAILGATE_DIAGNOSTIC_COMPONENT",
+      "name": "Tailgate Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VTTC-095",
+      "code": "TRUNK_ELECTRICAL_COMPONENT",
+      "name": "General Trunk Electrical Component",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VTTC-096",
+      "code": "TAILGATE_ELECTRICAL_COMPONENT",
+      "name": "General Tailgate Electrical Component",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VTTC-097",
+      "code": "TRUNK_BODY_COMPONENT",
+      "name": "General Trunk Body Component",
+      "category": "BODY"
+    },
+    {
+      "id": "VTTC-098",
+      "code": "TAILGATE_BODY_COMPONENT",
+      "name": "General Tailgate Body Component",
+      "category": "BODY"
+    },
+    {
+      "id": "VTTC-099",
+      "code": "TRUNK_TAILGATE_GENERAL_COMPONENT",
+      "name": "General Trunk Tailgate Component",
+      "category": "TRUNK_TAILGATE"
+    },
+    {
+      "id": "VTTC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Trunk Tailgate Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
