@@ -1,0 +1,75 @@
+{
+  "version": "1.0.0",
+  "driveConfigurations": [
+    {
+      "code": "FWD",
+      "name": "Front-Wheel Drive",
+      "shortName": "FWD",
+      "drivenWheels": ["front"],
+      "description": "Power is delivered to the front wheels."
+    },
+    {
+      "code": "RWD",
+      "name": "Rear-Wheel Drive",
+      "shortName": "RWD",
+      "drivenWheels": ["rear"],
+      "description": "Power is delivered to the rear wheels."
+    },
+    {
+      "code": "AWD",
+      "name": "All-Wheel Drive",
+      "shortName": "AWD",
+      "drivenWheels": ["front", "rear"],
+      "description": "Power can be distributed to both front and rear wheels."
+    },
+    {
+      "code": "4WD_PART_TIME",
+      "name": "Part-Time Four-Wheel Drive",
+      "shortName": "Part-Time 4WD",
+      "drivenWheels": ["front", "rear"],
+      "description": "Four-wheel drive can be selected by the driver when required."
+    },
+    {
+      "code": "4WD_FULL_TIME",
+      "name": "Full-Time Four-Wheel Drive",
+      "shortName": "Full-Time 4WD",
+      "drivenWheels": ["front", "rear"],
+      "description": "Four-wheel drive operates continuously through the drivetrain."
+    },
+    {
+      "code": "4WD_SELECTABLE",
+      "name": "Selectable Four-Wheel Drive",
+      "shortName": "Selectable 4WD",
+      "drivenWheels": ["front", "rear"],
+      "description": "The vehicle allows selection between two-wheel-drive and four-wheel-drive modes."
+    },
+    {
+      "code": "E_AWD",
+      "name": "Electric All-Wheel Drive",
+      "shortName": "E-AWD",
+      "drivenWheels": ["front", "rear"],
+      "description": "Electric drive units provide propulsion to both axles."
+    },
+    {
+      "code": "E_FWD",
+      "name": "Electric Front-Wheel Drive",
+      "shortName": "E-FWD",
+      "drivenWheels": ["front"],
+      "description": "An electric drive unit provides propulsion to the front wheels."
+    },
+    {
+      "code": "E_RWD",
+      "name": "Electric Rear-Wheel Drive",
+      "shortName": "E-RWD",
+      "drivenWheels": ["rear"],
+      "description": "An electric drive unit provides propulsion to the rear wheels."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "shortName": "Unknown",
+      "drivenWheels": [],
+      "description": "Drive configuration has not yet been verified."
+    }
+  ]
+}
