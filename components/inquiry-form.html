@@ -1,1 +1,361 @@
+<!-- =========================================
+     AL-DAHAYAN REUSABLE INQUIRY FORM
+========================================= -->
 
+<section
+  class="inquiry-form-component"
+  data-component="inquiry-form"
+  aria-labelledby="inquiry-form-title"
+>
+
+  <div class="inquiry-form-header">
+
+    <span class="inquiry-form-eyebrow">
+      Customer Inquiry
+    </span>
+
+    <h2
+      id="inquiry-form-title"
+      class="inquiry-form-title"
+    >
+      Request Spare Parts Information
+    </h2>
+
+    <p class="inquiry-form-description">
+      Send your vehicle and part details to Al-Dahayan Trading Company.
+    </p>
+
+  </div>
+
+
+  <form
+    class="inquiry-form"
+    data-inquiry-form
+    novalidate
+  >
+
+    <!-- Customer Information -->
+    <fieldset class="inquiry-fieldset">
+
+      <legend>
+        Customer Information
+      </legend>
+
+      <div class="inquiry-form-grid">
+
+        <div class="inquiry-field">
+
+          <label for="inquiry-name">
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            id="inquiry-name"
+            name="name"
+            data-inquiry-name
+            autocomplete="name"
+            required
+          />
+
+        </div>
+
+
+        <div class="inquiry-field">
+
+          <label for="inquiry-phone">
+            Phone / WhatsApp
+          </label>
+
+          <input
+            type="tel"
+            id="inquiry-phone"
+            name="phone"
+            data-inquiry-phone
+            autocomplete="tel"
+            required
+          />
+
+        </div>
+
+
+        <div class="inquiry-field">
+
+          <label for="inquiry-email">
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="inquiry-email"
+            name="email"
+            data-inquiry-email
+            autocomplete="email"
+          />
+
+        </div>
+
+      </div>
+
+    </fieldset>
+
+
+    <!-- Part Information -->
+    <fieldset class="inquiry-fieldset">
+
+      <legend>
+        Part Information
+      </legend>
+
+      <div class="inquiry-form-grid">
+
+        <div class="inquiry-field">
+
+          <label for="inquiry-oem">
+            OEM Part Number
+          </label>
+
+          <input
+            type="text"
+            id="inquiry-oem"
+            name="oem"
+            data-inquiry-oem
+            placeholder="Example: 12261-54130"
+            spellcheck="false"
+          />
+
+        </div>
+
+
+        <div class="inquiry-field">
+
+          <label for="inquiry-part-name">
+            Part Name
+          </label>
+
+          <input
+            type="text"
+            id="inquiry-part-name"
+            name="partName"
+            data-inquiry-part-name
+          />
+
+        </div>
+
+
+        <div class="inquiry-field">
+
+          <label for="inquiry-quantity">
+            Quantity
+          </label>
+
+          <input
+            type="number"
+            id="inquiry-quantity"
+            name="quantity"
+            data-inquiry-quantity
+            min="1"
+            step="1"
+            value="1"
+          />
+
+        </div>
+
+      </div>
+
+    </fieldset>
+
+
+    <!-- Vehicle Information -->
+    <fieldset class="inquiry-fieldset">
+
+      <legend>
+        Vehicle Information
+      </legend>
+
+      <div class="inquiry-form-grid">
+
+        <div class="inquiry-field">
+
+          <label for="inquiry-make">
+            Make
+          </label>
+
+          <select
+            id="inquiry-make"
+            name="make"
+            data-inquiry-make
+          >
+            <option value="">
+              Select Make
+            </option>
+
+            <option value="Toyota">
+              Toyota
+            </option>
+
+            <option value="Lexus">
+              Lexus
+            </option>
+          </select>
+
+        </div>
+
+
+        <div class="inquiry-field">
+
+          <label for="inquiry-model">
+            Model
+          </label>
+
+          <input
+            type="text"
+            id="inquiry-model"
+            name="model"
+            data-inquiry-model
+            placeholder="Example: Land Cruiser"
+          />
+
+        </div>
+
+
+        <div class="inquiry-field">
+
+          <label for="inquiry-year">
+            Year
+          </label>
+
+          <input
+            type="number"
+            id="inquiry-year"
+            name="year"
+            data-inquiry-year
+            min="1900"
+            max="2100"
+          />
+
+        </div>
+
+
+        <div class="inquiry-field">
+
+          <label for="inquiry-engine">
+            Engine
+          </label>
+
+          <input
+            type="text"
+            id="inquiry-engine"
+            name="engine"
+            data-inquiry-engine
+            placeholder="Example: 4.0L V6"
+          />
+
+        </div>
+
+
+        <div class="inquiry-field inquiry-field-full">
+
+          <label for="inquiry-vin">
+            VIN
+          </label>
+
+          <input
+            type="text"
+            id="inquiry-vin"
+            name="vin"
+            data-inquiry-vin
+            maxlength="17"
+            placeholder="Enter 17-character VIN"
+            spellcheck="false"
+          />
+
+        </div>
+
+      </div>
+
+    </fieldset>
+
+
+    <!-- Message -->
+    <fieldset class="inquiry-fieldset">
+
+      <legend>
+        Additional Information
+      </legend>
+
+      <div class="inquiry-field">
+
+        <label for="inquiry-message">
+          Message
+        </label>
+
+        <textarea
+          id="inquiry-message"
+          name="message"
+          data-inquiry-message
+          rows="6"
+          placeholder="Tell us what you need..."
+        ></textarea>
+
+      </div>
+
+    </fieldset>
+
+
+    <!-- Consent -->
+    <div class="inquiry-consent">
+
+      <label class="inquiry-consent-label">
+
+        <input
+          type="checkbox"
+          name="consent"
+          data-inquiry-consent
+          required
+        />
+
+        <span>
+          I confirm that the information provided is correct
+          and may be used to respond to my inquiry.
+        </span>
+
+      </label>
+
+    </div>
+
+
+    <!-- Status -->
+    <div
+      class="inquiry-form-status"
+      data-inquiry-status
+      role="status"
+      aria-live="polite"
+      hidden
+    ></div>
+
+
+    <!-- Actions -->
+    <div class="inquiry-form-actions">
+
+      <button
+        type="submit"
+        class="inquiry-submit-button"
+        data-inquiry-submit
+      >
+        Send Inquiry
+      </button>
+
+      <button
+        type="reset"
+        class="inquiry-reset-button"
+        data-inquiry-reset
+      >
+        Reset
+      </button>
+
+    </div>
+
+  </form>
+
+</section>
