@@ -1,0 +1,102 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk vehicle compatibility update rules for Toyota and Lexus OEM catalog records.",
+  "supportedUpdateTypes": [
+    "models",
+    "modelYears",
+    "engineCodes",
+    "bodyTypes",
+    "marketSpecs",
+    "compatibleOemNumbers",
+    "supersededOemNumbers"
+  ],
+  "updateModes": [
+    "selected",
+    "filtered",
+    "imported"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.edit",
+    "requireConfirmation": true
+  },
+  "selectionRules": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 1000,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requirePreview": true
+  },
+  "compatibilityRules": {
+    "allowMultipleModels": true,
+    "allowMultipleModelYears": true,
+    "allowMultipleEngineCodes": true,
+    "allowMultipleBodyTypes": true,
+    "allowMultipleMarketSpecs": true,
+    "allowMultipleCompatibleOemNumbers": true,
+    "allowMultipleSupersededOemNumbers": true,
+    "preserveExistingValuesByDefault": true,
+    "preventEmptyCompatibilityByDefault": true
+  },
+  "updateMethods": [
+    "replace",
+    "add",
+    "remove",
+    "merge"
+  ],
+  "verification": {
+    "requireCompatibilityReview": true,
+    "allowUnverifiedCompatibility": true,
+    "newCompatibilityDefault": "unverified",
+    "doNotAutomaticallyMarkAsVerified": true
+  },
+  "validation": {
+    "validateBeforeUpdate": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "showAffectedRecords": true,
+    "showOldAndNewValues": true,
+    "detectDuplicateCompatibilityValues": true,
+    "generatePreview": true
+  },
+  "duplicateProtection": {
+    "enabled": true,
+    "ignoreDuplicateValuesWithinSameRecord": true,
+    "detectConflictingOemNumbers": true,
+    "requireReviewForConflicts": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousCompatibility": true,
+    "recordNewCompatibility": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.edit"
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalUpdated": true,
+    "showTotalSkipped": true,
+    "showTotalFailed": true,
+    "showValidationWarnings": true,
+    "showVerificationWarnings": true,
+    "generateUpdateReport": true
+  },
+  "safety": {
+    "neverDeleteRecords": true,
+    "neverModifyOemNumber": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "preserveCompatibilityHistory": true,
+    "preserveAuditHistory": true
+  }
+}
