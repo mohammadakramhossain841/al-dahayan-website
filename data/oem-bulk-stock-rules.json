@@ -1,0 +1,108 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk inventory and stock update rules for Toyota and Lexus OEM catalog records.",
+  "supportedUpdateTypes": [
+    "stockStatus",
+    "quantity",
+    "locationIds"
+  ],
+  "updateModes": [
+    "selected",
+    "filtered",
+    "imported"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.stock_update",
+    "requireConfirmation": true
+  },
+  "selectionRules": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 1000,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requirePreview": true
+  },
+  "stockStatuses": {
+    "allowedValues": [
+      "in_stock",
+      "low_stock",
+      "out_of_stock",
+      "on_order",
+      "unknown"
+    ],
+    "defaultStatus": "unknown"
+  },
+  "quantityRules": {
+    "enabled": true,
+    "minimumQuantity": 0,
+    "allowNegativeQuantity": false,
+    "allowDecimalQuantity": false,
+    "allowZeroQuantity": true
+  },
+  "updateMethods": [
+    "set_quantity",
+    "increase_quantity",
+    "decrease_quantity",
+    "set_stock_status",
+    "add_location",
+    "remove_location"
+  ],
+  "automaticStatusRules": {
+    "enabled": false,
+    "lowStockThreshold": 5,
+    "outOfStockThreshold": 0,
+    "doNotAutomaticallyOverrideManualStatus": true
+  },
+  "locationRules": {
+    "allowBulkLocationUpdate": true,
+    "preserveExistingLocationsByDefault": true,
+    "allowMultipleLocations": true,
+    "requireValidLocationIds": true
+  },
+  "validation": {
+    "validateBeforeUpdate": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "showAffectedRecords": true,
+    "showOldAndNewValues": true,
+    "generatePreview": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousStockStatus": true,
+    "recordNewStockStatus": true,
+    "recordPreviousQuantity": true,
+    "recordNewQuantity": true,
+    "recordPreviousLocations": true,
+    "recordNewLocations": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.stock_update"
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalUpdated": true,
+    "showTotalSkipped": true,
+    "showTotalFailed": true,
+    "showValidationWarnings": true,
+    "generateUpdateReport": true
+  },
+  "safety": {
+    "neverDeleteRecords": true,
+    "neverModifyOemNumber": true,
+    "neverModifyCompatibility": true,
+    "preserveInventoryHistory": true,
+    "preserveAuditHistory": true
+  }
+}
