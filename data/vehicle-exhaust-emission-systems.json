@@ -1,0 +1,424 @@
+{
+  "exhaustEmissionSystems": [
+    {
+      "id": "EXH-001",
+      "code": "EXHAUST_SYSTEM",
+      "name": "Exhaust System",
+      "category": "SYSTEM_TYPE",
+      "description": "Complete system for routing and treating engine exhaust gases"
+    },
+    {
+      "id": "EXH-002",
+      "code": "EXHAUST_MANIFOLD",
+      "name": "Exhaust Manifold",
+      "category": "COMPONENT",
+      "description": "Collects exhaust gases from engine cylinders"
+    },
+    {
+      "id": "EXH-003",
+      "code": "EXHAUST_MANIFOLD_GASKET",
+      "name": "Exhaust Manifold Gasket",
+      "category": "GASKET",
+      "description": "Seals the exhaust manifold to the engine"
+    },
+    {
+      "id": "EXH-004",
+      "code": "EXHAUST_PIPE",
+      "name": "Exhaust Pipe",
+      "category": "COMPONENT",
+      "description": "Carries exhaust gases through the exhaust system"
+    },
+    {
+      "id": "EXH-005",
+      "code": "FRONT_EXHAUST_PIPE",
+      "name": "Front Exhaust Pipe",
+      "category": "COMPONENT",
+      "description": "Front section of the exhaust pipe assembly"
+    },
+    {
+      "id": "EXH-006",
+      "code": "CENTER_EXHAUST_PIPE",
+      "name": "Center Exhaust Pipe",
+      "category": "COMPONENT",
+      "description": "Central section of the exhaust system"
+    },
+    {
+      "id": "EXH-007",
+      "code": "REAR_EXHAUST_PIPE",
+      "name": "Rear Exhaust Pipe",
+      "category": "COMPONENT",
+      "description": "Rear section of the exhaust system"
+    },
+    {
+      "id": "EXH-008",
+      "code": "CATALYTIC_CONVERTER",
+      "name": "Catalytic Converter",
+      "category": "EMISSION_CONTROL",
+      "description": "Reduces selected harmful exhaust emissions through catalytic reactions"
+    },
+    {
+      "id": "EXH-009",
+      "code": "THREE_WAY_CATALYTIC_CONVERTER",
+      "name": "Three-Way Catalytic Converter",
+      "category": "EMISSION_CONTROL",
+      "description": "Catalytic converter used on applicable gasoline engines"
+    },
+    {
+      "id": "EXH-010",
+      "code": "DIESEL_OXIDATION_CATALYST",
+      "name": "Diesel Oxidation Catalyst",
+      "category": "EMISSION_CONTROL",
+      "description": "Emission-control catalyst used on applicable diesel engines"
+    },
+    {
+      "id": "EXH-011",
+      "code": "DIESEL_PARTICULATE_FILTER",
+      "name": "Diesel Particulate Filter",
+      "category": "EMISSION_CONTROL",
+      "description": "Filters particulate matter from diesel exhaust"
+    },
+    {
+      "id": "EXH-012",
+      "code": "GASOLINE_PARTICULATE_FILTER",
+      "name": "Gasoline Particulate Filter",
+      "category": "EMISSION_CONTROL",
+      "description": "Filters particulate matter from applicable gasoline engines"
+    },
+    {
+      "id": "EXH-013",
+      "code": "SELECTIVE_CATALYTIC_REDUCTION",
+      "name": "Selective Catalytic Reduction",
+      "category": "EMISSION_CONTROL",
+      "description": "Emission-control system designed to reduce nitrogen oxides"
+    },
+    {
+      "id": "EXH-014",
+      "code": "SCR_CATALYST",
+      "name": "SCR Catalyst",
+      "category": "EMISSION_CONTROL",
+      "description": "Catalyst used within applicable selective catalytic reduction systems"
+    },
+    {
+      "id": "EXH-015",
+      "code": "DIESEL_EXHAUST_FLUID_SYSTEM",
+      "name": "Diesel Exhaust Fluid System",
+      "category": "EMISSION_CONTROL",
+      "description": "System supplying diesel exhaust fluid to applicable SCR systems"
+    },
+    {
+      "id": "EXH-016",
+      "code": "DEF_TANK",
+      "name": "Diesel Exhaust Fluid Tank",
+      "category": "EMISSION_CONTROL",
+      "description": "Storage tank for diesel exhaust fluid"
+    },
+    {
+      "id": "EXH-017",
+      "code": "DEF_PUMP",
+      "name": "Diesel Exhaust Fluid Pump",
+      "category": "EMISSION_CONTROL",
+      "description": "Pump supplying diesel exhaust fluid within applicable systems"
+    },
+    {
+      "id": "EXH-018",
+      "code": "DEF_INJECTOR",
+      "name": "Diesel Exhaust Fluid Injector",
+      "category": "EMISSION_CONTROL",
+      "description": "Injects diesel exhaust fluid into the exhaust system"
+    },
+    {
+      "id": "EXH-019",
+      "code": "EGR_SYSTEM",
+      "name": "Exhaust Gas Recirculation System",
+      "category": "EMISSION_CONTROL",
+      "description": "Recirculates a controlled amount of exhaust gas into the engine intake"
+    },
+    {
+      "id": "EXH-020",
+      "code": "EGR_VALVE",
+      "name": "EGR Valve",
+      "category": "EMISSION_CONTROL",
+      "description": "Controls exhaust gas recirculation flow"
+    },
+    {
+      "id": "EXH-021",
+      "code": "EGR_COOLER",
+      "name": "EGR Cooler",
+      "category": "EMISSION_CONTROL",
+      "description": "Cools exhaust gases before recirculation on applicable engines"
+    },
+    {
+      "id": "EXH-022",
+      "code": "EGR_PIPE",
+      "name": "EGR Pipe",
+      "category": "COMPONENT",
+      "description": "Carries exhaust gases within the EGR system"
+    },
+    {
+      "id": "EXH-023",
+      "code": "OXYGEN_SENSOR",
+      "name": "Oxygen Sensor",
+      "category": "SENSOR",
+      "description": "Measures oxygen concentration in exhaust gases"
+    },
+    {
+      "id": "EXH-024",
+      "code": "AIR_FUEL_RATIO_SENSOR",
+      "name": "Air-Fuel Ratio Sensor",
+      "category": "SENSOR",
+      "description": "Measures exhaust gas oxygen content for engine control"
+    },
+    {
+      "id": "EXH-025",
+      "code": "NOX_SENSOR",
+      "name": "NOx Sensor",
+      "category": "SENSOR",
+      "description": "Measures nitrogen oxide concentration in applicable exhaust systems"
+    },
+    {
+      "id": "EXH-026",
+      "code": "EXHAUST_GAS_TEMPERATURE_SENSOR",
+      "name": "Exhaust Gas Temperature Sensor",
+      "category": "SENSOR",
+      "description": "Measures exhaust gas temperature"
+    },
+    {
+      "id": "EXH-027",
+      "code": "DPF_PRESSURE_SENSOR",
+      "name": "DPF Pressure Sensor",
+      "category": "SENSOR",
+      "description": "Measures pressure difference across an applicable particulate filter"
+    },
+    {
+      "id": "EXH-028",
+      "code": "DPF_DIFFERENTIAL_PRESSURE_SENSOR",
+      "name": "DPF Differential Pressure Sensor",
+      "category": "SENSOR",
+      "description": "Monitors pressure differential used for particulate filter management"
+    },
+    {
+      "id": "EXH-029",
+      "code": "EXHAUST_PRESSURE_SENSOR",
+      "name": "Exhaust Pressure Sensor",
+      "category": "SENSOR",
+      "description": "Measures exhaust system pressure"
+    },
+    {
+      "id": "EXH-030",
+      "code": "PARTICULATE_MATTER_SENSOR",
+      "name": "Particulate Matter Sensor",
+      "category": "SENSOR",
+      "description": "Detects particulate matter in applicable exhaust systems"
+    },
+    {
+      "id": "EXH-031",
+      "code": "EXHAUST_GAS_RECIRCULATION_SENSOR",
+      "name": "EGR Sensor",
+      "category": "SENSOR",
+      "description": "Monitors applicable EGR system operating conditions"
+    },
+    {
+      "id": "EXH-032",
+      "code": "MASS_AIR_FLOW_SENSOR",
+      "name": "Mass Air Flow Sensor",
+      "category": "ENGINE_MANAGEMENT",
+      "description": "Measures intake air mass for engine control calculations"
+    },
+    {
+      "id": "EXH-033",
+      "code": "EXHAUST_THROTTLE_VALVE",
+      "name": "Exhaust Throttle Valve",
+      "category": "EMISSION_CONTROL",
+      "description": "Controls exhaust flow in applicable emission-control systems"
+    },
+    {
+      "id": "EXH-034",
+      "code": "EXHAUST_FLAP",
+      "name": "Exhaust Flap",
+      "category": "EMISSION_CONTROL",
+      "description": "Controls exhaust flow or acoustic characteristics on applicable vehicles"
+    },
+    {
+      "id": "EXH-035",
+      "code": "MIXER_PIPE",
+      "name": "Exhaust Mixer",
+      "category": "EMISSION_CONTROL",
+      "description": "Promotes mixing of injected fluid with exhaust gases in applicable systems"
+    },
+    {
+      "id": "EXH-036",
+      "code": "MUFFLER",
+      "name": "Muffler",
+      "category": "NOISE_CONTROL",
+      "description": "Reduces exhaust noise"
+    },
+    {
+      "id": "EXH-037",
+      "code": "RESONATOR",
+      "name": "Exhaust Resonator",
+      "category": "NOISE_CONTROL",
+      "description": "Controls selected exhaust sound frequencies"
+    },
+    {
+      "id": "EXH-038",
+      "code": "TAILPIPE",
+      "name": "Tailpipe",
+      "category": "COMPONENT",
+      "description": "Final outlet section of the exhaust system"
+    },
+    {
+      "id": "EXH-039",
+      "code": "EXHAUST_HANGER",
+      "name": "Exhaust Hanger",
+      "category": "MOUNTING",
+      "description": "Supports the exhaust system from the vehicle body or chassis"
+    },
+    {
+      "id": "EXH-040",
+      "code": "EXHAUST_HANGER_RUBBER",
+      "name": "Exhaust Hanger Rubber",
+      "category": "MOUNTING",
+      "description": "Flexible rubber mount used to isolate exhaust vibration"
+    },
+    {
+      "id": "EXH-041",
+      "code": "EXHAUST_CLAMP",
+      "name": "Exhaust Clamp",
+      "category": "MOUNTING",
+      "description": "Secures exhaust pipe sections together"
+    },
+    {
+      "id": "EXH-042",
+      "code": "EXHAUST_FLANGE",
+      "name": "Exhaust Flange",
+      "category": "MOUNTING",
+      "description": "Flanged connection between exhaust components"
+    },
+    {
+      "id": "EXH-043",
+      "code": "EXHAUST_GASKET",
+      "name": "Exhaust Gasket",
+      "category": "GASKET",
+      "description": "Seals connections between exhaust components"
+    },
+    {
+      "id": "EXH-044",
+      "code": "EXHAUST_FLEX_PIPE",
+      "name": "Exhaust Flex Pipe",
+      "category": "COMPONENT",
+      "description": "Flexible exhaust section that accommodates engine and exhaust movement"
+    },
+    {
+      "id": "EXH-045",
+      "code": "TURBOCHARGER_EXHAUST_SIDE",
+      "name": "Turbocharger Exhaust Side",
+      "category": "ENGINE_INTEGRATION",
+      "description": "Turbocharger exhaust-side components involved in exhaust gas flow"
+    },
+    {
+      "id": "EXH-046",
+      "code": "TURBOCHARGER_WASTEGATE",
+      "name": "Turbocharger Wastegate",
+      "category": "ENGINE_INTEGRATION",
+      "description": "Controls exhaust gas flow to the turbocharger turbine on applicable systems"
+    },
+    {
+      "id": "EXH-047",
+      "code": "TURBOCHARGER_ACTUATOR",
+      "name": "Turbocharger Actuator",
+      "category": "ENGINE_INTEGRATION",
+      "description": "Controls applicable turbocharger geometry or boost functions"
+    },
+    {
+      "id": "EXH-048",
+      "code": "SECONDARY_AIR_INJECTION_SYSTEM",
+      "name": "Secondary Air Injection System",
+      "category": "EMISSION_CONTROL",
+      "description": "Supplies additional air to the exhaust system on applicable engines"
+    },
+    {
+      "id": "EXH-049",
+      "code": "SECONDARY_AIR_PUMP",
+      "name": "Secondary Air Pump",
+      "category": "EMISSION_CONTROL",
+      "description": "Pumps air into the exhaust system for applicable emission-control operation"
+    },
+    {
+      "id": "EXH-050",
+      "code": "EVAPORATIVE_EMISSION_SYSTEM",
+      "name": "Evaporative Emission System",
+      "category": "EMISSION_CONTROL",
+      "description": "Controls fuel vapor emissions from the fuel system"
+    },
+    {
+      "id": "EXH-051",
+      "code": "CHARCOAL_CANISTER",
+      "name": "Charcoal Canister",
+      "category": "EVAP",
+      "description": "Stores fuel vapors in an evaporative emission-control system"
+    },
+    {
+      "id": "EXH-052",
+      "code": "PURGE_CONTROL_VALVE",
+      "name": "Purge Control Valve",
+      "category": "EVAP",
+      "description": "Controls fuel vapor flow from the charcoal canister"
+    },
+    {
+      "id": "EXH-053",
+      "code": "EVAPORATIVE_EMISSION_LINE",
+      "name": "Evaporative Emission Line",
+      "category": "EVAP",
+      "description": "Carries fuel vapor within the evaporative emission system"
+    },
+    {
+      "id": "EXH-054",
+      "code": "FUEL_TANK_PRESSURE_SENSOR",
+      "name": "Fuel Tank Pressure Sensor",
+      "category": "EVAP_SENSOR",
+      "description": "Measures fuel tank pressure for evaporative emission control"
+    },
+    {
+      "id": "EXH-055",
+      "code": "EMISSION_CONTROL_MODULE",
+      "name": "Emission Control Module",
+      "category": "ELECTRONIC",
+      "description": "Electronic control unit or module managing applicable emission-control functions"
+    },
+    {
+      "id": "EXH-056",
+      "code": "DPF_REGENERATION_SYSTEM",
+      "name": "DPF Regeneration System",
+      "category": "EMISSION_CONTROL",
+      "description": "System used to manage regeneration of an applicable diesel particulate filter"
+    },
+    {
+      "id": "EXH-057",
+      "code": "EXHAUST_HEAT_SHIELD",
+      "name": "Exhaust Heat Shield",
+      "category": "PROTECTION",
+      "description": "Protective shield that reduces heat transfer from exhaust components"
+    },
+    {
+      "id": "EXH-058",
+      "code": "EXHAUST_INSULATION",
+      "name": "Exhaust Insulation",
+      "category": "PROTECTION",
+      "description": "Thermal insulation used around applicable exhaust components"
+    },
+    {
+      "id": "EXH-059",
+      "code": "EMISSION_CONTROL_GASKET",
+      "name": "Emission Control Gasket",
+      "category": "GASKET",
+      "description": "Gasket used to seal applicable emission-control components"
+    },
+    {
+      "id": "EXH-060",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "category": "UNKNOWN",
+      "description": "Exhaust or emission-system specification not available"
+    }
+  ]
+}
