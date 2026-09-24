@@ -1,0 +1,83 @@
+{
+  "version": "1.0.0",
+  "standards": [
+    {
+      "code": "EURO_3",
+      "name": "Euro 3",
+      "region": "Europe",
+      "description": "European vehicle emission standard."
+    },
+    {
+      "code": "EURO_4",
+      "name": "Euro 4",
+      "region": "Europe",
+      "description": "European vehicle emission standard."
+    },
+    {
+      "code": "EURO_5",
+      "name": "Euro 5",
+      "region": "Europe",
+      "description": "European vehicle emission standard."
+    },
+    {
+      "code": "EURO_6",
+      "name": "Euro 6",
+      "region": "Europe",
+      "description": "European vehicle emission standard with reduced regulated pollutant limits."
+    },
+    {
+      "code": "EURO_6D",
+      "name": "Euro 6d",
+      "region": "Europe",
+      "description": "Later Euro 6 emission standard incorporating real-world driving requirements."
+    },
+    {
+      "code": "US_TIER_2",
+      "name": "US Tier 2",
+      "region": "North America",
+      "description": "United States vehicle emission classification."
+    },
+    {
+      "code": "US_TIER_3",
+      "name": "US Tier 3",
+      "region": "North America",
+      "description": "United States vehicle emission standard with tighter pollutant limits."
+    },
+    {
+      "code": "EPA_2007",
+      "name": "EPA 2007",
+      "region": "North America",
+      "description": "United States heavy-duty diesel emission standard."
+    },
+    {
+      "code": "EPA_2010",
+      "name": "EPA 2010",
+      "region": "North America",
+      "description": "United States heavy-duty diesel emission standard with stringent NOx and particulate requirements."
+    },
+    {
+      "code": "JAPAN_2009",
+      "name": "Japan 2009",
+      "region": "Japan",
+      "description": "Japanese vehicle emission standard reference."
+    },
+    {
+      "code": "JAPAN_2018",
+      "name": "Japan 2018",
+      "region": "Japan",
+      "description": "Japanese vehicle emission standard reference."
+    },
+    {
+      "code": "GCC",
+      "name": "GCC Emission Specification",
+      "region": "GCC",
+      "description": "Gulf-region vehicle emission specification reference."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "region": "Unknown",
+      "description": "Emission standard has not yet been verified."
+    }
+  ]
+}
