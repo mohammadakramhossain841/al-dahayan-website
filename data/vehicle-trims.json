@@ -1,0 +1,77 @@
+{
+  "version": "1.0.0",
+  "trimDefinitions": [
+    {
+      "code": "BASE",
+      "name": "Base",
+      "shortName": "Base",
+      "description": "Entry-level vehicle trim with standard equipment."
+    },
+    {
+      "code": "STANDARD",
+      "name": "Standard",
+      "shortName": "Standard",
+      "description": "Standard vehicle configuration with commonly included equipment."
+    },
+    {
+      "code": "MID",
+      "name": "Mid",
+      "shortName": "Mid",
+      "description": "Mid-level trim with additional equipment compared with the base configuration."
+    },
+    {
+      "code": "HIGH",
+      "name": "High",
+      "shortName": "High",
+      "description": "Higher-level trim with additional comfort, safety, and convenience features."
+    },
+    {
+      "code": "PREMIUM",
+      "name": "Premium",
+      "shortName": "Premium",
+      "description": "Premium trim with enhanced equipment and convenience features."
+    },
+    {
+      "code": "LUXURY",
+      "name": "Luxury",
+      "shortName": "Luxury",
+      "description": "Luxury-oriented trim with higher-grade equipment and interior features."
+    },
+    {
+      "code": "SPORT",
+      "name": "Sport",
+      "shortName": "Sport",
+      "description": "Sport-oriented trim with styling or performance-focused equipment."
+    },
+    {
+      "code": "OFF_ROAD",
+      "name": "Off-Road",
+      "shortName": "Off-Road",
+      "description": "Trim configured with equipment intended for off-road or rugged driving."
+    },
+    {
+      "code": "HYBRID",
+      "name": "Hybrid",
+      "shortName": "Hybrid",
+      "description": "Trim associated with a hybrid powertrain configuration."
+    },
+    {
+      "code": "EV",
+      "name": "Electric",
+      "shortName": "EV",
+      "description": "Trim associated with a battery-electric powertrain."
+    },
+    {
+      "code": "SPECIAL",
+      "name": "Special Edition",
+      "shortName": "Special",
+      "description": "Limited or market-specific special-edition vehicle configuration."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "shortName": "Unknown",
+      "description": "Trim information has not yet been verified."
+    }
+  ]
+}
