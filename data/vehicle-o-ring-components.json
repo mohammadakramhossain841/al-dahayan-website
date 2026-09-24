@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_o_ring_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VOR-001",
+      "code": "ENGINE_OIL_O_RING",
+      "name": "Engine Oil O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-002",
+      "code": "OIL_FILTER_O_RING",
+      "name": "Oil Filter O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-003",
+      "code": "OIL_COOLER_O_RING",
+      "name": "Oil Cooler O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-004",
+      "code": "OIL_PAN_DRAIN_O_RING",
+      "name": "Oil Pan Drain O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-005",
+      "code": "VALVE_COVER_O_RING",
+      "name": "Valve Cover O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-006",
+      "code": "SPARK_PLUG_TUBE_O_RING",
+      "name": "Spark Plug Tube O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-007",
+      "code": "CAMSHAFT_O_RING",
+      "name": "Camshaft O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-008",
+      "code": "CRANKSHAFT_O_RING",
+      "name": "Crankshaft O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-009",
+      "code": "VVT_O_RING",
+      "name": "VVT O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-010",
+      "code": "TIMING_COVER_O_RING",
+      "name": "Timing Cover O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-011",
+      "code": "WATER_PUMP_O_RING",
+      "name": "Water Pump O-Ring",
+      "category": "COOLING"
+    },
+    {
+      "id": "VOR-012",
+      "code": "THERMOSTAT_O_RING",
+      "name": "Thermostat O-Ring",
+      "category": "COOLING"
+    },
+    {
+      "id": "VOR-013",
+      "code": "COOLANT_PIPE_O_RING",
+      "name": "Coolant Pipe O-Ring",
+      "category": "COOLING"
+    },
+    {
+      "id": "VOR-014",
+      "code": "COOLANT_FLANGE_O_RING",
+      "name": "Coolant Flange O-Ring",
+      "category": "COOLING"
+    },
+    {
+      "id": "VOR-015",
+      "code": "RADIATOR_PIPE_O_RING",
+      "name": "Radiator Pipe O-Ring",
+      "category": "COOLING"
+    },
+    {
+      "id": "VOR-016",
+      "code": "WATER_OUTLET_O_RING",
+      "name": "Water Outlet O-Ring",
+      "category": "COOLING"
+    },
+    {
+      "id": "VOR-017",
+      "code": "WATER_INLET_O_RING",
+      "name": "Water Inlet O-Ring",
+      "category": "COOLING"
+    },
+    {
+      "id": "VOR-018",
+      "code": "HEATER_PIPE_O_RING",
+      "name": "Heater Pipe O-Ring",
+      "category": "HVAC"
+    },
+    {
+      "id": "VOR-019",
+      "code": "HEATER_CORE_O_RING",
+      "name": "Heater Core O-Ring",
+      "category": "HVAC"
+    },
+    {
+      "id": "VOR-020",
+      "code": "AC_PIPE_O_RING",
+      "name": "A/C Pipe O-Ring",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VOR-021",
+      "code": "AC_COMPRESSOR_O_RING",
+      "name": "A/C Compressor O-Ring",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VOR-022",
+      "code": "AC_CONDENSER_O_RING",
+      "name": "A/C Condenser O-Ring",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VOR-023",
+      "code": "AC_EVAPORATOR_O_RING",
+      "name": "A/C Evaporator O-Ring",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VOR-024",
+      "code": "EXPANSION_VALVE_O_RING",
+      "name": "Expansion Valve O-Ring",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VOR-025",
+      "code": "RECEIVER_DRIER_O_RING",
+      "name": "Receiver Drier O-Ring",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VOR-026",
+      "code": "FUEL_INJECTOR_O_RING",
+      "name": "Fuel Injector O-Ring",
+      "category": "FUEL"
+    },
+    {
+      "id": "VOR-027",
+      "code": "FUEL_RAIL_O_RING",
+      "name": "Fuel Rail O-Ring",
+      "category": "FUEL"
+    },
+    {
+      "id": "VOR-028",
+      "code": "FUEL_PUMP_O_RING",
+      "name": "Fuel Pump O-Ring",
+      "category": "FUEL"
+    },
+    {
+      "id": "VOR-029",
+      "code": "FUEL_FILTER_O_RING",
+      "name": "Fuel Filter O-Ring",
+      "category": "FUEL"
+    },
+    {
+      "id": "VOR-030",
+      "code": "FUEL_LINE_O_RING",
+      "name": "Fuel Line O-Ring",
+      "category": "FUEL"
+    },
+    {
+      "id": "VOR-031",
+      "code": "FUEL_PRESSURE_REGULATOR_O_RING",
+      "name": "Fuel Pressure Regulator O-Ring",
+      "category": "FUEL"
+    },
+    {
+      "id": "VOR-032",
+      "code": "FUEL_PRESSURE_SENSOR_O_RING",
+      "name": "Fuel Pressure Sensor O-Ring",
+      "category": "FUEL"
+    },
+    {
+      "id": "VOR-033",
+      "code": "EVAP_VALVE_O_RING",
+      "name": "EVAP Valve O-Ring",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VOR-034",
+      "code": "EVAP_CANISTER_O_RING",
+      "name": "EVAP Canister O-Ring",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VOR-035",
+      "code": "EGR_VALVE_O_RING",
+      "name": "EGR Valve O-Ring",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VOR-036",
+      "code": "EGR_PIPE_O_RING",
+      "name": "EGR Pipe O-Ring",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VOR-037",
+      "code": "THROTTLE_BODY_O_RING",
+      "name": "Throttle Body O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-038",
+      "code": "INTAKE_MANIFOLD_O_RING",
+      "name": "Intake Manifold O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-039",
+      "code": "MAP_SENSOR_O_RING",
+      "name": "MAP Sensor O-Ring",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VOR-040",
+      "code": "OIL_PRESSURE_SENSOR_O_RING",
+      "name": "Oil Pressure Sensor O-Ring",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VOR-041",
+      "code": "COOLANT_TEMP_SENSOR_O_RING",
+      "name": "Coolant Temperature Sensor O-Ring",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VOR-042",
+      "code": "TRANSMISSION_OIL_O_RING",
+      "name": "Transmission Oil O-Ring",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VOR-043",
+      "code": "TRANSMISSION_FILTER_O_RING",
+      "name": "Transmission Filter O-Ring",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VOR-044",
+      "code": "TRANSMISSION_PIPE_O_RING",
+      "name": "Transmission Pipe O-Ring",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VOR-045",
+      "code": "TRANSMISSION_COOLER_O_RING",
+      "name": "Transmission Cooler O-Ring",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VOR-046",
+      "code": "SHIFT_SOLENOID_O_RING",
+      "name": "Shift Solenoid O-Ring",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VOR-047",
+      "code": "VALVE_BODY_O_RING",
+      "name": "Valve Body O-Ring",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VOR-048",
+      "code": "CVT_OIL_O_RING",
+      "name": "CVT Oil O-Ring",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VOR-049",
+      "code": "CVT_FILTER_O_RING",
+      "name": "CVT Filter O-Ring",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VOR-050",
+      "code": "DCT_OIL_O_RING",
+      "name": "DCT Oil O-Ring",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VOR-051",
+      "code": "TRANSFER_CASE_O_RING",
+      "name": "Transfer Case O-Ring",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VOR-052",
+      "code": "TRANSFER_CASE_FILLER_O_RING",
+      "name": "Transfer Case Filler O-Ring",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VOR-053",
+      "code": "DIFFERENTIAL_FILLER_O_RING",
+      "name": "Differential Filler O-Ring",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VOR-054",
+      "code": "DIFFERENTIAL_DRAIN_O_RING",
+      "name": "Differential Drain O-Ring",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VOR-055",
+      "code": "AXLE_O_RING",
+      "name": "Axle O-Ring",
+      "category": "AXLE"
+    },
+    {
+      "id": "VOR-056",
+      "code": "AXLE_SEALING_O_RING",
+      "name": "Axle Sealing O-Ring",
+      "category": "AXLE"
+    },
+    {
+      "id": "VOR-057",
+      "code": "POWER_STEERING_O_RING",
+      "name": "Power Steering O-Ring",
+      "category": "STEERING"
+    },
+    {
+      "id": "VOR-058",
+      "code": "POWER_STEERING_PIPE_O_RING",
+      "name": "Power Steering Pipe O-Ring",
+      "category": "STEERING"
+    },
+    {
+      "id": "VOR-059",
+      "code": "STEERING_RACK_O_RING",
+      "name": "Steering Rack O-Ring",
+      "category": "STEERING"
+    },
+    {
+      "id": "VOR-060",
+      "code": "BRAKE_CALIPER_O_RING",
+      "name": "Brake Caliper O-Ring",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VOR-061",
+      "code": "BRAKE_MASTER_CYLINDER_O_RING",
+      "name": "Brake Master Cylinder O-Ring",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VOR-062",
+      "code": "ABS_UNIT_O_RING",
+      "name": "ABS Unit O-Ring",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VOR-063",
+      "code": "BRAKE_LINE_O_RING",
+      "name": "Brake Line O-Ring",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VOR-064",
+      "code": "CLUTCH_MASTER_O_RING",
+      "name": "Clutch Master Cylinder O-Ring",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VOR-065",
+      "code": "CLUTCH_SLAVE_O_RING",
+      "name": "Clutch Slave Cylinder O-Ring",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VOR-066",
+      "code": "CLUTCH_LINE_O_RING",
+      "name": "Clutch Line O-Ring",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VOR-067",
+      "code": "TURBO_OIL_O_RING",
+      "name": "Turbo Oil O-Ring",
+      "category": "TURBO"
+    },
+    {
+      "id": "VOR-068",
+      "code": "TURBO_COOLANT_O_RING",
+      "name": "Turbo Coolant O-Ring",
+      "category": "TURBO"
+    },
+    {
+      "id": "VOR-069",
+      "code": "TURBO_AIR_O_RING",
+      "name": "Turbo Air O-Ring",
+      "category": "TURBO"
+    },
+    {
+      "id": "VOR-070",
+      "code": "INTERCOOLER_O_RING",
+      "name": "Intercooler O-Ring",
+      "category": "TURBO"
+    },
+    {
+      "id": "VOR-071",
+      "code": "DEF_INJECTOR_O_RING",
+      "name": "DEF Injector O-Ring",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VOR-072",
+      "code": "SCR_PIPE_O_RING",
+      "name": "SCR Pipe O-Ring",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VOR-073",
+      "code": "DPF_SENSOR_O_RING",
+      "name": "DPF Sensor O-Ring",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VOR-074",
+      "code": "EXHAUST_SENSOR_O_RING",
+      "name": "Exhaust Sensor O-Ring",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VOR-075",
+      "code": "EXHAUST_VALVE_O_RING",
+      "name": "Exhaust Valve O-Ring",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VOR-076",
+      "code": "HYBRID_COOLANT_O_RING",
+      "name": "Hybrid Coolant O-Ring",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VOR-077",
+      "code": "INVERTER_COOLANT_O_RING",
+      "name": "Inverter Coolant O-Ring",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VOR-078",
+      "code": "EV_MOTOR_COOLANT_O_RING",
+      "name": "EV Motor Coolant O-Ring",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VOR-079",
+      "code": "EV_BATTERY_COOLANT_O_RING",
+      "name": "EV Battery Coolant O-Ring",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VOR-080",
+      "code": "INVERTER_PIPE_O_RING",
+      "name": "Inverter Pipe O-Ring",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VOR-081",
+      "code": "CHARGING_SYSTEM_O_RING",
+      "name": "Charging System O-Ring",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VOR-082",
+      "code": "HV_CONNECTOR_O_RING",
+      "name": "High Voltage Connector O-Ring",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VOR-083",
+      "code": "BATTERY_COOLING_O_RING",
+      "name": "Battery Cooling O-Ring",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VOR-084",
+      "code": "AUXILIARY_PUMP_O_RING",
+      "name": "Auxiliary Pump O-Ring",
+      "category": "COOLING"
+    },
+    {
+      "id": "VOR-085",
+      "code": "VACUUM_PUMP_O_RING",
+      "name": "Vacuum Pump O-Ring",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VOR-086",
+      "code": "BRAKE_VACUUM_O_RING",
+      "name": "Brake Vacuum O-Ring",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VOR-087",
+      "code": "WASHER_PUMP_O_RING",
+      "name": "Washer Pump O-Ring",
+      "category": "WIPER_WASHER"
+    },
+    {
+      "id": "VOR-088",
+      "code": "HEADLIGHT_WASHER_O_RING",
+      "name": "Headlight Washer O-Ring",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VOR-089",
+      "code": "AIR_SUSPENSION_O_RING",
+      "name": "Air Suspension O-Ring",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VOR-090",
+      "code": "AIR_SUSPENSION_VALVE_O_RING",
+      "name": "Air Suspension Valve O-Ring",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VOR-091",
+      "code": "SENSOR_HOUSING_O_RING",
+      "name": "Sensor Housing O-Ring",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VOR-092",
+      "code": "CONNECTOR_SEAL_O_RING",
+      "name": "Connector Sealing O-Ring",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VOR-093",
+      "code": "WATERPROOF_CONNECTOR_O_RING",
+      "name": "Waterproof Connector O-Ring",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VOR-094",
+      "code": "PIPE_JOINT_O_RING",
+      "name": "Pipe Joint O-Ring",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VOR-095",
+      "code": "QUICK_CONNECT_O_RING",
+      "name": "Quick Connect O-Ring",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VOR-096",
+      "code": "FLANGE_O_RING",
+      "name": "Flange O-Ring",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VOR-097",
+      "code": "SERVICE_O_RING_KIT",
+      "name": "O-Ring Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VOR-098",
+      "code": "REPAIR_O_RING_KIT",
+      "name": "O-Ring Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VOR-099",
+      "code": "O_RING_SELECTION_KIT",
+      "name": "O-Ring Selection Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VOR-100",
+      "code": "UNKNOWN",
+      "name": "Unknown O-Ring Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
