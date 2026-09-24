@@ -1,192 +1,272 @@
 (function () {
   "use strict";
 
-  let vehicles = [];
+  let vehiclesData = [];
+  let isLoaded = false;
 
   async function initializeVehicleSearch() {
-    await loadVehicleData();
-    setupVehicleSearchForms();
-    setupVehicleFilters();
+    await loadVehiclesData();
+    setupVehicleSearchInterface();
   }
 
-  async function loadVehicleData() {
+  async function loadVehiclesData() {
     try {
-      const fileName =
-        window.APP_CONFIG?.dataFiles?.vehicles ||
-        "vehicles.json";
+      const filePath = getDataPath(
+        APP_CONFIG.dataFiles.vehicles
+      );
 
-      const path =
-        window.getDataPath?.(fileName) ||
-        `./data/${fileName}`;
-
-      const response = await fetch(path);
+      const response = await fetch(filePath);
 
       if (!response.ok) {
         throw new Error(
-          `Unable to load vehicle data: ${response.status}`
+          `Failed to load vehicles data: ${response.status}`
         );
       }
 
       const data = await response.json();
 
-      vehicles = Array.isArray(data)
-        ? data
-        : Array.isArray(data.vehicles)
-        ? data.vehicles
-        : [];
+      vehiclesData = normalizeVehicleData(data);
+      isLoaded = true;
 
-      return vehicles;
+      return vehiclesData;
     } catch (error) {
       console.error(
-        "Vehicle data loading error:",
+        "Al-Dahayan Vehicle Search: Unable to load vehicle data.",
         error
       );
 
-      vehicles = [];
+      vehiclesData = [];
+      isLoaded = false;
+
       return [];
     }
   }
 
-  function setupVehicleSearchForms() {
+  function normalizeVehicleData(data) {
+    if (Array.isArray(data)) {
+      return data;
+    }
+
+    if (Array.isArray(data?.vehicles)) {
+      return data.vehicles;
+    }
+
+    if (Array.isArray(data?.models)) {
+      return data.models;
+    }
+
+    return [];
+  }
+
+  function setupVehicleSearchInterface() {
+    setupVehicleForm();
+    setupVehicleFilters();
+  }
+
+  function setupVehicleForm() {
     const forms = document.querySelectorAll(
-      "[data-vehicle-search-form], .vehicle-search-form"
+      "[data-vehicle-search-form], #vehicleSearchForm, .vehicle-search-form"
     );
 
     forms.forEach((form) => {
-      form.addEventListener(
-        "submit",
-        handleVehicleSearchSubmit
-      );
+      if (form.dataset.vehicleInitialized === "true") {
+        return;
+      }
+
+      form.dataset.vehicleInitialized = "true";
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const filters = getFiltersFromForm(form);
+
+        performVehicleSearch(filters);
+      });
     });
   }
 
   function setupVehicleFilters() {
-    const filters = document.querySelectorAll(
-      "[data-vehicle-filter]"
+    const makeSelects = document.querySelectorAll(
+      "[data-vehicle-make], #vehicleMake"
     );
 
-    filters.forEach((filter) => {
-      filter.addEventListener(
-        "change",
-        handleVehicleFilterChange
+    makeSelects.forEach((select) => {
+      populateSelect(
+        select,
+        getMakes(),
+        "Select Make"
       );
+
+      select.addEventListener("change", () => {
+        updateModelSelect(select);
+      });
+    });
+
+    const modelSelects = document.querySelectorAll(
+      "[data-vehicle-model], #vehicleModel"
+    );
+
+    modelSelects.forEach((select) => {
+      select.addEventListener("change", () => {
+        updateYearSelect(select);
+      });
+    });
+
+    const yearSelects = document.querySelectorAll(
+      "[data-vehicle-year], #vehicleYear"
+    );
+
+    yearSelects.forEach((select) => {
+      select.addEventListener("change", () => {
+        updateEngineSelect(select);
+      });
     });
   }
 
-  function handleVehicleSearchSubmit(event) {
-    event.preventDefault();
+  function getFiltersFromForm(form) {
+    return {
+      make: getFieldValue(
+        form,
+        "make",
+        "vehicleMake"
+      ),
 
-    const form = event.currentTarget;
+      model: getFieldValue(
+        form,
+        "model",
+        "vehicleModel"
+      ),
 
-    const make =
-      getFormValue(form, "make") ||
-      getFormValue(form, "brand");
+      year: getFieldValue(
+        form,
+        "year",
+        "vehicleYear"
+      ),
 
-    const model =
-      getFormValue(form, "model");
+      engine: getFieldValue(
+        form,
+        "engine",
+        "vehicleEngine"
+      ),
 
-    const year =
-      getFormValue(form, "year");
+      query: getFieldValue(
+        form,
+        "query",
+        "vehicleSearch"
+      )
+    };
+  }
 
-    const engine =
-      getFormValue(form, "engine");
+  function getFieldValue(
+    form,
+    name,
+    id
+  ) {
+    const element =
+      form.querySelector(`[name="${name}"]`) ||
+      form.querySelector(`#${id}`);
 
-    const results = searchVehicles({
-      make,
-      model,
-      year,
-      engine
-    });
+    return element
+      ? String(element.value || "").trim()
+      : "";
+  }
+
+  function performVehicleSearch(filters = {}) {
+    const results =
+      filterVehicles(filters);
 
     displayVehicleResults(results);
 
     document.dispatchEvent(
-      new CustomEvent("vehicleSearchCompleted", {
-        detail: {
-          filters: {
-            make,
-            model,
-            year,
-            engine
-          },
-          results
+      new CustomEvent(
+        "alDahayanVehicleSearchCompleted",
+        {
+          detail: {
+            filters,
+            results
+          }
         }
-      })
+      )
     );
+
+    return results;
   }
 
-  function getFormValue(form, name) {
-    const element =
-      form.querySelector(
-        `[name="${name}"]`
+  function filterVehicles(filters = {}) {
+    if (!isLoaded) {
+      return [];
+    }
+
+    const make =
+      normalizeText(filters.make);
+
+    const model =
+      normalizeText(filters.model);
+
+    const year =
+      String(filters.year || "").trim();
+
+    const engine =
+      normalizeText(filters.engine);
+
+    const query =
+      normalizeText(filters.query);
+
+    return vehiclesData.filter((vehicle) => {
+      const vehicleMake =
+        normalizeText(
+          vehicle.make ||
+          vehicle.brand ||
+          vehicle.manufacturer
+        );
+
+      const vehicleModel =
+        normalizeText(
+          vehicle.model ||
+          vehicle.modelName
+        );
+
+      const vehicleYear =
+        String(
+          vehicle.year ||
+          vehicle.modelYear ||
+          ""
+        ).trim();
+
+      const vehicleEngine =
+        normalizeText(
+          vehicle.engine ||
+          vehicle.engineType ||
+          vehicle.engineCode
+        );
+
+      const searchableText = normalizeText(
+        [
+          vehicleMake,
+          vehicleModel,
+          vehicleYear,
+          vehicleEngine,
+          vehicle.name,
+          vehicle.vehicleName
+        ]
+          .filter(Boolean)
+          .join(" ")
       );
 
-    return element
-      ? element.value.trim()
-      : "";
-  }
-
-  function handleVehicleFilterChange(event) {
-    const filter = event.currentTarget;
-    const value = filter.value;
-
-    document.dispatchEvent(
-      new CustomEvent("vehicleFilterChanged", {
-        detail: {
-          name: filter.name,
-          value: value
-        }
-      })
-    );
-  }
-
-  function searchVehicles(filters = {}) {
-    return vehicles.filter((vehicle) => {
       return (
-        matchesVehicleField(
-          vehicle.make ||
-            vehicle.brand ||
-            vehicle.manufacturer,
-          filters.make
-        ) &&
-        matchesVehicleField(
-          vehicle.model,
-          filters.model
-        ) &&
-        matchesVehicleField(
-          vehicle.year,
-          filters.year
-        ) &&
-        matchesVehicleField(
-          vehicle.engine ||
-            vehicle.engineType,
-          filters.engine
-        )
+        (!make || vehicleMake === make) &&
+        (!model || vehicleModel === model) &&
+        (!year || vehicleYear === year) &&
+        (!engine || vehicleEngine === engine) &&
+        (!query ||
+          searchableText.includes(query))
       );
     });
   }
 
-  function matchesVehicleField(
-    vehicleValue,
-    filterValue
-  ) {
-    if (!filterValue) {
-      return true;
-    }
-
-    return normalizeValue(vehicleValue)
-      .includes(normalizeValue(filterValue));
-  }
-
-  function normalizeValue(value) {
-    return String(value || "")
-      .toLowerCase()
-      .trim();
-  }
-
   function getMakes() {
     return getUniqueValues(
-      vehicles.map(
+      vehiclesData.map(
         (vehicle) =>
           vehicle.make ||
           vehicle.brand ||
@@ -196,22 +276,28 @@
   }
 
   function getModels(make = "") {
-    let source = vehicles;
+    const normalizedMake =
+      normalizeText(make);
 
-    if (make) {
-      source = source.filter((vehicle) =>
-        matchesVehicleField(
-          vehicle.make ||
-            vehicle.brand ||
-            vehicle.manufacturer,
-          make
-        )
-      );
-    }
+    const filtered =
+      normalizedMake
+        ? vehiclesData.filter((vehicle) => {
+            const vehicleMake =
+              normalizeText(
+                vehicle.make ||
+                vehicle.brand ||
+                vehicle.manufacturer
+              );
+
+            return vehicleMake === normalizedMake;
+          })
+        : vehiclesData;
 
     return getUniqueValues(
-      source.map(
-        (vehicle) => vehicle.model
+      filtered.map(
+        (vehicle) =>
+          vehicle.model ||
+          vehicle.modelName
       )
     );
   }
@@ -220,31 +306,40 @@
     make = "",
     model = ""
   ) {
-    let source = vehicles;
+    const normalizedMake =
+      normalizeText(make);
 
-    if (make) {
-      source = source.filter((vehicle) =>
-        matchesVehicleField(
-          vehicle.make ||
+    const normalizedModel =
+      normalizeText(model);
+
+    const filtered =
+      vehiclesData.filter((vehicle) => {
+        const vehicleMake =
+          normalizeText(
+            vehicle.make ||
             vehicle.brand ||
-            vehicle.manufacturer,
-          make
-        )
-      );
-    }
+            vehicle.manufacturer
+          );
 
-    if (model) {
-      source = source.filter((vehicle) =>
-        matchesVehicleField(
-          vehicle.model,
-          model
-        )
-      );
-    }
+        const vehicleModel =
+          normalizeText(
+            vehicle.model ||
+            vehicle.modelName
+          );
+
+        return (
+          (!normalizedMake ||
+            vehicleMake === normalizedMake) &&
+          (!normalizedModel ||
+            vehicleModel === normalizedModel)
+        );
+      });
 
     return getUniqueValues(
-      source.map(
-        (vehicle) => vehicle.year
+      filtered.map(
+        (vehicle) =>
+          vehicle.year ||
+          vehicle.modelYear
       )
     ).sort(
       (a, b) =>
@@ -257,94 +352,328 @@
     model = "",
     year = ""
   ) {
-    let source = vehicles;
+    const normalizedMake =
+      normalizeText(make);
 
-    if (make) {
-      source = source.filter((vehicle) =>
-        matchesVehicleField(
-          vehicle.make ||
+    const normalizedModel =
+      normalizeText(model);
+
+    const normalizedYear =
+      String(year || "").trim();
+
+    const filtered =
+      vehiclesData.filter((vehicle) => {
+        const vehicleMake =
+          normalizeText(
+            vehicle.make ||
             vehicle.brand ||
-            vehicle.manufacturer,
-          make
-        )
-      );
-    }
+            vehicle.manufacturer
+          );
 
-    if (model) {
-      source = source.filter((vehicle) =>
-        matchesVehicleField(
-          vehicle.model,
-          model
-        )
-      );
-    }
+        const vehicleModel =
+          normalizeText(
+            vehicle.model ||
+            vehicle.modelName
+          );
 
-    if (year) {
-      source = source.filter((vehicle) =>
-        matchesVehicleField(
-          vehicle.year,
-          year
-        )
-      );
-    }
+        const vehicleYear =
+          String(
+            vehicle.year ||
+            vehicle.modelYear ||
+            ""
+          ).trim();
+
+        return (
+          (!normalizedMake ||
+            vehicleMake === normalizedMake) &&
+          (!normalizedModel ||
+            vehicleModel === normalizedModel) &&
+          (!normalizedYear ||
+            vehicleYear === normalizedYear)
+        );
+      });
 
     return getUniqueValues(
-      source.map(
+      filtered.map(
         (vehicle) =>
           vehicle.engine ||
-          vehicle.engineType
+          vehicle.engineType ||
+          vehicle.engineCode
       )
     );
   }
 
-  function getUniqueValues(values) {
-    return [
-      ...new Set(
-        values
-          .filter(
-            (value) =>
-              value !== undefined &&
-              value !== null &&
-              String(value).trim() !== ""
+  function getVehicleById(id) {
+    if (!id) {
+      return null;
+    }
+
+    return (
+      vehiclesData.find(
+        (vehicle) =>
+          String(vehicle.id) ===
+          String(id)
+      ) || null
+    );
+  }
+
+  function getVehicleByDetails(
+    make,
+    model,
+    year,
+    engine = ""
+  ) {
+    const normalizedMake =
+      normalizeText(make);
+
+    const normalizedModel =
+      normalizeText(model);
+
+    const normalizedYear =
+      String(year || "").trim();
+
+    const normalizedEngine =
+      normalizeText(engine);
+
+    return (
+      vehiclesData.find((vehicle) => {
+        const vehicleMake =
+          normalizeText(
+            vehicle.make ||
+            vehicle.brand ||
+            vehicle.manufacturer
+          );
+
+        const vehicleModel =
+          normalizeText(
+            vehicle.model ||
+            vehicle.modelName
+          );
+
+        const vehicleYear =
+          String(
+            vehicle.year ||
+            vehicle.modelYear ||
+            ""
+          ).trim();
+
+        const vehicleEngine =
+          normalizeText(
+            vehicle.engine ||
+            vehicle.engineType ||
+            vehicle.engineCode
+          );
+
+        return (
+          vehicleMake === normalizedMake &&
+          vehicleModel === normalizedModel &&
+          vehicleYear === normalizedYear &&
+          (!normalizedEngine ||
+            vehicleEngine === normalizedEngine)
+        );
+      }) || null
+    );
+  }
+
+  function updateModelSelect(makeSelect) {
+    const form =
+      makeSelect.closest("form") ||
+      document;
+
+    const modelSelect =
+      form.querySelector(
+        "[data-vehicle-model], #vehicleModel"
+      );
+
+    if (!modelSelect) {
+      return;
+    }
+
+    populateSelect(
+      modelSelect,
+      getModels(makeSelect.value),
+      "Select Model"
+    );
+
+    const yearSelect =
+      form.querySelector(
+        "[data-vehicle-year], #vehicleYear"
+      );
+
+    const engineSelect =
+      form.querySelector(
+        "[data-vehicle-engine], #vehicleEngine"
+      );
+
+    resetSelect(yearSelect, "Select Year");
+    resetSelect(
+      engineSelect,
+      "Select Engine"
+    );
+  }
+
+  function updateYearSelect(modelSelect) {
+    const form =
+      modelSelect.closest("form") ||
+      document;
+
+    const makeSelect =
+      form.querySelector(
+        "[data-vehicle-make], #vehicleMake"
+      );
+
+    const yearSelect =
+      form.querySelector(
+        "[data-vehicle-year], #vehicleYear"
+      );
+
+    if (!yearSelect) {
+      return;
+    }
+
+    populateSelect(
+      yearSelect,
+      getYears(
+        makeSelect?.value || "",
+        modelSelect.value
+      ),
+      "Select Year"
+    );
+
+    const engineSelect =
+      form.querySelector(
+        "[data-vehicle-engine], #vehicleEngine"
+      );
+
+    resetSelect(
+      engineSelect,
+      "Select Engine"
+    );
+  }
+
+  function updateEngineSelect(yearSelect) {
+    const form =
+      yearSelect.closest("form") ||
+      document;
+
+    const makeSelect =
+      form.querySelector(
+        "[data-vehicle-make], #vehicleMake"
+      );
+
+    const modelSelect =
+      form.querySelector(
+        "[data-vehicle-model], #vehicleModel"
+      );
+
+    const engineSelect =
+      form.querySelector(
+        "[data-vehicle-engine], #vehicleEngine"
+      );
+
+    if (!engineSelect) {
+      return;
+    }
+
+    populateSelect(
+      engineSelect,
+      getEngines(
+        makeSelect?.value || "",
+        modelSelect?.value || "",
+        yearSelect.value
+      ),
+      "Select Engine"
+    );
+  }
+
+  function populateSelect(
+    select,
+    values,
+    placeholder
+  ) {
+    if (!select) {
+      return;
+    }
+
+    select.innerHTML = "";
+
+    const placeholderOption =
+      document.createElement("option");
+
+    placeholderOption.value = "";
+    placeholderOption.textContent =
+      getCurrentLanguage() === "ar"
+        ? getArabicPlaceholder(
+            placeholder
           )
-          .map((value) =>
-            String(value).trim()
-          )
-      )
-    ];
+        : placeholder;
+
+    select.appendChild(
+      placeholderOption
+    );
+
+    values.forEach((value) => {
+      const option =
+        document.createElement("option");
+
+      option.value = value;
+      option.textContent = value;
+
+      select.appendChild(option);
+    });
+  }
+
+  function resetSelect(
+    select,
+    placeholder
+  ) {
+    if (!select) {
+      return;
+    }
+
+    populateSelect(
+      select,
+      [],
+      placeholder
+    );
   }
 
   function displayVehicleResults(
     results
   ) {
-    const containers =
-      document.querySelectorAll(
-        "[data-vehicle-results]"
+    const container =
+      document.querySelector(
+        "[data-vehicle-results], #vehicleResults, .vehicle-results"
       );
 
-    containers.forEach(
-      (container) => {
-        container.innerHTML = "";
+    if (!container) {
+      return;
+    }
 
-        if (!results.length) {
-          container.innerHTML = `
-            <div class="search-message">
-              No matching vehicles found.
-            </div>
-          `;
+    container.innerHTML = "";
 
-          return;
-        }
+    if (!results.length) {
+      const empty =
+        document.createElement("div");
 
-        results.forEach(
-          (vehicle) => {
-            container.appendChild(
-              createVehicleCard(vehicle)
-            );
-          }
-        );
-      }
-    );
+      empty.className =
+        "vehicle-search-empty";
+
+      empty.textContent =
+        getCurrentLanguage() === "ar"
+          ? "لم يتم العثور على مركبات مطابقة."
+          : "No matching vehicles found.";
+
+      container.appendChild(empty);
+
+      return;
+    }
+
+    results.forEach((vehicle) => {
+      container.appendChild(
+        createVehicleCard(vehicle)
+      );
+    });
   }
 
   function createVehicleCard(
@@ -363,53 +692,60 @@
       "";
 
     const model =
-      vehicle.model || "";
+      vehicle.model ||
+      vehicle.modelName ||
+      "";
 
     const year =
-      vehicle.year || "";
+      vehicle.year ||
+      vehicle.modelYear ||
+      "";
 
     const engine =
       vehicle.engine ||
       vehicle.engineType ||
+      vehicle.engineCode ||
       "";
 
     card.innerHTML = `
-      <div class="vehicle-search-result-content">
-
-        <span class="vehicle-make">
-          ${escapeHTML(make)}
-        </span>
+      <div class="vehicle-result-content">
 
         <h3>
-          ${escapeHTML(model)}
+          ${escapeHTML(
+            `${make} ${model}`.trim()
+          )}
         </h3>
 
         ${
           year
-            ? `<p><strong>Year:</strong> ${escapeHTML(
-                year
-              )}</p>`
+            ? `<p>
+                <strong>Year:</strong>
+                ${escapeHTML(year)}
+              </p>`
             : ""
         }
 
         ${
           engine
-            ? `<p><strong>Engine:</strong> ${escapeHTML(
-                engine
-              )}</p>`
+            ? `<p>
+                <strong>Engine:</strong>
+                ${escapeHTML(engine)}
+              </p>`
             : ""
         }
 
         <button
           type="button"
-          class="btn btn-primary"
+          class="vehicle-select-button"
           data-vehicle-id="${escapeHTML(
-            vehicle.id ||
-              vehicle.vehicleId ||
-              ""
+            vehicle.id || ""
           )}"
         >
-          View Vehicle
+          ${
+            getCurrentLanguage() === "ar"
+              ? "اختيار المركبة"
+              : "Select Vehicle"
+          }
         </button>
 
       </div>
@@ -432,39 +768,115 @@
     return card;
   }
 
-  function selectVehicle(vehicle) {
+  function selectVehicle(
+    vehicle
+  ) {
     document.dispatchEvent(
-      new CustomEvent("vehicleSelected", {
-        detail: {
-          vehicle
+      new CustomEvent(
+        "alDahayanVehicleSelected",
+        {
+          detail: {
+            vehicle
+          }
         }
-      })
+      )
     );
 
-    const vehicleId =
-      vehicle.id ||
-      vehicle.vehicleId;
-
-    if (vehicleId) {
-      const encodedId =
-        encodeURIComponent(vehicleId);
-
-      window.location.href =
-        `./pages/vehicles.html?id=${encodedId}`;
+    if (
+      typeof window
+        .AlDahayanVehicleSearch
+        ?.onVehicleSelected ===
+      "function"
+    ) {
+      window.AlDahayanVehicleSearch.onVehicleSelected(
+        vehicle
+      );
     }
   }
 
-  function getVehicles() {
-    return [...vehicles];
+  function getUniqueValues(
+    values
+  ) {
+    return [
+      ...new Set(
+        values
+          .filter(
+            (value) =>
+              value !== undefined &&
+              value !== null &&
+              String(value).trim() !== ""
+          )
+          .map((value) =>
+            String(value).trim()
+          )
+      )
+    ];
+  }
+
+  function normalizeText(
+    value
+  ) {
+    return String(value || "")
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ");
+  }
+
+  function getArabicPlaceholder(
+    placeholder
+  ) {
+    const translations = {
+      "Select Make": "اختر الشركة",
+      "Select Model": "اختر الموديل",
+      "Select Year": "اختر السنة",
+      "Select Engine": "اختر المحرك"
+    };
+
+    return (
+      translations[placeholder] ||
+      placeholder
+    );
+  }
+
+  function getCurrentLanguage() {
+    return (
+      document.documentElement.getAttribute(
+        "lang"
+      ) ||
+      APP_CONFIG?.site?.defaultLanguage ||
+      "en"
+    );
+  }
+
+  function escapeHTML(value) {
+    if (
+      typeof window
+        .AlDahayanUtils
+        ?.escapeHTML === "function"
+    ) {
+      return window.AlDahayanUtils.escapeHTML(
+        value
+      );
+    }
+
+    const div =
+      document.createElement("div");
+
+    div.textContent =
+      String(value ?? "");
+
+    return div.innerHTML;
   }
 
   window.AlDahayanVehicleSearch = {
     initialize:
       initializeVehicleSearch,
 
-    search: searchVehicles,
+    loadVehiclesData,
 
-    getVehicles,
+    performVehicleSearch,
+
+    filterVehicles,
 
     getMakes,
 
@@ -474,11 +886,16 @@
 
     getEngines,
 
-    selectVehicle
-  };
+    getVehicleById,
 
-  window.initializeVehicleSearch =
-    initializeVehicleSearch;
+    getVehicleByDetails,
+
+    getAllVehicles: () => [
+      ...vehiclesData
+    ],
+
+    isLoaded: () => isLoaded
+  };
 
   if (
     document.readyState ===
