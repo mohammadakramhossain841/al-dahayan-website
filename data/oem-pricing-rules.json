@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Pricing rules foundation for Toyota and Lexus OEM catalog records.",
+  "currency": {
+    "default": "SAR",
+    "supported": [
+      "SAR"
+    ]
+  },
+  "priceRules": {
+    "allowRegularPrice": true,
+    "allowSalePrice": true,
+    "allowDiscountPercent": true,
+    "allowNullPrice": true,
+    "allowNegativePrice": false,
+    "maximumDiscountPercent": 100,
+    "requireRegularPriceForDiscount": true,
+    "salePriceCannotExceedRegularPrice": true
+  },
+  "visibility": {
+    "allowPriceVisibilityControl": true,
+    "defaultVisible": false,
+    "hiddenPriceAction": "contact_for_price"
+  },
+  "validation": [
+    {
+      "code": "NEGATIVE_PRICE",
+      "severity": "error",
+      "description": "Price cannot be negative."
+    },
+    {
+      "code": "INVALID_DISCOUNT",
+      "severity": "error",
+      "description": "Discount must be between 0 and 100 percent."
+    },
+    {
+      "code": "SALE_HIGHER_THAN_REGULAR",
+      "severity": "error",
+      "description": "Sale price cannot be higher than regular price."
+    },
+    {
+      "code": "DISCOUNT_WITHOUT_REGULAR_PRICE",
+      "severity": "error",
+      "description": "A discount percentage requires a regular price."
+    },
+    {
+      "code": "MISSING_CURRENCY",
+      "severity": "error",
+      "description": "A visible price must have a supported currency."
+    }
+  ],
+  "displayRules": {
+    "showRegularPrice": true,
+    "showSalePrice": true,
+    "showDiscountPercent": true,
+    "showCurrency": true,
+    "showContactForPrice": true
+  },
+  "adminActions": {
+    "manualPriceUpdate": true,
+    "bulkPriceImport": true,
+    "bulkPriceUpdate": true,
+    "priceHistory": true,
+    "archivePrice": true,
+    "deletePrice": false
+  }
+}
