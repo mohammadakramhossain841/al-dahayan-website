@@ -1,333 +1,581 @@
 (function () {
   "use strict";
 
-  let inventory = [];
-  let parts = [];
-  let locations = [];
+  let inventoryData = [];
+  let partsData = [];
+  let locationsData = [];
+
+  let isLoaded = false;
 
   async function initializeInventory() {
     await loadInventoryData();
-    await loadPartsData();
-    await loadLocationsData();
-
-    setupInventorySearch();
-    setupInventoryFilters();
+    setupInventoryInterface();
   }
 
   async function loadInventoryData() {
     try {
-      const fileName =
-        window.APP_CONFIG?.dataFiles?.inventory ||
-        "inventory.json";
+      const [
+        inventory,
+        parts,
+        locations
+      ] = await Promise.all([
+        loadJSON(
+          getDataPath(
+            APP_CONFIG.dataFiles.inventory
+          )
+        ),
+        loadJSON(
+          getDataPath(
+            APP_CONFIG.dataFiles.oemParts
+          )
+        ),
+        loadJSON(
+          getDataPath(
+            APP_CONFIG.dataFiles.locations
+          )
+        )
+      ]);
 
-      const path =
-        window.getDataPath?.(fileName) ||
-        `./data/${fileName}`;
+      inventoryData =
+        normalizeArray(inventory);
 
-      const response = await fetch(path);
+      partsData =
+        normalizeArray(parts);
 
-      if (!response.ok) {
-        throw new Error(
-          `Unable to load inventory data: ${response.status}`
-        );
-      }
+      locationsData =
+        normalizeArray(locations);
 
-      const data = await response.json();
+      isLoaded = true;
 
-      inventory = Array.isArray(data)
-        ? data
-        : Array.isArray(data.inventory)
-        ? data.inventory
-        : [];
-
-      return inventory;
+      return {
+        inventory: inventoryData,
+        parts: partsData,
+        locations: locationsData
+      };
     } catch (error) {
       console.error(
-        "Inventory data loading error:",
+        "Al-Dahayan Inventory: Unable to load inventory data.",
         error
       );
 
-      inventory = [];
-      return [];
+      inventoryData = [];
+      partsData = [];
+      locationsData = [];
+
+      isLoaded = false;
+
+      return {
+        inventory: [],
+        parts: [],
+        locations: []
+      };
     }
   }
 
-  async function loadPartsData() {
-    try {
-      const fileName =
-        window.APP_CONFIG?.dataFiles?.oemParts ||
-        "oem-parts.json";
+  async function loadJSON(filePath) {
+    const response = await fetch(filePath);
 
-      const path =
-        window.getDataPath?.(fileName) ||
-        `./data/${fileName}`;
-
-      const response = await fetch(path);
-
-      if (!response.ok) {
-        throw new Error(
-          `Unable to load parts data: ${response.status}`
-        );
-      }
-
-      const data = await response.json();
-
-      parts = Array.isArray(data)
-        ? data
-        : Array.isArray(data.parts)
-        ? data.parts
-        : [];
-
-      return parts;
-    } catch (error) {
-      console.error(
-        "Parts data loading error:",
-        error
+    if (!response.ok) {
+      throw new Error(
+        `Failed to load ${filePath}: ${response.status}`
       );
-
-      parts = [];
-      return [];
     }
+
+    return response.json();
   }
 
-  async function loadLocationsData() {
-    try {
-      const fileName =
-        window.APP_CONFIG?.dataFiles?.locations ||
-        "locations.json";
-
-      const path =
-        window.getDataPath?.(fileName) ||
-        `./data/${fileName}`;
-
-      const response = await fetch(path);
-
-      if (!response.ok) {
-        throw new Error(
-          `Unable to load locations data: ${response.status}`
-        );
-      }
-
-      const data = await response.json();
-
-      locations = Array.isArray(data)
-        ? data
-        : Array.isArray(data.locations)
-        ? data.locations
-        : [];
-
-      return locations;
-    } catch (error) {
-      console.error(
-        "Locations data loading error:",
-        error
-      );
-
-      locations = [];
-      return [];
+  function normalizeArray(data) {
+    if (Array.isArray(data)) {
+      return data;
     }
+
+    if (Array.isArray(data?.inventory)) {
+      return data.inventory;
+    }
+
+    if (Array.isArray(data?.parts)) {
+      return data.parts;
+    }
+
+    if (Array.isArray(data?.oemParts)) {
+      return data.oemParts;
+    }
+
+    if (Array.isArray(data?.locations)) {
+      return data.locations;
+    }
+
+    return [];
   }
 
-  function setupInventorySearch() {
+  function setupInventoryInterface() {
+    setupInventoryForms();
+    setupInventoryFilters();
+  }
+
+  function setupInventoryForms() {
     const forms = document.querySelectorAll(
-      "[data-inventory-search-form], .inventory-search-form"
+      "[data-inventory-search-form], #inventorySearchForm, .inventory-search-form"
     );
 
     forms.forEach((form) => {
+      if (
+        form.dataset.inventoryInitialized ===
+        "true"
+      ) {
+        return;
+      }
+
+      form.dataset.inventoryInitialized =
+        "true";
+
       form.addEventListener(
         "submit",
-        handleInventorySearch
+        (event) => {
+          event.preventDefault();
+
+          const filters =
+            getFiltersFromForm(form);
+
+          performInventorySearch(
+            filters
+          );
+        }
       );
     });
   }
 
   function setupInventoryFilters() {
-    const filters = document.querySelectorAll(
-      "[data-inventory-filter]"
-    );
+    const locationSelects =
+      document.querySelectorAll(
+        "[data-inventory-location], #inventoryLocation"
+      );
 
-    filters.forEach((filter) => {
-      filter.addEventListener(
-        "change",
-        handleInventoryFilterChange
+    locationSelects.forEach((select) => {
+      populateSelect(
+        select,
+        getLocations(),
+        "Select Location"
+      );
+    });
+
+    const statusSelects =
+      document.querySelectorAll(
+        "[data-inventory-status], #inventoryStatus"
+      );
+
+    statusSelects.forEach((select) => {
+      populateSelect(
+        select,
+        getStatuses(),
+        "Select Status"
       );
     });
   }
 
-  function handleInventorySearch(event) {
-    event.preventDefault();
+  function getFiltersFromForm(form) {
+    return {
+      query: getFieldValue(
+        form,
+        "query",
+        "inventorySearch"
+      ),
 
-    const form = event.currentTarget;
+      oemNumber: getFieldValue(
+        form,
+        "oemNumber",
+        "inventoryOEM"
+      ),
 
-    const query =
-      getFieldValue(form, "search") ||
-      getFieldValue(form, "query") ||
-      getFieldValue(form, "oem") ||
-      getFieldValue(form, "partNumber");
+      location: getFieldValue(
+        form,
+        "location",
+        "inventoryLocation"
+      ),
 
-    const location =
-      getFieldValue(form, "location");
-
-    const status =
-      getFieldValue(form, "status");
-
-    const results = searchInventory({
-      query,
-      location,
-      status
-    });
-
-    displayInventoryResults(results);
-
-    document.dispatchEvent(
-      new CustomEvent("inventorySearchCompleted", {
-        detail: {
-          filters: {
-            query,
-            location,
-            status
-          },
-          results
-        }
-      })
-    );
+      status: getFieldValue(
+        form,
+        "status",
+        "inventoryStatus"
+      )
+    };
   }
 
-  function getFieldValue(form, name) {
-    const field = form.querySelector(
-      `[name="${name}"]`
-    );
+  function getFieldValue(
+    form,
+    name,
+    id
+  ) {
+    const element =
+      form.querySelector(
+        `[name="${name}"]`
+      ) ||
+      form.querySelector(`#${id}`);
 
-    return field
-      ? field.value.trim()
+    return element
+      ? String(element.value || "").trim()
       : "";
   }
 
-  function handleInventoryFilterChange(event) {
-    const filter = event.currentTarget;
+  function performInventorySearch(
+    filters = {}
+  ) {
+    const results =
+      filterInventory(filters);
+
+    displayInventoryResults(
+      results
+    );
 
     document.dispatchEvent(
-      new CustomEvent("inventoryFilterChanged", {
-        detail: {
-          name: filter.name,
-          value: filter.value
+      new CustomEvent(
+        "alDahayanInventorySearchCompleted",
+        {
+          detail: {
+            filters,
+            results
+          }
         }
-      })
+      )
+    );
+
+    return results;
+  }
+
+  function filterInventory(
+    filters = {}
+  ) {
+    if (!isLoaded) {
+      return [];
+    }
+
+    const query =
+      normalizeText(filters.query);
+
+    const oemNumber =
+      normalizeOEM(
+        filters.oemNumber
+      );
+
+    const location =
+      normalizeText(
+        filters.location
+      );
+
+    const status =
+      normalizeText(
+        filters.status
+      );
+
+    return inventoryData
+      .map((inventory) =>
+        buildInventoryRecord(
+          inventory
+        )
+      )
+      .filter((record) => {
+        const searchableText =
+          normalizeText(
+            [
+              record.oemNumber,
+              record.partNumber,
+              record.partName,
+              record.category,
+              record.locationName,
+              record.locationCode,
+              record.status
+            ]
+              .filter(Boolean)
+              .join(" ")
+          );
+
+        const normalizedRecordOEM =
+          normalizeOEM(
+            record.oemNumber
+          );
+
+        const normalizedRecordLocation =
+          normalizeText(
+            record.locationName ||
+            record.locationCode
+          );
+
+        const normalizedRecordStatus =
+          normalizeText(
+            record.status
+          );
+
+        return (
+          (!query ||
+            searchableText.includes(
+              query
+            )) &&
+          (!oemNumber ||
+            normalizedRecordOEM.includes(
+              oemNumber
+            )) &&
+          (!location ||
+            normalizedRecordLocation ===
+              location) &&
+          (!status ||
+            normalizedRecordStatus ===
+              status)
+        );
+      });
+  }
+
+  function buildInventoryRecord(
+    inventory
+  ) {
+    const part =
+      findPartForInventory(
+        inventory
+      );
+
+    const location =
+      findLocationForInventory(
+        inventory
+      );
+
+    const quantity =
+      toNumber(
+        inventory.quantity
+      );
+
+    const reserved =
+      toNumber(
+        inventory.reserved
+      );
+
+    let available =
+      inventory.available !==
+      undefined
+        ? toNumber(
+            inventory.available
+          )
+        : Math.max(
+            quantity - reserved,
+            0
+          );
+
+    const status =
+      getInventoryStatus(
+        inventory,
+        available
+      );
+
+    return {
+      ...inventory,
+
+      partId:
+        inventory.partId ||
+        inventory.part_id ||
+        part?.id ||
+        "",
+
+      oemNumber:
+        inventory.oemNumber ||
+        inventory.partNumber ||
+        inventory.partNo ||
+        part?.oemNumber ||
+        part?.partNumber ||
+        part?.partNo ||
+        "",
+
+      partNumber:
+        inventory.partNumber ||
+        part?.partNumber ||
+        part?.partNo ||
+        "",
+
+      partName:
+        inventory.partName ||
+        part?.name ||
+        part?.partName ||
+        "",
+
+      category:
+        inventory.category ||
+        part?.category ||
+        "",
+
+      locationId:
+        inventory.locationId ||
+        inventory.location_id ||
+        location?.id ||
+        "",
+
+      locationName:
+        inventory.locationName ||
+        location?.name ||
+        location?.locationName ||
+        "",
+
+      locationCode:
+        inventory.locationCode ||
+        location?.code ||
+        "",
+
+      quantity,
+
+      reserved,
+
+      available,
+
+      status
+    };
+  }
+
+  function findPartForInventory(
+    inventory
+  ) {
+    const partId =
+      inventory.partId ||
+      inventory.part_id ||
+      inventory.oemPartId;
+
+    const oemNumber =
+      normalizeOEM(
+        inventory.oemNumber ||
+        inventory.partNumber ||
+        inventory.partNo
+      );
+
+    return (
+      partsData.find((part) => {
+        if (
+          partId &&
+          String(part.id) ===
+            String(partId)
+        ) {
+          return true;
+        }
+
+        const partOEM =
+          normalizeOEM(
+            part.oemNumber ||
+            part.partNumber ||
+            part.partNo
+          );
+
+        return (
+          oemNumber &&
+          partOEM === oemNumber
+        );
+      }) || null
     );
   }
 
-  function searchInventory(filters = {}) {
-    const query =
-      normalize(filters.query);
+  function findLocationForInventory(
+    inventory
+  ) {
+    const locationId =
+      inventory.locationId ||
+      inventory.location_id;
 
-    const location =
-      normalize(filters.location);
+    const locationCode =
+      inventory.locationCode;
 
-    const status =
-      normalize(filters.status);
+    return (
+      locationsData.find(
+        (location) => {
+          if (
+            locationId &&
+            String(location.id) ===
+              String(locationId)
+          ) {
+            return true;
+          }
 
-    return inventory.filter((item) => {
-      const searchableText =
-        getInventorySearchText(item);
+          if (
+            locationCode &&
+            String(
+              location.code || ""
+            ).toLowerCase() ===
+              String(
+                locationCode
+              ).toLowerCase()
+          ) {
+            return true;
+          }
 
-      const matchesQuery =
-        !query ||
-        searchableText.includes(query);
+          return false;
+        }
+      ) || null
+    );
+  }
 
-      const matchesLocation =
-        !location ||
-        normalize(
-          item.location ||
-          item.warehouse ||
-          item.branch ||
-          item.locationName
-        ).includes(location);
-
-      const matchesStatus =
-        !status ||
-        normalize(
-          item.status ||
-          getAvailabilityStatus(item)
-        ) === status;
-
-      return (
-        matchesQuery &&
-        matchesLocation &&
-        matchesStatus
+  function getInventoryStatus(
+    inventory,
+    available
+  ) {
+    if (
+      inventory.status &&
+      String(
+        inventory.status
+      ).trim() !== ""
+    ) {
+      return normalizeText(
+        inventory.status
       );
-    });
-  }
-
-  function getInventorySearchText(item) {
-    const values = [
-      item.id,
-      item.inventoryId,
-      item.oemNumber,
-      item.partNumber,
-      item.partNo,
-      item.oem,
-      item.name,
-      item.partName,
-      item.category,
-      item.brand,
-      item.make,
-      item.model,
-      item.location,
-      item.locationName,
-      item.warehouse,
-      item.branch,
-      item.status
-    ];
-
-    return values
-      .filter(Boolean)
-      .map(normalize)
-      .join(" ");
-  }
-
-  function getStockQuantity(item) {
-    const quantity =
-      item.quantity ??
-      item.stockQuantity ??
-      item.stock ??
-      item.availableQuantity ??
-      0;
-
-    const number =
-      Number(quantity);
-
-    return Number.isFinite(number)
-      ? number
-      : 0;
-  }
-
-  function getAvailabilityStatus(item) {
-    const quantity =
-      getStockQuantity(item);
-
-    if (quantity > 0) {
-      return "in-stock";
     }
 
-    return "out-of-stock";
-  }
-
-  function getAvailabilityLabel(item) {
-    const customStatus =
-      item.status;
-
-    if (customStatus) {
-      return customStatus;
+    if (available > 0) {
+      return "in_stock";
     }
 
-    return getAvailabilityStatus(item);
+    if (available === 0) {
+      return "out_of_stock";
+    }
+
+    return "unknown";
   }
 
-  function isInStock(item) {
-    return getStockQuantity(item) > 0;
+  function getStockQuantity(
+    oemNumber
+  ) {
+    const normalizedOEM =
+      normalizeOEM(oemNumber);
+
+    if (!normalizedOEM) {
+      return 0;
+    }
+
+    return inventoryData
+      .map((inventory) =>
+        buildInventoryRecord(
+          inventory
+        )
+      )
+      .filter(
+        (record) =>
+          normalizeOEM(
+            record.oemNumber
+          ) === normalizedOEM
+      )
+      .reduce(
+        (total, record) =>
+          total +
+          toNumber(
+            record.available
+          ),
+        0
+      );
   }
 
-  function getInventoryByOEM(oemNumber) {
+  function isInStock(
+    oemNumber
+  ) {
+    return (
+      getStockQuantity(
+        oemNumber
+      ) > 0
+    );
+  }
+
+  function getInventoryByOEM(
+    oemNumber
+  ) {
     const normalizedOEM =
       normalizeOEM(oemNumber);
 
@@ -335,284 +583,467 @@
       return [];
     }
 
-    return inventory.filter((item) => {
-      const values = [
-        item.oemNumber,
-        item.partNumber,
-        item.partNo,
-        item.oem
-      ];
-
-      return values.some(
-        (value) =>
-          normalizeOEM(value) ===
-          normalizedOEM
-      );
-    });
-  }
-
-  function getTotalStock(oemNumber) {
-    const items =
-      getInventoryByOEM(oemNumber);
-
-    return items.reduce(
-      (total, item) =>
-        total + getStockQuantity(item),
-      0
-    );
-  }
-
-  function getAvailableLocations(oemNumber) {
-    const items =
-      getInventoryByOEM(oemNumber);
-
-    return [
-      ...new Set(
-        items
-          .map(
-            (item) =>
-              item.location ||
-              item.locationName ||
-              item.warehouse ||
-              item.branch
-          )
-          .filter(Boolean)
+    return inventoryData
+      .map((inventory) =>
+        buildInventoryRecord(
+          inventory
+        )
       )
-    ];
-  }
-
-  function getInventoryStatus(oemNumber) {
-    const totalStock =
-      getTotalStock(oemNumber);
-
-    if (totalStock > 0) {
-      return "in-stock";
-    }
-
-    return "out-of-stock";
-  }
-
-  function getInventorySummary(oemNumber) {
-    const items =
-      getInventoryByOEM(oemNumber);
-
-    const totalStock =
-      items.reduce(
-        (total, item) =>
-          total + getStockQuantity(item),
-        0
+      .filter(
+        (record) =>
+          normalizeOEM(
+            record.oemNumber
+          ) === normalizedOEM
       );
+  }
 
-    const availableLocations =
-      getAvailableLocations(oemNumber);
+  function getInventoryByLocation(
+    location
+  ) {
+    const normalizedLocation =
+      normalizeText(location);
 
-    return {
-      oemNumber,
-      totalStock,
-      status:
-        totalStock > 0
-          ? "in-stock"
-          : "out-of-stock",
-      locations: availableLocations,
-      records: items
-    };
+    return inventoryData
+      .map((inventory) =>
+        buildInventoryRecord(
+          inventory
+        )
+      )
+      .filter((record) => {
+        return (
+          normalizeText(
+            record.locationName
+          ) ===
+            normalizedLocation ||
+          normalizeText(
+            record.locationCode
+          ) ===
+            normalizedLocation
+        );
+      });
   }
 
   function getLocations() {
-    return [...locations];
+    return getUniqueValues(
+      locationsData.map(
+        (location) =>
+          location.name ||
+          location.locationName ||
+          location.code ||
+          location.id
+      )
+    );
   }
 
-  function getInventory() {
-    return [...inventory];
+  function getStatuses() {
+    return [
+      "in_stock",
+      "out_of_stock",
+      "unknown"
+    ];
   }
 
-  function displayInventoryResults(results) {
-    const containers =
-      document.querySelectorAll(
-        "[data-inventory-results]"
+  function getInventorySummary() {
+    const records =
+      inventoryData.map(
+        (inventory) =>
+          buildInventoryRecord(
+            inventory
+          )
       );
 
-    containers.forEach(
-      (container) => {
-        container.innerHTML = "";
+    return {
+      totalRecords:
+        records.length,
 
-        if (!results.length) {
-          container.innerHTML = `
-            <div class="search-message">
-              No inventory records found.
-            </div>
-          `;
+      totalQuantity:
+        records.reduce(
+          (total, record) =>
+            total +
+            record.quantity,
+          0
+        ),
 
-          return;
-        }
+      totalReserved:
+        records.reduce(
+          (total, record) =>
+            total +
+            record.reserved,
+          0
+        ),
 
-        results.forEach((item) => {
-          container.appendChild(
-            createInventoryCard(item)
-          );
-        });
+      totalAvailable:
+        records.reduce(
+          (total, record) =>
+            total +
+            record.available,
+          0
+        ),
+
+      inStock:
+        records.filter(
+          (record) =>
+            record.available > 0
+        ).length,
+
+      outOfStock:
+        records.filter(
+          (record) =>
+            record.available === 0
+        ).length,
+
+      unknown:
+        records.filter(
+          (record) =>
+            record.status ===
+            "unknown"
+        ).length
+    };
+  }
+
+  function displayInventoryResults(
+    results,
+    container = null
+  ) {
+    const target =
+      container ||
+      document.querySelector(
+        "[data-inventory-results], #inventoryResults, .inventory-results"
+      );
+
+    if (!target) {
+      return;
+    }
+
+    target.innerHTML = "";
+
+    if (!results.length) {
+      const empty =
+        document.createElement(
+          "div"
+        );
+
+      empty.className =
+        "inventory-search-empty";
+
+      empty.textContent =
+        getCurrentLanguage() ===
+        "ar"
+          ? "لم يتم العثور على مخزون مطابق."
+          : "No matching inventory found.";
+
+      target.appendChild(empty);
+
+      return;
+    }
+
+    results.forEach(
+      (record) => {
+        target.appendChild(
+          createInventoryCard(
+            record
+          )
+        );
       }
     );
   }
 
-  function createInventoryCard(item) {
+  function createInventoryCard(
+    record
+  ) {
     const card =
-      document.createElement("article");
+      document.createElement(
+        "article"
+      );
 
     card.className =
       "inventory-result";
 
-    const oem =
-      item.oemNumber ||
-      item.partNumber ||
-      item.partNo ||
-      "N/A";
-
-    const name =
-      item.name ||
-      item.partName ||
-      "Automotive Spare Part";
-
-    const quantity =
-      getStockQuantity(item);
-
-    const location =
-      item.location ||
-      item.locationName ||
-      item.warehouse ||
-      item.branch ||
-      "Location not specified";
-
-    const status =
-      getAvailabilityLabel(item);
+    const statusLabel =
+      getStatusLabel(
+        record.status
+      );
 
     card.innerHTML = `
       <div class="inventory-result-content">
 
-        <span class="inventory-status ${escapeHTML(
-          status
-        )}">
-          ${escapeHTML(status)}
-        </span>
-
         <h3>
-          ${escapeHTML(name)}
+          ${escapeHTML(
+            record.partName ||
+            "Automotive Part"
+          )}
         </h3>
 
+        ${
+          record.oemNumber
+            ? `
+              <p>
+                <strong>OEM:</strong>
+                ${escapeHTML(
+                  record.oemNumber
+                )}
+              </p>
+            `
+            : ""
+        }
+
+        ${
+          record.locationName
+            ? `
+              <p>
+                <strong>Location:</strong>
+                ${escapeHTML(
+                  record.locationName
+                )}
+              </p>
+            `
+            : ""
+        }
+
         <p>
-          <strong>OEM:</strong>
-          ${escapeHTML(oem)}
+          <strong>Status:</strong>
+          <span class="stock-status stock-status-${escapeHTML(
+            record.status
+          )}">
+            ${escapeHTML(
+              statusLabel
+            )}
+          </span>
         </p>
 
         <p>
-          <strong>Available Quantity:</strong>
-          ${quantity}
+          <strong>Available:</strong>
+          ${escapeHTML(
+            record.available
+          )}
         </p>
-
-        <p>
-          <strong>Location:</strong>
-          ${escapeHTML(location)}
-        </p>
-
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-inventory-oem="${escapeHTML(
-            oem
-          )}"
-        >
-          Check Availability
-        </button>
 
       </div>
     `;
 
-    const button =
-      card.querySelector(
-        "[data-inventory-oem]"
-      );
-
-    if (button) {
-      button.addEventListener(
-        "click",
-        () => {
-          selectInventory(item);
-        }
-      );
-    }
-
     return card;
   }
 
-  function selectInventory(item) {
-    document.dispatchEvent(
-      new CustomEvent(
-        "inventorySelected",
-        {
-          detail: {
-            inventory: item
-          }
-        }
-      )
+  function getStatusLabel(
+    status
+  ) {
+    const labels = {
+      in_stock: {
+        en: "In Stock",
+        ar: "متوفر"
+      },
+
+      out_of_stock: {
+        en: "Out of Stock",
+        ar: "غير متوفر"
+      },
+
+      unknown: {
+        en: "Availability Unknown",
+        ar: "التوفر غير معروف"
+      }
+    };
+
+    const language =
+      getCurrentLanguage();
+
+    return (
+      labels[status]?.[language] ||
+      labels[status]?.en ||
+      status
     );
   }
 
-  function normalize(value) {
+  function populateSelect(
+    select,
+    values,
+    placeholder
+  ) {
+    if (!select) {
+      return;
+    }
+
+    select.innerHTML = "";
+
+    const option =
+      document.createElement(
+        "option"
+      );
+
+    option.value = "";
+
+    option.textContent =
+      getCurrentLanguage() ===
+      "ar"
+        ? getArabicPlaceholder(
+            placeholder
+          )
+        : placeholder;
+
+    select.appendChild(option);
+
+    values.forEach(
+      (value) => {
+        const item =
+          document.createElement(
+            "option"
+          );
+
+        item.value = value;
+        item.textContent = value;
+
+        select.appendChild(item);
+      }
+    );
+  }
+
+  function getArabicPlaceholder(
+    placeholder
+  ) {
+    const translations = {
+      "Select Location":
+        "اختر الموقع",
+
+      "Select Status":
+        "اختر الحالة"
+    };
+
+    return (
+      translations[
+        placeholder
+      ] || placeholder
+    );
+  }
+
+  function normalizeText(
+    value
+  ) {
     return String(value || "")
       .toLowerCase()
       .trim()
       .replace(/\s+/g, " ");
   }
 
-  function normalizeOEM(value) {
+  function normalizeOEM(
+    value
+  ) {
     return String(value || "")
       .toUpperCase()
-      .replace(/[\s-]/g, "");
+      .replace(
+        /[\s\-_.]/g,
+        ""
+      );
   }
 
-  function escapeHTML(value) {
-    return String(value || "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+  function toNumber(value) {
+    const number =
+      Number(value);
+
+    return Number.isFinite(
+      number
+    )
+      ? number
+      : 0;
+  }
+
+  function getUniqueValues(
+    values
+  ) {
+    return [
+      ...new Set(
+        values
+          .filter(
+            (value) =>
+              value !==
+                undefined &&
+              value !== null
+          )
+          .map((value) =>
+            String(
+              value
+            ).trim()
+          )
+          .filter(Boolean)
+      )
+    ];
+  }
+
+  function getCurrentLanguage() {
+    return (
+      document.documentElement.getAttribute(
+        "lang"
+      ) ||
+      APP_CONFIG?.site
+        ?.defaultLanguage ||
+      "en"
+    );
+  }
+
+  function escapeHTML(
+    value
+  ) {
+    if (
+      typeof window
+        .AlDahayanUtils
+        ?.escapeHTML ===
+      "function"
+    ) {
+      return window.AlDahayanUtils.escapeHTML(
+        value
+      );
+    }
+
+    const div =
+      document.createElement(
+        "div"
+      );
+
+    div.textContent =
+      String(
+        value ?? ""
+      );
+
+    return div.innerHTML;
   }
 
   window.AlDahayanInventory = {
     initialize:
       initializeInventory,
 
-    search:
-      searchInventory,
+    loadInventoryData,
 
-    getInventory,
+    performInventorySearch,
 
-    getLocations,
+    filterInventory,
 
     getInventoryByOEM,
 
-    getTotalStock,
-
-    getAvailableLocations,
-
-    getInventoryStatus,
-
-    getInventorySummary,
+    getInventoryByLocation,
 
     getStockQuantity,
 
-    getAvailabilityStatus,
-
-    getAvailabilityLabel,
-
     isInStock,
 
-    selectInventory
-  };
+    getLocations,
 
-  window.initializeInventory =
-    initializeInventory;
+    getStatuses,
+
+    getInventorySummary,
+
+    getAllInventory: () => [
+      ...inventoryData
+    ],
+
+    getAllParts: () => [
+      ...partsData
+    ],
+
+    getAllLocations: () => [
+      ...locationsData
+    ],
+
+    isLoaded: () => isLoaded
+  };
 
   if (
     document.readyState ===
