@@ -1,0 +1,604 @@
+{
+  "clutchComponents": [
+    {
+      "id": "VCC-001",
+      "code": "CLUTCH_SYSTEM",
+      "name": "Clutch System",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-002",
+      "code": "CLUTCH_ASSEMBLY",
+      "name": "Clutch Assembly",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-003",
+      "code": "CLUTCH_DISC",
+      "name": "Clutch Disc",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-004",
+      "code": "CLUTCH_PRESSURE_PLATE",
+      "name": "Clutch Pressure Plate",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-005",
+      "code": "CLUTCH_COVER",
+      "name": "Clutch Cover",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-006",
+      "code": "CLUTCH_RELEASE_BEARING",
+      "name": "Clutch Release Bearing",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-007",
+      "code": "CLUTCH_THROWOUT_BEARING",
+      "name": "Clutch Throwout Bearing",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-008",
+      "code": "CLUTCH_RELEASE_FORK",
+      "name": "Clutch Release Fork",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-009",
+      "code": "CLUTCH_RELEASE_LEVER",
+      "name": "Clutch Release Lever",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-010",
+      "code": "CLUTCH_RELEASE_HUB",
+      "name": "Clutch Release Hub",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-011",
+      "code": "CLUTCH_FRICTION_LINING",
+      "name": "Clutch Friction Lining",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-012",
+      "code": "CLUTCH_DISC_HUB",
+      "name": "Clutch Disc Hub",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-013",
+      "code": "CLUTCH_DISC_SPRING",
+      "name": "Clutch Disc Damper Spring",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-014",
+      "code": "CLUTCH_DISC_DAMPER",
+      "name": "Clutch Disc Damper",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-015",
+      "code": "CLUTCH_PRESSURE_PLATE_SPRING",
+      "name": "Clutch Pressure Plate Spring",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-016",
+      "code": "CLUTCH_DIAPHRAGM_SPRING",
+      "name": "Clutch Diaphragm Spring",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-017",
+      "code": "CLUTCH_FLYWHEEL",
+      "name": "Clutch Flywheel",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-018",
+      "code": "DUAL_MASS_FLYWHEEL",
+      "name": "Dual Mass Flywheel",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-019",
+      "code": "FLYWHEEL_RING_GEAR",
+      "name": "Flywheel Ring Gear",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-020",
+      "code": "FLYWHEEL_BOLT",
+      "name": "Flywheel Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCC-021",
+      "code": "CLUTCH_MASTER_CYLINDER",
+      "name": "Clutch Master Cylinder",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "VCC-022",
+      "code": "CLUTCH_SLAVE_CYLINDER",
+      "name": "Clutch Slave Cylinder",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "VCC-023",
+      "code": "CLUTCH_CONCENTRIC_SLAVE_CYLINDER",
+      "name": "Concentric Slave Cylinder",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "VCC-024",
+      "code": "CLUTCH_HYDRAULIC_ACTUATOR",
+      "name": "Clutch Hydraulic Actuator",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "VCC-025",
+      "code": "CLUTCH_HYDRAULIC_LINE",
+      "name": "Clutch Hydraulic Line",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "VCC-026",
+      "code": "CLUTCH_HYDRAULIC_HOSE",
+      "name": "Clutch Hydraulic Hose",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "VCC-027",
+      "code": "CLUTCH_FLUID_RESERVOIR",
+      "name": "Clutch Fluid Reservoir",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "VCC-028",
+      "code": "CLUTCH_RESERVOIR_CAP",
+      "name": "Clutch Reservoir Cap",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "VCC-029",
+      "code": "CLUTCH_HYDRAULIC_FILTER",
+      "name": "Clutch Hydraulic Filter",
+      "category": "FILTER"
+    },
+    {
+      "id": "VCC-030",
+      "code": "CLUTCH_BLEEDER",
+      "name": "Clutch Bleeder Valve",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "VCC-031",
+      "code": "CLUTCH_PEDAL",
+      "name": "Clutch Pedal",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VCC-032",
+      "code": "CLUTCH_PEDAL_PAD",
+      "name": "Clutch Pedal Pad",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VCC-033",
+      "code": "CLUTCH_PEDAL_SPRING",
+      "name": "Clutch Pedal Spring",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VCC-034",
+      "code": "CLUTCH_PEDAL_BUSHING",
+      "name": "Clutch Pedal Bushing",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCC-035",
+      "code": "CLUTCH_PEDAL_POSITION_SENSOR",
+      "name": "Clutch Pedal Position Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCC-036",
+      "code": "CLUTCH_PEDAL_SWITCH",
+      "name": "Clutch Pedal Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VCC-037",
+      "code": "CLUTCH_START_SWITCH",
+      "name": "Clutch Start Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VCC-038",
+      "code": "CLUTCH_ACTUATOR",
+      "name": "Clutch Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VCC-039",
+      "code": "ELECTRONIC_CLUTCH_ACTUATOR",
+      "name": "Electronic Clutch Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VCC-040",
+      "code": "CLUTCH_CONTROL_MODULE",
+      "name": "Clutch Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VCC-041",
+      "code": "CLUTCH_POSITION_SENSOR",
+      "name": "Clutch Position Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCC-042",
+      "code": "CLUTCH_SPEED_SENSOR",
+      "name": "Clutch Speed Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCC-043",
+      "code": "CLUTCH_TEMPERATURE_SENSOR",
+      "name": "Clutch Temperature Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCC-044",
+      "code": "CLUTCH_HOUSING",
+      "name": "Clutch Housing",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-045",
+      "code": "CLUTCH_BELL_HOUSING",
+      "name": "Clutch Bell Housing",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-046",
+      "code": "CLUTCH_INSPECTION_COVER",
+      "name": "Clutch Inspection Cover",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCC-047",
+      "code": "CLUTCH_RELEASE_BEARING_GUIDE",
+      "name": "Clutch Release Bearing Guide",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCC-048",
+      "code": "CLUTCH_FORK_PIVOT",
+      "name": "Clutch Fork Pivot",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCC-049",
+      "code": "CLUTCH_FORK_PIVOT_BALL",
+      "name": "Clutch Fork Pivot Ball",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCC-050",
+      "code": "CLUTCH_RELEASE_FORK_BUSHING",
+      "name": "Clutch Release Fork Bushing",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCC-051",
+      "code": "CLUTCH_CABLE",
+      "name": "Clutch Cable",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VCC-052",
+      "code": "CLUTCH_CABLE_ADJUSTER",
+      "name": "Clutch Cable Adjuster",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VCC-053",
+      "code": "CLUTCH_CABLE_BRACKET",
+      "name": "Clutch Cable Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VCC-054",
+      "code": "CLUTCH_CABLE_BUSHING",
+      "name": "Clutch Cable Bushing",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCC-055",
+      "code": "CLUTCH_HYDRAULIC_SEAL",
+      "name": "Clutch Hydraulic Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCC-056",
+      "code": "CLUTCH_MASTER_CYLINDER_SEAL",
+      "name": "Clutch Master Cylinder Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCC-057",
+      "code": "CLUTCH_SLAVE_CYLINDER_SEAL",
+      "name": "Clutch Slave Cylinder Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCC-058",
+      "code": "CLUTCH_MASTER_CYLINDER_REPAIR_KIT",
+      "name": "Clutch Master Cylinder Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCC-059",
+      "code": "CLUTCH_SLAVE_CYLINDER_REPAIR_KIT",
+      "name": "Clutch Slave Cylinder Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCC-060",
+      "code": "CLUTCH_RELEASE_BEARING_SEAL",
+      "name": "Clutch Release Bearing Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCC-061",
+      "code": "CLUTCH_ALIGNMENT_TOOL",
+      "name": "Clutch Alignment Tool",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VCC-062",
+      "code": "CLUTCH_CENTERING_TOOL",
+      "name": "Clutch Centering Tool",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VCC-063",
+      "code": "CLUTCH_FLUID",
+      "name": "Clutch Hydraulic Fluid",
+      "category": "FLUID"
+    },
+    {
+      "id": "VCC-064",
+      "code": "CLUTCH_FLUID_LINE_CONNECTOR",
+      "name": "Clutch Fluid Line Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VCC-065",
+      "code": "CLUTCH_HYDRAULIC_CONNECTOR",
+      "name": "Clutch Hydraulic Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VCC-066",
+      "code": "CLUTCH_ACTUATOR_CONNECTOR",
+      "name": "Clutch Actuator Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VCC-067",
+      "code": "CLUTCH_WIRING_HARNESS",
+      "name": "Clutch Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCC-068",
+      "code": "CLUTCH_ACTUATOR_WIRING",
+      "name": "Clutch Actuator Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCC-069",
+      "code": "CLUTCH_CONTROL_RELAY",
+      "name": "Clutch Control Relay",
+      "category": "RELAY"
+    },
+    {
+      "id": "VCC-070",
+      "code": "CLUTCH_CONTROL_FUSE",
+      "name": "Clutch Control Fuse",
+      "category": "FUSE"
+    },
+    {
+      "id": "VCC-071",
+      "code": "CLUTCH_MOUNT",
+      "name": "Clutch Mounting Component",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VCC-072",
+      "code": "CLUTCH_HOUSING_GASKET",
+      "name": "Clutch Housing Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCC-073",
+      "code": "CLUTCH_HOUSING_SEAL",
+      "name": "Clutch Housing Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCC-074",
+      "code": "CLUTCH_FLYWHEEL_SEAL",
+      "name": "Flywheel Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCC-075",
+      "code": "CLUTCH_CRANKSHAFT_SEAL",
+      "name": "Rear Main Crankshaft Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCC-076",
+      "code": "CLUTCH_INPUT_SHAFT_SEAL",
+      "name": "Clutch Input Shaft Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCC-077",
+      "code": "CLUTCH_DISC_SPRING_SEAT",
+      "name": "Clutch Disc Spring Seat",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCC-078",
+      "code": "CLUTCH_PRESSURE_PLATE_BOLT",
+      "name": "Clutch Pressure Plate Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCC-079",
+      "code": "CLUTCH_RELEASE_FORK_CLIP",
+      "name": "Clutch Release Fork Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCC-080",
+      "code": "CLUTCH_RELEASE_BEARING_CLIP",
+      "name": "Clutch Release Bearing Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCC-081",
+      "code": "CLUTCH_SERVICE_KIT",
+      "name": "Clutch Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCC-082",
+      "code": "CLUTCH_REPAIR_KIT",
+      "name": "Clutch Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCC-083",
+      "code": "CLUTCH_MASTER_SERVICE_KIT",
+      "name": "Clutch Master Cylinder Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCC-084",
+      "code": "CLUTCH_SLAVE_SERVICE_KIT",
+      "name": "Clutch Slave Cylinder Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCC-085",
+      "code": "CLUTCH_DIAGNOSTIC_COMPONENT",
+      "name": "Clutch Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VCC-086",
+      "code": "CLUTCH_WEAR_SENSOR",
+      "name": "Clutch Wear Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCC-087",
+      "code": "CLUTCH_TORQUE_SENSOR",
+      "name": "Clutch Torque Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCC-088",
+      "code": "CLUTCH_POSITION_ACTUATOR",
+      "name": "Clutch Position Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VCC-089",
+      "code": "CLUTCH_MOUNTING_HARDWARE",
+      "name": "Clutch Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCC-090",
+      "code": "CLUTCH_FASTENER_SET",
+      "name": "Clutch Fastener Set",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCC-091",
+      "code": "CLUTCH_HYDRAULIC_LINE_CLIP",
+      "name": "Clutch Hydraulic Line Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCC-092",
+      "code": "CLUTCH_PEDAL_MOUNT",
+      "name": "Clutch Pedal Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VCC-093",
+      "code": "CLUTCH_PEDAL_BRACKET",
+      "name": "Clutch Pedal Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VCC-094",
+      "code": "CLUTCH_CONTROL_COMPONENT",
+      "name": "Clutch Control Component",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VCC-095",
+      "code": "CLUTCH_HYDRAULIC_COMPONENT",
+      "name": "Clutch Hydraulic Component",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "VCC-096",
+      "code": "CLUTCH_ELECTRONIC_COMPONENT",
+      "name": "Clutch Electronic Component",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VCC-097",
+      "code": "CLUTCH_INSPECTION_COMPONENT",
+      "name": "Clutch Inspection Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VCC-098",
+      "code": "CLUTCH_MAINTENANCE_COMPONENT",
+      "name": "Clutch Maintenance Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VCC-099",
+      "code": "CLUTCH_GENERAL_COMPONENT",
+      "name": "General Clutch Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VCC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Clutch Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
