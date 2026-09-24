@@ -1,417 +1,771 @@
 (function () {
   "use strict";
 
-  function initializeContact() {
-    setupContactActions();
-    loadCompanyContactData();
+  let companyData = null;
+  let isLoaded = false;
+
+  async function initializeContact() {
+    await loadCompanyData();
+    setupContactInterface();
   }
 
-  function setupContactActions() {
-    const whatsappButtons =
-      document.querySelectorAll(
-        "[data-contact='whatsapp'], [data-whatsapp]"
-      );
-
-    whatsappButtons.forEach((button) => {
-      button.addEventListener(
-        "click",
-        handleWhatsAppClick
-      );
-    });
-
-    const phoneButtons =
-      document.querySelectorAll(
-        "[data-contact='phone'], [data-phone]"
-      );
-
-    phoneButtons.forEach((button) => {
-      button.addEventListener(
-        "click",
-        handlePhoneClick
-      );
-    });
-
-    const emailButtons =
-      document.querySelectorAll(
-        "[data-contact='email'], [data-email]"
-      );
-
-    emailButtons.forEach((button) => {
-      button.addEventListener(
-        "click",
-        handleEmailClick
-      );
-    });
-
-    const locationButtons =
-      document.querySelectorAll(
-        "[data-contact='location'], [data-map]"
-      );
-
-    locationButtons.forEach((button) => {
-      button.addEventListener(
-        "click",
-        handleLocationClick
-      );
-    });
-  }
-
-  async function loadCompanyContactData() {
+  async function loadCompanyData() {
     try {
-      const fileName =
-        window.APP_CONFIG?.dataFiles?.company ||
-        "company.json";
+      const filePath = getDataPath(
+        APP_CONFIG.dataFiles.company
+      );
 
-      const path =
-        window.getDataPath?.(fileName) ||
-        `./data/${fileName}`;
-
-      const response =
-        await fetch(path);
+      const response = await fetch(filePath);
 
       if (!response.ok) {
         throw new Error(
-          `Unable to load company data: ${response.status}`
+          `Failed to load company data: ${response.status}`
         );
       }
 
-      const data =
-        await response.json();
+      const data = await response.json();
 
-      applyContactData(data);
+      companyData = normalizeCompanyData(data);
+      isLoaded = true;
 
-      return data;
+      applyCompanyData();
+
+      return companyData;
     } catch (error) {
       console.error(
-        "Company contact data loading error:",
+        "Al-Dahayan Contact: Unable to load company data.",
         error
       );
+
+      companyData = null;
+      isLoaded = false;
 
       return null;
     }
   }
 
-  function applyContactData(company) {
-    if (!company) {
+  function normalizeCompanyData(data) {
+    if (!data) {
+      return null;
+    }
+
+    if (data.company) {
+      return data.company;
+    }
+
+    return data;
+  }
+
+  function setupContactInterface() {
+    setupContactLinks();
+    setupSocialLinks();
+    setupMapLinks();
+    setupCustomerConnection();
+  }
+
+  function applyCompanyData() {
+    if (!companyData) {
       return;
     }
 
-    const contact =
-      company.contact || {};
-
-    const phone =
-      contact.phone ||
-      company.phone ||
-      window.APP_CONFIG?.contact?.phone ||
-      "";
-
-    const whatsapp =
-      contact.whatsapp ||
-      company.whatsapp ||
-      window.APP_CONFIG?.contact?.whatsapp ||
-      "";
-
-    const email =
-      contact.email ||
-      company.email ||
-      window.APP_CONFIG?.contact?.email ||
-      "";
-
-    const address =
-      contact.address ||
-      company.address ||
-      "";
-
-    updateContactElements(
-      "phone",
-      phone
+    applyText(
+      "[data-company-name]",
+      getCompanyName()
     );
 
-    updateContactElements(
-      "whatsapp",
-      whatsapp
+    applyText(
+      "[data-company-arabic-name]",
+      getCompanyArabicName()
     );
 
-    updateContactElements(
-      "email",
-      email
+    applyText(
+      "[data-company-about]",
+      getCompanyAbout()
     );
 
-    updateContactElements(
-      "address",
-      address
+    applyText(
+      "[data-company-phone]",
+      getContactValue("phone")
     );
 
-    setupDynamicContactLinks({
-      phone,
-      whatsapp,
-      email,
-      address
+    applyText(
+      "[data-company-whatsapp]",
+      getContactValue("whatsapp")
+    );
+
+    applyText(
+      "[data-company-email]",
+      getContactValue("email")
+    );
+
+    applyAddressData();
+    applyWorkingHours();
+  }
+
+  function setupContactLinks() {
+    const phoneLinks =
+      document.querySelectorAll(
+        "[data-contact-phone], .contact-phone-link"
+      );
+
+    phoneLinks.forEach((link) => {
+      const phone =
+        getContactValue("phone");
+
+      if (!phone) {
+        disableLink(link);
+        return;
+      }
+
+      link.href =
+        createPhoneURL(phone);
+
+      link.target = "_self";
+    });
+
+    const whatsappLinks =
+      document.querySelectorAll(
+        "[data-contact-whatsapp], .contact-whatsapp-link"
+      );
+
+    whatsappLinks.forEach((link) => {
+      const whatsapp =
+        getContactValue("whatsapp");
+
+      if (!whatsapp) {
+        disableLink(link);
+        return;
+      }
+
+      link.href =
+        createWhatsAppURL(
+          whatsapp
+        );
+
+      link.target = "_blank";
+      link.rel =
+        "noopener noreferrer";
+    });
+
+    const emailLinks =
+      document.querySelectorAll(
+        "[data-contact-email], .contact-email-link"
+      );
+
+    emailLinks.forEach((link) => {
+      const email =
+        getContactValue("email");
+
+      if (!email) {
+        disableLink(link);
+        return;
+      }
+
+      link.href =
+        createEmailURL(email);
+
+      link.target = "_self";
     });
   }
 
-  function updateContactElements(
-    type,
-    value
+  function setupSocialLinks() {
+    const socialMedia =
+      getSocialMedia();
+
+    const mappings = {
+      facebook:
+        "[data-social-facebook], .social-facebook",
+
+      instagram:
+        "[data-social-instagram], .social-instagram",
+
+      tiktok:
+        "[data-social-tiktok], .social-tiktok",
+
+      youtube:
+        "[data-social-youtube], .social-youtube",
+
+      x:
+        "[data-social-x], .social-x"
+    };
+
+    Object.entries(
+      mappings
+    ).forEach(
+      ([platform, selector]) => {
+        const links =
+          document.querySelectorAll(
+            selector
+          );
+
+        links.forEach((link) => {
+          const url =
+            socialMedia[platform];
+
+          if (!isValidURL(url)) {
+            disableLink(link);
+            return;
+          }
+
+          link.href = url;
+          link.target = "_blank";
+          link.rel =
+            "noopener noreferrer";
+        });
+      }
+    );
+  }
+
+  function setupMapLinks() {
+    const mapLinks =
+      document.querySelectorAll(
+        "[data-company-map], .company-map-link"
+      );
+
+    mapLinks.forEach((link) => {
+      const mapURL =
+        getMapURL();
+
+      if (!mapURL) {
+        disableLink(link);
+        return;
+      }
+
+      link.href = mapURL;
+      link.target = "_blank";
+      link.rel =
+        "noopener noreferrer";
+    });
+  }
+
+  function setupCustomerConnection() {
+    const connection =
+      companyData?.customerConnection ||
+      {};
+
+    const inquiryLinks =
+      document.querySelectorAll(
+        "[data-customer-inquiry], .customer-inquiry-link"
+      );
+
+    inquiryLinks.forEach((link) => {
+      if (
+        connection.inquiry ===
+        false
+      ) {
+        disableLink(link);
+        return;
+      }
+
+      link.href =
+        getPagePath(
+          "inquiry.html"
+        );
+    });
+
+    const whatsappLinks =
+      document.querySelectorAll(
+        "[data-customer-whatsapp]"
+      );
+
+    whatsappLinks.forEach((link) => {
+      const whatsapp =
+        getContactValue(
+          "whatsapp"
+        );
+
+      if (
+        connection.whatsapp ===
+          false ||
+        !whatsapp
+      ) {
+        disableLink(link);
+        return;
+      }
+
+      link.href =
+        createWhatsAppURL(
+          whatsapp
+        );
+
+      link.target = "_blank";
+      link.rel =
+        "noopener noreferrer";
+    });
+
+    const phoneLinks =
+      document.querySelectorAll(
+        "[data-customer-phone]"
+      );
+
+    phoneLinks.forEach((link) => {
+      const phone =
+        getContactValue(
+          "phone"
+        );
+
+      if (
+        connection.phone ===
+          false ||
+        !phone
+      ) {
+        disableLink(link);
+        return;
+      }
+
+      link.href =
+        createPhoneURL(phone);
+    });
+
+    const emailLinks =
+      document.querySelectorAll(
+        "[data-customer-email]"
+      );
+
+    emailLinks.forEach((link) => {
+      const email =
+        getContactValue(
+          "email"
+        );
+
+      if (
+        connection.email ===
+          false ||
+        !email
+      ) {
+        disableLink(link);
+        return;
+      }
+
+      link.href =
+        createEmailURL(email);
+    });
+  }
+
+  function getCompanyName() {
+    return (
+      companyData?.name?.en ||
+      companyData?.name ||
+      APP_CONFIG?.company?.name ||
+      ""
+    );
+  }
+
+  function getCompanyArabicName() {
+    return (
+      companyData?.name?.ar ||
+      companyData?.arabicName ||
+      APP_CONFIG?.company
+        ?.arabicName ||
+      ""
+    );
+  }
+
+  function getCompanyAbout() {
+    const about =
+      companyData?.about;
+
+    if (
+      typeof about ===
+      "string"
+    ) {
+      return about;
+    }
+
+    if (
+      getCurrentLanguage() ===
+      "ar"
+    ) {
+      return (
+        about?.ar ||
+        ""
+      );
+    }
+
+    return (
+      about?.en ||
+      ""
+    );
+  }
+
+  function getContactValue(
+    key
   ) {
-    if (!value) {
+    return (
+      companyData?.contact?.[
+        key
+      ] ||
+      APP_CONFIG?.contact?.[
+        key
+      ] ||
+      ""
+    );
+  }
+
+  function getSocialMedia() {
+    return (
+      companyData?.socialMedia ||
+      {}
+    );
+  }
+
+  function getLocations() {
+    return Array.isArray(
+      companyData?.locations
+    )
+      ? companyData.locations
+      : [];
+  }
+
+  function getBranches() {
+    return Array.isArray(
+      companyData?.branches
+    )
+      ? companyData.branches
+      : [];
+  }
+
+  function getPrimaryLocation() {
+    const locations =
+      getLocations();
+
+    if (!locations.length) {
+      return null;
+    }
+
+    return (
+      locations.find(
+        (location) =>
+          location.primary ===
+          true
+      ) ||
+      locations[0]
+    );
+  }
+
+  function applyAddressData() {
+    const location =
+      getPrimaryLocation();
+
+    if (!location) {
+      return;
+    }
+
+    const address =
+      getLocationAddress(
+        location
+      );
+
+    applyText(
+      "[data-company-address]",
+      address
+    );
+
+    applyText(
+      "[data-company-city]",
+      location.city ||
+        ""
+    );
+
+    applyText(
+      "[data-company-country]",
+      location.country ||
+        companyData?.country ||
+        ""
+    );
+  }
+
+  function applyWorkingHours() {
+    const hours =
+      companyData?.workingHours;
+
+    if (!hours) {
       return;
     }
 
     const elements =
       document.querySelectorAll(
-        `[data-company-${type}]`
+        "[data-company-hours]"
       );
 
-    elements.forEach((element) => {
-      element.textContent =
-        value;
-    });
-  }
+    elements.forEach(
+      (element) => {
+        if (
+          typeof hours ===
+          "string"
+        ) {
+          element.textContent =
+            hours;
 
-  function setupDynamicContactLinks(
-    contact
-  ) {
-    const phoneLinks =
-      document.querySelectorAll(
-        "[data-company-phone-link]"
-      );
+          return;
+        }
 
-    phoneLinks.forEach((link) => {
-      if (contact.phone) {
-        link.href =
-          `tel:${contact.phone}`;
+        const language =
+          getCurrentLanguage();
+
+        element.textContent =
+          hours[language] ||
+          hours.en ||
+          "";
       }
-    });
-
-    const whatsappLinks =
-      document.querySelectorAll(
-        "[data-company-whatsapp-link]"
-      );
-
-    whatsappLinks.forEach((link) => {
-      const url =
-        buildWhatsAppURL(
-          contact.whatsapp
-        );
-
-      if (url) {
-        link.href = url;
-        link.target = "_blank";
-        link.rel =
-          "noopener noreferrer";
-      }
-    });
-
-    const emailLinks =
-      document.querySelectorAll(
-        "[data-company-email-link]"
-      );
-
-    emailLinks.forEach((link) => {
-      if (contact.email) {
-        link.href =
-          `mailto:${contact.email}`;
-      }
-    });
-
-    const mapLinks =
-      document.querySelectorAll(
-        "[data-company-map-link]"
-      );
-
-    mapLinks.forEach((link) => {
-      const mapURL =
-        buildMapURL(
-          contact.address
-        );
-
-      if (mapURL) {
-        link.href = mapURL;
-        link.target = "_blank";
-        link.rel =
-          "noopener noreferrer";
-      }
-    });
-  }
-
-  function handleWhatsAppClick(event) {
-    const button =
-      event.currentTarget;
-
-    const phone =
-      button.getAttribute(
-        "data-whatsapp"
-      ) ||
-      button.getAttribute(
-        "data-phone"
-      ) ||
-      window.APP_CONFIG?.contact?.whatsapp ||
-      "";
-
-    const url =
-      buildWhatsAppURL(phone);
-
-    if (!url) {
-      return;
-    }
-
-    event.preventDefault();
-
-    window.open(
-      url,
-      "_blank",
-      "noopener,noreferrer"
     );
   }
 
-  function handlePhoneClick(event) {
-    const button =
-      event.currentTarget;
-
-    const phone =
-      button.getAttribute(
-        "data-phone"
-      ) ||
-      window.APP_CONFIG?.contact?.phone ||
-      "";
-
-    if (!phone) {
-      return;
-    }
-
-    event.preventDefault();
-
-    window.location.href =
-      `tel:${phone}`;
-  }
-
-  function handleEmailClick(event) {
-    const button =
-      event.currentTarget;
-
-    const email =
-      button.getAttribute(
-        "data-email"
-      ) ||
-      window.APP_CONFIG?.contact?.email ||
-      "";
-
-    if (!email) {
-      return;
-    }
-
-    event.preventDefault();
-
-    window.location.href =
-      `mailto:${email}`;
-  }
-
-  function handleLocationClick(event) {
-    const button =
-      event.currentTarget;
-
-    const address =
-      button.getAttribute(
-        "data-map"
-      ) ||
-      button.getAttribute(
-        "data-address"
-      ) ||
-      "";
-
-    const url =
-      buildMapURL(address);
-
-    if (!url) {
-      return;
-    }
-
-    event.preventDefault();
-
-    window.open(
-      url,
-      "_blank",
-      "noopener,noreferrer"
-    );
-  }
-
-  function buildWhatsAppURL(
-    phone,
-    message = ""
+  function getLocationAddress(
+    location
   ) {
-    const cleanPhone =
-      String(phone || "")
-        .replace(/[^\d]/g, "");
-
-    if (!cleanPhone) {
+    if (!location) {
       return "";
     }
 
-    let url =
-      `https://wa.me/${cleanPhone}`;
-
-    if (message) {
-      url +=
-        `?text=${encodeURIComponent(
-          message
-        )}`;
+    if (
+      typeof location.address ===
+      "string"
+    ) {
+      return location.address;
     }
 
-    return url;
+    const language =
+      getCurrentLanguage();
+
+    return (
+      location.address?.[
+        language
+      ] ||
+      location.address?.en ||
+      ""
+    );
   }
 
-  function buildMapURL(address) {
-    const cleanAddress =
-      String(address || "").trim();
+  function getMapURL() {
+    const location =
+      getPrimaryLocation();
 
-    if (!cleanAddress) {
+    if (!location) {
+      return "";
+    }
+
+    if (
+      isValidURL(
+        location.mapUrl
+      )
+    ) {
+      return location.mapUrl;
+    }
+
+    if (
+      isValidURL(
+        location.maps
+      )
+    ) {
+      return location.maps;
+    }
+
+    const address =
+      getLocationAddress(
+        location
+      );
+
+    if (
+      !address &&
+      !location.city
+    ) {
+      return "";
+    }
+
+    const query = [
+      address,
+      location.city,
+      location.country ||
+        companyData?.country
+    ]
+      .filter(Boolean)
+      .join(", ");
+
+    if (!query) {
       return "";
     }
 
     return (
       "https://www.google.com/maps/search/?api=1&query=" +
-      encodeURIComponent(
-        cleanAddress
-      )
+      encodeURIComponent(query)
     );
   }
 
-  function getContactInfo() {
-    return {
-      phone:
-        window.APP_CONFIG?.contact?.phone ||
-        "",
+  function createPhoneURL(
+    phone
+  ) {
+    const normalized =
+      normalizePhone(phone);
 
-      whatsapp:
-        window.APP_CONFIG?.contact?.whatsapp ||
-        "",
+    if (!normalized) {
+      return "";
+    }
 
-      email:
-        window.APP_CONFIG?.contact?.email ||
-        "",
+    return (
+      "tel:+" +
+      normalized
+    );
+  }
 
-      country:
-        window.APP_CONFIG?.contact?.country ||
-        "Saudi Arabia"
-    };
+  function createWhatsAppURL(
+    whatsapp
+  ) {
+    const normalized =
+      normalizePhone(
+        whatsapp
+      );
+
+    if (!normalized) {
+      return "";
+    }
+
+    return (
+      "https://wa.me/" +
+      normalized
+    );
+  }
+
+  function createEmailURL(
+    email
+  ) {
+    if (
+      !isValidEmail(email)
+    ) {
+      return "";
+    }
+
+    return (
+      "mailto:" +
+      String(email).trim()
+    );
+  }
+
+  function normalizePhone(
+    phone
+  ) {
+    return String(phone || "")
+      .replace(
+        /[^0-9+]/g,
+        ""
+      )
+      .replace(
+        /^\+/,
+        ""
+      );
+  }
+
+  function isValidEmail(
+    email
+  ) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+      String(email || "")
+    );
+  }
+
+  function isValidURL(
+    url
+  ) {
+    if (!url) {
+      return false;
+    }
+
+    try {
+      const parsed =
+        new URL(url);
+
+      return (
+        parsed.protocol ===
+          "https:" ||
+        parsed.protocol ===
+          "http:"
+      );
+    } catch {
+      return false;
+    }
+  }
+
+  function applyText(
+    selector,
+    value
+  ) {
+    const elements =
+      document.querySelectorAll(
+        selector
+      );
+
+    elements.forEach(
+      (element) => {
+        element.textContent =
+          value || "";
+      }
+    );
+  }
+
+  function disableLink(
+    element
+  ) {
+    element.removeAttribute(
+      "href"
+    );
+
+    element.setAttribute(
+      "aria-disabled",
+      "true"
+    );
+
+    element.classList.add(
+      "is-disabled"
+    );
+  }
+
+  function getCurrentLanguage() {
+    return (
+      document.documentElement.getAttribute(
+        "lang"
+      ) ||
+      window.APP_CONFIG?.site
+        ?.defaultLanguage ||
+      "en"
+    );
   }
 
   window.AlDahayanContact = {
     initialize:
       initializeContact,
 
-    loadCompanyContactData,
+    loadCompanyData,
 
-    getContactInfo,
+    getCompanyData: () =>
+      companyData,
 
-    buildWhatsAppURL,
+    getCompanyName,
 
-    buildMapURL
+    getCompanyArabicName,
+
+    getCompanyAbout,
+
+    getContactValue,
+
+    getSocialMedia,
+
+    getLocations,
+
+    getBranches,
+
+    getPrimaryLocation,
+
+    getMapURL,
+
+    createPhoneURL,
+
+    createWhatsAppURL,
+
+    createEmailURL,
+
+    isLoaded: () =>
+      isLoaded
   };
-
-  window.initializeContact =
-    initializeContact;
 
   if (
     document.readyState ===
