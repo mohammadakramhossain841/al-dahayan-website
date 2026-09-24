@@ -1,0 +1,424 @@
+{
+  "airConditioningSystems": [
+    {
+      "id": "AC-001",
+      "code": "MANUAL_AC",
+      "name": "Manual Air Conditioning",
+      "category": "SYSTEM_TYPE",
+      "description": "Manually controlled vehicle air-conditioning system"
+    },
+    {
+      "id": "AC-002",
+      "code": "AUTOMATIC_CLIMATE_CONTROL",
+      "name": "Automatic Climate Control",
+      "category": "SYSTEM_TYPE",
+      "description": "Automatically controlled cabin temperature system"
+    },
+    {
+      "id": "AC-003",
+      "code": "DUAL_ZONE_CLIMATE_CONTROL",
+      "name": "Dual Zone Climate Control",
+      "category": "SYSTEM_TYPE",
+      "description": "Climate control allowing separate temperature settings for two cabin zones"
+    },
+    {
+      "id": "AC-004",
+      "code": "TRI_ZONE_CLIMATE_CONTROL",
+      "name": "Tri-Zone Climate Control",
+      "category": "SYSTEM_TYPE",
+      "description": "Climate control providing three independently controlled cabin zones"
+    },
+    {
+      "id": "AC-005",
+      "code": "REAR_CLIMATE_CONTROL",
+      "name": "Rear Climate Control",
+      "category": "SYSTEM_TYPE",
+      "description": "Dedicated climate-control functions for rear passengers"
+    },
+    {
+      "id": "AC-006",
+      "code": "HVAC_SYSTEM",
+      "name": "HVAC System",
+      "category": "SYSTEM_TYPE",
+      "description": "Heating, ventilation and air-conditioning system"
+    },
+    {
+      "id": "AC-007",
+      "code": "AC_COMPRESSOR",
+      "name": "A/C Compressor",
+      "category": "COMPONENT",
+      "description": "Compresses and circulates refrigerant through the air-conditioning system"
+    },
+    {
+      "id": "AC-008",
+      "code": "ELECTRIC_AC_COMPRESSOR",
+      "name": "Electric A/C Compressor",
+      "category": "COMPONENT",
+      "description": "Electrically driven compressor used on applicable hybrid and electric vehicles"
+    },
+    {
+      "id": "AC-009",
+      "code": "COMPRESSOR_CLUTCH",
+      "name": "Compressor Clutch",
+      "category": "COMPONENT",
+      "description": "Engages and disengages applicable belt-driven A/C compressors"
+    },
+    {
+      "id": "AC-010",
+      "code": "COMPRESSOR_PULLEY",
+      "name": "Compressor Pulley",
+      "category": "COMPONENT",
+      "description": "Pulley used to drive applicable belt-driven A/C compressors"
+    },
+    {
+      "id": "AC-011",
+      "code": "CONDENSER",
+      "name": "A/C Condenser",
+      "category": "COMPONENT",
+      "description": "Removes heat from refrigerant and changes it toward a liquid state"
+    },
+    {
+      "id": "AC-012",
+      "code": "EVAPORATOR",
+      "name": "A/C Evaporator",
+      "category": "COMPONENT",
+      "description": "Absorbs heat from cabin air as refrigerant evaporates"
+    },
+    {
+      "id": "AC-013",
+      "code": "EXPANSION_VALVE",
+      "name": "Expansion Valve",
+      "category": "COMPONENT",
+      "description": "Controls refrigerant flow into the evaporator"
+    },
+    {
+      "id": "AC-014",
+      "code": "THERMOSTATIC_EXPANSION_VALVE",
+      "name": "Thermostatic Expansion Valve",
+      "category": "COMPONENT",
+      "description": "Expansion valve that regulates refrigerant flow based on operating conditions"
+    },
+    {
+      "id": "AC-015",
+      "code": "ORIFICE_TUBE",
+      "name": "Orifice Tube",
+      "category": "COMPONENT",
+      "description": "Fixed refrigerant metering device used on applicable systems"
+    },
+    {
+      "id": "AC-016",
+      "code": "RECEIVER_DRIER",
+      "name": "Receiver Drier",
+      "category": "COMPONENT",
+      "description": "Stores refrigerant and removes moisture from applicable systems"
+    },
+    {
+      "id": "AC-017",
+      "code": "ACCUMULATOR",
+      "name": "Accumulator",
+      "category": "COMPONENT",
+      "description": "Stores refrigerant and helps prevent liquid refrigerant from reaching the compressor"
+    },
+    {
+      "id": "AC-018",
+      "code": "AC_FILTER_DRIER",
+      "name": "A/C Filter Drier",
+      "category": "COMPONENT",
+      "description": "Filters contaminants and absorbs moisture from refrigerant"
+    },
+    {
+      "id": "AC-019",
+      "code": "BLOWER_MOTOR",
+      "name": "Blower Motor",
+      "category": "COMPONENT",
+      "description": "Drives the cabin blower fan"
+    },
+    {
+      "id": "AC-020",
+      "code": "BLOWER_FAN",
+      "name": "Blower Fan",
+      "category": "COMPONENT",
+      "description": "Moves conditioned air through the HVAC system"
+    },
+    {
+      "id": "AC-021",
+      "code": "BLOWER_MOTOR_RESISTOR",
+      "name": "Blower Motor Resistor",
+      "category": "ELECTRICAL",
+      "description": "Controls blower motor speed on applicable systems"
+    },
+    {
+      "id": "AC-022",
+      "code": "BLOWER_MOTOR_CONTROLLER",
+      "name": "Blower Motor Controller",
+      "category": "ELECTRICAL",
+      "description": "Electronic controller for variable-speed blower motors"
+    },
+    {
+      "id": "AC-023",
+      "code": "CABIN_AIR_FILTER",
+      "name": "Cabin Air Filter",
+      "category": "FILTER",
+      "description": "Filters dust and particles from air entering the cabin"
+    },
+    {
+      "id": "AC-024",
+      "code": "CABIN_AIR_FILTER_HOUSING",
+      "name": "Cabin Air Filter Housing",
+      "category": "COMPONENT",
+      "description": "Housing that contains the cabin air filter"
+    },
+    {
+      "id": "AC-025",
+      "code": "HVAC_HOUSING",
+      "name": "HVAC Housing",
+      "category": "COMPONENT",
+      "description": "Housing containing applicable HVAC components"
+    },
+    {
+      "id": "AC-026",
+      "code": "HEATER_CORE",
+      "name": "Heater Core",
+      "category": "HEATING",
+      "description": "Transfers engine coolant heat to cabin air on applicable vehicles"
+    },
+    {
+      "id": "AC-027",
+      "code": "HEATER_BLOWER_ASSEMBLY",
+      "name": "Heater Blower Assembly",
+      "category": "HEATING",
+      "description": "Blower assembly used to distribute heated cabin air"
+    },
+    {
+      "id": "AC-028",
+      "code": "AC_PRESSURE_SENSOR",
+      "name": "A/C Pressure Sensor",
+      "category": "SENSOR",
+      "description": "Monitors refrigerant pressure in the air-conditioning system"
+    },
+    {
+      "id": "AC-029",
+      "code": "REFRIGERANT_TEMPERATURE_SENSOR",
+      "name": "Refrigerant Temperature Sensor",
+      "category": "SENSOR",
+      "description": "Monitors refrigerant temperature where applicable"
+    },
+    {
+      "id": "AC-030",
+      "code": "CABIN_TEMPERATURE_SENSOR",
+      "name": "Cabin Temperature Sensor",
+      "category": "SENSOR",
+      "description": "Measures cabin air temperature"
+    },
+    {
+      "id": "AC-031",
+      "code": "EVAPORATOR_TEMPERATURE_SENSOR",
+      "name": "Evaporator Temperature Sensor",
+      "category": "SENSOR",
+      "description": "Measures evaporator temperature"
+    },
+    {
+      "id": "AC-032",
+      "code": "AMBIENT_TEMPERATURE_SENSOR",
+      "name": "Ambient Temperature Sensor",
+      "category": "SENSOR",
+      "description": "Measures outside air temperature"
+    },
+    {
+      "id": "AC-033",
+      "code": "SUNLOAD_SENSOR",
+      "name": "Sunload Sensor",
+      "category": "SENSOR",
+      "description": "Measures solar intensity for automatic climate-control operation"
+    },
+    {
+      "id": "AC-034",
+      "code": "HUMIDITY_SENSOR",
+      "name": "Humidity Sensor",
+      "category": "SENSOR",
+      "description": "Measures cabin humidity where equipped"
+    },
+    {
+      "id": "AC-035",
+      "code": "AIR_MIX_DOOR_ACTUATOR",
+      "name": "Air Mix Door Actuator",
+      "category": "ACTUATOR",
+      "description": "Controls air temperature mixing through HVAC air doors"
+    },
+    {
+      "id": "AC-036",
+      "code": "MODE_DOOR_ACTUATOR",
+      "name": "Mode Door Actuator",
+      "category": "ACTUATOR",
+      "description": "Controls airflow direction through HVAC outlets"
+    },
+    {
+      "id": "AC-037",
+      "code": "RECIRCULATION_DOOR_ACTUATOR",
+      "name": "Recirculation Door Actuator",
+      "category": "ACTUATOR",
+      "description": "Controls fresh-air and recirculation airflow"
+    },
+    {
+      "id": "AC-038",
+      "code": "HVAC_ACTUATOR",
+      "name": "HVAC Actuator",
+      "category": "ACTUATOR",
+      "description": "Motorized actuator used to control HVAC air doors"
+    },
+    {
+      "id": "AC-039",
+      "code": "HVAC_CONTROL_PANEL",
+      "name": "HVAC Control Panel",
+      "category": "CONTROL",
+      "description": "Driver and passenger interface for HVAC settings"
+    },
+    {
+      "id": "AC-040",
+      "code": "CLIMATE_CONTROL_MODULE",
+      "name": "Climate Control Module",
+      "category": "CONTROL",
+      "description": "Electronic module controlling automatic climate functions"
+    },
+    {
+      "id": "AC-041",
+      "code": "HVAC_CONTROL_UNIT",
+      "name": "HVAC Control Unit",
+      "category": "CONTROL",
+      "description": "Electronic control unit for HVAC operation"
+    },
+    {
+      "id": "AC-042",
+      "code": "AC_RELAY",
+      "name": "A/C Relay",
+      "category": "ELECTRICAL",
+      "description": "Electrical relay controlling applicable A/C circuits"
+    },
+    {
+      "id": "AC-043",
+      "code": "AC_FUSE",
+      "name": "A/C Fuse",
+      "category": "ELECTRICAL",
+      "description": "Protective fuse for applicable A/C electrical circuits"
+    },
+    {
+      "id": "AC-044",
+      "code": "AC_HIGH_PRESSURE_SWITCH",
+      "name": "A/C High Pressure Switch",
+      "category": "SENSOR",
+      "description": "Monitors or protects against excessive refrigerant pressure"
+    },
+    {
+      "id": "AC-045",
+      "code": "AC_LOW_PRESSURE_SWITCH",
+      "name": "A/C Low Pressure Switch",
+      "category": "SENSOR",
+      "description": "Monitors low refrigerant pressure on applicable systems"
+    },
+    {
+      "id": "AC-046",
+      "code": "REFRIGERANT_LINE",
+      "name": "Refrigerant Line",
+      "category": "LINE",
+      "description": "Carries refrigerant between air-conditioning components"
+    },
+    {
+      "id": "AC-047",
+      "code": "AC_HIGH_PRESSURE_LINE",
+      "name": "A/C High Pressure Line",
+      "category": "LINE",
+      "description": "Carries high-pressure refrigerant between applicable components"
+    },
+    {
+      "id": "AC-048",
+      "code": "AC_LOW_PRESSURE_LINE",
+      "name": "A/C Low Pressure Line",
+      "category": "LINE",
+      "description": "Carries low-pressure refrigerant between applicable components"
+    },
+    {
+      "id": "AC-049",
+      "code": "AC_HOSE",
+      "name": "A/C Hose",
+      "category": "LINE",
+      "description": "Flexible refrigerant hose used in applicable air-conditioning circuits"
+    },
+    {
+      "id": "AC-050",
+      "code": "REFRIGERANT",
+      "name": "A/C Refrigerant",
+      "category": "FLUID",
+      "description": "Refrigerant used by the vehicle air-conditioning system"
+    },
+    {
+      "id": "AC-051",
+      "code": "REFRIGERANT_OIL",
+      "name": "A/C Compressor Oil",
+      "category": "FLUID",
+      "description": "Lubricating oil used in applicable A/C compressor systems"
+    },
+    {
+      "id": "AC-052",
+      "code": "HVAC_DUCT",
+      "name": "HVAC Air Duct",
+      "category": "AIRFLOW",
+      "description": "Ducting that distributes conditioned air through the cabin"
+    },
+    {
+      "id": "AC-053",
+      "code": "HVAC_AIR_OUTLET",
+      "name": "HVAC Air Outlet",
+      "category": "AIRFLOW",
+      "description": "Cabin air outlet used to distribute conditioned air"
+    },
+    {
+      "id": "AC-054",
+      "code": "DEFROST_DUCT",
+      "name": "Defrost Duct",
+      "category": "AIRFLOW",
+      "description": "Air duct directing airflow toward windshield defrost outlets"
+    },
+    {
+      "id": "AC-055",
+      "code": "REAR_EVAPORATOR",
+      "name": "Rear Evaporator",
+      "category": "COMPONENT",
+      "description": "Additional evaporator used in applicable rear climate systems"
+    },
+    {
+      "id": "AC-056",
+      "code": "REAR_BLOWER_MOTOR",
+      "name": "Rear Blower Motor",
+      "category": "COMPONENT",
+      "description": "Blower motor for applicable rear HVAC systems"
+    },
+    {
+      "id": "AC-057",
+      "code": "AC_CONDENSER_FAN",
+      "name": "A/C Condenser Fan",
+      "category": "COMPONENT",
+      "description": "Fan providing airflow across the A/C condenser"
+    },
+    {
+      "id": "AC-058",
+      "code": "ELECTRIC_COOLANT_HEATER",
+      "name": "Electric Coolant Heater",
+      "category": "HEATING",
+      "description": "Electric heating component used on applicable hybrid and electric vehicles"
+    },
+    {
+      "id": "AC-059",
+      "code": "PTC_HEATER",
+      "name": "PTC Heater",
+      "category": "HEATING",
+      "description": "Positive temperature coefficient electric heater used on applicable vehicles"
+    },
+    {
+      "id": "AC-060",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "category": "UNKNOWN",
+      "description": "Air-conditioning or HVAC specification not available"
+    }
+  ]
+}
