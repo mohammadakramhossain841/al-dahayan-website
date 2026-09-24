@@ -1,0 +1,191 @@
+{
+  "version": "1.0.0",
+  "brand": "Lexus",
+  "market": "global-foundation",
+  "yearRange": {
+    "from": 2008,
+    "to": 2026
+  },
+  "models": [
+    {
+      "model": "ES",
+      "generations": [
+        {
+          "generation": 6,
+          "code": "XV60",
+          "years": "2012-2018"
+        },
+        {
+          "generation": 7,
+          "code": "XZ10",
+          "years": "2018-2025"
+        },
+        {
+          "generation": 8,
+          "code": "XZ20",
+          "years": "2025-2026"
+        }
+      ]
+    },
+    {
+      "model": "IS",
+      "generations": [
+        {
+          "generation": 2,
+          "code": "XE20",
+          "years": "2008-2013"
+        },
+        {
+          "generation": 3,
+          "code": "XE30",
+          "years": "2013-2025"
+        },
+        {
+          "generation": 3,
+          "code": "XE30-Facelift",
+          "years": "2020-2025"
+        },
+        {
+          "generation": 3,
+          "code": "XE30-2026",
+          "years": "2026"
+        }
+      ]
+    },
+    {
+      "model": "LS",
+      "generations": [
+        {
+          "generation": 4,
+          "code": "XF40",
+          "years": "2008-2017"
+        },
+        {
+          "generation": 5,
+          "code": "XF50",
+          "years": "2017-2026"
+        }
+      ]
+    },
+    {
+      "model": "RX",
+      "generations": [
+        {
+          "generation": 3,
+          "code": "AL10",
+          "years": "2008-2015"
+        },
+        {
+          "generation": 4,
+          "code": "AL20",
+          "years": "2015-2022"
+        },
+        {
+          "generation": 5,
+          "code": "LA1",
+          "years": "2022-2026"
+        }
+      ]
+    },
+    {
+      "model": "NX",
+      "generations": [
+        {
+          "generation": 1,
+          "code": "AZ10",
+          "years": "2014-2021"
+        },
+        {
+          "generation": 2,
+          "code": "AZ20",
+          "years": "2021-2026"
+        }
+      ]
+    },
+    {
+      "model": "GX",
+      "generations": [
+        {
+          "generation": 2,
+          "code": "J150",
+          "years": "2009-2023"
+        },
+        {
+          "generation": 3,
+          "code": "J250",
+          "years": "2024-2026"
+        }
+      ]
+    },
+    {
+      "model": "LX",
+      "generations": [
+        {
+          "generation": 3,
+          "code": "J200",
+          "years": "2008-2021"
+        },
+        {
+          "generation": 4,
+          "code": "J310",
+          "years": "2021-2026"
+        }
+      ]
+    },
+    {
+      "model": "UX",
+      "generations": [
+        {
+          "generation": 1,
+          "code": "ZA10",
+          "years": "2018-2023"
+        },
+        {
+          "generation": 1,
+          "code": "ZA10-Facelift",
+          "years": "2023-2026"
+        }
+      ]
+    },
+    {
+      "model": "RC",
+      "generations": [
+        {
+          "generation": 1,
+          "code": "XC10",
+          "years": "2014-2025"
+        }
+      ]
+    },
+    {
+      "model": "LC",
+      "generations": [
+        {
+          "generation": 1,
+          "code": "URZ100",
+          "years": "2016-2026"
+        }
+      ]
+    },
+    {
+      "model": "RZ",
+      "generations": [
+        {
+          "generation": 1,
+          "code": "XEBM10",
+          "years": "2022-2026"
+        }
+      ]
+    },
+    {
+      "model": "TX",
+      "generations": [
+        {
+          "generation": 1,
+          "code": "TAUA10",
+          "years": "2023-2026"
+        }
+      ]
+    }
+  ]
+}
