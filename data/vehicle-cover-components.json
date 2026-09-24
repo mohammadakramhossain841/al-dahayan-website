@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_cover_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VCR-001",
+      "code": "ENGINE_COVER",
+      "name": "Engine Cover",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCR-002",
+      "code": "ENGINE_TOP_COVER",
+      "name": "Engine Top Cover",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCR-003",
+      "code": "ENGINE_UNDER_COVER",
+      "name": "Engine Under Cover",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCR-004",
+      "code": "TIMING_COVER",
+      "name": "Timing Cover",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCR-005",
+      "code": "VALVE_COVER",
+      "name": "Valve Cover",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCR-006",
+      "code": "FUSE_BOX_COVER",
+      "name": "Fuse Box Cover",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCR-007",
+      "code": "RELAY_BOX_COVER",
+      "name": "Relay Box Cover",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCR-008",
+      "code": "BATTERY_COVER",
+      "name": "Battery Cover",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VCR-009",
+      "code": "BATTERY_TERMINAL_COVER",
+      "name": "Battery Terminal Cover",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VCR-010",
+      "code": "AIR_FILTER_COVER",
+      "name": "Air Filter Housing Cover",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCR-011",
+      "code": "INTAKE_COVER",
+      "name": "Air Intake Cover",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCR-012",
+      "code": "THROTTLE_BODY_COVER",
+      "name": "Throttle Body Cover",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCR-013",
+      "code": "FUEL_PUMP_COVER",
+      "name": "Fuel Pump Cover",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCR-014",
+      "code": "FUEL_TANK_COVER",
+      "name": "Fuel Tank Cover",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCR-015",
+      "code": "FUEL_FILLER_COVER",
+      "name": "Fuel Filler Door",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCR-016",
+      "code": "RADIATOR_COVER",
+      "name": "Radiator Cover",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCR-017",
+      "code": "RADIATOR_TOP_COVER",
+      "name": "Radiator Top Cover",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCR-018",
+      "code": "FAN_SHROUD_COVER",
+      "name": "Cooling Fan Shroud Cover",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCR-019",
+      "code": "TRANSMISSION_COVER",
+      "name": "Transmission Cover",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VCR-020",
+      "code": "TRANSMISSION_UNDER_COVER",
+      "name": "Transmission Under Cover",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VCR-021",
+      "code": "TRANSFER_CASE_COVER",
+      "name": "Transfer Case Cover",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VCR-022",
+      "code": "DIFFERENTIAL_COVER",
+      "name": "Differential Cover",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VCR-023",
+      "code": "CLUTCH_COVER",
+      "name": "Clutch Cover",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCR-024",
+      "code": "FLYWHEEL_COVER",
+      "name": "Flywheel Inspection Cover",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCR-025",
+      "code": "BRAKE_MASTER_COVER",
+      "name": "Brake Master Cylinder Cover",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCR-026",
+      "code": "BRAKE_FLUID_RESERVOIR_COVER",
+      "name": "Brake Fluid Reservoir Cover",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCR-027",
+      "code": "CLUTCH_FLUID_COVER",
+      "name": "Clutch Fluid Reservoir Cover",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCR-028",
+      "code": "POWER_STEERING_RESERVOIR_COVER",
+      "name": "Power Steering Reservoir Cover",
+      "category": "STEERING"
+    },
+    {
+      "id": "VCR-029",
+      "code": "COOLANT_RESERVOIR_COVER",
+      "name": "Coolant Reservoir Cover",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCR-030",
+      "code": "WASHER_RESERVOIR_COVER",
+      "name": "Washer Reservoir Cover",
+      "category": "WIPER"
+    },
+    {
+      "id": "VCR-031",
+      "code": "AC_COMPRESSOR_COVER",
+      "name": "A/C Compressor Cover",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCR-032",
+      "code": "AC_SERVICE_PORT_COVER",
+      "name": "A/C Service Port Cover",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCR-033",
+      "code": "EVAPORATOR_COVER",
+      "name": "Evaporator Cover",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCR-034",
+      "code": "BATTERY_PACK_COVER",
+      "name": "Hybrid Battery Pack Cover",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCR-035",
+      "code": "HIGH_VOLTAGE_BATTERY_COVER",
+      "name": "High Voltage Battery Cover",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCR-036",
+      "code": "INVERTER_COVER",
+      "name": "Inverter Cover",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCR-037",
+      "code": "DC_DC_CONVERTER_COVER",
+      "name": "DC-DC Converter Cover",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCR-038",
+      "code": "ONBOARD_CHARGER_COVER",
+      "name": "Onboard Charger Cover",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCR-039",
+      "code": "CHARGING_PORT_COVER",
+      "name": "Charging Port Cover",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCR-040",
+      "code": "EV_MOTOR_COVER",
+      "name": "EV Motor Cover",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCR-041",
+      "code": "HV_JUNCTION_COVER",
+      "name": "High Voltage Junction Cover",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCR-042",
+      "code": "ECU_COVER",
+      "name": "ECU Protective Cover",
+      "category": "ECU"
+    },
+    {
+      "id": "VCR-043",
+      "code": "CONTROL_MODULE_COVER",
+      "name": "Control Module Cover",
+      "category": "MODULE"
+    },
+    {
+      "id": "VCR-044",
+      "code": "WIRING_JUNCTION_COVER",
+      "name": "Wiring Junction Cover",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCR-045",
+      "code": "CONNECTOR_COVER",
+      "name": "Electrical Connector Cover",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCR-046",
+      "code": "SENSOR_COVER",
+      "name": "Sensor Protective Cover",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCR-047",
+      "code": "RADAR_COVER",
+      "name": "Radar Sensor Cover",
+      "category": "ADAS"
+    },
+    {
+      "id": "VCR-048",
+      "code": "CAMERA_COVER",
+      "name": "Camera Protective Cover",
+      "category": "ADAS"
+    },
+    {
+      "id": "VCR-049",
+      "code": "PARKING_SENSOR_COVER",
+      "name": "Parking Sensor Cover",
+      "category": "ADAS"
+    },
+    {
+      "id": "VCR-050",
+      "code": "HEADLIGHT_BACK_COVER",
+      "name": "Headlight Rear Cover",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VCR-051",
+      "code": "TAILLIGHT_BACK_COVER",
+      "name": "Taillight Rear Cover",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VCR-052",
+      "code": "FOG_LIGHT_COVER",
+      "name": "Fog Light Cover",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VCR-053",
+      "code": "BUMPER_COVER",
+      "name": "Bumper Cover",
+      "category": "BODY"
+    },
+    {
+      "id": "VCR-054",
+      "code": "BUMPER_TOW_HOOK_COVER",
+      "name": "Bumper Tow Hook Cover",
+      "category": "BODY"
+    },
+    {
+      "id": "VCR-055",
+      "code": "GRILLE_COVER",
+      "name": "Grille Cover",
+      "category": "BODY"
+    },
+    {
+      "id": "VCR-056",
+      "code": "FENDER_COVER",
+      "name": "Fender Cover",
+      "category": "BODY"
+    },
+    {
+      "id": "VCR-057",
+      "code": "WHEEL_ARCH_COVER",
+      "name": "Wheel Arch Cover",
+      "category": "BODY"
+    },
+    {
+      "id": "VCR-058",
+      "code": "UNDERBODY_COVER",
+      "name": "Underbody Cover",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VCR-059",
+      "code": "ROCKER_PANEL_COVER",
+      "name": "Rocker Panel Cover",
+      "category": "BODY"
+    },
+    {
+      "id": "VCR-060",
+      "code": "SIDE_SKIRT_COVER",
+      "name": "Side Skirt Cover",
+      "category": "BODY"
+    },
+    {
+      "id": "VCR-061",
+      "code": "DOOR_HINGE_COVER",
+      "name": "Door Hinge Cover",
+      "category": "DOOR"
+    },
+    {
+      "id": "VCR-062",
+      "code": "DOOR_HANDLE_COVER",
+      "name": "Door Handle Cover",
+      "category": "DOOR"
+    },
+    {
+      "id": "VCR-063",
+      "code": "DOOR_MIRROR_COVER",
+      "name": "Door Mirror Cover",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VCR-064",
+      "code": "HOOD_HINGE_COVER",
+      "name": "Hood Hinge Cover",
+      "category": "HOOD"
+    },
+    {
+      "id": "VCR-065",
+      "code": "HOOD_LATCH_COVER",
+      "name": "Hood Latch Cover",
+      "category": "HOOD"
+    },
+    {
+      "id": "VCR-066",
+      "code": "ROOF_RAIL_COVER",
+      "name": "Roof Rail Cover",
+      "category": "ROOF"
+    },
+    {
+      "id": "VCR-067",
+      "code": "ROOF_RACK_COVER",
+      "name": "Roof Rack Cover",
+      "category": "ROOF"
+    },
+    {
+      "id": "VCR-068",
+      "code": "SUNROOF_COVER",
+      "name": "Sunroof Cover",
+      "category": "ROOF"
+    },
+    {
+      "id": "VCR-069",
+      "code": "SUNSHADE_COVER",
+      "name": "Sunroof Sunshade Cover",
+      "category": "ROOF"
+    },
+    {
+      "id": "VCR-070",
+      "code": "WINDSHIELD_TRIM_COVER",
+      "name": "Windshield Trim Cover",
+      "category": "GLASS"
+    },
+    {
+      "id": "VCR-071",
+      "code": "REAR_GLASS_TRIM_COVER",
+      "name": "Rear Glass Trim Cover",
+      "category": "GLASS"
+    },
+    {
+      "id": "VCR-072",
+      "code": "WIPER_ARM_COVER",
+      "name": "Wiper Arm Cover",
+      "category": "WIPER"
+    },
+    {
+      "id": "VCR-073",
+      "code": "WIPER_BASE_COVER",
+      "name": "Wiper Base Cover",
+      "category": "WIPER"
+    },
+    {
+      "id": "VCR-074",
+      "code": "CABIN_FILTER_COVER",
+      "name": "Cabin Filter Cover",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCR-075",
+      "code": "BLOWER_COVER",
+      "name": "Blower Motor Cover",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCR-076",
+      "code": "HVAC_HOUSING_COVER",
+      "name": "HVAC Housing Cover",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCR-077",
+      "code": "SEAT_RAIL_COVER",
+      "name": "Seat Rail Cover",
+      "category": "SEAT"
+    },
+    {
+      "id": "VCR-078",
+      "code": "SEAT_MOUNT_COVER",
+      "name": "Seat Mount Cover",
+      "category": "SEAT"
+    },
+    {
+      "id": "VCR-079",
+      "code": "DASHBOARD_COVER",
+      "name": "Dashboard Cover",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VCR-080",
+      "code": "CENTER_CONSOLE_COVER",
+      "name": "Center Console Cover",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VCR-081",
+      "code": "GLOVEBOX_COVER",
+      "name": "Glovebox Cover",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VCR-082",
+      "code": "FLOOR_CONSOLE_COVER",
+      "name": "Floor Console Cover",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VCR-083",
+      "code": "TRUNK_COVER",
+      "name": "Trunk Cover",
+      "category": "TRUNK"
+    },
+    {
+      "id": "VCR-084",
+      "code": "TRUNK_FLOOR_COVER",
+      "name": "Trunk Floor Cover",
+      "category": "TRUNK"
+    },
+    {
+      "id": "VCR-085",
+      "code": "CARGO_FLOOR_COVER",
+      "name": "Cargo Floor Cover",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VCR-086",
+      "code": "TAILGATE_TRIM_COVER",
+      "name": "Tailgate Trim Cover",
+      "category": "TAILGATE"
+    },
+    {
+      "id": "VCR-087",
+      "code": "LICENSE_PLATE_COVER",
+      "name": "License Plate Cover",
+      "category": "BODY"
+    },
+    {
+      "id": "VCR-088",
+      "code": "TOW_HOOK_COVER",
+      "name": "Tow Hook Cover",
+      "category": "BODY"
+    },
+    {
+      "id": "VCR-089",
+      "code": "PARKING_BRAKE_COVER",
+      "name": "Parking Brake Cover",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCR-090",
+      "code": "SHIFT_LEVER_COVER",
+      "name": "Shift Lever Cover",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VCR-091",
+      "code": "STEERING_COLUMN_COVER",
+      "name": "Steering Column Cover",
+      "category": "STEERING"
+    },
+    {
+      "id": "VCR-092",
+      "code": "FUSE_TERMINAL_COVER",
+      "name": "Fuse Terminal Protective Cover",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCR-093",
+      "code": "CABLE_PROTECTIVE_COVER",
+      "name": "Cable Protective Cover",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCR-094",
+      "code": "THERMAL_PROTECTIVE_COVER",
+      "name": "Thermal Protective Cover",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VCR-095",
+      "code": "DUST_PROTECTIVE_COVER",
+      "name": "Dust Protective Cover",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VCR-096",
+      "code": "WATER_PROTECTIVE_COVER",
+      "name": "Water Protective Cover",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VCR-097",
+      "code": "SERVICE_COVER_KIT",
+      "name": "Service Cover Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VCR-098",
+      "code": "REPAIR_COVER_KIT",
+      "name": "Repair Cover Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VCR-099",
+      "code": "UNIVERSAL_VEHICLE_COVER",
+      "name": "Universal Vehicle Cover",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCR-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Cover Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
