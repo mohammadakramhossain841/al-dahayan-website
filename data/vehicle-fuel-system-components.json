@@ -1,0 +1,604 @@
+{
+  "fuelSystemComponents": [
+    {
+      "id": "VFSC-001",
+      "code": "FUEL_SYSTEM",
+      "name": "Fuel System",
+      "category": "FUEL"
+    },
+    {
+      "id": "VFSC-002",
+      "code": "FUEL_TANK",
+      "name": "Fuel Tank",
+      "category": "FUEL"
+    },
+    {
+      "id": "VFSC-003",
+      "code": "FUEL_TANK_CAP",
+      "name": "Fuel Tank Cap",
+      "category": "FUEL"
+    },
+    {
+      "id": "VFSC-004",
+      "code": "FUEL_FILLER_NECK",
+      "name": "Fuel Filler Neck",
+      "category": "FUEL"
+    },
+    {
+      "id": "VFSC-005",
+      "code": "FUEL_FILLER_PIPE",
+      "name": "Fuel Filler Pipe",
+      "category": "FUEL"
+    },
+    {
+      "id": "VFSC-006",
+      "code": "FUEL_TANK_SENDER",
+      "name": "Fuel Tank Sender",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VFSC-007",
+      "code": "FUEL_LEVEL_SENSOR",
+      "name": "Fuel Level Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VFSC-008",
+      "code": "FUEL_LEVEL_GAUGE",
+      "name": "Fuel Level Gauge",
+      "category": "INSTRUMENT"
+    },
+    {
+      "id": "VFSC-009",
+      "code": "FUEL_PUMP",
+      "name": "Fuel Pump",
+      "category": "FUEL"
+    },
+    {
+      "id": "VFSC-010",
+      "code": "ELECTRIC_FUEL_PUMP",
+      "name": "Electric Fuel Pump",
+      "category": "FUEL"
+    },
+    {
+      "id": "VFSC-011",
+      "code": "FUEL_PUMP_MODULE",
+      "name": "Fuel Pump Module",
+      "category": "FUEL"
+    },
+    {
+      "id": "VFSC-012",
+      "code": "FUEL_PUMP_ASSEMBLY",
+      "name": "Fuel Pump Assembly",
+      "category": "FUEL"
+    },
+    {
+      "id": "VFSC-013",
+      "code": "FUEL_PUMP_STRainer",
+      "name": "Fuel Pump Strainer",
+      "category": "FILTER"
+    },
+    {
+      "id": "VFSC-014",
+      "code": "FUEL_FILTER",
+      "name": "Fuel Filter",
+      "category": "FILTER"
+    },
+    {
+      "id": "VFSC-015",
+      "code": "FUEL_FILTER_HOUSING",
+      "name": "Fuel Filter Housing",
+      "category": "FILTER"
+    },
+    {
+      "id": "VFSC-016",
+      "code": "DIESEL_FUEL_FILTER",
+      "name": "Diesel Fuel Filter",
+      "category": "FILTER"
+    },
+    {
+      "id": "VFSC-017",
+      "code": "WATER_SEPARATOR",
+      "name": "Fuel Water Separator",
+      "category": "FILTER"
+    },
+    {
+      "id": "VFSC-018",
+      "code": "FUEL_RAIL",
+      "name": "Fuel Rail",
+      "category": "FUEL"
+    },
+    {
+      "id": "VFSC-019",
+      "code": "COMMON_RAIL",
+      "name": "Common Rail",
+      "category": "DIESEL"
+    },
+    {
+      "id": "VFSC-020",
+      "code": "FUEL_INJECTOR",
+      "name": "Fuel Injector",
+      "category": "INJECTION"
+    },
+    {
+      "id": "VFSC-021",
+      "code": "GASOLINE_INJECTOR",
+      "name": "Gasoline Fuel Injector",
+      "category": "INJECTION"
+    },
+    {
+      "id": "VFSC-022",
+      "code": "DIESEL_INJECTOR",
+      "name": "Diesel Fuel Injector",
+      "category": "INJECTION"
+    },
+    {
+      "id": "VFSC-023",
+      "code": "DIRECT_INJECTOR",
+      "name": "Direct Fuel Injector",
+      "category": "INJECTION"
+    },
+    {
+      "id": "VFSC-024",
+      "code": "FUEL_PRESSURE_REGULATOR",
+      "name": "Fuel Pressure Regulator",
+      "category": "PRESSURE_CONTROL"
+    },
+    {
+      "id": "VFSC-025",
+      "code": "FUEL_PRESSURE_SENSOR",
+      "name": "Fuel Pressure Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VFSC-026",
+      "code": "RAIL_PRESSURE_SENSOR",
+      "name": "Fuel Rail Pressure Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VFSC-027",
+      "code": "FUEL_PRESSURE_CONTROL_VALVE",
+      "name": "Fuel Pressure Control Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VFSC-028",
+      "code": "FUEL_METERING_VALVE",
+      "name": "Fuel Metering Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VFSC-029",
+      "code": "FUEL_SHUTOFF_VALVE",
+      "name": "Fuel Shutoff Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VFSC-030",
+      "code": "FUEL_CUTOFF_VALVE",
+      "name": "Fuel Cutoff Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VFSC-031",
+      "code": "FUEL_SUPPLY_LINE",
+      "name": "Fuel Supply Line",
+      "category": "LINE"
+    },
+    {
+      "id": "VFSC-032",
+      "code": "FUEL_RETURN_LINE",
+      "name": "Fuel Return Line",
+      "category": "LINE"
+    },
+    {
+      "id": "VFSC-033",
+      "code": "FUEL_LINE_HOSE",
+      "name": "Fuel Line Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VFSC-034",
+      "code": "FUEL_RAIL_LINE",
+      "name": "Fuel Rail Line",
+      "category": "LINE"
+    },
+    {
+      "id": "VFSC-035",
+      "code": "FUEL_LINE_CONNECTOR",
+      "name": "Fuel Line Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VFSC-036",
+      "code": "FUEL_LINE_CLIP",
+      "name": "Fuel Line Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFSC-037",
+      "code": "FUEL_LINE_BRACKET",
+      "name": "Fuel Line Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VFSC-038",
+      "code": "FUEL_INJECTOR_SEAL",
+      "name": "Fuel Injector Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFSC-039",
+      "code": "FUEL_INJECTOR_O_RING",
+      "name": "Fuel Injector O-Ring",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFSC-040",
+      "code": "FUEL_RAIL_GASKET",
+      "name": "Fuel Rail Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFSC-041",
+      "code": "FUEL_TANK_GASKET",
+      "name": "Fuel Tank Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFSC-042",
+      "code": "FUEL_PUMP_GASKET",
+      "name": "Fuel Pump Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFSC-043",
+      "code": "FUEL_TANK_LOCK_RING",
+      "name": "Fuel Tank Lock Ring",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFSC-044",
+      "code": "FUEL_TANK_BAFFLE",
+      "name": "Fuel Tank Baffle",
+      "category": "FUEL"
+    },
+    {
+      "id": "VFSC-045",
+      "code": "FUEL_TANK_VENT",
+      "name": "Fuel Tank Vent",
+      "category": "VENTILATION"
+    },
+    {
+      "id": "VFSC-046",
+      "code": "FUEL_TANK_PRESSURE_SENSOR",
+      "name": "Fuel Tank Pressure Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VFSC-047",
+      "code": "EVAP_SYSTEM",
+      "name": "Evaporative Emission System",
+      "category": "EVAP"
+    },
+    {
+      "id": "VFSC-048",
+      "code": "EVAP_CANISTER",
+      "name": "EVAP Charcoal Canister",
+      "category": "EVAP"
+    },
+    {
+      "id": "VFSC-049",
+      "code": "EVAP_PURGE_VALVE",
+      "name": "EVAP Purge Valve",
+      "category": "EVAP"
+    },
+    {
+      "id": "VFSC-050",
+      "code": "EVAP_VENT_VALVE",
+      "name": "EVAP Vent Valve",
+      "category": "EVAP"
+    },
+    {
+      "id": "VFSC-051",
+      "code": "EVAP_LINE",
+      "name": "EVAP Line",
+      "category": "EVAP"
+    },
+    {
+      "id": "VFSC-052",
+      "code": "EVAP_HOSE",
+      "name": "EVAP Hose",
+      "category": "EVAP"
+    },
+    {
+      "id": "VFSC-053",
+      "code": "FUEL_TANK_VENT_VALVE",
+      "name": "Fuel Tank Vent Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VFSC-054",
+      "code": "FUEL_PUMP_RELAY",
+      "name": "Fuel Pump Relay",
+      "category": "RELAY"
+    },
+    {
+      "id": "VFSC-055",
+      "code": "FUEL_PUMP_FUSE",
+      "name": "Fuel Pump Fuse",
+      "category": "FUSE"
+    },
+    {
+      "id": "VFSC-056",
+      "code": "FUEL_SYSTEM_CONTROL_MODULE",
+      "name": "Fuel System Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VFSC-057",
+      "code": "FUEL_PUMP_CONTROL_MODULE",
+      "name": "Fuel Pump Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VFSC-058",
+      "code": "FUEL_INJECTOR_CONTROL_MODULE",
+      "name": "Fuel Injector Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VFSC-059",
+      "code": "FUEL_PUMP_WIRING",
+      "name": "Fuel Pump Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VFSC-060",
+      "code": "FUEL_INJECTOR_WIRING",
+      "name": "Fuel Injector Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VFSC-061",
+      "code": "FUEL_PUMP_CONNECTOR",
+      "name": "Fuel Pump Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VFSC-062",
+      "code": "FUEL_INJECTOR_CONNECTOR",
+      "name": "Fuel Injector Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VFSC-063",
+      "code": "FUEL_RAIL_CONNECTOR",
+      "name": "Fuel Rail Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VFSC-064",
+      "code": "FUEL_PRESSURE_SENSOR_CONNECTOR",
+      "name": "Fuel Pressure Sensor Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VFSC-065",
+      "code": "DIESEL_PRIMER_PUMP",
+      "name": "Diesel Primer Pump",
+      "category": "DIESEL"
+    },
+    {
+      "id": "VFSC-066",
+      "code": "DIESEL_FILTER_HEAD",
+      "name": "Diesel Fuel Filter Head",
+      "category": "DIESEL"
+    },
+    {
+      "id": "VFSC-067",
+      "code": "WATER_IN_FUEL_SENSOR",
+      "name": "Water in Fuel Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VFSC-068",
+      "code": "COMMON_RAIL_PRESSURE_CONTROL",
+      "name": "Common Rail Pressure Control",
+      "category": "DIESEL"
+    },
+    {
+      "id": "VFSC-069",
+      "code": "COMMON_RAIL_PRESSURE_REGULATOR",
+      "name": "Common Rail Pressure Regulator",
+      "category": "DIESEL"
+    },
+    {
+      "id": "VFSC-070",
+      "code": "DIESEL_FUEL_METERING_UNIT",
+      "name": "Diesel Fuel Metering Unit",
+      "category": "DIESEL"
+    },
+    {
+      "id": "VFSC-071",
+      "code": "DIESEL_INJECTOR_RETURN_LINE",
+      "name": "Diesel Injector Return Line",
+      "category": "DIESEL"
+    },
+    {
+      "id": "VFSC-072",
+      "code": "DIESEL_INJECTOR_SEAL",
+      "name": "Diesel Injector Seal",
+      "category": "DIESEL"
+    },
+    {
+      "id": "VFSC-073",
+      "code": "FUEL_TANK_MOUNT",
+      "name": "Fuel Tank Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VFSC-074",
+      "code": "FUEL_TANK_STRAP",
+      "name": "Fuel Tank Strap",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VFSC-075",
+      "code": "FUEL_TANK_SHIELD",
+      "name": "Fuel Tank Shield",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFSC-076",
+      "code": "FUEL_TANK_INSULATOR",
+      "name": "Fuel Tank Insulator",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFSC-077",
+      "code": "FUEL_FILLER_NECK_SEAL",
+      "name": "Fuel Filler Neck Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFSC-078",
+      "code": "FUEL_FILLER_CAP_SEAL",
+      "name": "Fuel Filler Cap Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFSC-079",
+      "code": "FUEL_TANK_VENT_HOSE",
+      "name": "Fuel Tank Vent Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VFSC-080",
+      "code": "FUEL_TANK_VENT_FILTER",
+      "name": "Fuel Tank Vent Filter",
+      "category": "FILTER"
+    },
+    {
+      "id": "VFSC-081",
+      "code": "FUEL_SYSTEM_SERVICE_KIT",
+      "name": "Fuel System Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VFSC-082",
+      "code": "FUEL_FILTER_SERVICE_KIT",
+      "name": "Fuel Filter Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VFSC-083",
+      "code": "FUEL_PUMP_REPAIR_KIT",
+      "name": "Fuel Pump Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VFSC-084",
+      "code": "FUEL_INJECTOR_REPAIR_KIT",
+      "name": "Fuel Injector Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VFSC-085",
+      "code": "FUEL_RAIL_REPAIR_KIT",
+      "name": "Fuel Rail Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VFSC-086",
+      "code": "EVAP_SERVICE_KIT",
+      "name": "EVAP Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VFSC-087",
+      "code": "FUEL_SYSTEM_DIAGNOSTIC_COMPONENT",
+      "name": "Fuel System Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VFSC-088",
+      "code": "FUEL_PRESSURE_TEST_COMPONENT",
+      "name": "Fuel Pressure Test Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VFSC-089",
+      "code": "FUEL_SYSTEM_MOUNTING_HARDWARE",
+      "name": "Fuel System Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VFSC-090",
+      "code": "FUEL_LINE_FASTENER",
+      "name": "Fuel Line Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFSC-091",
+      "code": "FUEL_SYSTEM_GASKET_KIT",
+      "name": "Fuel System Gasket Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VFSC-092",
+      "code": "FUEL_SYSTEM_SEAL_KIT",
+      "name": "Fuel System Seal Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VFSC-093",
+      "code": "FUEL_SYSTEM_WIRING_HARNESS",
+      "name": "Fuel System Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VFSC-094",
+      "code": "FUEL_SYSTEM_CONNECTOR",
+      "name": "Fuel System Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VFSC-095",
+      "code": "FUEL_SYSTEM_VALVE",
+      "name": "General Fuel System Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VFSC-096",
+      "code": "FUEL_SYSTEM_SENSOR",
+      "name": "General Fuel System Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VFSC-097",
+      "code": "FUEL_SYSTEM_CONTROL_COMPONENT",
+      "name": "Fuel System Control Component",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VFSC-098",
+      "code": "FUEL_SYSTEM_MAINTENANCE_COMPONENT",
+      "name": "Fuel System Maintenance Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VFSC-099",
+      "code": "FUEL_SYSTEM_GENERAL_COMPONENT",
+      "name": "General Fuel System Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VFSC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Fuel System Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
