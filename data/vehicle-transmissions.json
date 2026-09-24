@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "transmissions": [
+    {
+      "code": "MT",
+      "name": "Manual Transmission",
+      "shortName": "Manual",
+      "description": "Driver-operated transmission using a clutch and manual gear selection."
+    },
+    {
+      "code": "AT",
+      "name": "Automatic Transmission",
+      "shortName": "Automatic",
+      "description": "Automatic gear-changing transmission using a conventional automatic gearbox."
+    },
+    {
+      "code": "CVT",
+      "name": "Continuously Variable Transmission",
+      "shortName": "CVT",
+      "description": "Transmission providing continuously variable gear ratios."
+    },
+    {
+      "code": "DCT",
+      "name": "Dual-Clutch Transmission",
+      "shortName": "DCT",
+      "description": "Transmission using two clutches for fast gear changes."
+    },
+    {
+      "code": "AMT",
+      "name": "Automated Manual Transmission",
+      "shortName": "AMT",
+      "description": "Manual gearbox operated automatically through electronic and hydraulic controls."
+    },
+    {
+      "code": "E-CVT",
+      "name": "Electronic Continuously Variable Transmission",
+      "shortName": "E-CVT",
+      "description": "Hybrid-system transmission using electronically controlled power-split technology."
+    },
+    {
+      "code": "EAT",
+      "name": "Electronically Controlled Automatic Transmission",
+      "shortName": "EAT",
+      "description": "Electronically managed automatic transmission."
+    },
+    {
+      "code": "HYBRID",
+      "name": "Hybrid Transmission",
+      "shortName": "Hybrid",
+      "description": "Hybrid powertrain transmission integrating an internal combustion engine with electric drive components."
+    },
+    {
+      "code": "EV",
+      "name": "Electric Drive",
+      "shortName": "EV",
+      "description": "Electric vehicle drivetrain without a conventional multi-speed combustion-engine transmission."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "shortName": "Unknown",
+      "description": "Transmission type has not yet been verified."
+    }
+  ]
+}
