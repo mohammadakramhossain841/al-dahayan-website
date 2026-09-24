@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_boot_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VBT-001",
+      "code": "CV_BOOT",
+      "name": "CV Joint Boot",
+      "category": "AXLE"
+    },
+    {
+      "id": "VBT-002",
+      "code": "INNER_CV_BOOT",
+      "name": "Inner CV Joint Boot",
+      "category": "AXLE"
+    },
+    {
+      "id": "VBT-003",
+      "code": "OUTER_CV_BOOT",
+      "name": "Outer CV Joint Boot",
+      "category": "AXLE"
+    },
+    {
+      "id": "VBT-004",
+      "code": "DRIVESHAFT_BOOT",
+      "name": "Driveshaft Boot",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBT-005",
+      "code": "AXLE_BOOT",
+      "name": "Axle Boot",
+      "category": "AXLE"
+    },
+    {
+      "id": "VBT-006",
+      "code": "CV_BOOT_KIT",
+      "name": "CV Boot Kit",
+      "category": "AXLE"
+    },
+    {
+      "id": "VBT-007",
+      "code": "CV_BOOT_CLAMP",
+      "name": "CV Boot Clamp",
+      "category": "AXLE"
+    },
+    {
+      "id": "VBT-008",
+      "code": "CV_BOOT_GREASE",
+      "name": "CV Boot Grease",
+      "category": "AXLE"
+    },
+    {
+      "id": "VBT-009",
+      "code": "STEERING_RACK_BOOT",
+      "name": "Steering Rack Boot",
+      "category": "STEERING"
+    },
+    {
+      "id": "VBT-010",
+      "code": "TIE_ROD_BOOT",
+      "name": "Tie Rod End Boot",
+      "category": "STEERING"
+    },
+    {
+      "id": "VBT-011",
+      "code": "BALL_JOINT_BOOT",
+      "name": "Ball Joint Boot",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VBT-012",
+      "code": "CONTROL_ARM_BALL_JOINT_BOOT",
+      "name": "Control Arm Ball Joint Boot",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VBT-013",
+      "code": "PITMAN_ARM_BOOT",
+      "name": "Pitman Arm Boot",
+      "category": "STEERING"
+    },
+    {
+      "id": "VBT-014",
+      "code": "IDLER_ARM_BOOT",
+      "name": "Idler Arm Boot",
+      "category": "STEERING"
+    },
+    {
+      "id": "VBT-015",
+      "code": "RACK_END_BOOT",
+      "name": "Rack End Boot",
+      "category": "STEERING"
+    },
+    {
+      "id": "VBT-016",
+      "code": "SHOCK_ABSORBER_BOOT",
+      "name": "Shock Absorber Dust Boot",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VBT-017",
+      "code": "STRUT_DUST_BOOT",
+      "name": "Strut Dust Boot",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VBT-018",
+      "code": "DAMPER_DUST_BOOT",
+      "name": "Damper Dust Boot",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VBT-019",
+      "code": "BRAKE_CALIPER_BOOT",
+      "name": "Brake Caliper Dust Boot",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VBT-020",
+      "code": "CALIPER_PISTON_BOOT",
+      "name": "Caliper Piston Boot",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VBT-021",
+      "code": "BRAKE_SLIDER_PIN_BOOT",
+      "name": "Brake Slider Pin Boot",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VBT-022",
+      "code": "CLUTCH_SLAVE_BOOT",
+      "name": "Clutch Slave Cylinder Boot",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VBT-023",
+      "code": "CLUTCH_MASTER_BOOT",
+      "name": "Clutch Master Cylinder Boot",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VBT-024",
+      "code": "SHIFT_LEVER_BOOT",
+      "name": "Shift Lever Boot",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VBT-025",
+      "code": "PARKING_BRAKE_BOOT",
+      "name": "Parking Brake Lever Boot",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VBT-026",
+      "code": "TRANSFER_CASE_BOOT",
+      "name": "Transfer Case Boot",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBT-027",
+      "code": "PROPELLER_SHAFT_BOOT",
+      "name": "Propeller Shaft Boot",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBT-028",
+      "code": "DIFFERENTIAL_BOOT",
+      "name": "Differential Dust Boot",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBT-029",
+      "code": "PARKING_BRAKE_CABLE_BOOT",
+      "name": "Parking Brake Cable Boot",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VBT-030",
+      "code": "THROTTLE_CABLE_BOOT",
+      "name": "Throttle Cable Boot",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VBT-031",
+      "code": "HOOD_CABLE_BOOT",
+      "name": "Hood Release Cable Boot",
+      "category": "BODY"
+    },
+    {
+      "id": "VBT-032",
+      "code": "DOOR_CABLE_BOOT",
+      "name": "Door Cable Boot",
+      "category": "DOOR"
+    },
+    {
+      "id": "VBT-033",
+      "code": "TAILGATE_CABLE_BOOT",
+      "name": "Tailgate Cable Boot",
+      "category": "TAILGATE"
+    },
+    {
+      "id": "VBT-034",
+      "code": "WIRING_HARNESS_BOOT",
+      "name": "Wiring Harness Rubber Boot",
+      "category": "WIRING"
+    },
+    {
+      "id": "VBT-035",
+      "code": "DOOR_WIRING_BOOT",
+      "name": "Door Wiring Harness Boot",
+      "category": "DOOR"
+    },
+    {
+      "id": "VBT-036",
+      "code": "TAILGATE_WIRING_BOOT",
+      "name": "Tailgate Wiring Harness Boot",
+      "category": "TAILGATE"
+    },
+    {
+      "id": "VBT-037",
+      "code": "HOOD_WIRING_BOOT",
+      "name": "Hood Wiring Boot",
+      "category": "HOOD"
+    },
+    {
+      "id": "VBT-038",
+      "code": "FENDER_WIRING_BOOT",
+      "name": "Fender Wiring Boot",
+      "category": "BODY"
+    },
+    {
+      "id": "VBT-039",
+      "code": "FIREWALL_WIRING_BOOT",
+      "name": "Firewall Wiring Boot",
+      "category": "WIRING"
+    },
+    {
+      "id": "VBT-040",
+      "code": "FUEL_LINE_BOOT",
+      "name": "Fuel Line Protective Boot",
+      "category": "FUEL"
+    },
+    {
+      "id": "VBT-041",
+      "code": "BRAKE_LINE_BOOT",
+      "name": "Brake Line Protective Boot",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VBT-042",
+      "code": "AC_LINE_BOOT",
+      "name": "A/C Line Protective Boot",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VBT-043",
+      "code": "COOLANT_HOSE_BOOT",
+      "name": "Coolant Hose Protective Boot",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBT-044",
+      "code": "VACUUM_HOSE_BOOT",
+      "name": "Vacuum Hose Protective Boot",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VBT-045",
+      "code": "TURBO_HOSE_BOOT",
+      "name": "Turbo Hose Protective Boot",
+      "category": "TURBO"
+    },
+    {
+      "id": "VBT-046",
+      "code": "INTERCOOLER_HOSE_BOOT",
+      "name": "Intercooler Hose Protective Boot",
+      "category": "TURBO"
+    },
+    {
+      "id": "VBT-047",
+      "code": "BATTERY_CABLE_BOOT",
+      "name": "Battery Cable Boot",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VBT-048",
+      "code": "POSITIVE_TERMINAL_BOOT",
+      "name": "Positive Battery Terminal Boot",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VBT-049",
+      "code": "STARTER_TERMINAL_BOOT",
+      "name": "Starter Terminal Protective Boot",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VBT-050",
+      "code": "ALTERNATOR_TERMINAL_BOOT",
+      "name": "Alternator Terminal Protective Boot",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VBT-051",
+      "code": "HV_CABLE_BOOT",
+      "name": "High Voltage Cable Protective Boot",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VBT-052",
+      "code": "HV_CONNECTOR_BOOT",
+      "name": "High Voltage Connector Boot",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VBT-053",
+      "code": "INVERTER_CABLE_BOOT",
+      "name": "Inverter Cable Protective Boot",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VBT-054",
+      "code": "EV_MOTOR_CABLE_BOOT",
+      "name": "EV Motor Cable Protective Boot",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VBT-055",
+      "code": "CHARGING_PORT_BOOT",
+      "name": "Charging Port Protective Boot",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VBT-056",
+      "code": "SENSOR_WIRE_BOOT",
+      "name": "Sensor Wire Protective Boot",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBT-057",
+      "code": "ABS_SENSOR_BOOT",
+      "name": "ABS Sensor Protective Boot",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VBT-058",
+      "code": "TPMS_SENSOR_BOOT",
+      "name": "TPMS Sensor Protective Boot",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VBT-059",
+      "code": "CAMERA_WIRING_BOOT",
+      "name": "Camera Wiring Protective Boot",
+      "category": "ADAS"
+    },
+    {
+      "id": "VBT-060",
+      "code": "RADAR_WIRING_BOOT",
+      "name": "Radar Wiring Protective Boot",
+      "category": "ADAS"
+    },
+    {
+      "id": "VBT-061",
+      "code": "MIRROR_WIRING_BOOT",
+      "name": "Mirror Wiring Protective Boot",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VBT-062",
+      "code": "HEADLIGHT_WIRING_BOOT",
+      "name": "Headlight Wiring Protective Boot",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VBT-063",
+      "code": "TAILLIGHT_WIRING_BOOT",
+      "name": "Taillight Wiring Protective Boot",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VBT-064",
+      "code": "FOG_LIGHT_WIRING_BOOT",
+      "name": "Fog Light Wiring Protective Boot",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VBT-065",
+      "code": "HORN_WIRING_BOOT",
+      "name": "Horn Wiring Protective Boot",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VBT-066",
+      "code": "WIPER_WIRING_BOOT",
+      "name": "Wiper Wiring Protective Boot",
+      "category": "WIPER"
+    },
+    {
+      "id": "VBT-067",
+      "code": "WASHER_HOSE_BOOT",
+      "name": "Washer Hose Protective Boot",
+      "category": "WIPER"
+    },
+    {
+      "id": "VBT-068",
+      "code": "AIR_SUSPENSION_LINE_BOOT",
+      "name": "Air Suspension Line Boot",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VBT-069",
+      "code": "AIR_SPRING_PROTECTIVE_BOOT",
+      "name": "Air Spring Protective Boot",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VBT-070",
+      "code": "SHOCK_ROD_DUST_BOOT",
+      "name": "Shock Rod Dust Boot",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VBT-071",
+      "code": "STEERING_COLUMN_DUST_BOOT",
+      "name": "Steering Column Dust Boot",
+      "category": "STEERING"
+    },
+    {
+      "id": "VBT-072",
+      "code": "RACK_GUIDE_BOOT",
+      "name": "Rack Guide Protective Boot",
+      "category": "STEERING"
+    },
+    {
+      "id": "VBT-073",
+      "code": "SHIFT_CABLE_BOOT",
+      "name": "Shift Cable Protective Boot",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VBT-074",
+      "code": "CLUTCH_CABLE_BOOT",
+      "name": "Clutch Cable Protective Boot",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VBT-075",
+      "code": "PARKING_BRAKE_CABLE_DUST_BOOT",
+      "name": "Parking Brake Cable Dust Boot",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VBT-076",
+      "code": "PROPELLER_SHAFT_DUST_BOOT",
+      "name": "Propeller Shaft Dust Boot",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBT-077",
+      "code": "DIFFERENTIAL_DUST_BOOT",
+      "name": "Differential Dust Boot",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBT-078",
+      "code": "TRANSFER_CASE_DUST_BOOT",
+      "name": "Transfer Case Dust Boot",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBT-079",
+      "code": "DUST_BOOT_CLAMP",
+      "name": "Dust Boot Clamp",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBT-080",
+      "code": "BOOT_CLAMP_KIT",
+      "name": "Boot Clamp Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VBT-081",
+      "code": "BOOT_REPAIR_KIT",
+      "name": "Boot Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VBT-082",
+      "code": "BOOT_INSTALLATION_KIT",
+      "name": "Boot Installation Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VBT-083",
+      "code": "BOOT_SEAL",
+      "name": "Boot Sealing Ring",
+      "category": "SEAL"
+    },
+    {
+      "id": "VBT-084",
+      "code": "BOOT_GROMMET",
+      "name": "Boot Grommet",
+      "category": "GROMMET"
+    },
+    {
+      "id": "VBT-085",
+      "code": "BOOT_RETAINER",
+      "name": "Boot Retainer",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBT-086",
+      "code": "BOOT_SUPPORT_RING",
+      "name": "Boot Support Ring",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBT-087",
+      "code": "BOOT_PROTECTIVE_SLEEVE",
+      "name": "Protective Boot Sleeve",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBT-088",
+      "code": "BOOT_THERMAL_SLEEVE",
+      "name": "Thermal Protective Boot Sleeve",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBT-089",
+      "code": "BOOT_ABRASION_SLEEVE",
+      "name": "Abrasion Protective Boot Sleeve",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBT-090",
+      "code": "BOOT_WATERPROOF_SLEEVE",
+      "name": "Waterproof Protective Boot Sleeve",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBT-091",
+      "code": "BOOT_DUST_COVER",
+      "name": "Dust Protection Boot Cover",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBT-092",
+      "code": "BOOT_RUBBER_COVER",
+      "name": "Rubber Protective Boot Cover",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBT-093",
+      "code": "UNIVERSAL_DUST_BOOT",
+      "name": "Universal Dust Boot",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VBT-094",
+      "code": "UNIVERSAL_RUBBER_BOOT",
+      "name": "Universal Rubber Boot",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VBT-095",
+      "code": "SERVICE_BOOT_SET",
+      "name": "Vehicle Boot Service Set",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VBT-096",
+      "code": "REPLACEMENT_BOOT",
+      "name": "Replacement Vehicle Boot",
+      "category": "REPLACEMENT"
+    },
+    {
+      "id": "VBT-097",
+      "code": "BOOT_HARDWARE_SET",
+      "name": "Boot Hardware Set",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBT-098",
+      "code": "BOOT_MOUNTING_SET",
+      "name": "Boot Mounting Set",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VBT-099",
+      "code": "UNIVERSAL_BOOT_KIT",
+      "name": "Universal Vehicle Boot Kit",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VBT-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Boot Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
