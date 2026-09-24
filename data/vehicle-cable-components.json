@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_cable_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VCL-001",
+      "code": "PARKING_BRAKE_CABLE",
+      "name": "Parking Brake Cable",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-002",
+      "code": "FRONT_PARKING_BRAKE_CABLE",
+      "name": "Front Parking Brake Cable",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-003",
+      "code": "REAR_PARKING_BRAKE_CABLE",
+      "name": "Rear Parking Brake Cable",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-004",
+      "code": "LEFT_PARKING_BRAKE_CABLE",
+      "name": "Left Parking Brake Cable",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-005",
+      "code": "RIGHT_PARKING_BRAKE_CABLE",
+      "name": "Right Parking Brake Cable",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-006",
+      "code": "CLUTCH_CABLE",
+      "name": "Clutch Cable",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCL-007",
+      "code": "THROTTLE_CABLE",
+      "name": "Throttle Cable",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-008",
+      "code": "ACCELERATOR_CABLE",
+      "name": "Accelerator Cable",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-009",
+      "code": "HOOD_RELEASE_CABLE",
+      "name": "Hood Release Cable",
+      "category": "HOOD"
+    },
+    {
+      "id": "VCL-010",
+      "code": "TRUNK_RELEASE_CABLE",
+      "name": "Trunk Release Cable",
+      "category": "TRUNK"
+    },
+    {
+      "id": "VCL-011",
+      "code": "TAILGATE_RELEASE_CABLE",
+      "name": "Tailgate Release Cable",
+      "category": "TAILGATE"
+    },
+    {
+      "id": "VCL-012",
+      "code": "FUEL_DOOR_RELEASE_CABLE",
+      "name": "Fuel Door Release Cable",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCL-013",
+      "code": "PARKING_BRAKE_EQUALIZER_CABLE",
+      "name": "Parking Brake Equalizer Cable",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-014",
+      "code": "BRAKE_CABLE_GUIDE",
+      "name": "Brake Cable Guide",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-015",
+      "code": "BRAKE_CABLE_BRACKET",
+      "name": "Brake Cable Bracket",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-016",
+      "code": "CLUTCH_CABLE_GUIDE",
+      "name": "Clutch Cable Guide",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCL-017",
+      "code": "CLUTCH_CABLE_BRACKET",
+      "name": "Clutch Cable Bracket",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VCL-018",
+      "code": "THROTTLE_CABLE_BRACKET",
+      "name": "Throttle Cable Bracket",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-019",
+      "code": "CABLE_ADJUSTER",
+      "name": "Cable Adjuster",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCL-020",
+      "code": "CABLE_END_FITTING",
+      "name": "Cable End Fitting",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCL-021",
+      "code": "CABLE_END_STOP",
+      "name": "Cable End Stop",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCL-022",
+      "code": "CABLE_RETENTION_CLIP",
+      "name": "Cable Retention Clip",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCL-023",
+      "code": "CABLE_GUIDE_CLIP",
+      "name": "Cable Guide Clip",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCL-024",
+      "code": "CABLE_GROMMET",
+      "name": "Cable Grommet",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCL-025",
+      "code": "CABLE_PROTECTIVE_SLEEVE",
+      "name": "Cable Protective Sleeve",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VCL-026",
+      "code": "CABLE_HEAT_SHIELD",
+      "name": "Cable Heat Shield",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VCL-027",
+      "code": "CABLE_DUST_BOOT",
+      "name": "Cable Dust Boot",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VCL-028",
+      "code": "CABLE_SEAL",
+      "name": "Cable Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCL-029",
+      "code": "CABLE_CONNECTOR",
+      "name": "Cable Connector",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCL-030",
+      "code": "CABLE_TERMINAL",
+      "name": "Cable Terminal",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCL-031",
+      "code": "BATTERY_CABLE",
+      "name": "Battery Cable",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VCL-032",
+      "code": "POSITIVE_BATTERY_CABLE",
+      "name": "Positive Battery Cable",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VCL-033",
+      "code": "NEGATIVE_BATTERY_CABLE",
+      "name": "Negative Battery Cable",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VCL-034",
+      "code": "BATTERY_GROUND_CABLE",
+      "name": "Battery Ground Cable",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VCL-035",
+      "code": "ENGINE_GROUND_CABLE",
+      "name": "Engine Ground Cable",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCL-036",
+      "code": "CHASSIS_GROUND_CABLE",
+      "name": "Chassis Ground Cable",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCL-037",
+      "code": "STARTER_CABLE",
+      "name": "Starter Cable",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCL-038",
+      "code": "ALTERNATOR_CABLE",
+      "name": "Alternator Cable",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCL-039",
+      "code": "STARTER_SIGNAL_CABLE",
+      "name": "Starter Signal Cable",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCL-040",
+      "code": "IGNITION_CABLE",
+      "name": "Ignition Cable",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-041",
+      "code": "SPARK_PLUG_WIRE",
+      "name": "Spark Plug Wire",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-042",
+      "code": "GLOW_PLUG_WIRE",
+      "name": "Glow Plug Wire",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VCL-043",
+      "code": "FUEL_PUMP_WIRING_CABLE",
+      "name": "Fuel Pump Wiring Cable",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCL-044",
+      "code": "INJECTOR_WIRING_CABLE",
+      "name": "Injector Wiring Cable",
+      "category": "FUEL"
+    },
+    {
+      "id": "VCL-045",
+      "code": "SENSOR_WIRING_CABLE",
+      "name": "Sensor Wiring Cable",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCL-046",
+      "code": "ECU_WIRING_CABLE",
+      "name": "ECU Wiring Cable",
+      "category": "ECU"
+    },
+    {
+      "id": "VCL-047",
+      "code": "CAN_BUS_CABLE",
+      "name": "CAN Bus Cable",
+      "category": "NETWORK"
+    },
+    {
+      "id": "VCL-048",
+      "code": "LIN_BUS_CABLE",
+      "name": "LIN Bus Cable",
+      "category": "NETWORK"
+    },
+    {
+      "id": "VCL-049",
+      "code": "ETHERNET_CABLE",
+      "name": "Automotive Ethernet Cable",
+      "category": "NETWORK"
+    },
+    {
+      "id": "VCL-050",
+      "code": "DIAGNOSTIC_CABLE",
+      "name": "Diagnostic Cable",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VCL-051",
+      "code": "DOOR_WIRING_CABLE",
+      "name": "Door Wiring Cable",
+      "category": "DOOR"
+    },
+    {
+      "id": "VCL-052",
+      "code": "WINDOW_WIRING_CABLE",
+      "name": "Window Wiring Cable",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VCL-053",
+      "code": "MIRROR_WIRING_CABLE",
+      "name": "Mirror Wiring Cable",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VCL-054",
+      "code": "SEAT_WIRING_CABLE",
+      "name": "Seat Wiring Cable",
+      "category": "SEAT"
+    },
+    {
+      "id": "VCL-055",
+      "code": "LIGHTING_WIRING_CABLE",
+      "name": "Lighting Wiring Cable",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VCL-056",
+      "code": "HEADLIGHT_WIRING_CABLE",
+      "name": "Headlight Wiring Cable",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VCL-057",
+      "code": "TAILLIGHT_WIRING_CABLE",
+      "name": "Taillight Wiring Cable",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VCL-058",
+      "code": "FOG_LIGHT_WIRING_CABLE",
+      "name": "Fog Light Wiring Cable",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VCL-059",
+      "code": "HORN_WIRING_CABLE",
+      "name": "Horn Wiring Cable",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCL-060",
+      "code": "WIPER_WIRING_CABLE",
+      "name": "Wiper Wiring Cable",
+      "category": "WIPER"
+    },
+    {
+      "id": "VCL-061",
+      "code": "WASHER_WIRING_CABLE",
+      "name": "Washer Wiring Cable",
+      "category": "WIPER"
+    },
+    {
+      "id": "VCL-062",
+      "code": "HVAC_WIRING_CABLE",
+      "name": "HVAC Wiring Cable",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCL-063",
+      "code": "AC_COMPRESSOR_CABLE",
+      "name": "A/C Compressor Wiring Cable",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VCL-064",
+      "code": "COOLING_FAN_WIRING_CABLE",
+      "name": "Cooling Fan Wiring Cable",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCL-065",
+      "code": "RADIATOR_FAN_CABLE",
+      "name": "Radiator Fan Wiring Cable",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCL-066",
+      "code": "BRAKE_SENSOR_CABLE",
+      "name": "Brake Sensor Cable",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-067",
+      "code": "ABS_SENSOR_CABLE",
+      "name": "ABS Sensor Cable",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-068",
+      "code": "WHEEL_SPEED_SENSOR_CABLE",
+      "name": "Wheel Speed Sensor Cable",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VCL-069",
+      "code": "TPMS_SENSOR_CABLE",
+      "name": "TPMS Sensor Cable",
+      "category": "TPMS"
+    },
+    {
+      "id": "VCL-070",
+      "code": "STEERING_ANGLE_SENSOR_CABLE",
+      "name": "Steering Angle Sensor Cable",
+      "category": "STEERING"
+    },
+    {
+      "id": "VCL-071",
+      "code": "CAMERA_CABLE",
+      "name": "Vehicle Camera Cable",
+      "category": "ADAS"
+    },
+    {
+      "id": "VCL-072",
+      "code": "RADAR_CABLE",
+      "name": "Radar Sensor Cable",
+      "category": "ADAS"
+    },
+    {
+      "id": "VCL-073",
+      "code": "PARKING_SENSOR_CABLE",
+      "name": "Parking Sensor Cable",
+      "category": "ADAS"
+    },
+    {
+      "id": "VCL-074",
+      "code": "ADAS_CABLE",
+      "name": "ADAS Wiring Cable",
+      "category": "ADAS"
+    },
+    {
+      "id": "VCL-075",
+      "code": "AIRBAG_CABLE",
+      "name": "Airbag Wiring Cable",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VCL-076",
+      "code": "SEAT_BELT_SENSOR_CABLE",
+      "name": "Seat Belt Sensor Cable",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VCL-077",
+      "code": "OCCUPANCY_SENSOR_CABLE",
+      "name": "Occupancy Sensor Cable",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VCL-078",
+      "code": "HYBRID_BATTERY_CABLE",
+      "name": "Hybrid Battery Cable",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-079",
+      "code": "HIGH_VOLTAGE_BATTERY_CABLE",
+      "name": "High Voltage Battery Cable",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-080",
+      "code": "INVERTER_CABLE",
+      "name": "Inverter Cable",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-081",
+      "code": "DC_DC_CABLE",
+      "name": "DC-DC Converter Cable",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-082",
+      "code": "EV_MOTOR_CABLE",
+      "name": "EV Motor Cable",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-083",
+      "code": "CHARGING_PORT_CABLE",
+      "name": "Charging Port Cable",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-084",
+      "code": "ONBOARD_CHARGER_CABLE",
+      "name": "Onboard Charger Cable",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-085",
+      "code": "HIGH_VOLTAGE_INTERLOCK_CABLE",
+      "name": "High Voltage Interlock Cable",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCL-086",
+      "code": "BATTERY_GROUND_STRAP",
+      "name": "Battery Ground Strap",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VCL-087",
+      "code": "ENGINE_GROUND_STRAP",
+      "name": "Engine Ground Strap",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCL-088",
+      "code": "CHASSIS_GROUND_STRAP",
+      "name": "Chassis Ground Strap",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCL-089",
+      "code": "CABLE_HARNESS",
+      "name": "Cable Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCL-090",
+      "code": "CABLE_BUNDLE",
+      "name": "Cable Bundle",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCL-091",
+      "code": "CABLE_PROTECTIVE_CONDUIT",
+      "name": "Cable Protective Conduit",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VCL-092",
+      "code": "CABLE_CLAMP",
+      "name": "Cable Clamp",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCL-093",
+      "code": "CABLE_SUPPORT",
+      "name": "Cable Support",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VCL-094",
+      "code": "CABLE_REPAIR_KIT",
+      "name": "Cable Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VCL-095",
+      "code": "CABLE_SERVICE_KIT",
+      "name": "Cable Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VCL-096",
+      "code": "CABLE_REPLACEMENT_ASSEMBLY",
+      "name": "Cable Replacement Assembly",
+      "category": "REPLACEMENT"
+    },
+    {
+      "id": "VCL-097",
+      "code": "UNIVERSAL_VEHICLE_CABLE",
+      "name": "Universal Vehicle Cable",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VCL-098",
+      "code": "COMMERCIAL_VEHICLE_CABLE",
+      "name": "Commercial Vehicle Cable",
+      "category": "COMMERCIAL"
+    },
+    {
+      "id": "VCL-099",
+      "code": "DIAGNOSTIC_CABLE_ACCESSORY",
+      "name": "Diagnostic Cable Accessory",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VCL-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Cable Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
