@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin Panel configuration for Toyota and Lexus OEM catalog management.",
+  "catalog": {
+    "defaultBrand": "Toyota",
+    "supportedBrands": [
+      "Toyota",
+      "Lexus"
+    ],
+    "defaultStatus": "draft",
+    "defaultCurrency": "SAR",
+    "allowManualCreation": true,
+    "allowBulkImport": true,
+    "allowBulkExport": true
+  },
+  "display": {
+    "recordsPerPage": 25,
+    "availablePageSizes": [
+      25,
+      50,
+      100
+    ],
+    "defaultSort": "oemNumber",
+    "defaultSortDirection": "ascending"
+  },
+  "editor": {
+    "autoSave": false,
+    "confirmBeforeArchive": true,
+    "confirmBeforeDisable": true,
+    "confirmBeforeRestore": true,
+    "showUnsavedChangesWarning": true
+  },
+  "import": {
+    "requirePreview": true,
+    "requireValidation": true,
+    "allowWarnings": true,
+    "blockErrors": true,
+    "allowDuplicateReview": true
+  },
+  "images": {
+    "allowUpload": true,
+    "allowMultipleImages": true,
+    "allowReplace": true,
+    "allowDelete": true,
+    "requirePrimaryImage": false,
+    "maximumGalleryImages": 20
+  },
+  "pricing": {
+    "allowPriceEditing": true,
+    "allowBulkPriceUpdate": true,
+    "defaultCurrency": "SAR",
+    "showPriceVisibilityControl": true
+  },
+  "inventory": {
+    "allowStockEditing": true,
+    "allowBulkStockUpdate": true,
+    "showQuantity": false,
+    "showLocation": true
+  },
+  "verification": {
+    "allowVerification": true,
+    "requireVerificationSource": false,
+    "showVerificationStatus": true,
+    "showVerificationHistory": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordCreate": true,
+    "recordUpdate": true,
+    "recordImport": true,
+    "recordExport": true,
+    "recordArchive": true,
+    "recordRestore": true,
+    "recordDisable": true,
+    "recordVerification": true,
+    "recordPriceChange": true,
+    "recordStockChange": true
+  },
+  "security": {
+    "requireAuthentication": true,
+    "sessionTimeoutMinutes": 30,
+    "protectDestructiveActions": true,
+    "permanentDeleteEnabled": false
+  }
+}
