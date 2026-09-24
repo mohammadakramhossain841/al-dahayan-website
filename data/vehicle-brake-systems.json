@@ -1,0 +1,200 @@
+{
+  "brakeSystems": [
+    {
+      "id": "BRAKE-001",
+      "code": "FRONT_DISC",
+      "name": "Front Disc Brake",
+      "category": "BRAKE_TYPE",
+      "description": "Disc brake system installed on the front axle"
+    },
+    {
+      "id": "BRAKE-002",
+      "code": "REAR_DISC",
+      "name": "Rear Disc Brake",
+      "category": "BRAKE_TYPE",
+      "description": "Disc brake system installed on the rear axle"
+    },
+    {
+      "id": "BRAKE-003",
+      "code": "FRONT_DRUM",
+      "name": "Front Drum Brake",
+      "category": "BRAKE_TYPE",
+      "description": "Drum brake system installed on the front axle"
+    },
+    {
+      "id": "BRAKE-004",
+      "code": "REAR_DRUM",
+      "name": "Rear Drum Brake",
+      "category": "BRAKE_TYPE",
+      "description": "Drum brake system installed on the rear axle"
+    },
+    {
+      "id": "BRAKE-005",
+      "code": "FOUR_WHEEL_DISC",
+      "name": "Four-Wheel Disc Brakes",
+      "category": "BRAKE_TYPE",
+      "description": "Disc brakes installed on all four wheels"
+    },
+    {
+      "id": "BRAKE-006",
+      "code": "ABS",
+      "name": "Anti-lock Braking System",
+      "category": "ELECTRONIC",
+      "description": "Prevents wheel lock during braking"
+    },
+    {
+      "id": "BRAKE-007",
+      "code": "EBD",
+      "name": "Electronic Brakeforce Distribution",
+      "category": "ELECTRONIC",
+      "description": "Electronically distributes braking force between wheels"
+    },
+    {
+      "id": "BRAKE-008",
+      "code": "BRAKE_ASSIST",
+      "name": "Brake Assist",
+      "category": "ELECTRONIC",
+      "description": "Provides additional braking assistance during emergency braking"
+    },
+    {
+      "id": "BRAKE-009",
+      "code": "ELECTRIC_PARKING_BRAKE",
+      "name": "Electric Parking Brake",
+      "category": "PARKING_BRAKE",
+      "description": "Electronically operated parking brake"
+    },
+    {
+      "id": "BRAKE-010",
+      "code": "MANUAL_PARKING_BRAKE",
+      "name": "Manual Parking Brake",
+      "category": "PARKING_BRAKE",
+      "description": "Mechanically operated parking brake"
+    },
+    {
+      "id": "BRAKE-011",
+      "code": "BRAKE_PAD",
+      "name": "Brake Pad",
+      "category": "COMPONENT",
+      "description": "Friction material used with disc brakes"
+    },
+    {
+      "id": "BRAKE-012",
+      "code": "BRAKE_DISC",
+      "name": "Brake Disc",
+      "category": "COMPONENT",
+      "description": "Rotating braking surface for disc brakes"
+    },
+    {
+      "id": "BRAKE-013",
+      "code": "BRAKE_SHOE",
+      "name": "Brake Shoe",
+      "category": "COMPONENT",
+      "description": "Friction component used with drum brakes"
+    },
+    {
+      "id": "BRAKE-014",
+      "code": "BRAKE_DRUM",
+      "name": "Brake Drum",
+      "category": "COMPONENT",
+      "description": "Rotating braking surface for drum brakes"
+    },
+    {
+      "id": "BRAKE-015",
+      "code": "BRAKE_CALIPER",
+      "name": "Brake Caliper",
+      "category": "COMPONENT",
+      "description": "Clamps brake pads against the brake disc"
+    },
+    {
+      "id": "BRAKE-016",
+      "code": "MASTER_CYLINDER",
+      "name": "Brake Master Cylinder",
+      "category": "COMPONENT",
+      "description": "Generates hydraulic pressure for the braking system"
+    },
+    {
+      "id": "BRAKE-017",
+      "code": "BRAKE_BOOSTER",
+      "name": "Brake Booster",
+      "category": "COMPONENT",
+      "description": "Assists driver brake pedal force"
+    },
+    {
+      "id": "BRAKE-018",
+      "code": "ABS_MODULE",
+      "name": "ABS Control Module",
+      "category": "ELECTRONIC",
+      "description": "Controls ABS and related electronic braking functions"
+    },
+    {
+      "id": "BRAKE-019",
+      "code": "ABS_WHEEL_SPEED_SENSOR",
+      "name": "ABS Wheel Speed Sensor",
+      "category": "SENSOR",
+      "description": "Measures individual wheel speed for ABS operation"
+    },
+    {
+      "id": "BRAKE-020",
+      "code": "BRAKE_FLUID",
+      "name": "Brake Fluid",
+      "category": "FLUID",
+      "description": "Hydraulic fluid used in the braking system"
+    },
+    {
+      "id": "BRAKE-021",
+      "code": "BRAKE_HOSE",
+      "name": "Brake Hose",
+      "category": "HYDRAULIC",
+      "description": "Flexible hydraulic brake line"
+    },
+    {
+      "id": "BRAKE-022",
+      "code": "BRAKE_LINE",
+      "name": "Brake Line",
+      "category": "HYDRAULIC",
+      "description": "Rigid hydraulic brake line"
+    },
+    {
+      "id": "BRAKE-023",
+      "code": "BRAKE_WEAR_SENSOR",
+      "name": "Brake Wear Sensor",
+      "category": "SENSOR",
+      "description": "Detects brake pad wear where equipped"
+    },
+    {
+      "id": "BRAKE-024",
+      "code": "HILL_START_ASSIST",
+      "name": "Hill Start Assist",
+      "category": "ELECTRONIC",
+      "description": "Helps prevent vehicle rollback during hill starts"
+    },
+    {
+      "id": "BRAKE-025",
+      "code": "AUTO_HOLD",
+      "name": "Brake Auto Hold",
+      "category": "ELECTRONIC",
+      "description": "Maintains brake pressure when the vehicle is stopped"
+    },
+    {
+      "id": "BRAKE-026",
+      "code": "REGENERATIVE_BRAKING",
+      "name": "Regenerative Braking",
+      "category": "HYBRID_EV",
+      "description": "Recovers kinetic energy during deceleration in applicable electrified vehicles"
+    },
+    {
+      "id": "BRAKE-027",
+      "code": "ELECTRONIC_BRAKE_CONTROL",
+      "name": "Electronic Brake Control",
+      "category": "HYBRID_EV",
+      "description": "Electronic management of braking functions in applicable vehicles"
+    },
+    {
+      "id": "BRAKE-028",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "category": "UNKNOWN",
+      "description": "Brake system specification not available"
+    }
+  ]
+}
