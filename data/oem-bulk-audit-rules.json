@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk operation audit rules for Toyota and Lexus OEM catalog management.",
+  "enabled": true,
+  "trackedOperations": [
+    "bulk_import",
+    "bulk_update",
+    "bulk_price_update",
+    "bulk_stock_update",
+    "bulk_compatibility_update",
+    "bulk_status_update",
+    "bulk_verification_update",
+    "bulk_image_update",
+    "bulk_archive",
+    "bulk_restore",
+    "bulk_category_update",
+    "bulk_metadata_update",
+    "bulk_export",
+    "bulk_duplicate_review"
+  ],
+  "requiredAuditFields": [
+    "auditId",
+    "operationId",
+    "action",
+    "timestamp",
+    "userId",
+    "recordCount",
+    "status"
+  ],
+  "recordData": {
+    "recordPreviousValues": true,
+    "recordNewValues": true,
+    "recordChangedFields": true,
+    "recordAffectedRecordIds": true,
+    "recordOemNumbers": true
+  },
+  "sourceData": {
+    "recordSource": true,
+    "sourceFileName": true,
+    "sourceFormat": true,
+    "importId": true,
+    "operationMode": true
+  },
+  "userData": {
+    "recordUserId": true,
+    "recordUserRole": true,
+    "recordDisplayName": false,
+    "recordEmail": false
+  },
+  "reason": {
+    "required": true,
+    "minimumLength": 3,
+    "maximumLength": 500
+  },
+  "statusValues": [
+    "started",
+    "previewed",
+    "completed",
+    "completed_with_warnings",
+    "failed",
+    "cancelled",
+    "rolled_back"
+  ],
+  "retention": {
+    "enabled": true,
+    "retainAuditHistory": true,
+    "allowManualAuditDeletion": false
+  },
+  "rollback": {
+    "recordRollbackAction": true,
+    "recordRollbackUser": true,
+    "recordRollbackTimestamp": true,
+    "recordRollbackReason": true
+  },
+  "security": {
+    "auditRecordsProtected": true,
+    "publicAccess": false,
+    "adminAccessRequired": true,
+    "allowAuditModification": false
+  },
+  "reporting": {
+    "generateOperationReport": true,
+    "includeSuccessCount": true,
+    "includeWarningCount": true,
+    "includeErrorCount": true,
+    "includeSkippedCount": true,
+    "includeDuration": true
+  }
+}
