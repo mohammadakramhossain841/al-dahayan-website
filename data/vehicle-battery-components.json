@@ -1,0 +1,604 @@
+{
+  "batteryComponents": [
+    {
+      "id": "VBAT-001",
+      "code": "BATTERY_SYSTEM",
+      "name": "Vehicle Battery System",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VBAT-002",
+      "code": "12V_BATTERY",
+      "name": "12V Battery",
+      "category": "12V"
+    },
+    {
+      "id": "VBAT-003",
+      "code": "12V_BATTERY_ASSEMBLY",
+      "name": "12V Battery Assembly",
+      "category": "12V"
+    },
+    {
+      "id": "VBAT-004",
+      "code": "12V_BATTERY_CASE",
+      "name": "12V Battery Case",
+      "category": "12V"
+    },
+    {
+      "id": "VBAT-005",
+      "code": "BATTERY_TERMINAL",
+      "name": "Battery Terminal",
+      "category": "TERMINAL"
+    },
+    {
+      "id": "VBAT-006",
+      "code": "POSITIVE_BATTERY_TERMINAL",
+      "name": "Positive Battery Terminal",
+      "category": "TERMINAL"
+    },
+    {
+      "id": "VBAT-007",
+      "code": "NEGATIVE_BATTERY_TERMINAL",
+      "name": "Negative Battery Terminal",
+      "category": "TERMINAL"
+    },
+    {
+      "id": "VBAT-008",
+      "code": "BATTERY_CABLE",
+      "name": "Battery Cable",
+      "category": "CABLE"
+    },
+    {
+      "id": "VBAT-009",
+      "code": "POSITIVE_BATTERY_CABLE",
+      "name": "Positive Battery Cable",
+      "category": "CABLE"
+    },
+    {
+      "id": "VBAT-010",
+      "code": "NEGATIVE_BATTERY_CABLE",
+      "name": "Negative Battery Cable",
+      "category": "CABLE"
+    },
+    {
+      "id": "VBAT-011",
+      "code": "BATTERY_GROUND_CABLE",
+      "name": "Battery Ground Cable",
+      "category": "GROUND"
+    },
+    {
+      "id": "VBAT-012",
+      "code": "BATTERY_HOLD_DOWN",
+      "name": "Battery Hold-Down",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VBAT-013",
+      "code": "BATTERY_HOLD_DOWN_BRACKET",
+      "name": "Battery Hold-Down Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VBAT-014",
+      "code": "BATTERY_TRAY",
+      "name": "Battery Tray",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VBAT-015",
+      "code": "BATTERY_TRAY_INSULATOR",
+      "name": "Battery Tray Insulator",
+      "category": "INSULATION"
+    },
+    {
+      "id": "VBAT-016",
+      "code": "BATTERY_VENT_TUBE",
+      "name": "Battery Vent Tube",
+      "category": "VENTILATION"
+    },
+    {
+      "id": "VBAT-017",
+      "code": "BATTERY_VENT_VALVE",
+      "name": "Battery Vent Valve",
+      "category": "VENTILATION"
+    },
+    {
+      "id": "VBAT-018",
+      "code": "BATTERY_CURRENT_SENSOR",
+      "name": "Battery Current Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBAT-019",
+      "code": "BATTERY_TEMPERATURE_SENSOR",
+      "name": "Battery Temperature Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBAT-020",
+      "code": "BATTERY_VOLTAGE_SENSOR",
+      "name": "Battery Voltage Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBAT-021",
+      "code": "BATTERY_MONITORING_SENSOR",
+      "name": "Battery Monitoring Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBAT-022",
+      "code": "BATTERY_SENSOR_MODULE",
+      "name": "Battery Sensor Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VBAT-023",
+      "code": "BATTERY_MANAGEMENT_SYSTEM",
+      "name": "Battery Management System",
+      "category": "BMS"
+    },
+    {
+      "id": "VBAT-024",
+      "code": "BATTERY_CONTROL_MODULE",
+      "name": "Battery Control Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VBAT-025",
+      "code": "BATTERY_JUNCTION_BOX",
+      "name": "Battery Junction Box",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VBAT-026",
+      "code": "BATTERY_FUSE",
+      "name": "Battery Fuse",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBAT-027",
+      "code": "BATTERY_MAIN_FUSE",
+      "name": "Battery Main Fuse",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBAT-028",
+      "code": "BATTERY_FUSE_LINK",
+      "name": "Battery Fuse Link",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBAT-029",
+      "code": "BATTERY_RELAY",
+      "name": "Battery Relay",
+      "category": "RELAY"
+    },
+    {
+      "id": "VBAT-030",
+      "code": "BATTERY_CUTOFF_SWITCH",
+      "name": "Battery Cutoff Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VBAT-031",
+      "code": "BATTERY_DISCONNECT",
+      "name": "Battery Disconnect",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VBAT-032",
+      "code": "BATTERY_POWER_DISTRIBUTION",
+      "name": "Battery Power Distribution Component",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VBAT-033",
+      "code": "BATTERY_WIRING_HARNESS",
+      "name": "Battery Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VBAT-034",
+      "code": "BATTERY_CONNECTOR",
+      "name": "Battery Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VBAT-035",
+      "code": "BATTERY_TERMINAL_COVER",
+      "name": "Battery Terminal Cover",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBAT-036",
+      "code": "BATTERY_INSULATOR",
+      "name": "Battery Insulator",
+      "category": "INSULATION"
+    },
+    {
+      "id": "VBAT-037",
+      "code": "BATTERY_HEAT_SHIELD",
+      "name": "Battery Heat Shield",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBAT-038",
+      "code": "BATTERY_COVER",
+      "name": "Battery Cover",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBAT-039",
+      "code": "HYBRID_BATTERY",
+      "name": "Hybrid Battery",
+      "category": "HYBRID"
+    },
+    {
+      "id": "VBAT-040",
+      "code": "HYBRID_BATTERY_PACK",
+      "name": "Hybrid Battery Pack",
+      "category": "HYBRID"
+    },
+    {
+      "id": "VBAT-041",
+      "code": "HYBRID_BATTERY_MODULE",
+      "name": "Hybrid Battery Module",
+      "category": "HYBRID"
+    },
+    {
+      "id": "VBAT-042",
+      "code": "HYBRID_BATTERY_CELL",
+      "name": "Hybrid Battery Cell",
+      "category": "HYBRID"
+    },
+    {
+      "id": "VBAT-043",
+      "code": "HYBRID_BATTERY_BUS_BAR",
+      "name": "Hybrid Battery Bus Bar",
+      "category": "HYBRID"
+    },
+    {
+      "id": "VBAT-044",
+      "code": "HYBRID_BATTERY_CELL_CONNECTOR",
+      "name": "Hybrid Battery Cell Connector",
+      "category": "HYBRID"
+    },
+    {
+      "id": "VBAT-045",
+      "code": "HYBRID_BATTERY_SERVICE_PLUG",
+      "name": "Hybrid Battery Service Plug",
+      "category": "HYBRID"
+    },
+    {
+      "id": "VBAT-046",
+      "code": "HYBRID_BATTERY_SERVICE_DISCONNECT",
+      "name": "Hybrid Battery Service Disconnect",
+      "category": "HYBRID"
+    },
+    {
+      "id": "VBAT-047",
+      "code": "HYBRID_BATTERY_COOLING_FAN",
+      "name": "Hybrid Battery Cooling Fan",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBAT-048",
+      "code": "HYBRID_BATTERY_COOLING_DUCT",
+      "name": "Hybrid Battery Cooling Duct",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBAT-049",
+      "code": "HYBRID_BATTERY_COOLING_FILTER",
+      "name": "Hybrid Battery Cooling Filter",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBAT-050",
+      "code": "HYBRID_BATTERY_TEMPERATURE_SENSOR",
+      "name": "Hybrid Battery Temperature Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBAT-051",
+      "code": "HIGH_VOLTAGE_BATTERY",
+      "name": "High Voltage Battery",
+      "category": "HIGH_VOLTAGE"
+    },
+    {
+      "id": "VBAT-052",
+      "code": "HIGH_VOLTAGE_BATTERY_PACK",
+      "name": "High Voltage Battery Pack",
+      "category": "HIGH_VOLTAGE"
+    },
+    {
+      "id": "VBAT-053",
+      "code": "HIGH_VOLTAGE_BATTERY_MODULE",
+      "name": "High Voltage Battery Module",
+      "category": "HIGH_VOLTAGE"
+    },
+    {
+      "id": "VBAT-054",
+      "code": "HIGH_VOLTAGE_BATTERY_CELL",
+      "name": "High Voltage Battery Cell",
+      "category": "HIGH_VOLTAGE"
+    },
+    {
+      "id": "VBAT-055",
+      "code": "HIGH_VOLTAGE_BATTERY_BUS_BAR",
+      "name": "High Voltage Battery Bus Bar",
+      "category": "HIGH_VOLTAGE"
+    },
+    {
+      "id": "VBAT-056",
+      "code": "HIGH_VOLTAGE_BATTERY_CONTACTOR",
+      "name": "High Voltage Battery Contactor",
+      "category": "HIGH_VOLTAGE"
+    },
+    {
+      "id": "VBAT-057",
+      "code": "HIGH_VOLTAGE_BATTERY_SERVICE_PLUG",
+      "name": "High Voltage Battery Service Plug",
+      "category": "HIGH_VOLTAGE"
+    },
+    {
+      "id": "VBAT-058",
+      "code": "HIGH_VOLTAGE_BATTERY_FUSE",
+      "name": "High Voltage Battery Fuse",
+      "category": "HIGH_VOLTAGE"
+    },
+    {
+      "id": "VBAT-059",
+      "code": "HIGH_VOLTAGE_BATTERY_JUNCTION_BOX",
+      "name": "High Voltage Battery Junction Box",
+      "category": "HIGH_VOLTAGE"
+    },
+    {
+      "id": "VBAT-060",
+      "code": "HIGH_VOLTAGE_BATTERY_SENSOR",
+      "name": "High Voltage Battery Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBAT-061",
+      "code": "EV_BATTERY",
+      "name": "EV Battery",
+      "category": "EV"
+    },
+    {
+      "id": "VBAT-062",
+      "code": "EV_BATTERY_PACK",
+      "name": "EV Battery Pack",
+      "category": "EV"
+    },
+    {
+      "id": "VBAT-063",
+      "code": "EV_BATTERY_MODULE",
+      "name": "EV Battery Module",
+      "category": "EV"
+    },
+    {
+      "id": "VBAT-064",
+      "code": "EV_BATTERY_CELL",
+      "name": "EV Battery Cell",
+      "category": "EV"
+    },
+    {
+      "id": "VBAT-065",
+      "code": "EV_BATTERY_CONTROL_UNIT",
+      "name": "EV Battery Control Unit",
+      "category": "EV"
+    },
+    {
+      "id": "VBAT-066",
+      "code": "EV_BATTERY_COOLING_SYSTEM",
+      "name": "EV Battery Cooling System",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBAT-067",
+      "code": "EV_BATTERY_COOLING_PLATE",
+      "name": "EV Battery Cooling Plate",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBAT-068",
+      "code": "EV_BATTERY_COOLANT_LINE",
+      "name": "EV Battery Coolant Line",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBAT-069",
+      "code": "EV_BATTERY_TEMPERATURE_SENSOR",
+      "name": "EV Battery Temperature Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBAT-070",
+      "code": "EV_BATTERY_VOLTAGE_SENSOR",
+      "name": "EV Battery Voltage Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBAT-071",
+      "code": "EV_BATTERY_CURRENT_SENSOR",
+      "name": "EV Battery Current Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBAT-072",
+      "code": "BATTERY_BALANCING_MODULE",
+      "name": "Battery Balancing Module",
+      "category": "BMS"
+    },
+    {
+      "id": "VBAT-073",
+      "code": "BATTERY_MONITORING_MODULE",
+      "name": "Battery Monitoring Module",
+      "category": "BMS"
+    },
+    {
+      "id": "VBAT-074",
+      "code": "BATTERY_CHARGER",
+      "name": "Vehicle Battery Charger",
+      "category": "CHARGING"
+    },
+    {
+      "id": "VBAT-075",
+      "code": "ONBOARD_CHARGER",
+      "name": "Onboard Charger",
+      "category": "CHARGING"
+    },
+    {
+      "id": "VBAT-076",
+      "code": "DC_DC_CONVERTER",
+      "name": "DC-DC Converter",
+      "category": "POWER_CONVERSION"
+    },
+    {
+      "id": "VBAT-077",
+      "code": "BATTERY_CHARGING_PORT",
+      "name": "Battery Charging Port",
+      "category": "CHARGING"
+    },
+    {
+      "id": "VBAT-078",
+      "code": "BATTERY_CHARGING_CABLE",
+      "name": "Battery Charging Cable",
+      "category": "CHARGING"
+    },
+    {
+      "id": "VBAT-079",
+      "code": "BATTERY_THERMAL_MANAGEMENT",
+      "name": "Battery Thermal Management Component",
+      "category": "THERMAL"
+    },
+    {
+      "id": "VBAT-080",
+      "code": "BATTERY_HEATER",
+      "name": "Battery Heater",
+      "category": "THERMAL"
+    },
+    {
+      "id": "VBAT-081",
+      "code": "BATTERY_COOLANT_PUMP",
+      "name": "Battery Coolant Pump",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBAT-082",
+      "code": "BATTERY_COOLING_FAN",
+      "name": "Battery Cooling Fan",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBAT-083",
+      "code": "BATTERY_COOLING_DUCT",
+      "name": "Battery Cooling Duct",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBAT-084",
+      "code": "BATTERY_COOLING_HOSE",
+      "name": "Battery Cooling Hose",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBAT-085",
+      "code": "BATTERY_THERMAL_SENSOR",
+      "name": "Battery Thermal Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBAT-086",
+      "code": "BATTERY_MOUNTING_BRACKET",
+      "name": "Battery Mounting Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VBAT-087",
+      "code": "BATTERY_MOUNTING_HARDWARE",
+      "name": "Battery Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBAT-088",
+      "code": "BATTERY_REPAIR_KIT",
+      "name": "Battery Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VBAT-089",
+      "code": "BATTERY_SERVICE_KIT",
+      "name": "Battery Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VBAT-090",
+      "code": "BATTERY_TERMINAL_SERVICE_KIT",
+      "name": "Battery Terminal Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VBAT-091",
+      "code": "BATTERY_DIAGNOSTIC_COMPONENT",
+      "name": "Battery Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VBAT-092",
+      "code": "BATTERY_TEST_COMPONENT",
+      "name": "Battery Test Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VBAT-093",
+      "code": "BATTERY_WIRING_COMPONENT",
+      "name": "Battery Wiring Component",
+      "category": "WIRING"
+    },
+    {
+      "id": "VBAT-094",
+      "code": "BATTERY_CONNECTOR_COMPONENT",
+      "name": "Battery Connector Component",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VBAT-095",
+      "code": "BATTERY_PROTECTION_COMPONENT",
+      "name": "Battery Protection Component",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBAT-096",
+      "code": "BATTERY_INSULATION_COMPONENT",
+      "name": "Battery Insulation Component",
+      "category": "INSULATION"
+    },
+    {
+      "id": "VBAT-097",
+      "code": "BATTERY_GENERAL_COMPONENT",
+      "name": "General Battery Component",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VBAT-098",
+      "code": "BATTERY_MAINTENANCE_COMPONENT",
+      "name": "Battery Maintenance Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VBAT-099",
+      "code": "BATTERY_SYSTEM_CONTROL_COMPONENT",
+      "name": "Battery System Control Component",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VBAT-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Battery Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
