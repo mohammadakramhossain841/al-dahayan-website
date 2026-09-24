@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Al-Dahayan OEM Audit Log Schema",
+  "description": "Schema for tracking administrative changes made to OEM catalog records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "auditId",
+    "action",
+    "recordId",
+    "timestamp"
+  ],
+  "properties": {
+    "auditId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "create",
+        "update",
+        "import",
+        "archive",
+        "restore",
+        "disable",
+        "enable",
+        "verify",
+        "unverify",
+        "image_update",
+        "price_update",
+        "stock_update"
+      ]
+    },
+    "recordId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "oemNumber": {
+      "type": "string"
+    },
+    "changedFields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "previousValues": {
+      "type": "object"
+    },
+    "newValues": {
+      "type": "object"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "admin_panel",
+        "csv_import",
+        "excel_import",
+        "api",
+        "system"
+      ]
+    },
+    "userId": {
+      "type": "string"
+    },
+    "userName": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    }
+  }
+}
