@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "bodyTypes": [
+    {
+      "code": "SEDAN",
+      "name": "Sedan",
+      "description": "Passenger car with a separate trunk and four doors."
+    },
+    {
+      "code": "HATCHBACK",
+      "name": "Hatchback",
+      "description": "Passenger car with a rear liftgate and integrated cargo area."
+    },
+    {
+      "code": "SUV",
+      "name": "SUV",
+      "description": "Sport utility vehicle designed for passenger and utility use."
+    },
+    {
+      "code": "CROSSOVER",
+      "name": "Crossover",
+      "description": "Passenger vehicle combining car-based construction with SUV characteristics."
+    },
+    {
+      "code": "PICKUP",
+      "name": "Pickup",
+      "description": "Vehicle with a separate open cargo bed behind the passenger cabin."
+    },
+    {
+      "code": "MPV",
+      "name": "MPV",
+      "description": "Multi-purpose passenger vehicle designed for flexible passenger and cargo use."
+    },
+    {
+      "code": "VAN",
+      "name": "Van",
+      "description": "Vehicle primarily designed for passenger or cargo transportation."
+    },
+    {
+      "code": "COUPE",
+      "name": "Coupe",
+      "description": "Sport-oriented passenger vehicle with a fixed roof and typically two doors."
+    },
+    {
+      "code": "CONVERTIBLE",
+      "name": "Convertible",
+      "description": "Vehicle with a retractable or removable roof."
+    },
+    {
+      "code": "WAGON",
+      "name": "Wagon",
+      "description": "Passenger vehicle with an extended rear cargo area."
+    },
+    {
+      "code": "MINIVAN",
+      "name": "Minivan",
+      "description": "Passenger-focused van with flexible seating and cargo capacity."
+    },
+    {
+      "code": "CAB_CHASSIS",
+      "name": "Cab Chassis",
+      "description": "Commercial vehicle configuration consisting of a cab and chassis for specialized bodies."
+    }
+  ]
+}
