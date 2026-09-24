@@ -1,0 +1,102 @@
+{
+  "capacitySpecifications": [
+    {
+      "id": "CAP-001",
+      "code": "FUEL_TANK_CAPACITY_L",
+      "name": "Fuel Tank Capacity",
+      "unit": "L",
+      "description": "Maximum fuel tank capacity"
+    },
+    {
+      "id": "CAP-002",
+      "code": "BATTERY_CAPACITY_KWH",
+      "name": "Battery Capacity",
+      "unit": "kWh",
+      "description": "Usable or specified high-voltage battery capacity"
+    },
+    {
+      "id": "CAP-003",
+      "code": "CARGO_CAPACITY_L",
+      "name": "Cargo Capacity",
+      "unit": "L",
+      "description": "Available cargo or luggage volume"
+    },
+    {
+      "id": "CAP-004",
+      "code": "MAX_CARGO_CAPACITY_L",
+      "name": "Maximum Cargo Capacity",
+      "unit": "L",
+      "description": "Maximum cargo volume with applicable seats folded or configured"
+    },
+    {
+      "id": "CAP-005",
+      "code": "CARGO_CAPACITY_CU_FT",
+      "name": "Cargo Capacity",
+      "unit": "cu ft",
+      "description": "Cargo volume measured in cubic feet"
+    },
+    {
+      "id": "CAP-006",
+      "code": "PASSENGER_CAPACITY",
+      "name": "Passenger Capacity",
+      "unit": "persons",
+      "description": "Maximum specified passenger capacity"
+    },
+    {
+      "id": "CAP-007",
+      "code": "SEATING_CAPACITY",
+      "name": "Seating Capacity",
+      "unit": "seats",
+      "description": "Number of available seats"
+    },
+    {
+      "id": "CAP-008",
+      "code": "TOWING_CAPACITY_KG",
+      "name": "Towing Capacity",
+      "unit": "kg",
+      "description": "Maximum permitted trailer towing capacity"
+    },
+    {
+      "id": "CAP-009",
+      "code": "TOWING_CAPACITY_LB",
+      "name": "Towing Capacity",
+      "unit": "lb",
+      "description": "Maximum permitted trailer towing capacity in pounds"
+    },
+    {
+      "id": "CAP-010",
+      "code": "PAYLOAD_CAPACITY_KG",
+      "name": "Payload Capacity",
+      "unit": "kg",
+      "description": "Maximum passenger and cargo carrying capacity"
+    },
+    {
+      "id": "CAP-011",
+      "code": "TRUNK_CAPACITY_L",
+      "name": "Trunk Capacity",
+      "unit": "L",
+      "description": "Available trunk or luggage compartment volume"
+    },
+    {
+      "id": "CAP-012",
+      "code": "FRONT_TRUNK_CAPACITY_L",
+      "name": "Front Trunk Capacity",
+      "unit": "L",
+      "description": "Front luggage compartment capacity where applicable"
+    },
+    {
+      "id": "CAP-013",
+      "code": "ROOF_LOAD_CAPACITY_KG",
+      "name": "Roof Load Capacity",
+      "unit": "kg",
+      "description": "Maximum specified roof load"
+    },
+    {
+      "id": "CAP-014",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "unit": null,
+      "description": "Capacity specification not available"
+    }
+  ]
+}
