@@ -1,0 +1,468 @@
+{
+  "steeringComponents": [
+    {
+      "id": "STC-001",
+      "code": "STEERING_RACK",
+      "name": "Steering Rack",
+      "category": "STEERING_RACK"
+    },
+    {
+      "id": "STC-002",
+      "code": "STEERING_RACK_ASSEMBLY",
+      "name": "Steering Rack Assembly",
+      "category": "STEERING_RACK"
+    },
+    {
+      "id": "STC-003",
+      "code": "RACK_HOUSING",
+      "name": "Rack Housing",
+      "category": "STEERING_RACK"
+    },
+    {
+      "id": "STC-004",
+      "code": "RACK_BAR",
+      "name": "Rack Bar",
+      "category": "STEERING_RACK"
+    },
+    {
+      "id": "STC-005",
+      "code": "STEERING_PINION",
+      "name": "Steering Pinion",
+      "category": "STEERING_RACK"
+    },
+    {
+      "id": "STC-006",
+      "code": "PINION_SHAFT",
+      "name": "Pinion Shaft",
+      "category": "STEERING_RACK"
+    },
+    {
+      "id": "STC-007",
+      "code": "PINION_BEARING",
+      "name": "Pinion Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "STC-008",
+      "code": "PINION_SEAL",
+      "name": "Pinion Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "STC-009",
+      "code": "RACK_SEAL",
+      "name": "Rack Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "STC-010",
+      "code": "RACK_BUSHING",
+      "name": "Rack Bushing",
+      "category": "BUSHING"
+    },
+    {
+      "id": "STC-011",
+      "code": "RACK_GUIDE",
+      "name": "Rack Guide",
+      "category": "STEERING_RACK"
+    },
+    {
+      "id": "STC-012",
+      "code": "RACK_GUIDE_SPRING",
+      "name": "Rack Guide Spring",
+      "category": "STEERING_RACK"
+    },
+    {
+      "id": "STC-013",
+      "code": "RACK_GUIDE_PLUG",
+      "name": "Rack Guide Plug",
+      "category": "STEERING_RACK"
+    },
+    {
+      "id": "STC-014",
+      "code": "RACK_BOOT",
+      "name": "Steering Rack Boot",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "STC-015",
+      "code": "RACK_BOOT_CLAMP",
+      "name": "Rack Boot Clamp",
+      "category": "FASTENER"
+    },
+    {
+      "id": "STC-016",
+      "code": "INNER_TIE_ROD",
+      "name": "Inner Tie Rod",
+      "category": "TIE_ROD"
+    },
+    {
+      "id": "STC-017",
+      "code": "OUTER_TIE_ROD_END",
+      "name": "Outer Tie Rod End",
+      "category": "TIE_ROD"
+    },
+    {
+      "id": "STC-018",
+      "code": "TIE_ROD_ASSEMBLY",
+      "name": "Tie Rod Assembly",
+      "category": "TIE_ROD"
+    },
+    {
+      "id": "STC-019",
+      "code": "TIE_ROD_LOCK_NUT",
+      "name": "Tie Rod Lock Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "STC-020",
+      "code": "TIE_ROD_BOOT",
+      "name": "Tie Rod Boot",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "STC-021",
+      "code": "STEERING_COLUMN",
+      "name": "Steering Column",
+      "category": "STEERING_COLUMN"
+    },
+    {
+      "id": "STC-022",
+      "code": "STEERING_COLUMN_ASSEMBLY",
+      "name": "Steering Column Assembly",
+      "category": "STEERING_COLUMN"
+    },
+    {
+      "id": "STC-023",
+      "code": "STEERING_COLUMN_SHAFT",
+      "name": "Steering Column Shaft",
+      "category": "STEERING_COLUMN"
+    },
+    {
+      "id": "STC-024",
+      "code": "INTERMEDIATE_SHAFT",
+      "name": "Intermediate Steering Shaft",
+      "category": "STEERING_COLUMN"
+    },
+    {
+      "id": "STC-025",
+      "code": "STEERING_UNIVERSAL_JOINT",
+      "name": "Steering Universal Joint",
+      "category": "JOINT"
+    },
+    {
+      "id": "STC-026",
+      "code": "STEERING_COLUMN_JOINT",
+      "name": "Steering Column Joint",
+      "category": "JOINT"
+    },
+    {
+      "id": "STC-027",
+      "code": "STEERING_COLUMN_BEARING",
+      "name": "Steering Column Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "STC-028",
+      "code": "STEERING_COLUMN_BUSHING",
+      "name": "Steering Column Bushing",
+      "category": "BUSHING"
+    },
+    {
+      "id": "STC-029",
+      "code": "STEERING_COLUMN_BRACKET",
+      "name": "Steering Column Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "STC-030",
+      "code": "STEERING_COLUMN_LOCK",
+      "name": "Steering Column Lock",
+      "category": "SECURITY"
+    },
+    {
+      "id": "STC-031",
+      "code": "ELECTRONIC_STEERING_LOCK",
+      "name": "Electronic Steering Lock",
+      "category": "SECURITY"
+    },
+    {
+      "id": "STC-032",
+      "code": "STEERING_LOCK_MODULE",
+      "name": "Steering Lock Control Module",
+      "category": "ELECTRONIC"
+    },
+    {
+      "id": "STC-033",
+      "code": "STEERING_WHEEL",
+      "name": "Steering Wheel",
+      "category": "DRIVER_CONTROL"
+    },
+    {
+      "id": "STC-034",
+      "code": "STEERING_WHEEL_AIRBAG",
+      "name": "Steering Wheel Airbag",
+      "category": "SAFETY"
+    },
+    {
+      "id": "STC-035",
+      "code": "CLOCK_SPRING",
+      "name": "Steering Wheel Clock Spring",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "STC-036",
+      "code": "STEERING_WHEEL_SWITCH",
+      "name": "Steering Wheel Switch",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "STC-037",
+      "code": "STEERING_ANGLE_SENSOR",
+      "name": "Steering Angle Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "STC-038",
+      "code": "STEERING_TORQUE_SENSOR",
+      "name": "Steering Torque Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "STC-039",
+      "code": "STEERING_POSITION_SENSOR",
+      "name": "Steering Position Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "STC-040",
+      "code": "STEERING_ECU",
+      "name": "Steering ECU",
+      "category": "ELECTRONIC"
+    },
+    {
+      "id": "STC-041",
+      "code": "POWER_STEERING_CONTROL_MODULE",
+      "name": "Power Steering Control Module",
+      "category": "ELECTRONIC"
+    },
+    {
+      "id": "STC-042",
+      "code": "ELECTRIC_STEERING_MOTOR",
+      "name": "Electric Steering Motor",
+      "category": "ELECTRIC_POWER_STEERING"
+    },
+    {
+      "id": "STC-043",
+      "code": "STEERING_MOTOR_GEAR",
+      "name": "Steering Motor Gear",
+      "category": "ELECTRIC_POWER_STEERING"
+    },
+    {
+      "id": "STC-044",
+      "code": "STEERING_MOTOR_CONTROL_UNIT",
+      "name": "Steering Motor Control Unit",
+      "category": "ELECTRONIC"
+    },
+    {
+      "id": "STC-045",
+      "code": "EPS_RACK_ASSEMBLY",
+      "name": "Electric Power Steering Rack Assembly",
+      "category": "ELECTRIC_POWER_STEERING"
+    },
+    {
+      "id": "STC-046",
+      "code": "EPS_GEAR_ASSEMBLY",
+      "name": "Electric Power Steering Gear Assembly",
+      "category": "ELECTRIC_POWER_STEERING"
+    },
+    {
+      "id": "STC-047",
+      "code": "POWER_STEERING_PUMP",
+      "name": "Power Steering Pump",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "STC-048",
+      "code": "ELECTRIC_POWER_STEERING_PUMP",
+      "name": "Electric Power Steering Pump",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "STC-049",
+      "code": "POWER_STEERING_PUMP_PULLEY",
+      "name": "Power Steering Pump Pulley",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "STC-050",
+      "code": "POWER_STEERING_RESERVOIR",
+      "name": "Power Steering Reservoir",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "STC-051",
+      "code": "POWER_STEERING_PRESSURE_HOSE",
+      "name": "Power Steering Pressure Hose",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "STC-052",
+      "code": "POWER_STEERING_RETURN_HOSE",
+      "name": "Power Steering Return Hose",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "STC-053",
+      "code": "POWER_STEERING_FLUID_COOLER",
+      "name": "Power Steering Fluid Cooler",
+      "category": "HYDRAULIC"
+    },
+    {
+      "id": "STC-054",
+      "code": "POWER_STEERING_PRESSURE_SENSOR",
+      "name": "Power Steering Pressure Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "STC-055",
+      "code": "POWER_STEERING_PRESSURE_SWITCH",
+      "name": "Power Steering Pressure Switch",
+      "category": "SENSOR"
+    },
+    {
+      "id": "STC-056",
+      "code": "STEERING_FLUID",
+      "name": "Power Steering Fluid",
+      "category": "FLUID"
+    },
+    {
+      "id": "STC-057",
+      "code": "STEERING_GEARBOX",
+      "name": "Steering Gearbox",
+      "category": "STEERING_GEAR"
+    },
+    {
+      "id": "STC-058",
+      "code": "PITMAN_ARM",
+      "name": "Pitman Arm",
+      "category": "LINKAGE"
+    },
+    {
+      "id": "STC-059",
+      "code": "IDLER_ARM",
+      "name": "Idler Arm",
+      "category": "LINKAGE"
+    },
+    {
+      "id": "STC-060",
+      "code": "CENTER_LINK",
+      "name": "Center Link",
+      "category": "LINKAGE"
+    },
+    {
+      "id": "STC-061",
+      "code": "DRAG_LINK",
+      "name": "Drag Link",
+      "category": "LINKAGE"
+    },
+    {
+      "id": "STC-062",
+      "code": "STEERING_KNUCKLE",
+      "name": "Steering Knuckle",
+      "category": "WHEEL_END"
+    },
+    {
+      "id": "STC-063",
+      "code": "STEERING_KNUCKLE_ARM",
+      "name": "Steering Knuckle Arm",
+      "category": "LINKAGE"
+    },
+    {
+      "id": "STC-064",
+      "code": "STEERING_ARM",
+      "name": "Steering Arm",
+      "category": "LINKAGE"
+    },
+    {
+      "id": "STC-065",
+      "code": "STEERING_KNUCKLE_BUSHING",
+      "name": "Steering Knuckle Bushing",
+      "category": "BUSHING"
+    },
+    {
+      "id": "STC-066",
+      "code": "STEERING_KNUCKLE_BEARING",
+      "name": "Steering Knuckle Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "STC-067",
+      "code": "STEERING_BALL_JOINT",
+      "name": "Steering Ball Joint",
+      "category": "JOINT"
+    },
+    {
+      "id": "STC-068",
+      "code": "STEERING_LINKAGE_JOINT",
+      "name": "Steering Linkage Joint",
+      "category": "JOINT"
+    },
+    {
+      "id": "STC-069",
+      "code": "STEERING_DAMPER",
+      "name": "Steering Damper",
+      "category": "VIBRATION_CONTROL"
+    },
+    {
+      "id": "STC-070",
+      "code": "STEERING_STABILIZER",
+      "name": "Steering Stabilizer",
+      "category": "VIBRATION_CONTROL"
+    },
+    {
+      "id": "STC-071",
+      "code": "REAR_WHEEL_STEERING_ACTUATOR",
+      "name": "Rear-Wheel Steering Actuator",
+      "category": "REAR_STEERING"
+    },
+    {
+      "id": "STC-072",
+      "code": "REAR_STEERING_CONTROL_MODULE",
+      "name": "Rear Steering Control Module",
+      "category": "REAR_STEERING"
+    },
+    {
+      "id": "STC-073",
+      "code": "REAR_STEERING_RACK",
+      "name": "Rear Steering Rack",
+      "category": "REAR_STEERING"
+    },
+    {
+      "id": "STC-074",
+      "code": "STEER_BY_WIRE_ACTUATOR",
+      "name": "Steer-by-Wire Actuator",
+      "category": "STEER_BY_WIRE"
+    },
+    {
+      "id": "STC-075",
+      "code": "STEER_BY_WIRE_CONTROL_MODULE",
+      "name": "Steer-by-Wire Control Module",
+      "category": "STEER_BY_WIRE"
+    },
+    {
+      "id": "STC-076",
+      "code": "STEER_BY_WIRE_FEEDBACK_MOTOR",
+      "name": "Steer-by-Wire Feedback Motor",
+      "category": "STEER_BY_WIRE"
+    },
+    {
+      "id": "STC-077",
+      "code": "STEERING_RACK_MOUNT",
+      "name": "Steering Rack Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "STC-078",
+      "code": "STEERING_RACK_MOUNT_BUSHING",
+      "name": "Steering
