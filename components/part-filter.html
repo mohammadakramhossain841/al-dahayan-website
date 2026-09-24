@@ -1,1 +1,175 @@
+<!-- =========================================
+     AL-DAHAYAN REUSABLE PART FILTER
+========================================= -->
 
+<section
+  class="part-filter-component"
+  data-component="part-filter"
+  aria-labelledby="part-filter-title"
+>
+
+  <div class="part-filter-header">
+
+    <span class="part-filter-eyebrow">
+      Parts Search
+    </span>
+
+    <h2
+      id="part-filter-title"
+      class="part-filter-title"
+    >
+      Find Spare Parts
+    </h2>
+
+    <p class="part-filter-description">
+      Search and filter Toyota & Lexus spare parts.
+    </p>
+
+  </div>
+
+
+  <form
+    class="part-filter-form"
+    data-parts-search-form
+  >
+
+    <div class="part-filter-grid">
+
+      <!-- Search -->
+
+      <div class="part-filter-field part-filter-field-full">
+
+        <label for="part-filter-search">
+          OEM Number or Keyword
+        </label>
+
+        <input
+          type="search"
+          id="part-filter-search"
+          name="query"
+          data-parts-query
+          placeholder="Example: 12261-54130"
+          autocomplete="off"
+          spellcheck="false"
+        />
+
+      </div>
+
+
+      <!-- Brand -->
+
+      <div class="part-filter-field">
+
+        <label for="part-filter-brand">
+          Brand
+        </label>
+
+        <select
+          id="part-filter-brand"
+          name="brand"
+          data-part-brand
+        >
+          <option value="">
+            All Brands
+          </option>
+
+          <option value="Toyota">
+            Toyota
+          </option>
+
+          <option value="Lexus">
+            Lexus
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- Category -->
+
+      <div class="part-filter-field">
+
+        <label for="part-filter-category">
+          Category
+        </label>
+
+        <select
+          id="part-filter-category"
+          name="category"
+          data-part-category
+        >
+          <option value="">
+            All Categories
+          </option>
+        </select>
+
+      </div>
+
+
+      <!-- Model -->
+
+      <div class="part-filter-field">
+
+        <label for="part-filter-model">
+          Vehicle Model
+        </label>
+
+        <select
+          id="part-filter-model"
+          name="model"
+          data-part-model
+        >
+          <option value="">
+            All Models
+          </option>
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <!-- Actions -->
+
+    <div class="part-filter-actions">
+
+      <button
+        type="submit"
+        class="part-filter-submit"
+      >
+        Search Parts
+      </button>
+
+      <button
+        type="reset"
+        class="part-filter-reset"
+        data-parts-reset
+      >
+        Reset
+      </button>
+
+    </div>
+
+  </form>
+
+
+  <!-- Search Status -->
+
+  <div
+    class="part-filter-status"
+    data-parts-status
+    role="status"
+    aria-live="polite"
+    hidden
+  ></div>
+
+
+  <!-- Results -->
+
+  <div
+    class="part-filter-results"
+    data-parts-results
+  ></div>
+
+</section>
