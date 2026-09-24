@@ -1,0 +1,109 @@
+{
+  "performanceSpecifications": [
+    {
+      "id": "PERF-001",
+      "code": "ENGINE_POWER_KW",
+      "name": "Engine Power",
+      "unit": "kW",
+      "description": "Rated engine power"
+    },
+    {
+      "id": "PERF-002",
+      "code": "ENGINE_POWER_HP",
+      "name": "Engine Power",
+      "unit": "hp",
+      "description": "Rated engine horsepower"
+    },
+    {
+      "id": "PERF-003",
+      "code": "ENGINE_TORQUE_NM",
+      "name": "Engine Torque",
+      "unit": "Nm",
+      "description": "Maximum engine torque"
+    },
+    {
+      "id": "PERF-004",
+      "code": "ELECTRIC_MOTOR_POWER_KW",
+      "name": "Electric Motor Power",
+      "unit": "kW",
+      "description": "Rated electric motor power"
+    },
+    {
+      "id": "PERF-005",
+      "code": "ELECTRIC_MOTOR_TORQUE_NM",
+      "name": "Electric Motor Torque",
+      "unit": "Nm",
+      "description": "Maximum electric motor torque"
+    },
+    {
+      "id": "PERF-006",
+      "code": "COMBINED_SYSTEM_POWER_KW",
+      "name": "Combined System Power",
+      "unit": "kW",
+      "description": "Combined power output for hybrid or multi-motor systems"
+    },
+    {
+      "id": "PERF-007",
+      "code": "COMBINED_SYSTEM_TORQUE_NM",
+      "name": "Combined System Torque",
+      "unit": "Nm",
+      "description": "Combined torque output for hybrid or multi-motor systems"
+    },
+    {
+      "id": "PERF-008",
+      "code": "ZERO_TO_100_KMH_SEC",
+      "name": "0-100 km/h Acceleration",
+      "unit": "seconds",
+      "description": "Approximate acceleration time from 0 to 100 km/h"
+    },
+    {
+      "id": "PERF-009",
+      "code": "ZERO_TO_60_MPH_SEC",
+      "name": "0-60 mph Acceleration",
+      "unit": "seconds",
+      "description": "Approximate acceleration time from 0 to 60 mph"
+    },
+    {
+      "id": "PERF-010",
+      "code": "TOP_SPEED_KMH",
+      "name": "Top Speed",
+      "unit": "km/h",
+      "description": "Maximum specified vehicle speed"
+    },
+    {
+      "id": "PERF-011",
+      "code": "TOP_SPEED_MPH",
+      "name": "Top Speed",
+      "unit": "mph",
+      "description": "Maximum specified vehicle speed"
+    },
+    {
+      "id": "PERF-012",
+      "code": "MAX_ENGINE_RPM",
+      "name": "Maximum Engine RPM",
+      "unit": "rpm",
+      "description": "Maximum specified engine speed"
+    },
+    {
+      "id": "PERF-013",
+      "code": "MAX_MOTOR_RPM",
+      "name": "Maximum Motor RPM",
+      "unit": "rpm",
+      "description": "Maximum specified electric motor speed"
+    },
+    {
+      "id": "PERF-014",
+      "code": "HORSEPOWER_PER_TON",
+      "name": "Power-to-Weight Ratio",
+      "unit": "hp/ton",
+      "description": "Engine or system power relative to vehicle weight"
+    },
+    {
+      "id": "PERF-015",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "unit": null,
+      "description": "Performance specification not available"
+    }
+  ]
+}
