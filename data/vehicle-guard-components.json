@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_guard_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VGD-001",
+      "code": "ENGINE_UNDER_GUARD",
+      "name": "Engine Under Guard",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VGD-002",
+      "code": "ENGINE_SKID_PLATE",
+      "name": "Engine Skid Plate",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VGD-003",
+      "code": "TRANSMISSION_GUARD",
+      "name": "Transmission Guard",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VGD-004",
+      "code": "TRANSMISSION_SKID_PLATE",
+      "name": "Transmission Skid Plate",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VGD-005",
+      "code": "TRANSFER_CASE_GUARD",
+      "name": "Transfer Case Guard",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VGD-006",
+      "code": "DIFFERENTIAL_GUARD",
+      "name": "Differential Guard",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VGD-007",
+      "code": "FUEL_TANK_GUARD",
+      "name": "Fuel Tank Guard",
+      "category": "FUEL"
+    },
+    {
+      "id": "VGD-008",
+      "code": "FUEL_LINE_GUARD",
+      "name": "Fuel Line Guard",
+      "category": "FUEL"
+    },
+    {
+      "id": "VGD-009",
+      "code": "BRAKE_LINE_GUARD",
+      "name": "Brake Line Guard",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGD-010",
+      "code": "BRAKE_DISC_GUARD",
+      "name": "Brake Disc Guard",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGD-011",
+      "code": "BRAKE_ROTOR_DUST_SHIELD",
+      "name": "Brake Rotor Dust Shield",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGD-012",
+      "code": "CV_AXLE_GUARD",
+      "name": "CV Axle Guard",
+      "category": "AXLE"
+    },
+    {
+      "id": "VGD-013",
+      "code": "PROPELLER_SHAFT_GUARD",
+      "name": "Propeller Shaft Guard",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VGD-014",
+      "code": "EXHAUST_GUARD",
+      "name": "Exhaust Guard",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VGD-015",
+      "code": "MUFFLER_GUARD",
+      "name": "Muffler Guard",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VGD-016",
+      "code": "CATALYTIC_CONVERTER_GUARD",
+      "name": "Catalytic Converter Guard",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VGD-017",
+      "code": "DPF_GUARD",
+      "name": "DPF Guard",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VGD-018",
+      "code": "SCR_GUARD",
+      "name": "SCR System Guard",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VGD-019",
+      "code": "RADIATOR_GUARD",
+      "name": "Radiator Guard",
+      "category": "COOLING"
+    },
+    {
+      "id": "VGD-020",
+      "code": "RADIATOR_PROTECTOR",
+      "name": "Radiator Protector",
+      "category": "COOLING"
+    },
+    {
+      "id": "VGD-021",
+      "code": "CONDENSER_GUARD",
+      "name": "A/C Condenser Guard",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VGD-022",
+      "code": "INTERCOOLER_GUARD",
+      "name": "Intercooler Guard",
+      "category": "TURBO"
+    },
+    {
+      "id": "VGD-023",
+      "code": "TURBO_GUARD",
+      "name": "Turbocharger Guard",
+      "category": "TURBO"
+    },
+    {
+      "id": "VGD-024",
+      "code": "OIL_PAN_GUARD",
+      "name": "Oil Pan Guard",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VGD-025",
+      "code": "OIL_COOLER_GUARD",
+      "name": "Oil Cooler Guard",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VGD-026",
+      "code": "POWER_STEERING_GUARD",
+      "name": "Power Steering Guard",
+      "category": "STEERING"
+    },
+    {
+      "id": "VGD-027",
+      "code": "STEERING_RACK_GUARD",
+      "name": "Steering Rack Guard",
+      "category": "STEERING"
+    },
+    {
+      "id": "VGD-028",
+      "code": "SUSPENSION_GUARD",
+      "name": "Suspension Guard",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VGD-029",
+      "code": "SHOCK_ABSORBER_GUARD",
+      "name": "Shock Absorber Guard",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VGD-030",
+      "code": "CONTROL_ARM_GUARD",
+      "name": "Control Arm Guard",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VGD-031",
+      "code": "FUEL_FILTER_GUARD",
+      "name": "Fuel Filter Guard",
+      "category": "FUEL"
+    },
+    {
+      "id": "VGD-032",
+      "code": "BATTERY_GUARD",
+      "name": "Battery Guard",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VGD-033",
+      "code": "BATTERY_TRAY_GUARD",
+      "name": "Battery Tray Guard",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VGD-034",
+      "code": "HIGH_VOLTAGE_BATTERY_GUARD",
+      "name": "High Voltage Battery Guard",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VGD-035",
+      "code": "INVERTER_GUARD",
+      "name": "Inverter Guard",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VGD-036",
+      "code": "EV_MOTOR_GUARD",
+      "name": "EV Motor Guard",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VGD-037",
+      "code": "HV_CABLE_GUARD",
+      "name": "High Voltage Cable Guard",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VGD-038",
+      "code": "CHARGING_PORT_GUARD",
+      "name": "Charging Port Guard",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VGD-039",
+      "code": "WIRING_HARNESS_GUARD",
+      "name": "Wiring Harness Guard",
+      "category": "WIRING"
+    },
+    {
+      "id": "VGD-040",
+      "code": "SENSOR_GUARD",
+      "name": "Sensor Guard",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VGD-041",
+      "code": "ABS_SENSOR_GUARD",
+      "name": "ABS Sensor Guard",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGD-042",
+      "code": "TPMS_SENSOR_GUARD",
+      "name": "TPMS Sensor Guard",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VGD-043",
+      "code": "CAMERA_GUARD",
+      "name": "Camera Guard",
+      "category": "ADAS"
+    },
+    {
+      "id": "VGD-044",
+      "code": "RADAR_GUARD",
+      "name": "Radar Guard",
+      "category": "ADAS"
+    },
+    {
+      "id": "VGD-045",
+      "code": "PARKING_SENSOR_GUARD",
+      "name": "Parking Sensor Guard",
+      "category": "ADAS"
+    },
+    {
+      "id": "VGD-046",
+      "code": "HEADLIGHT_GUARD",
+      "name": "Headlight Guard",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VGD-047",
+      "code": "TAILLIGHT_GUARD",
+      "name": "Taillight Guard",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VGD-048",
+      "code": "FOG_LIGHT_GUARD",
+      "name": "Fog Light Guard",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VGD-049",
+      "code": "MIRROR_GUARD",
+      "name": "Mirror Guard",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VGD-050",
+      "code": "DOOR_EDGE_GUARD",
+      "name": "Door Edge Guard",
+      "category": "DOOR"
+    },
+    {
+      "id": "VGD-051",
+      "code": "DOOR_HANDLE_GUARD",
+      "name": "Door Handle Guard",
+      "category": "DOOR"
+    },
+    {
+      "id": "VGD-052",
+      "code": "FENDER_GUARD",
+      "name": "Fender Guard",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-053",
+      "code": "WHEEL_ARCH_GUARD",
+      "name": "Wheel Arch Guard",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-054",
+      "code": "MUD_GUARD",
+      "name": "Mud Guard",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-055",
+      "code": "SPLASH_GUARD",
+      "name": "Splash Guard",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-056",
+      "code": "UNDERBODY_GUARD",
+      "name": "Underbody Guard",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VGD-057",
+      "code": "CHASSIS_GUARD",
+      "name": "Chassis Guard",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VGD-058",
+      "code": "FRAME_GUARD",
+      "name": "Frame Guard",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VGD-059",
+      "code": "ROCKER_PANEL_GUARD",
+      "name": "Rocker Panel Guard",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-060",
+      "code": "SIDE_STEP_GUARD",
+      "name": "Side Step Guard",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-061",
+      "code": "BUMPER_GUARD",
+      "name": "Bumper Guard",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-062",
+      "code": "BUMPER_CORNER_GUARD",
+      "name": "Bumper Corner Guard",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-063",
+      "code": "GRILLE_GUARD",
+      "name": "Grille Guard",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-064",
+      "code": "HOOD_EDGE_GUARD",
+      "name": "Hood Edge Guard",
+      "category": "HOOD"
+    },
+    {
+      "id": "VGD-065",
+      "code": "ROOF_RACK_GUARD",
+      "name": "Roof Rack Guard",
+      "category": "ROOF"
+    },
+    {
+      "id": "VGD-066",
+      "code": "ROOF_RAIL_GUARD",
+      "name": "Roof Rail Guard",
+      "category": "ROOF"
+    },
+    {
+      "id": "VGD-067",
+      "code": "SUNROOF_GUARD",
+      "name": "Sunroof Guard",
+      "category": "ROOF"
+    },
+    {
+      "id": "VGD-068",
+      "code": "WINDSHIELD_GUARD",
+      "name": "Windshield Guard",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGD-069",
+      "code": "WINDOW_GLASS_GUARD",
+      "name": "Window Glass Guard",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGD-070",
+      "code": "REAR_GLASS_GUARD",
+      "name": "Rear Glass Guard",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGD-071",
+      "code": "SEAT_RAIL_GUARD",
+      "name": "Seat Rail Guard",
+      "category": "SEAT"
+    },
+    {
+      "id": "VGD-072",
+      "code": "FLOOR_GUARD",
+      "name": "Floor Guard",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VGD-073",
+      "code": "CARPET_PROTECTOR",
+      "name": "Carpet Protector",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VGD-074",
+      "code": "CARGO_AREA_GUARD",
+      "name": "Cargo Area Guard",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VGD-075",
+      "code": "DOOR_SILL_GUARD",
+      "name": "Door Sill Guard",
+      "category": "DOOR"
+    },
+    {
+      "id": "VGD-076",
+      "code": "REAR_BUMPER_PROTECTOR",
+      "name": "Rear Bumper Protector",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-077",
+      "code": "CARGO_SILL_PROTECTOR",
+      "name": "Cargo Sill Protector",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-078",
+      "code": "PAINT_PROTECTION_GUARD",
+      "name": "Paint Protection Guard",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-079",
+      "code": "UNDER_ENGINE_SPLASH_GUARD",
+      "name": "Under Engine Splash Guard",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VGD-080",
+      "code": "WHEEL_SPLASH_GUARD",
+      "name": "Wheel Splash Guard",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VGD-081",
+      "code": "BRAKE_HOSE_GUARD",
+      "name": "Brake Hose Guard",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGD-082",
+      "code": "FUEL_TANK_SKID_PLATE",
+      "name": "Fuel Tank Skid Plate",
+      "category": "FUEL"
+    },
+    {
+      "id": "VGD-083",
+      "code": "TRANSFER_CASE_SKID_PLATE",
+      "name": "Transfer Case Skid Plate",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VGD-084",
+      "code": "DIFFERENTIAL_SKID_PLATE",
+      "name": "Differential Skid Plate",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VGD-085",
+      "code": "CONTROL_ARM_SKID_GUARD",
+      "name": "Control Arm Skid Guard",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VGD-086",
+      "code": "ROCKER_PROTECTION_PLATE",
+      "name": "Rocker Protection Plate",
+      "category": "BODY"
+    },
+    {
+      "id": "VGD-087",
+      "code": "CHASSIS_PROTECTION_PLATE",
+      "name": "Chassis Protection Plate",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VGD-088",
+      "code": "HEAT_SHIELD_GUARD",
+      "name": "Heat Shield Guard",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VGD-089",
+      "code": "WIRING_PROTECTION_GUARD",
+      "name": "Wiring Protection Guard",
+      "category": "WIRING"
+    },
+    {
+      "id": "VGD-090",
+      "code": "HOSE_PROTECTION_GUARD",
+      "name": "Hose Protection Guard",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VGD-091",
+      "code": "THERMAL_PROTECTION_GUARD",
+      "name": "Thermal Protection Guard",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VGD-092",
+      "code": "DUST_PROTECTION_GUARD",
+      "name": "Dust Protection Guard",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VGD-093",
+      "code": "WATER_PROTECTION_GUARD",
+      "name": "Water Protection Guard",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VGD-094",
+      "code": "OFF_ROAD_SKID_GUARD",
+      "name": "Off-Road Skid Guard",
+      "category": "OFF_ROAD"
+    },
+    {
+      "id": "VGD-095",
+      "code": "COMMERCIAL_VEHICLE_GUARD",
+      "name": "Commercial Vehicle Guard",
+      "category": "COMMERCIAL"
+    },
+    {
+      "id": "VGD-096",
+      "code": "SERVICE_GUARD_KIT",
+      "name": "Guard Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VGD-097",
+      "code": "REPAIR_GUARD_KIT",
+      "name": "Guard Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VGD-098",
+      "code": "MOUNTING_GUARD_HARDWARE",
+      "name": "Guard Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VGD-099",
+      "code": "UNIVERSAL_VEHICLE_GUARD",
+      "name": "Universal Vehicle Guard",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VGD-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Guard Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
