@@ -1,0 +1,604 @@
+{
+  "glassComponents": [
+    {
+      "id": "VGC-001",
+      "code": "WINDSHIELD",
+      "name": "Windshield",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-002",
+      "code": "FRONT_WINDSHIELD",
+      "name": "Front Windshield",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-003",
+      "code": "REAR_WINDSHIELD",
+      "name": "Rear Windshield",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-004",
+      "code": "SIDE_WINDOW_GLASS",
+      "name": "Side Window Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-005",
+      "code": "FRONT_DOOR_GLASS",
+      "name": "Front Door Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-006",
+      "code": "REAR_DOOR_GLASS",
+      "name": "Rear Door Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-007",
+      "code": "QUARTER_GLASS",
+      "name": "Quarter Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-008",
+      "code": "FIXED_QUARTER_GLASS",
+      "name": "Fixed Quarter Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-009",
+      "code": "MOVABLE_QUARTER_GLASS",
+      "name": "Movable Quarter Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-010",
+      "code": "VENT_GLASS",
+      "name": "Vent Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-011",
+      "code": "FRONT_VENT_GLASS",
+      "name": "Front Vent Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-012",
+      "code": "REAR_VENT_GLASS",
+      "name": "Rear Vent Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-013",
+      "code": "SUNROOF_GLASS",
+      "name": "Sunroof Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-014",
+      "code": "MOONROOF_GLASS",
+      "name": "Moonroof Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-015",
+      "code": "PANORAMIC_ROOF_GLASS",
+      "name": "Panoramic Roof Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-016",
+      "code": "GLASS_ROOF_PANEL",
+      "name": "Glass Roof Panel",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-017",
+      "code": "WINDSHIELD_MOULDING",
+      "name": "Windshield Moulding",
+      "category": "MOULDING"
+    },
+    {
+      "id": "VGC-018",
+      "code": "WINDSHIELD_UPPER_MOULDING",
+      "name": "Windshield Upper Moulding",
+      "category": "MOULDING"
+    },
+    {
+      "id": "VGC-019",
+      "code": "WINDSHIELD_SIDE_MOULDING",
+      "name": "Windshield Side Moulding",
+      "category": "MOULDING"
+    },
+    {
+      "id": "VGC-020",
+      "code": "WINDSHIELD_LOWER_MOULDING",
+      "name": "Windshield Lower Moulding",
+      "category": "MOULDING"
+    },
+    {
+      "id": "VGC-021",
+      "code": "REAR_GLASS_MOULDING",
+      "name": "Rear Glass Moulding",
+      "category": "MOULDING"
+    },
+    {
+      "id": "VGC-022",
+      "code": "SIDE_GLASS_MOULDING",
+      "name": "Side Glass Moulding",
+      "category": "MOULDING"
+    },
+    {
+      "id": "VGC-023",
+      "code": "GLASS_WEATHERSTRIP",
+      "name": "Glass Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "VGC-024",
+      "code": "DOOR_GLASS_RUN",
+      "name": "Door Glass Run",
+      "category": "SEAL"
+    },
+    {
+      "id": "VGC-025",
+      "code": "DOOR_GLASS_RUN_CHANNEL",
+      "name": "Door Glass Run Channel",
+      "category": "SEAL"
+    },
+    {
+      "id": "VGC-026",
+      "code": "DOOR_GLASS_BELT_MOULDING",
+      "name": "Door Glass Belt Moulding",
+      "category": "MOULDING"
+    },
+    {
+      "id": "VGC-027",
+      "code": "OUTER_GLASS_BELT_MOULDING",
+      "name": "Outer Glass Belt Moulding",
+      "category": "MOULDING"
+    },
+    {
+      "id": "VGC-028",
+      "code": "INNER_GLASS_BELT_MOULDING",
+      "name": "Inner Glass Belt Moulding",
+      "category": "MOULDING"
+    },
+    {
+      "id": "VGC-029",
+      "code": "GLASS_SEAL",
+      "name": "Glass Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VGC-030",
+      "code": "WINDSHIELD_SEAL",
+      "name": "Windshield Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VGC-031",
+      "code": "REAR_GLASS_SEAL",
+      "name": "Rear Glass Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VGC-032",
+      "code": "GLASS_GASKET",
+      "name": "Glass Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VGC-033",
+      "code": "WINDSHIELD_GASKET",
+      "name": "Windshield Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VGC-034",
+      "code": "REAR_GLASS_GASKET",
+      "name": "Rear Glass Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VGC-035",
+      "code": "GLASS_CLIP",
+      "name": "Glass Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VGC-036",
+      "code": "GLASS_MOULDING_CLIP",
+      "name": "Glass Moulding Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VGC-037",
+      "code": "GLASS_BRACKET",
+      "name": "Glass Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VGC-038",
+      "code": "WINDSHIELD_BRACKET",
+      "name": "Windshield Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VGC-039",
+      "code": "REAR_GLASS_BRACKET",
+      "name": "Rear Glass Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VGC-040",
+      "code": "GLASS_SUPPORT",
+      "name": "Glass Support",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VGC-041",
+      "code": "WINDOW_REGULATOR",
+      "name": "Window Regulator",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VGC-042",
+      "code": "FRONT_WINDOW_REGULATOR",
+      "name": "Front Window Regulator",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VGC-043",
+      "code": "REAR_WINDOW_REGULATOR",
+      "name": "Rear Window Regulator",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VGC-044",
+      "code": "POWER_WINDOW_REGULATOR",
+      "name": "Power Window Regulator",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VGC-045",
+      "code": "WINDOW_REGULATOR_MOTOR",
+      "name": "Window Regulator Motor",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VGC-046",
+      "code": "WINDOW_REGULATOR_CABLE",
+      "name": "Window Regulator Cable",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VGC-047",
+      "code": "WINDOW_REGULATOR_GUIDE",
+      "name": "Window Regulator Guide",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VGC-048",
+      "code": "WINDOW_GLASS_LIFT_CHANNEL",
+      "name": "Window Glass Lift Channel",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VGC-049",
+      "code": "WINDOW_GLASS_HOLDER",
+      "name": "Window Glass Holder",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VGC-050",
+      "code": "WINDOW_GLASS_BRACKET",
+      "name": "Window Glass Bracket",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VGC-051",
+      "code": "WINDSHIELD_SENSOR_BRACKET",
+      "name": "Windshield Sensor Bracket",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VGC-052",
+      "code": "RAIN_SENSOR_BRACKET",
+      "name": "Rain Sensor Bracket",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VGC-053",
+      "code": "CAMERA_WINDSHIELD_BRACKET",
+      "name": "Windshield Camera Bracket",
+      "category": "ADAS"
+    },
+    {
+      "id": "VGC-054",
+      "code": "ADAS_WINDSHIELD_AREA",
+      "name": "ADAS Windshield Mounting Area",
+      "category": "ADAS"
+    },
+    {
+      "id": "VGC-055",
+      "code": "WINDSHIELD_ANTENNA",
+      "name": "Windshield Antenna",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGC-056",
+      "code": "REAR_GLASS_ANTENNA",
+      "name": "Rear Glass Antenna",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGC-057",
+      "code": "REAR_GLASS_DEFOGGER",
+      "name": "Rear Glass Defogger",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGC-058",
+      "code": "REAR_GLASS_DEFOGGER_ELEMENT",
+      "name": "Rear Glass Defogger Element",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGC-059",
+      "code": "DEFOGGER_TERMINAL",
+      "name": "Defogger Terminal",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGC-060",
+      "code": "DEFOGGER_CONNECTOR",
+      "name": "Defogger Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VGC-061",
+      "code": "GLASS_HEATING_ELEMENT",
+      "name": "Glass Heating Element",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGC-062",
+      "code": "HEATED_WINDSHIELD",
+      "name": "Heated Windshield",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-063",
+      "code": "ACOUSTIC_WINDSHIELD",
+      "name": "Acoustic Windshield",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-064",
+      "code": "LAMINATED_WINDSHIELD",
+      "name": "Laminated Windshield",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-065",
+      "code": "TEMPERED_SIDE_GLASS",
+      "name": "Tempered Side Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-066",
+      "code": "PRIVACY_GLASS",
+      "name": "Privacy Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-067",
+      "code": "SOLAR_CONTROL_GLASS",
+      "name": "Solar Control Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-068",
+      "code": "HEAT_REJECTING_GLASS",
+      "name": "Heat Rejecting Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-069",
+      "code": "UV_PROTECTION_GLASS",
+      "name": "UV Protection Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-070",
+      "code": "GLASS_TINT",
+      "name": "Glass Tint",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-071",
+      "code": "WINDSHIELD_UPPER_STRIP",
+      "name": "Windshield Upper Sunshade Strip",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-072",
+      "code": "GLASS_MARKING",
+      "name": "Automotive Glass Marking",
+      "category": "GLASS"
+    },
+    {
+      "id": "VGC-073",
+      "code": "GLASS_IDENTIFICATION_LABEL",
+      "name": "Glass Identification Label",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VGC-074",
+      "code": "GLASS_SENSOR_PAD",
+      "name": "Glass Sensor Pad",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VGC-075",
+      "code": "WINDSHIELD_SENSOR_GEL_PAD",
+      "name": "Windshield Sensor Gel Pad",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VGC-076",
+      "code": "GLASS_ADHESIVE",
+      "name": "Automotive Glass Adhesive",
+      "category": "INSTALLATION"
+    },
+    {
+      "id": "VGC-077",
+      "code": "WINDSHIELD_ADHESIVE",
+      "name": "Windshield Adhesive",
+      "category": "INSTALLATION"
+    },
+    {
+      "id": "VGC-078",
+      "code": "GLASS_PRIMER",
+      "name": "Glass Primer",
+      "category": "INSTALLATION"
+    },
+    {
+      "id": "VGC-079",
+      "code": "GLASS_INSTALLATION_KIT",
+      "name": "Glass Installation Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VGC-080",
+      "code": "WINDSHIELD_REPAIR_KIT",
+      "name": "Windshield Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VGC-081",
+      "code": "WINDOW_GLASS_REPAIR_KIT",
+      "name": "Window Glass Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VGC-082",
+      "code": "GLASS_CLEANING_COMPONENT",
+      "name": "Glass Cleaning Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VGC-083",
+      "code": "GLASS_PROTECTIVE_FILM",
+      "name": "Glass Protective Film",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VGC-084",
+      "code": "GLASS_TRIM_CLIP",
+      "name": "Glass Trim Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VGC-085",
+      "code": "GLASS_FASTENER",
+      "name": "Glass Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VGC-086",
+      "code": "GLASS_CONNECTOR",
+      "name": "Glass Electrical Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VGC-087",
+      "code": "GLASS_GROUND_TERMINAL",
+      "name": "Glass Ground Terminal",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGC-088",
+      "code": "WINDOW_SWITCH",
+      "name": "Power Window Switch",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VGC-089",
+      "code": "WINDOW_CONTROL_MODULE",
+      "name": "Window Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VGC-090",
+      "code": "WINDOW_LOCKOUT_SWITCH",
+      "name": "Window Lockout Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VGC-091",
+      "code": "WINDOW_GLASS_RUN_CLIP",
+      "name": "Window Glass Run Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VGC-092",
+      "code": "WINDOW_REGULATOR_CLIP",
+      "name": "Window Regulator Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VGC-093",
+      "code": "GLASS_SERVICE_COMPONENT",
+      "name": "Glass Service Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VGC-094",
+      "code": "GLASS_DIAGNOSTIC_COMPONENT",
+      "name": "Glass Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VGC-095",
+      "code": "GLASS_MOUNTING_HARDWARE",
+      "name": "Glass Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VGC-096",
+      "code": "WINDOW_REGULATOR_REPAIR_KIT",
+      "name": "Window Regulator Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VGC-097",
+      "code": "GLASS_SEALING_KIT",
+      "name": "Glass Sealing Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VGC-098",
+      "code": "GLASS_TRIM_REPAIR_KIT",
+      "name": "Glass Trim Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VGC-099",
+      "code": "GLASS_COMPONENT",
+      "name": "General Glass Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VGC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Glass Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
