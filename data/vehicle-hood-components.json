@@ -1,0 +1,604 @@
+{
+  "hoodComponents": [
+    {
+      "id": "VHC-001",
+      "code": "HOOD_SYSTEM",
+      "name": "Vehicle Hood System",
+      "category": "HOOD"
+    },
+    {
+      "id": "VHC-002",
+      "code": "ENGINE_HOOD",
+      "name": "Engine Hood",
+      "category": "HOOD"
+    },
+    {
+      "id": "VHC-003",
+      "code": "HOOD_PANEL",
+      "name": "Hood Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VHC-004",
+      "code": "HOOD_OUTER_PANEL",
+      "name": "Hood Outer Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VHC-005",
+      "code": "HOOD_INNER_PANEL",
+      "name": "Hood Inner Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VHC-006",
+      "code": "HOOD_FRAME",
+      "name": "Hood Frame",
+      "category": "BODY"
+    },
+    {
+      "id": "VHC-007",
+      "code": "HOOD_HINGE",
+      "name": "Hood Hinge",
+      "category": "HINGE"
+    },
+    {
+      "id": "VHC-008",
+      "code": "LEFT_HOOD_HINGE",
+      "name": "Left Hood Hinge",
+      "category": "HINGE"
+    },
+    {
+      "id": "VHC-009",
+      "code": "RIGHT_HOOD_HINGE",
+      "name": "Right Hood Hinge",
+      "category": "HINGE"
+    },
+    {
+      "id": "VHC-010",
+      "code": "HOOD_HINGE_PIN",
+      "name": "Hood Hinge Pin",
+      "category": "HINGE"
+    },
+    {
+      "id": "VHC-011",
+      "code": "HOOD_LATCH",
+      "name": "Hood Latch",
+      "category": "LATCH"
+    },
+    {
+      "id": "VHC-012",
+      "code": "HOOD_LATCH_ASSEMBLY",
+      "name": "Hood Latch Assembly",
+      "category": "LATCH"
+    },
+    {
+      "id": "VHC-013",
+      "code": "HOOD_LATCH_ACTUATOR",
+      "name": "Hood Latch Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VHC-014",
+      "code": "HOOD_LOCK",
+      "name": "Hood Lock",
+      "category": "LOCK"
+    },
+    {
+      "id": "VHC-015",
+      "code": "HOOD_LOCK_CABLE",
+      "name": "Hood Lock Cable",
+      "category": "LOCK"
+    },
+    {
+      "id": "VHC-016",
+      "code": "HOOD_RELEASE_CABLE",
+      "name": "Hood Release Cable",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VHC-017",
+      "code": "HOOD_RELEASE_HANDLE",
+      "name": "Hood Release Handle",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VHC-018",
+      "code": "HOOD_RELEASE_LEVER",
+      "name": "Hood Release Lever",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VHC-019",
+      "code": "HOOD_RELEASE_MECHANISM",
+      "name": "Hood Release Mechanism",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VHC-020",
+      "code": "HOOD_SUPPORT",
+      "name": "Hood Support",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VHC-021",
+      "code": "HOOD_PROP_ROD",
+      "name": "Hood Prop Rod",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VHC-022",
+      "code": "HOOD_PROP_ROD_CLIP",
+      "name": "Hood Prop Rod Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-023",
+      "code": "HOOD_GAS_STRUT",
+      "name": "Hood Gas Strut",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VHC-024",
+      "code": "HOOD_LIFT_SUPPORT",
+      "name": "Hood Lift Support",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VHC-025",
+      "code": "POWER_HOOD_ACTUATOR",
+      "name": "Power Hood Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VHC-026",
+      "code": "POWER_HOOD_MODULE",
+      "name": "Power Hood Control Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VHC-027",
+      "code": "HOOD_CLOSER",
+      "name": "Hood Power Closer",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VHC-028",
+      "code": "HOOD_AIR_INTAKE",
+      "name": "Hood Air Intake",
+      "category": "AIRFLOW"
+    },
+    {
+      "id": "VHC-029",
+      "code": "HOOD_AIR_DUCT",
+      "name": "Hood Air Duct",
+      "category": "AIRFLOW"
+    },
+    {
+      "id": "VHC-030",
+      "code": "HOOD_VENT",
+      "name": "Hood Vent",
+      "category": "AIRFLOW"
+    },
+    {
+      "id": "VHC-031",
+      "code": "HOOD_SCOOP",
+      "name": "Hood Scoop",
+      "category": "AIRFLOW"
+    },
+    {
+      "id": "VHC-032",
+      "code": "HOOD_SCOOP_COVER",
+      "name": "Hood Scoop Cover",
+      "category": "COVER"
+    },
+    {
+      "id": "VHC-033",
+      "code": "HOOD_INSULATION",
+      "name": "Hood Insulation",
+      "category": "INSULATION"
+    },
+    {
+      "id": "VHC-034",
+      "code": "HOOD_INSULATION_PAD",
+      "name": "Hood Insulation Pad",
+      "category": "INSULATION"
+    },
+    {
+      "id": "VHC-035",
+      "code": "HOOD_INSULATION_CLIP",
+      "name": "Hood Insulation Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-036",
+      "code": "HOOD_WEATHERSTRIP",
+      "name": "Hood Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "VHC-037",
+      "code": "HOOD_SEAL",
+      "name": "Hood Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VHC-038",
+      "code": "HOOD_GASKET",
+      "name": "Hood Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VHC-039",
+      "code": "HOOD_BUMP_STOP",
+      "name": "Hood Bump Stop",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VHC-040",
+      "code": "HOOD_RUBBER_STOP",
+      "name": "Hood Rubber Stop",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VHC-041",
+      "code": "HOOD_ALIGNMENT_STOP",
+      "name": "Hood Alignment Stop",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VHC-042",
+      "code": "HOOD_BOLT",
+      "name": "Hood Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-043",
+      "code": "HOOD_NUT",
+      "name": "Hood Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-044",
+      "code": "HOOD_WASHER",
+      "name": "Hood Washer",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-045",
+      "code": "HOOD_CLIP",
+      "name": "Hood Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-046",
+      "code": "HOOD_RETAINER",
+      "name": "Hood Retainer",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-047",
+      "code": "HOOD_HINGE_BOLT",
+      "name": "Hood Hinge Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-048",
+      "code": "HOOD_LATCH_BOLT",
+      "name": "Hood Latch Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-049",
+      "code": "HOOD_LATCH_SPRING",
+      "name": "Hood Latch Spring",
+      "category": "LATCH"
+    },
+    {
+      "id": "VHC-050",
+      "code": "HOOD_LATCH_LEVER",
+      "name": "Hood Latch Lever",
+      "category": "LATCH"
+    },
+    {
+      "id": "VHC-051",
+      "code": "HOOD_SAFETY_CATCH",
+      "name": "Hood Safety Catch",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VHC-052",
+      "code": "HOOD_SECONDARY_LATCH",
+      "name": "Hood Secondary Latch",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VHC-053",
+      "code": "HOOD_AJAR_SWITCH",
+      "name": "Hood Ajar Switch",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VHC-054",
+      "code": "HOOD_AJAR_SENSOR",
+      "name": "Hood Ajar Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VHC-055",
+      "code": "HOOD_LOCK_SENSOR",
+      "name": "Hood Lock Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VHC-056",
+      "code": "HOOD_WARNING_SWITCH",
+      "name": "Hood Warning Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VHC-057",
+      "code": "HOOD_WIRING_HARNESS",
+      "name": "Hood Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VHC-058",
+      "code": "HOOD_CONNECTOR",
+      "name": "Hood Electrical Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VHC-059",
+      "code": "HOOD_GROUND_WIRE",
+      "name": "Hood Ground Wire",
+      "category": "WIRING"
+    },
+    {
+      "id": "VHC-060",
+      "code": "HOOD_LIGHT",
+      "name": "Hood Compartment Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VHC-061",
+      "code": "HOOD_LIGHT_SWITCH",
+      "name": "Hood Light Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VHC-062",
+      "code": "HOOD_LIGHT_WIRING",
+      "name": "Hood Light Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VHC-063",
+      "code": "HOOD_EMBLEM",
+      "name": "Hood Emblem",
+      "category": "TRIM"
+    },
+    {
+      "id": "VHC-064",
+      "code": "HOOD_BADGE",
+      "name": "Hood Badge",
+      "category": "TRIM"
+    },
+    {
+      "id": "VHC-065",
+      "code": "HOOD_MOULDING",
+      "name": "Hood Moulding",
+      "category": "TRIM"
+    },
+    {
+      "id": "VHC-066",
+      "code": "HOOD_EDGE_TRIM",
+      "name": "Hood Edge Trim",
+      "category": "TRIM"
+    },
+    {
+      "id": "VHC-067",
+      "code": "HOOD_FRONT_TRIM",
+      "name": "Hood Front Trim",
+      "category": "TRIM"
+    },
+    {
+      "id": "VHC-068",
+      "code": "HOOD_REAR_TRIM",
+      "name": "Hood Rear Trim",
+      "category": "TRIM"
+    },
+    {
+      "id": "VHC-069",
+      "code": "HOOD_CAMERA_BRACKET",
+      "name": "Hood Camera Bracket",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VHC-070",
+      "code": "HOOD_SENSOR_BRACKET",
+      "name": "Hood Sensor Bracket",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VHC-071",
+      "code": "HOOD_NOISE_DAMPER",
+      "name": "Hood Noise Damper",
+      "category": "INSULATION"
+    },
+    {
+      "id": "VHC-072",
+      "code": "HOOD_VIBRATION_DAMPER",
+      "name": "Hood Vibration Damper",
+      "category": "DAMPER"
+    },
+    {
+      "id": "VHC-073",
+      "code": "HOOD_REINFORCEMENT",
+      "name": "Hood Reinforcement",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VHC-074",
+      "code": "HOOD_BRACE",
+      "name": "Hood Brace",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VHC-075",
+      "code": "HOOD_MOUNTING_BRACKET",
+      "name": "Hood Mounting Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VHC-076",
+      "code": "HOOD_MOUNTING_PLATE",
+      "name": "Hood Mounting Plate",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VHC-077",
+      "code": "HOOD_CABLE_GUIDE",
+      "name": "Hood Cable Guide",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VHC-078",
+      "code": "HOOD_CABLE_CLIP",
+      "name": "Hood Cable Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-079",
+      "code": "HOOD_LATCH_CABLE_GUIDE",
+      "name": "Hood Latch Cable Guide",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VHC-080",
+      "code": "HOOD_RELEASE_CABLE_CLIP",
+      "name": "Hood Release Cable Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-081",
+      "code": "HOOD_SERVICE_KIT",
+      "name": "Hood Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VHC-082",
+      "code": "HOOD_REPAIR_KIT",
+      "name": "Hood Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VHC-083",
+      "code": "HOOD_LATCH_REPAIR_KIT",
+      "name": "Hood Latch Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VHC-084",
+      "code": "HOOD_HINGE_REPAIR_KIT",
+      "name": "Hood Hinge Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VHC-085",
+      "code": "HOOD_SUPPORT_REPAIR_KIT",
+      "name": "Hood Support Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VHC-086",
+      "code": "HOOD_DIAGNOSTIC_COMPONENT",
+      "name": "Hood Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VHC-087",
+      "code": "HOOD_ELECTRICAL_COMPONENT",
+      "name": "General Hood Electrical Component",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VHC-088",
+      "code": "HOOD_WIRING_COMPONENT",
+      "name": "General Hood Wiring Component",
+      "category": "WIRING"
+    },
+    {
+      "id": "VHC-089",
+      "code": "HOOD_FASTENER_COMPONENT",
+      "name": "General Hood Fastener Component",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VHC-090",
+      "code": "HOOD_SEALING_COMPONENT",
+      "name": "General Hood Sealing Component",
+      "category": "SEAL"
+    },
+    {
+      "id": "VHC-091",
+      "code": "HOOD_MOUNTING_COMPONENT",
+      "name": "General Hood Mounting Component",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VHC-092",
+      "code": "HOOD_SUPPORT_COMPONENT",
+      "name": "General Hood Support Component",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VHC-093",
+      "code": "HOOD_CONTROL_COMPONENT",
+      "name": "General Hood Control Component",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VHC-094",
+      "code": "HOOD_SAFETY_COMPONENT",
+      "name": "General Hood Safety Component",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VHC-095",
+      "code": "HOOD_AIRFLOW_COMPONENT",
+      "name": "General Hood Airflow Component",
+      "category": "AIRFLOW"
+    },
+    {
+      "id": "VHC-096",
+      "code": "HOOD_BODY_COMPONENT",
+      "name": "General Hood Body Component",
+      "category": "BODY"
+    },
+    {
+      "id": "VHC-097",
+      "code": "HOOD_HARDWARE",
+      "name": "Hood Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VHC-098",
+      "code": "HOOD_REPLACEMENT_COMPONENT",
+      "name": "Hood Replacement Component",
+      "category": "REPLACEMENT"
+    },
+    {
+      "id": "VHC-099",
+      "code": "HOOD_GENERAL_COMPONENT",
+      "name": "General Hood Component",
+      "category": "HOOD"
+    },
+    {
+      "id": "VHC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Hood Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
