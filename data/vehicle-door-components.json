@@ -1,0 +1,604 @@
+{
+  "doorComponents": [
+    {
+      "id": "VDC-001",
+      "code": "DOOR_SYSTEM",
+      "name": "Vehicle Door System",
+      "category": "DOOR"
+    },
+    {
+      "id": "VDC-002",
+      "code": "FRONT_DOOR",
+      "name": "Front Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "VDC-003",
+      "code": "REAR_DOOR",
+      "name": "Rear Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "VDC-004",
+      "code": "LEFT_FRONT_DOOR",
+      "name": "Left Front Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "VDC-005",
+      "code": "RIGHT_FRONT_DOOR",
+      "name": "Right Front Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "VDC-006",
+      "code": "LEFT_REAR_DOOR",
+      "name": "Left Rear Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "VDC-007",
+      "code": "RIGHT_REAR_DOOR",
+      "name": "Right Rear Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "VDC-008",
+      "code": "DOOR_SHELL",
+      "name": "Door Shell",
+      "category": "BODY"
+    },
+    {
+      "id": "VDC-009",
+      "code": "DOOR_PANEL",
+      "name": "Door Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VDC-010",
+      "code": "DOOR_OUTER_PANEL",
+      "name": "Door Outer Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VDC-011",
+      "code": "DOOR_INNER_PANEL",
+      "name": "Door Inner Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VDC-012",
+      "code": "DOOR_FRAME",
+      "name": "Door Frame",
+      "category": "BODY"
+    },
+    {
+      "id": "VDC-013",
+      "code": "DOOR_HINGE",
+      "name": "Door Hinge",
+      "category": "HINGE"
+    },
+    {
+      "id": "VDC-014",
+      "code": "UPPER_DOOR_HINGE",
+      "name": "Upper Door Hinge",
+      "category": "HINGE"
+    },
+    {
+      "id": "VDC-015",
+      "code": "LOWER_DOOR_HINGE",
+      "name": "Lower Door Hinge",
+      "category": "HINGE"
+    },
+    {
+      "id": "VDC-016",
+      "code": "DOOR_HINGE_PIN",
+      "name": "Door Hinge Pin",
+      "category": "HINGE"
+    },
+    {
+      "id": "VDC-017",
+      "code": "DOOR_CHECK_STRAP",
+      "name": "Door Check Strap",
+      "category": "DOOR"
+    },
+    {
+      "id": "VDC-018",
+      "code": "DOOR_CHECK_LINK",
+      "name": "Door Check Link",
+      "category": "DOOR"
+    },
+    {
+      "id": "VDC-019",
+      "code": "DOOR_LATCH",
+      "name": "Door Latch",
+      "category": "LATCH"
+    },
+    {
+      "id": "VDC-020",
+      "code": "DOOR_LATCH_ASSEMBLY",
+      "name": "Door Latch Assembly",
+      "category": "LATCH"
+    },
+    {
+      "id": "VDC-021",
+      "code": "DOOR_LATCH_ACTUATOR",
+      "name": "Door Latch Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VDC-022",
+      "code": "DOOR_LOCK_ACTUATOR",
+      "name": "Door Lock Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VDC-023",
+      "code": "DOOR_LOCK",
+      "name": "Door Lock",
+      "category": "LOCK"
+    },
+    {
+      "id": "VDC-024",
+      "code": "DOOR_LOCK_CYLINDER",
+      "name": "Door Lock Cylinder",
+      "category": "LOCK"
+    },
+    {
+      "id": "VDC-025",
+      "code": "DOOR_LOCK_ROD",
+      "name": "Door Lock Rod",
+      "category": "LOCK"
+    },
+    {
+      "id": "VDC-026",
+      "code": "DOOR_LOCK_CABLE",
+      "name": "Door Lock Cable",
+      "category": "LOCK"
+    },
+    {
+      "id": "VDC-027",
+      "code": "OUTSIDE_DOOR_HANDLE",
+      "name": "Outside Door Handle",
+      "category": "HANDLE"
+    },
+    {
+      "id": "VDC-028",
+      "code": "INSIDE_DOOR_HANDLE",
+      "name": "Inside Door Handle",
+      "category": "HANDLE"
+    },
+    {
+      "id": "VDC-029",
+      "code": "DOOR_HANDLE_BASE",
+      "name": "Door Handle Base",
+      "category": "HANDLE"
+    },
+    {
+      "id": "VDC-030",
+      "code": "DOOR_HANDLE_COVER",
+      "name": "Door Handle Cover",
+      "category": "HANDLE"
+    },
+    {
+      "id": "VDC-031",
+      "code": "DOOR_HANDLE_GASKET",
+      "name": "Door Handle Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VDC-032",
+      "code": "POWER_WINDOW_MOTOR",
+      "name": "Power Window Motor",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VDC-033",
+      "code": "WINDOW_REGULATOR",
+      "name": "Window Regulator",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VDC-034",
+      "code": "WINDOW_REGULATOR_ASSEMBLY",
+      "name": "Window Regulator Assembly",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VDC-035",
+      "code": "WINDOW_REGULATOR_CABLE",
+      "name": "Window Regulator Cable",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VDC-036",
+      "code": "WINDOW_GLASS",
+      "name": "Door Window Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VDC-037",
+      "code": "LEFT_DOOR_WINDOW_GLASS",
+      "name": "Left Door Window Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VDC-038",
+      "code": "RIGHT_DOOR_WINDOW_GLASS",
+      "name": "Right Door Window Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "VDC-039",
+      "code": "WINDOW_GLASS_RUN_CHANNEL",
+      "name": "Window Glass Run Channel",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VDC-040",
+      "code": "WINDOW_GUIDE",
+      "name": "Window Guide",
+      "category": "WINDOW"
+    },
+    {
+      "id": "VDC-041",
+      "code": "WINDOW_SWITCH",
+      "name": "Power Window Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VDC-042",
+      "code": "MASTER_WINDOW_SWITCH",
+      "name": "Master Window Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VDC-043",
+      "code": "DOOR_WINDOW_CONTROL_MODULE",
+      "name": "Door Window Control Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VDC-044",
+      "code": "DOOR_CONTROL_MODULE",
+      "name": "Door Control Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VDC-045",
+      "code": "DOOR_WIRING_HARNESS",
+      "name": "Door Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VDC-046",
+      "code": "DOOR_CONNECTOR",
+      "name": "Door Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VDC-047",
+      "code": "DOOR_SPEAKER",
+      "name": "Door Speaker",
+      "category": "AUDIO"
+    },
+    {
+      "id": "VDC-048",
+      "code": "DOOR_SPEAKER_GRILLE",
+      "name": "Door Speaker Grille",
+      "category": "AUDIO"
+    },
+    {
+      "id": "VDC-049",
+      "code": "DOOR_TRIM_PANEL",
+      "name": "Door Trim Panel",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VDC-050",
+      "code": "DOOR_ARMREST",
+      "name": "Door Armrest",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VDC-051",
+      "code": "DOOR_ARMREST_PAD",
+      "name": "Door Armrest Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VDC-052",
+      "code": "DOOR_PULL_HANDLE",
+      "name": "Door Pull Handle",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VDC-053",
+      "code": "DOOR_TRIM_INSERT",
+      "name": "Door Trim Insert",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VDC-054",
+      "code": "DOOR_SCUFF_PLATE",
+      "name": "Door Scuff Plate",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VDC-055",
+      "code": "DOOR_SILL_TRIM",
+      "name": "Door Sill Trim",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VDC-056",
+      "code": "DOOR_WEATHERSTRIP",
+      "name": "Door Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "VDC-057",
+      "code": "DOOR_FRAME_WEATHERSTRIP",
+      "name": "Door Frame Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "VDC-058",
+      "code": "DOOR_GLASS_SEAL",
+      "name": "Door Glass Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VDC-059",
+      "code": "DOOR_INNER_WEATHERSTRIP",
+      "name": "Door Inner Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "VDC-060",
+      "code": "DOOR_OUTER_WEATHERSTRIP",
+      "name": "Door Outer Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "VDC-061",
+      "code": "DOOR_MOULDING",
+      "name": "Door Moulding",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "VDC-062",
+      "code": "DOOR_SIDE_MOULDING",
+      "name": "Door Side Moulding",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "VDC-063",
+      "code": "DOOR_PROTECTOR",
+      "name": "Door Protector",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "VDC-064",
+      "code": "DOOR_GUARD",
+      "name": "Door Guard",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "VDC-065",
+      "code": "DOOR_HINGE_BOLT",
+      "name": "Door Hinge Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VDC-066",
+      "code": "DOOR_MOUNTING_BOLT",
+      "name": "Door Mounting Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VDC-067",
+      "code": "DOOR_CLIP",
+      "name": "Door Trim Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VDC-068",
+      "code": "DOOR_RETAINER",
+      "name": "Door Retainer",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VDC-069",
+      "code": "DOOR_LOCK_RETAINER",
+      "name": "Door Lock Retainer",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VDC-070",
+      "code": "DOOR_LATCH_CABLE",
+      "name": "Door Latch Cable",
+      "category": "LATCH"
+    },
+    {
+      "id": "VDC-071",
+      "code": "DOOR_LATCH_ROD",
+      "name": "Door Latch Rod",
+      "category": "LATCH"
+    },
+    {
+      "id": "VDC-072",
+      "code": "DOOR_LOCK_SWITCH",
+      "name": "Door Lock Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VDC-073",
+      "code": "DOOR_AJAR_SWITCH",
+      "name": "Door Ajar Switch",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VDC-074",
+      "code": "DOOR_AJAR_SENSOR",
+      "name": "Door Ajar Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VDC-075",
+      "code": "DOOR_IMPACT_SENSOR",
+      "name": "Door Impact Sensor",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VDC-076",
+      "code": "SIDE_AIRBAG",
+      "name": "Door-Mounted Side Airbag",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VDC-077",
+      "code": "DOOR_ILLUMINATION",
+      "name": "Door Illumination Component",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VDC-078",
+      "code": "DOOR_COURTESY_LIGHT",
+      "name": "Door Courtesy Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VDC-079",
+      "code": "DOOR_WARNING_LIGHT",
+      "name": "Door Warning Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VDC-080",
+      "code": "DOOR_HANDLE_LIGHT",
+      "name": "Door Handle Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VDC-081",
+      "code": "SLIDING_DOOR",
+      "name": "Sliding Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "VDC-082",
+      "code": "SLIDING_DOOR_TRACK",
+      "name": "Sliding Door Track",
+      "category": "SLIDING_DOOR"
+    },
+    {
+      "id": "VDC-083",
+      "code": "SLIDING_DOOR_ROLLER",
+      "name": "Sliding Door Roller",
+      "category": "SLIDING_DOOR"
+    },
+    {
+      "id": "VDC-084",
+      "code": "SLIDING_DOOR_ACTUATOR",
+      "name": "Sliding Door Actuator",
+      "category": "SLIDING_DOOR"
+    },
+    {
+      "id": "VDC-085",
+      "code": "SLIDING_DOOR_CABLE",
+      "name": "Sliding Door Cable",
+      "category": "SLIDING_DOOR"
+    },
+    {
+      "id": "VDC-086",
+      "code": "POWER_SLIDING_DOOR_MODULE",
+      "name": "Power Sliding Door Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VDC-087",
+      "code": "DOOR_SOFT_CLOSE_ACTUATOR",
+      "name": "Door Soft-Close Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VDC-088",
+      "code": "DOOR_POWER_LATCH",
+      "name": "Power Door Latch",
+      "category": "LATCH"
+    },
+    {
+      "id": "VDC-089",
+      "code": "DOOR_SERVICE_KIT",
+      "name": "Door Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VDC-090",
+      "code": "DOOR_REPAIR_KIT",
+      "name": "Door Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VDC-091",
+      "code": "DOOR_LOCK_REPAIR_KIT",
+      "name": "Door Lock Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VDC-092",
+      "code": "DOOR_WINDOW_REPAIR_KIT",
+      "name": "Door Window Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VDC-093",
+      "code": "DOOR_DIAGNOSTIC_COMPONENT",
+      "name": "Door Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VDC-094",
+      "code": "DOOR_WIRING_COMPONENT",
+      "name": "Door Wiring Component",
+      "category": "WIRING"
+    },
+    {
+      "id": "VDC-095",
+      "code": "DOOR_ELECTRICAL_COMPONENT",
+      "name": "Door Electrical Component",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VDC-096",
+      "code": "DOOR_MOUNTING_HARDWARE",
+      "name": "Door Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VDC-097",
+      "code": "DOOR_BODY_COMPONENT",
+      "name": "General Door Body Component",
+      "category": "BODY"
+    },
+    {
+      "id": "VDC-098",
+      "code": "DOOR_INTERIOR_COMPONENT",
+      "name": "General Door Interior Component",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VDC-099",
+      "code": "DOOR_GENERAL_COMPONENT",
+      "name": "General Door Component",
+      "category": "DOOR"
+    },
+    {
+      "id": "VDC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Door Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
