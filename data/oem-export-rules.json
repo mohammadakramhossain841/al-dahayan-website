@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Export rules for Toyota and Lexus OEM catalog data from the Al-Dahayan Admin Panel.",
+  "supportedFormats": [
+    {
+      "format": "csv",
+      "enabled": true,
+      "fileExtension": ".csv"
+    },
+    {
+      "format": "json",
+      "enabled": true,
+      "fileExtension": ".json"
+    },
+    {
+      "format": "xlsx",
+      "enabled": true,
+      "fileExtension": ".xlsx"
+    }
+  ],
+  "exportModes": [
+    "all",
+    "filtered",
+    "selected",
+    "active",
+    "archived"
+  ],
+  "fields": {
+    "includeId": true,
+    "includeOemNumber": true,
+    "includePartName": true,
+    "includeArabicName": true,
+    "includeBrand": true,
+    "includeCategory": true,
+    "includeVehicleCompatibility": true,
+    "includeImages": true,
+    "includePricing": true,
+    "includeInventory": true,
+    "includeVerification": true,
+    "includeStatus": true,
+    "includeAuditMetadata": false
+  },
+  "security": {
+    "allowPublicExport": false,
+    "allowAdminExport": true,
+    "requirePermission": true,
+    "includeInternalNotes": false,
+    "includePrivateData": false
+  },
+  "exportRules": {
+    "preserveOemNumberFormatting": true,
+    "preserveArabicText": true,
+    "includeArchivedRecordsWhenSelected": true,
+    "includeDisabledRecordsWhenSelected": true,
+    "sortByDefault": "oemNumber"
+  },
+  "filename": {
+    "prefix": "al-dahayan-oem-catalog",
+    "includeDate": true,
+    "includeTime": true
+  },
+  "validation": {
+    "validateBeforeExport": true,
+    "allowExportWithWarnings": true,
+    "blockExportOnErrors": false
+  }
+}
