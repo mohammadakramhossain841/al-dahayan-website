@@ -1,0 +1,106 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk pricing rules for safely updating Toyota and Lexus OEM catalog prices from the Al-Dahayan Admin Panel.",
+  "supportedUpdateTypes": [
+    "regularPrice",
+    "salePrice",
+    "discountPercent",
+    "currency",
+    "priceVisibility"
+  ],
+  "updateModes": [
+    "selected",
+    "filtered",
+    "imported"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.price_update",
+    "requireConfirmation": true
+  },
+  "selectionRules": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 1000,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requirePreview": true
+  },
+  "currency": {
+    "default": "SAR",
+    "allowedCurrencies": [
+      "SAR"
+    ],
+    "allowCurrencyChange": false
+  },
+  "priceRules": {
+    "minimumPrice": 0,
+    "allowZeroPrice": true,
+    "regularPriceRequiredForSalePrice": true,
+    "salePriceCannotExceedRegularPrice": true,
+    "discountPercentMinimum": 0,
+    "discountPercentMaximum": 100,
+    "allowNegativePrices": false
+  },
+  "updateMethods": [
+    "set_fixed_price",
+    "increase_by_amount",
+    "decrease_by_amount",
+    "increase_by_percent",
+    "decrease_by_percent",
+    "set_discount_percent"
+  ],
+  "rounding": {
+    "enabled": true,
+    "decimalPlaces": 2,
+    "roundingMode": "standard"
+  },
+  "visibility": {
+    "allowedValues": [
+      "visible",
+      "hidden",
+      "contact_for_price"
+    ],
+    "allowBulkVisibilityUpdate": true
+  },
+  "validation": {
+    "validateBeforeUpdate": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "showAffectedRecords": true,
+    "showOldAndNewPrices": true,
+    "generatePreview": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousPrice": true,
+    "recordNewPrice": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.price_update"
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalUpdated": true,
+    "showTotalSkipped": true,
+    "showTotalFailed": true,
+    "showValidationWarnings": true,
+    "generateUpdateReport": true
+  },
+  "safety": {
+    "neverDeleteRecords": true,
+    "neverModifyOemNumber": true,
+    "neverModifyCompatibility": true,
+    "neverExposePrivateData": true,
+    "preservePriceHistory": true
+  }
+}
