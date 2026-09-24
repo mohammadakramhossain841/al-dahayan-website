@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Al-Dahayan OEM Catalog Schema",
+  "description": "Schema for Toyota and Lexus automotive spare-parts catalog records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "catalogVersion",
+    "brandScope",
+    "parts"
+  ],
+  "properties": {
+    "catalogVersion": {
+      "type": "string"
+    },
+    "brandScope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Toyota",
+          "Lexus"
+        ]
+      },
+      "minItems": 1
+    },
+    "parts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/part"
+      }
+    }
+  },
+  "$defs": {
+    "part": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "oemNumber",
+        "partName",
+        "brand",
+        "category",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "oemNumber": {
+          "type": "string",
+          "minLength": 1
+        },
+        "partName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "partNameArabic": {
+          "type": "string"
+        },
+        "brand": {
+          "type": "string",
+          "enum": [
+            "Toyota",
+            "Lexus"
+          ]
+        },
+        "category": {
+          "type": "string"
+        },
+        "subcategory": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "descriptionArabic": {
+          "type": "string"
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "modelYears": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "engineCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "bodyTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "marketSpecs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "compatibleOemNumbers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "supersededOemNumbers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "genuine": {
+          "type": "boolean"
+        },
+        "aftermarket": {
+          "type": "boolean"
+        },
+        "image": {
+          "type": "string"
+        },
+        "imageGallery": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "price": {
+          "$ref": "#/$defs/price"
+        },
+        "inventory": {
+          "$ref": "#/$defs/inventory"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "draft",
+            "archived",
+            "disabled"
+          ]
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "verificationSource": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "price": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "currency": {
+          "type": "string"
+        },
+        "regular": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "sale": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "discountPercent": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "visible": {
+          "type": "boolean"
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "stockStatus": {
+          "type": "string",
+          "enum": [
+            "in_stock",
+            "low_stock",
+            "out_of_stock",
+            "on_order",
+            "unknown"
+          ]
+        },
+        "quantity": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "locationIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
