@@ -1,0 +1,604 @@
+{
+  "bearingComponents": [
+    {
+      "id": "VBC-001",
+      "code": "BEARING_SYSTEM",
+      "name": "Vehicle Bearing System",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-002",
+      "code": "WHEEL_BEARING",
+      "name": "Wheel Bearing",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VBC-003",
+      "code": "FRONT_WHEEL_BEARING",
+      "name": "Front Wheel Bearing",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VBC-004",
+      "code": "REAR_WHEEL_BEARING",
+      "name": "Rear Wheel Bearing",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VBC-005",
+      "code": "WHEEL_HUB_BEARING",
+      "name": "Wheel Hub Bearing",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VBC-006",
+      "code": "HUB_BEARING_ASSEMBLY",
+      "name": "Hub Bearing Assembly",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VBC-007",
+      "code": "FRONT_HUB_BEARING",
+      "name": "Front Hub Bearing",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VBC-008",
+      "code": "REAR_HUB_BEARING",
+      "name": "Rear Hub Bearing",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VBC-009",
+      "code": "AXLE_BEARING",
+      "name": "Axle Bearing",
+      "category": "AXLE"
+    },
+    {
+      "id": "VBC-010",
+      "code": "FRONT_AXLE_BEARING",
+      "name": "Front Axle Bearing",
+      "category": "AXLE"
+    },
+    {
+      "id": "VBC-011",
+      "code": "REAR_AXLE_BEARING",
+      "name": "Rear Axle Bearing",
+      "category": "AXLE"
+    },
+    {
+      "id": "VBC-012",
+      "code": "DIFFERENTIAL_CARRIER_BEARING",
+      "name": "Differential Carrier Bearing",
+      "category": "DIFFERENTIAL"
+    },
+    {
+      "id": "VBC-013",
+      "code": "PINION_BEARING",
+      "name": "Pinion Bearing",
+      "category": "DIFFERENTIAL"
+    },
+    {
+      "id": "VBC-014",
+      "code": "INNER_PINION_BEARING",
+      "name": "Inner Pinion Bearing",
+      "category": "DIFFERENTIAL"
+    },
+    {
+      "id": "VBC-015",
+      "code": "OUTER_PINION_BEARING",
+      "name": "Outer Pinion Bearing",
+      "category": "DIFFERENTIAL"
+    },
+    {
+      "id": "VBC-016",
+      "code": "TRANSFER_CASE_BEARING",
+      "name": "Transfer Case Bearing",
+      "category": "TRANSFER_CASE"
+    },
+    {
+      "id": "VBC-017",
+      "code": "TRANSFER_INPUT_BEARING",
+      "name": "Transfer Case Input Bearing",
+      "category": "TRANSFER_CASE"
+    },
+    {
+      "id": "VBC-018",
+      "code": "TRANSFER_OUTPUT_BEARING",
+      "name": "Transfer Case Output Bearing",
+      "category": "TRANSFER_CASE"
+    },
+    {
+      "id": "VBC-019",
+      "code": "TRANSMISSION_BEARING",
+      "name": "Transmission Bearing",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VBC-020",
+      "code": "TRANSMISSION_INPUT_BEARING",
+      "name": "Transmission Input Bearing",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VBC-021",
+      "code": "TRANSMISSION_OUTPUT_BEARING",
+      "name": "Transmission Output Bearing",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VBC-022",
+      "code": "COUNTERSHAFT_BEARING",
+      "name": "Countershaft Bearing",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VBC-023",
+      "code": "MANUAL_TRANSMISSION_BEARING",
+      "name": "Manual Transmission Bearing",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VBC-024",
+      "code": "AUTOMATIC_TRANSMISSION_BEARING",
+      "name": "Automatic Transmission Bearing",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VBC-025",
+      "code": "CVT_BEARING",
+      "name": "CVT Bearing",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VBC-026",
+      "code": "DCT_BEARING",
+      "name": "DCT Bearing",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VBC-027",
+      "code": "CLUTCH_RELEASE_BEARING",
+      "name": "Clutch Release Bearing",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VBC-028",
+      "code": "CLUTCH_PILOT_BEARING",
+      "name": "Clutch Pilot Bearing",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VBC-029",
+      "code": "CLUTCH_PILOT_BUSHING",
+      "name": "Clutch Pilot Bushing",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VBC-030",
+      "code": "CLUTCH_HUB_BEARING",
+      "name": "Clutch Hub Bearing",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VBC-031",
+      "code": "ENGINE_MAIN_BEARING",
+      "name": "Engine Main Bearing",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VBC-032",
+      "code": "CONNECTING_ROD_BEARING",
+      "name": "Connecting Rod Bearing",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VBC-033",
+      "code": "CAMSHAFT_BEARING",
+      "name": "Camshaft Bearing",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VBC-034",
+      "code": "BALANCE_SHAFT_BEARING",
+      "name": "Balance Shaft Bearing",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VBC-035",
+      "code": "TURBOCHARGER_BEARING",
+      "name": "Turbocharger Bearing",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VBC-036",
+      "code": "ALTERNATOR_BEARING",
+      "name": "Alternator Bearing",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VBC-037",
+      "code": "STARTER_MOTOR_BEARING",
+      "name": "Starter Motor Bearing",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VBC-038",
+      "code": "WATER_PUMP_BEARING",
+      "name": "Water Pump Bearing",
+      "category": "COOLING"
+    },
+    {
+      "id": "VBC-039",
+      "code": "IDLER_PULLEY_BEARING",
+      "name": "Idler Pulley Bearing",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VBC-040",
+      "code": "TENSIONER_PULLEY_BEARING",
+      "name": "Tensioner Pulley Bearing",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VBC-041",
+      "code": "AC_COMPRESSOR_BEARING",
+      "name": "A/C Compressor Bearing",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VBC-042",
+      "code": "AC_CLUTCH_BEARING",
+      "name": "A/C Clutch Bearing",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VBC-043",
+      "code": "POWER_STEERING_PUMP_BEARING",
+      "name": "Power Steering Pump Bearing",
+      "category": "STEERING"
+    },
+    {
+      "id": "VBC-044",
+      "code": "STEERING_COLUMN_BEARING",
+      "name": "Steering Column Bearing",
+      "category": "STEERING"
+    },
+    {
+      "id": "VBC-045",
+      "code": "STEERING_RACK_BEARING",
+      "name": "Steering Rack Bearing",
+      "category": "STEERING"
+    },
+    {
+      "id": "VBC-046",
+      "code": "PROPELLER_SHAFT_BEARING",
+      "name": "Propeller Shaft Bearing",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBC-047",
+      "code": "CENTER_SUPPORT_BEARING",
+      "name": "Center Support Bearing",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBC-048",
+      "code": "DRIVESHAFT_BEARING",
+      "name": "Driveshaft Bearing",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBC-049",
+      "code": "INTERMEDIATE_SHAFT_BEARING",
+      "name": "Intermediate Shaft Bearing",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBC-050",
+      "code": "CV_AXLE_BEARING",
+      "name": "CV Axle Bearing",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VBC-051",
+      "code": "ELECTRIC_MOTOR_BEARING",
+      "name": "Electric Motor Bearing",
+      "category": "EV"
+    },
+    {
+      "id": "VBC-052",
+      "code": "EV_REDUCTION_GEAR_BEARING",
+      "name": "EV Reduction Gear Bearing",
+      "category": "EV"
+    },
+    {
+      "id": "VBC-053",
+      "code": "HYBRID_DRIVE_BEARING",
+      "name": "Hybrid Drive Bearing",
+      "category": "HYBRID"
+    },
+    {
+      "id": "VBC-054",
+      "code": "BEARING_RACE",
+      "name": "Bearing Race",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-055",
+      "code": "INNER_BEARING_RACE",
+      "name": "Inner Bearing Race",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-056",
+      "code": "OUTER_BEARING_RACE",
+      "name": "Outer Bearing Race",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-057",
+      "code": "BEARING_CAGE",
+      "name": "Bearing Cage",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-058",
+      "code": "BEARING_SEAL",
+      "name": "Bearing Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VBC-059",
+      "code": "BEARING_DUST_SEAL",
+      "name": "Bearing Dust Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VBC-060",
+      "code": "BEARING_SPACER",
+      "name": "Bearing Spacer",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBC-061",
+      "code": "BEARING_PRELOAD_SPACER",
+      "name": "Bearing Preload Spacer",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBC-062",
+      "code": "BEARING_SHIM",
+      "name": "Bearing Shim",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBC-063",
+      "code": "BEARING_RETAINER",
+      "name": "Bearing Retainer",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBC-064",
+      "code": "BEARING_RETAINING_RING",
+      "name": "Bearing Retaining Ring",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VBC-065",
+      "code": "BEARING_CIRCLIP",
+      "name": "Bearing Circlip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VBC-066",
+      "code": "BEARING_HOUSING",
+      "name": "Bearing Housing",
+      "category": "HOUSING"
+    },
+    {
+      "id": "VBC-067",
+      "code": "BEARING_CAP",
+      "name": "Bearing Cap",
+      "category": "HOUSING"
+    },
+    {
+      "id": "VBC-068",
+      "code": "BEARING_FLANGE",
+      "name": "Bearing Flange",
+      "category": "FLANGE"
+    },
+    {
+      "id": "VBC-069",
+      "code": "BEARING_FLANGE_ASSEMBLY",
+      "name": "Bearing Flange Assembly",
+      "category": "FLANGE"
+    },
+    {
+      "id": "VBC-070",
+      "code": "FLANGED_WHEEL_BEARING",
+      "name": "Flanged Wheel Bearing",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VBC-071",
+      "code": "TAPERED_ROLLER_BEARING",
+      "name": "Tapered Roller Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-072",
+      "code": "BALL_BEARING",
+      "name": "Ball Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-073",
+      "code": "NEEDLE_BEARING",
+      "name": "Needle Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-074",
+      "code": "ROLLER_BEARING",
+      "name": "Roller Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-075",
+      "code": "CYLINDRICAL_ROLLER_BEARING",
+      "name": "Cylindrical Roller Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-076",
+      "code": "THRUST_BEARING",
+      "name": "Thrust Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-077",
+      "code": "THRUST_WASHER",
+      "name": "Thrust Washer",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-078",
+      "code": "PILOT_BEARING",
+      "name": "Pilot Bearing",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VBC-079",
+      "code": "RELEASE_BEARING",
+      "name": "Release Bearing",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VBC-080",
+      "code": "BEARING_LUBRICANT",
+      "name": "Bearing Lubricant",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VBC-081",
+      "code": "BEARING_GREASE",
+      "name": "Bearing Grease",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VBC-082",
+      "code": "BEARING_SERVICE_KIT",
+      "name": "Bearing Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VBC-083",
+      "code": "BEARING_REPAIR_KIT",
+      "name": "Bearing Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VBC-084",
+      "code": "WHEEL_BEARING_REPAIR_KIT",
+      "name": "Wheel Bearing Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VBC-085",
+      "code": "AXLE_BEARING_REPAIR_KIT",
+      "name": "Axle Bearing Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VBC-086",
+      "code": "DIFFERENTIAL_BEARING_KIT",
+      "name": "Differential Bearing Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VBC-087",
+      "code": "TRANSMISSION_BEARING_KIT",
+      "name": "Transmission Bearing Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VBC-088",
+      "code": "BEARING_DIAGNOSTIC_COMPONENT",
+      "name": "Bearing Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VBC-089",
+      "code": "BEARING_MOUNTING_HARDWARE",
+      "name": "Bearing Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBC-090",
+      "code": "BEARING_MOUNTING_BRACKET",
+      "name": "Bearing Mounting Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VBC-091",
+      "code": "BEARING_SUPPORT",
+      "name": "Bearing Support",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VBC-092",
+      "code": "BEARING_SUPPORT_BRACKET",
+      "name": "Bearing Support Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VBC-093",
+      "code": "BEARING_WIRING",
+      "name": "Bearing Sensor Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VBC-094",
+      "code": "BEARING_SENSOR",
+      "name": "Bearing Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBC-095",
+      "code": "BEARING_SPEED_SENSOR",
+      "name": "Bearing Speed Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBC-096",
+      "code": "BEARING_HUB_SENSOR",
+      "name": "Bearing Hub Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBC-097",
+      "code": "BEARING_GENERAL_COMPONENT",
+      "name": "General Bearing Component",
+      "category": "BEARING"
+    },
+    {
+      "id": "VBC-098",
+      "code": "BEARING_MAINTENANCE_COMPONENT",
+      "name": "Bearing Maintenance Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VBC-099",
+      "code": "BEARING_HARDWARE",
+      "name": "Bearing Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Bearing Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
