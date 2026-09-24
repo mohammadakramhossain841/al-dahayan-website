@@ -1,592 +1,186 @@
+/* =========================================
+   AL-DAHAYAN VEHICLE SEARCH
+========================================= */
+
 (function () {
   "use strict";
 
-  let vehiclesData = [];
-  let isLoaded = false;
+  let initialized = false;
+  let vehicles = [];
+  let filteredVehicles = [];
 
-  async function initializeVehicleSearch() {
-    await loadVehiclesData();
-    setupVehicleSearchInterface();
+  const state = {
+    make: "",
+    model: "",
+    year: "",
+    engine: "",
+    query: ""
+  };
+
+  function normalize(value) {
+    return String(value ?? "")
+      .trim()
+      .toLowerCase();
   }
 
-  async function loadVehiclesData() {
-    try {
-      const filePath = getDataPath(
-        APP_CONFIG.dataFiles.vehicles
-      );
+  function escapeHTML(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
 
-      const response = await fetch(filePath);
+  function getVehicleId(vehicle) {
+    return (
+      vehicle.id ||
+      vehicle.vehicleId ||
+      vehicle.vehicle_id ||
+      ""
+    );
+  }
 
-      if (!response.ok) {
-        throw new Error(
-          `Failed to load vehicles data: ${response.status}`
-        );
-      }
+  function getMake(vehicle) {
+    return (
+      vehicle.make ||
+      vehicle.brand ||
+      vehicle.manufacturer ||
+      ""
+    );
+  }
 
-      const data = await response.json();
+  function getModel(vehicle) {
+    return (
+      vehicle.model ||
+      vehicle.modelName ||
+      ""
+    );
+  }
 
-      vehiclesData = normalizeVehicleData(data);
-      isLoaded = true;
+  function getYear(vehicle) {
+    return (
+      vehicle.year ||
+      vehicle.modelYear ||
+      vehicle.model_year ||
+      ""
+    );
+  }
 
-      return vehiclesData;
-    } catch (error) {
-      console.error(
-        "Al-Dahayan Vehicle Search: Unable to load vehicle data.",
-        error
-      );
+  function getEngine(vehicle) {
+    return (
+      vehicle.engine ||
+      vehicle.engineType ||
+      vehicle.engine_name ||
+      ""
+    );
+  }
 
-      vehiclesData = [];
-      isLoaded = false;
+  function getDisplayName(vehicle) {
+    const make = getMake(vehicle);
+    const model = getModel(vehicle);
+    const year = getYear(vehicle);
 
-      return [];
+    return [make, model, year]
+      .filter(Boolean)
+      .join(" ");
+  }
+
+  function uniqueSorted(values) {
+    return [
+      ...new Set(
+        values
+          .filter(Boolean)
+          .map((value) => String(value).trim())
+      )
+    ].sort((a, b) =>
+      a.localeCompare(b, undefined, {
+        numeric: true,
+        sensitivity: "base"
+      })
+    );
+  }
+
+  async function loadVehicles() {
+    if (vehicles.length) {
+      return vehicles;
     }
-  }
 
-  function normalizeVehicleData(data) {
+    if (typeof window.getDataPath !== "function") {
+      throw new Error("getDataPath() is not available.");
+    }
+
+    const response = await fetch(
+      window.getDataPath("vehicles.json"),
+      {
+        cache: "no-cache"
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to load vehicles.json: ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+
     if (Array.isArray(data)) {
-      return data;
+      vehicles = data;
+    } else if (Array.isArray(data.vehicles)) {
+      vehicles = data.vehicles;
+    } else if (Array.isArray(data.data)) {
+      vehicles = data.data;
+    } else {
+      vehicles = [];
     }
 
-    if (Array.isArray(data?.vehicles)) {
-      return data.vehicles;
-    }
+    filteredVehicles = [...vehicles];
 
-    if (Array.isArray(data?.models)) {
-      return data.models;
-    }
-
-    return [];
+    return vehicles;
   }
 
-  function setupVehicleSearchInterface() {
-    setupVehicleForm();
-    setupVehicleFilters();
-  }
-
-  function setupVehicleForm() {
-    const forms = document.querySelectorAll(
-      "[data-vehicle-search-form], #vehicleSearchForm, .vehicle-search-form"
-    );
-
-    forms.forEach((form) => {
-      if (form.dataset.vehicleInitialized === "true") {
-        return;
-      }
-
-      form.dataset.vehicleInitialized = "true";
-
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const filters = getFiltersFromForm(form);
-
-        performVehicleSearch(filters);
-      });
-    });
-  }
-
-  function setupVehicleFilters() {
-    const makeSelects = document.querySelectorAll(
-      "[data-vehicle-make], #vehicleMake"
-    );
-
-    makeSelects.forEach((select) => {
-      populateSelect(
-        select,
-        getMakes(),
-        "Select Make"
-      );
-
-      select.addEventListener("change", () => {
-        updateModelSelect(select);
-      });
-    });
-
-    const modelSelects = document.querySelectorAll(
-      "[data-vehicle-model], #vehicleModel"
-    );
-
-    modelSelects.forEach((select) => {
-      select.addEventListener("change", () => {
-        updateYearSelect(select);
-      });
-    });
-
-    const yearSelects = document.querySelectorAll(
-      "[data-vehicle-year], #vehicleYear"
-    );
-
-    yearSelects.forEach((select) => {
-      select.addEventListener("change", () => {
-        updateEngineSelect(select);
-      });
-    });
-  }
-
-  function getFiltersFromForm(form) {
+  function getElements() {
     return {
-      make: getFieldValue(
-        form,
-        "make",
-        "vehicleMake"
+      form: document.querySelector(
+        "[data-vehicle-search-form]"
       ),
 
-      model: getFieldValue(
-        form,
-        "model",
-        "vehicleModel"
+      make: document.querySelector(
+        "[data-vehicle-make]"
       ),
 
-      year: getFieldValue(
-        form,
-        "year",
-        "vehicleYear"
+      model: document.querySelector(
+        "[data-vehicle-model]"
       ),
 
-      engine: getFieldValue(
-        form,
-        "engine",
-        "vehicleEngine"
+      year: document.querySelector(
+        "[data-vehicle-year]"
       ),
 
-      query: getFieldValue(
-        form,
-        "query",
-        "vehicleSearch"
+      engine: document.querySelector(
+        "[data-vehicle-engine]"
+      ),
+
+      query: document.querySelector(
+        "[data-vehicle-query]"
+      ),
+
+      reset: document.querySelector(
+        "[data-vehicle-reset]"
+      ),
+
+      summary: document.querySelector(
+        "[data-vehicle-result-summary]"
+      ),
+
+      results: document.querySelector(
+        "[data-vehicle-results]"
       )
     };
   }
 
-  function getFieldValue(
-    form,
-    name,
-    id
-  ) {
-    const element =
-      form.querySelector(`[name="${name}"]`) ||
-      form.querySelector(`#${id}`);
-
-    return element
-      ? String(element.value || "").trim()
-      : "";
-  }
-
-  function performVehicleSearch(filters = {}) {
-    const results =
-      filterVehicles(filters);
-
-    displayVehicleResults(results);
-
-    document.dispatchEvent(
-      new CustomEvent(
-        "alDahayanVehicleSearchCompleted",
-        {
-          detail: {
-            filters,
-            results
-          }
-        }
-      )
-    );
-
-    return results;
-  }
-
-  function filterVehicles(filters = {}) {
-    if (!isLoaded) {
-      return [];
-    }
-
-    const make =
-      normalizeText(filters.make);
-
-    const model =
-      normalizeText(filters.model);
-
-    const year =
-      String(filters.year || "").trim();
-
-    const engine =
-      normalizeText(filters.engine);
-
-    const query =
-      normalizeText(filters.query);
-
-    return vehiclesData.filter((vehicle) => {
-      const vehicleMake =
-        normalizeText(
-          vehicle.make ||
-          vehicle.brand ||
-          vehicle.manufacturer
-        );
-
-      const vehicleModel =
-        normalizeText(
-          vehicle.model ||
-          vehicle.modelName
-        );
-
-      const vehicleYear =
-        String(
-          vehicle.year ||
-          vehicle.modelYear ||
-          ""
-        ).trim();
-
-      const vehicleEngine =
-        normalizeText(
-          vehicle.engine ||
-          vehicle.engineType ||
-          vehicle.engineCode
-        );
-
-      const searchableText = normalizeText(
-        [
-          vehicleMake,
-          vehicleModel,
-          vehicleYear,
-          vehicleEngine,
-          vehicle.name,
-          vehicle.vehicleName
-        ]
-          .filter(Boolean)
-          .join(" ")
-      );
-
-      return (
-        (!make || vehicleMake === make) &&
-        (!model || vehicleModel === model) &&
-        (!year || vehicleYear === year) &&
-        (!engine || vehicleEngine === engine) &&
-        (!query ||
-          searchableText.includes(query))
-      );
-    });
-  }
-
-  function getMakes() {
-    return getUniqueValues(
-      vehiclesData.map(
-        (vehicle) =>
-          vehicle.make ||
-          vehicle.brand ||
-          vehicle.manufacturer
-      )
-    );
-  }
-
-  function getModels(make = "") {
-    const normalizedMake =
-      normalizeText(make);
-
-    const filtered =
-      normalizedMake
-        ? vehiclesData.filter((vehicle) => {
-            const vehicleMake =
-              normalizeText(
-                vehicle.make ||
-                vehicle.brand ||
-                vehicle.manufacturer
-              );
-
-            return vehicleMake === normalizedMake;
-          })
-        : vehiclesData;
-
-    return getUniqueValues(
-      filtered.map(
-        (vehicle) =>
-          vehicle.model ||
-          vehicle.modelName
-      )
-    );
-  }
-
-  function getYears(
-    make = "",
-    model = ""
-  ) {
-    const normalizedMake =
-      normalizeText(make);
-
-    const normalizedModel =
-      normalizeText(model);
-
-    const filtered =
-      vehiclesData.filter((vehicle) => {
-        const vehicleMake =
-          normalizeText(
-            vehicle.make ||
-            vehicle.brand ||
-            vehicle.manufacturer
-          );
-
-        const vehicleModel =
-          normalizeText(
-            vehicle.model ||
-            vehicle.modelName
-          );
-
-        return (
-          (!normalizedMake ||
-            vehicleMake === normalizedMake) &&
-          (!normalizedModel ||
-            vehicleModel === normalizedModel)
-        );
-      });
-
-    return getUniqueValues(
-      filtered.map(
-        (vehicle) =>
-          vehicle.year ||
-          vehicle.modelYear
-      )
-    ).sort(
-      (a, b) =>
-        Number(b) - Number(a)
-    );
-  }
-
-  function getEngines(
-    make = "",
-    model = "",
-    year = ""
-  ) {
-    const normalizedMake =
-      normalizeText(make);
-
-    const normalizedModel =
-      normalizeText(model);
-
-    const normalizedYear =
-      String(year || "").trim();
-
-    const filtered =
-      vehiclesData.filter((vehicle) => {
-        const vehicleMake =
-          normalizeText(
-            vehicle.make ||
-            vehicle.brand ||
-            vehicle.manufacturer
-          );
-
-        const vehicleModel =
-          normalizeText(
-            vehicle.model ||
-            vehicle.modelName
-          );
-
-        const vehicleYear =
-          String(
-            vehicle.year ||
-            vehicle.modelYear ||
-            ""
-          ).trim();
-
-        return (
-          (!normalizedMake ||
-            vehicleMake === normalizedMake) &&
-          (!normalizedModel ||
-            vehicleModel === normalizedModel) &&
-          (!normalizedYear ||
-            vehicleYear === normalizedYear)
-        );
-      });
-
-    return getUniqueValues(
-      filtered.map(
-        (vehicle) =>
-          vehicle.engine ||
-          vehicle.engineType ||
-          vehicle.engineCode
-      )
-    );
-  }
-
-  function getVehicleById(id) {
-    if (!id) {
-      return null;
-    }
-
-    return (
-      vehiclesData.find(
-        (vehicle) =>
-          String(vehicle.id) ===
-          String(id)
-      ) || null
-    );
-  }
-
-  function getVehicleByDetails(
-    make,
-    model,
-    year,
-    engine = ""
-  ) {
-    const normalizedMake =
-      normalizeText(make);
-
-    const normalizedModel =
-      normalizeText(model);
-
-    const normalizedYear =
-      String(year || "").trim();
-
-    const normalizedEngine =
-      normalizeText(engine);
-
-    return (
-      vehiclesData.find((vehicle) => {
-        const vehicleMake =
-          normalizeText(
-            vehicle.make ||
-            vehicle.brand ||
-            vehicle.manufacturer
-          );
-
-        const vehicleModel =
-          normalizeText(
-            vehicle.model ||
-            vehicle.modelName
-          );
-
-        const vehicleYear =
-          String(
-            vehicle.year ||
-            vehicle.modelYear ||
-            ""
-          ).trim();
-
-        const vehicleEngine =
-          normalizeText(
-            vehicle.engine ||
-            vehicle.engineType ||
-            vehicle.engineCode
-          );
-
-        return (
-          vehicleMake === normalizedMake &&
-          vehicleModel === normalizedModel &&
-          vehicleYear === normalizedYear &&
-          (!normalizedEngine ||
-            vehicleEngine === normalizedEngine)
-        );
-      }) || null
-    );
-  }
-
-  function updateModelSelect(makeSelect) {
-    const form =
-      makeSelect.closest("form") ||
-      document;
-
-    const modelSelect =
-      form.querySelector(
-        "[data-vehicle-model], #vehicleModel"
-      );
-
-    if (!modelSelect) {
-      return;
-    }
-
-    populateSelect(
-      modelSelect,
-      getModels(makeSelect.value),
-      "Select Model"
-    );
-
-    const yearSelect =
-      form.querySelector(
-        "[data-vehicle-year], #vehicleYear"
-      );
-
-    const engineSelect =
-      form.querySelector(
-        "[data-vehicle-engine], #vehicleEngine"
-      );
-
-    resetSelect(yearSelect, "Select Year");
-    resetSelect(
-      engineSelect,
-      "Select Engine"
-    );
-  }
-
-  function updateYearSelect(modelSelect) {
-    const form =
-      modelSelect.closest("form") ||
-      document;
-
-    const makeSelect =
-      form.querySelector(
-        "[data-vehicle-make], #vehicleMake"
-      );
-
-    const yearSelect =
-      form.querySelector(
-        "[data-vehicle-year], #vehicleYear"
-      );
-
-    if (!yearSelect) {
-      return;
-    }
-
-    populateSelect(
-      yearSelect,
-      getYears(
-        makeSelect?.value || "",
-        modelSelect.value
-      ),
-      "Select Year"
-    );
-
-    const engineSelect =
-      form.querySelector(
-        "[data-vehicle-engine], #vehicleEngine"
-      );
-
-    resetSelect(
-      engineSelect,
-      "Select Engine"
-    );
-  }
-
-  function updateEngineSelect(yearSelect) {
-    const form =
-      yearSelect.closest("form") ||
-      document;
-
-    const makeSelect =
-      form.querySelector(
-        "[data-vehicle-make], #vehicleMake"
-      );
-
-    const modelSelect =
-      form.querySelector(
-        "[data-vehicle-model], #vehicleModel"
-      );
-
-    const engineSelect =
-      form.querySelector(
-        "[data-vehicle-engine], #vehicleEngine"
-      );
-
-    if (!engineSelect) {
-      return;
-    }
-
-    populateSelect(
-      engineSelect,
-      getEngines(
-        makeSelect?.value || "",
-        modelSelect?.value || "",
-        yearSelect.value
-      ),
-      "Select Engine"
-    );
-  }
-
-  function populateSelect(
+  function setSelectOptions(
     select,
     values,
     placeholder
@@ -595,22 +189,17 @@
       return;
     }
 
+    const currentValue = select.value;
+
     select.innerHTML = "";
 
     const placeholderOption =
       document.createElement("option");
 
     placeholderOption.value = "";
-    placeholderOption.textContent =
-      getCurrentLanguage() === "ar"
-        ? getArabicPlaceholder(
-            placeholder
-          )
-        : placeholder;
+    placeholderOption.textContent = placeholder;
 
-    select.appendChild(
-      placeholderOption
-    );
+    select.appendChild(placeholderOption);
 
     values.forEach((value) => {
       const option =
@@ -621,159 +210,405 @@
 
       select.appendChild(option);
     });
+
+    if (
+      values.includes(currentValue)
+    ) {
+      select.value = currentValue;
+    }
   }
 
-  function resetSelect(
-    select,
-    placeholder
-  ) {
-    if (!select) {
-      return;
-    }
+  function updateMakeOptions() {
+    const elements = getElements();
 
-    populateSelect(
-      select,
-      [],
-      placeholder
+    const makes = uniqueSorted(
+      vehicles.map(getMake)
+    );
+
+    setSelectOptions(
+      elements.make,
+      makes,
+      "All Makes"
     );
   }
 
-  function displayVehicleResults(
-    results
-  ) {
-    const container =
-      document.querySelector(
-        "[data-vehicle-results], #vehicleResults, .vehicle-results"
-      );
+  function updateModelOptions() {
+    const elements = getElements();
 
-    if (!container) {
-      return;
+    let source = vehicles;
+
+    if (state.make) {
+      source = source.filter(
+        (vehicle) =>
+          normalize(getMake(vehicle)) ===
+          normalize(state.make)
+      );
     }
 
-    container.innerHTML = "";
+    const models = uniqueSorted(
+      source.map(getModel)
+    );
 
-    if (!results.length) {
-      const empty =
-        document.createElement("div");
-
-      empty.className =
-        "vehicle-search-empty";
-
-      empty.textContent =
-        getCurrentLanguage() === "ar"
-          ? "لم يتم العثور على مركبات مطابقة."
-          : "No matching vehicles found.";
-
-      container.appendChild(empty);
-
-      return;
-    }
-
-    results.forEach((vehicle) => {
-      container.appendChild(
-        createVehicleCard(vehicle)
-      );
-    });
+    setSelectOptions(
+      elements.model,
+      models,
+      "All Models"
+    );
   }
 
-  function createVehicleCard(
-    vehicle
-  ) {
-    const card =
-      document.createElement("article");
+  function updateYearOptions() {
+    const elements = getElements();
 
-    card.className =
-      "vehicle-search-result";
+    let source = vehicles;
 
-    const make =
-      vehicle.make ||
-      vehicle.brand ||
-      vehicle.manufacturer ||
+    if (state.make) {
+      source = source.filter(
+        (vehicle) =>
+          normalize(getMake(vehicle)) ===
+          normalize(state.make)
+      );
+    }
+
+    if (state.model) {
+      source = source.filter(
+        (vehicle) =>
+          normalize(getModel(vehicle)) ===
+          normalize(state.model)
+      );
+    }
+
+    const years = uniqueSorted(
+      source.map(getYear)
+    );
+
+    setSelectOptions(
+      elements.year,
+      years,
+      "All Years"
+    );
+  }
+
+  function updateEngineOptions() {
+    const elements = getElements();
+
+    let source = vehicles;
+
+    if (state.make) {
+      source = source.filter(
+        (vehicle) =>
+          normalize(getMake(vehicle)) ===
+          normalize(state.make)
+      );
+    }
+
+    if (state.model) {
+      source = source.filter(
+        (vehicle) =>
+          normalize(getModel(vehicle)) ===
+          normalize(state.model)
+      );
+    }
+
+    if (state.year) {
+      source = source.filter(
+        (vehicle) =>
+          normalize(getYear(vehicle)) ===
+          normalize(state.year)
+      );
+    }
+
+    const engines = uniqueSorted(
+      source.map(getEngine)
+    );
+
+    setSelectOptions(
+      elements.engine,
+      engines,
+      "All Engines"
+    );
+  }
+
+  function updateDependentFilters() {
+    updateModelOptions();
+    updateYearOptions();
+    updateEngineOptions();
+  }
+
+  function applyFilters() {
+    const query = normalize(state.query);
+
+    filteredVehicles =
+      vehicles.filter((vehicle) => {
+        const make = normalize(
+          getMake(vehicle)
+        );
+
+        const model = normalize(
+          getModel(vehicle)
+        );
+
+        const year = normalize(
+          getYear(vehicle)
+        );
+
+        const engine = normalize(
+          getEngine(vehicle)
+        );
+
+        const matchesMake =
+          !state.make ||
+          make === normalize(state.make);
+
+        const matchesModel =
+          !state.model ||
+          model === normalize(state.model);
+
+        const matchesYear =
+          !state.year ||
+          year === normalize(state.year);
+
+        const matchesEngine =
+          !state.engine ||
+          engine === normalize(state.engine);
+
+        const searchableText = [
+          make,
+          model,
+          year,
+          engine,
+          normalize(
+            vehicle.name
+          ),
+          normalize(
+            vehicle.fullName
+          ),
+          normalize(
+            vehicle.description
+          )
+        ].join(" ");
+
+        const matchesQuery =
+          !query ||
+          searchableText.includes(query);
+
+        return (
+          matchesMake &&
+          matchesModel &&
+          matchesYear &&
+          matchesEngine &&
+          matchesQuery
+        );
+      });
+
+    renderResults();
+  }
+
+  function renderSummary() {
+    const elements = getElements();
+
+    if (!elements.summary) {
+      return;
+    }
+
+    const count =
+      filteredVehicles.length;
+
+    elements.summary.textContent =
+      `${count} vehicle${count === 1 ? "" : "s"} found`;
+  }
+
+  function renderVehicleCard(vehicle) {
+    const id = getVehicleId(vehicle);
+    const make = getMake(vehicle);
+    const model = getModel(vehicle);
+    const year = getYear(vehicle);
+    const engine = getEngine(vehicle);
+
+    const image =
+      vehicle.image ||
+      vehicle.imageUrl ||
+      vehicle.image_url ||
       "";
 
-    const model =
-      vehicle.model ||
-      vehicle.modelName ||
+    const description =
+      vehicle.description ||
+      vehicle.shortDescription ||
       "";
 
-    const year =
-      vehicle.year ||
-      vehicle.modelYear ||
-      "";
+    const imageHTML = image
+      ? `
+        <div class="vehicle-card-image">
+          <img
+            src="${escapeHTML(image)}"
+            alt="${escapeHTML(
+              getDisplayName(vehicle)
+            )}"
+            loading="lazy"
+          >
+        </div>
+      `
+      : "";
 
-    const engine =
-      vehicle.engine ||
-      vehicle.engineType ||
-      vehicle.engineCode ||
-      "";
+    return `
+      <article
+        class="vehicle-card"
+        data-vehicle-id="${escapeHTML(id)}"
+      >
 
-    card.innerHTML = `
-      <div class="vehicle-result-content">
+        ${imageHTML}
 
-        <h3>
-          ${escapeHTML(
-            `${make} ${model}`.trim()
-          )}
-        </h3>
+        <div class="vehicle-card-content">
 
-        ${
-          year
-            ? `<p>
-                <strong>Year:</strong>
-                ${escapeHTML(year)}
-              </p>`
-            : ""
-        }
+          <div class="vehicle-card-header">
+            <span class="vehicle-card-brand">
+              ${escapeHTML(make)}
+            </span>
 
-        ${
-          engine
-            ? `<p>
-                <strong>Engine:</strong>
-                ${escapeHTML(engine)}
-              </p>`
-            : ""
-        }
+            ${
+              year
+                ? `
+                  <span class="vehicle-card-year">
+                    ${escapeHTML(year)}
+                  </span>
+                `
+                : ""
+            }
+          </div>
 
-        <button
-          type="button"
-          class="vehicle-select-button"
-          data-vehicle-id="${escapeHTML(
-            vehicle.id || ""
-          )}"
-        >
+          <h3 class="vehicle-card-title">
+            ${escapeHTML(model)}
+          </h3>
+
           ${
-            getCurrentLanguage() === "ar"
-              ? "اختيار المركبة"
-              : "Select Vehicle"
+            engine
+              ? `
+                <p class="vehicle-card-engine">
+                  <strong>Engine:</strong>
+                  ${escapeHTML(engine)}
+                </p>
+              `
+              : ""
           }
-        </button>
 
-      </div>
+          ${
+            description
+              ? `
+                <p class="vehicle-card-description">
+                  ${escapeHTML(description)}
+                </p>
+              `
+              : ""
+          }
+
+          <div class="vehicle-card-actions">
+
+            <button
+              type="button"
+              class="vehicle-card-button"
+              data-view-vehicle
+              data-vehicle-id="${escapeHTML(id)}"
+            >
+              View Details
+            </button>
+
+            <button
+              type="button"
+              class="vehicle-card-button secondary"
+              data-inquire-vehicle
+              data-vehicle-id="${escapeHTML(id)}"
+            >
+              Inquiry
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
     `;
-
-    const button =
-      card.querySelector(
-        "[data-vehicle-id]"
-      );
-
-    if (button) {
-      button.addEventListener(
-        "click",
-        () => {
-          selectVehicle(vehicle);
-        }
-      );
-    }
-
-    return card;
   }
 
-  function selectVehicle(
-    vehicle
-  ) {
+  function renderResults() {
+    const elements = getElements();
+
+    renderSummary();
+
+    if (!elements.results) {
+      return;
+    }
+
+    if (!filteredVehicles.length) {
+      elements.results.innerHTML = `
+        <div class="search-empty">
+          <h3>No vehicles found</h3>
+          <p>
+            Try changing your search filters.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+    elements.results.innerHTML =
+      filteredVehicles
+        .map(renderVehicleCard)
+        .join("");
+  }
+
+  function findVehicleById(id) {
+    const target = normalize(id);
+
+    return vehicles.find(
+      (vehicle) =>
+        normalize(getVehicleId(vehicle)) ===
+        target
+    ) || null;
+  }
+
+  function getVehicleDetails(id) {
+    return findVehicleById(id);
+  }
+
+  function selectVehicle(vehicle) {
+    if (!vehicle) {
+      return;
+    }
+
+    const id = getVehicleId(vehicle);
+
     document.dispatchEvent(
       new CustomEvent(
         "alDahayanVehicleSelected",
+        {
+          detail: {
+            vehicle,
+            id
+          }
+        }
+      )
+    );
+  }
+
+  function handleViewVehicle(id) {
+    const vehicle =
+      findVehicleById(id);
+
+    if (!vehicle) {
+      return;
+    }
+
+    selectVehicle(vehicle);
+  }
+
+  function handleInquiry(vehicle) {
+    if (!vehicle) {
+      return;
+    }
+
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanVehicleInquiry",
         {
           detail: {
             vehicle
@@ -782,130 +617,299 @@
       )
     );
 
-    if (
-      typeof window
-        .AlDahayanVehicleSearch
-        ?.onVehicleSelected ===
-      "function"
-    ) {
-      window.AlDahayanVehicleSearch.onVehicleSelected(
-        vehicle
-      );
+    const inquiryPage =
+      typeof window.getPagePath === "function"
+        ? window.getPagePath("inquiry.html")
+        : "../pages/inquiry.html";
+
+    const id = getVehicleId(vehicle);
+
+    if (id) {
+      window.location.href =
+        `${inquiryPage}?vehicle=${encodeURIComponent(id)}`;
+    } else {
+      window.location.href =
+        inquiryPage;
     }
   }
 
-  function getUniqueValues(
-    values
-  ) {
-    return [
-      ...new Set(
-        values
-          .filter(
-            (value) =>
-              value !== undefined &&
-              value !== null &&
-              String(value).trim() !== ""
-          )
-          .map((value) =>
-            String(value).trim()
-          )
-      )
-    ];
+  function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const elements = getElements();
+
+    state.make =
+      elements.make?.value || "";
+
+    state.model =
+      elements.model?.value || "";
+
+    state.year =
+      elements.year?.value || "";
+
+    state.engine =
+      elements.engine?.value || "";
+
+    state.query =
+      elements.query?.value || "";
+
+    applyFilters();
   }
 
-  function normalizeText(
-    value
-  ) {
-    return String(value || "")
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ");
-  }
+  function handleFilterChange() {
+    const elements = getElements();
 
-  function getArabicPlaceholder(
-    placeholder
-  ) {
-    const translations = {
-      "Select Make": "اختر الشركة",
-      "Select Model": "اختر الموديل",
-      "Select Year": "اختر السنة",
-      "Select Engine": "اختر المحرك"
-    };
+    state.make =
+      elements.make?.value || "";
 
-    return (
-      translations[placeholder] ||
-      placeholder
-    );
-  }
+    state.model =
+      elements.model?.value || "";
 
-  function getCurrentLanguage() {
-    return (
-      document.documentElement.getAttribute(
-        "lang"
-      ) ||
-      APP_CONFIG?.site?.defaultLanguage ||
-      "en"
-    );
-  }
+    state.year =
+      elements.year?.value || "";
 
-  function escapeHTML(value) {
+    state.engine =
+      elements.engine?.value || "";
+
+    updateDependentFilters();
+
     if (
-      typeof window
-        .AlDahayanUtils
-        ?.escapeHTML === "function"
+      elements.model &&
+      state.model &&
+      [...elements.model.options]
+        .some(
+          (option) =>
+            option.value === state.model
+        )
     ) {
-      return window.AlDahayanUtils.escapeHTML(
-        value
-      );
+      elements.model.value =
+        state.model;
     }
 
-    const div =
-      document.createElement("div");
+    if (
+      elements.year &&
+      state.year &&
+      [...elements.year.options]
+        .some(
+          (option) =>
+            option.value === state.year
+        )
+    ) {
+      elements.year.value =
+        state.year;
+    }
 
-    div.textContent =
-      String(value ?? "");
+    if (
+      elements.engine &&
+      state.engine &&
+      [...elements.engine.options]
+        .some(
+          (option) =>
+            option.value === state.engine
+        )
+    ) {
+      elements.engine.value =
+        state.engine;
+    }
 
-    return div.innerHTML;
+    applyFilters();
+  }
+
+  function resetSearch() {
+    const elements = getElements();
+
+    state.make = "";
+    state.model = "";
+    state.year = "";
+    state.engine = "";
+    state.query = "";
+
+    if (elements.form) {
+      elements.form.reset();
+    }
+
+    updateMakeOptions();
+    updateDependentFilters();
+
+    filteredVehicles =
+      [...vehicles];
+
+    renderResults();
+  }
+
+  function bindEvents() {
+    const elements = getElements();
+
+    elements.form?.addEventListener(
+      "submit",
+      handleFormSubmit
+    );
+
+    elements.make?.addEventListener(
+      "change",
+      handleFilterChange
+    );
+
+    elements.model?.addEventListener(
+      "change",
+      handleFilterChange
+    );
+
+    elements.year?.addEventListener(
+      "change",
+      handleFilterChange
+    );
+
+    elements.engine?.addEventListener(
+      "change",
+      handleFilterChange
+    );
+
+    elements.query?.addEventListener(
+      "input",
+      handleFormSubmit
+    );
+
+    elements.reset?.addEventListener(
+      "click",
+      resetSearch
+    );
+
+    elements.results?.addEventListener(
+      "click",
+      (event) => {
+        const viewButton =
+          event.target.closest(
+            "[data-view-vehicle]"
+          );
+
+        if (viewButton) {
+          handleViewVehicle(
+            viewButton.getAttribute(
+              "data-vehicle-id"
+            )
+          );
+
+          return;
+        }
+
+        const inquiryButton =
+          event.target.closest(
+            "[data-inquire-vehicle]"
+          );
+
+        if (inquiryButton) {
+          const vehicle =
+            findVehicleById(
+              inquiryButton.getAttribute(
+                "data-vehicle-id"
+              )
+            );
+
+          handleInquiry(vehicle);
+        }
+      }
+    );
+  }
+
+  async function initializeVehicleSearch() {
+    if (initialized) {
+      return;
+    }
+
+    initialized = true;
+
+    try {
+      await loadVehicles();
+
+      updateMakeOptions();
+      updateDependentFilters();
+
+      bindEvents();
+
+      renderResults();
+
+      document.dispatchEvent(
+        new CustomEvent(
+          "alDahayanVehicleSearchReady",
+          {
+            detail: {
+              count: vehicles.length
+            }
+          }
+        )
+      );
+
+    } catch (error) {
+      console.error(
+        "Al-Dahayan Vehicle Search:",
+        error
+      );
+
+      const elements = getElements();
+
+      if (elements.results) {
+        elements.results.innerHTML = `
+          <div class="search-error">
+            <h3>Unable to load vehicles</h3>
+            <p>
+              Please try again later.
+            </p>
+          </div>
+        `;
+      }
+
+      if (elements.summary) {
+        elements.summary.textContent =
+          "Vehicle data unavailable";
+      }
+    }
   }
 
   window.AlDahayanVehicleSearch = {
-    initialize:
-      initializeVehicleSearch,
+    init: initializeVehicleSearch,
 
-    loadVehiclesData,
+    load: loadVehicles,
 
-    performVehicleSearch,
+    search: function (filters = {}) {
+      state.make = filters.make || "";
+      state.model = filters.model || "";
+      state.year = filters.year || "";
+      state.engine = filters.engine || "";
+      state.query = filters.query || "";
 
-    filterVehicles,
+      applyFilters();
 
-    getMakes,
+      return filteredVehicles;
+    },
 
-    getModels,
+    reset: resetSearch,
 
-    getYears,
+    getAll: function () {
+      return [...vehicles];
+    },
 
-    getEngines,
+    getResults: function () {
+      return [...filteredVehicles];
+    },
 
-    getVehicleById,
+    findById: findVehicleById,
 
-    getVehicleByDetails,
+    getDetails: getVehicleDetails,
 
-    getAllVehicles: () => [
-      ...vehiclesData
-    ],
-
-    isLoaded: () => isLoaded
+    getState: function () {
+      return {
+        ...state
+      };
+    }
   };
 
-  if (
-    document.readyState ===
-    "loading"
-  ) {
-    document.addEventListener(
-      "DOMContentLoaded",
-      initializeVehicleSearch
-    );
-  } else {
-    initializeVehicleSearch();
-  }
+  window.initializeVehicleSearch =
+    initializeVehicleSearch;
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializeVehicleSearch
+  );
+
 })();
