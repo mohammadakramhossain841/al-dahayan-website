@@ -1,1 +1,223 @@
+<!-- =========================================
+     AL-DAHAYAN REUSABLE VIN SEARCH FORM
+========================================= -->
 
+<section
+  class="vin-search-form-component"
+  data-component="vin-search-form"
+  aria-labelledby="vin-search-form-title"
+>
+
+  <div class="vin-search-form-header">
+
+    <span class="vin-search-form-eyebrow">
+      VIN Search
+    </span>
+
+    <h2
+      id="vin-search-form-title"
+      class="vin-search-form-title"
+    >
+      Identify Your Vehicle
+    </h2>
+
+    <p class="vin-search-form-description">
+      Enter the 17-character Vehicle Identification Number
+      to identify the vehicle and find compatible parts.
+    </p>
+
+  </div>
+
+
+  <form
+    class="vin-search-form"
+    data-vin-search-form
+    novalidate
+  >
+
+    <div class="vin-search-field">
+
+      <label
+        for="vin-search-input"
+        class="vin-search-label"
+      >
+        Vehicle Identification Number (VIN)
+      </label>
+
+      <input
+        type="text"
+        id="vin-search-input"
+        name="vin"
+        class="vin-search-input"
+        data-vin-input
+        maxlength="17"
+        minlength="17"
+        placeholder="Enter 17-character VIN"
+        autocomplete="off"
+        autocapitalize="characters"
+        spellcheck="false"
+        aria-describedby="vin-search-help"
+        required
+      />
+
+      <p
+        id="vin-search-help"
+        class="vin-search-help"
+      >
+        VIN must contain 17 characters.
+      </p>
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="vin-search-button"
+      data-vin-submit
+    >
+      Search VIN
+    </button>
+
+  </form>
+
+
+  <!-- Validation / Search Status -->
+
+  <div
+    class="vin-search-status"
+    data-vin-status
+    role="status"
+    aria-live="polite"
+    hidden
+  ></div>
+
+
+  <!-- Vehicle Result -->
+
+  <div
+    class="vin-search-result"
+    data-vin-result
+    hidden
+  >
+
+    <div class="vin-result-header">
+
+      <span class="vin-result-label">
+        Vehicle Identification
+      </span>
+
+      <h3
+        class="vin-result-title"
+        data-vin-vehicle-name
+      >
+        Vehicle
+      </h3>
+
+    </div>
+
+
+    <div class="vin-result-details">
+
+      <div class="vin-result-detail">
+
+        <span class="vin-result-detail-label">
+          Make
+        </span>
+
+        <span
+          class="vin-result-detail-value"
+          data-vin-make
+        >
+          —
+        </span>
+
+      </div>
+
+
+      <div class="vin-result-detail">
+
+        <span class="vin-result-detail-label">
+          Model
+        </span>
+
+        <span
+          class="vin-result-detail-value"
+          data-vin-model
+        >
+          —
+        </span>
+
+      </div>
+
+
+      <div class="vin-result-detail">
+
+        <span class="vin-result-detail-label">
+          Year
+        </span>
+
+        <span
+          class="vin-result-detail-value"
+          data-vin-year
+        >
+          —
+        </span>
+
+      </div>
+
+
+      <div class="vin-result-detail">
+
+        <span class="vin-result-detail-label">
+          Engine
+        </span>
+
+        <span
+          class="vin-result-detail-value"
+          data-vin-engine
+        >
+          —
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Compatible Parts -->
+
+  <div
+    class="vin-compatible-parts"
+    data-vin-compatible-parts
+    hidden
+  >
+
+    <h3>
+      Compatible Parts
+    </h3>
+
+    <div
+      class="vin-parts-results"
+      data-vin-parts-results
+    ></div>
+
+  </div>
+
+
+  <!-- Reset -->
+
+  <div class="vin-search-actions">
+
+    <button
+      type="button"
+      class="vin-reset-button"
+      data-vin-reset
+    >
+      Clear Search
+    </button>
+
+  </div>
+
+</section>
