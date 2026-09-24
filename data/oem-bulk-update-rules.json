@@ -1,0 +1,165 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk update rules for safely updating multiple Toyota and Lexus OEM catalog records from the Al-Dahayan Admin Panel.",
+  "supportedUpdateTypes": [
+    "price",
+    "stock",
+    "category",
+    "vehicleCompatibility",
+    "status",
+    "verification",
+    "images",
+    "metadata"
+  ],
+  "updateModes": [
+    "selected",
+    "filtered",
+    "imported"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermissions": [
+      "oem.edit"
+    ],
+    "protectedUpdates": [
+      "status",
+      "verification",
+      "images"
+    ]
+  },
+  "selectionRules": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 1000,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requireConfirmation": true
+  },
+  "validation": {
+    "validateBeforeUpdate": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "requirePreview": true,
+    "requireChangeSummary": true
+  },
+  "fieldRules": {
+    "regularPrice": {
+      "enabled": true,
+      "type": "number",
+      "minimum": 0
+    },
+    "salePrice": {
+      "enabled": true,
+      "type": "number",
+      "minimum": 0
+    },
+    "discountPercent": {
+      "enabled": true,
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "category": {
+      "enabled": true,
+      "type": "string",
+      "required": true
+    },
+    "stockStatus": {
+      "enabled": true,
+      "allowedValues": [
+        "in_stock",
+        "low_stock",
+        "out_of_stock",
+        "on_order",
+        "unknown"
+      ]
+    },
+    "quantity": {
+      "enabled": true,
+      "type": "number",
+      "minimum": 0
+    },
+    "status": {
+      "enabled": true,
+      "allowedValues": [
+        "draft",
+        "active",
+        "archived",
+        "disabled"
+      ]
+    },
+    "verificationLevel": {
+      "enabled": true,
+      "allowedValues": [
+        "unverified",
+        "reviewed",
+        "verified"
+      ]
+    }
+  },
+  "pricingRules": {
+    "salePriceCannotExceedRegularPrice": true,
+    "discountMustRemainBetweenZeroAndHundred": true,
+    "defaultCurrency": "SAR",
+    "allowBulkPriceIncrease": true,
+    "allowBulkPriceDecrease": true
+  },
+  "inventoryRules": {
+    "quantityCannotBeNegative": true,
+    "automaticallyCalculateStockStatus": false,
+    "preserveLocationData": true
+  },
+  "statusRules": {
+    "allowBulkArchive": true,
+    "allowBulkRestore": true,
+    "allowBulkDisable": false,
+    "requireExtraConfirmationForDisable": true
+  },
+  "verificationRules": {
+    "allowBulkVerification": false,
+    "allowBulkReviewStatus": true,
+    "requireVerificationSource": true
+  },
+  "imageRules": {
+    "allowBulkImageUpdate": true,
+    "allowBulkImageDelete": false,
+    "preserveExistingImagesByDefault": true,
+    "requireImageValidation": true
+  },
+  "duplicateProtection": {
+    "checkOemNumbers": true,
+    "preventOemNumberChangesByDefault": true,
+    "allowOemNumberChangeWithPermission": false
+  },
+  "audit": {
+    "enabled": true,
+    "recordBeforeValues": true,
+    "recordAfterValues": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollbackAfterSuccessfulUpdate": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.edit"
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalUpdated": true,
+    "showTotalSkipped": true,
+    "showTotalFailed": true,
+    "showValidationWarnings": true,
+    "generateUpdateReport": true
+  },
+  "safety": {
+    "neverDeleteRecords": true,
+    "neverOverwriteWithoutValidation": true,
+    "neverExposePrivateData": true,
+    "preserveAuditHistory": true
+  }
+}
