@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "verifiedCompatibility": false,
+  "description": "Foundation mapping structure between OEM catalog records and Toyota/Lexus vehicle references.",
+  "mappingRules": {
+    "allowMultipleModels": true,
+    "allowMultipleGenerations": true,
+    "allowMultipleYears": true,
+    "allowMultipleEngines": true,
+    "allowMultipleMarkets": true,
+    "requireVerificationBeforeProduction": true
+  },
+  "mappings": [
+    {
+      "mappingId": "MAP-DEMO-001",
+      "oemId": "OEM-DEMO-001",
+      "oemNumber": "SAMPLE-TOYOTA-001",
+      "brand": "Toyota",
+      "vehicleReferences": [
+        {
+          "model": "Sample Toyota Model",
+          "generationIds": [],
+          "modelYears": [
+            2024,
+            2025,
+            2026
+          ],
+          "engineCodes": [],
+          "marketSpecs": [
+            "GCC",
+            "KSA"
+          ],
+          "bodyTypes": [],
+          "transmissions": [],
+          "driveTypes": []
+        }
+      ],
+      "compatibilityStatus": "unverified",
+      "verificationSource": "",
+      "notes": ""
+    },
+    {
+      "mappingId": "MAP-DEMO-002",
+      "oemId": "OEM-DEMO-002",
+      "oemNumber": "SAMPLE-LEXUS-001",
+      "brand": "Lexus",
+      "vehicleReferences": [
+        {
+          "model": "Sample Lexus Model",
+          "generationIds": [],
+          "modelYears": [
+            2024,
+            2025,
+            2026
+          ],
+          "engineCodes": [],
+          "marketSpecs": [
+            "GCC",
+            "KSA"
+          ],
+          "bodyTypes": [],
+          "transmissions": [],
+          "driveTypes": []
+        }
+      ],
+      "compatibilityStatus": "unverified",
+      "verificationSource": "",
+      "notes": ""
+    }
+  ]
+}
