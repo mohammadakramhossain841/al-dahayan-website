@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_pad_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VPD-001",
+      "code": "BRAKE_PAD",
+      "name": "Brake Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-002",
+      "code": "FRONT_BRAKE_PAD",
+      "name": "Front Brake Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-003",
+      "code": "REAR_BRAKE_PAD",
+      "name": "Rear Brake Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-004",
+      "code": "PARKING_BRAKE_PAD",
+      "name": "Parking Brake Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-005",
+      "code": "BRAKE_PAD_SET",
+      "name": "Brake Pad Set",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-006",
+      "code": "BRAKE_PAD_SHIM",
+      "name": "Brake Pad Shim",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-007",
+      "code": "BRAKE_PAD_CLIP",
+      "name": "Brake Pad Clip",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-008",
+      "code": "BRAKE_PAD_SPRING",
+      "name": "Brake Pad Spring",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-009",
+      "code": "BRAKE_PAD_WEAR_SENSOR",
+      "name": "Brake Pad Wear Sensor",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-010",
+      "code": "BRAKE_PAD_WEAR_INDICATOR",
+      "name": "Brake Pad Wear Indicator",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-011",
+      "code": "BRAKE_PAD_BACKING_PLATE",
+      "name": "Brake Pad Backing Plate",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-012",
+      "code": "BRAKE_PAD_ABUTMENT_CLIP",
+      "name": "Brake Pad Abutment Clip",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-013",
+      "code": "BRAKE_PAD_GUIDE_PLATE",
+      "name": "Brake Pad Guide Plate",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-014",
+      "code": "BRAKE_PAD_RETENTION_CLIP",
+      "name": "Brake Pad Retention Clip",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-015",
+      "code": "BRAKE_PAD_HARDWARE_KIT",
+      "name": "Brake Pad Hardware Kit",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-016",
+      "code": "BRAKE_PAD_SERVICE_KIT",
+      "name": "Brake Pad Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VPD-017",
+      "code": "BRAKE_PAD_REPAIR_KIT",
+      "name": "Brake Pad Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VPD-018",
+      "code": "BRAKE_PAD_INSTALLATION_KIT",
+      "name": "Brake Pad Installation Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VPD-019",
+      "code": "BRAKE_PAD_INSULATOR",
+      "name": "Brake Pad Insulator",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-020",
+      "code": "BRAKE_PAD_NOISE_DAMPER",
+      "name": "Brake Pad Noise Damper",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-021",
+      "code": "BRAKE_PAD_ANTI_RATTLE_PAD",
+      "name": "Brake Pad Anti-Rattle Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-022",
+      "code": "BRAKE_PAD_FRICTION_MATERIAL",
+      "name": "Brake Pad Friction Material",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-023",
+      "code": "CERAMIC_BRAKE_PAD",
+      "name": "Ceramic Brake Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-024",
+      "code": "SEMI_METALLIC_BRAKE_PAD",
+      "name": "Semi-Metallic Brake Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-025",
+      "code": "LOW_DUST_BRAKE_PAD",
+      "name": "Low-Dust Brake Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-026",
+      "code": "HEAVY_DUTY_BRAKE_PAD",
+      "name": "Heavy-Duty Brake Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-027",
+      "code": "PERFORMANCE_BRAKE_PAD",
+      "name": "Performance Brake Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-028",
+      "code": "HYBRID_BRAKE_PAD",
+      "name": "Hybrid Brake Pad",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPD-029",
+      "code": "EV_BRAKE_PAD",
+      "name": "EV Brake Pad",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPD-030",
+      "code": "COMMERCIAL_BRAKE_PAD",
+      "name": "Commercial Vehicle Brake Pad",
+      "category": "COMMERCIAL"
+    },
+    {
+      "id": "VPD-031",
+      "code": "DRUM_BRAKE_SHOE_PAD",
+      "name": "Drum Brake Shoe Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-032",
+      "code": "PARKING_BRAKE_SHOE_PAD",
+      "name": "Parking Brake Shoe Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-033",
+      "code": "BRAKE_SHOE_LINING_PAD",
+      "name": "Brake Shoe Lining Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-034",
+      "code": "BRAKE_SHOE_FRICTION_PAD",
+      "name": "Brake Shoe Friction Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-035",
+      "code": "CLUTCH_PEDAL_PAD",
+      "name": "Clutch Pedal Pad",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VPD-036",
+      "code": "BRAKE_PEDAL_PAD",
+      "name": "Brake Pedal Pad",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPD-037",
+      "code": "ACCELERATOR_PEDAL_PAD",
+      "name": "Accelerator Pedal Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-038",
+      "code": "PEDAL_PAD_SET",
+      "name": "Pedal Pad Set",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-039",
+      "code": "PEDAL_RUBBER_PAD",
+      "name": "Rubber Pedal Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-040",
+      "code": "PEDAL_ANTI_SLIP_PAD",
+      "name": "Anti-Slip Pedal Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-041",
+      "code": "PEDAL_TRIM_PAD",
+      "name": "Pedal Trim Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-042",
+      "code": "FOOTREST_PAD",
+      "name": "Footrest Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-043",
+      "code": "DEAD_PEDAL_PAD",
+      "name": "Dead Pedal Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-044",
+      "code": "DRIVER_FOOTREST_PAD",
+      "name": "Driver Footrest Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-045",
+      "code": "PASSENGER_FOOTREST_PAD",
+      "name": "Passenger Footrest Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-046",
+      "code": "DOOR_ARMREST_PAD",
+      "name": "Door Armrest Pad",
+      "category": "DOOR"
+    },
+    {
+      "id": "VPD-047",
+      "code": "CENTER_CONSOLE_PAD",
+      "name": "Center Console Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-048",
+      "code": "DASHBOARD_PAD",
+      "name": "Dashboard Protective Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-049",
+      "code": "CARGO_AREA_PAD",
+      "name": "Cargo Area Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-050",
+      "code": "TRUNK_FLOOR_PAD",
+      "name": "Trunk Floor Pad",
+      "category": "TRUNK"
+    },
+    {
+      "id": "VPD-051",
+      "code": "CARGO_FLOOR_PAD",
+      "name": "Cargo Floor Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-052",
+      "code": "SEAT_CUSHION_PAD",
+      "name": "Seat Cushion Pad",
+      "category": "SEAT"
+    },
+    {
+      "id": "VPD-053",
+      "code": "SEAT_BACKREST_PAD",
+      "name": "Seat Backrest Pad",
+      "category": "SEAT"
+    },
+    {
+      "id": "VPD-054",
+      "code": "SEAT_ARMREST_PAD",
+      "name": "Seat Armrest Pad",
+      "category": "SEAT"
+    },
+    {
+      "id": "VPD-055",
+      "code": "HEADREST_PAD",
+      "name": "Headrest Pad",
+      "category": "SEAT"
+    },
+    {
+      "id": "VPD-056",
+      "code": "DOOR_SILL_PAD",
+      "name": "Door Sill Pad",
+      "category": "DOOR"
+    },
+    {
+      "id": "VPD-057",
+      "code": "KICK_PANEL_PAD",
+      "name": "Kick Panel Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-058",
+      "code": "PILLAR_TRIM_PAD",
+      "name": "Pillar Trim Pad",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VPD-059",
+      "code": "ROOF_TRIM_PAD",
+      "name": "Roof Trim Pad",
+      "category": "ROOF"
+    },
+    {
+      "id": "VPD-060",
+      "code": "HEADLINER_PAD",
+      "name": "Headliner Pad",
+      "category": "ROOF"
+    },
+    {
+      "id": "VPD-061",
+      "code": "HOOD_INSULATION_PAD",
+      "name": "Hood Insulation Pad",
+      "category": "HOOD"
+    },
+    {
+      "id": "VPD-062",
+      "code": "FIREWALL_INSULATION_PAD",
+      "name": "Firewall Insulation Pad",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VPD-063",
+      "code": "ENGINE_MOUNT_PAD",
+      "name": "Engine Mount Pad",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPD-064",
+      "code": "TRANSMISSION_MOUNT_PAD",
+      "name": "Transmission Mount Pad",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VPD-065",
+      "code": "BATTERY_TRAY_PAD",
+      "name": "Battery Tray Pad",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VPD-066",
+      "code": "BATTERY_INSULATION_PAD",
+      "name": "Battery Insulation Pad",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VPD-067",
+      "code": "HYBRID_BATTERY_PAD",
+      "name": "Hybrid Battery Pad",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPD-068",
+      "code": "EV_BATTERY_PAD",
+      "name": "EV Battery Pad",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPD-069",
+      "code": "INVERTER_INSULATION_PAD",
+      "name": "Inverter Insulation Pad",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPD-070",
+      "code": "COOLING_RADIATOR_PAD",
+      "name": "Radiator Mounting Pad",
+      "category": "COOLING"
+    },
+    {
+      "id": "VPD-071",
+      "code": "EXHAUST_MOUNT_PAD",
+      "name": "Exhaust Mounting Pad",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VPD-072",
+      "code": "MUFFLER_MOUNT_PAD",
+      "name": "Muffler Mounting Pad",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VPD-073",
+      "code": "SUSPENSION_MOUNT_PAD",
+      "name": "Suspension Mounting Pad",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VPD-074",
+      "code": "SHOCK_MOUNT_PAD",
+      "name": "Shock Mounting Pad",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VPD-075",
+      "code": "SPRING_SEAT_PAD",
+      "name": "Spring Seat Pad",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VPD-076",
+      "code": "SPRING_INSULATOR_PAD",
+      "name": "Spring Insulator Pad",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VPD-077",
+      "code": "STABILIZER_BAR_PAD",
+      "name": "Stabilizer Bar Pad",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VPD-078",
+      "code": "CONTROL_ARM_PAD",
+      "name": "Control Arm Mounting Pad",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VPD-079",
+      "code": "BODY_MOUNT_PAD",
+      "name": "Body Mount Pad",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VPD-080",
+      "code": "CAB_MOUNT_PAD",
+      "name": "Cab Mount Pad",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VPD-081",
+      "code": "BUMPER_MOUNT_PAD",
+      "name": "Bumper Mounting Pad",
+      "category": "BODY"
+    },
+    {
+      "id": "VPD-082",
+      "code": "FENDER_MOUNT_PAD",
+      "name": "Fender Mounting Pad",
+      "category": "BODY"
+    },
+    {
+      "id": "VPD-083",
+      "code": "GRILLE_MOUNT_PAD",
+      "name": "Grille Mounting Pad",
+      "category": "BODY"
+    },
+    {
+      "id": "VPD-084",
+      "code": "LIGHT_MOUNT_PAD",
+      "name": "Lighting Mounting Pad",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VPD-085",
+      "code": "MIRROR_MOUNT_PAD",
+      "name": "Mirror Mounting Pad",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VPD-086",
+      "code": "WIRING_MOUNT_PAD",
+      "name": "Wiring Mounting Pad",
+      "category": "WIRING"
+    },
+    {
+      "id": "VPD-087",
+      "code": "SENSOR_MOUNT_PAD",
+      "name": "Sensor Mounting Pad",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VPD-088",
+      "code": "RADAR_MOUNT_PAD",
+      "name": "Radar Mounting Pad",
+      "category": "ADAS"
+    },
+    {
+      "id": "VPD-089",
+      "code": "CAMERA_MOUNT_PAD",
+      "name": "Camera Mounting Pad",
+      "category": "ADAS"
+    },
+    {
+      "id": "VPD-090",
+      "code": "PARKING_SENSOR_PAD",
+      "name": "Parking Sensor Mounting Pad",
+      "category": "ADAS"
+    },
+    {
+      "id": "VPD-091",
+      "code": "ANTI_VIBRATION_PAD",
+      "name": "Anti-Vibration Pad",
+      "category": "NVH"
+    },
+    {
+      "id": "VPD-092",
+      "code": "NOISE_DAMPING_PAD",
+      "name": "Noise Damping Pad",
+      "category": "NVH"
+    },
+    {
+      "id": "VPD-093",
+      "code": "THERMAL_INSULATION_PAD",
+      "name": "Thermal Insulation Pad",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VPD-094",
+      "code": "RUBBER_PROTECTION_PAD",
+      "name": "Rubber Protection Pad",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VPD-095",
+      "code": "FOAM_PROTECTION_PAD",
+      "name": "Foam Protection Pad",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VPD-096",
+      "code": "SERVICE_PAD_KIT",
+      "name": "Pad Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VPD-097",
+      "code": "REPAIR_PAD_KIT",
+      "name": "Pad Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VPD-098",
+      "code": "UNIVERSAL_VEHICLE_PAD",
+      "name": "Universal Vehicle Pad",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VPD-099",
+      "code": "REPLACEMENT_PAD",
+      "name": "Replacement Vehicle Pad",
+      "category": "REPLACEMENT"
+    },
+    {
+      "id": "VPD-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Pad Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
