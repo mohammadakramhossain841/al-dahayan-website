@@ -1,0 +1,604 @@
+{
+  "safetyComponents": [
+    {
+      "id": "VSC-001",
+      "code": "SRS_AIRBAG_SYSTEM",
+      "name": "SRS Airbag System",
+      "category": "AIRBAG"
+    },
+    {
+      "id": "VSC-002",
+      "code": "DRIVER_AIRBAG",
+      "name": "Driver Airbag",
+      "category": "AIRBAG"
+    },
+    {
+      "id": "VSC-003",
+      "code": "PASSENGER_AIRBAG",
+      "name": "Passenger Airbag",
+      "category": "AIRBAG"
+    },
+    {
+      "id": "VSC-004",
+      "code": "SIDE_AIRBAG",
+      "name": "Side Airbag",
+      "category": "AIRBAG"
+    },
+    {
+      "id": "VSC-005",
+      "code": "CURTAIN_AIRBAG",
+      "name": "Curtain Airbag",
+      "category": "AIRBAG"
+    },
+    {
+      "id": "VSC-006",
+      "code": "KNEE_AIRBAG",
+      "name": "Knee Airbag",
+      "category": "AIRBAG"
+    },
+    {
+      "id": "VSC-007",
+      "code": "CENTER_AIRBAG",
+      "name": "Center Airbag",
+      "category": "AIRBAG"
+    },
+    {
+      "id": "VSC-008",
+      "code": "AIRBAG_MODULE",
+      "name": "Airbag Module",
+      "category": "AIRBAG"
+    },
+    {
+      "id": "VSC-009",
+      "code": "AIRBAG_CONTROL_UNIT",
+      "name": "Airbag Control Unit",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VSC-010",
+      "code": "SRS_SENSOR",
+      "name": "SRS Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-011",
+      "code": "CRASH_SENSOR",
+      "name": "Crash Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-012",
+      "code": "FRONT_CRASH_SENSOR",
+      "name": "Front Crash Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-013",
+      "code": "SIDE_CRASH_SENSOR",
+      "name": "Side Crash Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-014",
+      "code": "SEAT_BELT_ASSEMBLY",
+      "name": "Seat Belt Assembly",
+      "category": "SEAT_BELT"
+    },
+    {
+      "id": "VSC-015",
+      "code": "FRONT_SEAT_BELT",
+      "name": "Front Seat Belt",
+      "category": "SEAT_BELT"
+    },
+    {
+      "id": "VSC-016",
+      "code": "REAR_SEAT_BELT",
+      "name": "Rear Seat Belt",
+      "category": "SEAT_BELT"
+    },
+    {
+      "id": "VSC-017",
+      "code": "SEAT_BELT_RETRACTOR",
+      "name": "Seat Belt Retractor",
+      "category": "SEAT_BELT"
+    },
+    {
+      "id": "VSC-018",
+      "code": "SEAT_BELT_BUCKLE",
+      "name": "Seat Belt Buckle",
+      "category": "SEAT_BELT"
+    },
+    {
+      "id": "VSC-019",
+      "code": "SEAT_BELT_PRETENSIONER",
+      "name": "Seat Belt Pretensioner",
+      "category": "SEAT_BELT"
+    },
+    {
+      "id": "VSC-020",
+      "code": "SEAT_BELT_FORCE_LIMITER",
+      "name": "Seat Belt Force Limiter",
+      "category": "SEAT_BELT"
+    },
+    {
+      "id": "VSC-021",
+      "code": "ABS_CONTROL_MODULE",
+      "name": "ABS Control Module",
+      "category": "BRAKE_SAFETY"
+    },
+    {
+      "id": "VSC-022",
+      "code": "ABS_PUMP",
+      "name": "ABS Pump",
+      "category": "BRAKE_SAFETY"
+    },
+    {
+      "id": "VSC-023",
+      "code": "ABS_HYDRAULIC_UNIT",
+      "name": "ABS Hydraulic Unit",
+      "category": "BRAKE_SAFETY"
+    },
+    {
+      "id": "VSC-024",
+      "code": "WHEEL_SPEED_SENSOR",
+      "name": "Wheel Speed Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-025",
+      "code": "ABS_SENSOR_RING",
+      "name": "ABS Sensor Ring",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-026",
+      "code": "BRAKE_PRESSURE_SENSOR",
+      "name": "Brake Pressure Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-027",
+      "code": "BRAKE_LIGHT_SWITCH",
+      "name": "Brake Light Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VSC-028",
+      "code": "EBD_SYSTEM",
+      "name": "Electronic Brakeforce Distribution System",
+      "category": "BRAKE_SAFETY"
+    },
+    {
+      "id": "VSC-029",
+      "code": "BRAKE_ASSIST_SYSTEM",
+      "name": "Brake Assist System",
+      "category": "BRAKE_SAFETY"
+    },
+    {
+      "id": "VSC-030",
+      "code": "ELECTRONIC_STABILITY_CONTROL",
+      "name": "Electronic Stability Control",
+      "category": "VEHICLE_CONTROL"
+    },
+    {
+      "id": "VSC-031",
+      "code": "TRACTION_CONTROL_SYSTEM",
+      "name": "Traction Control System",
+      "category": "VEHICLE_CONTROL"
+    },
+    {
+      "id": "VSC-032",
+      "code": "STABILITY_CONTROL_MODULE",
+      "name": "Stability Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VSC-033",
+      "code": "YAW_RATE_SENSOR",
+      "name": "Yaw Rate Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-034",
+      "code": "LATERAL_ACCELERATION_SENSOR",
+      "name": "Lateral Acceleration Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-035",
+      "code": "STEERING_ANGLE_SENSOR",
+      "name": "Steering Angle Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-036",
+      "code": "PARKING_SENSOR",
+      "name": "Parking Sensor",
+      "category": "PARKING"
+    },
+    {
+      "id": "VSC-037",
+      "code": "FRONT_PARKING_SENSOR",
+      "name": "Front Parking Sensor",
+      "category": "PARKING"
+    },
+    {
+      "id": "VSC-038",
+      "code": "REAR_PARKING_SENSOR",
+      "name": "Rear Parking Sensor",
+      "category": "PARKING"
+    },
+    {
+      "id": "VSC-039",
+      "code": "PARKING_SENSOR_CONTROL_UNIT",
+      "name": "Parking Sensor Control Unit",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VSC-040",
+      "code": "REAR_VIEW_CAMERA",
+      "name": "Rear View Camera",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VSC-041",
+      "code": "FRONT_VIEW_CAMERA",
+      "name": "Front View Camera",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VSC-042",
+      "code": "SURROUND_VIEW_CAMERA",
+      "name": "Surround View Camera",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VSC-043",
+      "code": "BLIND_SPOT_CAMERA",
+      "name": "Blind Spot Camera",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VSC-044",
+      "code": "CAMERA_CONTROL_MODULE",
+      "name": "Camera Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VSC-045",
+      "code": "BLIND_SPOT_MONITOR",
+      "name": "Blind Spot Monitor",
+      "category": "DRIVER_ASSISTANCE"
+    },
+    {
+      "id": "VSC-046",
+      "code": "BLIND_SPOT_SENSOR",
+      "name": "Blind Spot Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-047",
+      "code": "REAR_CROSS_TRAFFIC_SENSOR",
+      "name": "Rear Cross Traffic Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-048",
+      "code": "REAR_CROSS_TRAFFIC_CONTROL",
+      "name": "Rear Cross Traffic Control Unit",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VSC-049",
+      "code": "FORWARD_COLLISION_SENSOR",
+      "name": "Forward Collision Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-050",
+      "code": "MILLIMETER_WAVE_RADAR",
+      "name": "Millimeter Wave Radar",
+      "category": "RADAR"
+    },
+    {
+      "id": "VSC-051",
+      "code": "RADAR_SENSOR",
+      "name": "Radar Sensor",
+      "category": "RADAR"
+    },
+    {
+      "id": "VSC-052",
+      "code": "RADAR_CONTROL_MODULE",
+      "name": "Radar Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VSC-053",
+      "code": "LANE_DEPARTURE_CAMERA",
+      "name": "Lane Departure Camera",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VSC-054",
+      "code": "LANE_KEEP_ASSIST_MODULE",
+      "name": "Lane Keep Assist Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VSC-055",
+      "code": "ADAPTIVE_CRUISE_CONTROL_SENSOR",
+      "name": "Adaptive Cruise Control Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-056",
+      "code": "ADAPTIVE_CRUISE_CONTROL_MODULE",
+      "name": "Adaptive Cruise Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VSC-057",
+      "code": "AUTOMATIC_EMERGENCY_BRAKING",
+      "name": "Automatic Emergency Braking System",
+      "category": "DRIVER_ASSISTANCE"
+    },
+    {
+      "id": "VSC-058",
+      "code": "PRE_COLLISION_SYSTEM",
+      "name": "Pre-Collision System",
+      "category": "DRIVER_ASSISTANCE"
+    },
+    {
+      "id": "VSC-059",
+      "code": "LANE_DEPARTURE_WARNING",
+      "name": "Lane Departure Warning System",
+      "category": "DRIVER_ASSISTANCE"
+    },
+    {
+      "id": "VSC-060",
+      "code": "LANE_KEEP_ASSIST",
+      "name": "Lane Keep Assist System",
+      "category": "DRIVER_ASSISTANCE"
+    },
+    {
+      "id": "VSC-061",
+      "code": "TRAFFIC_SIGN_RECOGNITION",
+      "name": "Traffic Sign Recognition",
+      "category": "DRIVER_ASSISTANCE"
+    },
+    {
+      "id": "VSC-062",
+      "code": "DRIVER_MONITOR_CAMERA",
+      "name": "Driver Monitor Camera",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VSC-063",
+      "code": "DRIVER_MONITOR_SENSOR",
+      "name": "Driver Monitor Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-064",
+      "code": "TIRE_PRESSURE_SENSOR",
+      "name": "Tire Pressure Sensor",
+      "category": "TPMS"
+    },
+    {
+      "id": "VSC-065",
+      "code": "TPMS_CONTROL_MODULE",
+      "name": "TPMS Control Module",
+      "category": "TPMS"
+    },
+    {
+      "id": "VSC-066",
+      "code": "TIRE_PRESSURE_RECEIVER",
+      "name": "Tire Pressure Receiver",
+      "category": "TPMS"
+    },
+    {
+      "id": "VSC-067",
+      "code": "HILL_START_ASSIST",
+      "name": "Hill Start Assist System",
+      "category": "DRIVER_ASSISTANCE"
+    },
+    {
+      "id": "VSC-068",
+      "code": "DOWNHILL_ASSIST",
+      "name": "Downhill Assist Control",
+      "category": "DRIVER_ASSISTANCE"
+    },
+    {
+      "id": "VSC-069",
+      "code": "PARKING_BRAKE_SYSTEM",
+      "name": "Parking Brake System",
+      "category": "BRAKE_SAFETY"
+    },
+    {
+      "id": "VSC-070",
+      "code": "ELECTRONIC_PARKING_BRAKE",
+      "name": "Electronic Parking Brake",
+      "category": "BRAKE_SAFETY"
+    },
+    {
+      "id": "VSC-071",
+      "code": "AUTO_HOLD_SYSTEM",
+      "name": "Auto Hold System",
+      "category": "BRAKE_SAFETY"
+    },
+    {
+      "id": "VSC-072",
+      "code": "CHILD_LOCK",
+      "name": "Child Safety Door Lock",
+      "category": "DOOR_SAFETY"
+    },
+    {
+      "id": "VSC-073",
+      "code": "CHILD_SEAT_ANCHOR",
+      "name": "Child Seat Anchor",
+      "category": "CHILD_SAFETY"
+    },
+    {
+      "id": "VSC-074",
+      "code": "ISOFIX_ANCHOR",
+      "name": "ISOFIX Anchor",
+      "category": "CHILD_SAFETY"
+    },
+    {
+      "id": "VSC-075",
+      "code": "TOP_TETHER_ANCHOR",
+      "name": "Top Tether Anchor",
+      "category": "CHILD_SAFETY"
+    },
+    {
+      "id": "VSC-076",
+      "code": "SAFETY_WARNING_SWITCH",
+      "name": "Safety Warning Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VSC-077",
+      "code": "HAZARD_WARNING_SWITCH",
+      "name": "Hazard Warning Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VSC-078",
+      "code": "BRAKE_WEAR_SENSOR",
+      "name": "Brake Wear Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-079",
+      "code": "BRAKE_FLUID_LEVEL_SENSOR",
+      "name": "Brake Fluid Level Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-080",
+      "code": "DOOR_AJAR_SENSOR",
+      "name": "Door Ajar Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-081",
+      "code": "HOOD_AJAR_SENSOR",
+      "name": "Hood Ajar Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-082",
+      "code": "TRUNK_AJAR_SENSOR",
+      "name": "Trunk Ajar Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-083",
+      "code": "SEAT_OCCUPANCY_SENSOR",
+      "name": "Seat Occupancy Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-084",
+      "code": "PASSENGER_OCCUPANCY_SENSOR",
+      "name": "Passenger Occupancy Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-085",
+      "code": "SEAT_BELT_WARNING_SENSOR",
+      "name": "Seat Belt Warning Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-086",
+      "code": "SAFETY_CONTROL_MODULE",
+      "name": "Safety Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VSC-087",
+      "code": "BODY_CONTROL_MODULE",
+      "name": "Body Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VSC-088",
+      "code": "SAFETY_WIRING_HARNESS",
+      "name": "Safety System Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VSC-089",
+      "code": "SAFETY_CONNECTOR",
+      "name": "Safety System Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VSC-090",
+      "code": "EMERGENCY_FLASHER",
+      "name": "Emergency Flasher",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VSC-091",
+      "code": "EMERGENCY_BRAKE_ASSIST",
+      "name": "Emergency Brake Assist",
+      "category": "DRIVER_ASSISTANCE"
+    },
+    {
+      "id": "VSC-092",
+      "code": "COLLISION_WARNING_SYSTEM",
+      "name": "Collision Warning System",
+      "category": "DRIVER_ASSISTANCE"
+    },
+    {
+      "id": "VSC-093",
+      "code": "SAFETY_SYSTEM_DIAGNOSTIC",
+      "name": "Safety System Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VSC-094",
+      "code": "SAFETY_REPAIR_KIT",
+      "name": "Safety System Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VSC-095",
+      "code": "SAFETY_SENSOR_BRACKET",
+      "name": "Safety Sensor Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VSC-096",
+      "code": "SAFETY_SENSOR_WIRING",
+      "name": "Safety Sensor Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VSC-097",
+      "code": "SAFETY_SYSTEM_FUSE",
+      "name": "Safety System Fuse",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-098",
+      "code": "SAFETY_SYSTEM_RELAY",
+      "name": "Safety System Relay",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-099",
+      "code": "SAFETY_SYSTEM_FASTENER",
+      "name": "Safety System Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VSC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Safety Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
