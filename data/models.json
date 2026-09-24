@@ -1,1 +1,100 @@
-
+{
+  "models": [
+    {
+      "id": "TOY-CAM",
+      "make": "Toyota",
+      "model": "Camry",
+      "category": "Sedan",
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "TOY-COR",
+      "make": "Toyota",
+      "model": "Corolla",
+      "category": "Sedan",
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "TOY-YAR",
+      "make": "Toyota",
+      "model": "Yaris",
+      "category": "Sedan",
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "TOY-HIL",
+      "make": "Toyota",
+      "model": "Hilux",
+      "category": "Pickup",
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "TOY-LAN",
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "category": "SUV",
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "TOY-RAV",
+      "make": "Toyota",
+      "model": "RAV4",
+      "category": "SUV",
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "TOY-FOR",
+      "make": "Toyota",
+      "model": "Fortuner",
+      "category": "SUV",
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "TOY-HIG",
+      "make": "Toyota",
+      "model": "Highlander",
+      "category": "SUV",
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "LEX-ES",
+      "make": "Lexus",
+      "model": "ES",
+      "category": "Sedan",
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "LEX-RX",
+      "make": "Lexus",
+      "model": "RX",
+      "category": "SUV",
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "LEX-LX",
+      "make": "Lexus",
+      "model": "LX",
+      "category": "SUV",
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "LEX-IS",
+      "make": "Lexus",
+      "model": "IS",
+      "category": "Sedan",
+      "market": "Saudi Arabia",
+      "active": true
+    }
+  ]
+}
