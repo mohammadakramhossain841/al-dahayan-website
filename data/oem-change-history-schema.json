@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Al-Dahayan OEM Change History Schema",
+  "description": "Schema for maintaining historical versions of OEM catalog record changes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "historyId",
+    "recordId",
+    "action",
+    "changedAt"
+  ],
+  "properties": {
+    "historyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recordId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "oemNumber": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "created",
+        "updated",
+        "imported",
+        "restored",
+        "archived",
+        "disabled",
+        "enabled",
+        "verified",
+        "unverified"
+      ]
+    },
+    "changedFields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "previousData": {
+      "type": "object"
+    },
+    "newData": {
+      "type": "object"
+    },
+    "changedBy": {
+      "type": "string"
+    },
+    "changedByName": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "admin_panel",
+        "csv_import",
+        "excel_import",
+        "api",
+        "system"
+      ]
+    },
+    "changedAt": {
+      "type": "string"
+    }
+  }
+}
