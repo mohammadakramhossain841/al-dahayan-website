@@ -1,0 +1,134 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk metadata update rules for Toyota and Lexus OEM catalog records.",
+  "supportedUpdateTypes": [
+    "partName",
+    "arabicName",
+    "description",
+    "arabicDescription",
+    "partType",
+    "condition",
+    "genuine",
+    "aftermarket"
+  ],
+  "updateModes": [
+    "selected",
+    "filtered",
+    "imported"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.edit",
+    "requireConfirmation": true
+  },
+  "selectionRules": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 1000,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requirePreview": true
+  },
+  "fieldRules": {
+    "partName": {
+      "enabled": true,
+      "required": true,
+      "minimumLength": 2,
+      "maximumLength": 200
+    },
+    "arabicName": {
+      "enabled": true,
+      "required": false,
+      "maximumLength": 200,
+      "preserveArabicText": true
+    },
+    "description": {
+      "enabled": true,
+      "required": false,
+      "maximumLength": 2000
+    },
+    "arabicDescription": {
+      "enabled": true,
+      "required": false,
+      "maximumLength": 2000,
+      "preserveArabicText": true
+    },
+    "partType": {
+      "enabled": true,
+      "required": false,
+      "maximumLength": 100
+    },
+    "condition": {
+      "enabled": true,
+      "allowedValues": [
+        "new",
+        "used",
+        "refurbished",
+        "unknown"
+      ]
+    },
+    "genuine": {
+      "enabled": true,
+      "type": "boolean"
+    },
+    "aftermarket": {
+      "enabled": true,
+      "type": "boolean"
+    }
+  },
+  "updateMethods": [
+    "replace",
+    "set",
+    "clear_optional_field"
+  ],
+  "validation": {
+    "validateBeforeUpdate": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "showAffectedRecords": true,
+    "showOldAndNewValues": true,
+    "preserveArabicText": true,
+    "generatePreview": true
+  },
+  "recordProtection": {
+    "doNotModifyOemNumber": true,
+    "doNotModifyBrand": true,
+    "doNotModifyCategory": true,
+    "doNotModifyCompatibility": true,
+    "doNotModifyPricing": true,
+    "doNotModifyInventory": true,
+    "doNotModifyVerification": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousValues": true,
+    "recordNewValues": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.edit"
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalUpdated": true,
+    "showTotalSkipped": true,
+    "showTotalFailed": true,
+    "showValidationWarnings": true,
+    "generateMetadataUpdateReport": true
+  },
+  "safety": {
+    "neverDeleteRecords": true,
+    "neverModifyOemNumber": true,
+    "neverAutomaticallyVerifyRecords": true,
+    "preserveMetadataHistory": true,
+    "preserveAuditHistory": true
+  }
+}
