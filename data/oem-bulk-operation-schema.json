@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Al-Dahayan OEM Bulk Operation",
+  "description": "Schema for tracking bulk operations performed on Toyota and Lexus OEM catalog records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "operationId",
+    "operationType",
+    "status",
+    "startedAt",
+    "createdBy"
+  ],
+  "properties": {
+    "operationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operationType": {
+      "type": "string",
+      "enum": [
+        "import",
+        "update",
+        "price_update",
+        "stock_update",
+        "compatibility_update",
+        "status_update",
+        "verification_update",
+        "image_update",
+        "archive",
+        "restore",
+        "category_update",
+        "metadata_update",
+        "export",
+        "duplicate_review"
+      ]
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "selected",
+        "filtered",
+        "imported",
+        "all"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "preview",
+        "processing",
+        "completed",
+        "completed_with_warnings",
+        "failed",
+        "cancelled",
+        "rolled_back"
+      ]
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "createdBy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "userRole": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "recordIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "oemNumbers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "filters": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "totalSelected": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalProcessed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalUpdated": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalSkipped": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalWarnings": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalErrors": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/issue"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/issue"
+          }
+        }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "available": {
+          "type": "boolean"
+        },
+        "rolledBack": {
+          "type": "boolean"
+        },
+        "rollbackAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "rollbackBy": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "message",
+        "severity"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "warning",
+            "error"
+          ]
+        }
+      }
+    }
+  }
+}
