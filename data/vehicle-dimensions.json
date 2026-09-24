@@ -1,0 +1,83 @@
+{
+  "version": "1.0.0",
+  "dimensionFields": [
+    {
+      "code": "LENGTH_MM",
+      "name": "Overall Length",
+      "unit": "mm",
+      "description": "Overall vehicle length measured from front to rear."
+    },
+    {
+      "code": "WIDTH_MM",
+      "name": "Overall Width",
+      "unit": "mm",
+      "description": "Overall vehicle width, excluding or including mirrors according to the source specification."
+    },
+    {
+      "code": "HEIGHT_MM",
+      "name": "Overall Height",
+      "unit": "mm",
+      "description": "Overall vehicle height measured from the ground to the highest standard point."
+    },
+    {
+      "code": "WHEELBASE_MM",
+      "name": "Wheelbase",
+      "unit": "mm",
+      "description": "Distance between the front and rear axle centerlines."
+    },
+    {
+      "code": "FRONT_TRACK_MM",
+      "name": "Front Track",
+      "unit": "mm",
+      "description": "Distance between the centerlines of the front wheels."
+    },
+    {
+      "code": "REAR_TRACK_MM",
+      "name": "Rear Track",
+      "unit": "mm",
+      "description": "Distance between the centerlines of the rear wheels."
+    },
+    {
+      "code": "GROUND_CLEARANCE_MM",
+      "name": "Ground Clearance",
+      "unit": "mm",
+      "description": "Minimum clearance between the vehicle underside and the ground under the specified measurement conditions."
+    },
+    {
+      "code": "CARGO_VOLUME_L",
+      "name": "Cargo Volume",
+      "unit": "L",
+      "description": "Available cargo capacity according to the applicable measurement method."
+    },
+    {
+      "code": "CURB_WEIGHT_KG",
+      "name": "Curb Weight",
+      "unit": "kg",
+      "description": "Vehicle weight according to the applicable manufacturer or market specification."
+    },
+    {
+      "code": "GROSS_WEIGHT_KG",
+      "name": "Gross Vehicle Weight",
+      "unit": "kg",
+      "description": "Maximum permitted vehicle weight according to the applicable specification."
+    },
+    {
+      "code": "FUEL_TANK_L",
+      "name": "Fuel Tank Capacity",
+      "unit": "L",
+      "description": "Fuel tank capacity for vehicles equipped with an internal combustion engine."
+    },
+    {
+      "code": "BATTERY_CAPACITY_KWH",
+      "name": "Battery Capacity",
+      "unit": "kWh",
+      "description": "Battery energy capacity for hybrid or electric vehicles where specified."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "unit": null,
+      "description": "Vehicle dimension or measurement has not yet been verified."
+    }
+  ]
+}
