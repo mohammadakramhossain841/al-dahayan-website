@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Al-Dahayan OEM Import Report",
+  "description": "Schema for storing validation and processing results from Toyota and Lexus OEM catalog imports.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reportId",
+    "importId",
+    "status",
+    "startedAt",
+    "completedAt",
+    "summary"
+  ],
+  "properties": {
+    "reportId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "importId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fileName": {
+      "type": "string"
+    },
+    "fileFormat": {
+      "type": "string",
+      "enum": [
+        "csv",
+        "xlsx"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "preview",
+        "processing",
+        "completed",
+        "completed_with_warnings",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalRows",
+        "validRows",
+        "updatedRows",
+        "createdRows",
+        "skippedRows",
+        "warningRows",
+        "errorRows",
+        "duplicateRows"
+      ],
+      "properties": {
+        "totalRows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "validRows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "updatedRows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "createdRows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "skippedRows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warningRows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "errorRows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "duplicateRows": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/issue"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/issue"
+          }
+        }
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/change"
+      }
+    },
+    "duplicates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/duplicate"
+      }
+    },
+    "uploadedBy": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row",
+        "code",
+        "message",
+        "severity"
+      ],
+      "properties": {
+        "row": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "field": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "warning",
+            "error"
+          ]
+        }
+      }
+    },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row",
+        "recordId",
+        "action"
+      ],
+      "properties": {
+        "row": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "recordId": {
+          "type": "string"
+        },
+        "oemNumber": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "create",
+            "update",
+            "skip"
+          ]
+        },
+        "changedFields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "duplicate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row",
+        "duplicateType",
+        "action"
+      ],
+      "properties": {
+        "row": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "recordId": {
+          "type": "string"
+        },
+        "oemNumber": {
+          "type": "string"
+        },
+        "duplicateType": {
+          "type": "string",
+          "enum": [
+            "exact",
+            "normalized",
+            "same_record",
+            "possible"
+          ]
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "blocked",
+            "skipped",
+            "review"
+          ]
+        }
+      }
+    }
+  }
+}
