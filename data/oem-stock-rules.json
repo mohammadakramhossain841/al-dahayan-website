@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Inventory and stock rules foundation for Toyota and Lexus OEM catalog records.",
+  "stockStatuses": [
+    {
+      "code": "in_stock",
+      "label": "In Stock",
+      "labelArabic": "متوفر",
+      "availableForInquiry": true
+    },
+    {
+      "code": "low_stock",
+      "label": "Low Stock",
+      "labelArabic": "مخزون منخفض",
+      "availableForInquiry": true
+    },
+    {
+      "code": "out_of_stock",
+      "label": "Out of Stock",
+      "labelArabic": "غير متوفر",
+      "availableForInquiry": true
+    },
+    {
+      "code": "on_order",
+      "label": "On Order",
+      "labelArabic": "قيد الطلب",
+      "availableForInquiry": true
+    },
+    {
+      "code": "unknown",
+      "label": "Availability Unknown",
+      "labelArabic": "التوفر غير معروف",
+      "availableForInquiry": true
+    }
+  ],
+  "quantityRules": {
+    "allowNullQuantity": true,
+    "allowZeroQuantity": true,
+    "allowNegativeQuantity": false,
+    "minimumQuantity": 0
+  },
+  "thresholds": {
+    "lowStockMaximum": 5,
+    "inStockMinimum": 6
+  },
+  "locationRules": {
+    "allowMultipleLocations": true,
+    "requireLocationForKnownStock": false,
+    "allowUnknownLocation": true
+  },
+  "adminActions": {
+    "manualStockUpdate": true,
+    "bulkStockImport": true,
+    "bulkStockUpdate": true,
+    "stockAdjustment": true,
+    "archiveInventoryRecord": true,
+    "deleteInventoryRecord": false
+  },
+  "validation": [
+    {
+      "code": "NEGATIVE_QUANTITY",
+      "severity": "error",
+      "description": "Stock quantity cannot be negative."
+    },
+    {
+      "code": "INVALID_STOCK_STATUS",
+      "severity": "error",
+      "description": "Stock status is not supported."
+    },
+    {
+      "code": "STATUS_QUANTITY_MISMATCH",
+      "severity": "warning",
+      "description": "Stock status and quantity may not match."
+    },
+    {
+      "code": "MISSING_LOCATION",
+      "severity": "warning",
+      "description": "Known stock does not have a warehouse or location reference."
+    }
+  ],
+  "displayRules": {
+    "showStockStatus": true,
+    "showQuantity": false,
+    "showLocation": true,
+    "showLowStockWarning": true,
+    "showOutOfStockStatus": true,
+    "showOnOrderStatus": true
+  }
+}
