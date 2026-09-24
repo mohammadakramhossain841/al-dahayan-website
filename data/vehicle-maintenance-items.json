@@ -1,0 +1,298 @@
+{
+  "maintenanceItems": [
+    {
+      "id": "MAINT-001",
+      "code": "ENGINE_OIL",
+      "name": "Engine Oil",
+      "category": "ENGINE",
+      "description": "Engine lubrication oil"
+    },
+    {
+      "id": "MAINT-002",
+      "code": "OIL_FILTER",
+      "name": "Oil Filter",
+      "category": "ENGINE",
+      "description": "Engine oil filtration component"
+    },
+    {
+      "id": "MAINT-003",
+      "code": "AIR_FILTER",
+      "name": "Engine Air Filter",
+      "category": "ENGINE",
+      "description": "Filters air entering the engine"
+    },
+    {
+      "id": "MAINT-004",
+      "code": "CABIN_FILTER",
+      "name": "Cabin Air Filter",
+      "category": "HVAC",
+      "description": "Filters air entering the passenger cabin"
+    },
+    {
+      "id": "MAINT-005",
+      "code": "FUEL_FILTER",
+      "name": "Fuel Filter",
+      "category": "FUEL_SYSTEM",
+      "description": "Filters contaminants from fuel"
+    },
+    {
+      "id": "MAINT-006",
+      "code": "SPARK_PLUG",
+      "name": "Spark Plug",
+      "category": "IGNITION",
+      "description": "Ignition component for gasoline engines"
+    },
+    {
+      "id": "MAINT-007",
+      "code": "GLOW_PLUG",
+      "name": "Glow Plug",
+      "category": "IGNITION",
+      "description": "Cold-start heating component for diesel engines"
+    },
+    {
+      "id": "MAINT-008",
+      "code": "BRAKE_PAD",
+      "name": "Brake Pad",
+      "category": "BRAKE",
+      "description": "Friction component used in disc braking systems"
+    },
+    {
+      "id": "MAINT-009",
+      "code": "BRAKE_DISC",
+      "name": "Brake Disc",
+      "category": "BRAKE",
+      "description": "Rotating braking surface"
+    },
+    {
+      "id": "MAINT-010",
+      "code": "BRAKE_SHOE",
+      "name": "Brake Shoe",
+      "category": "BRAKE",
+      "description": "Friction component used in drum braking systems"
+    },
+    {
+      "id": "MAINT-011",
+      "code": "BRAKE_DRUM",
+      "name": "Brake Drum",
+      "category": "BRAKE",
+      "description": "Rotating braking surface for drum brakes"
+    },
+    {
+      "id": "MAINT-012",
+      "code": "BRAKE_FLUID",
+      "name": "Brake Fluid",
+      "category": "BRAKE",
+      "description": "Hydraulic fluid used by the braking system"
+    },
+    {
+      "id": "MAINT-013",
+      "code": "COOLANT",
+      "name": "Engine Coolant",
+      "category": "COOLING",
+      "description": "Coolant used to regulate engine temperature"
+    },
+    {
+      "id": "MAINT-014",
+      "code": "RADIATOR",
+      "name": "Radiator",
+      "category": "COOLING",
+      "description": "Heat exchanger for engine cooling"
+    },
+    {
+      "id": "MAINT-015",
+      "code": "THERMOSTAT",
+      "name": "Thermostat",
+      "category": "COOLING",
+      "description": "Controls engine coolant flow and operating temperature"
+    },
+    {
+      "id": "MAINT-016",
+      "code": "WATER_PUMP",
+      "name": "Water Pump",
+      "category": "COOLING",
+      "description": "Circulates engine coolant"
+    },
+    {
+      "id": "MAINT-017",
+      "code": "DRIVE_BELT",
+      "name": "Drive Belt",
+      "category": "ENGINE",
+      "description": "Drives engine accessories"
+    },
+    {
+      "id": "MAINT-018",
+      "code": "TIMING_BELT",
+      "name": "Timing Belt",
+      "category": "ENGINE",
+      "description": "Synchronizes engine camshaft and crankshaft where applicable"
+    },
+    {
+      "id": "MAINT-019",
+      "code": "TIMING_CHAIN",
+      "name": "Timing Chain",
+      "category": "ENGINE",
+      "description": "Synchronizes engine camshaft and crankshaft where applicable"
+    },
+    {
+      "id": "MAINT-020",
+      "code": "TRANSMISSION_FLUID",
+      "name": "Transmission Fluid",
+      "category": "TRANSMISSION",
+      "description": "Lubrication and hydraulic fluid for transmission systems"
+    },
+    {
+      "id": "MAINT-021",
+      "code": "TRANSMISSION_FILTER",
+      "name": "Transmission Filter",
+      "category": "TRANSMISSION",
+      "description": "Filters contaminants from transmission fluid"
+    },
+    {
+      "id": "MAINT-022",
+      "code": "TRANSFER_CASE_FLUID",
+      "name": "Transfer Case Fluid",
+      "category": "DRIVETRAIN",
+      "description": "Lubricant for transfer case systems"
+    },
+    {
+      "id": "MAINT-023",
+      "code": "DIFFERENTIAL_FLUID",
+      "name": "Differential Fluid",
+      "category": "DRIVETRAIN",
+      "description": "Lubricant for differential assemblies"
+    },
+    {
+      "id": "MAINT-024",
+      "code": "CV_JOINT",
+      "name": "CV Joint",
+      "category": "DRIVETRAIN",
+      "description": "Constant-velocity joint for drive axle assemblies"
+    },
+    {
+      "id": "MAINT-025",
+      "code": "WHEEL_BEARING",
+      "name": "Wheel Bearing",
+      "category": "WHEEL",
+      "description": "Bearing supporting wheel rotation"
+    },
+    {
+      "id": "MAINT-026",
+      "code": "TIRE",
+      "name": "Tire",
+      "category": "WHEEL",
+      "description": "Road-contact tire"
+    },
+    {
+      "id": "MAINT-027",
+      "code": "BATTERY",
+      "name": "12V Battery",
+      "category": "ELECTRICAL",
+      "description": "Low-voltage vehicle battery"
+    },
+    {
+      "id": "MAINT-028",
+      "code": "ALTERNATOR",
+      "name": "Alternator",
+      "category": "ELECTRICAL",
+      "description": "Generates electrical power and charges the 12V battery"
+    },
+    {
+      "id": "MAINT-029",
+      "code": "STARTER_MOTOR",
+      "name": "Starter Motor",
+      "category": "ELECTRICAL",
+      "description": "Electric motor used to start the engine"
+    },
+    {
+      "id": "MAINT-030",
+      "code": "HYBRID_BATTERY",
+      "name": "Hybrid Battery",
+      "category": "HYBRID_EV",
+      "description": "High-voltage battery used in hybrid vehicles"
+    },
+    {
+      "id": "MAINT-031",
+      "code": "EV_BATTERY",
+      "name": "EV Battery",
+      "category": "HYBRID_EV",
+      "description": "High-voltage battery used in electric vehicles"
+    },
+    {
+      "id": "MAINT-032",
+      "code": "SHOCK_ABSORBER",
+      "name": "Shock Absorber",
+      "category": "SUSPENSION",
+      "description": "Controls suspension movement"
+    },
+    {
+      "id": "MAINT-033",
+      "code": "STRUT",
+      "name": "Strut",
+      "category": "SUSPENSION",
+      "description": "Structural suspension and damping component"
+    },
+    {
+      "id": "MAINT-034",
+      "code": "CONTROL_ARM",
+      "name": "Control Arm",
+      "category": "SUSPENSION",
+      "description": "Suspension linkage component"
+    },
+    {
+      "id": "MAINT-035",
+      "code": "BALL_JOINT",
+      "name": "Ball Joint",
+      "category": "SUSPENSION",
+      "description": "Pivoting suspension joint"
+    },
+    {
+      "id": "MAINT-036",
+      "code": "TIE_ROD_END",
+      "name": "Tie Rod End",
+      "category": "STEERING",
+      "description": "Steering linkage component"
+    },
+    {
+      "id": "MAINT-037",
+      "code": "POWER_STEERING_FLUID",
+      "name": "Power Steering Fluid",
+      "category": "STEERING",
+      "description": "Hydraulic fluid for applicable power steering systems"
+    },
+    {
+      "id": "MAINT-038",
+      "code": "WIPER_BLADE",
+      "name": "Wiper Blade",
+      "category": "VISIBILITY",
+      "description": "Windshield cleaning component"
+    },
+    {
+      "id": "MAINT-039",
+      "code": "AC_REFRIGERANT",
+      "name": "A/C Refrigerant",
+      "category": "HVAC",
+      "description": "Refrigerant used by the air-conditioning system"
+    },
+    {
+      "id": "MAINT-040",
+      "code": "AC_FILTER",
+      "name": "A/C Filter",
+      "category": "HVAC",
+      "description": "Air filtration component for applicable climate-control systems"
+    },
+    {
+      "id": "MAINT-041",
+      "code": "GENERAL_INSPECTION",
+      "name": "General Vehicle Inspection",
+      "category": "GENERAL",
+      "description": "General inspection of vehicle systems and components"
+    },
+    {
+      "id": "MAINT-042",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "category": "UNKNOWN",
+      "description": "Maintenance item not specified"
+    }
+  ]
+}
