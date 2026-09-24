@@ -1,265 +1,303 @@
 (function () {
   "use strict";
 
-  let inquiries = [];
+  const STORAGE_KEY =
+    "alDahayanCustomerInquiries";
+
+  let inquiriesData = [];
 
   function initializeInquiry() {
+    loadStoredInquiries();
     setupInquiryForms();
-    setupInquiryButtons();
   }
 
   function setupInquiryForms() {
     const forms = document.querySelectorAll(
-      "[data-inquiry-form], .inquiry-form"
+      "[data-inquiry-form], #inquiryForm, .inquiry-form"
     );
 
     forms.forEach((form) => {
+      if (
+        form.dataset.inquiryInitialized ===
+        "true"
+      ) {
+        return;
+      }
+
+      form.dataset.inquiryInitialized =
+        "true";
+
       form.addEventListener(
         "submit",
-        handleInquirySubmit
-      );
-    });
-  }
+        (event) => {
+          event.preventDefault();
 
-  function setupInquiryButtons() {
-    const buttons = document.querySelectorAll(
-      "[data-inquiry-oem]"
-    );
+          const inquiry =
+            collectInquiryFromForm(form);
 
-    buttons.forEach((button) => {
-      button.addEventListener(
-        "click",
-        () => {
-          const oem =
-            button.getAttribute(
-              "data-inquiry-oem"
+          const validation =
+            validateInquiry(inquiry);
+
+          if (!validation.valid) {
+            displayInquiryMessage(
+              validation.message,
+              "error"
             );
 
-          openInquiryForm({
-            oemNumber: oem || ""
-          });
+            return;
+          }
+
+          const savedInquiry =
+            saveInquiry(inquiry);
+
+          displayInquiryMessage(
+            getCurrentLanguage() === "ar"
+              ? "تم إرسال طلب الاستفسار بنجاح."
+              : "Your inquiry has been submitted successfully.",
+            "success"
+          );
+
+          form.reset();
+
+          document.dispatchEvent(
+            new CustomEvent(
+              "alDahayanInquirySubmitted",
+              {
+                detail: savedInquiry
+              }
+            )
+          );
         }
       );
     });
   }
 
-  function handleInquirySubmit(event) {
-    event.preventDefault();
-
-    const form = event.currentTarget;
-
-    const inquiry =
-      collectInquiryData(form);
-
-    const validation =
-      validateInquiry(inquiry);
-
-    if (!validation.valid) {
-      showInquiryMessage(
-        form,
-        validation.message,
-        "error"
-      );
-
-      return;
-    }
-
-    const savedInquiry =
-      saveInquiry(inquiry);
-
-    showInquiryMessage(
-      form,
-      "Your inquiry has been prepared successfully.",
-      "success"
-    );
-
-    document.dispatchEvent(
-      new CustomEvent(
-        "inquirySubmitted",
-        {
-          detail: {
-            inquiry: savedInquiry
-          }
-        }
-      )
-    );
-
-    form.reset();
-  }
-
-  function collectInquiryData(form) {
+  function collectInquiryFromForm(
+    form
+  ) {
     return {
       id: generateInquiryId(),
 
-      oemNumber:
-        getFieldValue(
-          form,
-          "oemNumber"
-        ) ||
-        getFieldValue(
-          form,
-          "oem"
-        ) ||
-        getFieldValue(
-          form,
-          "partNumber"
-        ),
+      oemNumber: getFieldValue(
+        form,
+        "oemNumber",
+        "oemNumber"
+      ),
 
-      partName:
-        getFieldValue(
-          form,
-          "partName"
-        ) ||
-        getFieldValue(
-          form,
-          "partName"
-        ),
+      partNumber: getFieldValue(
+        form,
+        "partNumber",
+        "partNumber"
+      ),
 
-      vehicleMake:
-        getFieldValue(
-          form,
-          "vehicleMake"
-        ) ||
-        getFieldValue(
-          form,
-          "make"
-        ),
+      partName: getFieldValue(
+        form,
+        "partName",
+        "partName"
+      ),
 
-      vehicleModel:
-        getFieldValue(
-          form,
-          "vehicleModel"
-        ) ||
-        getFieldValue(
-          form,
-          "model"
-        ),
+      make: getFieldValue(
+        form,
+        "make",
+        "vehicleMake"
+      ),
 
-      vehicleYear:
-        getFieldValue(
-          form,
-          "vehicleYear"
-        ) ||
-        getFieldValue(
-          form,
-          "year"
-        ),
+      model: getFieldValue(
+        form,
+        "model",
+        "vehicleModel"
+      ),
 
-      engine:
-        getFieldValue(
-          form,
-          "engine"
-        ),
+      year: getFieldValue(
+        form,
+        "year",
+        "vehicleYear"
+      ),
 
-      vin:
+      engine: getFieldValue(
+        form,
+        "engine",
+        "vehicleEngine"
+      ),
+
+      vin: normalizeVIN(
         getFieldValue(
           form,
+          "vin",
           "vin"
-        ),
+        )
+      ),
 
       quantity:
-        getFieldValue(
-          form,
-          "quantity"
-        ),
+        getQuantity(form),
 
-      customerName:
-        getFieldValue(
+      customer: {
+        name: getFieldValue(
           form,
+          "name",
           "customerName"
-        ) ||
-        getFieldValue(
-          form,
-          "name"
         ),
 
-      phone:
-        getFieldValue(
+        phone: getFieldValue(
           form,
-          "phone"
-        ) ||
-        getFieldValue(
-          form,
-          "mobile"
+          "phone",
+          "customerPhone"
         ),
 
-      whatsapp:
-        getFieldValue(
+        whatsapp: getFieldValue(
           form,
-          "whatsapp"
+          "whatsapp",
+          "customerWhatsapp"
         ),
 
-      email:
-        getFieldValue(
+        email: getFieldValue(
           form,
-          "email"
+          "email",
+          "customerEmail"
         ),
 
-      message:
-        getFieldValue(
+        city: getFieldValue(
           form,
-          "message"
-        ) ||
-        getFieldValue(
-          form,
-          "notes"
+          "city",
+          "customerCity"
         ),
+
+        country: getFieldValue(
+          form,
+          "country",
+          "customerCountry"
+        )
+      },
+
+      message: getFieldValue(
+        form,
+        "message",
+        "inquiryMessage"
+      ),
+
+      preferredContact:
+        getFieldValue(
+          form,
+          "preferredContact",
+          "preferredContact"
+        ) || "whatsapp",
+
+      source: "website",
+
+      status: "new",
+
+      priority: "normal",
+
+      assignedTo: "",
+
+      notes: "",
 
       createdAt:
         new Date().toISOString(),
 
-      status: "new"
+      updatedAt:
+        new Date().toISOString()
     };
   }
 
-  function getFieldValue(form, name) {
-    const field =
+  function getFieldValue(
+    form,
+    name,
+    id
+  ) {
+    const element =
       form.querySelector(
         `[name="${name}"]`
+      ) ||
+      form.querySelector(
+        `#${id}`
       );
 
-    return field
-      ? field.value.trim()
+    return element
+      ? String(
+          element.value || ""
+        ).trim()
       : "";
   }
 
-  function validateInquiry(inquiry) {
+  function getQuantity(form) {
+    const value =
+      getFieldValue(
+        form,
+        "quantity",
+        "quantity"
+      );
+
+    const quantity =
+      Number(value);
+
+    if (
+      !Number.isFinite(
+        quantity
+      ) ||
+      quantity < 1
+    ) {
+      return 1;
+    }
+
+    return Math.floor(
+      quantity
+    );
+  }
+
+  function validateInquiry(
+    inquiry
+  ) {
     if (
       !inquiry.oemNumber &&
-      !inquiry.partName &&
-      !inquiry.vin
+      !inquiry.partNumber &&
+      !inquiry.partName
     ) {
       return {
         valid: false,
         message:
-          "Please provide an OEM part number, part name, or VIN."
+          getCurrentLanguage() === "ar"
+            ? "يرجى إدخال رقم القطعة أو اسم القطعة."
+            : "Please enter an OEM number, part number, or part name."
       };
     }
 
-    if (!inquiry.customerName) {
+    if (
+      !inquiry.customer.name
+    ) {
       return {
         valid: false,
         message:
-          "Please enter your name."
+          getCurrentLanguage() === "ar"
+            ? "يرجى إدخال الاسم."
+            : "Please enter your name."
       };
     }
 
-    if (!inquiry.phone && !inquiry.whatsapp && !inquiry.email) {
+    if (
+      !inquiry.customer.phone &&
+      !inquiry.customer.whatsapp &&
+      !inquiry.customer.email
+    ) {
       return {
         valid: false,
         message:
-          "Please provide a phone, WhatsApp number, or email."
+          getCurrentLanguage() === "ar"
+            ? "يرجى إدخال رقم الهاتف أو واتساب أو البريد الإلكتروني."
+            : "Please provide a phone number, WhatsApp number, or email."
       };
     }
 
     if (
       inquiry.vin &&
-      !isValidVIN(inquiry.vin)
+      inquiry.vin.length !== 17
     ) {
       return {
         valid: false,
         message:
-          "Please enter a valid 17-character VIN."
+          getCurrentLanguage() === "ar"
+            ? "يجب أن يتكون رقم VIN من 17 خانة."
+            : "VIN must contain 17 characters."
       };
     }
 
@@ -269,91 +307,64 @@
     };
   }
 
-  function isValidVIN(vin) {
-    const normalizedVIN =
-      String(vin || "")
-        .toUpperCase()
-        .trim();
-
-    return /^[A-HJ-NPR-Z0-9]{17}$/.test(
-      normalizedVIN
+  function saveInquiry(
+    inquiry
+  ) {
+    inquiriesData.push(
+      inquiry
     );
-  }
 
-  function saveInquiry(inquiry) {
-    inquiries.push(inquiry);
-
-    try {
-      const stored =
-        localStorage.getItem(
-          "alDahayanInquiries"
-        );
-
-      const existing =
-        stored
-          ? JSON.parse(stored)
-          : [];
-
-      const updated = [
-        ...existing,
-        inquiry
-      ];
-
-      localStorage.setItem(
-        "alDahayanInquiries",
-        JSON.stringify(updated)
-      );
-    } catch (error) {
-      console.warn(
-        "Inquiry local storage unavailable:",
-        error
-      );
-    }
+    saveStoredInquiries();
 
     return inquiry;
   }
 
-  function getInquiries() {
-    return [...inquiries];
-  }
-
-  function getStoredInquiries() {
+  function loadStoredInquiries() {
     try {
       const stored =
         localStorage.getItem(
-          "alDahayanInquiries"
+          STORAGE_KEY
         );
 
       if (!stored) {
-        return [];
+        inquiriesData = [];
+        return inquiriesData;
       }
 
-      const data =
+      const parsed =
         JSON.parse(stored);
 
-      return Array.isArray(data)
-        ? data
-        : [];
+      inquiriesData =
+        Array.isArray(parsed)
+          ? parsed
+          : [];
+
+      return inquiriesData;
     } catch (error) {
-      console.warn(
-        "Unable to read stored inquiries:",
+      console.error(
+        "Al-Dahayan Inquiry: Unable to load stored inquiries.",
         error
       );
 
-      return [];
+      inquiriesData = [];
+
+      return inquiriesData;
     }
   }
 
-  function clearStoredInquiries() {
+  function saveStoredInquiries() {
     try {
-      localStorage.removeItem(
-        "alDahayanInquiries"
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(
+          inquiriesData
+        )
       );
 
       return true;
     } catch (error) {
-      console.warn(
-        "Unable to clear stored inquiries:",
+      console.error(
+        "Al-Dahayan Inquiry: Unable to save inquiry data.",
         error
       );
 
@@ -361,203 +372,245 @@
     }
   }
 
-  function getInquiryById(id) {
-    const allInquiries =
-      getStoredInquiries();
+  function getInquiries() {
+    return [
+      ...inquiriesData
+    ];
+  }
+
+  function getInquiryById(
+    id
+  ) {
+    if (!id) {
+      return null;
+    }
 
     return (
-      allInquiries.find(
+      inquiriesData.find(
         (inquiry) =>
-          inquiry.id === id
+          String(
+            inquiry.id
+          ) === String(id)
       ) || null
     );
   }
 
-  function updateInquiryStatus(
+  function updateInquiry(
     id,
-    status
+    updates = {}
   ) {
-    const allInquiries =
-      getStoredInquiries();
-
     const index =
-      allInquiries.findIndex(
+      inquiriesData.findIndex(
         (inquiry) =>
-          inquiry.id === id
+          String(
+            inquiry.id
+          ) === String(id)
       );
 
     if (index === -1) {
       return null;
     }
 
-    allInquiries[index].status =
-      status;
+    inquiriesData[index] = {
+      ...inquiriesData[index],
+      ...updates,
+      updatedAt:
+        new Date().toISOString()
+    };
 
-    try {
-      localStorage.setItem(
-        "alDahayanInquiries",
-        JSON.stringify(
-          allInquiries
-        )
-      );
+    saveStoredInquiries();
 
-      return allInquiries[index];
-    } catch (error) {
-      console.warn(
-        "Unable to update inquiry:",
-        error
-      );
-
-      return null;
-    }
+    return inquiriesData[index];
   }
 
-  function openInquiryForm(data = {}) {
-    const form =
-      document.querySelector(
-        "[data-inquiry-form], .inquiry-form"
+  function deleteInquiry(
+    id
+  ) {
+    const originalLength =
+      inquiriesData.length;
+
+    inquiriesData =
+      inquiriesData.filter(
+        (inquiry) =>
+          String(
+            inquiry.id
+          ) !== String(id)
       );
 
-    if (!form) {
-      return;
+    const deleted =
+      inquiriesData.length !==
+      originalLength;
+
+    if (deleted) {
+      saveStoredInquiries();
     }
 
-    Object.keys(data).forEach(
-      (key) => {
-        const field =
-          form.querySelector(
-            `[name="${key}"]`
-          );
+    return deleted;
+  }
 
-        if (field) {
-          field.value =
-            data[key] ?? "";
-        }
-      }
+  function clearInquiries() {
+    inquiriesData = [];
+
+    localStorage.removeItem(
+      STORAGE_KEY
     );
 
-    form.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-
-  function showInquiryMessage(
-    form,
-    message,
-    type
-  ) {
-    let messageBox =
-      form.querySelector(
-        "[data-inquiry-message]"
-      );
-
-    if (!messageBox) {
-      messageBox =
-        document.createElement(
-          "div"
-        );
-
-      messageBox.setAttribute(
-        "data-inquiry-message",
-        ""
-      );
-
-      form.prepend(
-        messageBox
-      );
-    }
-
-    messageBox.className =
-      `inquiry-message ${type}`;
-
-    messageBox.textContent =
-      message;
-  }
-
-  function generateInquiryId() {
-    const timestamp =
-      Date.now();
-
-    const random =
-      Math.random()
-        .toString(36)
-        .substring(2, 8)
-        .toUpperCase();
-
-    return `INQ-${timestamp}-${random}`;
+    return true;
   }
 
   function createWhatsAppMessage(
     inquiry
   ) {
-    const lines = [
-      "Al-Dahayan Spare Parts Inquiry",
-      "",
-      `OEM Part Number: ${
-        inquiry.oemNumber || "N/A"
-      }`,
-      `Part Name: ${
-        inquiry.partName || "N/A"
-      }`,
-      `Vehicle: ${
-        inquiry.vehicleMake || ""
-      } ${
-        inquiry.vehicleModel || ""
-      } ${
-        inquiry.vehicleYear || ""
-      }`.trim(),
-      `Engine: ${
-        inquiry.engine || "N/A"
-      }`,
-      `VIN: ${
-        inquiry.vin || "N/A"
-      }`,
-      `Quantity: ${
-        inquiry.quantity || "N/A"
-      }`,
-      "",
-      `Customer: ${
-        inquiry.customerName || "N/A"
-      }`,
-      `Phone: ${
-        inquiry.phone || "N/A"
-      }`,
-      `WhatsApp: ${
-        inquiry.whatsapp || "N/A"
-      }`,
-      `Email: ${
-        inquiry.email || "N/A"
-      }`,
-      "",
-      `Message: ${
-        inquiry.message || "N/A"
-      }`
-    ];
+    if (!inquiry) {
+      return "";
+    }
 
-    return lines.join("\n");
+    const language =
+      getCurrentLanguage();
+
+    const lines =
+      language === "ar"
+        ? [
+            "السلام عليكم،",
+            "",
+            "أرغب في الاستفسار عن قطعة غيار:",
+            `رقم OEM: ${
+              inquiry.oemNumber || "-"
+            }`,
+            `رقم القطعة: ${
+              inquiry.partNumber || "-"
+            }`,
+            `اسم القطعة: ${
+              inquiry.partName || "-"
+            }`,
+            `الماركة: ${
+              inquiry.make || "-"
+            }`,
+            `الموديل: ${
+              inquiry.model || "-"
+            }`,
+            `السنة: ${
+              inquiry.year || "-"
+            }`,
+            `المحرك: ${
+              inquiry.engine || "-"
+            }`,
+            `VIN: ${
+              inquiry.vin || "-"
+            }`,
+            `الكمية: ${
+              inquiry.quantity || 1
+            }`,
+            "",
+            `الاسم: ${
+              inquiry.customer
+                ?.name || "-"
+            }`,
+            `الهاتف: ${
+              inquiry.customer
+                ?.phone || "-"
+            }`,
+            `واتساب: ${
+              inquiry.customer
+                ?.whatsapp || "-"
+            }`,
+            `البريد: ${
+              inquiry.customer
+                ?.email || "-"
+            }`,
+            `المدينة: ${
+              inquiry.customer
+                ?.city || "-"
+            }`,
+            "",
+            `ملاحظات: ${
+              inquiry.message || "-"
+            }`
+          ]
+        : [
+            "Assalamu Alaikum,",
+            "",
+            "I would like to inquire about an automotive spare part:",
+            `OEM Number: ${
+              inquiry.oemNumber || "-"
+            }`,
+            `Part Number: ${
+              inquiry.partNumber || "-"
+            }`,
+            `Part Name: ${
+              inquiry.partName || "-"
+            }`,
+            `Make: ${
+              inquiry.make || "-"
+            }`,
+            `Model: ${
+              inquiry.model || "-"
+            }`,
+            `Year: ${
+              inquiry.year || "-"
+            }`,
+            `Engine: ${
+              inquiry.engine || "-"
+            }`,
+            `VIN: ${
+              inquiry.vin || "-"
+            }`,
+            `Quantity: ${
+              inquiry.quantity || 1
+            }`,
+            "",
+            `Name: ${
+              inquiry.customer
+                ?.name || "-"
+            }`,
+            `Phone: ${
+              inquiry.customer
+                ?.phone || "-"
+            }`,
+            `WhatsApp: ${
+              inquiry.customer
+                ?.whatsapp || "-"
+            }`,
+            `Email: ${
+              inquiry.customer
+                ?.email || "-"
+            }`,
+            `City: ${
+              inquiry.customer
+                ?.city || "-"
+            }`,
+            "",
+            `Message: ${
+              inquiry.message || "-"
+            }`
+          ];
+
+    return lines.join(
+      "\n"
+    );
   }
 
-  function buildWhatsAppURL(
-    phone,
+  function createWhatsAppURL(
+    whatsappNumber,
     inquiry
   ) {
+    const number =
+      normalizePhone(
+        whatsappNumber
+      );
+
+    if (!number || !inquiry) {
+      return "";
+    }
+
     const message =
       createWhatsAppMessage(
         inquiry
       );
 
-    const cleanPhone =
-      String(phone || "")
-        .replace(/[^\d]/g, "");
-
-    if (!cleanPhone) {
-      return "";
-    }
-
     return (
       "https://wa.me/" +
-      cleanPhone +
+      number +
       "?text=" +
       encodeURIComponent(
         message
@@ -565,40 +618,146 @@
     );
   }
 
+  function openWhatsAppInquiry(
+    whatsappNumber,
+    inquiry
+  ) {
+    const url =
+      createWhatsAppURL(
+        whatsappNumber,
+        inquiry
+      );
+
+    if (!url) {
+      return false;
+    }
+
+    window.open(
+      url,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+    return true;
+  }
+
+  function displayInquiryMessage(
+    message,
+    type = "info",
+    container = null
+  ) {
+    const target =
+      container ||
+      document.querySelector(
+        "[data-inquiry-message], #inquiryMessage, .inquiry-message"
+      );
+
+    if (!target) {
+      return;
+    }
+
+    target.textContent =
+      message;
+
+    target.className =
+      `inquiry-message inquiry-message-${type}`;
+  }
+
+  function normalizeVIN(
+    vin
+  ) {
+    return String(vin || "")
+      .toUpperCase()
+      .replace(
+        /[^A-Z0-9]/g,
+        ""
+      )
+      .slice(0, 17);
+  }
+
+  function normalizePhone(
+    phone
+  ) {
+    return String(phone || "")
+      .replace(
+        /[^0-9+]/g,
+        ""
+      )
+      .replace(
+        /^\+/,
+        ""
+      );
+  }
+
+  function generateInquiryId() {
+    return (
+      "INQ-" +
+      Date.now().toString(
+        36
+      ).toUpperCase()
+    );
+  }
+
+  function getCurrentLanguage() {
+    return (
+      document.documentElement.getAttribute(
+        "lang"
+      ) ||
+      window.APP_CONFIG?.site
+        ?.defaultLanguage ||
+      "en"
+    );
+  }
+
   window.AlDahayanInquiry = {
     initialize:
       initializeInquiry,
 
-    collect:
-      collectInquiryData,
+    collectInquiryFromForm,
 
-    validate:
-      validateInquiry,
+    validateInquiry,
 
-    submit:
-      saveInquiry,
+    saveInquiry,
 
     getInquiries,
 
-    getStoredInquiries,
-
     getInquiryById,
 
-    updateInquiryStatus,
+    updateInquiry,
 
-    clearStoredInquiries,
+    deleteInquiry,
 
-    openInquiryForm,
+    clearInquiries,
 
     createWhatsAppMessage,
 
-    buildWhatsAppURL,
+    createWhatsAppURL,
 
-    isValidVIN
+    openWhatsAppInquiry,
+
+    loadStoredInquiries,
+
+    isLocalStorageAvailable:
+      () => {
+        try {
+          const key =
+            "__alDahayanTest__";
+
+          localStorage.setItem(
+            key,
+            "1"
+          );
+
+          localStorage.removeItem(
+            key
+          );
+
+          return true;
+        } catch {
+          return false;
+        }
+      }
   };
-
-  window.initializeInquiry =
-    initializeInquiry;
 
   if (
     document.readyState ===
