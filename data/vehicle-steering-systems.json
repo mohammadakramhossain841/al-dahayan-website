@@ -1,0 +1,263 @@
+{
+  "steeringSystems": [
+    {
+      "id": "STEER-001",
+      "code": "RACK_AND_PINION",
+      "name": "Rack and Pinion",
+      "category": "STEERING_TYPE",
+      "description": "Steering mechanism using a pinion gear and steering rack"
+    },
+    {
+      "id": "STEER-002",
+      "code": "RECIRCULATING_BALL",
+      "name": "Recirculating Ball Steering",
+      "category": "STEERING_TYPE",
+      "description": "Steering mechanism using a recirculating ball gear system"
+    },
+    {
+      "id": "STEER-003",
+      "code": "MANUAL_STEERING",
+      "name": "Manual Steering",
+      "category": "STEERING_TYPE",
+      "description": "Steering system without power assistance"
+    },
+    {
+      "id": "STEER-004",
+      "code": "HYDRAULIC_POWER_STEERING",
+      "name": "Hydraulic Power Steering",
+      "category": "POWER_ASSIST",
+      "description": "Power steering system assisted by hydraulic pressure"
+    },
+    {
+      "id": "STEER-005",
+      "code": "ELECTRIC_POWER_STEERING",
+      "name": "Electric Power Steering",
+      "category": "POWER_ASSIST",
+      "description": "Power steering system using an electric motor"
+    },
+    {
+      "id": "STEER-006",
+      "code": "ELECTRO_HYDRAULIC_STEERING",
+      "name": "Electro-Hydraulic Steering",
+      "category": "POWER_ASSIST",
+      "description": "Hydraulic steering assistance driven by an electric pump"
+    },
+    {
+      "id": "STEER-007",
+      "code": "STEERING_RACK",
+      "name": "Steering Rack",
+      "category": "COMPONENT",
+      "description": "Rack mechanism that converts steering input into lateral movement"
+    },
+    {
+      "id": "STEER-008",
+      "code": "STEERING_PINION",
+      "name": "Steering Pinion",
+      "category": "COMPONENT",
+      "description": "Gear that engages the steering rack"
+    },
+    {
+      "id": "STEER-009",
+      "code": "STEERING_GEARBOX",
+      "name": "Steering Gearbox",
+      "category": "COMPONENT",
+      "description": "Steering gear assembly used on applicable vehicles"
+    },
+    {
+      "id": "STEER-010",
+      "code": "STEERING_COLUMN",
+      "name": "Steering Column",
+      "category": "COMPONENT",
+      "description": "Column connecting the steering wheel to the steering mechanism"
+    },
+    {
+      "id": "STEER-011",
+      "code": "STEERING_SHAFT",
+      "name": "Steering Shaft",
+      "category": "COMPONENT",
+      "description": "Shaft transmitting steering rotation"
+    },
+    {
+      "id": "STEER-012",
+      "code": "STEERING_WHEEL",
+      "name": "Steering Wheel",
+      "category": "COMPONENT",
+      "description": "Driver-operated steering control"
+    },
+    {
+      "id": "STEER-013",
+      "code": "OUTER_TIE_ROD",
+      "name": "Outer Tie Rod",
+      "category": "COMPONENT",
+      "description": "Steering linkage component connecting the steering rack to the steering knuckle"
+    },
+    {
+      "id": "STEER-014",
+      "code": "INNER_TIE_ROD",
+      "name": "Inner Tie Rod",
+      "category": "COMPONENT",
+      "description": "Inner steering linkage component connected to the steering rack"
+    },
+    {
+      "id": "STEER-015",
+      "code": "TIE_ROD_END",
+      "name": "Tie Rod End",
+      "category": "COMPONENT",
+      "description": "Ball-jointed steering linkage connection"
+    },
+    {
+      "id": "STEER-016",
+      "code": "STEERING_KNUCKLE",
+      "name": "Steering Knuckle",
+      "category": "COMPONENT",
+      "description": "Wheel-end component connecting steering and suspension systems"
+    },
+    {
+      "id": "STEER-017",
+      "code": "STEERING_KNUCKLE_ARM",
+      "name": "Steering Knuckle Arm",
+      "category": "COMPONENT",
+      "description": "Arm transferring steering movement to the wheel assembly"
+    },
+    {
+      "id": "STEER-018",
+      "code": "POWER_STEERING_PUMP",
+      "name": "Power Steering Pump",
+      "category": "HYDRAULIC",
+      "description": "Pump supplying hydraulic pressure for power steering"
+    },
+    {
+      "id": "STEER-019",
+      "code": "POWER_STEERING_RESERVOIR",
+      "name": "Power Steering Reservoir",
+      "category": "HYDRAULIC",
+      "description": "Reservoir for hydraulic power steering fluid"
+    },
+    {
+      "id": "STEER-020",
+      "code": "POWER_STEERING_HOSE",
+      "name": "Power Steering Hose",
+      "category": "HYDRAULIC",
+      "description": "Hydraulic hose used in power steering systems"
+    },
+    {
+      "id": "STEER-021",
+      "code": "POWER_STEERING_FLUID",
+      "name": "Power Steering Fluid",
+      "category": "FLUID",
+      "description": "Fluid used by applicable hydraulic power steering systems"
+    },
+    {
+      "id": "STEER-022",
+      "code": "ELECTRIC_STEERING_MOTOR",
+      "name": "Electric Steering Motor",
+      "category": "ELECTRONIC",
+      "description": "Electric motor providing steering assistance"
+    },
+    {
+      "id": "STEER-023",
+      "code": "STEERING_ECU",
+      "name": "Steering Control Unit",
+      "category": "ELECTRONIC",
+      "description": "Electronic control unit for applicable electric steering systems"
+    },
+    {
+      "id": "STEER-024",
+      "code": "STEERING_TORQUE_SENSOR",
+      "name": "Steering Torque Sensor",
+      "category": "SENSOR",
+      "description": "Sensor measuring steering input torque"
+    },
+    {
+      "id": "STEER-025",
+      "code": "STEERING_ANGLE_SENSOR",
+      "name": "Steering Angle Sensor",
+      "category": "SENSOR",
+      "description": "Sensor measuring steering wheel or steering system angle"
+    },
+    {
+      "id": "STEER-026",
+      "code": "STEERING_POSITION_SENSOR",
+      "name": "Steering Position Sensor",
+      "category": "SENSOR",
+      "description": "Sensor monitoring steering position where applicable"
+    },
+    {
+      "id": "STEER-027",
+      "code": "STEERING_COLUMN_BEARING",
+      "name": "Steering Column Bearing",
+      "category": "COMPONENT",
+      "description": "Bearing supporting steering column movement"
+    },
+    {
+      "id": "STEER-028",
+      "code": "STEERING_COLUMN_JOINT",
+      "name": "Steering Column Joint",
+      "category": "COMPONENT",
+      "description": "Joint allowing steering shaft articulation"
+    },
+    {
+      "id": "STEER-029",
+      "code": "STEERING_DAMPER",
+      "name": "Steering Damper",
+      "category": "COMPONENT",
+      "description": "Damper used to reduce steering vibration and movement"
+    },
+    {
+      "id": "STEER-030",
+      "code": "STEERING_RACK_BUSHING",
+      "name": "Steering Rack Bushing",
+      "category": "COMPONENT",
+      "description": "Bushing supporting and isolating the steering rack"
+    },
+    {
+      "id": "STEER-031",
+      "code": "STEERING_RACK_BOOT",
+      "name": "Steering Rack Boot",
+      "category": "COMPONENT",
+      "description": "Protective boot covering the steering rack linkage"
+    },
+    {
+      "id": "STEER-032",
+      "code": "STEERING_LOCK",
+      "name": "Steering Lock",
+      "category": "SECURITY",
+      "description": "Mechanical or electronic steering locking mechanism"
+    },
+    {
+      "id": "STEER-033",
+      "code": "ELECTRONIC_STEERING_LOCK",
+      "name": "Electronic Steering Lock",
+      "category": "SECURITY",
+      "description": "Electronic steering locking mechanism"
+    },
+    {
+      "id": "STEER-034",
+      "code": "STEERING_CONTROL_MODULE",
+      "name": "Steering Control Module",
+      "category": "ELECTRONIC",
+      "description": "Module controlling applicable steering functions"
+    },
+    {
+      "id": "STEER-035",
+      "code": "REAR_WHEEL_STEERING",
+      "name": "Rear Wheel Steering",
+      "category": "ADVANCED_SYSTEM",
+      "description": "System that actively controls rear wheel steering angle"
+    },
+    {
+      "id": "STEER-036",
+      "code": "STEER_BY_WIRE",
+      "name": "Steer-by-Wire",
+      "category": "ADVANCED_SYSTEM",
+      "description": "Steering system using electronic control instead of a conventional mechanical connection"
+    },
+    {
+      "id": "STEER-037",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "category": "UNKNOWN",
+      "description": "Steering system specification not available"
+    }
+  ]
+}
