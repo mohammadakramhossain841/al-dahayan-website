@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_hanger_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VHG-001",
+      "code": "EXHAUST_HANGER",
+      "name": "Exhaust Hanger",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-002",
+      "code": "EXHAUST_HANGER_RUBBER",
+      "name": "Exhaust Hanger Rubber",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-003",
+      "code": "EXHAUST_HANGER_BRACKET",
+      "name": "Exhaust Hanger Bracket",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-004",
+      "code": "MUFFLER_HANGER",
+      "name": "Muffler Hanger",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-005",
+      "code": "MUFFLER_HANGER_RUBBER",
+      "name": "Muffler Hanger Rubber",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-006",
+      "code": "TAILPIPE_HANGER",
+      "name": "Tailpipe Hanger",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-007",
+      "code": "CATALYTIC_CONVERTER_HANGER",
+      "name": "Catalytic Converter Hanger",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-008",
+      "code": "DPF_HANGER",
+      "name": "DPF Hanger",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-009",
+      "code": "DPF_HANGER_BRACKET",
+      "name": "DPF Hanger Bracket",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-010",
+      "code": "SCR_HANGER",
+      "name": "SCR Hanger",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VHG-011",
+      "code": "DEF_TANK_HANGER",
+      "name": "DEF Tank Hanger",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VHG-012",
+      "code": "EGR_PIPE_HANGER",
+      "name": "EGR Pipe Hanger",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VHG-013",
+      "code": "EXHAUST_PIPE_HANGER",
+      "name": "Exhaust Pipe Hanger",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-014",
+      "code": "FLEX_PIPE_HANGER",
+      "name": "Flex Pipe Hanger",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-015",
+      "code": "RESONATOR_HANGER",
+      "name": "Resonator Hanger",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-016",
+      "code": "ENGINE_HANGER",
+      "name": "Engine Hanger",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VHG-017",
+      "code": "ENGINE_SUPPORT_HANGER",
+      "name": "Engine Support Hanger",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VHG-018",
+      "code": "TRANSMISSION_HANGER",
+      "name": "Transmission Hanger",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VHG-019",
+      "code": "TRANSMISSION_SUPPORT_HANGER",
+      "name": "Transmission Support Hanger",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VHG-020",
+      "code": "TRANSFER_CASE_HANGER",
+      "name": "Transfer Case Hanger",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VHG-021",
+      "code": "DIFFERENTIAL_HANGER",
+      "name": "Differential Hanger",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VHG-022",
+      "code": "PROPELLER_SHAFT_HANGER",
+      "name": "Propeller Shaft Hanger",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VHG-023",
+      "code": "CENTER_SUPPORT_HANGER",
+      "name": "Center Support Hanger",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VHG-024",
+      "code": "FUEL_TANK_HANGER",
+      "name": "Fuel Tank Hanger",
+      "category": "FUEL"
+    },
+    {
+      "id": "VHG-025",
+      "code": "FUEL_PIPE_HANGER",
+      "name": "Fuel Pipe Hanger",
+      "category": "FUEL"
+    },
+    {
+      "id": "VHG-026",
+      "code": "FUEL_LINE_HANGER",
+      "name": "Fuel Line Hanger",
+      "category": "FUEL"
+    },
+    {
+      "id": "VHG-027",
+      "code": "BRAKE_LINE_HANGER",
+      "name": "Brake Line Hanger",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VHG-028",
+      "code": "BRAKE_HOSE_HANGER",
+      "name": "Brake Hose Hanger",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VHG-029",
+      "code": "CLUTCH_LINE_HANGER",
+      "name": "Clutch Line Hanger",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VHG-030",
+      "code": "AC_PIPE_HANGER",
+      "name": "A/C Pipe Hanger",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VHG-031",
+      "code": "COOLANT_PIPE_HANGER",
+      "name": "Coolant Pipe Hanger",
+      "category": "COOLING"
+    },
+    {
+      "id": "VHG-032",
+      "code": "RADIATOR_HANGER",
+      "name": "Radiator Hanger",
+      "category": "COOLING"
+    },
+    {
+      "id": "VHG-033",
+      "code": "CONDENSER_HANGER",
+      "name": "A/C Condenser Hanger",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VHG-034",
+      "code": "INTERCOOLER_HANGER",
+      "name": "Intercooler Hanger",
+      "category": "TURBO"
+    },
+    {
+      "id": "VHG-035",
+      "code": "AIR_FILTER_HOUSING_HANGER",
+      "name": "Air Filter Housing Hanger",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VHG-036",
+      "code": "INTAKE_PIPE_HANGER",
+      "name": "Intake Pipe Hanger",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VHG-037",
+      "code": "TURBO_PIPE_HANGER",
+      "name": "Turbo Pipe Hanger",
+      "category": "TURBO"
+    },
+    {
+      "id": "VHG-038",
+      "code": "VACUUM_LINE_HANGER",
+      "name": "Vacuum Line Hanger",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VHG-039",
+      "code": "WIRING_HARNESS_HANGER",
+      "name": "Wiring Harness Hanger",
+      "category": "WIRING"
+    },
+    {
+      "id": "VHG-040",
+      "code": "CABLE_HANGER",
+      "name": "Cable Hanger",
+      "category": "WIRING"
+    },
+    {
+      "id": "VHG-041",
+      "code": "BRAKE_CABLE_HANGER",
+      "name": "Brake Cable Hanger",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VHG-042",
+      "code": "PARKING_BRAKE_CABLE_HANGER",
+      "name": "Parking Brake Cable Hanger",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VHG-043",
+      "code": "SHIFT_CABLE_HANGER",
+      "name": "Shift Cable Hanger",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VHG-044",
+      "code": "THROTTLE_CABLE_HANGER",
+      "name": "Throttle Cable Hanger",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VHG-045",
+      "code": "HOSE_HANGER",
+      "name": "Hose Hanger",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VHG-046",
+      "code": "COOLANT_HOSE_HANGER",
+      "name": "Coolant Hose Hanger",
+      "category": "COOLING"
+    },
+    {
+      "id": "VHG-047",
+      "code": "FUEL_HOSE_HANGER",
+      "name": "Fuel Hose Hanger",
+      "category": "FUEL"
+    },
+    {
+      "id": "VHG-048",
+      "code": "VACUUM_HOSE_HANGER",
+      "name": "Vacuum Hose Hanger",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VHG-049",
+      "code": "AC_HOSE_HANGER",
+      "name": "A/C Hose Hanger",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VHG-050",
+      "code": "POWER_STEERING_HOSE_HANGER",
+      "name": "Power Steering Hose Hanger",
+      "category": "STEERING"
+    },
+    {
+      "id": "VHG-051",
+      "code": "BATTERY_HANGER",
+      "name": "Battery Hanger",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VHG-052",
+      "code": "BATTERY_CABLE_HANGER",
+      "name": "Battery Cable Hanger",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VHG-053",
+      "code": "INVERTER_HANGER",
+      "name": "Inverter Hanger",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VHG-054",
+      "code": "HV_BATTERY_HANGER",
+      "name": "High Voltage Battery Hanger",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VHG-055",
+      "code": "HV_WIRING_HANGER",
+      "name": "High Voltage Wiring Hanger",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VHG-056",
+      "code": "EV_MOTOR_HANGER",
+      "name": "EV Motor Hanger",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VHG-057",
+      "code": "EV_COOLANT_PIPE_HANGER",
+      "name": "EV Coolant Pipe Hanger",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VHG-058",
+      "code": "AIR_SUSPENSION_LINE_HANGER",
+      "name": "Air Suspension Line Hanger",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VHG-059",
+      "code": "STEERING_LINE_HANGER",
+      "name": "Steering Line Hanger",
+      "category": "STEERING"
+    },
+    {
+      "id": "VHG-060",
+      "code": "STEERING_SHAFT_HANGER",
+      "name": "Steering Shaft Hanger",
+      "category": "STEERING"
+    },
+    {
+      "id": "VHG-061",
+      "code": "SUSPENSION_LINE_HANGER",
+      "name": "Suspension Line Hanger",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VHG-062",
+      "code": "PARKING_SENSOR_WIRING_HANGER",
+      "name": "Parking Sensor Wiring Hanger",
+      "category": "ADAS"
+    },
+    {
+      "id": "VHG-063",
+      "code": "CAMERA_WIRING_HANGER",
+      "name": "Camera Wiring Hanger",
+      "category": "ADAS"
+    },
+    {
+      "id": "VHG-064",
+      "code": "RADAR_WIRING_HANGER",
+      "name": "Radar Wiring Hanger",
+      "category": "ADAS"
+    },
+    {
+      "id": "VHG-065",
+      "code": "SENSOR_WIRING_HANGER",
+      "name": "Sensor Wiring Hanger",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VHG-066",
+      "code": "HEADLIGHT_WIRING_HANGER",
+      "name": "Headlight Wiring Hanger",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VHG-067",
+      "code": "TAILLIGHT_WIRING_HANGER",
+      "name": "Taillight Wiring Hanger",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VHG-068",
+      "code": "WIPER_WIRING_HANGER",
+      "name": "Wiper Wiring Hanger",
+      "category": "WIPER_WASHER"
+    },
+    {
+      "id": "VHG-069",
+      "code": "DOOR_WIRING_HANGER",
+      "name": "Door Wiring Hanger",
+      "category": "DOOR"
+    },
+    {
+      "id": "VHG-070",
+      "code": "MIRROR_WIRING_HANGER",
+      "name": "Mirror Wiring Hanger",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VHG-071",
+      "code": "SEAT_WIRING_HANGER",
+      "name": "Seat Wiring Hanger",
+      "category": "SEAT"
+    },
+    {
+      "id": "VHG-072",
+      "code": "FUEL_TANK_STRAP_HANGER",
+      "name": "Fuel Tank Strap Hanger",
+      "category": "FUEL"
+    },
+    {
+      "id": "VHG-073",
+      "code": "EXHAUST_HEAT_SHIELD_HANGER",
+      "name": "Exhaust Heat Shield Hanger",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VHG-074",
+      "code": "UNDERBODY_HANGER",
+      "name": "Underbody Hanger",
+      "category": "BODY"
+    },
+    {
+      "id": "VHG-075",
+      "code": "BODY_PANEL_HANGER",
+      "name": "Body Panel Hanger",
+      "category": "BODY"
+    },
+    {
+      "id": "VHG-076",
+      "code": "BUMPER_HANGER",
+      "name": "Bumper Hanger",
+      "category": "BODY"
+    },
+    {
+      "id": "VHG-077",
+      "code": "FENDER_HANGER",
+      "name": "Fender Hanger",
+      "category": "BODY"
+    },
+    {
+      "id": "VHG-078",
+      "code": "GRILLE_HANGER",
+      "name": "Grille Hanger",
+      "category": "BODY"
+    },
+    {
+      "id": "VHG-079",
+      "code": "ROOF_TRIM_HANGER",
+      "name": "Roof Trim Hanger",
+      "category": "ROOF"
+    },
+    {
+      "id": "VHG-080",
+      "code": "SPOILER_HANGER",
+      "name": "Spoiler Hanger",
+      "category": "BODY"
+    },
+    {
+      "id": "VHG-081",
+      "code": "SUNROOF_DRAIN_HANGER",
+      "name": "Sunroof Drain Hose Hanger",
+      "category": "ROOF"
+    },
+    {
+      "id": "VHG-082",
+      "code": "WASHER_HOSE_HANGER",
+      "name": "Washer Hose Hanger",
+      "category": "WIPER_WASHER"
+    },
+    {
+      "id": "VHG-083",
+      "code": "AC_DRAIN_HOSE_HANGER",
+      "name": "A/C Drain Hose Hanger",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VHG-084",
+      "code": "HEATER_HOSE_HANGER",
+      "name": "Heater Hose Hanger",
+      "category": "HVAC"
+    },
+    {
+      "id": "VHG-085",
+      "code": "BRAKE_HOSE_SUPPORT_HANGER",
+      "name": "Brake Hose Support Hanger",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VHG-086",
+      "code": "FUEL_LINE_SUPPORT_HANGER",
+      "name": "Fuel Line Support Hanger",
+      "category": "FUEL"
+    },
+    {
+      "id": "VHG-087",
+      "code": "COOLANT_LINE_SUPPORT_HANGER",
+      "name": "Coolant Line Support Hanger",
+      "category": "COOLING"
+    },
+    {
+      "id": "VHG-088",
+      "code": "WIRING_SUPPORT_HANGER",
+      "name": "Wiring Support Hanger",
+      "category": "WIRING"
+    },
+    {
+      "id": "VHG-089",
+      "code": "CABLE_SUPPORT_HANGER",
+      "name": "Cable Support Hanger",
+      "category": "WIRING"
+    },
+    {
+      "id": "VHG-090",
+      "code": "PIPE_SUPPORT_HANGER",
+      "name": "Pipe Support Hanger",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VHG-091",
+      "code": "RUBBER_HANGER",
+      "name": "Rubber Hanger",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VHG-092",
+      "code": "METAL_HANGER",
+      "name": "Metal Hanger",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VHG-093",
+      "code": "HANGER_BRACKET",
+      "name": "Hanger Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VHG-094",
+      "code": "HANGER_BUSHING",
+      "name": "Hanger Bushing",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VHG-095",
+      "code": "HANGER_INSULATOR",
+      "name": "Hanger Insulator",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VHG-096",
+      "code": "HANGER_FASTENER",
+      "name": "Hanger Fastener",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VHG-097",
+      "code": "SERVICE_HANGER_KIT",
+      "name": "Hanger Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VHG-098",
+      "code": "REPAIR_HANGER_KIT",
+      "name": "Hanger Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VHG-099",
+      "code": "UNIVERSAL_HANGER",
+      "name": "Universal Vehicle Hanger",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VHG-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Hanger Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
