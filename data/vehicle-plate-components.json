@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_plate_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VPL-001",
+      "code": "LICENSE_PLATE",
+      "name": "License Plate",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-002",
+      "code": "FRONT_LICENSE_PLATE",
+      "name": "Front License Plate",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-003",
+      "code": "REAR_LICENSE_PLATE",
+      "name": "Rear License Plate",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-004",
+      "code": "LICENSE_PLATE_BRACKET",
+      "name": "License Plate Bracket",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-005",
+      "code": "FRONT_PLATE_BRACKET",
+      "name": "Front Plate Bracket",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-006",
+      "code": "REAR_PLATE_BRACKET",
+      "name": "Rear Plate Bracket",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-007",
+      "code": "LICENSE_PLATE_HOLDER",
+      "name": "License Plate Holder",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-008",
+      "code": "LICENSE_PLATE_FRAME",
+      "name": "License Plate Frame",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-009",
+      "code": "LICENSE_PLATE_COVER",
+      "name": "License Plate Cover",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-010",
+      "code": "LICENSE_PLATE_TRIM",
+      "name": "License Plate Trim",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-011",
+      "code": "LICENSE_PLATE_GARNISH",
+      "name": "License Plate Garnish",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-012",
+      "code": "LICENSE_PLATE_BEZEL",
+      "name": "License Plate Bezel",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-013",
+      "code": "LICENSE_PLATE_RECESS",
+      "name": "License Plate Recess",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-014",
+      "code": "LICENSE_PLATE_PANEL",
+      "name": "License Plate Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-015",
+      "code": "LICENSE_PLATE_MOUNT",
+      "name": "License Plate Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VPL-016",
+      "code": "LICENSE_PLATE_SUPPORT",
+      "name": "License Plate Support",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VPL-017",
+      "code": "LICENSE_PLATE_REINFORCEMENT",
+      "name": "License Plate Reinforcement",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-018",
+      "code": "LICENSE_PLATE_ADAPTER",
+      "name": "License Plate Adapter",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VPL-019",
+      "code": "LICENSE_PLATE_SPACER",
+      "name": "License Plate Spacer",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPL-020",
+      "code": "LICENSE_PLATE_GROMMET",
+      "name": "License Plate Grommet",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPL-021",
+      "code": "LICENSE_PLATE_RUBBER_PAD",
+      "name": "License Plate Rubber Pad",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VPL-022",
+      "code": "LICENSE_PLATE_ANTI_VIBRATION_PAD",
+      "name": "License Plate Anti-Vibration Pad",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VPL-023",
+      "code": "LICENSE_PLATE_FASTENER",
+      "name": "License Plate Fastener",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPL-024",
+      "code": "LICENSE_PLATE_BOLT",
+      "name": "License Plate Bolt",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPL-025",
+      "code": "LICENSE_PLATE_NUT",
+      "name": "License Plate Nut",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPL-026",
+      "code": "LICENSE_PLATE_WASHER",
+      "name": "License Plate Washer",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPL-027",
+      "code": "LICENSE_PLATE_CLIP",
+      "name": "License Plate Clip",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPL-028",
+      "code": "LICENSE_PLATE_RIVET",
+      "name": "License Plate Rivet",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPL-029",
+      "code": "LICENSE_PLATE_LOCKING_FASTENER",
+      "name": "License Plate Locking Fastener",
+      "category": "SECURITY"
+    },
+    {
+      "id": "VPL-030",
+      "code": "LICENSE_PLATE_SECURITY_FRAME",
+      "name": "License Plate Security Frame",
+      "category": "SECURITY"
+    },
+    {
+      "id": "VPL-031",
+      "code": "LICENSE_PLATE_LIGHT",
+      "name": "License Plate Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VPL-032",
+      "code": "LICENSE_PLATE_LIGHT_HOUSING",
+      "name": "License Plate Light Housing",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VPL-033",
+      "code": "LICENSE_PLATE_LIGHT_LENS",
+      "name": "License Plate Light Lens",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VPL-034",
+      "code": "LICENSE_PLATE_LIGHT_BULB",
+      "name": "License Plate Light Bulb",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VPL-035",
+      "code": "LICENSE_PLATE_LIGHT_LED",
+      "name": "License Plate LED Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VPL-036",
+      "code": "LICENSE_PLATE_LIGHT_SOCKET",
+      "name": "License Plate Light Socket",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VPL-037",
+      "code": "LICENSE_PLATE_LIGHT_CONNECTOR",
+      "name": "License Plate Light Connector",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VPL-038",
+      "code": "LICENSE_PLATE_LIGHT_WIRING",
+      "name": "License Plate Light Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VPL-039",
+      "code": "LICENSE_PLATE_LIGHT_GASKET",
+      "name": "License Plate Light Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VPL-040",
+      "code": "LICENSE_PLATE_LIGHT_BRACKET",
+      "name": "License Plate Light Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VPL-041",
+      "code": "LICENSE_PLATE_CAMERA",
+      "name": "License Plate Camera",
+      "category": "ADAS"
+    },
+    {
+      "id": "VPL-042",
+      "code": "LICENSE_PLATE_CAMERA_BRACKET",
+      "name": "License Plate Camera Bracket",
+      "category": "ADAS"
+    },
+    {
+      "id": "VPL-043",
+      "code": "LICENSE_PLATE_CAMERA_COVER",
+      "name": "License Plate Camera Cover",
+      "category": "ADAS"
+    },
+    {
+      "id": "VPL-044",
+      "code": "LICENSE_PLATE_CAMERA_WIRING",
+      "name": "License Plate Camera Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VPL-045",
+      "code": "LICENSE_PLATE_CAMERA_CONNECTOR",
+      "name": "License Plate Camera Connector",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VPL-046",
+      "code": "PARKING_SENSOR_PLATE_BRACKET",
+      "name": "Parking Sensor Plate Bracket",
+      "category": "ADAS"
+    },
+    {
+      "id": "VPL-047",
+      "code": "PARKING_SENSOR_PLATE_COVER",
+      "name": "Parking Sensor Plate Cover",
+      "category": "ADAS"
+    },
+    {
+      "id": "VPL-048",
+      "code": "RADAR_PLATE_BRACKET",
+      "name": "Radar Plate Bracket",
+      "category": "ADAS"
+    },
+    {
+      "id": "VPL-049",
+      "code": "RADAR_PLATE_COVER",
+      "name": "Radar Plate Cover",
+      "category": "ADAS"
+    },
+    {
+      "id": "VPL-050",
+      "code": "ADAS_PLATE_MOUNT",
+      "name": "ADAS Plate Mount",
+      "category": "ADAS"
+    },
+    {
+      "id": "VPL-051",
+      "code": "FRONT_PLATE_REINFORCEMENT",
+      "name": "Front Plate Reinforcement",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-052",
+      "code": "REAR_PLATE_REINFORCEMENT",
+      "name": "Rear Plate Reinforcement",
+      "category": "BODY"
+    },
+    {
+      "id": "VPL-053",
+      "code": "BUMPER_PLATE_MOUNT",
+      "name": "Bumper Plate Mount",
+      "category": "BUMPER"
+    },
+    {
+      "id": "VPL-054",
+      "code": "BUMPER_PLATE_BRACKET",
+      "name": "Bumper Plate Bracket",
+      "category": "BUMPER"
+    },
+    {
+      "id": "VPL-055",
+      "code": "TRUNK_PLATE_MOUNT",
+      "name": "Trunk Plate Mount",
+      "category": "TRUNK"
+    },
+    {
+      "id": "VPL-056",
+      "code": "TAILGATE_PLATE_MOUNT",
+      "name": "Tailgate Plate Mount",
+      "category": "TAILGATE"
+    },
+    {
+      "id": "VPL-057",
+      "code": "TAILGATE_PLATE_BRACKET",
+      "name": "Tailgate Plate Bracket",
+      "category": "TAILGATE"
+    },
+    {
+      "id": "VPL-058",
+      "code": "TRUNK_PLATE_BRACKET",
+      "name": "Trunk Plate Bracket",
+      "category": "TRUNK"
+    },
+    {
+      "id": "VPL-059",
+      "code": "PLATE_TRIM_MOULDING",
+      "name": "License Plate Trim Moulding",
+      "category": "TRIM"
+    },
+    {
+      "id": "VPL-060",
+      "code": "PLATE_DECORATIVE_FRAME",
+      "name": "Decorative Plate Frame",
+      "category": "TRIM"
+    },
+    {
+      "id": "VPL-061",
+      "code": "PLATE_PROTECTIVE_FRAME",
+      "name": "Protective Plate Frame",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VPL-062",
+      "code": "PLATE_WEATHER_COVER",
+      "name": "Plate Weather Cover",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VPL-063",
+      "code": "PLATE_DUST_COVER",
+      "name": "Plate Dust Cover",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VPL-064",
+      "code": "PLATE_WATER_SEAL",
+      "name": "Plate Water Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VPL-065",
+      "code": "PLATE_SEALING_GASKET",
+      "name": "Plate Sealing Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VPL-066",
+      "code": "PLATE_MOUNTING_SEAL",
+      "name": "Plate Mounting Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VPL-067",
+      "code": "PLATE_CABLE_CLIP",
+      "name": "Plate Cable Clip",
+      "category": "WIRING"
+    },
+    {
+      "id": "VPL-068",
+      "code": "PLATE_WIRING_CLIP",
+      "name": "Plate Wiring Clip",
+      "category": "WIRING"
+    },
+    {
+      "id": "VPL-069",
+      "code": "PLATE_GROUND_TERMINAL",
+      "name": "Plate Ground Terminal",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VPL-070",
+      "code": "PLATE_POWER_CONNECTOR",
+      "name": "Plate Power Connector",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VPL-071",
+      "code": "PLATE_IDENTIFICATION_LABEL",
+      "name": "Vehicle Identification Label",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-072",
+      "code": "VIN_PLATE",
+      "name": "VIN Plate",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-073",
+      "code": "VIN_PLATE_BRACKET",
+      "name": "VIN Plate Bracket",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-074",
+      "code": "VIN_PLATE_COVER",
+      "name": "VIN Plate Cover",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-075",
+      "code": "MODEL_IDENTIFICATION_PLATE",
+      "name": "Model Identification Plate",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-076",
+      "code": "ENGINE_IDENTIFICATION_PLATE",
+      "name": "Engine Identification Plate",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-077",
+      "code": "TIRE_INFORMATION_PLATE",
+      "name": "Tire Information Plate",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-078",
+      "code": "EMISSION_INFORMATION_PLATE",
+      "name": "Emission Information Plate",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-079",
+      "code": "SAFETY_INFORMATION_LABEL",
+      "name": "Safety Information Label",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-080",
+      "code": "AIRBAG_INFORMATION_LABEL",
+      "name": "Airbag Information Label",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VPL-081",
+      "code": "TOWING_INFORMATION_PLATE",
+      "name": "Towing Information Plate",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-082",
+      "code": "FUEL_INFORMATION_LABEL",
+      "name": "Fuel Information Label",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-083",
+      "code": "BATTERY_INFORMATION_LABEL",
+      "name": "Battery Information Label",
+      "category": "IDENTIFICATION"
+    },
+    {
+      "id": "VPL-084",
+      "code": "HYBRID_WARNING_LABEL",
+      "name": "Hybrid Warning Label",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPL-085",
+      "code": "HIGH_VOLTAGE_WARNING_LABEL",
+      "name": "High Voltage Warning Label",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPL-086",
+      "code": "PLATE_MOUNTING_KIT",
+      "name": "Plate Mounting Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VPL-087",
+      "code": "PLATE_HARDWARE_KIT",
+      "name": "Plate Hardware Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VPL-088",
+      "code": "PLATE_REPAIR_KIT",
+      "name": "Plate Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VPL-089",
+      "code": "PLATE_REPLACEMENT_KIT",
+      "name": "Plate Replacement Kit",
+      "category": "REPLACEMENT"
+    },
+    {
+      "id": "VPL-090",
+      "code": "COMMERCIAL_PLATE_MOUNT",
+      "name": "Commercial Vehicle Plate Mount",
+      "category": "COMMERCIAL"
+    },
+    {
+      "id": "VPL-091",
+      "code": "TRAILER_PLATE_MOUNT",
+      "name": "Trailer Plate Mount",
+      "category": "TRAILER"
+    },
+    {
+      "id": "VPL-092",
+      "code": "MOTORCYCLE_PLATE_MOUNT",
+      "name": "Motorcycle Plate Mount",
+      "category": "MOTORCYCLE"
+    },
+    {
+      "id": "VPL-093",
+      "code": "UNIVERSAL_PLATE_FRAME",
+      "name": "Universal Plate Frame",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VPL-094",
+      "code": "UNIVERSAL_PLATE_BRACKET",
+      "name": "Universal Plate Bracket",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VPL-095",
+      "code": "UNIVERSAL_PLATE_HOLDER",
+      "name": "Universal Plate Holder",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VPL-096",
+      "code": "PLATE_SERVICE_KIT",
+      "name": "Plate Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VPL-097",
+      "code": "PLATE_DIAGNOSTIC_ACCESSORY",
+      "name": "Plate Diagnostic Accessory",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VPL-098",
+      "code": "PLATE_MOUNTING_HARDWARE",
+      "name": "Plate Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPL-099",
+      "code": "REPLACEMENT_PLATE_COMPONENT",
+      "name": "Replacement Plate Component",
+      "category": "REPLACEMENT"
+    },
+    {
+      "id": "VPL-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Plate Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
