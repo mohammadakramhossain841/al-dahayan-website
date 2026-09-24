@@ -1,0 +1,604 @@
+{
+  "fenderComponents": [
+    {
+      "id": "VFC-001",
+      "code": "FENDER_SYSTEM",
+      "name": "Vehicle Fender System",
+      "category": "FENDER"
+    },
+    {
+      "id": "VFC-002",
+      "code": "FRONT_FENDER",
+      "name": "Front Fender",
+      "category": "FENDER"
+    },
+    {
+      "id": "VFC-003",
+      "code": "LEFT_FRONT_FENDER",
+      "name": "Left Front Fender",
+      "category": "FENDER"
+    },
+    {
+      "id": "VFC-004",
+      "code": "RIGHT_FRONT_FENDER",
+      "name": "Right Front Fender",
+      "category": "FENDER"
+    },
+    {
+      "id": "VFC-005",
+      "code": "REAR_FENDER",
+      "name": "Rear Fender",
+      "category": "FENDER"
+    },
+    {
+      "id": "VFC-006",
+      "code": "LEFT_REAR_FENDER",
+      "name": "Left Rear Fender",
+      "category": "FENDER"
+    },
+    {
+      "id": "VFC-007",
+      "code": "RIGHT_REAR_FENDER",
+      "name": "Right Rear Fender",
+      "category": "FENDER"
+    },
+    {
+      "id": "VFC-008",
+      "code": "FENDER_PANEL",
+      "name": "Fender Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VFC-009",
+      "code": "FENDER_OUTER_PANEL",
+      "name": "Fender Outer Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VFC-010",
+      "code": "FENDER_INNER_PANEL",
+      "name": "Fender Inner Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VFC-011",
+      "code": "FENDER_APRON",
+      "name": "Fender Apron",
+      "category": "BODY"
+    },
+    {
+      "id": "VFC-012",
+      "code": "FENDER_APRON_PANEL",
+      "name": "Fender Apron Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "VFC-013",
+      "code": "FENDER_LINER",
+      "name": "Fender Liner",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFC-014",
+      "code": "LEFT_FENDER_LINER",
+      "name": "Left Fender Liner",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFC-015",
+      "code": "RIGHT_FENDER_LINER",
+      "name": "Right Fender Liner",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFC-016",
+      "code": "FENDER_SPLASH_GUARD",
+      "name": "Fender Splash Guard",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFC-017",
+      "code": "FENDER_MUD_GUARD",
+      "name": "Fender Mud Guard",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFC-018",
+      "code": "FENDER_WHEEL_ARCH",
+      "name": "Fender Wheel Arch",
+      "category": "BODY"
+    },
+    {
+      "id": "VFC-019",
+      "code": "WHEEL_ARCH_TRIM",
+      "name": "Wheel Arch Trim",
+      "category": "TRIM"
+    },
+    {
+      "id": "VFC-020",
+      "code": "WHEEL_ARCH_MOULDING",
+      "name": "Wheel Arch Moulding",
+      "category": "TRIM"
+    },
+    {
+      "id": "VFC-021",
+      "code": "FENDER_FLARE",
+      "name": "Fender Flare",
+      "category": "TRIM"
+    },
+    {
+      "id": "VFC-022",
+      "code": "LEFT_FENDER_FLARE",
+      "name": "Left Fender Flare",
+      "category": "TRIM"
+    },
+    {
+      "id": "VFC-023",
+      "code": "RIGHT_FENDER_FLARE",
+      "name": "Right Fender Flare",
+      "category": "TRIM"
+    },
+    {
+      "id": "VFC-024",
+      "code": "FENDER_MOULDING",
+      "name": "Fender Moulding",
+      "category": "TRIM"
+    },
+    {
+      "id": "VFC-025",
+      "code": "FENDER_BADGE",
+      "name": "Fender Badge",
+      "category": "TRIM"
+    },
+    {
+      "id": "VFC-026",
+      "code": "FENDER_EMBLEM",
+      "name": "Fender Emblem",
+      "category": "TRIM"
+    },
+    {
+      "id": "VFC-027",
+      "code": "FENDER_VENT",
+      "name": "Fender Vent",
+      "category": "AIRFLOW"
+    },
+    {
+      "id": "VFC-028",
+      "code": "FENDER_AIR_DUCT",
+      "name": "Fender Air Duct",
+      "category": "AIRFLOW"
+    },
+    {
+      "id": "VFC-029",
+      "code": "FENDER_BREATHER_DUCT",
+      "name": "Fender Breather Duct",
+      "category": "AIRFLOW"
+    },
+    {
+      "id": "VFC-030",
+      "code": "FENDER_BRACKET",
+      "name": "Fender Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VFC-031",
+      "code": "FRONT_FENDER_BRACKET",
+      "name": "Front Fender Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VFC-032",
+      "code": "REAR_FENDER_BRACKET",
+      "name": "Rear Fender Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VFC-033",
+      "code": "FENDER_UPPER_BRACKET",
+      "name": "Fender Upper Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VFC-034",
+      "code": "FENDER_LOWER_BRACKET",
+      "name": "Fender Lower Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VFC-035",
+      "code": "FENDER_REAR_BRACKET",
+      "name": "Fender Rear Mounting Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VFC-036",
+      "code": "FENDER_FRONT_BRACE",
+      "name": "Fender Front Brace",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VFC-037",
+      "code": "FENDER_REINFORCEMENT",
+      "name": "Fender Reinforcement",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VFC-038",
+      "code": "FENDER_SUPPORT",
+      "name": "Fender Support",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VFC-039",
+      "code": "FENDER_MOUNT",
+      "name": "Fender Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VFC-040",
+      "code": "FENDER_MOUNTING_PLATE",
+      "name": "Fender Mounting Plate",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VFC-041",
+      "code": "FENDER_MOUNTING_BOLT",
+      "name": "Fender Mounting Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFC-042",
+      "code": "FENDER_MOUNTING_NUT",
+      "name": "Fender Mounting Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFC-043",
+      "code": "FENDER_CLIP",
+      "name": "Fender Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFC-044",
+      "code": "FENDER_RETAINER",
+      "name": "Fender Retainer",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFC-045",
+      "code": "FENDER_PUSH_CLIP",
+      "name": "Fender Push Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFC-046",
+      "code": "FENDER_RIVET",
+      "name": "Fender Rivet",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFC-047",
+      "code": "FENDER_SEAL",
+      "name": "Fender Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFC-048",
+      "code": "FENDER_GASKET",
+      "name": "Fender Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFC-049",
+      "code": "FENDER_WEATHER_SEAL",
+      "name": "Fender Weather Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFC-050",
+      "code": "FENDER_EDGE_SEAL",
+      "name": "Fender Edge Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFC-051",
+      "code": "FENDER_LIGHT_HOUSING",
+      "name": "Fender Light Housing",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VFC-052",
+      "code": "FENDER_SIDE_MARKER",
+      "name": "Fender Side Marker",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VFC-053",
+      "code": "FENDER_TURN_SIGNAL",
+      "name": "Fender Turn Signal",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VFC-054",
+      "code": "FENDER_SIDE_INDICATOR",
+      "name": "Fender Side Indicator",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VFC-055",
+      "code": "FENDER_LIGHT_BRACKET",
+      "name": "Fender Light Bracket",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VFC-056",
+      "code": "FENDER_LIGHT_WIRING",
+      "name": "Fender Light Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VFC-057",
+      "code": "FENDER_LIGHT_CONNECTOR",
+      "name": "Fender Light Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VFC-058",
+      "code": "FENDER_CAMERA_BRACKET",
+      "name": "Fender Camera Bracket",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VFC-059",
+      "code": "FENDER_SENSOR_BRACKET",
+      "name": "Fender Sensor Bracket",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VFC-060",
+      "code": "FENDER_SENSOR_HOLDER",
+      "name": "Fender Sensor Holder",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VFC-061",
+      "code": "FENDER_WIRING_HARNESS",
+      "name": "Fender Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VFC-062",
+      "code": "FENDER_CONNECTOR",
+      "name": "Fender Electrical Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VFC-063",
+      "code": "FENDER_GROUND_WIRE",
+      "name": "Fender Ground Wire",
+      "category": "WIRING"
+    },
+    {
+      "id": "VFC-064",
+      "code": "FENDER_INNER_BRACE",
+      "name": "Fender Inner Brace",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VFC-065",
+      "code": "FENDER_SUPPORT_BRACE",
+      "name": "Fender Support Brace",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VFC-066",
+      "code": "FENDER_SPLASH_PANEL",
+      "name": "Fender Splash Panel",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFC-067",
+      "code": "FENDER_UNDERCOVER",
+      "name": "Fender Under Cover",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFC-068",
+      "code": "FENDER_WHEELHOUSE",
+      "name": "Fender Wheelhouse",
+      "category": "BODY"
+    },
+    {
+      "id": "VFC-069",
+      "code": "INNER_FENDER",
+      "name": "Inner Fender",
+      "category": "BODY"
+    },
+    {
+      "id": "VFC-070",
+      "code": "OUTER_FENDER",
+      "name": "Outer Fender",
+      "category": "BODY"
+    },
+    {
+      "id": "VFC-071",
+      "code": "FENDER_APRON_REINFORCEMENT",
+      "name": "Fender Apron Reinforcement",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VFC-072",
+      "code": "FENDER_SPLASH_SHIELD",
+      "name": "Fender Splash Shield",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFC-073",
+      "code": "FENDER_MUD_FLAP",
+      "name": "Fender Mud Flap",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFC-074",
+      "code": "FENDER_LINER_CLIP",
+      "name": "Fender Liner Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFC-075",
+      "code": "FENDER_LINER_RETAINER",
+      "name": "Fender Liner Retainer",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFC-076",
+      "code": "FENDER_LINER_BOLT",
+      "name": "Fender Liner Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFC-077",
+      "code": "FENDER_LINER_NUT",
+      "name": "Fender Liner Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFC-078",
+      "code": "FENDER_SERVICE_KIT",
+      "name": "Fender Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VFC-079",
+      "code": "FENDER_REPAIR_KIT",
+      "name": "Fender Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VFC-080",
+      "code": "FENDER_MOUNTING_KIT",
+      "name": "Fender Mounting Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VFC-081",
+      "code": "FENDER_DIAGNOSTIC_COMPONENT",
+      "name": "Fender Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VFC-082",
+      "code": "FENDER_BODY_COMPONENT",
+      "name": "General Fender Body Component",
+      "category": "BODY"
+    },
+    {
+      "id": "VFC-083",
+      "code": "FENDER_PROTECTION_COMPONENT",
+      "name": "General Fender Protection Component",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VFC-084",
+      "code": "FENDER_TRIM_COMPONENT",
+      "name": "General Fender Trim Component",
+      "category": "TRIM"
+    },
+    {
+      "id": "VFC-085",
+      "code": "FENDER_MOUNTING_COMPONENT",
+      "name": "General Fender Mounting Component",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VFC-086",
+      "code": "FENDER_FASTENER_COMPONENT",
+      "name": "General Fender Fastener Component",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VFC-087",
+      "code": "FENDER_SEALING_COMPONENT",
+      "name": "General Fender Sealing Component",
+      "category": "SEAL"
+    },
+    {
+      "id": "VFC-088",
+      "code": "FENDER_ELECTRICAL_COMPONENT",
+      "name": "General Fender Electrical Component",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VFC-089",
+      "code": "FENDER_WIRING_COMPONENT",
+      "name": "General Fender Wiring Component",
+      "category": "WIRING"
+    },
+    {
+      "id": "VFC-090",
+      "code": "FENDER_SENSOR_COMPONENT",
+      "name": "General Fender Sensor Component",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VFC-091",
+      "code": "FENDER_LIGHTING_COMPONENT",
+      "name": "General Fender Lighting Component",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VFC-092",
+      "code": "FENDER_HARDWARE",
+      "name": "Fender Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VFC-093",
+      "code": "FENDER_SUPPORT_HARDWARE",
+      "name": "Fender Support Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VFC-094",
+      "code": "FENDER_REINFORCEMENT_COMPONENT",
+      "name": "General Fender Reinforcement Component",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VFC-095",
+      "code": "FENDER_AIRFLOW_COMPONENT",
+      "name": "General Fender Airflow Component",
+      "category": "AIRFLOW"
+    },
+    {
+      "id": "VFC-096",
+      "code": "FENDER_GENERAL_COMPONENT",
+      "name": "General Fender Component",
+      "category": "FENDER"
+    },
+    {
+      "id": "VFC-097",
+      "code": "FENDER_ASSEMBLY_COMPONENT",
+      "name": "Fender Assembly Component",
+      "category": "ASSEMBLY"
+    },
+    {
+      "id": "VFC-098",
+      "code": "FENDER_REPLACEMENT_COMPONENT",
+      "name": "Fender Replacement Component",
+      "category": "REPLACEMENT"
+    },
+    {
+      "id": "VFC-099",
+      "code": "FENDER_SERVICE_COMPONENT",
+      "name": "Fender Service Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VFC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Fender Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
