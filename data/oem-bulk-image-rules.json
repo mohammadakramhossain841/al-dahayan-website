@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk image management rules for Toyota and Lexus OEM catalog records.",
+  "supportedImageTypes": [
+    "primary",
+    "gallery",
+    "thumbnail",
+    "installation",
+    "diagram"
+  ],
+  "updateModes": [
+    "selected",
+    "filtered",
+    "imported"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.image_manage",
+    "requireConfirmation": true
+  },
+  "selectionRules": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 500,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requirePreview": true
+  },
+  "uploadRules": {
+    "allowBulkUpload": true,
+    "allowMultipleImagesPerRecord": true,
+    "maximumImagesPerRecord": 20,
+    "maximumFileSizeMB": 10,
+    "allowedExtensions": [
+      ".jpg",
+      ".jpeg",
+      ".png",
+      ".webp"
+    ],
+    "allowedMimeTypes": [
+      "image/jpeg",
+      "image/png",
+      "image/webp"
+    ]
+  },
+  "imageStorage": {
+    "recommendedDirectory": "assets/images/oem/",
+    "storeImageUrlInRecord": true,
+    "storeBinaryImageDataInCatalog": false,
+    "preserveExistingImageUrls": true
+  },
+  "updateMethods": [
+    "add",
+    "replace",
+    "remove",
+    "set_primary"
+  ],
+  "primaryImageRules": {
+    "allowBulkPrimaryUpdate": true,
+    "requireValidImage": true,
+    "onePrimaryImagePerRecord": true,
+    "replaceExistingPrimaryByDefault": false
+  },
+  "galleryRules": {
+    "allowBulkGalleryUpdate": true,
+    "preserveExistingGalleryByDefault": true,
+    "preventDuplicateImageUrls": true,
+    "maximumGalleryImages": 20
+  },
+  "deleteRules": {
+    "allowBulkImageDelete": false,
+    "requireExtraPermissionForDelete": true,
+    "requireConfirmationForDelete": true,
+    "deleteFromCatalogOnly": true,
+    "deletePhysicalFileAutomatically": false
+  },
+  "validation": {
+    "validateBeforeUpdate": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "validateFileType": true,
+    "validateFileSize": true,
+    "validateImageUrl": true,
+    "detectDuplicateImages": true,
+    "showOldAndNewImages": true,
+    "generatePreview": true
+  },
+  "recordRules": {
+    "doNotModifyOemNumber": true,
+    "doNotModifyPartName": true,
+    "doNotModifyCompatibility": true,
+    "preserveImageHistory": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousImages": true,
+    "recordNewImages": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.image_manage"
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalUpdated": true,
+    "showTotalSkipped": true,
+    "showTotalFailed": true,
+    "showValidationWarnings": true,
+    "generateImageUpdateReport": true
+  },
+  "safety": {
+    "neverDeleteCatalogRecords": true,
+    "neverAutomaticallyDeletePhysicalImageFiles": true,
+    "neverOverwriteImagesWithoutValidation": true,
+    "preserveImageHistory": true,
+    "preserveAuditHistory": true
+  }
+}
