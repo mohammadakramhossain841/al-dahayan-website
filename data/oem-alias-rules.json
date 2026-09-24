@@ -1,0 +1,75 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Alias and alternate-search rules for Toyota and Lexus OEM catalog records.",
+  "aliasTypes": [
+    {
+      "code": "PART_NAME",
+      "label": "Part Name"
+    },
+    {
+      "code": "OEM_VARIANT",
+      "label": "OEM Number Variant"
+    },
+    {
+      "code": "COMMON_NAME",
+      "label": "Common Part Name"
+    },
+    {
+      "code": "ARABIC_NAME",
+      "label": "Arabic Part Name"
+    },
+    {
+      "code": "SEARCH_TERM",
+      "label": "Search Term"
+    },
+    {
+      "code": "MODEL_ALIAS",
+      "label": "Model Alias"
+    }
+  ],
+  "normalization": {
+    "trimWhitespace": true,
+    "caseInsensitive": true,
+    "unicodeNormalization": true,
+    "preserveOriginalValue": true
+  },
+  "rules": {
+    "allowMultipleAliases": true,
+    "allowArabicAliases": true,
+    "allowEnglishAliases": true,
+    "allowMultipleSearchTerms": true,
+    "automaticAliasCreation": false,
+    "manualAliasReview": true
+  },
+  "validation": [
+    {
+      "code": "EMPTY_ALIAS",
+      "severity": "error",
+      "description": "Alias cannot be empty."
+    },
+    {
+      "code": "DUPLICATE_ALIAS",
+      "severity": "warning",
+      "description": "The same alias already exists for the record."
+    },
+    {
+      "code": "CONFLICTING_ALIAS",
+      "severity": "warning",
+      "description": "The alias may refer to a different part or OEM number."
+    }
+  ],
+  "adminActions": {
+    "addAlias": true,
+    "editAlias": true,
+    "removeAlias": true,
+    "bulkImportAliases": true,
+    "reviewAliases": true
+  },
+  "searchBehavior": {
+    "includeAliasesInSearch": true,
+    "includeAliasesInSuggestions": true,
+    "includeAliasesInExactMatch": false,
+    "includeAliasesInPartialMatch": true
+  }
+}
