@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_disk_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VDK-001",
+      "code": "BRAKE_DISC",
+      "name": "Brake Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-002",
+      "code": "FRONT_BRAKE_DISC",
+      "name": "Front Brake Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-003",
+      "code": "REAR_BRAKE_DISC",
+      "name": "Rear Brake Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-004",
+      "code": "VENTILATED_BRAKE_DISC",
+      "name": "Ventilated Brake Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-005",
+      "code": "SOLID_BRAKE_DISC",
+      "name": "Solid Brake Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-006",
+      "code": "DRILLED_BRAKE_DISC",
+      "name": "Drilled Brake Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-007",
+      "code": "SLOTTED_BRAKE_DISC",
+      "name": "Slotted Brake Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-008",
+      "code": "TWO_PIECE_BRAKE_DISC",
+      "name": "Two-Piece Brake Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-009",
+      "code": "BRAKE_DISC_SET",
+      "name": "Brake Disc Set",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-010",
+      "code": "BRAKE_DISC_HAT",
+      "name": "Brake Disc Hat",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-011",
+      "code": "BRAKE_DISC_HUB",
+      "name": "Brake Disc Hub",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-012",
+      "code": "BRAKE_DISC_BEARING",
+      "name": "Brake Disc Bearing",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-013",
+      "code": "BRAKE_DISC_DUST_SHIELD",
+      "name": "Brake Disc Dust Shield",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-014",
+      "code": "BRAKE_DISC_WEAR_INDICATOR",
+      "name": "Brake Disc Wear Indicator",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-015",
+      "code": "BRAKE_DISC_RETENTION_SCREW",
+      "name": "Brake Disc Retention Screw",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-016",
+      "code": "BRAKE_DISC_SPACER",
+      "name": "Brake Disc Spacer",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-017",
+      "code": "BRAKE_DISC_ADAPTER",
+      "name": "Brake Disc Adapter",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-018",
+      "code": "BRAKE_DISC_GUARD",
+      "name": "Brake Disc Guard",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-019",
+      "code": "BRAKE_DISC_SERVICE_KIT",
+      "name": "Brake Disc Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VDK-020",
+      "code": "BRAKE_DISC_REPAIR_KIT",
+      "name": "Brake Disc Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VDK-021",
+      "code": "WHEEL_DISC",
+      "name": "Wheel Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-022",
+      "code": "ALLOY_WHEEL_DISC",
+      "name": "Alloy Wheel Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-023",
+      "code": "STEEL_WHEEL_DISC",
+      "name": "Steel Wheel Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-024",
+      "code": "SPARE_WHEEL_DISC",
+      "name": "Spare Wheel Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-025",
+      "code": "WHEEL_CENTER_DISC",
+      "name": "Wheel Center Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-026",
+      "code": "WHEEL_COVER_DISC",
+      "name": "Wheel Cover Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-027",
+      "code": "HUB_DISC",
+      "name": "Wheel Hub Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-028",
+      "code": "HUBCAP_DISC",
+      "name": "Hubcap Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-029",
+      "code": "CENTER_CAP_DISC",
+      "name": "Center Cap Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-030",
+      "code": "WHEEL_TRIM_DISC",
+      "name": "Wheel Trim Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-031",
+      "code": "CLUTCH_DISC",
+      "name": "Clutch Disc",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VDK-032",
+      "code": "CLUTCH_FRICTION_DISC",
+      "name": "Clutch Friction Disc",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VDK-033",
+      "code": "CLUTCH_DRIVEN_DISC",
+      "name": "Clutch Driven Disc",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VDK-034",
+      "code": "CLUTCH_DISC_HUB",
+      "name": "Clutch Disc Hub",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VDK-035",
+      "code": "CLUTCH_DISC_SPRING",
+      "name": "Clutch Disc Damper Spring",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VDK-036",
+      "code": "CLUTCH_DISC_FACING",
+      "name": "Clutch Disc Friction Facing",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VDK-037",
+      "code": "CLUTCH_DISC_RETENTION_PLATE",
+      "name": "Clutch Disc Retention Plate",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VDK-038",
+      "code": "CLUTCH_DISC_SERVICE_KIT",
+      "name": "Clutch Disc Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VDK-039",
+      "code": "CLUTCH_DISC_REPAIR_KIT",
+      "name": "Clutch Disc Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VDK-040",
+      "code": "CLUTCH_DISC_ALIGNMENT_TOOL",
+      "name": "Clutch Disc Alignment Tool",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VDK-041",
+      "code": "FLYWHEEL_DISC",
+      "name": "Flywheel Disc",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VDK-042",
+      "code": "DUAL_MASS_FLYWHEEL_DISC",
+      "name": "Dual-Mass Flywheel Disc",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VDK-043",
+      "code": "FLEXPLATE_DISC",
+      "name": "Flexplate Disc",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VDK-044",
+      "code": "TORQUE_CONVERTER_DISC",
+      "name": "Torque Converter Disc",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VDK-045",
+      "code": "TRANSMISSION_FRICTION_DISC",
+      "name": "Transmission Friction Disc",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VDK-046",
+      "code": "TRANSMISSION_CLUTCH_DISC",
+      "name": "Transmission Clutch Disc",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VDK-047",
+      "code": "CVT_FRICTION_DISC",
+      "name": "CVT Friction Disc",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VDK-048",
+      "code": "DCT_CLUTCH_DISC",
+      "name": "DCT Clutch Disc",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VDK-049",
+      "code": "HYBRID_CLUTCH_DISC",
+      "name": "Hybrid Clutch Disc",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VDK-050",
+      "code": "EV_REDUCTION_DISC",
+      "name": "EV Reduction Gear Disc",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VDK-051",
+      "code": "DIFFERENTIAL_DISC",
+      "name": "Differential Disc",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VDK-052",
+      "code": "LIMITED_SLIP_DISC",
+      "name": "Limited Slip Differential Disc",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VDK-053",
+      "code": "DIFFERENTIAL_CLUTCH_DISC",
+      "name": "Differential Clutch Disc",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VDK-054",
+      "code": "TRANSFER_CASE_CLUTCH_DISC",
+      "name": "Transfer Case Clutch Disc",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VDK-055",
+      "code": "AWD_COUPLING_DISC",
+      "name": "AWD Coupling Disc",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VDK-056",
+      "code": "PARKING_BRAKE_DISC",
+      "name": "Parking Brake Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-057",
+      "code": "PARKING_BRAKE_ROTATING_DISC",
+      "name": "Parking Brake Rotating Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-058",
+      "code": "BRAKE_DRUM_DISC",
+      "name": "Brake Drum Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-059",
+      "code": "DRUM_BRAKE_FRICTION_DISC",
+      "name": "Drum Brake Friction Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-060",
+      "code": "BRAKE_BACKING_DISC",
+      "name": "Brake Backing Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-061",
+      "code": "WHEEL_SPACER_DISC",
+      "name": "Wheel Spacer Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-062",
+      "code": "WHEEL_ADAPTER_DISC",
+      "name": "Wheel Adapter Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-063",
+      "code": "WHEEL_BALANCE_DISC",
+      "name": "Wheel Balance Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-064",
+      "code": "WHEEL_WEIGHT_DISC",
+      "name": "Wheel Balance Weight Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-065",
+      "code": "HUB_BEARING_DISC",
+      "name": "Hub Bearing Disc",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VDK-066",
+      "code": "AXLE_HUB_DISC",
+      "name": "Axle Hub Disc",
+      "category": "AXLE"
+    },
+    {
+      "id": "VDK-067",
+      "code": "CV_JOINT_DISC",
+      "name": "CV Joint Disc",
+      "category": "AXLE"
+    },
+    {
+      "id": "VDK-068",
+      "code": "PROPELLER_SHAFT_DISC",
+      "name": "Propeller Shaft Disc",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VDK-069",
+      "code": "DRIVESHAFT_DISC",
+      "name": "Driveshaft Disc",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VDK-070",
+      "code": "PULLEY_DISC",
+      "name": "Pulley Disc",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VDK-071",
+      "code": "CRANKSHAFT_PULLEY_DISC",
+      "name": "Crankshaft Pulley Disc",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VDK-072",
+      "code": "HARMONIC_BALANCER_DISC",
+      "name": "Harmonic Balancer Disc",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VDK-073",
+      "code": "CAMSHAFT_PULLEY_DISC",
+      "name": "Camshaft Pulley Disc",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VDK-074",
+      "code": "TIMING_PULLEY_DISC",
+      "name": "Timing Pulley Disc",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VDK-075",
+      "code": "ALTERNATOR_PULLEY_DISC",
+      "name": "Alternator Pulley Disc",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VDK-076",
+      "code": "WATER_PUMP_PULLEY_DISC",
+      "name": "Water Pump Pulley Disc",
+      "category": "COOLING"
+    },
+    {
+      "id": "VDK-077",
+      "code": "AC_COMPRESSOR_PULLEY_DISC",
+      "name": "A/C Compressor Pulley Disc",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VDK-078",
+      "code": "POWER_STEERING_PULLEY_DISC",
+      "name": "Power Steering Pulley Disc",
+      "category": "STEERING"
+    },
+    {
+      "id": "VDK-079",
+      "code": "TENSIONER_PULLEY_DISC",
+      "name": "Tensioner Pulley Disc",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VDK-080",
+      "code": "IDLER_PULLEY_DISC",
+      "name": "Idler Pulley Disc",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VDK-081",
+      "code": "CAM_PHASER_DISC",
+      "name": "Camshaft Phasing Disc",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VDK-082",
+      "code": "VVT_DISC",
+      "name": "VVT Disc",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VDK-083",
+      "code": "SENSOR_TRIGGER_DISC",
+      "name": "Sensor Trigger Disc",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VDK-084",
+      "code": "ABS_TONE_DISC",
+      "name": "ABS Tone Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-085",
+      "code": "ABS_RELUCTOR_DISC",
+      "name": "ABS Reluctor Disc",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VDK-086",
+      "code": "ENCODER_DISC",
+      "name": "Encoder Disc",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VDK-087",
+      "code": "PARKING_SENSOR_TARGET_DISC",
+      "name": "Parking Sensor Target Disc",
+      "category": "ADAS"
+    },
+    {
+      "id": "VDK-088",
+      "code": "RADAR_TARGET_DISC",
+      "name": "Radar Target Disc",
+      "category": "ADAS"
+    },
+    {
+      "id": "VDK-089",
+      "code": "CAMERA_TARGET_DISC",
+      "name": "Camera Calibration Target Disc",
+      "category": "ADAS"
+    },
+    {
+      "id": "VDK-090",
+      "code": "MOUNTING_DISC",
+      "name": "Mounting Disc",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VDK-091",
+      "code": "SPACER_DISC",
+      "name": "Spacer Disc",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VDK-092",
+      "code": "SEALING_DISC",
+      "name": "Sealing Disc",
+      "category": "SEAL"
+    },
+    {
+      "id": "VDK-093",
+      "code": "PROTECTION_DISC",
+      "name": "Protective Disc",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VDK-094",
+      "code": "SERVICE_DISC_KIT",
+      "name": "Disc Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VDK-095",
+      "code": "REPAIR_DISC_KIT",
+      "name": "Disc Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VDK-096",
+      "code": "REPLACEMENT_DISC",
+      "name": "Replacement Vehicle Disc",
+      "category": "REPLACEMENT"
+    },
+    {
+      "id": "VDK-097",
+      "code": "UNIVERSAL_DISC",
+      "name": "Universal Vehicle Disc",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VDK-098",
+      "code": "COMMERCIAL_DISC",
+      "name": "Commercial Vehicle Disc",
+      "category": "COMMERCIAL"
+    },
+    {
+      "id": "VDK-099",
+      "code": "PERFORMANCE_DISC",
+      "name": "Performance Disc",
+      "category": "PERFORMANCE"
+    },
+    {
+      "id": "VDK-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Disc Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
