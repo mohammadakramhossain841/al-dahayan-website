@@ -1,1 +1,230 @@
-
+{
+  "inventory": [
+    {
+      "id": "INV-001",
+      "oemNumber": "04152-YZZA1",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-002",
+      "oemNumber": "17801-0V060",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-003",
+      "oemNumber": "17801-38030",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-004",
+      "oemNumber": "90915-YZZD1",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-005",
+      "oemNumber": "04465-33471",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-006",
+      "oemNumber": "04465-02220",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-007",
+      "oemNumber": "04466-60060",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-008",
+      "oemNumber": "16571-0V020",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-009",
+      "oemNumber": "16100-39405",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-010",
+      "oemNumber": "90919-01253",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-011",
+      "oemNumber": "90919-02230",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-012",
+      "oemNumber": "90915-20003",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-013",
+      "oemNumber": "17801-31170",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-014",
+      "oemNumber": "04465-50120",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-015",
+      "oemNumber": "48510-60050",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-016",
+      "oemNumber": "48068-60050",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-017",
+      "oemNumber": "52119-0R020",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-018",
+      "oemNumber": "52159-0E930",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-019",
+      "oemNumber": "81110-60A20",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    },
+    {
+      "id": "INV-020",
+      "oemNumber": "81550-0E070",
+      "locationId": "LOC-003",
+      "quantity": 0,
+      "reservedQuantity": 0,
+      "availableQuantity": 0,
+      "status": "unknown",
+      "lastUpdated": null,
+      "active": true
+    }
+  ],
+  "statusDefinitions": {
+    "in_stock": "Available in stock",
+    "low_stock": "Low stock",
+    "out_of_stock": "Currently unavailable",
+    "unknown": "Stock information not yet verified"
+  }
+}
