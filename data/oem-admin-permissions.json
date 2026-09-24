@@ -1,0 +1,87 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Role-based permissions foundation for managing OEM catalog records in the Al-Dahayan Admin Panel.",
+  "roles": [
+    {
+      "id": "super_admin",
+      "name": "Super Admin",
+      "permissions": [
+        "oem.create",
+        "oem.view",
+        "oem.edit",
+        "oem.archive",
+        "oem.restore",
+        "oem.disable",
+        "oem.verify",
+        "oem.import",
+        "oem.export",
+        "oem.price_update",
+        "oem.stock_update",
+        "oem.image_manage",
+        "oem.audit_view",
+        "oem.history_view",
+        "oem.permissions_manage"
+      ]
+    },
+    {
+      "id": "admin",
+      "name": "Admin",
+      "permissions": [
+        "oem.create",
+        "oem.view",
+        "oem.edit",
+        "oem.archive",
+        "oem.restore",
+        "oem.import",
+        "oem.export",
+        "oem.price_update",
+        "oem.stock_update",
+        "oem.image_manage",
+        "oem.history_view"
+      ]
+    },
+    {
+      "id": "catalog_manager",
+      "name": "Catalog Manager",
+      "permissions": [
+        "oem.create",
+        "oem.view",
+        "oem.edit",
+        "oem.archive",
+        "oem.restore",
+        "oem.import",
+        "oem.export",
+        "oem.image_manage"
+      ]
+    },
+    {
+      "id": "inventory_manager",
+      "name": "Inventory Manager",
+      "permissions": [
+        "oem.view",
+        "oem.stock_update",
+        "oem.export"
+      ]
+    },
+    {
+      "id": "viewer",
+      "name": "Viewer",
+      "permissions": [
+        "oem.view"
+      ]
+    }
+  ],
+  "securityRules": {
+    "publicUsersCanManageCatalog": false,
+    "requireAuthentication": true,
+    "requirePermissionForEveryAction": true,
+    "recordPermissionFailures": true,
+    "recordAdministrativeActions": true
+  },
+  "protectedActions": [
+    "oem.disable",
+    "oem.verify",
+    "oem.permissions_manage"
+  ]
+}
