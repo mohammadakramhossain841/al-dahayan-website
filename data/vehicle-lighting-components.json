@@ -1,0 +1,604 @@
+{
+  "lightingComponents": [
+    {
+      "id": "VLC-001",
+      "code": "HEADLIGHT_ASSEMBLY",
+      "name": "Headlight Assembly",
+      "category": "HEADLIGHT"
+    },
+    {
+      "id": "VLC-002",
+      "code": "LEFT_HEADLIGHT",
+      "name": "Left Headlight",
+      "category": "HEADLIGHT"
+    },
+    {
+      "id": "VLC-003",
+      "code": "RIGHT_HEADLIGHT",
+      "name": "Right Headlight",
+      "category": "HEADLIGHT"
+    },
+    {
+      "id": "VLC-004",
+      "code": "HEADLIGHT_HOUSING",
+      "name": "Headlight Housing",
+      "category": "HEADLIGHT"
+    },
+    {
+      "id": "VLC-005",
+      "code": "HEADLIGHT_LENS",
+      "name": "Headlight Lens",
+      "category": "HEADLIGHT"
+    },
+    {
+      "id": "VLC-006",
+      "code": "HEADLIGHT_REFLECTOR",
+      "name": "Headlight Reflector",
+      "category": "HEADLIGHT"
+    },
+    {
+      "id": "VLC-007",
+      "code": "HEADLIGHT_PROJECTOR",
+      "name": "Headlight Projector",
+      "category": "HEADLIGHT"
+    },
+    {
+      "id": "VLC-008",
+      "code": "HEADLIGHT_BULB",
+      "name": "Headlight Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-009",
+      "code": "HALOGEN_HEADLIGHT_BULB",
+      "name": "Halogen Headlight Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-010",
+      "code": "HID_XENON_BULB",
+      "name": "HID Xenon Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-011",
+      "code": "LED_HEADLIGHT_MODULE",
+      "name": "LED Headlight Module",
+      "category": "LED"
+    },
+    {
+      "id": "VLC-012",
+      "code": "LED_HEADLIGHT_DRIVER",
+      "name": "LED Headlight Driver",
+      "category": "LED"
+    },
+    {
+      "id": "VLC-013",
+      "code": "HID_BALLAST",
+      "name": "HID Ballast",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VLC-014",
+      "code": "HEADLIGHT_CONTROL_MODULE",
+      "name": "Headlight Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VLC-015",
+      "code": "HEADLIGHT_LEVELING_MOTOR",
+      "name": "Headlight Leveling Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VLC-016",
+      "code": "HEADLIGHT_LEVELING_SENSOR",
+      "name": "Headlight Leveling Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VLC-017",
+      "code": "AUTO_HEADLIGHT_SENSOR",
+      "name": "Automatic Headlight Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VLC-018",
+      "code": "DAYTIME_RUNNING_LIGHT",
+      "name": "Daytime Running Light",
+      "category": "DRL"
+    },
+    {
+      "id": "VLC-019",
+      "code": "LEFT_DAYTIME_RUNNING_LIGHT",
+      "name": "Left Daytime Running Light",
+      "category": "DRL"
+    },
+    {
+      "id": "VLC-020",
+      "code": "RIGHT_DAYTIME_RUNNING_LIGHT",
+      "name": "Right Daytime Running Light",
+      "category": "DRL"
+    },
+    {
+      "id": "VLC-021",
+      "code": "DRL_MODULE",
+      "name": "DRL Module",
+      "category": "DRL"
+    },
+    {
+      "id": "VLC-022",
+      "code": "FRONT_FOG_LIGHT",
+      "name": "Front Fog Light",
+      "category": "FOG_LIGHT"
+    },
+    {
+      "id": "VLC-023",
+      "code": "LEFT_FRONT_FOG_LIGHT",
+      "name": "Left Front Fog Light",
+      "category": "FOG_LIGHT"
+    },
+    {
+      "id": "VLC-024",
+      "code": "RIGHT_FRONT_FOG_LIGHT",
+      "name": "Right Front Fog Light",
+      "category": "FOG_LIGHT"
+    },
+    {
+      "id": "VLC-025",
+      "code": "FOG_LIGHT_BULB",
+      "name": "Fog Light Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-026",
+      "code": "FOG_LIGHT_BEZEL",
+      "name": "Fog Light Bezel",
+      "category": "TRIM"
+    },
+    {
+      "id": "VLC-027",
+      "code": "REAR_COMBINATION_LAMP",
+      "name": "Rear Combination Lamp",
+      "category": "TAILLIGHT"
+    },
+    {
+      "id": "VLC-028",
+      "code": "LEFT_TAILLIGHT",
+      "name": "Left Taillight",
+      "category": "TAILLIGHT"
+    },
+    {
+      "id": "VLC-029",
+      "code": "RIGHT_TAILLIGHT",
+      "name": "Right Taillight",
+      "category": "TAILLIGHT"
+    },
+    {
+      "id": "VLC-030",
+      "code": "TAILLIGHT_HOUSING",
+      "name": "Taillight Housing",
+      "category": "TAILLIGHT"
+    },
+    {
+      "id": "VLC-031",
+      "code": "TAILLIGHT_LENS",
+      "name": "Taillight Lens",
+      "category": "TAILLIGHT"
+    },
+    {
+      "id": "VLC-032",
+      "code": "TAILLIGHT_BULB",
+      "name": "Taillight Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-033",
+      "code": "LED_TAILLIGHT_MODULE",
+      "name": "LED Taillight Module",
+      "category": "LED"
+    },
+    {
+      "id": "VLC-034",
+      "code": "REAR_FOG_LIGHT",
+      "name": "Rear Fog Light",
+      "category": "FOG_LIGHT"
+    },
+    {
+      "id": "VLC-035",
+      "code": "REAR_FOG_LIGHT_BULB",
+      "name": "Rear Fog Light Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-036",
+      "code": "CENTER_HIGH_MOUNT_STOP_LAMP",
+      "name": "Center High-Mount Stop Lamp",
+      "category": "BRAKE_LIGHT"
+    },
+    {
+      "id": "VLC-037",
+      "code": "HIGH_MOUNT_STOP_LAMP_LED",
+      "name": "High-Mount Stop Lamp LED",
+      "category": "LED"
+    },
+    {
+      "id": "VLC-038",
+      "code": "BRAKE_LIGHT_BULB",
+      "name": "Brake Light Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-039",
+      "code": "FRONT_TURN_SIGNAL",
+      "name": "Front Turn Signal",
+      "category": "TURN_SIGNAL"
+    },
+    {
+      "id": "VLC-040",
+      "code": "REAR_TURN_SIGNAL",
+      "name": "Rear Turn Signal",
+      "category": "TURN_SIGNAL"
+    },
+    {
+      "id": "VLC-041",
+      "code": "TURN_SIGNAL_BULB",
+      "name": "Turn Signal Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-042",
+      "code": "TURN_SIGNAL_RELAY",
+      "name": "Turn Signal Relay",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VLC-043",
+      "code": "SIDE_MARKER_LIGHT",
+      "name": "Side Marker Light",
+      "category": "MARKER"
+    },
+    {
+      "id": "VLC-044",
+      "code": "SIDE_MARKER_BULB",
+      "name": "Side Marker Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-045",
+      "code": "PARKING_LIGHT",
+      "name": "Parking Light",
+      "category": "PARKING_LIGHT"
+    },
+    {
+      "id": "VLC-046",
+      "code": "PARKING_LIGHT_BULB",
+      "name": "Parking Light Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-047",
+      "code": "LICENSE_PLATE_LAMP",
+      "name": "License Plate Lamp",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "VLC-048",
+      "code": "LICENSE_PLATE_BULB",
+      "name": "License Plate Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-049",
+      "code": "REAR_REFLECTOR",
+      "name": "Rear Reflector",
+      "category": "REFLECTOR"
+    },
+    {
+      "id": "VLC-050",
+      "code": "FRONT_REFLECTOR",
+      "name": "Front Reflector",
+      "category": "REFLECTOR"
+    },
+    {
+      "id": "VLC-051",
+      "code": "DOOR_COURTESY_LIGHT",
+      "name": "Door Courtesy Light",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VLC-052",
+      "code": "DOME_LIGHT",
+      "name": "Dome Light",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VLC-053",
+      "code": "MAP_LIGHT",
+      "name": "Map Light",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VLC-054",
+      "code": "GLOVE_BOX_LIGHT",
+      "name": "Glove Box Light",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VLC-055",
+      "code": "TRUNK_LIGHT",
+      "name": "Trunk Light",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VLC-056",
+      "code": "CARGO_LIGHT",
+      "name": "Cargo Area Light",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VLC-057",
+      "code": "INTERIOR_LIGHT_LED",
+      "name": "Interior LED Light",
+      "category": "LED"
+    },
+    {
+      "id": "VLC-058",
+      "code": "INTERIOR_LIGHT_BULB",
+      "name": "Interior Light Bulb",
+      "category": "BULB"
+    },
+    {
+      "id": "VLC-059",
+      "code": "INTERIOR_LIGHT_SWITCH",
+      "name": "Interior Light Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VLC-060",
+      "code": "HEADLIGHT_SWITCH",
+      "name": "Headlight Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VLC-061",
+      "code": "DIMMER_SWITCH",
+      "name": "Dimmer Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VLC-062",
+      "code": "FOG_LIGHT_SWITCH",
+      "name": "Fog Light Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VLC-063",
+      "code": "TURN_SIGNAL_SWITCH",
+      "name": "Turn Signal Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VLC-064",
+      "code": "COMBINATION_SWITCH",
+      "name": "Combination Light Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VLC-065",
+      "code": "HAZARD_WARNING_SWITCH",
+      "name": "Hazard Warning Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VLC-066",
+      "code": "LIGHT_CONTROL_MODULE",
+      "name": "Light Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VLC-067",
+      "code": "BODY_LIGHTING_MODULE",
+      "name": "Body Lighting Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VLC-068",
+      "code": "AUTOMATIC_LIGHT_CONTROL",
+      "name": "Automatic Light Control",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VLC-069",
+      "code": "ADAPTIVE_HEADLIGHT_MODULE",
+      "name": "Adaptive Headlight Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VLC-070",
+      "code": "ADAPTIVE_HEADLIGHT_ACTUATOR",
+      "name": "Adaptive Headlight Actuator",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VLC-071",
+      "code": "LIGHT_SENSOR",
+      "name": "Light Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VLC-072",
+      "code": "AMBIENT_LIGHT_SENSOR",
+      "name": "Ambient Light Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VLC-073",
+      "code": "HEADLIGHT_WASHER_NOZZLE",
+      "name": "Headlight Washer Nozzle",
+      "category": "WASHER"
+    },
+    {
+      "id": "VLC-074",
+      "code": "HEADLIGHT_WASHER_PUMP",
+      "name": "Headlight Washer Pump",
+      "category": "WASHER"
+    },
+    {
+      "id": "VLC-075",
+      "code": "HEADLIGHT_WASHER_RESERVOIR",
+      "name": "Headlight Washer Reservoir",
+      "category": "WASHER"
+    },
+    {
+      "id": "VLC-076",
+      "code": "LIGHT_WIRING_HARNESS",
+      "name": "Lighting Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VLC-077",
+      "code": "LIGHTING_CONNECTOR",
+      "name": "Lighting Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VLC-078",
+      "code": "LIGHTING_RELAY",
+      "name": "Lighting Relay",
+      "category": "RELAY"
+    },
+    {
+      "id": "VLC-079",
+      "code": "LIGHTING_FUSE",
+      "name": "Lighting Fuse",
+      "category": "FUSE"
+    },
+    {
+      "id": "VLC-080",
+      "code": "LIGHTING_GROUND_WIRE",
+      "name": "Lighting Ground Wire",
+      "category": "WIRING"
+    },
+    {
+      "id": "VLC-081",
+      "code": "LED_LIGHT_STRIP",
+      "name": "LED Light Strip",
+      "category": "LED"
+    },
+    {
+      "id": "VLC-082",
+      "code": "AMBIENT_INTERIOR_LIGHT",
+      "name": "Ambient Interior Light",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VLC-083",
+      "code": "FOOTWELL_LIGHT",
+      "name": "Footwell Light",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VLC-084",
+      "code": "DOOR_ENTRY_LIGHT",
+      "name": "Door Entry Light",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VLC-085",
+      "code": "MIRROR_COURTESY_LIGHT",
+      "name": "Mirror Courtesy Light",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VLC-086",
+      "code": "ROOF_LIGHT",
+      "name": "Roof Light",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VLC-087",
+      "code": "REAR_COMBINATION_LAMP_GASKET",
+      "name": "Rear Combination Lamp Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VLC-088",
+      "code": "HEADLIGHT_GASKET",
+      "name": "Headlight Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VLC-089",
+      "code": "LIGHTING_MOUNTING_BRACKET",
+      "name": "Lighting Mounting Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VLC-090",
+      "code": "LIGHTING_BULB_SOCKET",
+      "name": "Lighting Bulb Socket",
+      "category": "SOCKET"
+    },
+    {
+      "id": "VLC-091",
+      "code": "LIGHTING_BULB_HOLDER",
+      "name": "Lighting Bulb Holder",
+      "category": "SOCKET"
+    },
+    {
+      "id": "VLC-092",
+      "code": "LIGHTING_TERMINAL",
+      "name": "Lighting Terminal",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VLC-093",
+      "code": "LIGHTING_REPAIR_KIT",
+      "name": "Lighting Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VLC-094",
+      "code": "LIGHTING_DIAGNOSTIC_MODULE",
+      "name": "Lighting Diagnostic Module",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VLC-095",
+      "code": "LIGHTING_BRACKET",
+      "name": "Lighting Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VLC-096",
+      "code": "LIGHTING_FASTENER",
+      "name": "Lighting Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VLC-097",
+      "code": "LIGHTING_TRIM",
+      "name": "Lighting Trim",
+      "category": "TRIM"
+    },
+    {
+      "id": "VLC-098",
+      "code": "LIGHTING_SEAL",
+      "name": "Lighting Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VLC-099",
+      "code": "LIGHTING_SERVICE_COMPONENT",
+      "name": "Lighting Service Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VLC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Lighting Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
