@@ -1,0 +1,80 @@
+{
+  "version": "1.0.0",
+  "categories": [
+    {
+      "code": "PASSENGER",
+      "name": "Passenger Vehicle",
+      "description": "Vehicles primarily designed for passenger transportation."
+    },
+    {
+      "code": "SUV",
+      "name": "SUV",
+      "description": "Sport utility vehicles designed for passenger and utility use."
+    },
+    {
+      "code": "CROSSOVER",
+      "name": "Crossover",
+      "description": "Car-based vehicles combining passenger-car comfort with SUV characteristics."
+    },
+    {
+      "code": "PICKUP",
+      "name": "Pickup Truck",
+      "description": "Vehicles with a passenger cabin and an open cargo bed."
+    },
+    {
+      "code": "COMMERCIAL",
+      "name": "Commercial Vehicle",
+      "description": "Vehicles designed primarily for commercial transportation or business use."
+    },
+    {
+      "code": "VAN",
+      "name": "Van",
+      "description": "Vehicles designed primarily for passenger or cargo transportation."
+    },
+    {
+      "code": "MPV",
+      "name": "MPV",
+      "description": "Multi-purpose vehicles designed for flexible passenger and cargo use."
+    },
+    {
+      "code": "COUPE",
+      "name": "Coupe",
+      "description": "Sport-oriented passenger vehicles with a fixed roof and typically two doors."
+    },
+    {
+      "code": "CONVERTIBLE",
+      "name": "Convertible",
+      "description": "Passenger vehicles with a retractable or removable roof."
+    },
+    {
+      "code": "WAGON",
+      "name": "Wagon",
+      "description": "Passenger vehicles with an extended rear cargo area."
+    },
+    {
+      "code": "MINIVAN",
+      "name": "Minivan",
+      "description": "Passenger-focused vans with flexible seating and cargo capacity."
+    },
+    {
+      "code": "OFF_ROAD",
+      "name": "Off-Road Vehicle",
+      "description": "Vehicles designed or equipped for operation on challenging terrain."
+    },
+    {
+      "code": "ELECTRIC",
+      "name": "Electric Vehicle",
+      "description": "Vehicles powered primarily by electric drive systems."
+    },
+    {
+      "code": "HYBRID",
+      "name": "Hybrid Vehicle",
+      "description": "Vehicles combining an internal combustion engine with electric propulsion."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "description": "Vehicle category has not yet been verified."
+    }
+  ]
+}
