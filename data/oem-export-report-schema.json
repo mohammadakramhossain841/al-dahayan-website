@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Al-Dahayan OEM Export Report",
+  "description": "Schema for storing export results from Toyota and Lexus OEM catalog records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reportId",
+    "exportId",
+    "status",
+    "startedAt",
+    "completedAt",
+    "summary"
+  ],
+  "properties": {
+    "reportId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exportId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fileName": {
+      "type": "string"
+    },
+    "fileFormat": {
+      "type": "string",
+      "enum": [
+        "csv",
+        "xlsx",
+        "json"
+      ]
+    },
+    "exportMode": {
+      "type": "string",
+      "enum": [
+        "all",
+        "selected",
+        "filtered",
+        "active",
+        "archived",
+        "disabled"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "preview",
+        "processing",
+        "completed",
+        "completed_with_warnings",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalSelected",
+        "totalExported",
+        "totalSkipped",
+        "warningCount",
+        "errorCount"
+      ],
+      "properties": {
+        "totalSelected": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalExported": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalSkipped": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warningCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "errorCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/issue"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/issue"
+          }
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/exportRecord"
+      }
+    },
+    "exportedBy": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "message",
+        "severity"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "warning",
+            "error"
+          ]
+        }
+      }
+    },
+    "exportRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recordId",
+        "oemNumber",
+        "status"
+      ],
+      "properties": {
+        "recordId": {
+          "type": "string"
+        },
+        "oemNumber": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "exported",
+            "skipped",
+            "failed"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
