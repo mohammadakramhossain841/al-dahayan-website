@@ -1,0 +1,129 @@
+{
+  "version": "1.0.0",
+  "regions": [
+    {
+      "code": "GCC",
+      "name": "Gulf Cooperation Council",
+      "countries": [
+        "Saudi Arabia",
+        "United Arab Emirates",
+        "Kuwait",
+        "Qatar",
+        "Bahrain",
+        "Oman"
+      ]
+    },
+    {
+      "code": "MENA",
+      "name": "Middle East and North Africa",
+      "countries": [
+        "Saudi Arabia",
+        "United Arab Emirates",
+        "Kuwait",
+        "Qatar",
+        "Bahrain",
+        "Oman",
+        "Jordan",
+        "Egypt",
+        "Morocco"
+      ]
+    },
+    {
+      "code": "EAST_ASIA",
+      "name": "East Asia",
+      "countries": [
+        "Japan",
+        "South Korea",
+        "China"
+      ]
+    },
+    {
+      "code": "SOUTH_ASIA",
+      "name": "South Asia",
+      "countries": [
+        "Bangladesh",
+        "India",
+        "Pakistan",
+        "Sri Lanka",
+        "Nepal"
+      ]
+    },
+    {
+      "code": "SOUTHEAST_ASIA",
+      "name": "Southeast Asia",
+      "countries": [
+        "Thailand",
+        "Malaysia",
+        "Indonesia",
+        "Philippines",
+        "Vietnam",
+        "Singapore"
+      ]
+    },
+    {
+      "code": "NORTH_AMERICA",
+      "name": "North America",
+      "countries": [
+        "United States",
+        "Canada",
+        "Mexico"
+      ]
+    },
+    {
+      "code": "EUROPE",
+      "name": "Europe",
+      "countries": [
+        "United Kingdom",
+        "Germany",
+        "France",
+        "Italy",
+        "Spain",
+        "Netherlands",
+        "Belgium",
+        "Sweden",
+        "Norway",
+        "Denmark"
+      ]
+    },
+    {
+      "code": "OCEANIA",
+      "name": "Oceania",
+      "countries": [
+        "Australia",
+        "New Zealand"
+      ]
+    },
+    {
+      "code": "AFRICA",
+      "name": "Africa",
+      "countries": [
+        "South Africa",
+        "Kenya",
+        "Nigeria",
+        "Egypt",
+        "Morocco"
+      ]
+    },
+    {
+      "code": "SOUTH_AMERICA",
+      "name": "South America",
+      "countries": [
+        "Brazil",
+        "Argentina",
+        "Chile",
+        "Colombia",
+        "Peru"
+      ]
+    },
+    {
+      "code": "GLOBAL",
+      "name": "Global",
+      "countries": []
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "countries": []
+    }
+  ]
+}
