@@ -1,0 +1,193 @@
+{
+  "serviceIntervals": [
+    {
+      "id": "SERVICE-001",
+      "code": "ENGINE_OIL",
+      "name": "Engine Oil",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended engine oil replacement interval"
+    },
+    {
+      "id": "SERVICE-002",
+      "code": "OIL_FILTER",
+      "name": "Oil Filter",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended engine oil filter replacement interval"
+    },
+    {
+      "id": "SERVICE-003",
+      "code": "AIR_FILTER",
+      "name": "Engine Air Filter",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended engine air filter inspection or replacement interval"
+    },
+    {
+      "id": "SERVICE-004",
+      "code": "CABIN_FILTER",
+      "name": "Cabin Air Filter",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended cabin air filter replacement interval"
+    },
+    {
+      "id": "SERVICE-005",
+      "code": "FUEL_FILTER",
+      "name": "Fuel Filter",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended fuel filter service interval"
+    },
+    {
+      "id": "SERVICE-006",
+      "code": "SPARK_PLUG",
+      "name": "Spark Plugs",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended spark plug inspection or replacement interval"
+    },
+    {
+      "id": "SERVICE-007",
+      "code": "BRAKE_FLUID",
+      "name": "Brake Fluid",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended brake fluid inspection or replacement interval"
+    },
+    {
+      "id": "SERVICE-008",
+      "code": "COOLANT",
+      "name": "Engine Coolant",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended coolant inspection or replacement interval"
+    },
+    {
+      "id": "SERVICE-009",
+      "code": "TRANSMISSION_FLUID",
+      "name": "Transmission Fluid",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended transmission fluid inspection or replacement interval"
+    },
+    {
+      "id": "SERVICE-010",
+      "code": "TRANSFER_CASE_FLUID",
+      "name": "Transfer Case Fluid",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended transfer case fluid service interval"
+    },
+    {
+      "id": "SERVICE-011",
+      "code": "DIFFERENTIAL_FLUID",
+      "name": "Differential Fluid",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended differential fluid service interval"
+    },
+    {
+      "id": "SERVICE-012",
+      "code": "BRAKE_INSPECTION",
+      "name": "Brake System Inspection",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended brake system inspection interval"
+    },
+    {
+      "id": "SERVICE-013",
+      "code": "TIRE_ROTATION",
+      "name": "Tire Rotation",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended tire rotation interval"
+    },
+    {
+      "id": "SERVICE-014",
+      "code": "WHEEL_ALIGNMENT",
+      "name": "Wheel Alignment",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended wheel alignment inspection interval"
+    },
+    {
+      "id": "SERVICE-015",
+      "code": "BATTERY_INSPECTION",
+      "name": "Battery Inspection",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended battery inspection interval"
+    },
+    {
+      "id": "SERVICE-016",
+      "code": "HYBRID_BATTERY_INSPECTION",
+      "name": "Hybrid Battery Inspection",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended hybrid battery system inspection interval"
+    },
+    {
+      "id": "SERVICE-017",
+      "code": "EV_BATTERY_INSPECTION",
+      "name": "EV Battery Inspection",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended electric vehicle battery system inspection interval"
+    },
+    {
+      "id": "SERVICE-018",
+      "code": "DRIVE_BELT",
+      "name": "Drive Belt",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended drive belt inspection or replacement interval"
+    },
+    {
+      "id": "SERVICE-019",
+      "code": "TIMING_BELT",
+      "name": "Timing Belt",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "Recommended timing belt inspection or replacement interval where applicable"
+    },
+    {
+      "id": "SERVICE-020",
+      "code": "GENERAL_INSPECTION",
+      "name": "General Vehicle Inspection",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": "km/months",
+      "description": "General scheduled vehicle inspection interval"
+    },
+    {
+      "id": "SERVICE-021",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "intervalKm": null,
+      "intervalMonths": null,
+      "unit": null,
+      "description": "Service interval not available"
+    }
+  ]
+}
