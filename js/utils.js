@@ -1,6 +1,13 @@
 (function () {
   "use strict";
 
+  /*
+   * Al-Dahayan Shared Utilities
+   *
+   * Common helper functions used across
+   * the website frontend.
+   */
+
   function qs(selector, parent = document) {
     return parent.querySelector(selector);
   }
@@ -11,99 +18,449 @@
     );
   }
 
-  function getElement(id) {
-    return document.getElementById(id);
-  }
+  function getElement(
+    selectorOrElement,
+    parent = document
+  ) {
+    if (
+      selectorOrElement instanceof
+      Element
+    ) {
+      return selectorOrElement;
+    }
 
-  function isObject(value) {
-    return (
-      value !== null &&
-      typeof value === "object" &&
-      !Array.isArray(value)
+    if (
+      typeof selectorOrElement !==
+      "string"
+    ) {
+      return null;
+    }
+
+    return qs(
+      selectorOrElement,
+      parent
     );
   }
 
-  function isArray(value) {
-    return Array.isArray(value);
-  }
+  function createElement(
+    tagName,
+    options = {}
+  ) {
+    const element =
+      document.createElement(
+        tagName
+      );
 
-  function isEmpty(value) {
-    return (
-      value === undefined ||
-      value === null ||
-      String(value).trim() === ""
-    );
+    if (options.className) {
+      element.className =
+        options.className;
+    }
+
+    if (options.id) {
+      element.id = options.id;
+    }
+
+    if (
+      options.textContent !==
+      undefined
+    ) {
+      element.textContent =
+        options.textContent;
+    }
+
+    if (options.html) {
+      element.innerHTML =
+        options.html;
+    }
+
+    if (options.attributes) {
+      Object.entries(
+        options.attributes
+      ).forEach(
+        ([name, value]) => {
+          if (
+            value !==
+              undefined &&
+            value !== null
+          ) {
+            element.setAttribute(
+              name,
+              String(value)
+            );
+          }
+        }
+      );
+    }
+
+    if (options.dataset) {
+      Object.entries(
+        options.dataset
+      ).forEach(
+        ([key, value]) => {
+          element.dataset[key] =
+            String(value);
+        }
+      );
+    }
+
+    return element;
   }
 
   function normalizeText(value) {
     return String(value || "")
+      .toLowerCase()
       .trim()
       .replace(/\s+/g, " ");
-  }
-
-  function normalizeSearchText(value) {
-    return normalizeText(value)
-      .toLowerCase();
   }
 
   function normalizeOEM(value) {
     return String(value || "")
       .toUpperCase()
-      .replace(/[\s-]/g, "");
+      .replace(
+        /[\s\-_.]/g,
+        ""
+      );
+  }
+
+  function normalizeVIN(value) {
+    return String(value || "")
+      .toUpperCase()
+      .replace(
+        /[^A-Z0-9]/g,
+        ""
+      )
+      .slice(0, 17);
+  }
+
+  function normalizePhone(value) {
+    return String(value || "")
+      .replace(
+        /[^0-9+]/g,
+        ""
+      )
+      .replace(
+        /^\+/,
+        ""
+      );
   }
 
   function escapeHTML(value) {
-    return String(value || "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+    const div =
+      document.createElement(
+        "div"
+      );
+
+    div.textContent =
+      String(value ?? "");
+
+    return div.innerHTML;
+  }
+
+  function isEmpty(value) {
+    if (
+      value === null ||
+      value === undefined
+    ) {
+      return true;
+    }
+
+    if (
+      typeof value ===
+      "string"
+    ) {
+      return (
+        value.trim() === ""
+      );
+    }
+
+    if (
+      Array.isArray(value)
+    ) {
+      return value.length === 0;
+    }
+
+    return false;
+  }
+
+  function getUniqueValues(
+    values
+  ) {
+    return [
+      ...new Set(
+        (Array.isArray(values)
+          ? values
+          : []
+        )
+          .filter(
+            (value) =>
+              value !==
+                undefined &&
+              value !== null
+          )
+          .map((value) =>
+            String(value).trim()
+          )
+          .filter(Boolean)
+      )
+    ];
+  }
+
+  function sortBy(
+    array,
+    key,
+    direction = "asc"
+  ) {
+    if (!Array.isArray(array)) {
+      return [];
+    }
+
+    const multiplier =
+      direction === "desc"
+        ? -1
+        : 1;
+
+    return [...array].sort(
+      (a, b) => {
+        const aValue =
+          getNestedValue(
+            a,
+            key
+          );
+
+        const bValue =
+          getNestedValue(
+            b,
+            key
+          );
+
+        if (
+          aValue ===
+          bValue
+        ) {
+          return 0;
+        }
+
+        if (
+          aValue ===
+            undefined ||
+          aValue === null
+        ) {
+          return 1;
+        }
+
+        if (
+          bValue ===
+            undefined ||
+          bValue === null
+        ) {
+          return -1;
+        }
+
+        return (
+          String(aValue)
+            .localeCompare(
+              String(bValue),
+              undefined,
+              {
+                numeric: true,
+                sensitivity:
+                  "base"
+              }
+            ) *
+          multiplier
+        );
+      }
+    );
+  }
+
+  function filterBy(
+    array,
+    filters = {}
+  ) {
+    if (!Array.isArray(array)) {
+      return [];
+    }
+
+    return array.filter(
+      (item) => {
+        return Object.entries(
+          filters
+        ).every(
+          ([key, expected]) => {
+            if (
+              expected ===
+                undefined ||
+              expected ===
+                null ||
+              expected === ""
+            ) {
+              return true;
+            }
+
+            const actual =
+              getNestedValue(
+                item,
+                key
+              );
+
+            if (
+              typeof expected ===
+              "function"
+            ) {
+              return expected(
+                actual,
+                item
+              );
+            }
+
+            return (
+              normalizeText(
+                actual
+              ) ===
+              normalizeText(
+                expected
+              )
+            );
+          }
+        );
+      }
+    );
+  }
+
+  function getNestedValue(
+    object,
+    path
+  ) {
+    if (
+      !object ||
+      !path
+    ) {
+      return undefined;
+    }
+
+    return String(path)
+      .split(".")
+      .reduce(
+        (current, key) =>
+          current !==
+              null &&
+          current !==
+              undefined
+            ? current[key]
+            : undefined,
+        object
+      );
+  }
+
+  function setNestedValue(
+    object,
+    path,
+    value
+  ) {
+    if (
+      !object ||
+      !path
+    ) {
+      return object;
+    }
+
+    const keys =
+      String(path).split(
+        "."
+      );
+
+    let current = object;
+
+    keys.forEach(
+      (key, index) => {
+        if (
+          index ===
+          keys.length - 1
+        ) {
+          current[key] =
+            value;
+          return;
+        }
+
+        if (
+          typeof current[key] !==
+            "object" ||
+          current[key] === null
+        ) {
+          current[key] = {};
+        }
+
+        current =
+          current[key];
+      }
+    );
+
+    return object;
   }
 
   function formatNumber(
     value,
-    locale = "en-US"
+    options = {}
   ) {
     const number =
       Number(value);
 
-    if (!Number.isFinite(number)) {
+    if (
+      !Number.isFinite(
+        number
+      )
+    ) {
       return "0";
     }
 
-    return new Intl.NumberFormat(
-      locale
-    ).format(number);
+    try {
+      return new Intl.NumberFormat(
+        options.locale ||
+          getCurrentLocale(),
+        options
+      ).format(number);
+    } catch {
+      return String(number);
+    }
   }
 
   function formatCurrency(
     value,
     currency = "SAR",
-    locale = "en-SA"
+    options = {}
   ) {
     const number =
       Number(value);
 
-    if (!Number.isFinite(number)) {
-      return "—";
+    if (
+      !Number.isFinite(
+        number
+      )
+    ) {
+      return "-";
     }
 
-    return new Intl.NumberFormat(
-      locale,
-      {
-        style: "currency",
-        currency
-      }
-    ).format(number);
+    try {
+      return new Intl.NumberFormat(
+        options.locale ||
+          getCurrentLocale(),
+        {
+          style: "currency",
+          currency,
+          ...options
+        }
+      ).format(number);
+    } catch {
+      return `${currency} ${number}`;
+    }
   }
 
   function formatDate(
     value,
-    locale = "en-US"
+    options = {}
   ) {
     if (!value) {
-      return "—";
+      return "";
     }
 
     const date =
@@ -114,62 +471,35 @@
         date.getTime()
       )
     ) {
-      return "—";
+      return "";
     }
 
-    return new Intl.DateTimeFormat(
-      locale,
-      {
-        year: "numeric",
-        month: "short",
-        day: "numeric"
-      }
-    ).format(date);
-  }
-
-  function formatDateTime(
-    value,
-    locale = "en-US"
-  ) {
-    if (!value) {
-      return "—";
+    try {
+      return new Intl.DateTimeFormat(
+        options.locale ||
+          getCurrentLocale(),
+        options
+      ).format(date);
+    } catch {
+      return date.toLocaleDateString();
     }
-
-    const date =
-      new Date(value);
-
-    if (
-      Number.isNaN(
-        date.getTime()
-      )
-    ) {
-      return "—";
-    }
-
-    return new Intl.DateTimeFormat(
-      locale,
-      {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit"
-      }
-    ).format(date);
   }
 
-  function getURLParameter(
-    name
-  ) {
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
+  function getCurrentLocale() {
+    const language =
+      document.documentElement.getAttribute(
+        "lang"
+      ) ||
+      window.APP_CONFIG?.site
+        ?.defaultLanguage ||
+      "en";
 
-    return params.get(name);
+    return language === "ar"
+      ? "ar-SA"
+      : "en-SA";
   }
 
-  function getAllURLParameters() {
+  function getURLParams() {
     const params =
       new URLSearchParams(
         window.location.search
@@ -186,64 +516,79 @@
     return result;
   }
 
-  function setURLParameter(
-    name,
-    value
-  ) {
-    const url =
-      new URL(
-        window.location.href
-      );
-
-    url.searchParams.set(
-      name,
-      value
-    );
-
-    window.history.replaceState(
-      {},
-      "",
-      url
-    );
-  }
-
-  function removeURLParameter(
+  function getURLParam(
     name
   ) {
+    return new URLSearchParams(
+      window.location.search
+    ).get(name);
+  }
+
+  function setURLParam(
+    name,
+    value,
+    options = {}
+  ) {
     const url =
       new URL(
         window.location.href
       );
 
-    url.searchParams.delete(
-      name
-    );
+    if (
+      value ===
+        null ||
+      value ===
+        undefined ||
+      value === ""
+    ) {
+      url.searchParams.delete(
+        name
+      );
+    } else {
+      url.searchParams.set(
+        name,
+        value
+      );
+    }
 
-    window.history.replaceState(
-      {},
-      "",
-      url
-    );
+    if (
+      options.replace !==
+      false
+    ) {
+      window.history.replaceState(
+        {},
+        "",
+        url.toString()
+      );
+    } else {
+      window.history.pushState(
+        {},
+        "",
+        url.toString()
+      );
+    }
+
+    return url;
   }
 
   function debounce(
     callback,
     delay = 300
   ) {
-    let timeout;
+    let timeoutId = null;
 
     return function (...args) {
-      clearTimeout(timeout);
+      clearTimeout(
+        timeoutId
+      );
 
-      timeout = setTimeout(
-        () => {
+      timeoutId =
+        setTimeout(() => {
           callback.apply(
             this,
             args
           );
-        },
-        delay
-      );
+        }, delay);
     };
   }
 
@@ -271,183 +616,6 @@
     };
   }
 
-  function generateId(
-    prefix = "ID"
-  ) {
-    const timestamp =
-      Date.now();
-
-    const random =
-      Math.random()
-        .toString(36)
-        .substring(2, 8)
-        .toUpperCase();
-
-    return `${prefix}-${timestamp}-${random}`;
-  }
-
-  function getUniqueValues(
-    values
-  ) {
-    return [
-      ...new Set(
-        values
-          .filter(
-            (value) =>
-              value !== undefined &&
-              value !== null &&
-              String(value).trim() !== ""
-          )
-          .map((value) =>
-            String(value).trim()
-          )
-      )
-    ];
-  }
-
-  function sortBy(
-    array,
-    key,
-    direction = "asc"
-  ) {
-    if (!Array.isArray(array)) {
-      return [];
-    }
-
-    return [...array].sort(
-      (a, b) => {
-        const first =
-          String(
-            a?.[key] ?? ""
-          ).toLowerCase();
-
-        const second =
-          String(
-            b?.[key] ?? ""
-          ).toLowerCase();
-
-        const comparison =
-          first.localeCompare(
-            second,
-            undefined,
-            {
-              numeric: true
-            }
-          );
-
-        return direction === "desc"
-          ? -comparison
-          : comparison;
-      }
-    );
-  }
-
-  function filterByValue(
-    array,
-    key,
-    value
-  ) {
-    if (!Array.isArray(array)) {
-      return [];
-    }
-
-    const target =
-      normalizeSearchText(
-        value
-      );
-
-    return array.filter(
-      (item) =>
-        normalizeSearchText(
-          item?.[key]
-        ).includes(target)
-    );
-  }
-
-  function safeJSONParse(
-    value,
-    fallback = null
-  ) {
-    try {
-      return JSON.parse(value);
-    } catch (error) {
-      return fallback;
-    }
-  }
-
-  function safeJSONStringify(
-    value,
-    fallback = "{}"
-  ) {
-    try {
-      return JSON.stringify(
-        value
-      );
-    } catch (error) {
-      return fallback;
-    }
-  }
-
-  function saveLocalData(
-    key,
-    value
-  ) {
-    try {
-      localStorage.setItem(
-        key,
-        safeJSONStringify(
-          value
-        )
-      );
-
-      return true;
-    } catch (error) {
-      console.warn(
-        "Local storage save failed:",
-        error
-      );
-
-      return false;
-    }
-  }
-
-  function getLocalData(
-    key,
-    fallback = null
-  ) {
-    try {
-      const value =
-        localStorage.getItem(
-          key
-        );
-
-      if (value === null) {
-        return fallback;
-      }
-
-      return safeJSONParse(
-        value,
-        fallback
-      );
-    } catch (error) {
-      return fallback;
-    }
-  }
-
-  function removeLocalData(
-    key
-  ) {
-    try {
-      localStorage.removeItem(
-        key
-      );
-
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
-
   async function fetchJSON(
     url,
     options = {}
@@ -460,101 +628,246 @@
 
     if (!response.ok) {
       throw new Error(
-        `Request failed: ${response.status}`
+        `Request failed: ${response.status} ${response.statusText}`
       );
     }
 
     return response.json();
   }
 
-  function createElement(
-    tag,
-    options = {}
+  function readLocalStorage(
+    key,
+    fallback = null
   ) {
-    const element =
-      document.createElement(
-        tag
+    try {
+      const value =
+        localStorage.getItem(
+          key
+        );
+
+      if (
+        value === null
+      ) {
+        return fallback;
+      }
+
+      return JSON.parse(
+        value
+      );
+    } catch {
+      return fallback;
+    }
+  }
+
+  function writeLocalStorage(
+    key,
+    value
+  ) {
+    try {
+      localStorage.setItem(
+        key,
+        JSON.stringify(value)
       );
 
-    if (options.className) {
-      element.className =
-        options.className;
+      return true;
+    } catch {
+      return false;
     }
+  }
 
-    if (options.id) {
-      element.id =
-        options.id;
-    }
-
-    if (options.text) {
-      element.textContent =
-        options.text;
-    }
-
-    if (options.html) {
-      element.innerHTML =
-        options.html;
-    }
-
-    if (options.attributes) {
-      Object.entries(
-        options.attributes
-      ).forEach(
-        ([name, value]) => {
-          element.setAttribute(
-            name,
-            value
-          );
-        }
+  function removeLocalStorage(
+    key
+  ) {
+    try {
+      localStorage.removeItem(
+        key
       );
-    }
 
-    return element;
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function generateID(
+    prefix = "ID"
+  ) {
+    const timestamp =
+      Date.now().toString(
+        36
+      );
+
+    const random =
+      Math.random()
+        .toString(36)
+        .substring(2, 8)
+        .toUpperCase();
+
+    return `${prefix}-${timestamp}-${random}`;
   }
 
   function scrollToElement(
     element,
-    behavior = "smooth"
+    options = {}
   ) {
-    if (!element) {
-      return;
+    const target =
+      getElement(element);
+
+    if (!target) {
+      return false;
     }
 
-    element.scrollIntoView({
-      behavior,
-      block: "start"
+    target.scrollIntoView({
+      behavior:
+        options.behavior ||
+        "smooth",
+      block:
+        options.block ||
+        "start",
+      inline:
+        options.inline ||
+        "nearest"
     });
+
+    return true;
   }
 
-  function copyToClipboard(
+  async function copyToClipboard(
     value
   ) {
     if (
       !navigator.clipboard
     ) {
-      return Promise.reject(
-        new Error(
-          "Clipboard API unavailable."
-        )
-      );
+      return false;
     }
 
-    return navigator.clipboard.writeText(
-      String(value || "")
+    try {
+      await navigator.clipboard.writeText(
+        String(value ?? "")
+      );
+
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function isRTL() {
+    return (
+      document.documentElement.getAttribute(
+        "dir"
+      ) === "rtl" ||
+      document.documentElement.getAttribute(
+        "lang"
+      ) === "ar"
     );
   }
 
-  function isMobileDevice() {
+  function isMobile() {
     return window.matchMedia(
       "(max-width: 768px)"
     ).matches;
   }
 
-  function isRTL() {
-    return (
-      document.documentElement
-        .getAttribute("dir") ===
-      "rtl"
+  function isTablet() {
+    return window.matchMedia(
+      "(min-width: 769px) and (max-width: 1024px)"
+    ).matches;
+  }
+
+  function isDesktop() {
+    return window.matchMedia(
+      "(min-width: 1025px)"
+    ).matches;
+  }
+
+  function addClass(
+    element,
+    className
+  ) {
+    const target =
+      getElement(element);
+
+    if (!target) {
+      return false;
+    }
+
+    target.classList.add(
+      className
+    );
+
+    return true;
+  }
+
+  function removeClass(
+    element,
+    className
+  ) {
+    const target =
+      getElement(element);
+
+    if (!target) {
+      return false;
+    }
+
+    target.classList.remove(
+      className
+    );
+
+    return true;
+  }
+
+  function toggleClass(
+    element,
+    className,
+    force
+  ) {
+    const target =
+      getElement(element);
+
+    if (!target) {
+      return false;
+    }
+
+    return target.classList.toggle(
+      className,
+      force
+    );
+  }
+
+  function on(
+    element,
+    event,
+    handler,
+    options
+  ) {
+    const target =
+      getElement(element);
+
+    if (!target) {
+      return false;
+    }
+
+    target.addEventListener(
+      event,
+      handler,
+      options
+    );
+
+    return true;
+  }
+
+  function dispatch(
+    eventName,
+    detail = {}
+  ) {
+    document.dispatchEvent(
+      new CustomEvent(
+        eventName,
+        {
+          detail
+        }
+      )
     );
   }
 
@@ -562,47 +875,56 @@
     qs,
     qsa,
     getElement,
-
-    isObject,
-    isArray,
-    isEmpty,
+    createElement,
 
     normalizeText,
-    normalizeSearchText,
     normalizeOEM,
+    normalizeVIN,
+    normalizePhone,
+
     escapeHTML,
+    isEmpty,
+
+    getUniqueValues,
+    sortBy,
+    filterBy,
+    getNestedValue,
+    setNestedValue,
 
     formatNumber,
     formatCurrency,
     formatDate,
-    formatDateTime,
+    getCurrentLocale,
 
-    getURLParameter,
-    getAllURLParameters,
-    setURLParameter,
-    removeURLParameter,
+    getURLParams,
+    getURLParam,
+    setURLParam,
 
     debounce,
     throttle,
-    generateId,
-
-    getUniqueValues,
-    sortBy,
-    filterByValue,
-
-    safeJSONParse,
-    safeJSONStringify,
-
-    saveLocalData,
-    getLocalData,
-    removeLocalData,
 
     fetchJSON,
-    createElement,
+
+    readLocalStorage,
+    writeLocalStorage,
+    removeLocalStorage,
+
+    generateID,
+
     scrollToElement,
     copyToClipboard,
 
-    isMobileDevice,
-    isRTL
+    isRTL,
+    isMobile,
+    isTablet,
+    isDesktop,
+
+    addClass,
+    removeClass,
+    toggleClass,
+
+    on,
+    dispatch
   };
+
 })();
