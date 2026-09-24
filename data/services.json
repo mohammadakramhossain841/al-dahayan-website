@@ -1,1 +1,236 @@
-
+{
+  "services": [
+    {
+      "id": "SRV-001",
+      "slug": "genuine-toyota-parts",
+      "name": {
+        "en": "Genuine Toyota Parts",
+        "ar": "قطع غيار تويوتا أصلية"
+      },
+      "shortDescription": {
+        "en": "Genuine Toyota spare parts for reliable vehicle maintenance.",
+        "ar": "قطع غيار تويوتا أصلية لصيانة موثوقة للمركبات."
+      },
+      "description": {
+        "en": "We help customers identify and source genuine Toyota spare parts based on vehicle details, OEM numbers, and availability.",
+        "ar": "نساعد العملاء في تحديد وتوفير قطع غيار تويوتا الأصلية بناءً على بيانات المركبة وأرقام القطع الأصلية والتوفر."
+      },
+      "category": "parts",
+      "icon": "toyota",
+      "active": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "SRV-002",
+      "slug": "genuine-lexus-parts",
+      "name": {
+        "en": "Genuine Lexus Parts",
+        "ar": "قطع غيار لكزس أصلية"
+      },
+      "shortDescription": {
+        "en": "Genuine Lexus spare parts with vehicle compatibility support.",
+        "ar": "قطع غيار لكزس أصلية مع دعم التوافق مع المركبة."
+      },
+      "description": {
+        "en": "Find the appropriate genuine Lexus parts using vehicle information, OEM numbers, or VIN-based identification.",
+        "ar": "العثور على قطع غيار لكزس الأصلية المناسبة باستخدام بيانات المركبة أو أرقام القطع الأصلية أو التعرف من خلال رقم الهيكل."
+      },
+      "category": "parts",
+      "icon": "lexus",
+      "active": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "SRV-003",
+      "slug": "oem-parts",
+      "name": {
+        "en": "OEM Parts",
+        "ar": "قطع غيار OEM"
+      },
+      "shortDescription": {
+        "en": "OEM part identification and sourcing support.",
+        "ar": "دعم تحديد وتوفير قطع غيار OEM."
+      },
+      "description": {
+        "en": "Search and identify OEM parts using part numbers and vehicle compatibility information.",
+        "ar": "البحث عن قطع غيار OEM وتحديدها باستخدام أرقام القطع ومعلومات توافق المركبة."
+      },
+      "category": "parts",
+      "icon": "oem",
+      "active": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "SRV-004",
+      "slug": "part-identification",
+      "name": {
+        "en": "Parts Identification",
+        "ar": "تحديد قطع الغيار"
+      },
+      "shortDescription": {
+        "en": "Assistance identifying the correct automotive spare part.",
+        "ar": "المساعدة في تحديد قطعة الغيار المناسبة للمركبة."
+      },
+      "description": {
+        "en": "Our customer connection system helps identify parts using OEM numbers, vehicle details, and other available information.",
+        "ar": "يساعد نظام التواصل مع العملاء في تحديد قطع الغيار باستخدام أرقام OEM وبيانات المركبة والمعلومات المتاحة."
+      },
+      "category": "support",
+      "icon": "search",
+      "active": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "SRV-005",
+      "slug": "vin-search",
+      "name": {
+        "en": "VIN Search",
+        "ar": "البحث برقم الهيكل VIN"
+      },
+      "shortDescription": {
+        "en": "Vehicle and parts identification through VIN information.",
+        "ar": "تحديد المركبة وقطع الغيار من خلال رقم الهيكل VIN."
+      },
+      "description": {
+        "en": "Use the vehicle identification number to help determine vehicle information and compatible spare parts.",
+        "ar": "استخدم رقم تعريف المركبة للمساعدة في تحديد بيانات المركبة وقطع الغيار المتوافقة."
+      },
+      "category": "search",
+      "icon": "vin",
+      "active": true,
+      "sortOrder": 5
+    },
+    {
+      "id": "SRV-006",
+      "slug": "vehicle-search",
+      "name": {
+        "en": "Vehicle-Based Parts Search",
+        "ar": "البحث عن القطع حسب المركبة"
+      },
+      "shortDescription": {
+        "en": "Search compatible parts by make, model, year, and engine.",
+        "ar": "البحث عن القطع المتوافقة حسب الشركة والموديل والسنة والمحرك."
+      },
+      "description": {
+        "en": "Customers can select vehicle details and explore parts associated with the selected Toyota or Lexus vehicle.",
+        "ar": "يمكن للعملاء اختيار بيانات المركبة واستعراض القطع المرتبطة بمركبات تويوتا أو لكزس المحددة."
+      },
+      "category": "search",
+      "icon": "vehicle",
+      "active": true,
+      "sortOrder": 6
+    },
+    {
+      "id": "SRV-007",
+      "slug": "oem-number-search",
+      "name": {
+        "en": "OEM Number Search",
+        "ar": "البحث برقم القطعة OEM"
+      },
+      "shortDescription": {
+        "en": "Search spare parts directly by OEM part number.",
+        "ar": "البحث عن قطع الغيار مباشرة باستخدام رقم القطعة الأصلي."
+      },
+      "description": {
+        "en": "Enter an OEM or part number to find available part information, compatibility, and inquiry options.",
+        "ar": "أدخل رقم OEM أو رقم القطعة للوصول إلى معلومات القطعة والتوافق وخيارات الاستفسار."
+      },
+      "category": "search",
+      "icon": "part-number",
+      "active": true,
+      "sortOrder": 7
+    },
+    {
+      "id": "SRV-008",
+      "slug": "availability-inquiry",
+      "name": {
+        "en": "Availability Inquiry",
+        "ar": "استفسار عن التوفر"
+      },
+      "shortDescription": {
+        "en": "Contact Al-Dahayan to check current part availability.",
+        "ar": "التواصل مع الضحيان للتحقق من توفر القطعة حالياً."
+      },
+      "description": {
+        "en": "Customers can submit an inquiry to confirm whether a requested spare part is currently available.",
+        "ar": "يمكن للعملاء إرسال استفسار للتأكد من توفر قطعة الغيار المطلوبة حالياً."
+      },
+      "category": "customer-service",
+      "icon": "stock",
+      "active": true,
+      "sortOrder": 8
+    },
+    {
+      "id": "SRV-009",
+      "slug": "parts-sourcing",
+      "name": {
+        "en": "Parts Sourcing",
+        "ar": "توفير قطع الغيار"
+      },
+      "shortDescription": {
+        "en": "Support for sourcing requested Toyota and Lexus parts.",
+        "ar": "دعم توفير قطع غيار تويوتا ولكزس المطلوبة."
+      },
+      "description": {
+        "en": "When a requested part is not immediately available, customers can contact Al-Dahayan for sourcing assistance.",
+        "ar": "عند عدم توفر القطعة المطلوبة بشكل فوري، يمكن للعملاء التواصل مع الضحيان للحصول على المساعدة في توفيرها."
+      },
+      "category": "sourcing",
+      "icon": "sourcing",
+      "active": true,
+      "sortOrder": 9
+    },
+    {
+      "id": "SRV-010",
+      "slug": "customer-inquiry-support",
+      "name": {
+        "en": "Customer Inquiry Support",
+        "ar": "دعم استفسارات العملاء"
+      },
+      "shortDescription": {
+        "en": "Direct support for spare-parts inquiries and requests.",
+        "ar": "دعم مباشر لاستفسارات وطلبات قطع الغيار."
+      },
+      "description": {
+        "en": "Customers can send part requests with vehicle and contact information and communicate directly with the Al-Dahayan team.",
+        "ar": "يمكن للعملاء إرسال طلبات قطع الغيار مع بيانات المركبة وبيانات التواصل والتواصل مباشرة مع فريق الضحيان."
+      },
+      "category": "customer-service",
+      "icon": "support",
+      "active": true,
+      "sortOrder": 10
+    }
+  ],
+  "categories": {
+    "parts": {
+      "name": {
+        "en": "Spare Parts",
+        "ar": "قطع الغيار"
+      }
+    },
+    "search": {
+      "name": {
+        "en": "Search Services",
+        "ar": "خدمات البحث"
+      }
+    },
+    "support": {
+      "name": {
+        "en": "Identification & Support",
+        "ar": "التحديد والدعم"
+      }
+    },
+    "sourcing": {
+      "name": {
+        "en": "Sourcing",
+        "ar": "توفير القطع"
+      }
+    },
+    "customer-service": {
+      "name": {
+        "en": "Customer Service",
+        "ar": "خدمة العملاء"
+      }
+    }
+  }
+}
