@@ -1,0 +1,704 @@
+{
+  "drivetrainSystems": [
+    {
+      "id": "DRV-001",
+      "code": "DRIVETRAIN_ASSEMBLY",
+      "name": "Drivetrain Assembly",
+      "category": "SYSTEM",
+      "description": "Complete drivetrain system transferring power from the engine or motor to the wheels"
+    },
+    {
+      "id": "DRV-002",
+      "code": "FRONT_DRIVETRAIN",
+      "name": "Front Drivetrain",
+      "category": "SYSTEM",
+      "description": "Drivetrain configuration powering the front wheels"
+    },
+    {
+      "id": "DRV-003",
+      "code": "REAR_DRIVETRAIN",
+      "name": "Rear Drivetrain",
+      "category": "SYSTEM",
+      "description": "Drivetrain configuration powering the rear wheels"
+    },
+    {
+      "id": "DRV-004",
+      "code": "AWD_DRIVETRAIN",
+      "name": "All-Wheel Drive Drivetrain",
+      "category": "SYSTEM",
+      "description": "Drivetrain capable of delivering power to multiple axles"
+    },
+    {
+      "id": "DRV-005",
+      "code": "FOUR_WHEEL_DRIVE",
+      "name": "Four-Wheel Drive System",
+      "category": "SYSTEM",
+      "description": "Drivetrain system designed to drive all four wheels"
+    },
+    {
+      "id": "DRV-006",
+      "code": "TRANSFER_CASE",
+      "name": "Transfer Case",
+      "category": "FOUR_WHEEL_DRIVE",
+      "description": "Transfers and distributes drivetrain power between axles"
+    },
+    {
+      "id": "DRV-007",
+      "code": "TRANSFER_CASE_ASSEMBLY",
+      "name": "Transfer Case Assembly",
+      "category": "FOUR_WHEEL_DRIVE",
+      "description": "Complete transfer case assembly"
+    },
+    {
+      "id": "DRV-008",
+      "code": "TRANSFER_CASE_CHAIN",
+      "name": "Transfer Case Chain",
+      "category": "FOUR_WHEEL_DRIVE",
+      "description": "Chain used to transfer rotational power inside applicable transfer cases"
+    },
+    {
+      "id": "DRV-009",
+      "code": "TRANSFER_CASE_GEAR",
+      "name": "Transfer Case Gear",
+      "category": "FOUR_WHEEL_DRIVE",
+      "description": "Gear used within the transfer case"
+    },
+    {
+      "id": "DRV-010",
+      "code": "TRANSFER_CASE_ACTUATOR",
+      "name": "Transfer Case Actuator",
+      "category": "FOUR_WHEEL_DRIVE",
+      "description": "Actuator used to control transfer case operating modes"
+    },
+    {
+      "id": "DRV-011",
+      "code": "TRANSFER_CASE_CONTROL_MODULE",
+      "name": "Transfer Case Control Module",
+      "category": "ELECTRONIC_CONTROL",
+      "description": "Electronic module controlling applicable transfer case functions"
+    },
+    {
+      "id": "DRV-012",
+      "code": "PROPELLER_SHAFT",
+      "name": "Propeller Shaft",
+      "category": "SHAFT",
+      "description": "Shaft transferring rotational power between the transmission or transfer case and differential"
+    },
+    {
+      "id": "DRV-013",
+      "code": "FRONT_PROPELLER_SHAFT",
+      "name": "Front Propeller Shaft",
+      "category": "SHAFT",
+      "description": "Propeller shaft transferring power to the front differential"
+    },
+    {
+      "id": "DRV-014",
+      "code": "REAR_PROPELLER_SHAFT",
+      "name": "Rear Propeller Shaft",
+      "category": "SHAFT",
+      "description": "Propeller shaft transferring power to the rear differential"
+    },
+    {
+      "id": "DRV-015",
+      "code": "DRIVESHAFT",
+      "name": "Driveshaft",
+      "category": "SHAFT",
+      "description": "Shaft transmitting rotational power through the drivetrain"
+    },
+    {
+      "id": "DRV-016",
+      "code": "DRIVESHAFT_CENTER_SUPPORT",
+      "name": "Driveshaft Center Support Bearing",
+      "category": "BEARING",
+      "description": "Bearing supporting a multi-piece driveshaft"
+    },
+    {
+      "id": "DRV-017",
+      "code": "DRIVESHAFT_CENTER_SUPPORT_BEARING",
+      "name": "Driveshaft Center Support Bearing Assembly",
+      "category": "BEARING",
+      "description": "Complete center support bearing assembly for applicable driveshafts"
+    },
+    {
+      "id": "DRV-018",
+      "code": "UNIVERSAL_JOINT",
+      "name": "Universal Joint",
+      "category": "JOINT",
+      "description": "Flexible joint allowing angular movement between connected shafts"
+    },
+    {
+      "id": "DRV-019",
+      "code": "SLIP_YOKE",
+      "name": "Slip Yoke",
+      "category": "SHAFT",
+      "description": "Sliding driveshaft connection accommodating drivetrain movement"
+    },
+    {
+      "id": "DRV-020",
+      "code": "DRIVESHAFT_FLANGE",
+      "name": "Driveshaft Flange",
+      "category": "SHAFT",
+      "description": "Flanged connection between drivetrain shafts and components"
+    },
+    {
+      "id": "DRV-021",
+      "code": "FRONT_DIFFERENTIAL",
+      "name": "Front Differential",
+      "category": "DIFFERENTIAL",
+      "description": "Differential assembly distributing power to the front wheels"
+    },
+    {
+      "id": "DRV-022",
+      "code": "REAR_DIFFERENTIAL",
+      "name": "Rear Differential",
+      "category": "DIFFERENTIAL",
+      "description": "Differential assembly distributing power to the rear wheels"
+    },
+    {
+      "id": "DRV-023",
+      "code": "CENTER_DIFFERENTIAL",
+      "name": "Center Differential",
+      "category": "DIFFERENTIAL",
+      "description": "Differential distributing torque between front and rear axles"
+    },
+    {
+      "id": "DRV-024",
+      "code": "DIFFERENTIAL_ASSEMBLY",
+      "name": "Differential Assembly",
+      "category": "DIFFERENTIAL",
+      "description": "Complete differential assembly"
+    },
+    {
+      "id": "DRV-025",
+      "code": "DIFFERENTIAL_CASE",
+      "name": "Differential Case",
+      "category": "DIFFERENTIAL",
+      "description": "Housing containing applicable differential gears"
+    },
+    {
+      "id": "DRV-026",
+      "code": "RING_GEAR",
+      "name": "Differential Ring Gear",
+      "category": "DIFFERENTIAL",
+      "description": "Large gear transferring power to the differential assembly"
+    },
+    {
+      "id": "DRV-027",
+      "code": "PINION_GEAR",
+      "name": "Differential Pinion Gear",
+      "category": "DIFFERENTIAL",
+      "description": "Gear meshing with the differential ring gear"
+    },
+    {
+      "id": "DRV-028",
+      "code": "PINION_SHAFT",
+      "name": "Differential Pinion Shaft",
+      "category": "DIFFERENTIAL",
+      "description": "Shaft carrying the differential pinion gear"
+    },
+    {
+      "id": "DRV-029",
+      "code": "SPIDER_GEAR",
+      "name": "Spider Gear",
+      "category": "DIFFERENTIAL",
+      "description": "Internal differential gear allowing wheel speed differences"
+    },
+    {
+      "id": "DRV-030",
+      "code": "SIDE_GEAR",
+      "name": "Differential Side Gear",
+      "category": "DIFFERENTIAL",
+      "description": "Gear connecting the differential carrier to axle shafts"
+    },
+    {
+      "id": "DRV-031",
+      "code": "DIFFERENTIAL_CARRIER",
+      "name": "Differential Carrier",
+      "category": "DIFFERENTIAL",
+      "description": "Carrier supporting internal differential gears"
+    },
+    {
+      "id": "DRV-032",
+      "code": "DIFFERENTIAL_BEARING",
+      "name": "Differential Bearing",
+      "category": "BEARING",
+      "description": "Bearing supporting the differential carrier"
+    },
+    {
+      "id": "DRV-033",
+      "code": "PINION_BEARING",
+      "name": "Pinion Bearing",
+      "category": "BEARING",
+      "description": "Bearing supporting the differential pinion shaft"
+    },
+    {
+      "id": "DRV-034",
+      "code": "DIFFERENTIAL_SEAL",
+      "name": "Differential Seal",
+      "category": "SEAL",
+      "description": "Seal preventing differential lubricant leakage"
+    },
+    {
+      "id": "DRV-035",
+      "code": "PINION_SEAL",
+      "name": "Pinion Seal",
+      "category": "SEAL",
+      "description": "Seal preventing lubricant leakage around the pinion shaft"
+    },
+    {
+      "id": "DRV-036",
+      "code": "AXLE_SHAFT",
+      "name": "Axle Shaft",
+      "category": "AXLE",
+      "description": "Shaft transferring differential power to the wheel hub"
+    },
+    {
+      "id": "DRV-037",
+      "code": "HALF_SHAFT",
+      "name": "Half Shaft",
+      "category": "AXLE",
+      "description": "Axle shaft connecting a differential or transaxle to a wheel"
+    },
+    {
+      "id": "DRV-038",
+      "code": "CV_AXLE",
+      "name": "CV Axle",
+      "category": "AXLE",
+      "description": "Complete axle shaft assembly using constant velocity joints"
+    },
+    {
+      "id": "DRV-039",
+      "code": "CV_JOINT",
+      "name": "CV Joint",
+      "category": "JOINT",
+      "description": "Constant velocity joint allowing smooth torque transfer at changing angles"
+    },
+    {
+      "id": "DRV-040",
+      "code": "INNER_CV_JOINT",
+      "name": "Inner CV Joint",
+      "category": "JOINT",
+      "description": "CV joint located near the differential or transaxle"
+    },
+    {
+      "id": "DRV-041",
+      "code": "OUTER_CV_JOINT",
+      "name": "Outer CV Joint",
+      "category": "JOINT",
+      "description": "CV joint located near the wheel hub"
+    },
+    {
+      "id": "DRV-042",
+      "code": "CV_BOOT",
+      "name": "CV Joint Boot",
+      "category": "PROTECTION",
+      "description": "Protective boot retaining lubricant around a CV joint"
+    },
+    {
+      "id": "DRV-043",
+      "code": "CV_BOOT_CLAMP",
+      "name": "CV Boot Clamp",
+      "category": "PROTECTION",
+      "description": "Clamp securing a CV joint protective boot"
+    },
+    {
+      "id": "DRV-044",
+      "code": "AXLE_NUT",
+      "name": "Axle Nut",
+      "category": "FASTENER",
+      "description": "Fastener securing the axle shaft to the applicable hub assembly"
+    },
+    {
+      "id": "DRV-045",
+      "code": "AXLE_FLANGE",
+      "name": "Axle Flange",
+      "category": "AXLE",
+      "description": "Flange connecting an axle shaft to a drivetrain component"
+    },
+    {
+      "id": "DRV-046",
+      "code": "HUB_ASSEMBLY",
+      "name": "Wheel Hub Assembly",
+      "category": "WHEEL_END",
+      "description": "Wheel-end assembly connecting the axle and wheel"
+    },
+    {
+      "id": "DRV-047",
+      "code": "WHEEL_HUB_BEARING",
+      "name": "Wheel Hub Bearing",
+      "category": "BEARING",
+      "description": "Bearing supporting wheel rotation"
+    },
+    {
+      "id": "DRV-048",
+      "code": "AXLE_BEARING",
+      "name": "Axle Bearing",
+      "category": "BEARING",
+      "description": "Bearing supporting an applicable axle shaft"
+    },
+    {
+      "id": "DRV-049",
+      "code": "AXLE_SEAL",
+      "name": "Axle Seal",
+      "category": "SEAL",
+      "description": "Seal preventing lubricant leakage around an axle shaft"
+    },
+    {
+      "id": "DRV-050",
+      "code": "LOCKING_HUB",
+      "name": "Locking Hub",
+      "category": "FOUR_WHEEL_DRIVE",
+      "description": "Hub mechanism used to engage or disengage applicable front axle components"
+    },
+    {
+      "id": "DRV-051",
+      "code": "DIFFERENTIAL_LOCK",
+      "name": "Differential Lock",
+      "category": "DIFFERENTIAL",
+      "description": "System that limits or prevents differential speed differences"
+    },
+    {
+      "id": "DRV-052",
+      "code": "REAR_DIFFERENTIAL_LOCK",
+      "name": "Rear Differential Lock",
+      "category": "DIFFERENTIAL",
+      "description": "Locking mechanism for the rear differential"
+    },
+    {
+      "id": "DRV-053",
+      "code": "CENTER_DIFFERENTIAL_LOCK",
+      "name": "Center Differential Lock",
+      "category": "DIFFERENTIAL",
+      "description": "Locking mechanism for an applicable center differential"
+    },
+    {
+      "id": "DRV-054",
+      "code": "LIMITED_SLIP_DIFFERENTIAL",
+      "name": "Limited Slip Differential",
+      "category": "DIFFERENTIAL",
+      "description": "Differential designed to limit excessive speed difference between wheels"
+    },
+    {
+      "id": "DRV-055",
+      "code": "TORQUE_BIASING_DIFFERENTIAL",
+      "name": "Torque Biasing Differential",
+      "category": "DIFFERENTIAL",
+      "description": "Differential designed to distribute torque according to available traction"
+    },
+    {
+      "id": "DRV-056",
+      "code": "ACTIVE_DIFFERENTIAL",
+      "name": "Active Differential",
+      "category": "DIFFERENTIAL",
+      "description": "Electronically or hydraulically controlled differential system"
+    },
+    {
+      "id": "DRV-057",
+      "code": "ELECTRONIC_DIFFERENTIAL_CONTROL",
+      "name": "Electronic Differential Control",
+      "category": "ELECTRONIC_CONTROL",
+      "description": "Electronic system controlling differential torque distribution"
+    },
+    {
+      "id": "DRV-058",
+      "code": "AWD_COUPLING",
+      "name": "AWD Coupling",
+      "category": "AWD",
+      "description": "Coupling controlling torque transfer between axles in applicable AWD systems"
+    },
+    {
+      "id": "DRV-059",
+      "code": "AWD_COUPLING_PUMP",
+      "name": "AWD Coupling Pump",
+      "category": "AWD",
+      "description": "Pump controlling hydraulic pressure in applicable AWD couplings"
+    },
+    {
+      "id": "DRV-060",
+      "code": "AWD_CONTROL_MODULE",
+      "name": "AWD Control Module",
+      "category": "ELECTRONIC_CONTROL",
+      "description": "Electronic module managing applicable all-wheel-drive operation"
+    },
+    {
+      "id": "DRV-061",
+      "code": "FRONT_DRIVE_UNIT",
+      "name": "Front Drive Unit",
+      "category": "AWD",
+      "description": "Drive unit supplying power to the front axle"
+    },
+    {
+      "id": "DRV-062",
+      "code": "REAR_DRIVE_UNIT",
+      "name": "Rear Drive Unit",
+      "category": "AWD",
+      "description": "Drive unit supplying power to the rear axle"
+    },
+    {
+      "id": "DRV-063",
+      "code": "FINAL_DRIVE",
+      "name": "Final Drive",
+      "category": "GEAR",
+      "description": "Final gear reduction between transmission and driven wheels"
+    },
+    {
+      "id": "DRV-064",
+      "code": "FINAL_DRIVE_GEAR",
+      "name": "Final Drive Gear",
+      "category": "GEAR",
+      "description": "Gear set providing final drivetrain reduction"
+    },
+    {
+      "id": "DRV-065",
+      "code": "FINAL_DRIVE_CARRIER",
+      "name": "Final Drive Carrier",
+      "category": "DIFFERENTIAL",
+      "description": "Carrier supporting final drive and differential components"
+    },
+    {
+      "id": "DRV-066",
+      "code": "DRIVE_PINION",
+      "name": "Drive Pinion",
+      "category": "GEAR",
+      "description": "Pinion gear driving the final drive ring gear"
+    },
+    {
+      "id": "DRV-067",
+      "code": "DRIVE_RING_GEAR",
+      "name": "Drive Ring Gear",
+      "category": "GEAR",
+      "description": "Ring gear driven by the final drive pinion"
+    },
+    {
+      "id": "DRV-068",
+      "code": "DRIVETRAIN_FLUID",
+      "name": "Drivetrain Fluid",
+      "category": "FLUID",
+      "description": "Lubricant used by applicable differential, transfer case or drivetrain components"
+    },
+    {
+      "id": "DRV-069",
+      "code": "DIFFERENTIAL_OIL",
+      "name": "Differential Oil",
+      "category": "FLUID",
+      "description": "Lubricant used inside applicable differential assemblies"
+    },
+    {
+      "id": "DRV-070",
+      "code": "TRANSFER_CASE_FLUID",
+      "name": "Transfer Case Fluid",
+      "category": "FLUID",
+      "description": "Fluid specified for applicable transfer case systems"
+    },
+    {
+      "id": "DRV-071",
+      "code": "DIFFERENTIAL_COVER",
+      "name": "Differential Cover",
+      "category": "DIFFERENTIAL",
+      "description": "Cover enclosing applicable differential components"
+    },
+    {
+      "id": "DRV-072",
+      "code": "DIFFERENTIAL_COVER_GASKET",
+      "name": "Differential Cover Gasket",
+      "category": "SEAL",
+      "description": "Gasket sealing the differential cover"
+    },
+    {
+      "id": "DRV-073",
+      "code": "DIFFERENTIAL_DRAIN_PLUG",
+      "name": "Differential Drain Plug",
+      "category": "SERVICE",
+      "description": "Drain plug used for differential lubricant service"
+    },
+    {
+      "id": "DRV-074",
+      "code": "DIFFERENTIAL_FILLER_PLUG",
+      "name": "Differential Filler Plug",
+      "category": "SERVICE",
+      "description": "Filler plug used to service differential lubricant"
+    },
+    {
+      "id": "DRV-075",
+      "code": "TRANSFER_CASE_DRAIN_PLUG",
+      "name": "Transfer Case Drain Plug",
+      "category": "SERVICE",
+      "description": "Drain plug used for transfer case fluid service"
+    },
+    {
+      "id": "DRV-076",
+      "code": "TRANSFER_CASE_FILLER_PLUG",
+      "name": "Transfer Case Filler Plug",
+      "category": "SERVICE",
+      "description": "Filler plug used for transfer case fluid service"
+    },
+    {
+      "id": "DRV-077",
+      "code": "DRIVESHAFT_GUARD",
+      "name": "Driveshaft Guard",
+      "category": "PROTECTION",
+      "description": "Protective component covering or shielding applicable driveshaft components"
+    },
+    {
+      "id": "DRV-078",
+      "code": "DRIVESHAFT_DAMPER",
+      "name": "Driveshaft Damper",
+      "category": "VIBRATION_CONTROL",
+      "description": "Component used to reduce drivetrain vibration"
+    },
+    {
+      "id": "DRV-079",
+      "code": "DRIVETRAIN_VIBRATION_DAMPER",
+      "name": "Drivetrain Vibration Damper",
+      "category": "VIBRATION_CONTROL",
+      "description": "Damper designed to reduce rotational drivetrain vibration"
+    },
+    {
+      "id": "DRV-080",
+      "code": "DRIVETRAIN_MOUNT",
+      "name": "Drivetrain Mount",
+      "category": "MOUNTING",
+      "description": "Mounting component supporting drivetrain assemblies"
+    },
+    {
+      "id": "DRV-081",
+      "code": "DIFFERENTIAL_MOUNT",
+      "name": "Differential Mount",
+      "category": "MOUNTING",
+      "description": "Mount supporting an applicable differential assembly"
+    },
+    {
+      "id": "DRV-082",
+      "code": "TRANSFER_CASE_MOUNT",
+      "name": "Transfer Case Mount",
+      "category": "MOUNTING",
+      "description": "Mount supporting the transfer case"
+    },
+    {
+      "id": "DRV-083",
+      "code": "AXLE_HOUSING",
+      "name": "Axle Housing",
+      "category": "AXLE",
+      "description": "Housing containing applicable axle and differential components"
+    },
+    {
+      "id": "DRV-084",
+      "code": "REAR_AXLE_HOUSING",
+      "name": "Rear Axle Housing",
+      "category": "AXLE",
+      "description": "Rear axle housing for applicable drivetrain designs"
+    },
+    {
+      "id": "DRV-085",
+      "code": "FRONT_AXLE_HOUSING",
+      "name": "Front Axle Housing",
+      "category": "AXLE",
+      "description": "Front axle housing for applicable drivetrain designs"
+    },
+    {
+      "id": "DRV-086",
+      "code": "AXLE_TUBE",
+      "name": "Axle Tube",
+      "category": "AXLE",
+      "description": "Structural tube forming part of an applicable axle housing"
+    },
+    {
+      "id": "DRV-087",
+      "code": "ELECTRIC_DRIVE_MOTOR",
+      "name": "Electric Drive Motor",
+      "category": "ELECTRIC",
+      "description": "Electric motor supplying propulsion torque"
+    },
+    {
+      "id": "DRV-088",
+      "code": "ELECTRIC_DRIVE_UNIT",
+      "name": "Electric Drive Unit",
+      "category": "ELECTRIC",
+      "description": "Integrated electric propulsion unit containing motor and reduction components"
+    },
+    {
+      "id": "DRV-089",
+      "code": "ELECTRIC_REDUCTION_GEAR",
+      "name": "Electric Reduction Gear",
+      "category": "ELECTRIC",
+      "description": "Gear reduction mechanism used with an electric drive motor"
+    },
+    {
+      "id": "DRV-090",
+      "code": "ELECTRIC_DRIVE_UNIT_COOLING",
+      "name": "Electric Drive Unit Cooling System",
+      "category": "ELECTRIC",
+      "description": "Cooling system for applicable electric drive units"
+    },
+    {
+      "id": "DRV-091",
+      "code": "ELECTRIC_DRIVE_UNIT_CONTROL_MODULE",
+      "name": "Electric Drive Unit Control Module",
+      "category": "ELECTRONIC_CONTROL",
+      "description": "Electronic controller managing an applicable electric drive unit"
+    },
+    {
+      "id": "DRV-092",
+      "code": "DRIVETRAIN_SPEED_SENSOR",
+      "name": "Drivetrain Speed Sensor",
+      "category": "SENSOR",
+      "description": "Sensor measuring rotational speed within the drivetrain"
+    },
+    {
+      "id": "DRV-093",
+      "code": "AXLE_SPEED_SENSOR",
+      "name": "Axle Speed Sensor",
+      "category": "SENSOR",
+      "description": "Sensor monitoring applicable axle rotational speed"
+    },
+    {
+      "id": "DRV-094",
+      "code": "DIFFERENTIAL_TEMPERATURE_SENSOR",
+      "name": "Differential Temperature Sensor",
+      "category": "SENSOR",
+      "description": "Measures differential temperature where equipped"
+    },
+    {
+      "id": "DRV-095",
+      "code": "TRANSFER_CASE_POSITION_SENSOR",
+      "name": "Transfer Case Position Sensor",
+      "category": "SENSOR",
+      "description": "Detects transfer case operating position"
+    },
+    {
+      "id": "DRV-096",
+      "code": "DRIVETRAIN_WIRING_HARNESS",
+      "name": "Drivetrain Wiring Harness",
+      "category": "ELECTRICAL",
+      "description": "Electrical wiring connecting drivetrain sensors and control components"
+    },
+    {
+      "id": "DRV-097",
+      "code": "DRIVETRAIN_CONNECTOR",
+      "name": "Drivetrain Connector",
+      "category": "ELECTRICAL",
+      "description": "Electrical connector used by applicable drivetrain components"
+    },
+    {
+      "id": "DRV-098",
+      "code": "DRIVETRAIN_SERVICE_KIT",
+      "name": "Drivetrain Service Kit",
+      "category": "SERVICE_KIT",
+      "description": "Service kit containing applicable drivetrain maintenance components"
+    },
+    {
+      "id": "DRV-099",
+      "code": "DRIVETRAIN_REPAIR_KIT",
+      "name": "Drivetrain Repair Kit",
+      "category": "SERVICE_KIT",
+      "description": "Repair kit containing applicable drivetrain components"
+    },
+    {
+      "id": "DRV-100",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "category": "UNKNOWN",
+      "description": "Drivetrain system specification not available"
+    }
+  ]
+}
