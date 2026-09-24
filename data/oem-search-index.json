@@ -1,0 +1,117 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Search index configuration for the Al-Dahayan Toyota and Lexus OEM catalog.",
+  "source": {
+    "catalog": "oem-catalog.json",
+    "schema": "oem-catalog-schema.json"
+  },
+  "indexedFields": [
+    {
+      "field": "oemNumber",
+      "weight": 100,
+      "exactMatch": true,
+      "prefixMatch": true
+    },
+    {
+      "field": "partName",
+      "weight": 80,
+      "exactMatch": false,
+      "prefixMatch": true
+    },
+    {
+      "field": "partNameArabic",
+      "weight": 80,
+      "exactMatch": false,
+      "prefixMatch": true
+    },
+    {
+      "field": "brand",
+      "weight": 70,
+      "exactMatch": true,
+      "prefixMatch": true
+    },
+    {
+      "field": "category",
+      "weight": 60,
+      "exactMatch": true,
+      "prefixMatch": true
+    },
+    {
+      "field": "subcategory",
+      "weight": 50,
+      "exactMatch": true,
+      "prefixMatch": true
+    },
+    {
+      "field": "models",
+      "weight": 70,
+      "exactMatch": true,
+      "prefixMatch": true
+    },
+    {
+      "field": "engineCodes",
+      "weight": 65,
+      "exactMatch": true,
+      "prefixMatch": true
+    },
+    {
+      "field": "marketSpecs",
+      "weight": 40,
+      "exactMatch": true,
+      "prefixMatch": true
+    }
+  ],
+  "searchOptions": {
+    "caseSensitive": false,
+    "trimWhitespace": true,
+    "normalizeUnicode": true,
+    "minimumQueryLength": 2,
+    "maximumResults": 50,
+    "enablePrefixSearch": true,
+    "enableExactSearch": true,
+    "enablePartialSearch": true,
+    "enableArabicSearch": true
+  },
+  "oemNormalization": {
+    "uppercase": true,
+    "trimWhitespace": true,
+    "preserveHyphens": true,
+    "preserveSlashes": true,
+    "preserveDots": true
+  },
+  "ranking": {
+    "exactOemMatch": 1000,
+    "oemPrefixMatch": 900,
+    "exactPartNameMatch": 800,
+    "partNamePrefixMatch": 700,
+    "exactModelMatch": 600,
+    "categoryMatch": 400,
+    "engineMatch": 350,
+    "marketMatch": 200
+  },
+  "filters": [
+    "brand",
+    "category",
+    "subcategory",
+    "model",
+    "modelYear",
+    "engineCode",
+    "marketSpec",
+    "genuine",
+    "aftermarket",
+    "stockStatus",
+    "status"
+  ],
+  "excludedStatuses": [
+    "archived",
+    "disabled"
+  ],
+  "indexMaintenance": {
+    "rebuildOnImport": true,
+    "rebuildOnUpdate": true,
+    "rebuildOnArchive": true,
+    "rebuildOnDelete": false,
+    "manualRebuildSupported": true
+  }
+}
