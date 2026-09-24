@@ -1,0 +1,88 @@
+{
+  "weightSpecifications": [
+    {
+      "id": "WEIGHT-001",
+      "code": "CURB_WEIGHT_KG",
+      "name": "Curb Weight",
+      "unit": "kg",
+      "description": "Vehicle weight without passengers or cargo"
+    },
+    {
+      "id": "WEIGHT-002",
+      "code": "GROSS_WEIGHT_KG",
+      "name": "Gross Vehicle Weight",
+      "unit": "kg",
+      "description": "Maximum permitted vehicle weight including passengers and cargo"
+    },
+    {
+      "id": "WEIGHT-003",
+      "code": "PAYLOAD_KG",
+      "name": "Payload Capacity",
+      "unit": "kg",
+      "description": "Maximum passenger and cargo carrying capacity"
+    },
+    {
+      "id": "WEIGHT-004",
+      "code": "TOWING_CAPACITY_KG",
+      "name": "Towing Capacity",
+      "unit": "kg",
+      "description": "Maximum permitted trailer towing capacity"
+    },
+    {
+      "id": "WEIGHT-005",
+      "code": "GROSS_COMBINED_WEIGHT_KG",
+      "name": "Gross Combined Weight",
+      "unit": "kg",
+      "description": "Maximum combined weight of vehicle, passengers, cargo and trailer"
+    },
+    {
+      "id": "WEIGHT-006",
+      "code": "FRONT_AXLE_WEIGHT_KG",
+      "name": "Front Axle Weight",
+      "unit": "kg",
+      "description": "Specified front axle load"
+    },
+    {
+      "id": "WEIGHT-007",
+      "code": "REAR_AXLE_WEIGHT_KG",
+      "name": "Rear Axle Weight",
+      "unit": "kg",
+      "description": "Specified rear axle load"
+    },
+    {
+      "id": "WEIGHT-008",
+      "code": "MAX_AXLE_WEIGHT_KG",
+      "name": "Maximum Axle Weight",
+      "unit": "kg",
+      "description": "Maximum permitted load for an axle"
+    },
+    {
+      "id": "WEIGHT-009",
+      "code": "BATTERY_WEIGHT_KG",
+      "name": "Battery Weight",
+      "unit": "kg",
+      "description": "Weight of the vehicle battery system"
+    },
+    {
+      "id": "WEIGHT-010",
+      "code": "ENGINE_WEIGHT_KG",
+      "name": "Engine Weight",
+      "unit": "kg",
+      "description": "Reference engine assembly weight"
+    },
+    {
+      "id": "WEIGHT-011",
+      "code": "TRANSMISSION_WEIGHT_KG",
+      "name": "Transmission Weight",
+      "unit": "kg",
+      "description": "Reference transmission assembly weight"
+    },
+    {
+      "id": "WEIGHT-012",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "unit": "kg",
+      "description": "Weight specification not available"
+    }
+  ]
+}
