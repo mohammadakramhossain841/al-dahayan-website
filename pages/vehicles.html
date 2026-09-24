@@ -1,1 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Search Toyota and Lexus vehicles by make, model, year and engine to discover compatible spare parts."
+  >
+
+  <meta
+    name="keywords"
+    content="Toyota vehicles, Lexus vehicles, Toyota spare parts, Lexus spare parts, vehicle parts search, Saudi Arabia"
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <meta
+    name="author"
+    content="Al-Dahayan Trading Company"
+  >
+
+  <meta
+    property="og:title"
+    content="Vehicle Search | Al-Dahayan Trading Company"
+  >
+
+  <meta
+    property="og:description"
+    content="Find Toyota and Lexus spare parts using vehicle information."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <title>
+    Vehicle Search | Al-Dahayan Trading Company
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="../css/style.css"
+  >
+</head>
+
+<body data-page="vehicles">
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header
+    class="site-header"
+    data-navigation
+  >
+
+    <div class="container header-inner">
+
+      <a
+        href="../index.html"
+        class="site-logo"
+        aria-label="Al-Dahayan Trading Company Home"
+      >
+        <span class="logo-main">
+          AL-DAHAYAN
+        </span>
+
+        <span class="logo-sub">
+          Trading Company
+        </span>
+      </a>
+
+
+      <nav
+        class="main-navigation"
+        aria-label="Main Navigation"
+      >
+
+        <a
+          href="../index.html"
+          class="nav-link"
+          data-nav-link="home"
+        >
+          <span data-i18n="nav.home">
+            Home
+          </span>
+        </a>
+
+        <a
+          href="about.html"
+          class="nav-link"
+          data-nav-link="about"
+        >
+          <span data-i18n="nav.about">
+            About
+          </span>
+        </a>
+
+        <a
+          href="parts.html"
+          class="nav-link"
+          data-nav-link="parts"
+        >
+          <span data-i18n="nav.parts">
+            Parts
+          </span>
+        </a>
+
+        <a
+          href="vehicles.html"
+          class="nav-link active"
+          data-nav-link="vehicles"
+        >
+          <span data-i18n="nav.vehicles">
+            Vehicles
+          </span>
+        </a>
+
+        <a
+          href="vin-search.html"
+          class="nav-link"
+          data-nav-link="vin"
+        >
+          <span data-i18n="nav.vin">
+            VIN Search
+          </span>
+        </a>
+
+        <a
+          href="services.html"
+          class="nav-link"
+          data-nav-link="services"
+        >
+          <span data-i18n="nav.services">
+            Services
+          </span>
+        </a>
+
+        <a
+          href="contact.html"
+          class="nav-link"
+          data-nav-link="contact"
+        >
+          <span data-i18n="nav.contact">
+            Contact
+          </span>
+        </a>
+
+      </nav>
+
+
+      <div class="header-actions">
+
+        <div
+          class="language-switcher"
+          data-language-switcher
+        >
+
+          <button
+            type="button"
+            class="language-button active"
+            data-language="en"
+          >
+            EN
+          </button>
+
+          <button
+            type="button"
+            class="language-button"
+            data-language="ar"
+          >
+            العربية
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         PAGE HERO
+    ========================== -->
+
+    <section class="hero-section">
+
+      <div class="container hero-content">
+
+        <div class="hero-text">
+
+          <p class="eyebrow">
+            Toyota & Lexus
+          </p>
+
+          <h1 data-i18n="vehicles.title">
+            Search by Vehicle
+          </h1>
+
+          <p
+            class="hero-description"
+            data-i18n="vehicles.description"
+          >
+            Select your vehicle to discover compatible
+            Toyota and Lexus spare parts.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         VEHICLE FILTER
+    ========================== -->
+
+    <section class="section search-section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            Vehicle Search
+          </p>
+
+          <h2>
+            Select Your Vehicle
+          </h2>
+
+          <p>
+            Choose the make, model, year and engine
+            to find relevant spare-parts information.
+          </p>
+
+        </div>
+
+
+        <div class="search-card">
+
+          <form
+            id="vehicleSearchForm"
+            class="part-search-form"
+            data-vehicle-search-form
+          >
+
+            <div class="search-grid">
+
+              <!-- MAKE -->
+
+              <div class="form-group">
+
+                <label for="vehicleMake">
+                  Make
+                </label>
+
+                <select
+                  id="vehicleMake"
+                  name="make"
+                  data-vehicle-make
+                >
+
+                  <option value="">
+                    Select Make
+                  </option>
+
+                  <option value="Toyota">
+                    Toyota
+                  </option>
+
+                  <option value="Lexus">
+                    Lexus
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <!-- MODEL -->
+
+              <div class="form-group">
+
+                <label for="vehicleModel">
+                  Model
+                </label>
+
+                <select
+                  id="vehicleModel"
+                  name="model"
+                  data-vehicle-model
+                  disabled
+                >
+
+                  <option value="">
+                    Select Model
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <!-- YEAR -->
+
+              <div class="form-group">
+
+                <label for="vehicleYear">
+                  Year
+                </label>
+
+                <select
+                  id="vehicleYear"
+                  name="year"
+                  data-vehicle-year
+                  disabled
+                >
+
+                  <option value="">
+                    Select Year
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <!-- ENGINE -->
+
+              <div class="form-group">
+
+                <label for="vehicleEngine">
+                  Engine
+                </label>
+
+                <select
+                  id="vehicleEngine"
+                  name="engine"
+                  data-vehicle-engine
+                  disabled
+                >
+
+                  <option value="">
+                    Select Engine
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <div class="connection-actions">
+
+              <button
+                type="submit"
+                class="button button-primary"
+              >
+                Find Compatible Parts
+              </button>
+
+              <button
+                type="reset"
+                class="button button-secondary"
+                data-vehicle-reset
+              >
+                Reset
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         VEHICLE RESULTS
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            Vehicle Results
+          </p>
+
+          <h2>
+            Matching Vehicles
+          </h2>
+
+          <p
+            data-vehicle-result-summary
+          >
+            Select vehicle information above.
+          </p>
+
+        </div>
+
+
+        <div
+          class="services-grid"
+          id="vehicleResults"
+          data-vehicle-results
+        >
+
+          <article class="service-card">
+
+            <h3>
+              Select a Vehicle
+            </h3>
+
+            <p>
+              Choose make, model, year and engine
+              to view matching vehicle records.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         COMPATIBILITY
+    ========================== -->
+
+    <section class="section trust-section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            Compatibility
+          </p>
+
+          <h2>
+            Find Parts for Your Vehicle
+          </h2>
+
+        </div>
+
+
+        <div class="trust-grid">
+
+          <article class="trust-card">
+
+            <h3>
+              Vehicle Identification
+            </h3>
+
+            <p>
+              Identify your vehicle using make,
+              model, year and engine information.
+            </p>
+
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              Compatible Parts
+            </h3>
+
+            <p>
+              Connect vehicle records with
+              compatible OEM spare-parts data.
+            </p>
+
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              Stock Availability
+            </h3>
+
+            <p>
+              Where inventory data is available,
+              check the current stock status.
+            </p>
+
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              Ask Al-Dahayan
+            </h3>
+
+            <p>
+              Send an inquiry if you need help
+              identifying or sourcing a part.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         VIN ALTERNATIVE
+    ========================== -->
+
+    <section class="section search-section">
+
+      <div class="container">
+
+        <div class="search-card">
+
+          <div class="section-heading">
+
+            <p class="eyebrow">
+              Alternative Search
+            </p>
+
+            <h2>
+              Have the VIN?
+            </h2>
+
+            <p>
+              Use the VIN search system when you want
+              to identify a vehicle using its
+              Vehicle Identification Number.
+            </p>
+
+          </div>
+
+
+          <div class="connection-actions">
+
+            <a
+              href="vin-search.html"
+              class="button button-primary"
+            >
+              Search by VIN
+            </a>
+
+            <a
+              href="parts.html"
+              class="button button-secondary"
+            >
+              Search by OEM
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         INQUIRY CTA
+    ========================== -->
+
+    <section class="section connection-section">
+
+      <div class="container">
+
+        <div class="connection-card">
+
+          <div>
+
+            <p class="eyebrow">
+              Need Assistance?
+            </p>
+
+            <h2>
+              Can't Identify Your Part?
+            </h2>
+
+            <p>
+              Send your vehicle details or VIN
+              to the Al-Dahayan team for assistance.
+            </p>
+
+          </div>
+
+
+          <div class="connection-actions">
+
+            <a
+              href="inquiry.html"
+              class="button button-primary"
+            >
+              Send Inquiry
+            </a>
+
+            <a
+              href="contact.html"
+              class="button button-secondary"
+            >
+              Contact Us
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="site-footer">
+
+    <div class="container footer-inner">
+
+      <div class="footer-company">
+
+        <h2>
+          AL-DAHAYAN
+        </h2>
+
+        <p>
+          Al-Dahayan Trading Company
+        </p>
+
+        <p>
+          Toyota & Lexus Automotive Spare Parts
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="../index.html">
+          Home
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="parts.html">
+          Parts
+        </a>
+
+        <a href="vin-search.html">
+          VIN Search
+        </a>
+
+        <a href="services.html">
+          Services
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-contact">
+
+        <a
+          href="#"
+          data-customer-phone
+          data-contact-phone
+        >
+          Phone
+        </a>
+
+        <a
+          href="#"
+          data-customer-whatsapp
+          data-contact-whatsapp
+        >
+          WhatsApp
+        </a>
+
+        <a
+          href="#"
+          data-customer-email
+          data-contact-email
+        >
+          Email
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <p>
+        ©
+        <span id="currentYear"></span>
+        Al-Dahayan Trading Company.
+        All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/language.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/vehicle-search.js"></script>
+  <script src="../js/contact.js"></script>
+  <script src="../js/app.js"></script>
+
+
+  <script>
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        const year =
+          document.getElementById("currentYear");
+
+        if (year) {
+          year.textContent =
+            new Date().getFullYear();
+        }
+
+      }
+    );
+  </script>
+
+</body>
+
+</html>
