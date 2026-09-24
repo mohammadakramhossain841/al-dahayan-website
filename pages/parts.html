@@ -1,1 +1,721 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Search Toyota and Lexus automotive spare parts by OEM part number, category, brand and vehicle."
+  >
+
+  <meta
+    name="keywords"
+    content="Toyota spare parts, Lexus spare parts, OEM parts, Saudi Arabia, automotive parts search"
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <meta
+    name="author"
+    content="Al-Dahayan Trading Company"
+  >
+
+  <meta
+    property="og:title"
+    content="Toyota & Lexus Spare Parts | Al-Dahayan"
+  >
+
+  <meta
+    property="og:description"
+    content="Search Toyota and Lexus spare parts by OEM number, category and vehicle."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <title>
+    Spare Parts | Al-Dahayan Trading Company
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="../css/style.css"
+  >
+</head>
+
+<body data-page="parts">
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header
+    class="site-header"
+    data-navigation
+  >
+
+    <div class="container header-inner">
+
+      <a
+        href="../index.html"
+        class="site-logo"
+        aria-label="Al-Dahayan Trading Company Home"
+      >
+        <span class="logo-main">
+          AL-DAHAYAN
+        </span>
+
+        <span class="logo-sub">
+          Trading Company
+        </span>
+      </a>
+
+
+      <nav
+        class="main-navigation"
+        aria-label="Main Navigation"
+      >
+
+        <a
+          href="../index.html"
+          class="nav-link"
+          data-nav-link="home"
+        >
+          <span data-i18n="nav.home">
+            Home
+          </span>
+        </a>
+
+        <a
+          href="about.html"
+          class="nav-link"
+          data-nav-link="about"
+        >
+          <span data-i18n="nav.about">
+            About
+          </span>
+        </a>
+
+        <a
+          href="parts.html"
+          class="nav-link active"
+          data-nav-link="parts"
+        >
+          <span data-i18n="nav.parts">
+            Parts
+          </span>
+        </a>
+
+        <a
+          href="vehicles.html"
+          class="nav-link"
+          data-nav-link="vehicles"
+        >
+          <span data-i18n="nav.vehicles">
+            Vehicles
+          </span>
+        </a>
+
+        <a
+          href="vin-search.html"
+          class="nav-link"
+          data-nav-link="vin"
+        >
+          <span data-i18n="nav.vin">
+            VIN Search
+          </span>
+        </a>
+
+        <a
+          href="services.html"
+          class="nav-link"
+          data-nav-link="services"
+        >
+          <span data-i18n="nav.services">
+            Services
+          </span>
+        </a>
+
+        <a
+          href="contact.html"
+          class="nav-link"
+          data-nav-link="contact"
+        >
+          <span data-i18n="nav.contact">
+            Contact
+          </span>
+        </a>
+
+      </nav>
+
+
+      <div class="header-actions">
+
+        <div
+          class="language-switcher"
+          data-language-switcher
+        >
+
+          <button
+            type="button"
+            class="language-button active"
+            data-language="en"
+          >
+            EN
+          </button>
+
+          <button
+            type="button"
+            class="language-button"
+            data-language="ar"
+          >
+            العربية
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         PAGE HERO
+    ========================== -->
+
+    <section class="hero-section">
+
+      <div class="container hero-content">
+
+        <div class="hero-text">
+
+          <p class="eyebrow">
+            Toyota & Lexus
+          </p>
+
+          <h1 data-i18n="parts.title">
+            Spare Parts Search
+          </h1>
+
+          <p
+            class="hero-description"
+            data-i18n="parts.description"
+          >
+            Search Toyota and Lexus spare parts
+            by OEM number, category, brand or vehicle.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PART SEARCH
+    ========================== -->
+
+    <section class="section search-section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            OEM Search
+          </p>
+
+          <h2>
+            Find a Spare Part
+          </h2>
+
+          <p>
+            Enter an OEM part number or search using
+            the available filters.
+          </p>
+
+        </div>
+
+
+        <div class="search-card">
+
+          <form
+            id="partsSearchForm"
+            class="part-search-form"
+            data-parts-search-form
+          >
+
+            <div class="form-group">
+
+              <label for="partsSearchInput">
+                OEM Part Number or Part Name
+              </label>
+
+              <input
+                id="partsSearchInput"
+                name="query"
+                type="search"
+                class="part-search-input"
+                placeholder="Example: 12261-54130"
+                data-i18n-placeholder="parts.searchPlaceholder"
+                autocomplete="off"
+              >
+
+            </div>
+
+
+            <div
+              class="search-suggestions"
+              id="partsSuggestions"
+              data-parts-suggestions
+            ></div>
+
+
+            <div class="search-grid">
+
+              <!-- BRAND -->
+
+              <div class="form-group">
+
+                <label for="partBrand">
+                  Brand
+                </label>
+
+                <select
+                  id="partBrand"
+                  name="brand"
+                  data-part-brand
+                >
+
+                  <option value="">
+                    All Brands
+                  </option>
+
+                  <option value="Toyota">
+                    Toyota
+                  </option>
+
+                  <option value="Lexus">
+                    Lexus
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <!-- CATEGORY -->
+
+              <div class="form-group">
+
+                <label for="partCategory">
+                  Category
+                </label>
+
+                <select
+                  id="partCategory"
+                  name="category"
+                  data-part-category
+                >
+
+                  <option value="">
+                    All Categories
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <!-- MODEL -->
+
+              <div class="form-group">
+
+                <label for="partModel">
+                  Vehicle Model
+                </label>
+
+                <select
+                  id="partModel"
+                  name="model"
+                  data-part-model
+                >
+
+                  <option value="">
+                    All Models
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <div class="connection-actions">
+
+              <button
+                type="submit"
+                class="button button-primary"
+              >
+                Search Parts
+              </button>
+
+              <button
+                type="reset"
+                class="button button-secondary"
+                data-parts-reset
+              >
+                Reset
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         SEARCH RESULTS
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            Results
+          </p>
+
+          <h2>
+            Available Parts
+          </h2>
+
+          <p
+            id="partsResultSummary"
+            data-parts-result-summary
+          >
+            Search results will appear here.
+          </p>
+
+        </div>
+
+
+        <div
+          id="partsResults"
+          class="services-grid"
+          data-parts-results
+        >
+
+          <article class="service-card">
+
+            <h3>
+              Start Your Search
+            </h3>
+
+            <p>
+              Enter an OEM part number or select
+              filters above to find matching parts.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PART INFORMATION
+    ========================== -->
+
+    <section class="section trust-section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            Part Information
+          </p>
+
+          <h2>
+            What You Can Find
+          </h2>
+
+        </div>
+
+
+        <div class="trust-grid">
+
+          <article class="trust-card">
+
+            <h3>
+              OEM Number
+            </h3>
+
+            <p>
+              Identify the original part number
+              associated with a spare part.
+            </p>
+
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              Compatibility
+            </h3>
+
+            <p>
+              View vehicle and compatibility
+              information when available.
+            </p>
+
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              Availability
+            </h3>
+
+            <p>
+              Check the current inventory status
+              when stock information is available.
+            </p>
+
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              Customer Inquiry
+            </h3>
+
+            <p>
+              Contact Al-Dahayan for availability,
+              pricing and further assistance.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         INQUIRY CTA
+    ========================== -->
+
+    <section class="section connection-section">
+
+      <div class="container">
+
+        <div class="connection-card">
+
+          <div>
+
+            <p class="eyebrow">
+              Can't Find Your Part?
+            </p>
+
+            <h2>
+              Send an Inquiry
+            </h2>
+
+            <p>
+              Provide your OEM number, vehicle details
+              or VIN and connect directly with the
+              Al-Dahayan team.
+            </p>
+
+          </div>
+
+
+          <div class="connection-actions">
+
+            <a
+              href="inquiry.html"
+              class="button button-primary"
+            >
+              Send Inquiry
+            </a>
+
+            <a
+              href="vin-search.html"
+              class="button button-secondary"
+            >
+              Search by VIN
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="site-footer">
+
+    <div class="container footer-inner">
+
+      <div class="footer-company">
+
+        <h2>
+          AL-DAHAYAN
+        </h2>
+
+        <p>
+          Al-Dahayan Trading Company
+        </p>
+
+        <p>
+          Toyota & Lexus Automotive Spare Parts
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="../index.html">
+          Home
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="vehicles.html">
+          Vehicles
+        </a>
+
+        <a href="vin-search.html">
+          VIN Search
+        </a>
+
+        <a href="services.html">
+          Services
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-contact">
+
+        <a
+          href="#"
+          data-customer-phone
+          data-contact-phone
+        >
+          Phone
+        </a>
+
+        <a
+          href="#"
+          data-customer-whatsapp
+          data-contact-whatsapp
+        >
+          WhatsApp
+        </a>
+
+        <a
+          href="#"
+          data-customer-email
+          data-contact-email
+        >
+          Email
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <p>
+        ©
+        <span id="currentYear"></span>
+        Al-Dahayan Trading Company.
+        All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/language.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/search.js"></script>
+  <script src="../js/parts-search.js"></script>
+  <script src="../js/inventory.js"></script>
+  <script src="../js/contact.js"></script>
+  <script src="../js/app.js"></script>
+
+
+  <script>
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        const year =
+          document.getElementById("currentYear");
+
+        if (year) {
+          year.textContent =
+            new Date().getFullYear();
+        }
+
+      }
+    );
+  </script>
+
+</body>
+
+</html>
