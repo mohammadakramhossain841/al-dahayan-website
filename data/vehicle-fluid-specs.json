@@ -1,0 +1,181 @@
+{
+  "fluidSpecifications": [
+    {
+      "id": "FLUID-001",
+      "code": "ENGINE_OIL",
+      "name": "Engine Oil",
+      "category": "ENGINE",
+      "unit": "L",
+      "viscosity": null,
+      "specification": null,
+      "description": "Engine lubrication oil specification"
+    },
+    {
+      "id": "FLUID-002",
+      "code": "TRANSMISSION_FLUID",
+      "name": "Transmission Fluid",
+      "category": "TRANSMISSION",
+      "unit": "L",
+      "viscosity": null,
+      "specification": null,
+      "description": "Automatic or manual transmission fluid specification"
+    },
+    {
+      "id": "FLUID-003",
+      "code": "CVT_FLUID",
+      "name": "CVT Fluid",
+      "category": "TRANSMISSION",
+      "unit": "L",
+      "viscosity": null,
+      "specification": null,
+      "description": "Continuously variable transmission fluid specification"
+    },
+    {
+      "id": "FLUID-004",
+      "code": "MANUAL_TRANSMISSION_OIL",
+      "name": "Manual Transmission Oil",
+      "category": "TRANSMISSION",
+      "unit": "L",
+      "viscosity": null,
+      "specification": null,
+      "description": "Manual transmission lubricant specification"
+    },
+    {
+      "id": "FLUID-005",
+      "code": "DIFFERENTIAL_FLUID",
+      "name": "Differential Fluid",
+      "category": "DRIVETRAIN",
+      "unit": "L",
+      "viscosity": null,
+      "specification": null,
+      "description": "Differential lubricant specification"
+    },
+    {
+      "id": "FLUID-006",
+      "code": "TRANSFER_CASE_FLUID",
+      "name": "Transfer Case Fluid",
+      "category": "DRIVETRAIN",
+      "unit": "L",
+      "viscosity": null,
+      "specification": null,
+      "description": "Transfer case lubricant specification"
+    },
+    {
+      "id": "FLUID-007",
+      "code": "COOLANT",
+      "name": "Engine Coolant",
+      "category": "COOLING",
+      "unit": "L",
+      "type": null,
+      "specification": null,
+      "description": "Engine cooling system coolant specification"
+    },
+    {
+      "id": "FLUID-008",
+      "code": "BRAKE_FLUID",
+      "name": "Brake Fluid",
+      "category": "BRAKE",
+      "unit": "L",
+      "type": null,
+      "specification": null,
+      "description": "Hydraulic brake fluid specification"
+    },
+    {
+      "id": "FLUID-009",
+      "code": "POWER_STEERING_FLUID",
+      "name": "Power Steering Fluid",
+      "category": "STEERING",
+      "unit": "L",
+      "type": null,
+      "specification": null,
+      "description": "Hydraulic power steering fluid where applicable"
+    },
+    {
+      "id": "FLUID-010",
+      "code": "CLUTCH_FLUID",
+      "name": "Clutch Fluid",
+      "category": "CLUTCH",
+      "unit": "L",
+      "type": null,
+      "specification": null,
+      "description": "Hydraulic clutch fluid where applicable"
+    },
+    {
+      "id": "FLUID-011",
+      "code": "A_C_REFRIGERANT",
+      "name": "A/C Refrigerant",
+      "category": "HVAC",
+      "unit": "g",
+      "type": null,
+      "specification": null,
+      "description": "Air-conditioning refrigerant specification"
+    },
+    {
+      "id": "FLUID-012",
+      "code": "WINDSHIELD_WASHER_FLUID",
+      "name": "Windshield Washer Fluid",
+      "category": "VISIBILITY",
+      "unit": "L",
+      "type": null,
+      "specification": null,
+      "description": "Windshield washer system fluid"
+    },
+    {
+      "id": "FLUID-013",
+      "code": "HYBRID_COOLANT",
+      "name": "Hybrid System Coolant",
+      "category": "HYBRID_EV",
+      "unit": "L",
+      "type": null,
+      "specification": null,
+      "description": "Cooling fluid for applicable hybrid system components"
+    },
+    {
+      "id": "FLUID-014",
+      "code": "EV_COOLANT",
+      "name": "EV Battery Coolant",
+      "category": "HYBRID_EV",
+      "unit": "L",
+      "type": null,
+      "specification": null,
+      "description": "Cooling fluid for applicable electric vehicle battery systems"
+    },
+    {
+      "id": "FLUID-015",
+      "code": "ENGINE_OIL_CAPACITY",
+      "name": "Engine Oil Capacity",
+      "category": "ENGINE",
+      "unit": "L",
+      "capacity": null,
+      "description": "Specified engine oil fill capacity"
+    },
+    {
+      "id": "FLUID-016",
+      "code": "TRANSMISSION_FLUID_CAPACITY",
+      "name": "Transmission Fluid Capacity",
+      "category": "TRANSMISSION",
+      "unit": "L",
+      "capacity": null,
+      "description": "Specified transmission fluid capacity"
+    },
+    {
+      "id": "FLUID-017",
+      "code": "COOLANT_CAPACITY",
+      "name": "Coolant Capacity",
+      "category": "COOLING",
+      "unit": "L",
+      "capacity": null,
+      "description": "Specified cooling system capacity"
+    },
+    {
+      "id": "FLUID-018",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "category": "UNKNOWN",
+      "unit": null,
+      "type": null,
+      "specification": null,
+      "description": "Fluid specification not available"
+    }
+  ]
+}
