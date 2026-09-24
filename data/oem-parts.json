@@ -1,1 +1,314 @@
-
+{
+  "parts": [
+    {
+      "id": "PART-001",
+      "oemNumber": "04152-YZZA1",
+      "partNumber": "04152-YZZA1",
+      "partName": "Oil Filter",
+      "description": "Engine oil filter",
+      "category": "Engine Parts",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Camry",
+        "Corolla",
+        "RAV4"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-002",
+      "oemNumber": "17801-0V060",
+      "partNumber": "17801-0V060",
+      "partName": "Air Filter",
+      "description": "Engine air filter",
+      "category": "Filters",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Camry",
+        "Corolla"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-003",
+      "oemNumber": "17801-38030",
+      "partNumber": "17801-38030",
+      "partName": "Air Filter",
+      "description": "Engine air cleaner element",
+      "category": "Filters",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Camry",
+        "Highlander"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-004",
+      "oemNumber": "90915-YZZD1",
+      "partNumber": "90915-YZZD1",
+      "partName": "Oil Filter",
+      "description": "Toyota engine oil filter",
+      "category": "Filters",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Camry",
+        "Corolla",
+        "RAV4",
+        "Yaris"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-005",
+      "oemNumber": "04465-33471",
+      "partNumber": "04465-33471",
+      "partName": "Front Brake Pad Set",
+      "description": "Front disc brake pad set",
+      "category": "Brake System",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Camry"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-006",
+      "oemNumber": "04465-02220",
+      "partNumber": "04465-02220",
+      "partName": "Front Brake Pad Set",
+      "description": "Front disc brake pad set",
+      "category": "Brake System",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Corolla"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-007",
+      "oemNumber": "04466-60060",
+      "partNumber": "04466-60060",
+      "partName": "Rear Brake Pad Set",
+      "description": "Rear disc brake pad set",
+      "category": "Brake System",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Land Cruiser"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-008",
+      "oemNumber": "16571-0V020",
+      "partNumber": "16571-0V020",
+      "partName": "Radiator Hose",
+      "description": "Engine cooling radiator hose",
+      "category": "Cooling System",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Camry"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-009",
+      "oemNumber": "16100-39405",
+      "partNumber": "16100-39405",
+      "partName": "Water Pump",
+      "description": "Engine water pump assembly",
+      "category": "Cooling System",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Camry"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-010",
+      "oemNumber": "90919-01253",
+      "partNumber": "90919-01253",
+      "partName": "Ignition Coil",
+      "description": "Engine ignition coil",
+      "category": "Electrical",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Camry",
+        "Corolla"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-011",
+      "oemNumber": "90919-02230",
+      "partNumber": "90919-02230",
+      "partName": "Ignition Coil",
+      "description": "Ignition coil assembly",
+      "category": "Electrical",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "RAV4"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-012",
+      "oemNumber": "90915-20003",
+      "partNumber": "90915-20003",
+      "partName": "Oil Filter",
+      "description": "Engine oil filter",
+      "category": "Filters",
+      "brand": "Lexus",
+      "make": "Lexus",
+      "model": [
+        "ES",
+        "RX"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-013",
+      "oemNumber": "17801-31170",
+      "partNumber": "17801-31170",
+      "partName": "Air Filter",
+      "description": "Engine air filter element",
+      "category": "Filters",
+      "brand": "Lexus",
+      "make": "Lexus",
+      "model": [
+        "ES",
+        "RX"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-014",
+      "oemNumber": "04465-50120",
+      "partNumber": "04465-50120",
+      "partName": "Front Brake Pad Set",
+      "description": "Front disc brake pad set",
+      "category": "Brake System",
+      "brand": "Lexus",
+      "make": "Lexus",
+      "model": [
+        "LX"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-015",
+      "oemNumber": "48510-60050",
+      "partNumber": "48510-60050",
+      "partName": "Front Shock Absorber",
+      "description": "Front suspension shock absorber",
+      "category": "Suspension",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Land Cruiser"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-016",
+      "oemNumber": "48068-60050",
+      "partNumber": "48068-60050",
+      "partName": "Front Lower Control Arm",
+      "description": "Front suspension lower control arm",
+      "category": "Suspension",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Land Cruiser"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-017",
+      "oemNumber": "52119-0R020",
+      "partNumber": "52119-0R020",
+      "partName": "Front Bumper Cover",
+      "description": "Front bumper cover",
+      "category": "Body Parts",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "RAV4"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-018",
+      "oemNumber": "52159-0E930",
+      "partNumber": "52159-0E930",
+      "partName": "Rear Bumper Cover",
+      "description": "Rear bumper cover",
+      "category": "Body Parts",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Highlander"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-019",
+      "oemNumber": "81110-60A20",
+      "partNumber": "81110-60A20",
+      "partName": "Headlamp Assembly",
+      "description": "Front headlamp assembly",
+      "category": "Lighting",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Land Cruiser"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    },
+    {
+      "id": "PART-020",
+      "oemNumber": "81550-0E070",
+      "partNumber": "81550-0E070",
+      "partName": "Rear Combination Lamp",
+      "description": "Rear tail lamp assembly",
+      "category": "Lighting",
+      "brand": "Toyota",
+      "make": "Toyota",
+      "model": [
+        "Highlander"
+      ],
+      "market": "Saudi Arabia",
+      "active": true
+    }
+  ]
+}
