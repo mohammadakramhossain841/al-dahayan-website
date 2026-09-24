@@ -1,0 +1,77 @@
+{
+  "version": "1.0.0",
+  "wheelSizes": [
+    {
+      "code": "15",
+      "diameterInches": 15,
+      "name": "15-inch",
+      "description": "15-inch wheel diameter."
+    },
+    {
+      "code": "16",
+      "diameterInches": 16,
+      "name": "16-inch",
+      "description": "16-inch wheel diameter."
+    },
+    {
+      "code": "17",
+      "diameterInches": 17,
+      "name": "17-inch",
+      "description": "17-inch wheel diameter."
+    },
+    {
+      "code": "18",
+      "diameterInches": 18,
+      "name": "18-inch",
+      "description": "18-inch wheel diameter."
+    },
+    {
+      "code": "19",
+      "diameterInches": 19,
+      "name": "19-inch",
+      "description": "19-inch wheel diameter."
+    },
+    {
+      "code": "20",
+      "diameterInches": 20,
+      "name": "20-inch",
+      "description": "20-inch wheel diameter."
+    },
+    {
+      "code": "21",
+      "diameterInches": 21,
+      "name": "21-inch",
+      "description": "21-inch wheel diameter."
+    },
+    {
+      "code": "22",
+      "diameterInches": 22,
+      "name": "22-inch",
+      "description": "22-inch wheel diameter."
+    },
+    {
+      "code": "23",
+      "diameterInches": 23,
+      "name": "23-inch",
+      "description": "23-inch wheel diameter."
+    },
+    {
+      "code": "24",
+      "diameterInches": 24,
+      "name": "24-inch",
+      "description": "24-inch wheel diameter."
+    },
+    {
+      "code": "25",
+      "diameterInches": 25,
+      "name": "25-inch",
+      "description": "25-inch wheel diameter."
+    },
+    {
+      "code": "UNKNOWN",
+      "diameterInches": null,
+      "name": "Unknown",
+      "description": "Wheel size has not yet been verified."
+    }
+  ]
+}
