@@ -1,583 +1,354 @@
+/* =========================================
+   AL-DAHAYAN CONTACT SYSTEM
+========================================= */
+
 (function () {
   "use strict";
 
+  let initialized = false;
   let companyData = null;
-  let isLoaded = false;
 
-  async function initializeContact() {
-    await loadCompanyData();
-    setupContactInterface();
+  function normalize(value) {
+    return String(value ?? "").trim();
+  }
+
+  function escapeHTML(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function getElements() {
+    return {
+      companyName: document.querySelector(
+        "[data-company-name]"
+      ),
+
+      companyArabicName: document.querySelector(
+        "[data-company-arabic-name]"
+      ),
+
+      description: document.querySelector(
+        "[data-company-description]"
+      ),
+
+      phone: document.querySelectorAll(
+        "[data-contact-phone]"
+      ),
+
+      whatsapp: document.querySelectorAll(
+        "[data-contact-whatsapp]"
+      ),
+
+      email: document.querySelectorAll(
+        "[data-contact-email]"
+      ),
+
+      address: document.querySelectorAll(
+        "[data-company-address]"
+      ),
+
+      city: document.querySelectorAll(
+        "[data-company-city]"
+      ),
+
+      country: document.querySelectorAll(
+        "[data-company-country]"
+      ),
+
+      website: document.querySelectorAll(
+        "[data-company-website]"
+      ),
+
+      map: document.querySelectorAll(
+        "[data-contact-map]"
+      ),
+
+      facebook: document.querySelectorAll(
+        "[data-contact-facebook]"
+      ),
+
+      instagram: document.querySelectorAll(
+        "[data-contact-instagram]"
+      ),
+
+      linkedin: document.querySelectorAll(
+        "[data-contact-linkedin]"
+      ),
+
+      twitter: document.querySelectorAll(
+        "[data-contact-twitter]"
+      )
+    };
   }
 
   async function loadCompanyData() {
-    try {
-      const filePath = getDataPath(
-        APP_CONFIG.dataFiles.company
-      );
-
-      const response = await fetch(filePath);
-
-      if (!response.ok) {
-        throw new Error(
-          `Failed to load company data: ${response.status}`
-        );
-      }
-
-      const data = await response.json();
-
-      companyData = normalizeCompanyData(data);
-      isLoaded = true;
-
-      applyCompanyData();
-
+    if (companyData) {
       return companyData;
-    } catch (error) {
-      console.error(
-        "Al-Dahayan Contact: Unable to load company data.",
-        error
-      );
-
-      companyData = null;
-      isLoaded = false;
-
-      return null;
-    }
-  }
-
-  function normalizeCompanyData(data) {
-    if (!data) {
-      return null;
-    }
-
-    if (data.company) {
-      return data.company;
-    }
-
-    return data;
-  }
-
-  function setupContactInterface() {
-    setupContactLinks();
-    setupSocialLinks();
-    setupMapLinks();
-    setupCustomerConnection();
-  }
-
-  function applyCompanyData() {
-    if (!companyData) {
-      return;
-    }
-
-    applyText(
-      "[data-company-name]",
-      getCompanyName()
-    );
-
-    applyText(
-      "[data-company-arabic-name]",
-      getCompanyArabicName()
-    );
-
-    applyText(
-      "[data-company-about]",
-      getCompanyAbout()
-    );
-
-    applyText(
-      "[data-company-phone]",
-      getContactValue("phone")
-    );
-
-    applyText(
-      "[data-company-whatsapp]",
-      getContactValue("whatsapp")
-    );
-
-    applyText(
-      "[data-company-email]",
-      getContactValue("email")
-    );
-
-    applyAddressData();
-    applyWorkingHours();
-  }
-
-  function setupContactLinks() {
-    const phoneLinks =
-      document.querySelectorAll(
-        "[data-contact-phone], .contact-phone-link"
-      );
-
-    phoneLinks.forEach((link) => {
-      const phone =
-        getContactValue("phone");
-
-      if (!phone) {
-        disableLink(link);
-        return;
-      }
-
-      link.href =
-        createPhoneURL(phone);
-
-      link.target = "_self";
-    });
-
-    const whatsappLinks =
-      document.querySelectorAll(
-        "[data-contact-whatsapp], .contact-whatsapp-link"
-      );
-
-    whatsappLinks.forEach((link) => {
-      const whatsapp =
-        getContactValue("whatsapp");
-
-      if (!whatsapp) {
-        disableLink(link);
-        return;
-      }
-
-      link.href =
-        createWhatsAppURL(
-          whatsapp
-        );
-
-      link.target = "_blank";
-      link.rel =
-        "noopener noreferrer";
-    });
-
-    const emailLinks =
-      document.querySelectorAll(
-        "[data-contact-email], .contact-email-link"
-      );
-
-    emailLinks.forEach((link) => {
-      const email =
-        getContactValue("email");
-
-      if (!email) {
-        disableLink(link);
-        return;
-      }
-
-      link.href =
-        createEmailURL(email);
-
-      link.target = "_self";
-    });
-  }
-
-  function setupSocialLinks() {
-    const socialMedia =
-      getSocialMedia();
-
-    const mappings = {
-      facebook:
-        "[data-social-facebook], .social-facebook",
-
-      instagram:
-        "[data-social-instagram], .social-instagram",
-
-      tiktok:
-        "[data-social-tiktok], .social-tiktok",
-
-      youtube:
-        "[data-social-youtube], .social-youtube",
-
-      x:
-        "[data-social-x], .social-x"
-    };
-
-    Object.entries(
-      mappings
-    ).forEach(
-      ([platform, selector]) => {
-        const links =
-          document.querySelectorAll(
-            selector
-          );
-
-        links.forEach((link) => {
-          const url =
-            socialMedia[platform];
-
-          if (!isValidURL(url)) {
-            disableLink(link);
-            return;
-          }
-
-          link.href = url;
-          link.target = "_blank";
-          link.rel =
-            "noopener noreferrer";
-        });
-      }
-    );
-  }
-
-  function setupMapLinks() {
-    const mapLinks =
-      document.querySelectorAll(
-        "[data-company-map], .company-map-link"
-      );
-
-    mapLinks.forEach((link) => {
-      const mapURL =
-        getMapURL();
-
-      if (!mapURL) {
-        disableLink(link);
-        return;
-      }
-
-      link.href = mapURL;
-      link.target = "_blank";
-      link.rel =
-        "noopener noreferrer";
-    });
-  }
-
-  function setupCustomerConnection() {
-    const connection =
-      companyData?.customerConnection ||
-      {};
-
-    const inquiryLinks =
-      document.querySelectorAll(
-        "[data-customer-inquiry], .customer-inquiry-link"
-      );
-
-    inquiryLinks.forEach((link) => {
-      if (
-        connection.inquiry ===
-        false
-      ) {
-        disableLink(link);
-        return;
-      }
-
-      link.href =
-        getPagePath(
-          "inquiry.html"
-        );
-    });
-
-    const whatsappLinks =
-      document.querySelectorAll(
-        "[data-customer-whatsapp]"
-      );
-
-    whatsappLinks.forEach((link) => {
-      const whatsapp =
-        getContactValue(
-          "whatsapp"
-        );
-
-      if (
-        connection.whatsapp ===
-          false ||
-        !whatsapp
-      ) {
-        disableLink(link);
-        return;
-      }
-
-      link.href =
-        createWhatsAppURL(
-          whatsapp
-        );
-
-      link.target = "_blank";
-      link.rel =
-        "noopener noreferrer";
-    });
-
-    const phoneLinks =
-      document.querySelectorAll(
-        "[data-customer-phone]"
-      );
-
-    phoneLinks.forEach((link) => {
-      const phone =
-        getContactValue(
-          "phone"
-        );
-
-      if (
-        connection.phone ===
-          false ||
-        !phone
-      ) {
-        disableLink(link);
-        return;
-      }
-
-      link.href =
-        createPhoneURL(phone);
-    });
-
-    const emailLinks =
-      document.querySelectorAll(
-        "[data-customer-email]"
-      );
-
-    emailLinks.forEach((link) => {
-      const email =
-        getContactValue(
-          "email"
-        );
-
-      if (
-        connection.email ===
-          false ||
-        !email
-      ) {
-        disableLink(link);
-        return;
-      }
-
-      link.href =
-        createEmailURL(email);
-    });
-  }
-
-  function getCompanyName() {
-    return (
-      companyData?.name?.en ||
-      companyData?.name ||
-      APP_CONFIG?.company?.name ||
-      ""
-    );
-  }
-
-  function getCompanyArabicName() {
-    return (
-      companyData?.name?.ar ||
-      companyData?.arabicName ||
-      APP_CONFIG?.company
-        ?.arabicName ||
-      ""
-    );
-  }
-
-  function getCompanyAbout() {
-    const about =
-      companyData?.about;
-
-    if (
-      typeof about ===
-      "string"
-    ) {
-      return about;
     }
 
     if (
-      getCurrentLanguage() ===
-      "ar"
+      typeof window.getDataPath !==
+      "function"
     ) {
-      return (
-        about?.ar ||
-        ""
+      throw new Error(
+        "getDataPath() is not available."
       );
     }
 
-    return (
-      about?.en ||
-      ""
+    const response = await fetch(
+      window.getDataPath("company.json"),
+      {
+        cache: "no-cache"
+      }
     );
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to load company.json: ${response.status}`
+      );
+    }
+
+    const data =
+      await response.json();
+
+    companyData =
+      data.company ||
+      data.data ||
+      data;
+
+    return companyData;
   }
 
-  function getContactValue(
-    key
+  function getNested(
+    object,
+    paths
   ) {
-    return (
-      companyData?.contact?.[
-        key
-      ] ||
-      APP_CONFIG?.contact?.[
-        key
-      ] ||
-      ""
-    );
-  }
+    for (const path of paths) {
+      const parts =
+        path.split(".");
 
-  function getSocialMedia() {
-    return (
-      companyData?.socialMedia ||
-      {}
-    );
-  }
+      let value =
+        object;
 
-  function getLocations() {
-    return Array.isArray(
-      companyData?.locations
-    )
-      ? companyData.locations
-      : [];
-  }
-
-  function getBranches() {
-    return Array.isArray(
-      companyData?.branches
-    )
-      ? companyData.branches
-      : [];
-  }
-
-  function getPrimaryLocation() {
-    const locations =
-      getLocations();
-
-    if (!locations.length) {
-      return null;
-    }
-
-    return (
-      locations.find(
-        (location) =>
-          location.primary ===
-          true
-      ) ||
-      locations[0]
-    );
-  }
-
-  function applyAddressData() {
-    const location =
-      getPrimaryLocation();
-
-    if (!location) {
-      return;
-    }
-
-    const address =
-      getLocationAddress(
-        location
-      );
-
-    applyText(
-      "[data-company-address]",
-      address
-    );
-
-    applyText(
-      "[data-company-city]",
-      location.city ||
-        ""
-    );
-
-    applyText(
-      "[data-company-country]",
-      location.country ||
-        companyData?.country ||
-        ""
-    );
-  }
-
-  function applyWorkingHours() {
-    const hours =
-      companyData?.workingHours;
-
-    if (!hours) {
-      return;
-    }
-
-    const elements =
-      document.querySelectorAll(
-        "[data-company-hours]"
-      );
-
-    elements.forEach(
-      (element) => {
+      for (const part of parts) {
         if (
-          typeof hours ===
-          "string"
+          value === null ||
+          value === undefined
         ) {
-          element.textContent =
-            hours;
-
-          return;
+          break;
         }
 
-        const language =
-          getCurrentLanguage();
-
-        element.textContent =
-          hours[language] ||
-          hours.en ||
-          "";
+        value =
+          value[part];
       }
-    );
+
+      if (
+        value !== undefined &&
+        value !== null &&
+        value !== ""
+      ) {
+        return value;
+      }
+    }
+
+    return "";
   }
 
-  function getLocationAddress(
-    location
+  function getCompanyInfo() {
+    const data =
+      companyData || {};
+
+    return {
+      name:
+        getNested(data, [
+          "name",
+          "companyName",
+          "company.name"
+        ]),
+
+      arabicName:
+        getNested(data, [
+          "arabicName",
+          "companyArabicName",
+          "company.arabicName"
+        ]),
+
+      description:
+        getNested(data, [
+          "description",
+          "company.description"
+        ]),
+
+      phone:
+        getNested(data, [
+          "phone",
+          "contact.phone",
+          "contact.phoneNumber"
+        ]),
+
+      whatsapp:
+        getNested(data, [
+          "whatsapp",
+          "contact.whatsapp",
+          "contact.whatsappNumber"
+        ]),
+
+      email:
+        getNested(data, [
+          "email",
+          "contact.email"
+        ]),
+
+      address:
+        getNested(data, [
+          "address",
+          "location.address",
+          "contact.address"
+        ]),
+
+      city:
+        getNested(data, [
+          "city",
+          "location.city",
+          "contact.city"
+        ]),
+
+      country:
+        getNested(data, [
+          "country",
+          "location.country",
+          "contact.country"
+        ]),
+
+      website:
+        getNested(data, [
+          "website",
+          "contact.website"
+        ]),
+
+      map:
+        getNested(data, [
+          "map",
+          "mapUrl",
+          "mapURL",
+          "location.map",
+          "location.mapUrl"
+        ]),
+
+      facebook:
+        getNested(data, [
+          "social.facebook",
+          "facebook"
+        ]),
+
+      instagram:
+        getNested(data, [
+          "social.instagram",
+          "instagram"
+        ]),
+
+      linkedin:
+        getNested(data, [
+          "social.linkedin",
+          "linkedin"
+        ]),
+
+      twitter:
+        getNested(data, [
+          "social.twitter",
+          "twitter",
+          "x"
+        ])
+    };
+  }
+
+  function setText(
+    elements,
+    value
   ) {
-    if (!location) {
-      return "";
+    if (!elements) {
+      return;
     }
 
-    if (
-      typeof location.address ===
-      "string"
-    ) {
-      return location.address;
-    }
+    elements.forEach((element) => {
+      if (!value) {
+        element.hidden = true;
+        return;
+      }
 
-    const language =
-      getCurrentLanguage();
+      element.textContent =
+        value;
 
-    return (
-      location.address?.[
-        language
-      ] ||
-      location.address?.en ||
-      ""
-    );
+      element.hidden = false;
+    });
   }
 
-  function getMapURL() {
-    const location =
-      getPrimaryLocation();
-
-    if (!location) {
-      return "";
+  function setLink(
+    elements,
+    href,
+    options = {}
+  ) {
+    if (!elements) {
+      return;
     }
 
-    if (
-      isValidURL(
-        location.mapUrl
-      )
-    ) {
-      return location.mapUrl;
-    }
+    elements.forEach((element) => {
+      if (!href) {
+        element.hidden = true;
+        return;
+      }
 
-    if (
-      isValidURL(
-        location.maps
-      )
-    ) {
-      return location.maps;
-    }
+      element.hidden = false;
 
-    const address =
-      getLocationAddress(
-        location
+      element.href = href;
+
+      if (options.target) {
+        element.target =
+          options.target;
+      }
+
+      if (options.rel) {
+        element.rel =
+          options.rel;
+      }
+    });
+  }
+
+  function normalizePhone(
+    phone
+  ) {
+    return normalize(phone)
+      .replace(
+        /[^\d+]/g,
+        ""
       );
+  }
 
-    if (
-      !address &&
-      !location.city
-    ) {
-      return "";
+  function normalizeWhatsApp(
+    whatsapp
+  ) {
+    return normalize(whatsapp)
+      .replace(
+        /[^\d]/g,
+        ""
+      );
+  }
+
+  function createMapURL(
+    info
+  ) {
+    if (info.map) {
+      return info.map;
     }
 
     const query = [
-      address,
-      location.city,
-      location.country ||
-        companyData?.country
+      info.address,
+      info.city,
+      info.country
     ]
       .filter(Boolean)
       .join(", ");
@@ -592,190 +363,275 @@
     );
   }
 
-  function createPhoneURL(
-    phone
-  ) {
-    const normalized =
-      normalizePhone(phone);
+  function applyCompanyData() {
+    const elements =
+      getElements();
 
-    if (!normalized) {
-      return "";
-    }
+    const info =
+      getCompanyInfo();
 
-    return (
-      "tel:+" +
-      normalized
+    setText(
+      elements.companyName,
+      info.name
     );
-  }
 
-  function createWhatsAppURL(
-    whatsapp
-  ) {
-    const normalized =
+    setText(
+      elements.companyArabicName,
+      info.arabicName
+    );
+
+    setText(
+      elements.description,
+      info.description
+    );
+
+    setText(
+      elements.address,
+      info.address
+    );
+
+    setText(
+      elements.city,
+      info.city
+    );
+
+    setText(
+      elements.country,
+      info.country
+    );
+
+    setText(
+      elements.website,
+      info.website
+    );
+
+    const phone =
       normalizePhone(
-        whatsapp
+        info.phone
       );
 
-    if (!normalized) {
-      return "";
-    }
+    const whatsapp =
+      normalizeWhatsApp(
+        info.whatsapp
+      );
 
-    return (
-      "https://wa.me/" +
-      normalized
-    );
-  }
+    if (phone) {
+      setLink(
+        elements.phone,
+        `tel:${phone}`
+      );
 
-  function createEmailURL(
-    email
-  ) {
-    if (
-      !isValidEmail(email)
-    ) {
-      return "";
-    }
-
-    return (
-      "mailto:" +
-      String(email).trim()
-    );
-  }
-
-  function normalizePhone(
-    phone
-  ) {
-    return String(phone || "")
-      .replace(
-        /[^0-9+]/g,
-        ""
-      )
-      .replace(
-        /^\+/,
+      setText(
+        elements.phone,
+        info.phone
+      );
+    } else {
+      setLink(
+        elements.phone,
         ""
       );
-  }
+    }
 
-  function isValidEmail(
-    email
-  ) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-      String(email || "")
+    if (whatsapp) {
+      setLink(
+        elements.whatsapp,
+        `https://wa.me/${whatsapp}`,
+        {
+          target: "_blank",
+          rel:
+            "noopener noreferrer"
+        }
+      );
+
+      setText(
+        elements.whatsapp,
+        info.whatsapp
+      );
+    } else {
+      setLink(
+        elements.whatsapp,
+        ""
+      );
+    }
+
+    if (info.email) {
+      setLink(
+        elements.email,
+        `mailto:${info.email}`
+      );
+
+      setText(
+        elements.email,
+        info.email
+      );
+    } else {
+      setLink(
+        elements.email,
+        ""
+      );
+    }
+
+    const mapURL =
+      createMapURL(info);
+
+    setLink(
+      elements.map,
+      mapURL,
+      {
+        target: "_blank",
+        rel:
+          "noopener noreferrer"
+      }
+    );
+
+    if (info.website) {
+      let websiteURL =
+        info.website;
+
+      if (
+        !/^https?:\/\//i.test(
+          websiteURL
+        )
+      ) {
+        websiteURL =
+          `https://${websiteURL}`;
+      }
+
+      setLink(
+        elements.website,
+        websiteURL,
+        {
+          target: "_blank",
+          rel:
+            "noopener noreferrer"
+        }
+      );
+    } else {
+      setLink(
+        elements.website,
+        ""
+      );
+    }
+
+    applySocialLink(
+      elements.facebook,
+      info.facebook
+    );
+
+    applySocialLink(
+      elements.instagram,
+      info.instagram
+    );
+
+    applySocialLink(
+      elements.linkedin,
+      info.linkedin
+    );
+
+    applySocialLink(
+      elements.twitter,
+      info.twitter
     );
   }
 
-  function isValidURL(
+  function applySocialLink(
+    elements,
     url
   ) {
     if (!url) {
-      return false;
-    }
-
-    try {
-      const parsed =
-        new URL(url);
-
-      return (
-        parsed.protocol ===
-          "https:" ||
-        parsed.protocol ===
-          "http:"
-      );
-    } catch {
-      return false;
-    }
-  }
-
-  function applyText(
-    selector,
-    value
-  ) {
-    const elements =
-      document.querySelectorAll(
-        selector
+      setLink(
+        elements,
+        ""
       );
 
-    elements.forEach(
-      (element) => {
-        element.textContent =
-          value || "";
+      return;
+    }
+
+    let finalURL =
+      normalize(url);
+
+    if (
+      !/^https?:\/\//i.test(
+        finalURL
+      )
+    ) {
+      finalURL =
+        `https://${finalURL}`;
+    }
+
+    setLink(
+      elements,
+      finalURL,
+      {
+        target: "_blank",
+        rel:
+          "noopener noreferrer"
       }
     );
   }
 
-  function disableLink(
-    element
-  ) {
-    element.removeAttribute(
-      "href"
-    );
+  function initializeContact() {
+    if (initialized) {
+      return;
+    }
 
-    element.setAttribute(
-      "aria-disabled",
-      "true"
-    );
+    initialized = true;
 
-    element.classList.add(
-      "is-disabled"
-    );
-  }
+    loadCompanyData()
+      .then(() => {
+        applyCompanyData();
 
-  function getCurrentLanguage() {
-    return (
-      document.documentElement.getAttribute(
-        "lang"
-      ) ||
-      window.APP_CONFIG?.site
-        ?.defaultLanguage ||
-      "en"
-    );
+        document.dispatchEvent(
+          new CustomEvent(
+            "alDahayanContactReady",
+            {
+              detail: {
+                company:
+                  getCompanyInfo()
+              }
+            }
+          )
+        );
+      })
+      .catch((error) => {
+        console.error(
+          "Al-Dahayan Contact:",
+          error
+        );
+
+        document.dispatchEvent(
+          new CustomEvent(
+            "alDahayanContactError",
+            {
+              detail: {
+                error
+              }
+            }
+          )
+        );
+      });
   }
 
   window.AlDahayanContact = {
-    initialize:
+    init:
       initializeContact,
 
-    loadCompanyData,
+    load:
+      loadCompanyData,
 
-    getCompanyData: () =>
-      companyData,
+    getCompany:
+      getCompanyInfo,
 
-    getCompanyName,
-
-    getCompanyArabicName,
-
-    getCompanyAbout,
-
-    getContactValue,
-
-    getSocialMedia,
-
-    getLocations,
-
-    getBranches,
-
-    getPrimaryLocation,
-
-    getMapURL,
-
-    createPhoneURL,
-
-    createWhatsAppURL,
-
-    createEmailURL,
-
-    isLoaded: () =>
-      isLoaded
+    refresh:
+      applyCompanyData
   };
 
-  if (
-    document.readyState ===
-    "loading"
-  ) {
-    document.addEventListener(
-      "DOMContentLoaded",
-      initializeContact
-    );
-  } else {
-    initializeContact();
-  }
+  window.initializeContact =
+    initializeContact;
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializeContact
+  );
+
 })();
