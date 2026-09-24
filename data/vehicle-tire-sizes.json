@@ -1,0 +1,133 @@
+{
+  "version": "1.0.0",
+  "tireSizes": [
+    {
+      "code": "185_65R15",
+      "size": "185/65R15",
+      "widthMm": 185,
+      "aspectRatio": 65,
+      "rimDiameterInches": 15,
+      "description": "Common passenger vehicle tire size."
+    },
+    {
+      "code": "195_65R15",
+      "size": "195/65R15",
+      "widthMm": 195,
+      "aspectRatio": 65,
+      "rimDiameterInches": 15,
+      "description": "Common passenger vehicle tire size."
+    },
+    {
+      "code": "205_55R16",
+      "size": "205/55R16",
+      "widthMm": 205,
+      "aspectRatio": 55,
+      "rimDiameterInches": 16,
+      "description": "Common passenger vehicle tire size."
+    },
+    {
+      "code": "215_55R17",
+      "size": "215/55R17",
+      "widthMm": 215,
+      "aspectRatio": 55,
+      "rimDiameterInches": 17,
+      "description": "Common passenger vehicle tire size."
+    },
+    {
+      "code": "225_60R17",
+      "size": "225/60R17",
+      "widthMm": 225,
+      "aspectRatio": 60,
+      "rimDiameterInches": 17,
+      "description": "Common SUV and passenger vehicle tire size."
+    },
+    {
+      "code": "235_65R17",
+      "size": "235/65R17",
+      "widthMm": 235,
+      "aspectRatio": 65,
+      "rimDiameterInches": 17,
+      "description": "Common SUV tire size."
+    },
+    {
+      "code": "235_55R18",
+      "size": "235/55R18",
+      "widthMm": 235,
+      "aspectRatio": 55,
+      "rimDiameterInches": 18,
+      "description": "Common crossover and SUV tire size."
+    },
+    {
+      "code": "245_60R18",
+      "size": "245/60R18",
+      "widthMm": 245,
+      "aspectRatio": 60,
+      "rimDiameterInches": 18,
+      "description": "Common SUV tire size."
+    },
+    {
+      "code": "245_50R19",
+      "size": "245/50R19",
+      "widthMm": 245,
+      "aspectRatio": 50,
+      "rimDiameterInches": 19,
+      "description": "Common premium passenger and SUV tire size."
+    },
+    {
+      "code": "255_55R19",
+      "size": "255/55R19",
+      "widthMm": 255,
+      "aspectRatio": 55,
+      "rimDiameterInches": 19,
+      "description": "Common SUV tire size."
+    },
+    {
+      "code": "265_50R20",
+      "size": "265/50R20",
+      "widthMm": 265,
+      "aspectRatio": 50,
+      "rimDiameterInches": 20,
+      "description": "Common SUV and pickup tire size."
+    },
+    {
+      "code": "275_55R20",
+      "size": "275/55R20",
+      "widthMm": 275,
+      "aspectRatio": 55,
+      "rimDiameterInches": 20,
+      "description": "Common large SUV and pickup tire size."
+    },
+    {
+      "code": "285_45R22",
+      "size": "285/45R22",
+      "widthMm": 285,
+      "aspectRatio": 45,
+      "rimDiameterInches": 22,
+      "description": "Large SUV and premium vehicle tire size."
+    },
+    {
+      "code": "LT265_70R17",
+      "size": "LT265/70R17",
+      "widthMm": 265,
+      "aspectRatio": 70,
+      "rimDiameterInches": 17,
+      "description": "Light-truck tire size commonly used on pickups and utility vehicles."
+    },
+    {
+      "code": "LT275_65R18",
+      "size": "LT275/65R18",
+      "widthMm": 275,
+      "aspectRatio": 65,
+      "rimDiameterInches": 18,
+      "description": "Light-truck tire size commonly used on pickups and utility vehicles."
+    },
+    {
+      "code": "UNKNOWN",
+      "size": "Unknown",
+      "widthMm": null,
+      "aspectRatio": null,
+      "rimDiameterInches": null,
+      "description": "Tire size has not yet been verified."
+    }
+  ]
+}
