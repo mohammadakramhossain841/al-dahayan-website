@@ -1,0 +1,117 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk status management rules for Toyota and Lexus OEM catalog records.",
+  "supportedStatuses": [
+    "draft",
+    "active",
+    "archived",
+    "disabled"
+  ],
+  "updateModes": [
+    "selected",
+    "filtered",
+    "imported"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.edit",
+    "requireConfirmation": true
+  },
+  "selectionRules": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 1000,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requirePreview": true
+  },
+  "transitionRules": {
+    "draft": [
+      "active",
+      "archived",
+      "disabled"
+    ],
+    "active": [
+      "draft",
+      "archived",
+      "disabled"
+    ],
+    "archived": [
+      "draft",
+      "active"
+    ],
+    "disabled": [
+      "draft",
+      "active",
+      "archived"
+    ]
+  },
+  "protectedTransitions": {
+    "activeToDisabled": {
+      "allowed": false,
+      "requireExtraPermission": true,
+      "requireReason": true
+    },
+    "verifiedToDisabled": {
+      "allowed": false,
+      "requireSuperAdmin": true,
+      "requireReason": true
+    }
+  },
+  "publicationRules": {
+    "activeRequiresValidOemNumber": true,
+    "activeRequiresPartName": true,
+    "activeRequiresBrand": true,
+    "activeRequiresCategory": true,
+    "activeRequiresValidation": true,
+    "activeDoesNotRequireVerification": true
+  },
+  "archiveRules": {
+    "preserveRecord": true,
+    "preserveImages": true,
+    "preservePricing": true,
+    "preserveInventory": true,
+    "preserveCompatibility": true,
+    "preserveAuditHistory": true
+  },
+  "validation": {
+    "validateBeforeUpdate": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "showAffectedRecords": true,
+    "showOldAndNewStatus": true,
+    "generatePreview": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousStatus": true,
+    "recordNewStatus": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.edit"
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalUpdated": true,
+    "showTotalSkipped": true,
+    "showTotalFailed": true,
+    "showValidationWarnings": true,
+    "generateUpdateReport": true
+  },
+  "safety": {
+    "neverPermanentlyDeleteRecords": true,
+    "neverAutomaticallyPublishInvalidRecords": true,
+    "neverAutomaticallyVerifyRecords": true,
+    "preserveStatusHistory": true,
+    "preserveAuditHistory": true
+  }
+}
