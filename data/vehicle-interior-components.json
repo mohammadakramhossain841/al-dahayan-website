@@ -1,0 +1,604 @@
+{
+  "interiorComponents": [
+    {
+      "id": "VIC-001",
+      "code": "DASHBOARD_ASSEMBLY",
+      "name": "Dashboard Assembly",
+      "category": "DASHBOARD"
+    },
+    {
+      "id": "VIC-002",
+      "code": "INSTRUMENT_PANEL",
+      "name": "Instrument Panel",
+      "category": "DASHBOARD"
+    },
+    {
+      "id": "VIC-003",
+      "code": "INSTRUMENT_CLUSTER",
+      "name": "Instrument Cluster",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VIC-004",
+      "code": "CLUSTER_DISPLAY",
+      "name": "Cluster Display",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VIC-005",
+      "code": "DASHBOARD_TRIM",
+      "name": "Dashboard Trim",
+      "category": "INTERIOR_TRIM"
+    },
+    {
+      "id": "VIC-006",
+      "code": "DASHBOARD_COVER",
+      "name": "Dashboard Cover",
+      "category": "INTERIOR_TRIM"
+    },
+    {
+      "id": "VIC-007",
+      "code": "CENTER_CONSOLE",
+      "name": "Center Console",
+      "category": "CONSOLE"
+    },
+    {
+      "id": "VIC-008",
+      "code": "CENTER_CONSOLE_COVER",
+      "name": "Center Console Cover",
+      "category": "CONSOLE"
+    },
+    {
+      "id": "VIC-009",
+      "code": "CENTER_CONSOLE_STORAGE",
+      "name": "Center Console Storage",
+      "category": "CONSOLE"
+    },
+    {
+      "id": "VIC-010",
+      "code": "ARMREST",
+      "name": "Armrest",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VIC-011",
+      "code": "CENTER_ARMREST",
+      "name": "Center Armrest",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VIC-012",
+      "code": "DOOR_TRIM_PANEL",
+      "name": "Door Trim Panel",
+      "category": "DOOR_INTERIOR"
+    },
+    {
+      "id": "VIC-013",
+      "code": "DOOR_TRIM",
+      "name": "Door Trim",
+      "category": "DOOR_INTERIOR"
+    },
+    {
+      "id": "VIC-014",
+      "code": "DOOR_ARMREST",
+      "name": "Door Armrest",
+      "category": "DOOR_INTERIOR"
+    },
+    {
+      "id": "VIC-015",
+      "code": "DOOR_HANDLE_INNER",
+      "name": "Interior Door Handle",
+      "category": "DOOR_INTERIOR"
+    },
+    {
+      "id": "VIC-016",
+      "code": "DOOR_LOCK_SWITCH",
+      "name": "Door Lock Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VIC-017",
+      "code": "WINDOW_SWITCH",
+      "name": "Power Window Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VIC-018",
+      "code": "WINDOW_SWITCH_PANEL",
+      "name": "Window Switch Panel",
+      "category": "DOOR_INTERIOR"
+    },
+    {
+      "id": "VIC-019",
+      "code": "SEAT_ASSEMBLY",
+      "name": "Seat Assembly",
+      "category": "SEAT"
+    },
+    {
+      "id": "VIC-020",
+      "code": "FRONT_SEAT",
+      "name": "Front Seat",
+      "category": "SEAT"
+    },
+    {
+      "id": "VIC-021",
+      "code": "REAR_SEAT",
+      "name": "Rear Seat",
+      "category": "SEAT"
+    },
+    {
+      "id": "VIC-022",
+      "code": "SEAT_CUSHION",
+      "name": "Seat Cushion",
+      "category": "SEAT"
+    },
+    {
+      "id": "VIC-023",
+      "code": "SEAT_BACKREST",
+      "name": "Seat Backrest",
+      "category": "SEAT"
+    },
+    {
+      "id": "VIC-024",
+      "code": "SEAT_HEADREST",
+      "name": "Seat Headrest",
+      "category": "SEAT"
+    },
+    {
+      "id": "VIC-025",
+      "code": "SEAT_TRACK",
+      "name": "Seat Track",
+      "category": "SEAT_HARDWARE"
+    },
+    {
+      "id": "VIC-026",
+      "code": "SEAT_SLIDE_MECHANISM",
+      "name": "Seat Slide Mechanism",
+      "category": "SEAT_HARDWARE"
+    },
+    {
+      "id": "VIC-027",
+      "code": "SEAT_RECLINER",
+      "name": "Seat Recliner",
+      "category": "SEAT_HARDWARE"
+    },
+    {
+      "id": "VIC-028",
+      "code": "POWER_SEAT_MOTOR",
+      "name": "Power Seat Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VIC-029",
+      "code": "SEAT_HEATER",
+      "name": "Seat Heater",
+      "category": "COMFORT"
+    },
+    {
+      "id": "VIC-030",
+      "code": "SEAT_VENTILATION",
+      "name": "Seat Ventilation",
+      "category": "COMFORT"
+    },
+    {
+      "id": "VIC-031",
+      "code": "STEERING_WHEEL",
+      "name": "Steering Wheel",
+      "category": "STEERING"
+    },
+    {
+      "id": "VIC-032",
+      "code": "STEERING_WHEEL_TRIM",
+      "name": "Steering Wheel Trim",
+      "category": "STEERING"
+    },
+    {
+      "id": "VIC-033",
+      "code": "STEERING_WHEEL_SWITCH",
+      "name": "Steering Wheel Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VIC-034",
+      "code": "STEERING_WHEEL_AUDIO_SWITCH",
+      "name": "Steering Wheel Audio Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VIC-035",
+      "code": "STEERING_WHEEL_CRUISE_SWITCH",
+      "name": "Steering Wheel Cruise Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VIC-036",
+      "code": "HORN_PAD",
+      "name": "Horn Pad",
+      "category": "STEERING"
+    },
+    {
+      "id": "VIC-037",
+      "code": "AIRBAG_MODULE",
+      "name": "Steering Wheel Airbag Module",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VIC-038",
+      "code": "SHIFT_LEVER",
+      "name": "Shift Lever",
+      "category": "CONTROLS"
+    },
+    {
+      "id": "VIC-039",
+      "code": "SHIFT_KNOB",
+      "name": "Shift Knob",
+      "category": "CONTROLS"
+    },
+    {
+      "id": "VIC-040",
+      "code": "SHIFT_BOOT",
+      "name": "Shift Boot",
+      "category": "INTERIOR_TRIM"
+    },
+    {
+      "id": "VIC-041",
+      "code": "PARKING_BRAKE_LEVER",
+      "name": "Parking Brake Lever",
+      "category": "CONTROLS"
+    },
+    {
+      "id": "VIC-042",
+      "code": "PARKING_BRAKE_SWITCH",
+      "name": "Electronic Parking Brake Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VIC-043",
+      "code": "ACCELERATOR_PEDAL",
+      "name": "Accelerator Pedal",
+      "category": "PEDAL"
+    },
+    {
+      "id": "VIC-044",
+      "code": "BRAKE_PEDAL",
+      "name": "Brake Pedal",
+      "category": "PEDAL"
+    },
+    {
+      "id": "VIC-045",
+      "code": "CLUTCH_PEDAL",
+      "name": "Clutch Pedal",
+      "category": "PEDAL"
+    },
+    {
+      "id": "VIC-046",
+      "code": "PEDAL_PAD",
+      "name": "Pedal Pad",
+      "category": "PEDAL"
+    },
+    {
+      "id": "VIC-047",
+      "code": "GLOVE_BOX",
+      "name": "Glove Box",
+      "category": "STORAGE"
+    },
+    {
+      "id": "VIC-048",
+      "code": "GLOVE_BOX_LATCH",
+      "name": "Glove Box Latch",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VIC-049",
+      "code": "CUP_HOLDER",
+      "name": "Cup Holder",
+      "category": "STORAGE"
+    },
+    {
+      "id": "VIC-050",
+      "code": "DOOR_STORAGE_POCKET",
+      "name": "Door Storage Pocket",
+      "category": "STORAGE"
+    },
+    {
+      "id": "VIC-051",
+      "code": "DASH_STORAGE_COMPARTMENT",
+      "name": "Dashboard Storage Compartment",
+      "category": "STORAGE"
+    },
+    {
+      "id": "VIC-052",
+      "code": "TRUNK_TRIM",
+      "name": "Trunk Trim",
+      "category": "INTERIOR_TRIM"
+    },
+    {
+      "id": "VIC-053",
+      "code": "CARGO_AREA_TRIM",
+      "name": "Cargo Area Trim",
+      "category": "INTERIOR_TRIM"
+    },
+    {
+      "id": "VIC-054",
+      "code": "CARGO_COVER",
+      "name": "Cargo Cover",
+      "category": "STORAGE"
+    },
+    {
+      "id": "VIC-055",
+      "code": "FLOOR_CARPET",
+      "name": "Floor Carpet",
+      "category": "FLOOR"
+    },
+    {
+      "id": "VIC-056",
+      "code": "FLOOR_MAT",
+      "name": "Floor Mat",
+      "category": "FLOOR"
+    },
+    {
+      "id": "VIC-057",
+      "code": "CARGO_FLOOR",
+      "name": "Cargo Floor",
+      "category": "FLOOR"
+    },
+    {
+      "id": "VIC-058",
+      "code": "FLOOR_CONSOLE",
+      "name": "Floor Console",
+      "category": "CONSOLE"
+    },
+    {
+      "id": "VIC-059",
+      "code": "HEADLINER",
+      "name": "Headliner",
+      "category": "ROOF_INTERIOR"
+    },
+    {
+      "id": "VIC-060",
+      "code": "SUN_VISOR",
+      "name": "Sun Visor",
+      "category": "ROOF_INTERIOR"
+    },
+    {
+      "id": "VIC-061",
+      "code": "SUN_VISOR_MIRROR",
+      "name": "Sun Visor Mirror",
+      "category": "ROOF_INTERIOR"
+    },
+    {
+      "id": "VIC-062",
+      "code": "INTERIOR_REARVIEW_MIRROR",
+      "name": "Interior Rearview Mirror",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VIC-063",
+      "code": "AUTO_DIMMING_MIRROR",
+      "name": "Auto-Dimming Rearview Mirror",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VIC-064",
+      "code": "INTERIOR_MIRROR_COVER",
+      "name": "Interior Mirror Cover",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VIC-065",
+      "code": "OVERHEAD_CONSOLE",
+      "name": "Overhead Console",
+      "category": "ROOF_INTERIOR"
+    },
+    {
+      "id": "VIC-066",
+      "code": "DOME_LIGHT",
+      "name": "Dome Light",
+      "category": "INTERIOR_LIGHTING"
+    },
+    {
+      "id": "VIC-067",
+      "code": "MAP_LIGHT",
+      "name": "Map Light",
+      "category": "INTERIOR_LIGHTING"
+    },
+    {
+      "id": "VIC-068",
+      "code": "COURTESY_LIGHT",
+      "name": "Courtesy Light",
+      "category": "INTERIOR_LIGHTING"
+    },
+    {
+      "id": "VIC-069",
+      "code": "TRUNK_LIGHT",
+      "name": "Trunk Light",
+      "category": "INTERIOR_LIGHTING"
+    },
+    {
+      "id": "VIC-070",
+      "code": "INTERIOR_LIGHT_SWITCH",
+      "name": "Interior Light Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VIC-071",
+      "code": "INFOTAINMENT_DISPLAY",
+      "name": "Infotainment Display",
+      "category": "INFOTAINMENT"
+    },
+    {
+      "id": "VIC-072",
+      "code": "AUDIO_HEAD_UNIT",
+      "name": "Audio Head Unit",
+      "category": "INFOTAINMENT"
+    },
+    {
+      "id": "VIC-073",
+      "code": "SPEAKER",
+      "name": "Interior Speaker",
+      "category": "AUDIO"
+    },
+    {
+      "id": "VIC-074",
+      "code": "SUBWOOFER",
+      "name": "Subwoofer",
+      "category": "AUDIO"
+    },
+    {
+      "id": "VIC-075",
+      "code": "USB_PORT",
+      "name": "USB Port",
+      "category": "CONNECTIVITY"
+    },
+    {
+      "id": "VIC-076",
+      "code": "POWER_OUTLET",
+      "name": "Power Outlet",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VIC-077",
+      "code": "WIRELESS_CHARGER",
+      "name": "Wireless Charger",
+      "category": "CONNECTIVITY"
+    },
+    {
+      "id": "VIC-078",
+      "code": "CLIMATE_CONTROL_PANEL",
+      "name": "Climate Control Panel",
+      "category": "HVAC"
+    },
+    {
+      "id": "VIC-079",
+      "code": "HVAC_CONTROL_SWITCH",
+      "name": "HVAC Control Switch",
+      "category": "HVAC"
+    },
+    {
+      "id": "VIC-080",
+      "code": "AIR_VENT",
+      "name": "Interior Air Vent",
+      "category": "HVAC"
+    },
+    {
+      "id": "VIC-081",
+      "code": "AIR_VENT_GRILLE",
+      "name": "Air Vent Grille",
+      "category": "HVAC"
+    },
+    {
+      "id": "VIC-082",
+      "code": "CABIN_AIR_FILTER_HOUSING",
+      "name": "Cabin Air Filter Housing",
+      "category": "HVAC"
+    },
+    {
+      "id": "VIC-083",
+      "code": "INTERIOR_TRIM_PANEL",
+      "name": "Interior Trim Panel",
+      "category": "INTERIOR_TRIM"
+    },
+    {
+      "id": "VIC-084",
+      "code": "PILLAR_TRIM",
+      "name": "Pillar Trim",
+      "category": "INTERIOR_TRIM"
+    },
+    {
+      "id": "VIC-085",
+      "code": "KICK_PANEL",
+      "name": "Kick Panel",
+      "category": "INTERIOR_TRIM"
+    },
+    {
+      "id": "VIC-086",
+      "code": "SCUFF_PLATE",
+      "name": "Door Scuff Plate",
+      "category": "INTERIOR_TRIM"
+    },
+    {
+      "id": "VIC-087",
+      "code": "SEAT_BELT",
+      "name": "Seat Belt",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VIC-088",
+      "code": "SEAT_BELT_BUCKLE",
+      "name": "Seat Belt Buckle",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VIC-089",
+      "code": "SEAT_BELT_RETRACTOR",
+      "name": "Seat Belt Retractor",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VIC-090",
+      "code": "CHILD_SEAT_ANCHOR",
+      "name": "Child Seat Anchor",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VIC-091",
+      "code": "INTERIOR_HANDLE",
+      "name": "Interior Grab Handle",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VIC-092",
+      "code": "COAT_HOOK",
+      "name": "Coat Hook",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VIC-093",
+      "code": "REAR_CONSOLE",
+      "name": "Rear Console",
+      "category": "CONSOLE"
+    },
+    {
+      "id": "VIC-094",
+      "code": "REAR_SEAT_ARMREST",
+      "name": "Rear Seat Armrest",
+      "category": "SEAT"
+    },
+    {
+      "id": "VIC-095",
+      "code": "REAR_SEAT_HEADREST",
+      "name": "Rear Seat Headrest",
+      "category": "SEAT"
+    },
+    {
+      "id": "VIC-096",
+      "code": "INTERIOR_FASTENER",
+      "name": "Interior Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VIC-097",
+      "code": "INTERIOR_CLIP",
+      "name": "Interior Trim Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VIC-098",
+      "code": "INTERIOR_SEAL",
+      "name": "Interior Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VIC-099",
+      "code": "INTERIOR_REPAIR_KIT",
+      "name": "Interior Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VIC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Interior Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
