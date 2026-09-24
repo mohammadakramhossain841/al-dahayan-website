@@ -1,0 +1,604 @@
+{
+  "seatComponents": [
+    {
+      "id": "VSC-001",
+      "code": "SEAT_SYSTEM",
+      "name": "Vehicle Seat System",
+      "category": "SEAT"
+    },
+    {
+      "id": "VSC-002",
+      "code": "FRONT_SEAT",
+      "name": "Front Seat",
+      "category": "SEAT"
+    },
+    {
+      "id": "VSC-003",
+      "code": "DRIVER_SEAT",
+      "name": "Driver Seat",
+      "category": "SEAT"
+    },
+    {
+      "id": "VSC-004",
+      "code": "PASSENGER_SEAT",
+      "name": "Front Passenger Seat",
+      "category": "SEAT"
+    },
+    {
+      "id": "VSC-005",
+      "code": "REAR_SEAT",
+      "name": "Rear Seat",
+      "category": "SEAT"
+    },
+    {
+      "id": "VSC-006",
+      "code": "SECOND_ROW_SEAT",
+      "name": "Second Row Seat",
+      "category": "SEAT"
+    },
+    {
+      "id": "VSC-007",
+      "code": "THIRD_ROW_SEAT",
+      "name": "Third Row Seat",
+      "category": "SEAT"
+    },
+    {
+      "id": "VSC-008",
+      "code": "SEAT_ASSEMBLY",
+      "name": "Seat Assembly",
+      "category": "SEAT"
+    },
+    {
+      "id": "VSC-009",
+      "code": "SEAT_FRAME",
+      "name": "Seat Frame",
+      "category": "FRAME"
+    },
+    {
+      "id": "VSC-010",
+      "code": "SEAT_CUSHION",
+      "name": "Seat Cushion",
+      "category": "CUSHION"
+    },
+    {
+      "id": "VSC-011",
+      "code": "SEAT_BACKREST",
+      "name": "Seat Backrest",
+      "category": "BACKREST"
+    },
+    {
+      "id": "VSC-012",
+      "code": "SEAT_HEADREST",
+      "name": "Seat Headrest",
+      "category": "HEADREST"
+    },
+    {
+      "id": "VSC-013",
+      "code": "HEADREST_POST",
+      "name": "Headrest Post",
+      "category": "HEADREST"
+    },
+    {
+      "id": "VSC-014",
+      "code": "HEADREST_GUIDE",
+      "name": "Headrest Guide",
+      "category": "HEADREST"
+    },
+    {
+      "id": "VSC-015",
+      "code": "SEAT_CUSHION_FRAME",
+      "name": "Seat Cushion Frame",
+      "category": "FRAME"
+    },
+    {
+      "id": "VSC-016",
+      "code": "SEAT_BACK_FRAME",
+      "name": "Seat Back Frame",
+      "category": "FRAME"
+    },
+    {
+      "id": "VSC-017",
+      "code": "SEAT_TRACK",
+      "name": "Seat Track",
+      "category": "ADJUSTMENT"
+    },
+    {
+      "id": "VSC-018",
+      "code": "SEAT_SLIDE_RAIL",
+      "name": "Seat Slide Rail",
+      "category": "ADJUSTMENT"
+    },
+    {
+      "id": "VSC-019",
+      "code": "SEAT_TRACK_LOCK",
+      "name": "Seat Track Lock",
+      "category": "ADJUSTMENT"
+    },
+    {
+      "id": "VSC-020",
+      "code": "SEAT_RECLINER",
+      "name": "Seat Recliner",
+      "category": "ADJUSTMENT"
+    },
+    {
+      "id": "VSC-021",
+      "code": "RECLINER_MECHANISM",
+      "name": "Recliner Mechanism",
+      "category": "ADJUSTMENT"
+    },
+    {
+      "id": "VSC-022",
+      "code": "SEAT_HEIGHT_ADJUSTER",
+      "name": "Seat Height Adjuster",
+      "category": "ADJUSTMENT"
+    },
+    {
+      "id": "VSC-023",
+      "code": "SEAT_TILT_MECHANISM",
+      "name": "Seat Tilt Mechanism",
+      "category": "ADJUSTMENT"
+    },
+    {
+      "id": "VSC-024",
+      "code": "SEAT_LUMBAR_SUPPORT",
+      "name": "Lumbar Support",
+      "category": "COMFORT"
+    },
+    {
+      "id": "VSC-025",
+      "code": "LUMBAR_SUPPORT_ACTUATOR",
+      "name": "Lumbar Support Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VSC-026",
+      "code": "POWER_SEAT_MOTOR",
+      "name": "Power Seat Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-027",
+      "code": "SEAT_SLIDE_MOTOR",
+      "name": "Seat Slide Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-028",
+      "code": "SEAT_RECLINE_MOTOR",
+      "name": "Seat Recline Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-029",
+      "code": "SEAT_HEIGHT_MOTOR",
+      "name": "Seat Height Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-030",
+      "code": "SEAT_TILT_MOTOR",
+      "name": "Seat Tilt Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-031",
+      "code": "SEAT_MEMORY_MODULE",
+      "name": "Seat Memory Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VSC-032",
+      "code": "SEAT_MEMORY_SWITCH",
+      "name": "Seat Memory Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VSC-033",
+      "code": "SEAT_CONTROL_MODULE",
+      "name": "Seat Control Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VSC-034",
+      "code": "SEAT_SWITCH",
+      "name": "Seat Adjustment Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VSC-035",
+      "code": "SEAT_HEATING_ELEMENT",
+      "name": "Seat Heating Element",
+      "category": "HEATING"
+    },
+    {
+      "id": "VSC-036",
+      "code": "SEAT_HEATED_CUSHION",
+      "name": "Heated Seat Cushion",
+      "category": "HEATING"
+    },
+    {
+      "id": "VSC-037",
+      "code": "SEAT_HEATED_BACKREST",
+      "name": "Heated Seat Backrest",
+      "category": "HEATING"
+    },
+    {
+      "id": "VSC-038",
+      "code": "SEAT_VENTILATION_FAN",
+      "name": "Seat Ventilation Fan",
+      "category": "VENTILATION"
+    },
+    {
+      "id": "VSC-039",
+      "code": "SEAT_VENTILATION_MODULE",
+      "name": "Seat Ventilation Module",
+      "category": "VENTILATION"
+    },
+    {
+      "id": "VSC-040",
+      "code": "SEAT_COOLING_ELEMENT",
+      "name": "Seat Cooling Element",
+      "category": "VENTILATION"
+    },
+    {
+      "id": "VSC-041",
+      "code": "SEAT_OCCUPANCY_SENSOR",
+      "name": "Seat Occupancy Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-042",
+      "code": "PASSENGER_OCCUPANCY_SENSOR",
+      "name": "Passenger Occupancy Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-043",
+      "code": "SEAT_POSITION_SENSOR",
+      "name": "Seat Position Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-044",
+      "code": "SEAT_BELT_SENSOR",
+      "name": "Seat Belt Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSC-045",
+      "code": "SEAT_AIRBAG",
+      "name": "Seat-Mounted Airbag",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VSC-046",
+      "code": "SEAT_BELT",
+      "name": "Seat Belt",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VSC-047",
+      "code": "SEAT_BELT_RETRACTOR",
+      "name": "Seat Belt Retractor",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VSC-048",
+      "code": "SEAT_BELT_BUCKLE",
+      "name": "Seat Belt Buckle",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VSC-049",
+      "code": "SEAT_BELT_PRETENSIONER",
+      "name": "Seat Belt Pretensioner",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VSC-050",
+      "code": "SEAT_BELT_HEIGHT_ADJUSTER",
+      "name": "Seat Belt Height Adjuster",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VSC-051",
+      "code": "SEAT_COVER",
+      "name": "Seat Cover",
+      "category": "TRIM"
+    },
+    {
+      "id": "VSC-052",
+      "code": "SEAT_COVER_CUSHION",
+      "name": "Seat Cushion Cover",
+      "category": "TRIM"
+    },
+    {
+      "id": "VSC-053",
+      "code": "SEAT_COVER_BACKREST",
+      "name": "Seat Backrest Cover",
+      "category": "TRIM"
+    },
+    {
+      "id": "VSC-054",
+      "code": "SEAT_FOAM",
+      "name": "Seat Foam",
+      "category": "CUSHION"
+    },
+    {
+      "id": "VSC-055",
+      "code": "SEAT_CUSHION_FOAM",
+      "name": "Seat Cushion Foam",
+      "category": "CUSHION"
+    },
+    {
+      "id": "VSC-056",
+      "code": "SEAT_BACKREST_FOAM",
+      "name": "Seat Backrest Foam",
+      "category": "CUSHION"
+    },
+    {
+      "id": "VSC-057",
+      "code": "SEAT_SIDE_BOLSTER",
+      "name": "Seat Side Bolster",
+      "category": "CUSHION"
+    },
+    {
+      "id": "VSC-058",
+      "code": "SEAT_ARMREST",
+      "name": "Seat Armrest",
+      "category": "ARMREST"
+    },
+    {
+      "id": "VSC-059",
+      "code": "ARMREST_HINGE",
+      "name": "Armrest Hinge",
+      "category": "ARMREST"
+    },
+    {
+      "id": "VSC-060",
+      "code": "ARMREST_MECHANISM",
+      "name": "Armrest Mechanism",
+      "category": "ARMREST"
+    },
+    {
+      "id": "VSC-061",
+      "code": "REAR_SEAT_FOLDING_MECHANISM",
+      "name": "Rear Seat Folding Mechanism",
+      "category": "REAR_SEAT"
+    },
+    {
+      "id": "VSC-062",
+      "code": "REAR_SEAT_SPLIT_MECHANISM",
+      "name": "Rear Seat Split Mechanism",
+      "category": "REAR_SEAT"
+    },
+    {
+      "id": "VSC-063",
+      "code": "REAR_SEAT_RELEASE_HANDLE",
+      "name": "Rear Seat Release Handle",
+      "category": "REAR_SEAT"
+    },
+    {
+      "id": "VSC-064",
+      "code": "REAR_SEAT_LATCH",
+      "name": "Rear Seat Latch",
+      "category": "REAR_SEAT"
+    },
+    {
+      "id": "VSC-065",
+      "code": "REAR_SEAT_HINGE",
+      "name": "Rear Seat Hinge",
+      "category": "REAR_SEAT"
+    },
+    {
+      "id": "VSC-066",
+      "code": "THIRD_ROW_FOLDING_MECHANISM",
+      "name": "Third Row Folding Mechanism",
+      "category": "REAR_SEAT"
+    },
+    {
+      "id": "VSC-067",
+      "code": "SEAT_LEG",
+      "name": "Seat Leg",
+      "category": "FRAME"
+    },
+    {
+      "id": "VSC-068",
+      "code": "SEAT_MOUNTING_BRACKET",
+      "name": "Seat Mounting Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VSC-069",
+      "code": "SEAT_MOUNTING_BOLT",
+      "name": "Seat Mounting Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VSC-070",
+      "code": "SEAT_TRACK_BOLT",
+      "name": "Seat Track Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VSC-071",
+      "code": "SEAT_FRAME_BUSHING",
+      "name": "Seat Frame Bushing",
+      "category": "BUSHING"
+    },
+    {
+      "id": "VSC-072",
+      "code": "SEAT_RECLINER_GEAR",
+      "name": "Seat Recliner Gear",
+      "category": "ADJUSTMENT"
+    },
+    {
+      "id": "VSC-073",
+      "code": "SEAT_RECLINER_CABLE",
+      "name": "Seat Recliner Cable",
+      "category": "ADJUSTMENT"
+    },
+    {
+      "id": "VSC-074",
+      "code": "SEAT_RELEASE_CABLE",
+      "name": "Seat Release Cable",
+      "category": "REAR_SEAT"
+    },
+    {
+      "id": "VSC-075",
+      "code": "SEAT_WIRING_HARNESS",
+      "name": "Seat Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VSC-076",
+      "code": "SEAT_CONNECTOR",
+      "name": "Seat Electrical Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VSC-077",
+      "code": "SEAT_FUSE",
+      "name": "Seat Fuse",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-078",
+      "code": "SEAT_RELAY",
+      "name": "Seat Relay",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-079",
+      "code": "SEAT_GROUND_WIRE",
+      "name": "Seat Ground Wire",
+      "category": "WIRING"
+    },
+    {
+      "id": "VSC-080",
+      "code": "SEAT_CLIP",
+      "name": "Seat Trim Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VSC-081",
+      "code": "SEAT_RETAINER",
+      "name": "Seat Trim Retainer",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VSC-082",
+      "code": "SEAT_MOUNTING_HARDWARE",
+      "name": "Seat Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VSC-083",
+      "code": "SEAT_MEMORY_MOTOR",
+      "name": "Seat Memory Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-084",
+      "code": "POWER_HEADREST_MOTOR",
+      "name": "Power Headrest Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-085",
+      "code": "POWER_LEG_REST",
+      "name": "Power Leg Rest",
+      "category": "COMFORT"
+    },
+    {
+      "id": "VSC-086",
+      "code": "SEAT_MASSAGE_MODULE",
+      "name": "Seat Massage Module",
+      "category": "COMFORT"
+    },
+    {
+      "id": "VSC-087",
+      "code": "SEAT_MASSAGE_ACTUATOR",
+      "name": "Seat Massage Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VSC-088",
+      "code": "SEAT_COMFORT_CONTROL_MODULE",
+      "name": "Seat Comfort Control Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VSC-089",
+      "code": "SEAT_DIAGNOSTIC_COMPONENT",
+      "name": "Seat Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VSC-090",
+      "code": "SEAT_SERVICE_KIT",
+      "name": "Seat Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VSC-091",
+      "code": "SEAT_REPAIR_KIT",
+      "name": "Seat Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VSC-092",
+      "code": "SEAT_COVER_REPAIR_KIT",
+      "name": "Seat Cover Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VSC-093",
+      "code": "SEAT_ELECTRICAL_COMPONENT",
+      "name": "Seat Electrical Component",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSC-094",
+      "code": "SEAT_SAFETY_COMPONENT",
+      "name": "Seat Safety Component",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VSC-095",
+      "code": "SEAT_CONTROL_COMPONENT",
+      "name": "Seat Control Component",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VSC-096",
+      "code": "SEAT_MOUNTING_COMPONENT",
+      "name": "Seat Mounting Component",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VSC-097",
+      "code": "SEAT_INTERIOR_COMPONENT",
+      "name": "General Seat Interior Component",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VSC-098",
+      "code": "SEAT_COMFORT_COMPONENT",
+      "name": "General Seat Comfort Component",
+      "category": "COMFORT"
+    },
+    {
+      "id": "VSC-099",
+      "code": "SEAT_GENERAL_COMPONENT",
+      "name": "General Seat Component",
+      "category": "SEAT"
+    },
+    {
+      "id": "VSC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Seat Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
