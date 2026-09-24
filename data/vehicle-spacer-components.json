@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_spacer_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VSP-001",
+      "code": "WHEEL_SPACER",
+      "name": "Wheel Spacer",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VSP-002",
+      "code": "HUB_CENTRIC_WHEEL_SPACER",
+      "name": "Hub-Centric Wheel Spacer",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VSP-003",
+      "code": "WHEEL_ADAPTER_SPACER",
+      "name": "Wheel Adapter Spacer",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VSP-004",
+      "code": "WHEEL_BOLT_SPACER",
+      "name": "Wheel Bolt Spacer",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VSP-005",
+      "code": "WHEEL_HUB_SPACER",
+      "name": "Wheel Hub Spacer",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VSP-006",
+      "code": "BRAKE_ROTOR_SPACER",
+      "name": "Brake Rotor Spacer",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VSP-007",
+      "code": "BRAKE_CALIPER_SPACER",
+      "name": "Brake Caliper Spacer",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VSP-008",
+      "code": "BRAKE_PAD_SPACER",
+      "name": "Brake Pad Spacer",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VSP-009",
+      "code": "BRAKE_SHOE_SPACER",
+      "name": "Brake Shoe Spacer",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VSP-010",
+      "code": "MASTER_CYLINDER_SPACER",
+      "name": "Master Cylinder Spacer",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VSP-011",
+      "code": "STRUT_SPACER",
+      "name": "Strut Spacer",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VSP-012",
+      "code": "STRUT_TOP_SPACER",
+      "name": "Strut Top Spacer",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VSP-013",
+      "code": "SPRING_SPACER",
+      "name": "Spring Spacer",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VSP-014",
+      "code": "COIL_SPRING_SPACER",
+      "name": "Coil Spring Spacer",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VSP-015",
+      "code": "LEAF_SPRING_SPACER",
+      "name": "Leaf Spring Spacer",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VSP-016",
+      "code": "SHOCK_ABSORBER_SPACER",
+      "name": "Shock Absorber Spacer",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VSP-017",
+      "code": "CONTROL_ARM_SPACER",
+      "name": "Control Arm Spacer",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VSP-018",
+      "code": "STABILIZER_BAR_SPACER",
+      "name": "Stabilizer Bar Spacer",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VSP-019",
+      "code": "SUBFRAME_SPACER",
+      "name": "Subframe Spacer",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VSP-020",
+      "code": "BODY_MOUNT_SPACER",
+      "name": "Body Mount Spacer",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VSP-021",
+      "code": "ENGINE_MOUNT_SPACER",
+      "name": "Engine Mount Spacer",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VSP-022",
+      "code": "TRANSMISSION_MOUNT_SPACER",
+      "name": "Transmission Mount Spacer",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VSP-023",
+      "code": "DIFFERENTIAL_MOUNT_SPACER",
+      "name": "Differential Mount Spacer",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VSP-024",
+      "code": "TRANSFER_CASE_SPACER",
+      "name": "Transfer Case Spacer",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VSP-025",
+      "code": "PROPELLER_SHAFT_SPACER",
+      "name": "Propeller Shaft Spacer",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VSP-026",
+      "code": "DIFFERENTIAL_FLANGE_SPACER",
+      "name": "Differential Flange Spacer",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VSP-027",
+      "code": "AXLE_SPACER",
+      "name": "Axle Spacer",
+      "category": "AXLE"
+    },
+    {
+      "id": "VSP-028",
+      "code": "CV_JOINT_SPACER",
+      "name": "CV Joint Spacer",
+      "category": "AXLE"
+    },
+    {
+      "id": "VSP-029",
+      "code": "HUB_BEARING_SPACER",
+      "name": "Hub Bearing Spacer",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VSP-030",
+      "code": "BEARING_SPACER",
+      "name": "Bearing Spacer",
+      "category": "BEARING"
+    },
+    {
+      "id": "VSP-031",
+      "code": "BEARING_RACE_SPACER",
+      "name": "Bearing Race Spacer",
+      "category": "BEARING"
+    },
+    {
+      "id": "VSP-032",
+      "code": "ENGINE_PULLEY_SPACER",
+      "name": "Engine Pulley Spacer",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VSP-033",
+      "code": "ALTERNATOR_SPACER",
+      "name": "Alternator Spacer",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSP-034",
+      "code": "STARTER_MOTOR_SPACER",
+      "name": "Starter Motor Spacer",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSP-035",
+      "code": "AC_COMPRESSOR_SPACER",
+      "name": "A/C Compressor Spacer",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VSP-036",
+      "code": "WATER_PUMP_SPACER",
+      "name": "Water Pump Spacer",
+      "category": "COOLING"
+    },
+    {
+      "id": "VSP-037",
+      "code": "RADIATOR_SPACER",
+      "name": "Radiator Spacer",
+      "category": "COOLING"
+    },
+    {
+      "id": "VSP-038",
+      "code": "CONDENSER_SPACER",
+      "name": "A/C Condenser Spacer",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VSP-039",
+      "code": "INTERCOOLER_SPACER",
+      "name": "Intercooler Spacer",
+      "category": "TURBO"
+    },
+    {
+      "id": "VSP-040",
+      "code": "TURBO_MOUNT_SPACER",
+      "name": "Turbo Mount Spacer",
+      "category": "TURBO"
+    },
+    {
+      "id": "VSP-041",
+      "code": "EXHAUST_FLANGE_SPACER",
+      "name": "Exhaust Flange Spacer",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VSP-042",
+      "code": "EXHAUST_MOUNT_SPACER",
+      "name": "Exhaust Mount Spacer",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VSP-043",
+      "code": "MUFFLER_SPACER",
+      "name": "Muffler Spacer",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VSP-044",
+      "code": "HEAT_SHIELD_SPACER",
+      "name": "Heat Shield Spacer",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VSP-045",
+      "code": "FUEL_TANK_SPACER",
+      "name": "Fuel Tank Spacer",
+      "category": "FUEL"
+    },
+    {
+      "id": "VSP-046",
+      "code": "FUEL_PUMP_SPACER",
+      "name": "Fuel Pump Spacer",
+      "category": "FUEL"
+    },
+    {
+      "id": "VSP-047",
+      "code": "FUEL_FILTER_SPACER",
+      "name": "Fuel Filter Spacer",
+      "category": "FUEL"
+    },
+    {
+      "id": "VSP-048",
+      "code": "FUEL_RAIL_SPACER",
+      "name": "Fuel Rail Spacer",
+      "category": "FUEL"
+    },
+    {
+      "id": "VSP-049",
+      "code": "INJECTOR_SPACER",
+      "name": "Fuel Injector Spacer",
+      "category": "FUEL"
+    },
+    {
+      "id": "VSP-050",
+      "code": "THROTTLE_BODY_SPACER",
+      "name": "Throttle Body Spacer",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VSP-051",
+      "code": "INTAKE_MANIFOLD_SPACER",
+      "name": "Intake Manifold Spacer",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VSP-052",
+      "code": "EXHAUST_MANIFOLD_SPACER",
+      "name": "Exhaust Manifold Spacer",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VSP-053",
+      "code": "OIL_COOLER_SPACER",
+      "name": "Oil Cooler Spacer",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VSP-054",
+      "code": "TRANSMISSION_COOLER_SPACER",
+      "name": "Transmission Cooler Spacer",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VSP-055",
+      "code": "TRANSMISSION_FILTER_SPACER",
+      "name": "Transmission Filter Spacer",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VSP-056",
+      "code": "VALVE_BODY_SPACER",
+      "name": "Transmission Valve Body Spacer",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VSP-057",
+      "code": "CLUTCH_SPACER",
+      "name": "Clutch Spacer",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VSP-058",
+      "code": "FLYWHEEL_SPACER",
+      "name": "Flywheel Spacer",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VSP-059",
+      "code": "STEERING_RACK_SPACER",
+      "name": "Steering Rack Spacer",
+      "category": "STEERING"
+    },
+    {
+      "id": "VSP-060",
+      "code": "STEERING_COLUMN_SPACER",
+      "name": "Steering Column Spacer",
+      "category": "STEERING"
+    },
+    {
+      "id": "VSP-061",
+      "code": "POWER_STEERING_PUMP_SPACER",
+      "name": "Power Steering Pump Spacer",
+      "category": "STEERING"
+    },
+    {
+      "id": "VSP-062",
+      "code": "BRAKE_BOOSTER_SPACER",
+      "name": "Brake Booster Spacer",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VSP-063",
+      "code": "BRAKE_MASTER_SPACER",
+      "name": "Brake Master Cylinder Spacer",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VSP-064",
+      "code": "CLUTCH_MASTER_SPACER",
+      "name": "Clutch Master Cylinder Spacer",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VSP-065",
+      "code": "BATTERY_TRAY_SPACER",
+      "name": "Battery Tray Spacer",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VSP-066",
+      "code": "BATTERY_PACK_SPACER",
+      "name": "Battery Pack Spacer",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VSP-067",
+      "code": "INVERTER_SPACER",
+      "name": "Inverter Spacer",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VSP-068",
+      "code": "EV_MOTOR_SPACER",
+      "name": "EV Motor Spacer",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VSP-069",
+      "code": "HV_CONNECTOR_SPACER",
+      "name": "High Voltage Connector Spacer",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VSP-070",
+      "code": "CHARGING_PORT_SPACER",
+      "name": "Charging Port Spacer",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VSP-071",
+      "code": "ECU_SPACER",
+      "name": "ECU Spacer",
+      "category": "ECU"
+    },
+    {
+      "id": "VSP-072",
+      "code": "MODULE_SPACER",
+      "name": "Control Module Spacer",
+      "category": "MODULE"
+    },
+    {
+      "id": "VSP-073",
+      "code": "FUSE_BOX_SPACER",
+      "name": "Fuse Box Spacer",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSP-074",
+      "code": "RELAY_BOX_SPACER",
+      "name": "Relay Box Spacer",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VSP-075",
+      "code": "WIRING_CLIP_SPACER",
+      "name": "Wiring Clip Spacer",
+      "category": "WIRING"
+    },
+    {
+      "id": "VSP-076",
+      "code": "SENSOR_SPACER",
+      "name": "Sensor Spacer",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VSP-077",
+      "code": "RADAR_SPACER",
+      "name": "Radar Spacer",
+      "category": "ADAS"
+    },
+    {
+      "id": "VSP-078",
+      "code": "CAMERA_SPACER",
+      "name": "Camera Spacer",
+      "category": "ADAS"
+    },
+    {
+      "id": "VSP-079",
+      "code": "PARKING_SENSOR_SPACER",
+      "name": "Parking Sensor Spacer",
+      "category": "ADAS"
+    },
+    {
+      "id": "VSP-080",
+      "code": "HEADLIGHT_SPACER",
+      "name": "Headlight Spacer",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VSP-081",
+      "code": "TAILLIGHT_SPACER",
+      "name": "Taillight Spacer",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VSP-082",
+      "code": "FOG_LIGHT_SPACER",
+      "name": "Fog Light Spacer",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VSP-083",
+      "code": "MIRROR_SPACER",
+      "name": "Mirror Spacer",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VSP-084",
+      "code": "DOOR_HINGE_SPACER",
+      "name": "Door Hinge Spacer",
+      "category": "DOOR"
+    },
+    {
+      "id": "VSP-085",
+      "code": "HOOD_HINGE_SPACER",
+      "name": "Hood Hinge Spacer",
+      "category": "HOOD"
+    },
+    {
+      "id": "VSP-086",
+      "code": "TAILGATE_HINGE_SPACER",
+      "name": "Tailgate Hinge Spacer",
+      "category": "TAILGATE"
+    },
+    {
+      "id": "VSP-087",
+      "code": "ROOF_RACK_SPACER",
+      "name": "Roof Rack Spacer",
+      "category": "ROOF"
+    },
+    {
+      "id": "VSP-088",
+      "code": "BUMPER_SPACER",
+      "name": "Bumper Spacer",
+      "category": "BODY"
+    },
+    {
+      "id": "VSP-089",
+      "code": "FENDER_SPACER",
+      "name": "Fender Spacer",
+      "category": "BODY"
+    },
+    {
+      "id": "VSP-090",
+      "code": "GRILLE_SPACER",
+      "name": "Grille Spacer",
+      "category": "BODY"
+    },
+    {
+      "id": "VSP-091",
+      "code": "SPOILER_SPACER",
+      "name": "Spoiler Spacer",
+      "category": "BODY"
+    },
+    {
+      "id": "VSP-092",
+      "code": "SEAT_RAIL_SPACER",
+      "name": "Seat Rail Spacer",
+      "category": "SEAT"
+    },
+    {
+      "id": "VSP-093",
+      "code": "DASHBOARD_SPACER",
+      "name": "Dashboard Spacer",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VSP-094",
+      "code": "SUNROOF_SPACER",
+      "name": "Sunroof Spacer",
+      "category": "ROOF"
+    },
+    {
+      "id": "VSP-095",
+      "code": "PIPE_SPACER",
+      "name": "Pipe Spacer",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VSP-096",
+      "code": "BRACKET_SPACER",
+      "name": "Bracket Spacer",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VSP-097",
+      "code": "SERVICE_SPACER_KIT",
+      "name": "Spacer Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VSP-098",
+      "code": "REPAIR_SPACER_KIT",
+      "name": "Spacer Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VSP-099",
+      "code": "UNIVERSAL_SPACER",
+      "name": "Universal Vehicle Spacer",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VSP-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Spacer Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
