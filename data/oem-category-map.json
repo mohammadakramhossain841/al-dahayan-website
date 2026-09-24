@@ -1,0 +1,346 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Category and subcategory mapping foundation for Toyota and Lexus OEM parts.",
+  "categories": [
+    {
+      "id": "ENGINE",
+      "name": "Engine",
+      "nameArabic": "المحرك",
+      "subcategories": [
+        "Engine Assembly",
+        "Cylinder Head",
+        "Piston",
+        "Crankshaft",
+        "Camshaft",
+        "Timing System",
+        "Valve Train",
+        "Oil System",
+        "Cooling",
+        "Intake",
+        "Ignition",
+        "Turbocharger",
+        "Engine Mounts"
+      ]
+    },
+    {
+      "id": "TRANSMISSION",
+      "name": "Transmission",
+      "nameArabic": "ناقل الحركة",
+      "subcategories": [
+        "Automatic Transmission",
+        "Manual Transmission",
+        "CVT",
+        "DCT",
+        "E-CVT",
+        "Transmission Assembly",
+        "Valve Body",
+        "Transmission Control",
+        "Transmission Mounts",
+        "Transmission Service Parts"
+      ]
+    },
+    {
+      "id": "BRAKE",
+      "name": "Brake",
+      "nameArabic": "نظام الفرامل",
+      "subcategories": [
+        "Brake Pad",
+        "Brake Disc",
+        "Brake Drum",
+        "Brake Caliper",
+        "Master Cylinder",
+        "Brake Booster",
+        "Brake Hose",
+        "Brake Line",
+        "Wheel Cylinder",
+        "Parking Brake"
+      ]
+    },
+    {
+      "id": "SUSPENSION",
+      "name": "Suspension",
+      "nameArabic": "نظام التعليق",
+      "subcategories": [
+        "Shock Absorber",
+        "Strut",
+        "Spring",
+        "Control Arm",
+        "Ball Joint",
+        "Stabilizer",
+        "Bushing",
+        "Suspension Mount",
+        "Suspension Link",
+        "Air Suspension"
+      ]
+    },
+    {
+      "id": "STEERING",
+      "name": "Steering",
+      "nameArabic": "نظام التوجيه",
+      "subcategories": [
+        "Steering Rack",
+        "Tie Rod",
+        "Drag Link",
+        "Pitman Arm",
+        "Idler Arm",
+        "Center Link",
+        "Steering Knuckle",
+        "Steering Column",
+        "Power Steering",
+        "Electric Power Steering"
+      ]
+    },
+    {
+      "id": "DRIVETRAIN",
+      "name": "Drivetrain",
+      "nameArabic": "مجموعة نقل الحركة",
+      "subcategories": [
+        "Drive Shaft",
+        "Propeller Shaft",
+        "Differential",
+        "Transfer Case",
+        "Axle",
+        "CV Joint",
+        "CV Axle",
+        "Wheel Hub",
+        "Final Drive"
+      ]
+    },
+    {
+      "id": "FUEL",
+      "name": "Fuel System",
+      "nameArabic": "نظام الوقود",
+      "subcategories": [
+        "Fuel Tank",
+        "Fuel Pump",
+        "Fuel Injector",
+        "Fuel Filter",
+        "Fuel Rail",
+        "Fuel Line",
+        "Fuel Pressure",
+        "Fuel Sender",
+        "EVAP"
+      ]
+    },
+    {
+      "id": "ELECTRICAL",
+      "name": "Electrical",
+      "nameArabic": "النظام الكهربائي",
+      "subcategories": [
+        "Battery",
+        "Alternator",
+        "Starter Motor",
+        "Fuse",
+        "Relay",
+        "Connector",
+        "Wiring",
+        "ECU",
+        "Module",
+        "Sensor",
+        "Actuator",
+        "Motor"
+      ]
+    },
+    {
+      "id": "COOLING",
+      "name": "Cooling System",
+      "nameArabic": "نظام التبريد",
+      "subcategories": [
+        "Radiator",
+        "Water Pump",
+        "Thermostat",
+        "Cooling Fan",
+        "Coolant Reservoir",
+        "Radiator Hose",
+        "Cooling Sensor",
+        "Expansion Tank"
+      ]
+    },
+    {
+      "id": "AIR_CONDITIONING",
+      "name": "Air Conditioning",
+      "nameArabic": "نظام تكييف الهواء",
+      "subcategories": [
+        "AC Compressor",
+        "Condenser",
+        "Evaporator",
+        "Expansion Valve",
+        "Receiver Drier",
+        "Blower Motor",
+        "Cabin Filter",
+        "AC Hose",
+        "HVAC Control"
+      ]
+    },
+    {
+      "id": "EXHAUST",
+      "name": "Exhaust & Emission",
+      "nameArabic": "نظام العادم والانبعاثات",
+      "subcategories": [
+        "Exhaust Manifold",
+        "Catalytic Converter",
+        "Muffler",
+        "Resonator",
+        "DPF",
+        "EGR",
+        "SCR",
+        "DEF",
+        "Oxygen Sensor",
+        "NOx Sensor"
+      ]
+    },
+    {
+      "id": "BODY",
+      "name": "Body",
+      "nameArabic": "هيكل السيارة",
+      "subcategories": [
+        "Bumper",
+        "Fender",
+        "Hood",
+        "Grille",
+        "Door",
+        "Trunk",
+        "Tailgate",
+        "Roof",
+        "Spoiler",
+        "Body Panel"
+      ]
+    },
+    {
+      "id": "LIGHTING",
+      "name": "Lighting",
+      "nameArabic": "الإضاءة",
+      "subcategories": [
+        "Headlight",
+        "Taillight",
+        "Fog Light",
+        "Daytime Running Light",
+        "Turn Signal",
+        "Brake Light",
+        "Marker Light",
+        "License Plate Light",
+        "Interior Light"
+      ]
+    },
+    {
+      "id": "GLASS",
+      "name": "Glass & Windows",
+      "nameArabic": "الزجاج والنوافذ",
+      "subcategories": [
+        "Windshield",
+        "Rear Glass",
+        "Side Glass",
+        "Quarter Glass",
+        "Window Regulator",
+        "Window Motor",
+        "Window Switch",
+        "Glass Seal",
+        "Window Moulding"
+      ]
+    },
+    {
+      "id": "WIPER_WASHER",
+      "name": "Wiper & Washer",
+      "nameArabic": "المساحات وغسيل الزجاج",
+      "subcategories": [
+        "Wiper Motor",
+        "Wiper Arm",
+        "Wiper Blade",
+        "Wiper Linkage",
+        "Washer Pump",
+        "Washer Nozzle",
+        "Washer Reservoir",
+        "Rain Sensor"
+      ]
+    },
+    {
+      "id": "WHEEL",
+      "name": "Wheel & Tire",
+      "nameArabic": "العجلات والإطارات",
+      "subcategories": [
+        "Wheel",
+        "Tire",
+        "Wheel Hub",
+        "Wheel Bearing",
+        "Wheel Stud",
+        "Wheel Bolt",
+        "Wheel Nut",
+        "TPMS",
+        "Wheel Spacer"
+      ]
+    },
+    {
+      "id": "INTERIOR",
+      "name": "Interior",
+      "nameArabic": "المقصورة الداخلية",
+      "subcategories": [
+        "Dashboard",
+        "Instrument Cluster",
+        "Seat",
+        "Door Trim",
+        "Center Console",
+        "Floor Trim",
+        "Headliner",
+        "Sun Visor",
+        "Interior Handle",
+        "Interior Switch"
+      ]
+    },
+    {
+      "id": "SAFETY",
+      "name": "Safety",
+      "nameArabic": "أنظمة السلامة",
+      "subcategories": [
+        "Airbag",
+        "Seat Belt",
+        "ABS",
+        "ESC",
+        "Parking Sensor",
+        "Camera",
+        "Radar",
+        "ADAS",
+        "Collision Sensor",
+        "Occupancy Sensor"
+      ]
+    },
+    {
+      "id": "HARDWARE",
+      "name": "Hardware & Service Parts",
+      "nameArabic": "قطع التثبيت والخدمة",
+      "subcategories": [
+        "Bolt",
+        "Nut",
+        "Washer",
+        "Clip",
+        "Bracket",
+        "Mount",
+        "Bushing",
+        "Seal",
+        "O-Ring",
+        "Gasket",
+        "Grommet",
+        "Clamp",
+        "Fastener",
+        "Repair Kit"
+      ]
+    },
+    {
+      "id": "HYBRID_EV",
+      "name": "Hybrid & Electric",
+      "nameArabic": "الهجين والكهربائي",
+      "subcategories": [
+        "Hybrid Battery",
+        "EV Battery",
+        "Battery Module",
+        "Inverter",
+        "DC-DC Converter",
+        "Onboard Charger",
+        "Charging Port",
+        "Electric Motor",
+        "Battery Cooling",
+        "Hybrid Control Module"
+      ]
+    }
+  ]
+}
