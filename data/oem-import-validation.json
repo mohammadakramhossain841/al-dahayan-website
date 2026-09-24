@@ -1,0 +1,151 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Validation rules applied before importing Toyota and Lexus OEM catalog records.",
+  "validationOrder": [
+    "file",
+    "columns",
+    "requiredFields",
+    "fieldTypes",
+    "fieldValues",
+    "oemNumber",
+    "duplicates",
+    "pricing",
+    "inventory",
+    "verification"
+  ],
+  "file": {
+    "allowedExtensions": [
+      ".csv",
+      ".xlsx"
+    ],
+    "maximumFileSizeMB": 25,
+    "requireHeaderRow": true,
+    "requireAtLeastOneDataRow": true
+  },
+  "requiredFields": [
+    "oemNumber",
+    "partName",
+    "brand",
+    "category"
+  ],
+  "fieldRules": {
+    "id": {
+      "type": "string",
+      "required": false,
+      "trim": true
+    },
+    "oemNumber": {
+      "type": "string",
+      "required": true,
+      "trim": true,
+      "minimumLength": 3,
+      "maximumLength": 50
+    },
+    "partName": {
+      "type": "string",
+      "required": true,
+      "trim": true,
+      "minimumLength": 2,
+      "maximumLength": 200
+    },
+    "arabicName": {
+      "type": "string",
+      "required": false,
+      "trim": true,
+      "maximumLength": 200
+    },
+    "brand": {
+      "type": "enum",
+      "required": true,
+      "allowedValues": [
+        "Toyota",
+        "Lexus"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "required": true,
+      "trim": true
+    },
+    "regularPrice": {
+      "type": "number",
+      "required": false,
+      "minimum": 0
+    },
+    "salePrice": {
+      "type": "number",
+      "required": false,
+      "minimum": 0
+    },
+    "discountPercent": {
+      "type": "number",
+      "required": false,
+      "minimum": 0,
+      "maximum": 100
+    },
+    "quantity": {
+      "type": "number",
+      "required": false,
+      "minimum": 0
+    }
+  },
+  "oemNumberRules": {
+    "mustNotBeEmpty": true,
+    "trimWhitespace": true,
+    "preserveOriginalValue": true,
+    "detectExactDuplicates": true,
+    "detectNormalizedDuplicates": true,
+    "allowMultipleCompatibleNumbers": true
+  },
+  "pricingRules": {
+    "salePriceCannotExceedRegularPrice": true,
+    "discountPercentMustBeBetweenZeroAndHundred": true,
+    "currencyDefault": "SAR"
+  },
+  "inventoryRules": {
+    "quantityCannotBeNegative": true,
+    "allowedStatuses": [
+      "in_stock",
+      "low_stock",
+      "out_of_stock",
+      "on_order",
+      "unknown"
+    ]
+  },
+  "verificationRules": {
+    "allowedLevels": [
+      "unverified",
+      "reviewed",
+      "verified"
+    ],
+    "newImportedRecordsDefault": "unverified"
+  },
+  "duplicateHandling": {
+    "checkBeforeImport": true,
+    "defaultAction": "review",
+    "allowSkipDuplicateRows": true,
+    "allowUpdateExistingRecords": false,
+    "requireExplicitUpdatePermission": true
+  },
+  "errorHandling": {
+    "blockImportOnErrors": true,
+    "allowImportWithWarnings": true,
+    "showRowNumber": true,
+    "showFieldName": true,
+    "showErrorCode": true,
+    "generateValidationReport": true
+  },
+  "validationResult": {
+    "statuses": [
+      "passed",
+      "passed_with_warnings",
+      "failed"
+    ],
+    "includeTotalRows": true,
+    "includeValidRows": true,
+    "includeWarningRows": true,
+    "includeErrorRows": true,
+    "includeDuplicateRows": true
+  }
+}
