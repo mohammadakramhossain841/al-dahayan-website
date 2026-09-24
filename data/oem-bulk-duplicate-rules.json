@@ -1,0 +1,111 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk duplicate detection and review rules for Toyota and Lexus OEM catalog records.",
+  "detectionModes": [
+    "exact",
+    "normalized",
+    "same_record",
+    "possible"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.edit",
+    "allowAutomaticMerge": false,
+    "requireConfirmation": true
+  },
+  "matchingFields": [
+    "oemNumber",
+    "brand",
+    "partName",
+    "compatibleOemNumbers",
+    "supersededOemNumbers"
+  ],
+  "normalization": {
+    "trimWhitespace": true,
+    "ignoreCase": true,
+    "removeOemSeparators": true,
+    "preserveOriginalValues": true,
+    "normalizeArabicText": false
+  },
+  "duplicateLevels": {
+    "exact": {
+      "description": "Exact normalized OEM number match.",
+      "action": "block"
+    },
+    "normalized": {
+      "description": "OEM numbers become identical after normalization.",
+      "action": "block"
+    },
+    "same_record": {
+      "description": "The same OEM record appears more than once in the operation.",
+      "action": "block"
+    },
+    "possible": {
+      "description": "Records appear potentially related but cannot be confirmed as duplicates.",
+      "action": "review"
+    }
+  },
+  "bulkRules": {
+    "maximumRecordsPerOperation": 5000,
+    "checkBeforeImport": true,
+    "checkBeforeUpdate": true,
+    "checkBeforeExport": false,
+    "checkWithinImportFile": true,
+    "checkAgainstExistingCatalog": true
+  },
+  "actions": {
+    "blockExactDuplicate": true,
+    "blockNormalizedDuplicate": true,
+    "reviewPossibleDuplicate": true,
+    "allowSkipDuplicate": true,
+    "allowManualResolution": true,
+    "allowAutomaticMerge": false,
+    "allowAutomaticDelete": false
+  },
+  "resolution": {
+    "options": [
+      "keep_existing",
+      "use_imported",
+      "skip_row",
+      "manual_review"
+    ],
+    "requireUserDecisionForPossibleDuplicate": true,
+    "preserveDuplicateHistory": true
+  },
+  "validation": {
+    "validateBeforeAction": true,
+    "blockOnConfirmedDuplicates": true,
+    "allowWarningsForPossibleDuplicates": true,
+    "showAffectedRecords": true,
+    "showMatchingFields": true,
+    "generateDuplicateReport": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordDuplicateType": true,
+    "recordMatchingValues": true,
+    "recordAffectedRecords": true,
+    "recordResolution": true,
+    "recordResolvedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "safety": {
+    "neverAutomaticallyMergeRecords": true,
+    "neverAutomaticallyDeleteRecords": true,
+    "neverOverwriteConfirmedDuplicates": true,
+    "preserveOriginalOemNumber": true,
+    "preserveAuditHistory": true
+  },
+  "result": {
+    "showTotalChecked": true,
+    "showExactDuplicates": true,
+    "showNormalizedDuplicates": true,
+    "showPossibleDuplicates": true,
+    "showSkippedRecords": true,
+    "showBlockedRecords": true,
+    "generateResolutionReport": true
+  }
+}
