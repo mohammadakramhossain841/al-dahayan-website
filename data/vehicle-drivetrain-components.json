@@ -1,0 +1,105 @@
+{
+  "version": "1.0.0",
+  "components": [
+    {
+      "code": "ENGINE",
+      "name": "Engine",
+      "description": "Primary power-producing unit of the vehicle."
+    },
+    {
+      "code": "TRANSMISSION",
+      "name": "Transmission",
+      "description": "Transfers engine or motor power through selectable or variable gear ratios."
+    },
+    {
+      "code": "TRANSFER_CASE",
+      "name": "Transfer Case",
+      "description": "Distributes power between front and rear axles in applicable four-wheel-drive systems."
+    },
+    {
+      "code": "PROPELLER_SHAFT",
+      "name": "Propeller Shaft",
+      "description": "Transfers rotational power between the transmission, transfer case, and driven axle where applicable."
+    },
+    {
+      "code": "DRIVESHAFT",
+      "name": "Driveshaft",
+      "description": "Rotating shaft that transfers power to a driven axle or wheel assembly."
+    },
+    {
+      "code": "DIFFERENTIAL",
+      "name": "Differential",
+      "description": "Allows driven wheels on the same axle to rotate at different speeds while transmitting torque."
+    },
+    {
+      "code": "FRONT_DIFFERENTIAL",
+      "name": "Front Differential",
+      "description": "Differential assembly used on the front driven axle."
+    },
+    {
+      "code": "REAR_DIFFERENTIAL",
+      "name": "Rear Differential",
+      "description": "Differential assembly used on the rear driven axle."
+    },
+    {
+      "code": "CV_AXLE",
+      "name": "CV Axle",
+      "description": "Constant-velocity axle assembly that transfers power to a driven wheel while allowing suspension and steering movement."
+    },
+    {
+      "code": "CV_JOINT",
+      "name": "CV Joint",
+      "description": "Constant-velocity joint that allows power transmission through changing shaft angles."
+    },
+    {
+      "code": "AXLE_SHAFT",
+      "name": "Axle Shaft",
+      "description": "Shaft that transfers torque from the differential to the driven wheel assembly."
+    },
+    {
+      "code": "HALF_SHAFT",
+      "name": "Half Shaft",
+      "description": "Drive axle shaft connecting a differential or transaxle to an individual driven wheel."
+    },
+    {
+      "code": "HUB_ASSEMBLY",
+      "name": "Wheel Hub Assembly",
+      "description": "Wheel mounting assembly that may include bearings and wheel-speed sensing components."
+    },
+    {
+      "code": "BEARING",
+      "name": "Drivetrain Bearing",
+      "description": "Bearing used to support rotating drivetrain components."
+    },
+    {
+      "code": "CLUTCH",
+      "name": "Clutch",
+      "description": "Mechanical coupling used to engage or disengage engine power from a manual or applicable automated transmission."
+    },
+    {
+      "code": "TORQUE_CONVERTER",
+      "name": "Torque Converter",
+      "description": "Fluid coupling used in conventional automatic transmissions to transfer engine torque."
+    },
+    {
+      "code": "TRANSMISSION_FLUID",
+      "name": "Transmission Fluid",
+      "description": "Specialized fluid used for lubrication, cooling, and hydraulic operation in applicable transmissions."
+    },
+    {
+      "code": "DRIVE_MOTOR",
+      "name": "Electric Drive Motor",
+      "description": "Electric motor used to provide propulsion in hybrid or electric vehicles."
+    },
+    {
+      "code": "REDUCTION_GEAR",
+      "name": "Reduction Gear",
+      "description": "Gear reduction unit used to deliver appropriate speed and torque from an electric drive motor."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "description": "Drivetrain component information has not yet been verified."
+    }
+  ]
+}
