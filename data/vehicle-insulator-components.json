@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_insulator_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VIS-001",
+      "code": "ENGINE_MOUNT_INSULATOR",
+      "name": "Engine Mount Insulator",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VIS-002",
+      "code": "TRANSMISSION_MOUNT_INSULATOR",
+      "name": "Transmission Mount Insulator",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VIS-003",
+      "code": "DIFFERENTIAL_MOUNT_INSULATOR",
+      "name": "Differential Mount Insulator",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VIS-004",
+      "code": "TRANSFER_CASE_INSULATOR",
+      "name": "Transfer Case Insulator",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VIS-005",
+      "code": "EXHAUST_INSULATOR",
+      "name": "Exhaust Insulator",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VIS-006",
+      "code": "MUFFLER_INSULATOR",
+      "name": "Muffler Insulator",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VIS-007",
+      "code": "EXHAUST_HEAT_INSULATOR",
+      "name": "Exhaust Heat Insulator",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VIS-008",
+      "code": "TURBO_HEAT_INSULATOR",
+      "name": "Turbo Heat Insulator",
+      "category": "TURBO"
+    },
+    {
+      "id": "VIS-009",
+      "code": "MANIFOLD_HEAT_INSULATOR",
+      "name": "Manifold Heat Insulator",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VIS-010",
+      "code": "CATALYTIC_CONVERTER_INSULATOR",
+      "name": "Catalytic Converter Insulator",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VIS-011",
+      "code": "DPF_HEAT_INSULATOR",
+      "name": "DPF Heat Insulator",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VIS-012",
+      "code": "SCR_HEAT_INSULATOR",
+      "name": "SCR Heat Insulator",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VIS-013",
+      "code": "RADIATOR_INSULATOR",
+      "name": "Radiator Insulator",
+      "category": "COOLING"
+    },
+    {
+      "id": "VIS-014",
+      "code": "RADIATOR_SIDE_INSULATOR",
+      "name": "Radiator Side Insulator",
+      "category": "COOLING"
+    },
+    {
+      "id": "VIS-015",
+      "code": "RADIATOR_LOWER_INSULATOR",
+      "name": "Radiator Lower Insulator",
+      "category": "COOLING"
+    },
+    {
+      "id": "VIS-016",
+      "code": "RADIATOR_UPPER_INSULATOR",
+      "name": "Radiator Upper Insulator",
+      "category": "COOLING"
+    },
+    {
+      "id": "VIS-017",
+      "code": "CONDENSER_INSULATOR",
+      "name": "A/C Condenser Insulator",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VIS-018",
+      "code": "INTERCOOLER_INSULATOR",
+      "name": "Intercooler Insulator",
+      "category": "TURBO"
+    },
+    {
+      "id": "VIS-019",
+      "code": "AIR_FILTER_INSULATOR",
+      "name": "Air Filter Housing Insulator",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VIS-020",
+      "code": "BATTERY_INSULATOR",
+      "name": "Battery Insulator",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VIS-021",
+      "code": "BATTERY_TERMINAL_INSULATOR",
+      "name": "Battery Terminal Insulator",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VIS-022",
+      "code": "BATTERY_TRAY_INSULATOR",
+      "name": "Battery Tray Insulator",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VIS-023",
+      "code": "HIGH_VOLTAGE_BATTERY_INSULATOR",
+      "name": "High Voltage Battery Insulator",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VIS-024",
+      "code": "INVERTER_INSULATOR",
+      "name": "Inverter Insulator",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VIS-025",
+      "code": "HV_CABLE_INSULATOR",
+      "name": "High Voltage Cable Insulator",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VIS-026",
+      "code": "CHARGING_PORT_INSULATOR",
+      "name": "Charging Port Insulator",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VIS-027",
+      "code": "EV_MOTOR_INSULATOR",
+      "name": "EV Motor Insulator",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VIS-028",
+      "code": "ENGINE_WIRING_INSULATOR",
+      "name": "Engine Wiring Insulator",
+      "category": "WIRING"
+    },
+    {
+      "id": "VIS-029",
+      "code": "BATTERY_CABLE_INSULATOR",
+      "name": "Battery Cable Insulator",
+      "category": "WIRING"
+    },
+    {
+      "id": "VIS-030",
+      "code": "ALTERNATOR_CABLE_INSULATOR",
+      "name": "Alternator Cable Insulator",
+      "category": "WIRING"
+    },
+    {
+      "id": "VIS-031",
+      "code": "STARTER_CABLE_INSULATOR",
+      "name": "Starter Cable Insulator",
+      "category": "WIRING"
+    },
+    {
+      "id": "VIS-032",
+      "code": "WIRING_HARNESS_INSULATOR",
+      "name": "Wiring Harness Insulator",
+      "category": "WIRING"
+    },
+    {
+      "id": "VIS-033",
+      "code": "BRAKE_LINE_INSULATOR",
+      "name": "Brake Line Insulator",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VIS-034",
+      "code": "FUEL_LINE_INSULATOR",
+      "name": "Fuel Line Insulator",
+      "category": "FUEL"
+    },
+    {
+      "id": "VIS-035",
+      "code": "AC_LINE_INSULATOR",
+      "name": "A/C Line Insulator",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VIS-036",
+      "code": "COOLANT_LINE_INSULATOR",
+      "name": "Coolant Line Insulator",
+      "category": "COOLING"
+    },
+    {
+      "id": "VIS-037",
+      "code": "POWER_STEERING_LINE_INSULATOR",
+      "name": "Power Steering Line Insulator",
+      "category": "STEERING"
+    },
+    {
+      "id": "VIS-038",
+      "code": "AIR_SUSPENSION_LINE_INSULATOR",
+      "name": "Air Suspension Line Insulator",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VIS-039",
+      "code": "VACUUM_LINE_INSULATOR",
+      "name": "Vacuum Line Insulator",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VIS-040",
+      "code": "FUEL_TANK_INSULATOR",
+      "name": "Fuel Tank Insulator",
+      "category": "FUEL"
+    },
+    {
+      "id": "VIS-041",
+      "code": "FUEL_PUMP_INSULATOR",
+      "name": "Fuel Pump Insulator",
+      "category": "FUEL"
+    },
+    {
+      "id": "VIS-042",
+      "code": "FUEL_FILTER_INSULATOR",
+      "name": "Fuel Filter Insulator",
+      "category": "FUEL"
+    },
+    {
+      "id": "VIS-043",
+      "code": "AIR_INTAKE_INSULATOR",
+      "name": "Air Intake Insulator",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VIS-044",
+      "code": "THROTTLE_BODY_INSULATOR",
+      "name": "Throttle Body Insulator",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VIS-045",
+      "code": "INTAKE_MANIFOLD_INSULATOR",
+      "name": "Intake Manifold Insulator",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VIS-046",
+      "code": "EXHAUST_MANIFOLD_INSULATOR",
+      "name": "Exhaust Manifold Insulator",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VIS-047",
+      "code": "OIL_FILTER_INSULATOR",
+      "name": "Oil Filter Insulator",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VIS-048",
+      "code": "OIL_COOLER_INSULATOR",
+      "name": "Oil Cooler Insulator",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VIS-049",
+      "code": "TRANSMISSION_OIL_INSULATOR",
+      "name": "Transmission Oil Insulator",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VIS-050",
+      "code": "TRANSMISSION_COOLER_INSULATOR",
+      "name": "Transmission Cooler Insulator",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VIS-051",
+      "code": "TRANSFER_CASE_INSULATOR_PAD",
+      "name": "Transfer Case Insulator Pad",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VIS-052",
+      "code": "PROPELLER_SHAFT_INSULATOR",
+      "name": "Propeller Shaft Insulator",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VIS-053",
+      "code": "DIFFERENTIAL_INSULATOR",
+      "name": "Differential Insulator",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VIS-054",
+      "code": "STEERING_RACK_INSULATOR",
+      "name": "Steering Rack Insulator",
+      "category": "STEERING"
+    },
+    {
+      "id": "VIS-055",
+      "code": "STEERING_COLUMN_INSULATOR",
+      "name": "Steering Column Insulator",
+      "category": "STEERING"
+    },
+    {
+      "id": "VIS-056",
+      "code": "BRAKE_BOOSTER_INSULATOR",
+      "name": "Brake Booster Insulator",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VIS-057",
+      "code": "BRAKE_MASTER_INSULATOR",
+      "name": "Brake Master Cylinder Insulator",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VIS-058",
+      "code": "CLUTCH_MASTER_INSULATOR",
+      "name": "Clutch Master Cylinder Insulator",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VIS-059",
+      "code": "CLUTCH_LINE_INSULATOR",
+      "name": "Clutch Line Insulator",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VIS-060",
+      "code": "SUSPENSION_INSULATOR",
+      "name": "Suspension Insulator",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VIS-061",
+      "code": "STRUT_INSULATOR",
+      "name": "Strut Insulator",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VIS-062",
+      "code": "SPRING_INSULATOR",
+      "name": "Spring Insulator",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VIS-063",
+      "code": "SHOCK_ABSORBER_INSULATOR",
+      "name": "Shock Absorber Insulator",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VIS-064",
+      "code": "STABILIZER_BAR_INSULATOR",
+      "name": "Stabilizer Bar Insulator",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VIS-065",
+      "code": "CONTROL_ARM_INSULATOR",
+      "name": "Control Arm Insulator",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VIS-066",
+      "code": "SUBFRAME_INSULATOR",
+      "name": "Subframe Insulator",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VIS-067",
+      "code": "BODY_MOUNT_INSULATOR",
+      "name": "Body Mount Insulator",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VIS-068",
+      "code": "CAB_MOUNT_INSULATOR",
+      "name": "Cab Mount Insulator",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VIS-069",
+      "code": "RADIATOR_SUPPORT_INSULATOR",
+      "name": "Radiator Support Insulator",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "VIS-070",
+      "code": "BUMPER_INSULATOR",
+      "name": "Bumper Insulator",
+      "category": "BODY"
+    },
+    {
+      "id": "VIS-071",
+      "code": "FENDER_INSULATOR",
+      "name": "Fender Insulator",
+      "category": "BODY"
+    },
+    {
+      "id": "VIS-072",
+      "code": "HOOD_INSULATOR",
+      "name": "Hood Insulator",
+      "category": "BODY"
+    },
+    {
+      "id": "VIS-073",
+      "code": "DOOR_INSULATOR",
+      "name": "Door Insulator",
+      "category": "DOOR"
+    },
+    {
+      "id": "VIS-074",
+      "code": "ROOF_INSULATOR",
+      "name": "Roof Insulator",
+      "category": "ROOF"
+    },
+    {
+      "id": "VIS-075",
+      "code": "FLOOR_INSULATOR",
+      "name": "Floor Insulator",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VIS-076",
+      "code": "DASHBOARD_INSULATOR",
+      "name": "Dashboard Insulator",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VIS-077",
+      "code": "FIREWALL_INSULATOR",
+      "name": "Firewall Insulator",
+      "category": "BODY"
+    },
+    {
+      "id": "VIS-078",
+      "code": "ENGINE_COVER_INSULATOR",
+      "name": "Engine Cover Insulator",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VIS-079",
+      "code": "HEAT_SHIELD_INSULATOR",
+      "name": "Heat Shield Insulator",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VIS-080",
+      "code": "NOISE_INSULATION_PAD",
+      "name": "Noise Insulation Pad",
+      "category": "NVH"
+    },
+    {
+      "id": "VIS-081",
+      "code": "VIBRATION_INSULATOR",
+      "name": "Vibration Insulator",
+      "category": "NVH"
+    },
+    {
+      "id": "VIS-082",
+      "code": "ACOUSTIC_INSULATOR",
+      "name": "Acoustic Insulator",
+      "category": "NVH"
+    },
+    {
+      "id": "VIS-083",
+      "code": "WIRING_GROMMET_INSULATOR",
+      "name": "Wiring Grommet Insulator",
+      "category": "WIRING"
+    },
+    {
+      "id": "VIS-084",
+      "code": "CONNECTOR_INSULATOR",
+      "name": "Connector Insulator",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VIS-085",
+      "code": "SENSOR_INSULATOR",
+      "name": "Sensor Insulator",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VIS-086",
+      "code": "RADAR_INSULATOR",
+      "name": "Radar Insulator",
+      "category": "ADAS"
+    },
+    {
+      "id": "VIS-087",
+      "code": "CAMERA_INSULATOR",
+      "name": "Camera Insulator",
+      "category": "ADAS"
+    },
+    {
+      "id": "VIS-088",
+      "code": "PARKING_SENSOR_INSULATOR",
+      "name": "Parking Sensor Insulator",
+      "category": "ADAS"
+    },
+    {
+      "id": "VIS-089",
+      "code": "HEADLIGHT_INSULATOR",
+      "name": "Headlight Insulator",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VIS-090",
+      "code": "TAILLIGHT_INSULATOR",
+      "name": "Taillight Insulator",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VIS-091",
+      "code": "MIRROR_INSULATOR",
+      "name": "Mirror Insulator",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VIS-092",
+      "code": "SEAT_INSULATOR",
+      "name": "Seat Insulator",
+      "category": "SEAT"
+    },
+    {
+      "id": "VIS-093",
+      "code": "SUNROOF_INSULATOR",
+      "name": "Sunroof Insulator",
+      "category": "ROOF"
+    },
+    {
+      "id": "VIS-094",
+      "code": "BATTERY_PACK_THERMAL_INSULATOR",
+      "name": "Battery Pack Thermal Insulator",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VIS-095",
+      "code": "INVERTER_THERMAL_INSULATOR",
+      "name": "Inverter Thermal Insulator",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VIS-096",
+      "code": "MOTOR_THERMAL_INSULATOR",
+      "name": "Motor Thermal Insulator",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VIS-097",
+      "code": "SERVICE_INSULATOR_KIT",
+      "name": "Insulator Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VIS-098",
+      "code": "REPAIR_INSULATOR_KIT",
+      "name": "Insulator Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VIS-099",
+      "code": "UNIVERSAL_INSULATOR",
+      "name": "Universal Vehicle Insulator",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VIS-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Insulator Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
