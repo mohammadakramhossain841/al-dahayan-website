@@ -1,1 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Inventory & Stock | Al-Dahayan Trading Company</title>
+
+  <meta
+    name="description"
+    content="Check Toyota and Lexus spare parts inventory and availability through Al-Dahayan Trading Company."
+  >
+
+  <meta
+    name="keywords"
+    content="Toyota spare parts stock, Lexus spare parts inventory, Saudi Arabia, Al-Dahayan"
+  >
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body data-page="inventory">
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="../index.html" class="brand">
+        <span class="brand-name">AL-DAHAYAN</span>
+        <span class="brand-subtitle">
+          Trading Company
+        </span>
+      </a>
+
+      <nav class="main-navigation" aria-label="Main Navigation">
+        <a href="../index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="parts.html">Parts</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="vin-search.html">VIN Search</a>
+        <a href="inventory.html" class="active">
+          Inventory
+        </a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="language-switcher">
+        <button
+          type="button"
+          data-language="en"
+          class="language-btn"
+        >
+          EN
+        </button>
+
+        <button
+          type="button"
+          data-language="ar"
+          class="language-btn"
+        >
+          AR
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="hero">
+      <div class="container hero-content">
+
+        <span class="hero-eyebrow">
+          Inventory & Availability
+        </span>
+
+        <h1>
+          Check Spare Parts Availability
+        </h1>
+
+        <p>
+          Search Toyota and Lexus spare parts and check
+          available stock information through Al-Dahayan.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         INVENTORY SEARCH
+    ========================== -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="section-eyebrow">
+            Stock Search
+          </span>
+
+          <h2>
+            Search Inventory
+          </h2>
+
+          <p>
+            Search by OEM part number, part name, brand,
+            category or stock status.
+          </p>
+        </div>
+
+
+        <div class="search-panel">
+
+          <form
+            id="inventory-search-form"
+            data-inventory-search-form
+          >
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label for="inventory-query">
+                  OEM Part Number / Part Name
+                </label>
+
+                <input
+                  type="search"
+                  id="inventory-query"
+                  name="query"
+                  data-inventory-query
+                  placeholder="Enter OEM number or part name"
+                  autocomplete="off"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="inventory-brand">
+                  Brand
+                </label>
+
+                <select
+                  id="inventory-brand"
+                  name="brand"
+                  data-inventory-brand
+                >
+                  <option value="">
+                    All Brands
+                  </option>
+
+                  <option value="Toyota">
+                    Toyota
+                  </option>
+
+                  <option value="Lexus">
+                    Lexus
+                  </option>
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="inventory-category">
+                  Category
+                </label>
+
+                <select
+                  id="inventory-category"
+                  name="category"
+                  data-inventory-category
+                >
+                  <option value="">
+                    All Categories
+                  </option>
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="inventory-status">
+                  Stock Status
+                </label>
+
+                <select
+                  id="inventory-status"
+                  name="status"
+                  data-inventory-status
+                >
+                  <option value="">
+                    All Status
+                  </option>
+
+                  <option value="in_stock">
+                    In Stock
+                  </option>
+
+                  <option value="low_stock">
+                    Low Stock
+                  </option>
+
+                  <option value="out_of_stock">
+                    Out of Stock
+                  </option>
+
+                  <option value="unknown">
+                    Availability Inquiry
+                  </option>
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+              >
+                Search Inventory
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-inventory-reset
+              >
+                Clear Filters
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         INVENTORY SUMMARY
+    ========================== -->
+    <section class="section section-light">
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="section-eyebrow">
+            Inventory Overview
+          </span>
+
+          <h2>
+            Stock Summary
+          </h2>
+
+        </div>
+
+
+        <div class="trust-grid">
+
+          <article class="trust-card">
+
+            <h3>
+              Total Results
+            </h3>
+
+            <p
+              data-inventory-total
+            >
+              0
+            </p>
+
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              Available
+            </h3>
+
+            <p
+              data-inventory-available
+            >
+              0
+            </p>
+
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              Out of Stock
+            </h3>
+
+            <p
+              data-inventory-out-of-stock
+            >
+              0
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         INVENTORY RESULTS
+    ========================== -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="section-eyebrow">
+            Search Results
+          </span>
+
+          <h2>
+            Available Parts
+          </h2>
+
+          <p
+            data-inventory-result-summary
+          >
+            Search inventory to view spare parts availability.
+          </p>
+
+        </div>
+
+
+        <div
+          class="parts-results"
+          data-inventory-results
+        >
+
+          <div class="empty-state">
+
+            <h3>
+              No Search Performed
+            </h3>
+
+            <p>
+              Use the inventory search above to find
+              available Toyota and Lexus parts.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         STOCK INFORMATION
+    ========================== -->
+    <section class="section section-light">
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="section-eyebrow">
+            Availability Information
+          </span>
+
+          <h2>
+            Understanding Stock Status
+          </h2>
+
+        </div>
+
+
+        <div class="service-grid">
+
+          <article class="service-card">
+
+            <span class="service-number">
+              01
+            </span>
+
+            <h3>
+              In Stock
+            </h3>
+
+            <p>
+              The inventory system indicates available
+              quantity for the selected part.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <span class="service-number">
+              02
+            </span>
+
+            <h3>
+              Low Stock
+            </h3>
+
+            <p>
+              Limited quantity may be available.
+              Contact Al-Dahayan to confirm.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <span class="service-number">
+              03
+            </span>
+
+            <h3>
+              Out of Stock
+            </h3>
+
+            <p>
+              The current inventory record does not show
+              available quantity.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <span class="service-number">
+              04
+            </span>
+
+            <h3>
+              Availability Inquiry
+            </h3>
+
+            <p>
+              Contact the team for the latest stock,
+              sourcing and availability information.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         CUSTOMER CONNECTION
+    ========================== -->
+    <section class="cta-section">
+      <div class="container cta-content">
+
+        <div>
+
+          <span class="section-eyebrow">
+            Customer Connection
+          </span>
+
+          <h2>
+            Need a Part?
+          </h2>
+
+          <p>
+            Send the OEM number or vehicle information
+            directly to Al-Dahayan for availability
+            and price inquiry.
+          </p>
+
+        </div>
+
+
+        <div class="cta-actions">
+
+          <a
+            href="inquiry.html"
+            class="btn btn-primary"
+          >
+            Send Inquiry
+          </a>
+
+          <a
+            href="contact.html"
+            class="btn btn-secondary"
+          >
+            Contact Al-Dahayan
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="site-footer">
+
+    <div class="container footer-grid">
+
+      <div>
+
+        <h3>
+          AL-DAHAYAN
+        </h3>
+
+        <p>
+          Toyota & Lexus automotive spare parts platform
+          serving customers in Saudi Arabia.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Quick Links
+        </h3>
+
+        <a href="../index.html">
+          Home
+        </a>
+
+        <a href="parts.html">
+          Parts
+        </a>
+
+        <a href="vehicles.html">
+          Vehicles
+        </a>
+
+        <a href="vin-search.html">
+          VIN Search
+        </a>
+
+        <a href="inventory.html">
+          Inventory
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Customer Connection
+        </h3>
+
+        <p>
+          Search parts, check availability and connect
+          directly with Al-Dahayan.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <p>
+        © 2026 Al-Dahayan Trading Company.
+        All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/language.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/inventory.js"></script>
+  <script src="../js/contact.js"></script>
+  <script src="../js/inquiry.js"></script>
+  <script src="../js/app.js"></script>
+
+</body>
+</html>
