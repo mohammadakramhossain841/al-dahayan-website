@@ -1,0 +1,171 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Validation rules for importing OEM catalog records into the Al-Dahayan Admin Panel.",
+  "importSettings": {
+    "allowNewRecords": true,
+    "allowUpdates": true,
+    "allowArchive": true,
+    "allowDelete": false,
+    "requirePreviewBeforeImport": true,
+    "requireValidationBeforeImport": true,
+    "allowDuplicateRows": false,
+    "caseSensitiveOemNumber": false,
+    "trimWhitespace": true
+  },
+  "requiredFields": [
+    "id",
+    "oemNumber",
+    "partName",
+    "brand",
+    "category",
+    "status"
+  ],
+  "uniqueFields": [
+    "id",
+    "oemNumber"
+  ],
+  "allowedBrands": [
+    "Toyota",
+    "Lexus"
+  ],
+  "allowedStatus": [
+    "active",
+    "draft",
+    "archived",
+    "disabled"
+  ],
+  "allowedStockStatus": [
+    "in_stock",
+    "low_stock",
+    "out_of_stock",
+    "on_order",
+    "unknown"
+  ],
+  "fieldRules": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "oemNumber": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "normalize": true,
+      "removeSpaces": true,
+      "removeHyphens": false
+    },
+    "partName": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "brand": {
+      "type": "enum",
+      "required": true,
+      "values": [
+        "Toyota",
+        "Lexus"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "regularPrice": {
+      "type": "numberOrNull",
+      "minimum": 0
+    },
+    "salePrice": {
+      "type": "numberOrNull",
+      "minimum": 0
+    },
+    "discountPercent": {
+      "type": "numberOrNull",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "quantity": {
+      "type": "integerOrNull",
+      "minimum": 0
+    },
+    "verified": {
+      "type": "boolean"
+    }
+  },
+  "validationRules": [
+    {
+      "code": "MISSING_REQUIRED_FIELD",
+      "severity": "error",
+      "description": "A required field is empty or missing."
+    },
+    {
+      "code": "DUPLICATE_ID",
+      "severity": "error",
+      "description": "The record ID already exists in the catalog or appears more than once in the import file."
+    },
+    {
+      "code": "DUPLICATE_OEM",
+      "severity": "error",
+      "description": "The OEM number already exists or appears more than once in the import file."
+    },
+    {
+      "code": "INVALID_BRAND",
+      "severity": "error",
+      "description": "Brand must be Toyota or Lexus."
+    },
+    {
+      "code": "INVALID_STATUS",
+      "severity": "error",
+      "description": "Status is not supported."
+    },
+    {
+      "code": "INVALID_STOCK_STATUS",
+      "severity": "error",
+      "description": "Stock status is not supported."
+    },
+    {
+      "code": "INVALID_PRICE",
+      "severity": "error",
+      "description": "Price must be zero or greater."
+    },
+    {
+      "code": "SALE_PRICE_HIGHER_THAN_REGULAR",
+      "severity": "warning",
+      "description": "Sale price is higher than the regular price."
+    },
+    {
+      "code": "INVALID_DISCOUNT",
+      "severity": "error",
+      "description": "Discount percentage must be between 0 and 100."
+    },
+    {
+      "code": "INVALID_QUANTITY",
+      "severity": "error",
+      "description": "Stock quantity cannot be negative."
+    },
+    {
+      "code": "UNVERIFIED_COMPATIBILITY",
+      "severity": "warning",
+      "description": "Compatibility data has not been verified."
+    },
+    {
+      "code": "MISSING_IMAGE",
+      "severity": "warning",
+      "description": "No product image is supplied."
+    }
+  ],
+  "importResult": {
+    "showTotalRows": true,
+    "showValidRows": true,
+    "showUpdatedRows": true,
+    "showNewRows": true,
+    "showSkippedRows": true,
+    "showErrorRows": true,
+    "showWarningRows": true,
+    "allowImportWhenErrorsExist": false,
+    "allowImportWhenWarningsExist": true
+  }
+}
