@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk category and subcategory management rules for Toyota and Lexus OEM catalog records.",
+  "supportedUpdateTypes": [
+    "category",
+    "subcategory"
+  ],
+  "updateModes": [
+    "selected",
+    "filtered",
+    "imported"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.edit",
+    "requireConfirmation": true
+  },
+  "selectionRules": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 1000,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requirePreview": true
+  },
+  "categoryRules": {
+    "allowBulkCategoryUpdate": true,
+    "allowBulkSubcategoryUpdate": true,
+    "preserveExistingCategoryByDefault": true,
+    "requireValidCategory": true,
+    "requireValidSubcategory": false,
+    "subcategoryMustBelongToCategory": true
+  },
+  "updateMethods": [
+    "replace",
+    "set",
+    "clear_subcategory"
+  ],
+  "allowedCategories": [
+    "ENGINE",
+    "TRANSMISSION",
+    "BRAKE",
+    "SUSPENSION",
+    "STEERING",
+    "DRIVETRAIN",
+    "FUEL",
+    "ELECTRICAL",
+    "COOLING",
+    "AIR_CONDITIONING",
+    "EXHAUST",
+    "BODY",
+    "LIGHTING",
+    "GLASS",
+    "WIPER_WASHER",
+    "WHEEL",
+    "INTERIOR",
+    "SAFETY",
+    "HARDWARE",
+    "HYBRID_EV"
+  ],
+  "validation": {
+    "validateBeforeUpdate": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "showAffectedRecords": true,
+    "showOldAndNewValues": true,
+    "validateCategoryMap": true,
+    "generatePreview": true
+  },
+  "recordProtection": {
+    "doNotModifyOemNumber": true,
+    "doNotModifyPartName": true,
+    "doNotModifyPricing": true,
+    "doNotModifyInventory": true,
+    "doNotModifyImages": true,
+    "doNotAutomaticallyChangeCompatibility": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousCategory": true,
+    "recordNewCategory": true,
+    "recordPreviousSubcategory": true,
+    "recordNewSubcategory": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.edit"
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalUpdated": true,
+    "showTotalSkipped": true,
+    "showTotalFailed": true,
+    "showValidationWarnings": true,
+    "generateCategoryUpdateReport": true
+  },
+  "safety": {
+    "neverDeleteRecords": true,
+    "neverAutomaticallyCreateUnknownCategories": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "preserveCategoryHistory": true,
+    "preserveAuditHistory": true
+  }
+}
