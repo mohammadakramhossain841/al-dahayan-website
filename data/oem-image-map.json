@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Image mapping structure for Toyota and Lexus OEM catalog records.",
+  "imageRules": {
+    "allowMultipleImages": true,
+    "allowPrimaryImage": true,
+    "allowGalleryImages": true,
+    "allowImageReplacement": true,
+    "allowImageRemoval": true,
+    "requireValidImagePath": true
+  },
+  "imageTypes": [
+    "primary",
+    "gallery",
+    "thumbnail",
+    "installation",
+    "diagram"
+  ],
+  "imageStorage": {
+    "recommendedDirectory": "assets/images/oem/",
+    "storeFilesSeparately": true,
+    "storeOnlyPathsInCatalog": true
+  },
+  "mappings": [
+    {
+      "imageMapId": "IMG-MAP-DEMO-001",
+      "oemId": "OEM-DEMO-001",
+      "oemNumber": "SAMPLE-TOYOTA-001",
+      "primaryImage": "",
+      "gallery": [],
+      "thumbnails": [],
+      "installationImages": [],
+      "diagramImages": [],
+      "altText": "Toyota OEM spare part",
+      "altTextArabic": "قطعة غيار تويوتا",
+      "status": "draft"
+    },
+    {
+      "imageMapId": "IMG-MAP-DEMO-002",
+      "oemId": "OEM-DEMO-002",
+      "oemNumber": "SAMPLE-LEXUS-001",
+      "primaryImage": "",
+      "gallery": [],
+      "thumbnails": [],
+      "installationImages": [],
+      "diagramImages": [],
+      "altText": "Lexus OEM spare part",
+      "altTextArabic": "قطعة غيار لكزس",
+      "status": "draft"
+    }
+  ]
+}
