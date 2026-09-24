@@ -1,0 +1,604 @@
+{
+  "wheelComponents": [
+    {
+      "id": "VWC-001",
+      "code": "WHEEL_ASSEMBLY",
+      "name": "Wheel Assembly",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VWC-002",
+      "code": "ALLOY_WHEEL",
+      "name": "Alloy Wheel",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VWC-003",
+      "code": "STEEL_WHEEL",
+      "name": "Steel Wheel",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VWC-004",
+      "code": "WHEEL_RIM",
+      "name": "Wheel Rim",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VWC-005",
+      "code": "FRONT_WHEEL",
+      "name": "Front Wheel",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VWC-006",
+      "code": "REAR_WHEEL",
+      "name": "Rear Wheel",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VWC-007",
+      "code": "SPARE_WHEEL",
+      "name": "Spare Wheel",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VWC-008",
+      "code": "TEMPORARY_SPARE_WHEEL",
+      "name": "Temporary Spare Wheel",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VWC-009",
+      "code": "WHEEL_CENTER_CAP",
+      "name": "Wheel Center Cap",
+      "category": "WHEEL_TRIM"
+    },
+    {
+      "id": "VWC-010",
+      "code": "WHEEL_CENTER_EMBLEM",
+      "name": "Wheel Center Emblem",
+      "category": "WHEEL_TRIM"
+    },
+    {
+      "id": "VWC-011",
+      "code": "WHEEL_COVER",
+      "name": "Wheel Cover",
+      "category": "WHEEL_TRIM"
+    },
+    {
+      "id": "VWC-012",
+      "code": "HUBCAP",
+      "name": "Hubcap",
+      "category": "WHEEL_TRIM"
+    },
+    {
+      "id": "VWC-013",
+      "code": "WHEEL_LUG_NUT",
+      "name": "Wheel Lug Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWC-014",
+      "code": "LOCKING_LUG_NUT",
+      "name": "Locking Lug Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWC-015",
+      "code": "WHEEL_BOLT",
+      "name": "Wheel Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWC-016",
+      "code": "WHEEL_STUD",
+      "name": "Wheel Stud",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWC-017",
+      "code": "WHEEL_SPACER",
+      "name": "Wheel Spacer",
+      "category": "WHEEL_HARDWARE"
+    },
+    {
+      "id": "VWC-018",
+      "code": "WHEEL_BALANCE_WEIGHT",
+      "name": "Wheel Balance Weight",
+      "category": "WHEEL_SERVICE"
+    },
+    {
+      "id": "VWC-019",
+      "code": "TIRE",
+      "name": "Tire",
+      "category": "TIRE"
+    },
+    {
+      "id": "VWC-020",
+      "code": "FRONT_TIRE",
+      "name": "Front Tire",
+      "category": "TIRE"
+    },
+    {
+      "id": "VWC-021",
+      "code": "REAR_TIRE",
+      "name": "Rear Tire",
+      "category": "TIRE"
+    },
+    {
+      "id": "VWC-022",
+      "code": "SPARE_TIRE",
+      "name": "Spare Tire",
+      "category": "TIRE"
+    },
+    {
+      "id": "VWC-023",
+      "code": "TIRE_VALVE",
+      "name": "Tire Valve",
+      "category": "TIRE_SERVICE"
+    },
+    {
+      "id": "VWC-024",
+      "code": "TIRE_VALVE_CORE",
+      "name": "Tire Valve Core",
+      "category": "TIRE_SERVICE"
+    },
+    {
+      "id": "VWC-025",
+      "code": "TIRE_VALVE_CAP",
+      "name": "Tire Valve Cap",
+      "category": "TIRE_SERVICE"
+    },
+    {
+      "id": "VWC-026",
+      "code": "TPMS_SENSOR",
+      "name": "TPMS Sensor",
+      "category": "TPMS"
+    },
+    {
+      "id": "VWC-027",
+      "code": "TPMS_VALVE",
+      "name": "TPMS Valve",
+      "category": "TPMS"
+    },
+    {
+      "id": "VWC-028",
+      "code": "TPMS_SENSOR_GROMMET",
+      "name": "TPMS Sensor Grommet",
+      "category": "TPMS"
+    },
+    {
+      "id": "VWC-029",
+      "code": "TPMS_SENSOR_NUT",
+      "name": "TPMS Sensor Nut",
+      "category": "TPMS"
+    },
+    {
+      "id": "VWC-030",
+      "code": "TPMS_SENSOR_SEAL",
+      "name": "TPMS Sensor Seal",
+      "category": "TPMS"
+    },
+    {
+      "id": "VWC-031",
+      "code": "WHEEL_HUB",
+      "name": "Wheel Hub",
+      "category": "HUB"
+    },
+    {
+      "id": "VWC-032",
+      "code": "FRONT_WHEEL_HUB",
+      "name": "Front Wheel Hub",
+      "category": "HUB"
+    },
+    {
+      "id": "VWC-033",
+      "code": "REAR_WHEEL_HUB",
+      "name": "Rear Wheel Hub",
+      "category": "HUB"
+    },
+    {
+      "id": "VWC-034",
+      "code": "HUB_ASSEMBLY",
+      "name": "Wheel Hub Assembly",
+      "category": "HUB"
+    },
+    {
+      "id": "VWC-035",
+      "code": "WHEEL_BEARING",
+      "name": "Wheel Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VWC-036",
+      "code": "FRONT_WHEEL_BEARING",
+      "name": "Front Wheel Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VWC-037",
+      "code": "REAR_WHEEL_BEARING",
+      "name": "Rear Wheel Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VWC-038",
+      "code": "WHEEL_BEARING_SEAL",
+      "name": "Wheel Bearing Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VWC-039",
+      "code": "WHEEL_HUB_SEAL",
+      "name": "Wheel Hub Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VWC-040",
+      "code": "HUB_NUT",
+      "name": "Wheel Hub Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWC-041",
+      "code": "AXLE_NUT",
+      "name": "Axle Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWC-042",
+      "code": "HUB_BOLT",
+      "name": "Hub Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWC-043",
+      "code": "HUB_COVER",
+      "name": "Hub Cover",
+      "category": "WHEEL_TRIM"
+    },
+    {
+      "id": "VWC-044",
+      "code": "HUB_DUST_CAP",
+      "name": "Hub Dust Cap",
+      "category": "WHEEL_HARDWARE"
+    },
+    {
+      "id": "VWC-045",
+      "code": "WHEEL_KNUCKLE",
+      "name": "Wheel Steering Knuckle",
+      "category": "WHEEL_HARDWARE"
+    },
+    {
+      "id": "VWC-046",
+      "code": "WHEEL_SPEED_SENSOR",
+      "name": "Wheel Speed Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VWC-047",
+      "code": "ABS_SENSOR_RING",
+      "name": "ABS Sensor Ring",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VWC-048",
+      "code": "ABS_TONE_RING",
+      "name": "ABS Tone Ring",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VWC-049",
+      "code": "WHEEL_ARCH_LINER",
+      "name": "Wheel Arch Liner",
+      "category": "BODY_PROTECTION"
+    },
+    {
+      "id": "VWC-050",
+      "code": "WHEEL_ARCH_COVER",
+      "name": "Wheel Arch Cover",
+      "category": "BODY_PROTECTION"
+    },
+    {
+      "id": "VWC-051",
+      "code": "MUD_FLAP",
+      "name": "Mud Flap",
+      "category": "BODY_PROTECTION"
+    },
+    {
+      "id": "VWC-052",
+      "code": "FRONT_MUD_FLAP",
+      "name": "Front Mud Flap",
+      "category": "BODY_PROTECTION"
+    },
+    {
+      "id": "VWC-053",
+      "code": "REAR_MUD_FLAP",
+      "name": "Rear Mud Flap",
+      "category": "BODY_PROTECTION"
+    },
+    {
+      "id": "VWC-054",
+      "code": "SPLASH_GUARD",
+      "name": "Splash Guard",
+      "category": "BODY_PROTECTION"
+    },
+    {
+      "id": "VWC-055",
+      "code": "TIRE_PRESSURE_VALVE",
+      "name": "Tire Pressure Valve",
+      "category": "TIRE_SERVICE"
+    },
+    {
+      "id": "VWC-056",
+      "code": "TIRE_REPAIR_KIT",
+      "name": "Tire Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VWC-057",
+      "code": "TIRE_INFLATOR",
+      "name": "Tire Inflator",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VWC-058",
+      "code": "TIRE_PRESSURE_GAUGE",
+      "name": "Tire Pressure Gauge",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VWC-059",
+      "code": "WHEEL_LOCK_KEY",
+      "name": "Wheel Lock Key",
+      "category": "WHEEL_HARDWARE"
+    },
+    {
+      "id": "VWC-060",
+      "code": "WHEEL_NUT_CAP",
+      "name": "Wheel Nut Cap",
+      "category": "WHEEL_TRIM"
+    },
+    {
+      "id": "VWC-061",
+      "code": "WHEEL_TRIM_RING",
+      "name": "Wheel Trim Ring",
+      "category": "WHEEL_TRIM"
+    },
+    {
+      "id": "VWC-062",
+      "code": "WHEEL_LIP_PROTECTOR",
+      "name": "Wheel Lip Protector",
+      "category": "WHEEL_TRIM"
+    },
+    {
+      "id": "VWC-063",
+      "code": "WHEEL_CENTER_RING",
+      "name": "Wheel Center Ring",
+      "category": "WHEEL_HARDWARE"
+    },
+    {
+      "id": "VWC-064",
+      "code": "WHEEL_ADAPTER",
+      "name": "Wheel Adapter",
+      "category": "WHEEL_HARDWARE"
+    },
+    {
+      "id": "VWC-065",
+      "code": "WHEEL_MOUNTING_PLATE",
+      "name": "Wheel Mounting Plate",
+      "category": "WHEEL_HARDWARE"
+    },
+    {
+      "id": "VWC-066",
+      "code": "WHEEL_BALANCING_WEIGHT_CLIP",
+      "name": "Wheel Balancing Weight Clip",
+      "category": "WHEEL_SERVICE"
+    },
+    {
+      "id": "VWC-067",
+      "code": "WHEEL_BALANCING_WEIGHT_ADHESIVE",
+      "name": "Adhesive Wheel Balance Weight",
+      "category": "WHEEL_SERVICE"
+    },
+    {
+      "id": "VWC-068",
+      "code": "WHEEL_ALIGNMENT_COMPONENT",
+      "name": "Wheel Alignment Component",
+      "category": "ALIGNMENT"
+    },
+    {
+      "id": "VWC-069",
+      "code": "CAMBER_BOLT",
+      "name": "Camber Adjustment Bolt",
+      "category": "ALIGNMENT"
+    },
+    {
+      "id": "VWC-070",
+      "code": "ALIGNMENT_SHIM",
+      "name": "Wheel Alignment Shim",
+      "category": "ALIGNMENT"
+    },
+    {
+      "id": "VWC-071",
+      "code": "TIRE_MOUNTING_COMPONENT",
+      "name": "Tire Mounting Component",
+      "category": "TIRE_SERVICE"
+    },
+    {
+      "id": "VWC-072",
+      "code": "TIRE_BEAD",
+      "name": "Tire Bead",
+      "category": "TIRE"
+    },
+    {
+      "id": "VWC-073",
+      "code": "TIRE_SIDEWALL",
+      "name": "Tire Sidewall",
+      "category": "TIRE"
+    },
+    {
+      "id": "VWC-074",
+      "code": "TIRE_TREAD",
+      "name": "Tire Tread",
+      "category": "TIRE"
+    },
+    {
+      "id": "VWC-075",
+      "code": "TIRE_INNER_LINER",
+      "name": "Tire Inner Liner",
+      "category": "TIRE"
+    },
+    {
+      "id": "VWC-076",
+      "code": "RUN_FLAT_TIRE_COMPONENT",
+      "name": "Run-Flat Tire Component",
+      "category": "TIRE"
+    },
+    {
+      "id": "VWC-077",
+      "code": "WHEEL_PRESSURE_SENSOR",
+      "name": "Wheel Pressure Sensor",
+      "category": "TPMS"
+    },
+    {
+      "id": "VWC-078",
+      "code": "TPMS_RECEIVER",
+      "name": "TPMS Receiver",
+      "category": "TPMS"
+    },
+    {
+      "id": "VWC-079",
+      "code": "TPMS_ANTENNA",
+      "name": "TPMS Antenna",
+      "category": "TPMS"
+    },
+    {
+      "id": "VWC-080",
+      "code": "TPMS_CONTROL_MODULE",
+      "name": "TPMS Control Module",
+      "category": "TPMS"
+    },
+    {
+      "id": "VWC-081",
+      "code": "WHEEL_SENSOR_WIRING",
+      "name": "Wheel Sensor Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VWC-082",
+      "code": "WHEEL_SENSOR_CONNECTOR",
+      "name": "Wheel Sensor Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VWC-083",
+      "code": "WHEEL_HUB_WIRING",
+      "name": "Wheel Hub Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VWC-084",
+      "code": "WHEEL_HUB_CONNECTOR",
+      "name": "Wheel Hub Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VWC-085",
+      "code": "WHEEL_BEARING_RETAINER",
+      "name": "Wheel Bearing Retainer",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VWC-086",
+      "code": "WHEEL_HUB_RETAINING_RING",
+      "name": "Wheel Hub Retaining Ring",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VWC-087",
+      "code": "WHEEL_SERVICE_KIT",
+      "name": "Wheel Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VWC-088",
+      "code": "WHEEL_BEARING_REPAIR_KIT",
+      "name": "Wheel Bearing Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VWC-089",
+      "code": "WHEEL_HUB_REPAIR_KIT",
+      "name": "Wheel Hub Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VWC-090",
+      "code": "WHEEL_FASTENER_KIT",
+      "name": "Wheel Fastener Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VWC-091",
+      "code": "WHEEL_DIAGNOSTIC_COMPONENT",
+      "name": "Wheel Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VWC-092",
+      "code": "WHEEL_MOUNTING_HARDWARE",
+      "name": "Wheel Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VWC-093",
+      "code": "WHEEL_DUST_SHIELD",
+      "name": "Wheel Dust Shield",
+      "category": "BRAKE_PROTECTION"
+    },
+    {
+      "id": "VWC-094",
+      "code": "WHEEL_BRAKE_DUST_COVER",
+      "name": "Wheel Brake Dust Cover",
+      "category": "BRAKE_PROTECTION"
+    },
+    {
+      "id": "VWC-095",
+      "code": "WHEEL_GUARD",
+      "name": "Wheel Guard",
+      "category": "BODY_PROTECTION"
+    },
+    {
+      "id": "VWC-096",
+      "code": "WHEEL_FASTENER",
+      "name": "Wheel Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VWC-097",
+      "code": "WHEEL_SEAL",
+      "name": "Wheel Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VWC-098",
+      "code": "WHEEL_COMPONENT_CONNECTOR",
+      "name": "Wheel Component Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VWC-099",
+      "code": "WHEEL_SERVICE_COMPONENT",
+      "name": "Wheel Service Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VWC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Wheel Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
