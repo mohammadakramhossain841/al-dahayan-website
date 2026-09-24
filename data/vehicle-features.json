@@ -1,0 +1,102 @@
+{
+  "version": "1.0.0",
+  "featureGroups": [
+    {
+      "code": "SAFETY",
+      "name": "Safety",
+      "features": [
+        "ABS",
+        "EBD",
+        "Brake Assist",
+        "Traction Control",
+        "Vehicle Stability Control",
+        "Airbags",
+        "Blind Spot Monitoring",
+        "Lane Departure Warning",
+        "Lane Keeping Assist",
+        "Pre-Collision System",
+        "Adaptive Cruise Control",
+        "Parking Sensors",
+        "Rear Camera",
+        "360-Degree Camera"
+      ]
+    },
+    {
+      "code": "COMFORT",
+      "name": "Comfort",
+      "features": [
+        "Automatic Climate Control",
+        "Dual-Zone Climate Control",
+        "Power Driver Seat",
+        "Power Passenger Seat",
+        "Heated Seats",
+        "Ventilated Seats",
+        "Leather Seats",
+        "Keyless Entry",
+        "Push Button Start",
+        "Power Windows",
+        "Power Mirrors"
+      ]
+    },
+    {
+      "code": "INFOTAINMENT",
+      "name": "Infotainment",
+      "features": [
+        "Touchscreen Display",
+        "Bluetooth",
+        "USB Connectivity",
+        "Apple CarPlay",
+        "Android Auto",
+        "Navigation",
+        "Premium Audio",
+        "Satellite Radio"
+      ]
+    },
+    {
+      "code": "EXTERIOR",
+      "name": "Exterior",
+      "features": [
+        "LED Headlights",
+        "LED Taillights",
+        "Fog Lights",
+        "Daytime Running Lights",
+        "Roof Rails",
+        "Sunroof",
+        "Panoramic Roof",
+        "Power Tailgate",
+        "Alloy Wheels"
+      ]
+    },
+    {
+      "code": "DRIVER_ASSISTANCE",
+      "name": "Driver Assistance",
+      "features": [
+        "Adaptive Cruise Control",
+        "Lane Departure Warning",
+        "Lane Keeping Assist",
+        "Blind Spot Monitoring",
+        "Rear Cross Traffic Alert",
+        "Traffic Sign Recognition",
+        "Driver Attention Monitor",
+        "Automatic Emergency Braking"
+      ]
+    },
+    {
+      "code": "HYBRID_EV",
+      "name": "Hybrid and Electric",
+      "features": [
+        "Hybrid System",
+        "Regenerative Braking",
+        "EV Driving Mode",
+        "Battery Charging",
+        "Fast Charging",
+        "Energy Monitor"
+      ]
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "features": []
+    }
+  ]
+}
