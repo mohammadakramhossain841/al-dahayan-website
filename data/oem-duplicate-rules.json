@@ -1,0 +1,73 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Duplicate detection rules for the Al-Dahayan OEM catalog.",
+  "normalization": {
+    "trimWhitespace": true,
+    "removeInternalSpaces": false,
+    "removeHyphens": false,
+    "removeSlashes": false,
+    "convertToUppercase": true,
+    "unicodeNormalization": true
+  },
+  "comparisonFields": [
+    "oemNumber",
+    "normalizedOemNumber"
+  ],
+  "duplicateLevels": {
+    "exact": {
+      "enabled": true,
+      "severity": "error",
+      "description": "The normalized OEM number is exactly the same."
+    },
+    "sameRecord": {
+      "enabled": true,
+      "severity": "error",
+      "fields": [
+        "id"
+      ]
+    },
+    "possibleDuplicate": {
+      "enabled": true,
+      "severity": "warning",
+      "compareFields": [
+        "partName",
+        "brand",
+        "category",
+        "models"
+      ]
+    }
+  },
+  "normalizationExamples": [
+    {
+      "input": "12345-ABC",
+      "normalized": "12345-ABC"
+    },
+    {
+      "input": " 12345-ABC ",
+      "normalized": "12345-ABC"
+    },
+    {
+      "input": "12345-abc",
+      "normalized": "12345-ABC"
+    }
+  ],
+  "duplicateActions": {
+    "blockExactDuplicateImport": true,
+    "allowManualReview": true,
+    "allowMergeAfterReview": true,
+    "automaticMerge": false,
+    "automaticDelete": false,
+    "preserveExistingRecord": true
+  },
+  "reviewInformation": [
+    "existingRecordId",
+    "existingOemNumber",
+    "importRecordId",
+    "importOemNumber",
+    "partName",
+    "brand",
+    "category",
+    "matchType"
+  ]
+}
