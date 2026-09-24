@@ -1,0 +1,604 @@
+{
+  "axleComponents": [
+    {
+      "id": "VAX-001",
+      "code": "AXLE_SYSTEM",
+      "name": "Axle System",
+      "category": "AXLE"
+    },
+    {
+      "id": "VAX-002",
+      "code": "FRONT_AXLE",
+      "name": "Front Axle",
+      "category": "AXLE"
+    },
+    {
+      "id": "VAX-003",
+      "code": "REAR_AXLE",
+      "name": "Rear Axle",
+      "category": "AXLE"
+    },
+    {
+      "id": "VAX-004",
+      "code": "FRONT_AXLE_ASSEMBLY",
+      "name": "Front Axle Assembly",
+      "category": "AXLE"
+    },
+    {
+      "id": "VAX-005",
+      "code": "REAR_AXLE_ASSEMBLY",
+      "name": "Rear Axle Assembly",
+      "category": "AXLE"
+    },
+    {
+      "id": "VAX-006",
+      "code": "DRIVE_AXLE",
+      "name": "Drive Axle",
+      "category": "AXLE"
+    },
+    {
+      "id": "VAX-007",
+      "code": "NON_DRIVE_AXLE",
+      "name": "Non-Drive Axle",
+      "category": "AXLE"
+    },
+    {
+      "id": "VAX-008",
+      "code": "AXLE_SHAFT",
+      "name": "Axle Shaft",
+      "category": "SHAFT"
+    },
+    {
+      "id": "VAX-009",
+      "code": "FRONT_AXLE_SHAFT",
+      "name": "Front Axle Shaft",
+      "category": "SHAFT"
+    },
+    {
+      "id": "VAX-010",
+      "code": "REAR_AXLE_SHAFT",
+      "name": "Rear Axle Shaft",
+      "category": "SHAFT"
+    },
+    {
+      "id": "VAX-011",
+      "code": "HALF_SHAFT",
+      "name": "Half Shaft",
+      "category": "SHAFT"
+    },
+    {
+      "id": "VAX-012",
+      "code": "DRIVE_SHAFT",
+      "name": "Drive Shaft",
+      "category": "SHAFT"
+    },
+    {
+      "id": "VAX-013",
+      "code": "AXLE_HOUSING",
+      "name": "Axle Housing",
+      "category": "HOUSING"
+    },
+    {
+      "id": "VAX-014",
+      "code": "FRONT_AXLE_HOUSING",
+      "name": "Front Axle Housing",
+      "category": "HOUSING"
+    },
+    {
+      "id": "VAX-015",
+      "code": "REAR_AXLE_HOUSING",
+      "name": "Rear Axle Housing",
+      "category": "HOUSING"
+    },
+    {
+      "id": "VAX-016",
+      "code": "AXLE_TUBE",
+      "name": "Axle Tube",
+      "category": "HOUSING"
+    },
+    {
+      "id": "VAX-017",
+      "code": "AXLE_FLANGE",
+      "name": "Axle Flange",
+      "category": "FLANGE"
+    },
+    {
+      "id": "VAX-018",
+      "code": "AXLE_FLANGE_YOKE",
+      "name": "Axle Flange Yoke",
+      "category": "FLANGE"
+    },
+    {
+      "id": "VAX-019",
+      "code": "AXLE_SPLINE",
+      "name": "Axle Spline",
+      "category": "SHAFT"
+    },
+    {
+      "id": "VAX-020",
+      "code": "AXLE_SPLINE_COUPLING",
+      "name": "Axle Spline Coupling",
+      "category": "COUPLING"
+    },
+    {
+      "id": "VAX-021",
+      "code": "CV_AXLE",
+      "name": "CV Axle",
+      "category": "CV"
+    },
+    {
+      "id": "VAX-022",
+      "code": "CV_JOINT",
+      "name": "CV Joint",
+      "category": "CV"
+    },
+    {
+      "id": "VAX-023",
+      "code": "INNER_CV_JOINT",
+      "name": "Inner CV Joint",
+      "category": "CV"
+    },
+    {
+      "id": "VAX-024",
+      "code": "OUTER_CV_JOINT",
+      "name": "Outer CV Joint",
+      "category": "CV"
+    },
+    {
+      "id": "VAX-025",
+      "code": "CV_JOINT_BOOT",
+      "name": "CV Joint Boot",
+      "category": "CV"
+    },
+    {
+      "id": "VAX-026",
+      "code": "CV_BOOT_CLAMP",
+      "name": "CV Boot Clamp",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-027",
+      "code": "CV_JOINT_GREASE",
+      "name": "CV Joint Grease",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VAX-028",
+      "code": "AXLE_NUT",
+      "name": "Axle Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-029",
+      "code": "AXLE_BOLT",
+      "name": "Axle Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-030",
+      "code": "AXLE_WASHER",
+      "name": "Axle Washer",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-031",
+      "code": "AXLE_LOCK_NUT",
+      "name": "Axle Lock Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-032",
+      "code": "AXLE_RETaining_RING",
+      "name": "Axle Retaining Ring",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-033",
+      "code": "AXLE_CIRCLIP",
+      "name": "Axle Circlip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-034",
+      "code": "AXLE_BEARING",
+      "name": "Axle Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VAX-035",
+      "code": "INNER_AXLE_BEARING",
+      "name": "Inner Axle Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VAX-036",
+      "code": "OUTER_AXLE_BEARING",
+      "name": "Outer Axle Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VAX-037",
+      "code": "AXLE_BEARING_SEAL",
+      "name": "Axle Bearing Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VAX-038",
+      "code": "AXLE_OIL_SEAL",
+      "name": "Axle Oil Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VAX-039",
+      "code": "AXLE_DUST_SEAL",
+      "name": "Axle Dust Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VAX-040",
+      "code": "AXLE_GASKET",
+      "name": "Axle Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VAX-041",
+      "code": "AXLE_DIFFERENTIAL",
+      "name": "Axle Differential",
+      "category": "DIFFERENTIAL"
+    },
+    {
+      "id": "VAX-042",
+      "code": "AXLE_DIFFERENTIAL_CASE",
+      "name": "Axle Differential Case",
+      "category": "DIFFERENTIAL"
+    },
+    {
+      "id": "VAX-043",
+      "code": "AXLE_DIFFERENTIAL_CARRIER",
+      "name": "Axle Differential Carrier",
+      "category": "DIFFERENTIAL"
+    },
+    {
+      "id": "VAX-044",
+      "code": "AXLE_RING_GEAR",
+      "name": "Axle Ring Gear",
+      "category": "DIFFERENTIAL"
+    },
+    {
+      "id": "VAX-045",
+      "code": "AXLE_PINION_GEAR",
+      "name": "Axle Pinion Gear",
+      "category": "DIFFERENTIAL"
+    },
+    {
+      "id": "VAX-046",
+      "code": "AXLE_SPIDER_GEAR",
+      "name": "Axle Spider Gear",
+      "category": "DIFFERENTIAL"
+    },
+    {
+      "id": "VAX-047",
+      "code": "AXLE_SIDE_GEAR",
+      "name": "Axle Side Gear",
+      "category": "DIFFERENTIAL"
+    },
+    {
+      "id": "VAX-048",
+      "code": "AXLE_CARRIER_BEARING",
+      "name": "Axle Carrier Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VAX-049",
+      "code": "AXLE_PINION_BEARING",
+      "name": "Axle Pinion Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VAX-050",
+      "code": "AXLE_PINION_SEAL",
+      "name": "Axle Pinion Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VAX-051",
+      "code": "AXLE_DIFFERENTIAL_SEAL",
+      "name": "Axle Differential Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VAX-052",
+      "code": "AXLE_DIFFERENTIAL_COVER",
+      "name": "Axle Differential Cover",
+      "category": "COVER"
+    },
+    {
+      "id": "VAX-053",
+      "code": "AXLE_DIFFERENTIAL_GASKET",
+      "name": "Axle Differential Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VAX-054",
+      "code": "AXLE_BREATHER",
+      "name": "Axle Breather",
+      "category": "VENTILATION"
+    },
+    {
+      "id": "VAX-055",
+      "code": "AXLE_BREATHER_HOSE",
+      "name": "Axle Breather Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VAX-056",
+      "code": "AXLE_FLUID",
+      "name": "Axle Differential Fluid",
+      "category": "FLUID"
+    },
+    {
+      "id": "VAX-057",
+      "code": "AXLE_FLUID_PLUG",
+      "name": "Axle Fluid Plug",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-058",
+      "code": "AXLE_DRAIN_PLUG",
+      "name": "Axle Drain Plug",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-059",
+      "code": "AXLE_FILLER_PLUG",
+      "name": "Axle Filler Plug",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-060",
+      "code": "AXLE_LOCKING_HUB",
+      "name": "Locking Hub",
+      "category": "HUB"
+    },
+    {
+      "id": "VAX-061",
+      "code": "MANUAL_LOCKING_HUB",
+      "name": "Manual Locking Hub",
+      "category": "HUB"
+    },
+    {
+      "id": "VAX-062",
+      "code": "AUTOMATIC_LOCKING_HUB",
+      "name": "Automatic Locking Hub",
+      "category": "HUB"
+    },
+    {
+      "id": "VAX-063",
+      "code": "AXLE_HUB",
+      "name": "Axle Hub",
+      "category": "HUB"
+    },
+    {
+      "id": "VAX-064",
+      "code": "AXLE_HUB_ASSEMBLY",
+      "name": "Axle Hub Assembly",
+      "category": "HUB"
+    },
+    {
+      "id": "VAX-065",
+      "code": "AXLE_HUB_BEARING",
+      "name": "Axle Hub Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VAX-066",
+      "code": "AXLE_HUB_SEAL",
+      "name": "Axle Hub Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VAX-067",
+      "code": "AXLE_HUB_NUT",
+      "name": "Axle Hub Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-068",
+      "code": "AXLE_KNUCKLE",
+      "name": "Axle Steering Knuckle",
+      "category": "STEERING"
+    },
+    {
+      "id": "VAX-069",
+      "code": "AXLE_KNUCKLE_BEARING",
+      "name": "Axle Knuckle Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VAX-070",
+      "code": "AXLE_KNUCKLE_SEAL",
+      "name": "Axle Knuckle Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VAX-071",
+      "code": "AXLE_CV_FLANGE",
+      "name": "CV Axle Flange",
+      "category": "FLANGE"
+    },
+    {
+      "id": "VAX-072",
+      "code": "AXLE_CV_FLANGE_BOLT",
+      "name": "CV Axle Flange Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VAX-073",
+      "code": "AXLE_INTERMEDIATE_SHAFT",
+      "name": "Axle Intermediate Shaft",
+      "category": "SHAFT"
+    },
+    {
+      "id": "VAX-074",
+      "code": "AXLE_INTERMEDIATE_BEARING",
+      "name": "Axle Intermediate Bearing",
+      "category": "BEARING"
+    },
+    {
+      "id": "VAX-075",
+      "code": "AXLE_SUPPORT_BRACKET",
+      "name": "Axle Support Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VAX-076",
+      "code": "AXLE_MOUNT",
+      "name": "Axle Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VAX-077",
+      "code": "AXLE_MOUNT_BUSHING",
+      "name": "Axle Mount Bushing",
+      "category": "BUSHING"
+    },
+    {
+      "id": "VAX-078",
+      "code": "AXLE_DAMPER",
+      "name": "Axle Damper",
+      "category": "DAMPER"
+    },
+    {
+      "id": "VAX-079",
+      "code": "AXLE_DUST_SHIELD",
+      "name": "Axle Dust Shield",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VAX-080",
+      "code": "AXLE_GUARD",
+      "name": "Axle Guard",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VAX-081",
+      "code": "AXLE_DIFFERENTIAL_LOCK",
+      "name": "Axle Differential Lock",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VAX-082",
+      "code": "AXLE_LSD",
+      "name": "Limited Slip Differential",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VAX-083",
+      "code": "AXLE_ACTIVE_DIFFERENTIAL",
+      "name": "Active Differential",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VAX-084",
+      "code": "AXLE_DIFFERENTIAL_ACTUATOR",
+      "name": "Differential Actuator",
+      "category": "ACTUATOR"
+    },
+    {
+      "id": "VAX-085",
+      "code": "AXLE_DIFFERENTIAL_CONTROL_MODULE",
+      "name": "Differential Control Module",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VAX-086",
+      "code": "AXLE_SPEED_SENSOR",
+      "name": "Axle Speed Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VAX-087",
+      "code": "AXLE_ABS_SENSOR",
+      "name": "Axle ABS Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VAX-088",
+      "code": "AXLE_ABS_RING",
+      "name": "Axle ABS Ring",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VAX-089",
+      "code": "AXLE_WIRING",
+      "name": "Axle Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VAX-090",
+      "code": "AXLE_CONNECTOR",
+      "name": "Axle Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VAX-091",
+      "code": "AXLE_REPAIR_KIT",
+      "name": "Axle Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VAX-092",
+      "code": "CV_JOINT_REPAIR_KIT",
+      "name": "CV Joint Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VAX-093",
+      "code": "AXLE_BEARING_REPAIR_KIT",
+      "name": "Axle Bearing Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VAX-094",
+      "code": "AXLE_SEAL_KIT",
+      "name": "Axle Seal Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VAX-095",
+      "code": "AXLE_DIFFERENTIAL_REPAIR_KIT",
+      "name": "Axle Differential Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VAX-096",
+      "code": "AXLE_SERVICE_KIT",
+      "name": "Axle Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VAX-097",
+      "code": "AXLE_DIAGNOSTIC_COMPONENT",
+      "name": "Axle Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VAX-098",
+      "code": "AXLE_MOUNTING_HARDWARE",
+      "name": "Axle Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VAX-099",
+      "code": "AXLE_GENERAL_COMPONENT",
+      "name": "General Axle Component",
+      "category": "AXLE"
+    },
+    {
+      "id": "VAX-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Axle Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
