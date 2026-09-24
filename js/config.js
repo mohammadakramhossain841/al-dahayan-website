@@ -15,11 +15,18 @@ const APP_CONFIG = {
     }
   },
 
+  /*
+   * Project root paths.
+   * These paths are resolved from the current HTML document.
+   */
   paths: {
-    data: "./data/",
-    pages: "./pages/",
-    components: "./components/",
-    api: "./api/"
+    root: "../",
+    data: "../data/",
+    pages: "./",
+    components: "../components/",
+    api: "../api/",
+    css: "../css/",
+    js: "../js/"
   },
 
   dataFiles: {
@@ -50,12 +57,91 @@ const APP_CONFIG = {
     inventory: true,
     inquiry: true,
     bilingual: true
+  },
+
+  environment: {
+    mode: "development",
+    production: false
   }
 };
 
-function getDataPath(fileName) {
-  return APP_CONFIG.paths.data + fileName;
+
+/*
+ * Get the correct project root.
+ *
+ * index.html is in the root, while pages and admin files
+ * are inside subfolders.
+ */
+function getProjectRoot() {
+  const path = window.location.pathname;
+
+  if (
+    path.includes("/pages/") ||
+    path.includes("/admin/")
+  ) {
+    return "../";
+  }
+
+  return "./";
 }
 
+
+/*
+ * Get a project-relative path.
+ */
+function getProjectPath(type) {
+  const root = getProjectRoot();
+
+  const paths = {
+    root: root,
+    data: root + "data/",
+    pages: root + "pages/",
+    components: root + "components/",
+    api: root + "api/",
+    css: root + "css/",
+    js: root + "js/"
+  };
+
+  return paths[type] || root;
+}
+
+
+/*
+ * Get a data file path.
+ */
+function getDataPath(fileName) {
+  return getProjectPath("data") + fileName;
+}
+
+
+/*
+ * Get a page path.
+ */
+function getPagePath(fileName) {
+  return getProjectPath("pages") + fileName;
+}
+
+
+/*
+ * Get a component path.
+ */
+function getComponentPath(fileName) {
+  return getProjectPath("components") + fileName;
+}
+
+
+/*
+ * Get an API path.
+ */
+function getApiPath(path = "") {
+  return getProjectPath("api") + path;
+}
+
+
 window.APP_CONFIG = APP_CONFIG;
+window.getProjectRoot = getProjectRoot;
+window.getProjectPath = getProjectPath;
 window.getDataPath = getDataPath;
+window.getPagePath = getPagePath;
+window.getComponentPath = getComponentPath;
+window.getApiPath = getApiPath;
