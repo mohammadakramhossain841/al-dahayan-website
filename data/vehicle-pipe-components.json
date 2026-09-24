@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_pipe_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VPP-001",
+      "code": "COOLANT_PIPE",
+      "name": "Coolant Pipe",
+      "category": "COOLING"
+    },
+    {
+      "id": "VPP-002",
+      "code": "RADIATOR_PIPE",
+      "name": "Radiator Pipe",
+      "category": "COOLING"
+    },
+    {
+      "id": "VPP-003",
+      "code": "WATER_PUMP_PIPE",
+      "name": "Water Pump Pipe",
+      "category": "COOLING"
+    },
+    {
+      "id": "VPP-004",
+      "code": "THERMOSTAT_PIPE",
+      "name": "Thermostat Pipe",
+      "category": "COOLING"
+    },
+    {
+      "id": "VPP-005",
+      "code": "HEATER_PIPE",
+      "name": "Heater Pipe",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VPP-006",
+      "code": "HEATER_CORE_PIPE",
+      "name": "Heater Core Pipe",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VPP-007",
+      "code": "AC_REFRIGERANT_PIPE",
+      "name": "A/C Refrigerant Pipe",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VPP-008",
+      "code": "AC_HIGH_PRESSURE_PIPE",
+      "name": "A/C High Pressure Pipe",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VPP-009",
+      "code": "AC_LOW_PRESSURE_PIPE",
+      "name": "A/C Low Pressure Pipe",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VPP-010",
+      "code": "AC_DISCHARGE_PIPE",
+      "name": "A/C Discharge Pipe",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VPP-011",
+      "code": "AC_SUCTION_PIPE",
+      "name": "A/C Suction Pipe",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VPP-012",
+      "code": "FUEL_PIPE",
+      "name": "Fuel Pipe",
+      "category": "FUEL"
+    },
+    {
+      "id": "VPP-013",
+      "code": "FUEL_SUPPLY_PIPE",
+      "name": "Fuel Supply Pipe",
+      "category": "FUEL"
+    },
+    {
+      "id": "VPP-014",
+      "code": "FUEL_RETURN_PIPE",
+      "name": "Fuel Return Pipe",
+      "category": "FUEL"
+    },
+    {
+      "id": "VPP-015",
+      "code": "FUEL_FILLER_PIPE",
+      "name": "Fuel Filler Pipe",
+      "category": "FUEL"
+    },
+    {
+      "id": "VPP-016",
+      "code": "FUEL_TANK_VENT_PIPE",
+      "name": "Fuel Tank Vent Pipe",
+      "category": "FUEL"
+    },
+    {
+      "id": "VPP-017",
+      "code": "EVAP_PIPE",
+      "name": "EVAP Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-018",
+      "code": "EVAP_PURGE_PIPE",
+      "name": "EVAP Purge Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-019",
+      "code": "EVAP_VENT_PIPE",
+      "name": "EVAP Vent Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-020",
+      "code": "BRAKE_PIPE",
+      "name": "Brake Pipe",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPP-021",
+      "code": "BRAKE_MASTER_PIPE",
+      "name": "Brake Master Cylinder Pipe",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPP-022",
+      "code": "ABS_BRAKE_PIPE",
+      "name": "ABS Brake Pipe",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPP-023",
+      "code": "CLUTCH_PIPE",
+      "name": "Clutch Hydraulic Pipe",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VPP-024",
+      "code": "CLUTCH_MASTER_PIPE",
+      "name": "Clutch Master Cylinder Pipe",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VPP-025",
+      "code": "CLUTCH_SLAVE_PIPE",
+      "name": "Clutch Slave Cylinder Pipe",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VPP-026",
+      "code": "POWER_STEERING_PIPE",
+      "name": "Power Steering Pipe",
+      "category": "STEERING"
+    },
+    {
+      "id": "VPP-027",
+      "code": "POWER_STEERING_PRESSURE_PIPE",
+      "name": "Power Steering Pressure Pipe",
+      "category": "STEERING"
+    },
+    {
+      "id": "VPP-028",
+      "code": "POWER_STEERING_RETURN_PIPE",
+      "name": "Power Steering Return Pipe",
+      "category": "STEERING"
+    },
+    {
+      "id": "VPP-029",
+      "code": "TRANSMISSION_FLUID_PIPE",
+      "name": "Transmission Fluid Pipe",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VPP-030",
+      "code": "TRANSMISSION_COOLER_PIPE",
+      "name": "Transmission Cooler Pipe",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VPP-031",
+      "code": "CVT_FLUID_PIPE",
+      "name": "CVT Fluid Pipe",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VPP-032",
+      "code": "DCT_FLUID_PIPE",
+      "name": "DCT Fluid Pipe",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VPP-033",
+      "code": "TRANSFER_CASE_PIPE",
+      "name": "Transfer Case Fluid Pipe",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VPP-034",
+      "code": "DIFFERENTIAL_BREATHER_PIPE",
+      "name": "Differential Breather Pipe",
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "VPP-035",
+      "code": "AXLE_BREATHER_PIPE",
+      "name": "Axle Breather Pipe",
+      "category": "AXLE"
+    },
+    {
+      "id": "VPP-036",
+      "code": "OIL_PIPE",
+      "name": "Engine Oil Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-037",
+      "code": "OIL_COOLER_PIPE",
+      "name": "Oil Cooler Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-038",
+      "code": "TURBO_OIL_PIPE",
+      "name": "Turbocharger Oil Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-039",
+      "code": "TURBO_COOLANT_PIPE",
+      "name": "Turbocharger Coolant Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-040",
+      "code": "TURBO_AIR_PIPE",
+      "name": "Turbocharger Air Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-041",
+      "code": "INTERCOOLER_PIPE",
+      "name": "Intercooler Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-042",
+      "code": "INTAKE_PIPE",
+      "name": "Air Intake Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-043",
+      "code": "THROTTLE_BODY_PIPE",
+      "name": "Throttle Body Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-044",
+      "code": "PCV_PIPE",
+      "name": "PCV Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-045",
+      "code": "VACUUM_PIPE",
+      "name": "Vacuum Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-046",
+      "code": "BRAKE_BOOSTER_VACUUM_PIPE",
+      "name": "Brake Booster Vacuum Pipe",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VPP-047",
+      "code": "EXHAUST_PIPE",
+      "name": "Exhaust Pipe",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VPP-048",
+      "code": "EXHAUST_FRONT_PIPE",
+      "name": "Front Exhaust Pipe",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VPP-049",
+      "code": "EXHAUST_CENTER_PIPE",
+      "name": "Center Exhaust Pipe",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VPP-050",
+      "code": "EXHAUST_TAIL_PIPE",
+      "name": "Exhaust Tail Pipe",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VPP-051",
+      "code": "CATALYTIC_CONVERTER_PIPE",
+      "name": "Catalytic Converter Pipe",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VPP-052",
+      "code": "DPF_PIPE",
+      "name": "DPF Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-053",
+      "code": "SCR_PIPE",
+      "name": "SCR Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-054",
+      "code": "DEF_PIPE",
+      "name": "DEF Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-055",
+      "code": "EGR_PIPE",
+      "name": "EGR Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-056",
+      "code": "EGR_COOLER_PIPE",
+      "name": "EGR Cooler Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-057",
+      "code": "EGR_EXHAUST_PIPE",
+      "name": "EGR Exhaust Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-058",
+      "code": "SECONDARY_AIR_PIPE",
+      "name": "Secondary Air Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-059",
+      "code": "AIR_SUSPENSION_PIPE",
+      "name": "Air Suspension Pipe",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VPP-060",
+      "code": "AIR_SUSPENSION_SUPPLY_PIPE",
+      "name": "Air Suspension Supply Pipe",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VPP-061",
+      "code": "AIR_SUSPENSION_RETURN_PIPE",
+      "name": "Air Suspension Return Pipe",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VPP-062",
+      "code": "WASHER_PIPE",
+      "name": "Washer Fluid Pipe",
+      "category": "WIPER"
+    },
+    {
+      "id": "VPP-063",
+      "code": "HEADLIGHT_WASHER_PIPE",
+      "name": "Headlight Washer Pipe",
+      "category": "WIPER"
+    },
+    {
+      "id": "VPP-064",
+      "code": "WINDSHIELD_WASHER_PIPE",
+      "name": "Windshield Washer Pipe",
+      "category": "WIPER"
+    },
+    {
+      "id": "VPP-065",
+      "code": "BATTERY_COOLING_PIPE",
+      "name": "Battery Cooling Pipe",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPP-066",
+      "code": "HYBRID_BATTERY_COOLING_PIPE",
+      "name": "Hybrid Battery Cooling Pipe",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPP-067",
+      "code": "INVERTER_COOLING_PIPE",
+      "name": "Inverter Cooling Pipe",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPP-068",
+      "code": "EV_MOTOR_COOLING_PIPE",
+      "name": "EV Motor Cooling Pipe",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPP-069",
+      "code": "EV_REDUCTION_GEAR_OIL_PIPE",
+      "name": "EV Reduction Gear Oil Pipe",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPP-070",
+      "code": "CHARGER_COOLING_PIPE",
+      "name": "Onboard Charger Cooling Pipe",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPP-071",
+      "code": "DC_DC_COOLING_PIPE",
+      "name": "DC-DC Converter Cooling Pipe",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPP-072",
+      "code": "HVAC_COOLANT_PIPE",
+      "name": "HVAC Coolant Pipe",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VPP-073",
+      "code": "PTC_HEATER_PIPE",
+      "name": "PTC Heater Coolant Pipe",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VPP-074",
+      "code": "FUEL_RAIL_PIPE",
+      "name": "Fuel Rail Pipe",
+      "category": "FUEL"
+    },
+    {
+      "id": "VPP-075",
+      "code": "COMMON_RAIL_PIPE",
+      "name": "Common Rail Pipe",
+      "category": "FUEL"
+    },
+    {
+      "id": "VPP-076",
+      "code": "INJECTOR_SUPPLY_PIPE",
+      "name": "Injector Supply Pipe",
+      "category": "FUEL"
+    },
+    {
+      "id": "VPP-077",
+      "code": "DIESEL_FUEL_PIPE",
+      "name": "Diesel Fuel Pipe",
+      "category": "FUEL"
+    },
+    {
+      "id": "VPP-078",
+      "code": "DEF_SUPPLY_PIPE",
+      "name": "DEF Supply Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-079",
+      "code": "DEF_RETURN_PIPE",
+      "name": "DEF Return Pipe",
+      "category": "EMISSION"
+    },
+    {
+      "id": "VPP-080",
+      "code": "PNEUMATIC_CONTROL_PIPE",
+      "name": "Pneumatic Control Pipe",
+      "category": "CONTROL"
+    },
+    {
+      "id": "VPP-081",
+      "code": "SENSOR_PRESSURE_PIPE",
+      "name": "Sensor Pressure Pipe",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VPP-082",
+      "code": "SENSOR_VACUUM_PIPE",
+      "name": "Sensor Vacuum Pipe",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VPP-083",
+      "code": "DRAIN_PIPE",
+      "name": "Drain Pipe",
+      "category": "DRAINAGE"
+    },
+    {
+      "id": "VPP-084",
+      "code": "CONDENSATE_DRAIN_PIPE",
+      "name": "A/C Condensate Drain Pipe",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VPP-085",
+      "code": "SUNROOF_DRAIN_PIPE",
+      "name": "Sunroof Drain Pipe",
+      "category": "ROOF"
+    },
+    {
+      "id": "VPP-086",
+      "code": "FUEL_TANK_DRAIN_PIPE",
+      "name": "Fuel Tank Drain Pipe",
+      "category": "FUEL"
+    },
+    {
+      "id": "VPP-087",
+      "code": "OIL_DRAIN_PIPE",
+      "name": "Oil Drain Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-088",
+      "code": "BREATHER_PIPE",
+      "name": "Breather Pipe",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VPP-089",
+      "code": "VENT_PIPE",
+      "name": "Ventilation Pipe",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VPP-090",
+      "code": "PIPE_CONNECTOR",
+      "name": "Pipe Connector",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPP-091",
+      "code": "PIPE_COUPLER",
+      "name": "Pipe Coupler",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPP-092",
+      "code": "PIPE_ELBOW",
+      "name": "Pipe Elbow",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPP-093",
+      "code": "PIPE_TEE",
+      "name": "Pipe Tee",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPP-094",
+      "code": "PIPE_REDUCER",
+      "name": "Pipe Reducer",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPP-095",
+      "code": "PIPE_FLANGE",
+      "name": "Pipe Flange",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VPP-096",
+      "code": "PIPE_BRACKET",
+      "name": "Pipe Mounting Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VPP-097",
+      "code": "PIPE_SUPPORT",
+      "name": "Pipe Support",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VPP-098",
+      "code": "PIPE_REPAIR_KIT",
+      "name": "Pipe Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VPP-099",
+      "code": "UNIVERSAL_VEHICLE_PIPE",
+      "name": "Universal Vehicle Pipe",
+      "category": "GENERAL"
+    },
+    {
+      "id": "VPP-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Pipe Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
