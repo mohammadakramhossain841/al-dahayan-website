@@ -1,0 +1,131 @@
+{
+  "version": "1.0.0",
+  "safetySystems": [
+    {
+      "code": "ABS",
+      "name": "Anti-lock Braking System",
+      "shortName": "ABS",
+      "description": "Helps prevent wheel lock during braking."
+    },
+    {
+      "code": "EBD",
+      "name": "Electronic Brakeforce Distribution",
+      "shortName": "EBD",
+      "description": "Electronically distributes braking force between wheels."
+    },
+    {
+      "code": "BA",
+      "name": "Brake Assist",
+      "shortName": "Brake Assist",
+      "description": "Provides additional braking assistance during emergency braking."
+    },
+    {
+      "code": "VSC",
+      "name": "Vehicle Stability Control",
+      "shortName": "VSC",
+      "description": "Helps maintain vehicle stability during loss of traction."
+    },
+    {
+      "code": "TRC",
+      "name": "Traction Control",
+      "shortName": "TRC",
+      "description": "Helps reduce wheel spin during acceleration."
+    },
+    {
+      "code": "HAC",
+      "name": "Hill-start Assist Control",
+      "shortName": "HAC",
+      "description": "Helps prevent unintended rollback when starting on an incline."
+    },
+    {
+      "code": "DAC",
+      "name": "Downhill Assist Control",
+      "shortName": "DAC",
+      "description": "Helps control vehicle speed during controlled downhill driving."
+    },
+    {
+      "code": "PCS",
+      "name": "Pre-Collision System",
+      "shortName": "PCS",
+      "description": "Uses vehicle sensors to help detect potential forward collisions and provide assistance."
+    },
+    {
+      "code": "LDA",
+      "name": "Lane Departure Alert",
+      "shortName": "LDA",
+      "description": "Alerts the driver when unintended lane departure is detected."
+    },
+    {
+      "code": "LKA",
+      "name": "Lane Keeping Assist",
+      "shortName": "LKA",
+      "description": "Provides steering assistance to help maintain lane position."
+    },
+    {
+      "code": "BSM",
+      "name": "Blind Spot Monitor",
+      "shortName": "BSM",
+      "description": "Helps detect vehicles in areas that may be difficult for the driver to see."
+    },
+    {
+      "code": "RCTA",
+      "name": "Rear Cross Traffic Alert",
+      "shortName": "RCTA",
+      "description": "Helps detect approaching vehicles when reversing from a parking position."
+    },
+    {
+      "code": "ACC",
+      "name": "Adaptive Cruise Control",
+      "shortName": "ACC",
+      "description": "Helps maintain a selected speed and following distance from vehicles ahead."
+    },
+    {
+      "code": "AEB",
+      "name": "Automatic Emergency Braking",
+      "shortName": "AEB",
+      "description": "Can provide braking assistance when a collision risk is detected."
+    },
+    {
+      "code": "AIRBAG",
+      "name": "Airbag System",
+      "shortName": "Airbags",
+      "description": "Supplemental restraint system designed to help protect occupants during certain collisions."
+    },
+    {
+      "code": "TPMS",
+      "name": "Tire Pressure Monitoring System",
+      "shortName": "TPMS",
+      "description": "Monitors tire pressure and alerts the driver when pressure is low."
+    },
+    {
+      "code": "PARKING_SENSOR",
+      "name": "Parking Sensors",
+      "shortName": "Parking Sensors",
+      "description": "Uses sensors to assist the driver when parking or maneuvering."
+    },
+    {
+      "code": "REAR_CAMERA",
+      "name": "Rear Camera",
+      "shortName": "Rear Camera",
+      "description": "Provides a rear view to assist with reversing and parking."
+    },
+    {
+      "code": "CAMERA_360",
+      "name": "360-Degree Camera",
+      "shortName": "360 Camera",
+      "description": "Provides a multi-camera view around the vehicle to assist with maneuvering."
+    },
+    {
+      "code": "DRIVER_MONITOR",
+      "name": "Driver Monitoring System",
+      "shortName": "Driver Monitor",
+      "description": "Monitors driver attention or condition using vehicle sensors where equipped."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "shortName": "Unknown",
+      "description": "Safety system information has not yet been verified."
+    }
+  ]
+}
