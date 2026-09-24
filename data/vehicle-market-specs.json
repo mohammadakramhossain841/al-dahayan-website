@@ -1,0 +1,96 @@
+{
+  "version": "1.0.0",
+  "market": "global-foundation",
+  "markets": [
+    {
+      "code": "GCC",
+      "name": "GCC",
+      "countries": [
+        "Saudi Arabia",
+        "United Arab Emirates",
+        "Kuwait",
+        "Qatar",
+        "Bahrain",
+        "Oman"
+      ],
+      "description": "Gulf Cooperation Council vehicle market."
+    },
+    {
+      "code": "KSA",
+      "name": "Saudi Arabia",
+      "countries": [
+        "Saudi Arabia"
+      ],
+      "description": "Saudi Arabian vehicle market specification profile."
+    },
+    {
+      "code": "NORTH_AMERICA",
+      "name": "North America",
+      "countries": [
+        "United States",
+        "Canada",
+        "Mexico"
+      ],
+      "description": "North American vehicle market."
+    },
+    {
+      "code": "EUROPE",
+      "name": "Europe",
+      "countries": [
+        "European market"
+      ],
+      "description": "European vehicle market."
+    },
+    {
+      "code": "JAPAN",
+      "name": "Japan",
+      "countries": [
+        "Japan"
+      ],
+      "description": "Japanese domestic vehicle market."
+    },
+    {
+      "code": "ASIA",
+      "name": "Asia",
+      "countries": [
+        "Asian market"
+      ],
+      "description": "Asian vehicle market profile."
+    },
+    {
+      "code": "AUSTRALIA",
+      "name": "Australia",
+      "countries": [
+        "Australia"
+      ],
+      "description": "Australian vehicle market."
+    },
+    {
+      "code": "GLOBAL",
+      "name": "Global",
+      "countries": [],
+      "description": "General specification applicable across multiple markets."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "countries": [],
+      "description": "Market specification has not yet been verified."
+    }
+  ],
+  "specificationFields": [
+    "market",
+    "country",
+    "model",
+    "generation",
+    "modelYear",
+    "engineCode",
+    "engineDisplacement",
+    "fuelType",
+    "transmission",
+    "driveType",
+    "bodyType",
+    "leftHandDrive",
+    "rightHandDrive"
+  ]
+}
