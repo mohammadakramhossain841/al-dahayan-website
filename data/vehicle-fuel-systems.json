@@ -1,0 +1,396 @@
+{
+  "fuelSystems": [
+    {
+      "id": "FUEL-001",
+      "code": "FUEL_SYSTEM",
+      "name": "Fuel System",
+      "category": "SYSTEM_TYPE",
+      "description": "System responsible for storing, supplying and controlling fuel"
+    },
+    {
+      "id": "FUEL-002",
+      "code": "FUEL_TANK",
+      "name": "Fuel Tank",
+      "category": "STORAGE",
+      "description": "Tank used to store vehicle fuel"
+    },
+    {
+      "id": "FUEL-003",
+      "code": "FUEL_TANK_CAP",
+      "name": "Fuel Tank Cap",
+      "category": "STORAGE",
+      "description": "Cap used to seal the fuel tank filler opening"
+    },
+    {
+      "id": "FUEL-004",
+      "code": "FUEL_FILLER_NECK",
+      "name": "Fuel Filler Neck",
+      "category": "STORAGE",
+      "description": "Tube connecting the fuel filler opening to the fuel tank"
+    },
+    {
+      "id": "FUEL-005",
+      "code": "FUEL_FILLER_PIPE",
+      "name": "Fuel Filler Pipe",
+      "category": "STORAGE",
+      "description": "Fuel passage between the filler opening and tank"
+    },
+    {
+      "id": "FUEL-006",
+      "code": "FUEL_TANK_SENDER",
+      "name": "Fuel Tank Sender",
+      "category": "SENSOR",
+      "description": "Fuel-level sensing unit installed in the fuel tank"
+    },
+    {
+      "id": "FUEL-007",
+      "code": "FUEL_LEVEL_SENSOR",
+      "name": "Fuel Level Sensor",
+      "category": "SENSOR",
+      "description": "Sensor measuring fuel quantity in the tank"
+    },
+    {
+      "id": "FUEL-008",
+      "code": "FUEL_PUMP",
+      "name": "Fuel Pump",
+      "category": "SUPPLY",
+      "description": "Pump that supplies fuel from the tank to the engine"
+    },
+    {
+      "id": "FUEL-009",
+      "code": "ELECTRIC_FUEL_PUMP",
+      "name": "Electric Fuel Pump",
+      "category": "SUPPLY",
+      "description": "Electrically powered fuel pump"
+    },
+    {
+      "id": "FUEL-010",
+      "code": "HIGH_PRESSURE_FUEL_PUMP",
+      "name": "High Pressure Fuel Pump",
+      "category": "SUPPLY",
+      "description": "High-pressure pump used by applicable direct-injection or diesel systems"
+    },
+    {
+      "id": "FUEL-011",
+      "code": "FUEL_PUMP_MODULE",
+      "name": "Fuel Pump Module",
+      "category": "SUPPLY",
+      "description": "Integrated fuel pump assembly containing applicable fuel delivery components"
+    },
+    {
+      "id": "FUEL-012",
+      "code": "FUEL_PUMP_STRainer",
+      "name": "Fuel Pump Strainer",
+      "category": "FILTRATION",
+      "description": "Coarse filter attached to applicable fuel pump assemblies"
+    },
+    {
+      "id": "FUEL-013",
+      "code": "FUEL_FILTER",
+      "name": "Fuel Filter",
+      "category": "FILTRATION",
+      "description": "Filters contaminants from fuel"
+    },
+    {
+      "id": "FUEL-014",
+      "code": "FUEL_FILTER_HOUSING",
+      "name": "Fuel Filter Housing",
+      "category": "FILTRATION",
+      "description": "Housing containing the applicable fuel filter"
+    },
+    {
+      "id": "FUEL-015",
+      "code": "WATER_SEPARATOR",
+      "name": "Fuel Water Separator",
+      "category": "FILTRATION",
+      "description": "Separates water from fuel in applicable diesel systems"
+    },
+    {
+      "id": "FUEL-016",
+      "code": "FUEL_RAIL",
+      "name": "Fuel Rail",
+      "category": "DISTRIBUTION",
+      "description": "Pressurized fuel distribution rail supplying injectors"
+    },
+    {
+      "id": "FUEL-017",
+      "code": "COMMON_RAIL",
+      "name": "Common Rail",
+      "category": "DIESEL",
+      "description": "High-pressure fuel rail used in applicable diesel injection systems"
+    },
+    {
+      "id": "FUEL-018",
+      "code": "FUEL_INJECTOR",
+      "name": "Fuel Injector",
+      "category": "INJECTION",
+      "description": "Injects a controlled amount of fuel into the engine"
+    },
+    {
+      "id": "FUEL-019",
+      "code": "GASOLINE_FUEL_INJECTOR",
+      "name": "Gasoline Fuel Injector",
+      "category": "INJECTION",
+      "description": "Fuel injector used in applicable gasoline engines"
+    },
+    {
+      "id": "FUEL-020",
+      "code": "DIESEL_FUEL_INJECTOR",
+      "name": "Diesel Fuel Injector",
+      "category": "INJECTION",
+      "description": "Fuel injector used in applicable diesel engines"
+    },
+    {
+      "id": "FUEL-021",
+      "code": "DIRECT_INJECTION_INJECTOR",
+      "name": "Direct Injection Injector",
+      "category": "INJECTION",
+      "description": "Injector designed for direct fuel injection into the combustion chamber"
+    },
+    {
+      "id": "FUEL-022",
+      "code": "FUEL_PRESSURE_REGULATOR",
+      "name": "Fuel Pressure Regulator",
+      "category": "CONTROL",
+      "description": "Regulates fuel pressure in applicable fuel systems"
+    },
+    {
+      "id": "FUEL-023",
+      "code": "FUEL_PRESSURE_SENSOR",
+      "name": "Fuel Pressure Sensor",
+      "category": "SENSOR",
+      "description": "Measures fuel pressure"
+    },
+    {
+      "id": "FUEL-024",
+      "code": "FUEL_TEMPERATURE_SENSOR",
+      "name": "Fuel Temperature Sensor",
+      "category": "SENSOR",
+      "description": "Measures fuel temperature in applicable systems"
+    },
+    {
+      "id": "FUEL-025",
+      "code": "FUEL_LINE",
+      "name": "Fuel Line",
+      "category": "DELIVERY",
+      "description": "Carries fuel between fuel-system components"
+    },
+    {
+      "id": "FUEL-026",
+      "code": "FUEL_SUPPLY_LINE",
+      "name": "Fuel Supply Line",
+      "category": "DELIVERY",
+      "description": "Carries fuel from the tank toward the engine"
+    },
+    {
+      "id": "FUEL-027",
+      "code": "FUEL_RETURN_LINE",
+      "name": "Fuel Return Line",
+      "category": "DELIVERY",
+      "description": "Returns excess fuel to the tank on applicable systems"
+    },
+    {
+      "id": "FUEL-028",
+      "code": "FUEL_RAIL_PRESSURE_SENSOR",
+      "name": "Fuel Rail Pressure Sensor",
+      "category": "SENSOR",
+      "description": "Measures pressure in the fuel rail"
+    },
+    {
+      "id": "FUEL-029",
+      "code": "FUEL_RAIL_PRESSURE_CONTROL_VALVE",
+      "name": "Fuel Rail Pressure Control Valve",
+      "category": "CONTROL",
+      "description": "Controls fuel pressure in applicable high-pressure systems"
+    },
+    {
+      "id": "FUEL-030",
+      "code": "FUEL_METERING_VALVE",
+      "name": "Fuel Metering Valve",
+      "category": "CONTROL",
+      "description": "Controls fuel quantity supplied to a high-pressure pump"
+    },
+    {
+      "id": "FUEL-031",
+      "code": "FUEL_SHUTOFF_VALVE",
+      "name": "Fuel Shutoff Valve",
+      "category": "CONTROL",
+      "description": "Controls fuel flow by opening or closing the fuel circuit"
+    },
+    {
+      "id": "FUEL-032",
+      "code": "FUEL_CUT_OFF_SWITCH",
+      "name": "Fuel Cut-Off Switch",
+      "category": "SAFETY",
+      "description": "Safety device used to interrupt fuel delivery where equipped"
+    },
+    {
+      "id": "FUEL-033",
+      "code": "FUEL_PUMP_RELAY",
+      "name": "Fuel Pump Relay",
+      "category": "ELECTRICAL",
+      "description": "Electrical relay controlling applicable fuel pump circuits"
+    },
+    {
+      "id": "FUEL-034",
+      "code": "FUEL_PUMP_FUSE",
+      "name": "Fuel Pump Fuse",
+      "category": "ELECTRICAL",
+      "description": "Protective fuse for the fuel pump electrical circuit"
+    },
+    {
+      "id": "FUEL-035",
+      "code": "FUEL_SYSTEM_CONTROL_MODULE",
+      "name": "Fuel System Control Module",
+      "category": "ELECTRONIC",
+      "description": "Electronic module controlling applicable fuel delivery functions"
+    },
+    {
+      "id": "FUEL-036",
+      "code": "EVAPORATIVE_EMISSION_SYSTEM",
+      "name": "Evaporative Emission System",
+      "category": "EVAP",
+      "description": "Controls fuel vapor emissions from the fuel system"
+    },
+    {
+      "id": "FUEL-037",
+      "code": "CHARCOAL_CANISTER",
+      "name": "Charcoal Canister",
+      "category": "EVAP",
+      "description": "Stores fuel vapors from the fuel tank"
+    },
+    {
+      "id": "FUEL-038",
+      "code": "PURGE_CONTROL_VALVE",
+      "name": "Purge Control Valve",
+      "category": "EVAP",
+      "description": "Controls stored fuel vapor flow into the engine"
+    },
+    {
+      "id": "FUEL-039",
+      "code": "EVAP_VENT_VALVE",
+      "name": "EVAP Vent Valve",
+      "category": "EVAP",
+      "description": "Controls ventilation of the evaporative emission system"
+    },
+    {
+      "id": "FUEL-040",
+      "code": "FUEL_TANK_PRESSURE_SENSOR",
+      "name": "Fuel Tank Pressure Sensor",
+      "category": "EVAP_SENSOR",
+      "description": "Measures pressure inside the fuel tank or EVAP system"
+    },
+    {
+      "id": "FUEL-041",
+      "code": "EVAPORATIVE_EMISSION_LINE",
+      "name": "Evaporative Emission Line",
+      "category": "EVAP",
+      "description": "Carries fuel vapor within the EVAP system"
+    },
+    {
+      "id": "FUEL-042",
+      "code": "FUEL_VAPOR_LINE",
+      "name": "Fuel Vapor Line",
+      "category": "EVAP",
+      "description": "Carries fuel vapor between applicable fuel-system components"
+    },
+    {
+      "id": "FUEL-043",
+      "code": "DIESEL_PRIMER_PUMP",
+      "name": "Diesel Primer Pump",
+      "category": "DIESEL",
+      "description": "Manual or auxiliary pump used to prime applicable diesel fuel systems"
+    },
+    {
+      "id": "FUEL-044",
+      "code": "DIESEL_FUEL_FILTER_HEAD",
+      "name": "Diesel Fuel Filter Head",
+      "category": "DIESEL",
+      "description": "Mounting and connection assembly for applicable diesel fuel filters"
+    },
+    {
+      "id": "FUEL-045",
+      "code": "DIESEL_WATER_IN_FUEL_SENSOR",
+      "name": "Water-in-Fuel Sensor",
+      "category": "DIESEL_SENSOR",
+      "description": "Detects water contamination in applicable diesel fuel systems"
+    },
+    {
+      "id": "FUEL-046",
+      "code": "GLOW_PLUG_FUEL_CONTROL",
+      "name": "Diesel Cold Start Fuel Control",
+      "category": "DIESEL",
+      "description": "Fuel-system support function for applicable diesel cold-start operation"
+    },
+    {
+      "id": "FUEL-047",
+      "code": "FUEL_INJECTOR_SEAL",
+      "name": "Fuel Injector Seal",
+      "category": "SEAL",
+      "description": "Sealing component used with applicable fuel injectors"
+    },
+    {
+      "id": "FUEL-048",
+      "code": "FUEL_INJECTOR_O_RING",
+      "name": "Fuel Injector O-Ring",
+      "category": "SEAL",
+      "description": "O-ring used to seal applicable fuel injector connections"
+    },
+    {
+      "id": "FUEL-049",
+      "code": "FUEL_RAIL_GASKET",
+      "name": "Fuel Rail Gasket",
+      "category": "SEAL",
+      "description": "Gasket used to seal applicable fuel rail connections"
+    },
+    {
+      "id": "FUEL-050",
+      "code": "FUEL_TANK_GASKET",
+      "name": "Fuel Tank Gasket",
+      "category": "SEAL",
+      "description": "Gasket used to seal applicable fuel tank components"
+    },
+    {
+      "id": "FUEL-051",
+      "code": "FUEL_TANK_LOCK_RING",
+      "name": "Fuel Tank Lock Ring",
+      "category": "MOUNTING",
+      "description": "Retaining ring securing applicable fuel pump or sender assemblies"
+    },
+    {
+      "id": "FUEL-052",
+      "code": "FUEL_TANK_BAFFLE",
+      "name": "Fuel Tank Baffle",
+      "category": "STORAGE",
+      "description": "Internal tank component that controls fuel movement"
+    },
+    {
+      "id": "FUEL-053",
+      "code": "FUEL_TANK_VENT_VALVE",
+      "name": "Fuel Tank Vent Valve",
+      "category": "EVAP",
+      "description": "Controls fuel tank ventilation"
+    },
+    {
+      "id": "FUEL-054",
+      "code": "FUEL_TANK_VENT_LINE",
+      "name": "Fuel Tank Vent Line",
+      "category": "EVAP",
+      "description": "Vent line connecting the fuel tank to the evaporative emission system"
+    },
+    {
+      "id": "FUEL-055",
+      "code": "FUEL_SYSTEM_DIAGNOSTIC_SENSOR",
+      "name": "Fuel System Diagnostic Sensor",
+      "category": "SENSOR",
+      "description": "Sensor used for monitoring applicable fuel-system operating conditions"
+    },
+    {
+      "id": "FUEL-056",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "category": "UNKNOWN",
+      "description": "Fuel-system specification not available"
+    }
+  ]
+}
