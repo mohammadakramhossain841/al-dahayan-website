@@ -1,542 +1,838 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
 
-    <title>Al-Dahayan Trading Company | Toyota & Lexus Spare Parts</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <meta name="description"
-          content="Al-Dahayan Trading Company specializes in Toyota and Lexus automotive spare parts in Saudi Arabia. Find parts, check compatibility, and connect directly with our team.">
+  <meta
+    name="description"
+    content="Al-Dahayan Trading Company - Toyota and Lexus automotive spare parts platform in Saudi Arabia."
+  >
 
-    <meta name="keywords"
-          content="Al-Dahayan, Toyota spare parts, Lexus spare parts, Saudi Arabia, OEM parts, automotive spare parts">
+  <meta
+    name="keywords"
+    content="Toyota spare parts, Lexus spare parts, automotive spare parts, Saudi Arabia, OEM parts, VIN search, Al-Dahayan"
+  >
 
-    <meta name="author" content="Al-Dahayan Trading Company">
+  <meta
+    name="robots"
+    content="index, follow"
+  >
 
-    <link rel="stylesheet" href="css/style.css">
+  <meta
+    name="author"
+    content="Al-Dahayan Trading Company"
+  >
+
+  <meta
+    property="og:title"
+    content="Al-Dahayan Trading Company"
+  >
+
+  <meta
+    property="og:description"
+    content="Toyota and Lexus automotive spare parts platform for customers in Saudi Arabia."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <title>
+    Al-Dahayan Trading Company | Toyota & Lexus Spare Parts
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
 </head>
 
-<body>
+<body data-page="home">
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header
+    class="site-header"
+    data-navigation
+  >
+
+    <div class="container header-inner">
+
+      <a
+        href="index.html"
+        class="site-logo"
+        aria-label="Al-Dahayan Trading Company Home"
+      >
+        <span class="logo-main">
+          AL-DAHAYAN
+        </span>
+
+        <span class="logo-sub">
+          Trading Company
+        </span>
+      </a>
+
+      <nav
+        class="main-navigation"
+        aria-label="Main Navigation"
+      >
+
+        <a
+          href="index.html"
+          class="nav-link active"
+          data-nav-link="home"
+        >
+          <span data-i18n="nav.home">
+            Home
+          </span>
+        </a>
+
+        <a
+          href="pages/about.html"
+          class="nav-link"
+          data-nav-link="about"
+        >
+          <span data-i18n="nav.about">
+            About
+          </span>
+        </a>
+
+        <a
+          href="pages/parts.html"
+          class="nav-link"
+          data-nav-link="parts"
+        >
+          <span data-i18n="nav.parts">
+            Parts
+          </span>
+        </a>
+
+        <a
+          href="pages/vehicles.html"
+          class="nav-link"
+          data-nav-link="vehicles"
+        >
+          <span data-i18n="nav.vehicles">
+            Vehicles
+          </span>
+        </a>
+
+        <a
+          href="pages/vin-search.html"
+          class="nav-link"
+          data-nav-link="vin"
+        >
+          <span data-i18n="nav.vin">
+            VIN Search
+          </span>
+        </a>
+
+        <a
+          href="pages/services.html"
+          class="nav-link"
+          data-nav-link="services"
+        >
+          <span data-i18n="nav.services">
+            Services
+          </span>
+        </a>
+
+        <a
+          href="pages/contact.html"
+          class="nav-link"
+          data-nav-link="contact"
+        >
+          <span data-i18n="nav.contact">
+            Contact
+          </span>
+        </a>
+
+      </nav>
+
+      <div class="header-actions">
+
+        <div
+          class="language-switcher"
+          data-language-switcher
+        >
+          <button
+            type="button"
+            data-language="en"
+            class="language-button active"
+          >
+            EN
+          </button>
+
+          <button
+            type="button"
+            data-language="ar"
+            class="language-button"
+          >
+            العربية
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
 
     <!-- =========================
-         HEADER
+         HERO
     ========================== -->
-    <header class="site-header">
 
-        <div class="container header-container">
+    <section class="hero-section">
 
-            <a href="index.html" class="brand">
-                <span class="brand-name">AL-DAHAYAN</span>
-                <span class="brand-subtitle">
-                    Trading Company
+      <div class="container hero-content">
+
+        <div class="hero-text">
+
+          <p class="eyebrow">
+            Toyota & Lexus Automotive Spare Parts
+          </p>
+
+          <h1 data-i18n="hero.title">
+            Find the Right Part.
+            Connect With Al-Dahayan.
+          </h1>
+
+          <p
+            class="hero-description"
+            data-i18n="hero.description"
+          >
+            Search Toyota and Lexus spare parts,
+            identify compatible parts and connect
+            directly with Al-Dahayan.
+          </p>
+
+          <div class="hero-actions">
+
+            <a
+              href="pages/parts.html"
+              class="button button-primary"
+            >
+              <span data-i18n="hero.findParts">
+                Find Spare Parts
+              </span>
+            </a>
+
+            <a
+              href="pages/inquiry.html"
+              class="button button-secondary"
+            >
+              <span data-i18n="hero.makeInquiry">
+                Make an Inquiry
+              </span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         SEARCH OPTIONS
+    ========================== -->
+
+    <section class="section search-section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            Search
+          </p>
+
+          <h2 data-i18n="search.title">
+            Find the Part You Need
+          </h2>
+
+          <p data-i18n="search.description">
+            Search by OEM number, vehicle or VIN.
+          </p>
+
+        </div>
+
+
+        <div class="search-grid">
+
+          <!-- OEM SEARCH -->
+
+          <article class="search-card">
+
+            <div class="search-card-icon">
+              OEM
+            </div>
+
+            <h3 data-i18n="search.oem.title">
+              Search by OEM Part Number
+            </h3>
+
+            <p data-i18n="search.oem.description">
+              Enter a Toyota or Lexus OEM part number.
+            </p>
+
+            <form
+              class="part-search-form"
+              data-search-form
+            >
+
+              <label
+                for="oemSearch"
+                class="sr-only"
+              >
+                OEM Part Number
+              </label>
+
+              <input
+                id="oemSearch"
+                name="query"
+                type="search"
+                class="part-search-input"
+                placeholder="Enter OEM Part Number"
+                data-i18n-placeholder="search.oem.placeholder"
+                autocomplete="off"
+              >
+
+              <button
+                type="submit"
+                class="button button-primary"
+              >
+                <span data-i18n="search.button">
+                  Search
                 </span>
+              </button>
+
+            </form>
+
+            <div
+              class="search-results"
+              id="searchResults"
+              data-search-results
+            ></div>
+
+          </article>
+
+
+          <!-- VEHICLE SEARCH -->
+
+          <article class="search-card">
+
+            <div class="search-card-icon">
+              CAR
+            </div>
+
+            <h3 data-i18n="search.vehicle.title">
+              Search by Vehicle
+            </h3>
+
+            <p data-i18n="search.vehicle.description">
+              Find parts based on Toyota or Lexus vehicle details.
+            </p>
+
+            <a
+              href="pages/vehicles.html"
+              class="button button-secondary"
+            >
+              <span data-i18n="search.vehicle.button">
+                Search Vehicle
+              </span>
             </a>
 
-            <nav class="main-navigation">
+          </article>
 
-                <a href="index.html">Home</a>
-                <a href="pages/about.html">About</a>
-                <a href="pages/parts.html">Parts</a>
-                <a href="pages/vehicles.html">Vehicles</a>
-                <a href="pages/vin-search.html">VIN Search</a>
-                <a href="pages/services.html">Services</a>
-                <a href="pages/contact.html">Contact</a>
 
-            </nav>
+          <!-- VIN SEARCH -->
 
-            <a href="pages/inquiry.html" class="header-inquiry">
+          <article class="search-card">
+
+            <div class="search-card-icon">
+              VIN
+            </div>
+
+            <h3 data-i18n="search.vin.title">
+              Search by VIN
+            </h3>
+
+            <p data-i18n="search.vin.description">
+              Use your vehicle identification number
+              to identify compatible parts.
+            </p>
+
+            <a
+              href="pages/vin-search.html"
+              class="button button-secondary"
+            >
+              <span data-i18n="search.vin.button">
+                VIN Search
+              </span>
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         COMPANY INTRODUCTION
+    ========================== -->
+
+    <section class="section company-section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            Al-Dahayan
+          </p>
+
+          <h2
+            data-company-name
+          >
+            Al-Dahayan Trading Company
+          </h2>
+
+        </div>
+
+        <div class="company-content">
+
+          <p
+            data-company-about
+            data-i18n="company.description"
+          >
+            Al-Dahayan Trading Company is an
+            automotive spare parts business focused
+            on Toyota and Lexus parts in Saudi Arabia.
+          </p>
+
+          <a
+            href="pages/about.html"
+            class="button button-secondary"
+          >
+            <span data-i18n="company.learnMore">
+              Learn More
+            </span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+
+    <section class="section services-section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            Services
+          </p>
+
+          <h2 data-i18n="services.title">
+            How We Help Customers
+          </h2>
+
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card">
+
+            <h3>
+              Genuine Parts
+            </h3>
+
+            <p>
+              Toyota and Lexus spare-parts
+              identification and sourcing support.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <h3>
+              OEM Identification
+            </h3>
+
+            <p>
+              Search and identify parts using
+              OEM part numbers.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <h3>
+              VIN Search
+            </h3>
+
+            <p>
+              Vehicle identification and
+              compatibility search architecture.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <h3>
+              Customer Inquiry
+            </h3>
+
+            <p>
+              Connect directly with Al-Dahayan
+              for availability and part inquiries.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CUSTOMER CONNECTION
+    ========================== -->
+
+    <section class="section connection-section">
+
+      <div class="container">
+
+        <div class="connection-card">
+
+          <div>
+
+            <p class="eyebrow">
+              Customer Connection
+            </p>
+
+            <h2 data-i18n="connection.title">
+              Need Help Finding a Part?
+            </h2>
+
+            <p data-i18n="connection.description">
+              Send your part number, vehicle details
+              or VIN and connect with the Al-Dahayan team.
+            </p>
+
+          </div>
+
+          <div class="connection-actions">
+
+            <a
+              href="pages/inquiry.html"
+              class="button button-primary"
+              data-customer-inquiry
+            >
+              <span data-i18n="connection.inquiry">
                 Send Inquiry
+              </span>
             </a>
 
+            <a
+              href="pages/contact.html"
+              class="button button-secondary"
+            >
+              <span data-i18n="connection.contact">
+                Contact Company
+              </span>
+            </a>
+
+          </div>
+
         </div>
 
-    </header>
+      </div>
 
-
-    <main>
-
-        <!-- =========================
-             HERO SECTION
-        ========================== -->
-        <section class="hero-section">
-
-            <div class="container hero-container">
-
-                <div class="hero-content">
-
-                    <span class="hero-label">
-                        TOYOTA & LEXUS AUTOMOTIVE SPECIALISTS
-                    </span>
-
-                    <h1>
-                        Find the Right Part.
-                        <span>Connect With Al-Dahayan.</span>
-                    </h1>
-
-                    <p>
-                        Professional Toyota and Lexus spare-parts
-                        identification, compatibility support and
-                        direct customer connection in Saudi Arabia.
-                    </p>
-
-                    <div class="hero-actions">
-
-                        <a href="pages/parts.html" class="btn btn-primary">
-                            Find Spare Parts
-                        </a>
-
-                        <a href="pages/contact.html" class="btn btn-secondary">
-                            Contact Company
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             QUICK SEARCH
-        ========================== -->
-        <section class="search-section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <span>PART IDENTIFICATION</span>
-
-                    <h2>
-                        Find Your Toyota or Lexus Part
-                    </h2>
-
-                    <p>
-                        Search by OEM part number, vehicle information
-                        or VIN to identify the right part.
-                    </p>
-
-                </div>
-
-
-                <div class="search-grid">
-
-                    <a href="pages/parts.html" class="search-card">
-
-                        <div class="search-icon">
-                            OEM
-                        </div>
-
-                        <h3>
-                            OEM Part Number
-                        </h3>
-
-                        <p>
-                            Search directly using the original
-                            equipment part number.
-                        </p>
-
-                    </a>
-
-
-                    <a href="pages/vehicles.html" class="search-card">
-
-                        <div class="search-icon">
-                            CAR
-                        </div>
-
-                        <h3>
-                            Search by Vehicle
-                        </h3>
-
-                        <p>
-                            Select Toyota or Lexus, model and year
-                            to find compatible parts.
-                        </p>
-
-                    </a>
-
-
-                    <a href="pages/vin-search.html" class="search-card">
-
-                        <div class="search-icon">
-                            VIN
-                        </div>
-
-                        <h3>
-                            VIN Search
-                        </h3>
-
-                        <p>
-                            Use your vehicle VIN to help identify
-                            compatible parts.
-                        </p>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             COMPANY INTRODUCTION
-        ========================== -->
-        <section class="company-section">
-
-            <div class="container company-container">
-
-                <div class="company-content">
-
-                    <span class="section-label">
-                        ABOUT AL-DAHAYAN
-                    </span>
-
-                    <h2>
-                        Your Connection to
-                        Toyota & Lexus Parts
-                    </h2>
-
-                    <p>
-                        Al-Dahayan Trading Company provides automotive
-                        spare-parts support with a focus on Toyota and
-                        Lexus vehicles.
-                    </p>
-
-                    <p>
-                        Our website is designed to make it easier for
-                        customers to identify the parts they need and
-                        connect directly with our company team.
-                    </p>
-
-                    <a href="pages/about.html" class="text-link">
-                        Learn More About Us →
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             SERVICES
-        ========================== -->
-        <section class="services-section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <span>SERVICES</span>
-
-                    <h2>
-                        How We Help Customers
-                    </h2>
-
-                </div>
-
-
-                <div class="services-grid">
-
-                    <article class="service-card">
-
-                        <h3>
-                            Spare Parts Identification
-                        </h3>
-
-                        <p>
-                            Help identify the required Toyota or
-                            Lexus automotive part.
-                        </p>
-
-                    </article>
-
-
-                    <article class="service-card">
-
-                        <h3>
-                            OEM Part Search
-                        </h3>
-
-                        <p>
-                            Search using original equipment
-                            manufacturer part numbers.
-                        </p>
-
-                    </article>
-
-
-                    <article class="service-card">
-
-                        <h3>
-                            Vehicle Compatibility
-                        </h3>
-
-                        <p>
-                            Check parts according to vehicle
-                            model and specifications.
-                        </p>
-
-                    </article>
-
-
-                    <article class="service-card">
-
-                        <h3>
-                            Direct Customer Support
-                        </h3>
-
-                        <p>
-                            Connect directly with the Al-Dahayan
-                            team for inquiries and assistance.
-                        </p>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CUSTOMER CONNECTION
-        ========================== -->
-        <section class="connection-section">
-
-            <div class="container connection-container">
-
-                <div class="connection-content">
-
-                    <span class="section-label">
-                        DIRECT CONNECTION
-                    </span>
-
-                    <h2>
-                        Tell Us What You Need
-                    </h2>
-
-                    <p>
-                        Can't find the exact part you're looking for?
-                        Send us your part number, vehicle information
-                        or VIN and our team can assist you.
-                    </p>
-
-                    <div class="connection-actions">
-
-                        <a href="pages/inquiry.html"
-                           class="btn btn-primary">
-                            Send an Inquiry
-                        </a>
-
-                        <a href="pages/contact.html"
-                           class="btn btn-secondary">
-                            Contact Al-Dahayan
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             WHY AL-DAHAYAN
-        ========================== -->
-        <section class="trust-section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <span>WHY AL-DAHAYAN</span>
-
-                    <h2>
-                        Built Around Customer Connection
-                    </h2>
-
-                </div>
-
-
-                <div class="trust-grid">
-
-                    <div class="trust-item">
-                        <strong>
-                            Toyota & Lexus Focus
-                        </strong>
-                        <p>
-                            Specialized automotive parts coverage.
-                        </p>
-                    </div>
-
-
-                    <div class="trust-item">
-                        <strong>
-                            Part Identification
-                        </strong>
-                        <p>
-                            Multiple ways to find the required part.
-                        </p>
-                    </div>
-
-
-                    <div class="trust-item">
-                        <strong>
-                            Direct Communication
-                        </strong>
-                        <p>
-                            Connect directly with the company team.
-                        </p>
-                    </div>
-
-
-                    <div class="trust-item">
-                        <strong>
-                            Saudi Arabia
-                        </strong>
-                        <p>
-                            Designed for customers and automotive
-                            businesses in Saudi Arabia.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             FINAL CTA
-        ========================== -->
-        <section class="final-cta">
-
-            <div class="container">
-
-                <h2>
-                    Looking for a Toyota or Lexus Part?
-                </h2>
-
-                <p>
-                    Search for your part or contact Al-Dahayan directly.
-                </p>
-
-                <div class="cta-actions">
-
-                    <a href="pages/parts.html"
-                       class="btn btn-primary">
-                        Search Parts
-                    </a>
-
-                    <a href="pages/contact.html"
-                       class="btn btn-secondary">
-                        Contact Us
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
+    </section>
 
 
     <!-- =========================
-         FOOTER
+         TRUST
     ========================== -->
-    <footer class="site-footer">
 
-        <div class="container footer-container">
+    <section class="section trust-section">
 
-            <div class="footer-company">
+      <div class="container">
 
-                <h3>
-                    AL-DAHAYAN
-                </h3>
+        <div class="section-heading">
 
-                <p>
-                    Trading Company
-                </p>
+          <p class="eyebrow">
+            Why This Platform
+          </p>
 
-                <p>
-                    Toyota & Lexus Automotive Spare Parts
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <h4>
-                    Quick Links
-                </h4>
-
-                <a href="pages/about.html">About</a>
-                <a href="pages/parts.html">Parts</a>
-                <a href="pages/vehicles.html">Vehicles</a>
-                <a href="pages/vin-search.html">VIN Search</a>
-                <a href="pages/services.html">Services</a>
-                <a href="pages/contact.html">Contact</a>
-
-            </div>
-
-
-            <div class="footer-contact">
-
-                <h4>
-                    Contact
-                </h4>
-
-                <p>
-                    Saudi Arabia
-                </p>
-
-                <a href="pages/contact.html">
-                    Contact Information
-                </a>
-
-            </div>
+          <h2>
+            Built Around Customer Connection
+          </h2>
 
         </div>
 
+        <div class="trust-grid">
 
-        <div class="footer-bottom">
+          <article class="trust-card">
 
-            <div class="container">
+            <h3>
+              Toyota & Lexus Focus
+            </h3>
 
-                <p>
-                    © 2026 Al-Dahayan Trading Company.
-                    All rights reserved.
-                </p>
+            <p>
+              Designed specifically around
+              Toyota and Lexus spare-parts discovery.
+            </p>
 
-            </div>
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              Compatibility
+            </h3>
+
+            <p>
+              Vehicle and VIN-based architecture
+              helps customers identify compatible parts.
+            </p>
+
+          </article>
+
+
+          <article class="trust-card">
+
+            <h3>
+              Direct Connection
+            </h3>
+
+            <p>
+              Customers can connect with
+              Al-Dahayan instead of using a standard
+              checkout system.
+            </p>
+
+          </article>
 
         </div>
 
-    </footer>
+      </div>
+
+    </section>
 
 
     <!-- =========================
-         JAVASCRIPT
+         FINAL CTA
     ========================== -->
 
-    <script src="js/config.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/language.js"></script>
+    <section class="section cta-section">
+
+      <div class="container">
+
+        <div class="cta-content">
+
+          <h2 data-i18n="cta.title">
+            Find Your Part and Connect With Us
+          </h2>
+
+          <p data-i18n="cta.description">
+            Search our Toyota and Lexus spare-parts
+            platform or send an inquiry to the Al-Dahayan team.
+          </p>
+
+          <div class="cta-actions">
+
+            <a
+              href="pages/parts.html"
+              class="button button-primary"
+            >
+              <span data-i18n="cta.parts">
+                Search Parts
+              </span>
+            </a>
+
+            <a
+              href="pages/inquiry.html"
+              class="button button-secondary"
+            >
+              <span data-i18n="cta.inquiry">
+                Send Inquiry
+              </span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="site-footer">
+
+    <div class="container footer-inner">
+
+      <div class="footer-company">
+
+        <h2>
+          AL-DAHAYAN
+        </h2>
+
+        <p>
+          Al-Dahayan Trading Company
+        </p>
+
+        <p>
+          Toyota & Lexus Automotive Spare Parts
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="pages/about.html">
+          About
+        </a>
+
+        <a href="pages/parts.html">
+          Parts
+        </a>
+
+        <a href="pages/vehicles.html">
+          Vehicles
+        </a>
+
+        <a href="pages/vin-search.html">
+          VIN Search
+        </a>
+
+        <a href="pages/services.html">
+          Services
+        </a>
+
+        <a href="pages/contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-contact">
+
+        <a
+          href="#"
+          data-customer-phone
+          data-contact-phone
+        >
+          Phone
+        </a>
+
+        <a
+          href="#"
+          data-customer-whatsapp
+          data-contact-whatsapp
+        >
+          WhatsApp
+        </a>
+
+        <a
+          href="#"
+          data-customer-email
+          data-contact-email
+        >
+          Email
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <p>
+        © <span id="currentYear"></span>
+        Al-Dahayan Trading Company.
+        All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+
+
+  <script>
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+        const year =
+          document.getElementById(
+            "currentYear"
+          );
+
+        if (year) {
+          year.textContent =
+            new Date().getFullYear();
+        }
+      }
+    );
+  </script>
 
 </body>
+
 </html>
