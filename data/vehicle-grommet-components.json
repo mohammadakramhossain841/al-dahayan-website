@@ -1,0 +1,608 @@
+{
+  "componentType": "vehicle_grommet_components",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "components": [
+    {
+      "id": "VGR-001",
+      "code": "WIRING_HARNESS_GROMMET",
+      "name": "Wiring Harness Grommet",
+      "category": "WIRING"
+    },
+    {
+      "id": "VGR-002",
+      "code": "ENGINE_BAY_GROMMET",
+      "name": "Engine Bay Grommet",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VGR-003",
+      "code": "FIREWALL_GROMMET",
+      "name": "Firewall Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-004",
+      "code": "DOOR_WIRING_GROMMET",
+      "name": "Door Wiring Grommet",
+      "category": "DOOR"
+    },
+    {
+      "id": "VGR-005",
+      "code": "TAILGATE_WIRING_GROMMET",
+      "name": "Tailgate Wiring Grommet",
+      "category": "TAILGATE"
+    },
+    {
+      "id": "VGR-006",
+      "code": "TRUNK_WIRING_GROMMET",
+      "name": "Trunk Wiring Grommet",
+      "category": "TRUNK"
+    },
+    {
+      "id": "VGR-007",
+      "code": "HOOD_WIRING_GROMMET",
+      "name": "Hood Wiring Grommet",
+      "category": "HOOD"
+    },
+    {
+      "id": "VGR-008",
+      "code": "ROOF_WIRING_GROMMET",
+      "name": "Roof Wiring Grommet",
+      "category": "ROOF"
+    },
+    {
+      "id": "VGR-009",
+      "code": "FLOOR_WIRING_GROMMET",
+      "name": "Floor Wiring Grommet",
+      "category": "WIRING"
+    },
+    {
+      "id": "VGR-010",
+      "code": "DASHBOARD_WIRING_GROMMET",
+      "name": "Dashboard Wiring Grommet",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VGR-011",
+      "code": "BATTERY_CABLE_GROMMET",
+      "name": "Battery Cable Grommet",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGR-012",
+      "code": "ALTERNATOR_WIRE_GROMMET",
+      "name": "Alternator Wire Grommet",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGR-013",
+      "code": "STARTER_WIRE_GROMMET",
+      "name": "Starter Wire Grommet",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGR-014",
+      "code": "SENSOR_WIRE_GROMMET",
+      "name": "Sensor Wire Grommet",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VGR-015",
+      "code": "ECU_WIRING_GROMMET",
+      "name": "ECU Wiring Grommet",
+      "category": "ECU"
+    },
+    {
+      "id": "VGR-016",
+      "code": "ABS_WIRING_GROMMET",
+      "name": "ABS Wiring Grommet",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGR-017",
+      "code": "AIRBAG_WIRING_GROMMET",
+      "name": "Airbag Wiring Grommet",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VGR-018",
+      "code": "HEADLIGHT_WIRING_GROMMET",
+      "name": "Headlight Wiring Grommet",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VGR-019",
+      "code": "TAILLIGHT_WIRING_GROMMET",
+      "name": "Taillight Wiring Grommet",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VGR-020",
+      "code": "FOG_LIGHT_WIRING_GROMMET",
+      "name": "Fog Light Wiring Grommet",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VGR-021",
+      "code": "HORN_WIRING_GROMMET",
+      "name": "Horn Wiring Grommet",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGR-022",
+      "code": "WIPER_WIRING_GROMMET",
+      "name": "Wiper Wiring Grommet",
+      "category": "WIPER_WASHER"
+    },
+    {
+      "id": "VGR-023",
+      "code": "WASHER_HOSE_GROMMET",
+      "name": "Washer Hose Grommet",
+      "category": "WIPER_WASHER"
+    },
+    {
+      "id": "VGR-024",
+      "code": "FUEL_LINE_GROMMET",
+      "name": "Fuel Line Grommet",
+      "category": "FUEL"
+    },
+    {
+      "id": "VGR-025",
+      "code": "FUEL_PIPE_GROMMET",
+      "name": "Fuel Pipe Grommet",
+      "category": "FUEL"
+    },
+    {
+      "id": "VGR-026",
+      "code": "BRAKE_LINE_GROMMET",
+      "name": "Brake Line Grommet",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGR-027",
+      "code": "CLUTCH_LINE_GROMMET",
+      "name": "Clutch Line Grommet",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VGR-028",
+      "code": "AC_PIPE_GROMMET",
+      "name": "A/C Pipe Grommet",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VGR-029",
+      "code": "COOLANT_PIPE_GROMMET",
+      "name": "Coolant Pipe Grommet",
+      "category": "COOLING"
+    },
+    {
+      "id": "VGR-030",
+      "code": "VACUUM_HOSE_GROMMET",
+      "name": "Vacuum Hose Grommet",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VGR-031",
+      "code": "PCV_GROMMET",
+      "name": "PCV Grommet",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VGR-032",
+      "code": "BRAKE_BOOSTER_GROMMET",
+      "name": "Brake Booster Grommet",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGR-033",
+      "code": "MASTER_CYLINDER_GROMMET",
+      "name": "Master Cylinder Grommet",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGR-034",
+      "code": "FUEL_PUMP_GROMMET",
+      "name": "Fuel Pump Grommet",
+      "category": "FUEL"
+    },
+    {
+      "id": "VGR-035",
+      "code": "FUEL_TANK_GROMMET",
+      "name": "Fuel Tank Grommet",
+      "category": "FUEL"
+    },
+    {
+      "id": "VGR-036",
+      "code": "FUEL_FILLER_GROMMET",
+      "name": "Fuel Filler Grommet",
+      "category": "FUEL"
+    },
+    {
+      "id": "VGR-037",
+      "code": "EXHAUST_HANGER_GROMMET",
+      "name": "Exhaust Hanger Grommet",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VGR-038",
+      "code": "EXHAUST_PIPE_GROMMET",
+      "name": "Exhaust Pipe Grommet",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VGR-039",
+      "code": "ENGINE_MOUNT_GROMMET",
+      "name": "Engine Mount Grommet",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VGR-040",
+      "code": "TRANSMISSION_MOUNT_GROMMET",
+      "name": "Transmission Mount Grommet",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VGR-041",
+      "code": "RADIATOR_MOUNT_GROMMET",
+      "name": "Radiator Mount Grommet",
+      "category": "COOLING"
+    },
+    {
+      "id": "VGR-042",
+      "code": "FAN_SHROUD_GROMMET",
+      "name": "Fan Shroud Grommet",
+      "category": "COOLING"
+    },
+    {
+      "id": "VGR-043",
+      "code": "AIR_FILTER_HOUSING_GROMMET",
+      "name": "Air Filter Housing Grommet",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VGR-044",
+      "code": "BATTERY_TRAY_GROMMET",
+      "name": "Battery Tray Grommet",
+      "category": "BATTERY"
+    },
+    {
+      "id": "VGR-045",
+      "code": "FUSE_BOX_GROMMET",
+      "name": "Fuse Box Grommet",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGR-046",
+      "code": "RELAY_BOX_GROMMET",
+      "name": "Relay Box Grommet",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VGR-047",
+      "code": "ECU_MOUNT_GROMMET",
+      "name": "ECU Mount Grommet",
+      "category": "ECU"
+    },
+    {
+      "id": "VGR-048",
+      "code": "MODULE_MOUNT_GROMMET",
+      "name": "Module Mount Grommet",
+      "category": "MODULE"
+    },
+    {
+      "id": "VGR-049",
+      "code": "RADAR_MOUNT_GROMMET",
+      "name": "Radar Mount Grommet",
+      "category": "ADAS"
+    },
+    {
+      "id": "VGR-050",
+      "code": "CAMERA_MOUNT_GROMMET",
+      "name": "Camera Mount Grommet",
+      "category": "ADAS"
+    },
+    {
+      "id": "VGR-051",
+      "code": "PARKING_SENSOR_GROMMET",
+      "name": "Parking Sensor Grommet",
+      "category": "ADAS"
+    },
+    {
+      "id": "VGR-052",
+      "code": "TPMS_SENSOR_GROMMET",
+      "name": "TPMS Sensor Grommet",
+      "category": "WHEEL"
+    },
+    {
+      "id": "VGR-053",
+      "code": "DOOR_TRIM_GROMMET",
+      "name": "Door Trim Grommet",
+      "category": "DOOR"
+    },
+    {
+      "id": "VGR-054",
+      "code": "DOOR_PANEL_GROMMET",
+      "name": "Door Panel Grommet",
+      "category": "DOOR"
+    },
+    {
+      "id": "VGR-055",
+      "code": "FENDER_PANEL_GROMMET",
+      "name": "Fender Panel Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-056",
+      "code": "BUMPER_GROMMET",
+      "name": "Bumper Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-057",
+      "code": "GRILLE_GROMMET",
+      "name": "Grille Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-058",
+      "code": "HOOD_TRIM_GROMMET",
+      "name": "Hood Trim Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-059",
+      "code": "TAILGATE_TRIM_GROMMET",
+      "name": "Tailgate Trim Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-060",
+      "code": "TRUNK_TRIM_GROMMET",
+      "name": "Trunk Trim Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-061",
+      "code": "ROOF_TRIM_GROMMET",
+      "name": "Roof Trim Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-062",
+      "code": "UNDERBODY_GROMMET",
+      "name": "Underbody Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-063",
+      "code": "SPLASH_SHIELD_GROMMET",
+      "name": "Splash Shield Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-064",
+      "code": "WHEEL_ARCH_GROMMET",
+      "name": "Wheel Arch Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-065",
+      "code": "ENGINE_UNDERCOVER_GROMMET",
+      "name": "Engine Undercover Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-066",
+      "code": "FLOOR_CARPET_GROMMET",
+      "name": "Floor Carpet Grommet",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VGR-067",
+      "code": "FLOOR_DRAIN_GROMMET",
+      "name": "Floor Drain Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-068",
+      "code": "SEAT_MOUNT_GROMMET",
+      "name": "Seat Mount Grommet",
+      "category": "SEAT"
+    },
+    {
+      "id": "VGR-069",
+      "code": "DASHBOARD_GROMMET",
+      "name": "Dashboard Grommet",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VGR-070",
+      "code": "CONSOLE_GROMMET",
+      "name": "Center Console Grommet",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VGR-071",
+      "code": "HEADLINER_GROMMET",
+      "name": "Headliner Grommet",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VGR-072",
+      "code": "SUN_VISOR_GROMMET",
+      "name": "Sun Visor Grommet",
+      "category": "INTERIOR"
+    },
+    {
+      "id": "VGR-073",
+      "code": "MIRROR_GROMMET",
+      "name": "Mirror Grommet",
+      "category": "MIRROR"
+    },
+    {
+      "id": "VGR-074",
+      "code": "WIPER_MOTOR_GROMMET",
+      "name": "Wiper Motor Grommet",
+      "category": "WIPER_WASHER"
+    },
+    {
+      "id": "VGR-075",
+      "code": "WIPER_PIVOT_GROMMET",
+      "name": "Wiper Pivot Grommet",
+      "category": "WIPER_WASHER"
+    },
+    {
+      "id": "VGR-076",
+      "code": "AC_PIPE_FIREWALL_GROMMET",
+      "name": "A/C Firewall Grommet",
+      "category": "AIR_CONDITIONING"
+    },
+    {
+      "id": "VGR-077",
+      "code": "HEATER_PIPE_FIREWALL_GROMMET",
+      "name": "Heater Pipe Firewall Grommet",
+      "category": "HVAC"
+    },
+    {
+      "id": "VGR-078",
+      "code": "STEERING_COLUMN_GROMMET",
+      "name": "Steering Column Grommet",
+      "category": "STEERING"
+    },
+    {
+      "id": "VGR-079",
+      "code": "BRAKE_PEDAL_GROMMET",
+      "name": "Brake Pedal Grommet",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGR-080",
+      "code": "CLUTCH_PEDAL_GROMMET",
+      "name": "Clutch Pedal Grommet",
+      "category": "CLUTCH"
+    },
+    {
+      "id": "VGR-081",
+      "code": "ACCELERATOR_PEDAL_GROMMET",
+      "name": "Accelerator Pedal Grommet",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VGR-082",
+      "code": "SHIFT_CABLE_GROMMET",
+      "name": "Shift Cable Grommet",
+      "category": "TRANSMISSION"
+    },
+    {
+      "id": "VGR-083",
+      "code": "PARKING_BRAKE_CABLE_GROMMET",
+      "name": "Parking Brake Cable Grommet",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGR-084",
+      "code": "FUEL_TANK_WIRING_GROMMET",
+      "name": "Fuel Tank Wiring Grommet",
+      "category": "FUEL"
+    },
+    {
+      "id": "VGR-085",
+      "code": "HIGH_VOLTAGE_WIRING_GROMMET",
+      "name": "High Voltage Wiring Grommet",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VGR-086",
+      "code": "BATTERY_PACK_GROMMET",
+      "name": "Battery Pack Grommet",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VGR-087",
+      "code": "INVERTER_WIRING_GROMMET",
+      "name": "Inverter Wiring Grommet",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VGR-088",
+      "code": "CHARGING_PORT_GROMMET",
+      "name": "Charging Port Grommet",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VGR-089",
+      "code": "EV_MOTOR_WIRING_GROMMET",
+      "name": "EV Motor Wiring Grommet",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VGR-090",
+      "code": "AIR_SUSPENSION_LINE_GROMMET",
+      "name": "Air Suspension Line Grommet",
+      "category": "SUSPENSION"
+    },
+    {
+      "id": "VGR-091",
+      "code": "BRAKE_HOSE_GROMMET",
+      "name": "Brake Hose Grommet",
+      "category": "BRAKE"
+    },
+    {
+      "id": "VGR-092",
+      "code": "FUEL_HOSE_GROMMET",
+      "name": "Fuel Hose Grommet",
+      "category": "FUEL"
+    },
+    {
+      "id": "VGR-093",
+      "code": "COOLANT_HOSE_GROMMET",
+      "name": "Coolant Hose Grommet",
+      "category": "COOLING"
+    },
+    {
+      "id": "VGR-094",
+      "code": "VACUUM_HOSE_GROMMET",
+      "name": "Vacuum Hose Grommet",
+      "category": "ENGINE"
+    },
+    {
+      "id": "VGR-095",
+      "code": "CABLE_PASS_THROUGH_GROMMET",
+      "name": "Cable Pass-Through Grommet",
+      "category": "WIRING"
+    },
+    {
+      "id": "VGR-096",
+      "code": "RUBBER_BODY_GROMMET",
+      "name": "Rubber Body Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-097",
+      "code": "BLIND_BODY_GROMMET",
+      "name": "Blind Body Grommet",
+      "category": "BODY"
+    },
+    {
+      "id": "VGR-098",
+      "code": "SERVICE_GROMMET_KIT",
+      "name": "Grommet Service Kit",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VGR-099",
+      "code": "REPAIR_GROMMET_KIT",
+      "name": "Grommet Repair Kit",
+      "category": "REPAIR"
+    },
+    {
+      "id": "VGR-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Grommet Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
