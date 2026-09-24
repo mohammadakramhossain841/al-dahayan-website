@@ -1,0 +1,105 @@
+{
+  "catalogVersion": "1.0",
+  "brandScope": [
+    "Toyota",
+    "Lexus"
+  ],
+  "parts": [
+    {
+      "id": "OEM-DEMO-001",
+      "oemNumber": "SAMPLE-TOYOTA-001",
+      "partName": "Demo Toyota Engine Component",
+      "partNameArabic": "قطعة محرك تويوتا تجريبية",
+      "brand": "Toyota",
+      "category": "Engine",
+      "subcategory": "Engine Components",
+      "description": "Demo catalog record for system testing.",
+      "descriptionArabic": "سجل تجريبي لاختبار نظام الكتالوج.",
+      "models": [
+        "Sample Toyota Model"
+      ],
+      "modelYears": [
+        2024,
+        2025,
+        2026
+      ],
+      "engineCodes": [],
+      "bodyTypes": [],
+      "marketSpecs": [
+        "GCC",
+        "KSA"
+      ],
+      "compatibleOemNumbers": [],
+      "supersededOemNumbers": [],
+      "genuine": true,
+      "aftermarket": false,
+      "image": "",
+      "imageGallery": [],
+      "price": {
+        "currency": "SAR",
+        "regular": null,
+        "sale": null,
+        "discountPercent": null,
+        "visible": false
+      },
+      "inventory": {
+        "stockStatus": "unknown",
+        "quantity": null,
+        "locationIds": []
+      },
+      "status": "draft",
+      "verified": false,
+      "verificationSource": "",
+      "createdAt": "",
+      "updatedAt": ""
+    },
+    {
+      "id": "OEM-DEMO-002",
+      "oemNumber": "SAMPLE-LEXUS-001",
+      "partName": "Demo Lexus Body Component",
+      "partNameArabic": "قطعة هيكل لكزس تجريبية",
+      "brand": "Lexus",
+      "category": "Body",
+      "subcategory": "Body Components",
+      "description": "Demo catalog record for system testing.",
+      "descriptionArabic": "سجل تجريبي لاختبار نظام الكتالوج.",
+      "models": [
+        "Sample Lexus Model"
+      ],
+      "modelYears": [
+        2024,
+        2025,
+        2026
+      ],
+      "engineCodes": [],
+      "bodyTypes": [],
+      "marketSpecs": [
+        "GCC",
+        "KSA"
+      ],
+      "compatibleOemNumbers": [],
+      "supersededOemNumbers": [],
+      "genuine": true,
+      "aftermarket": false,
+      "image": "",
+      "imageGallery": [],
+      "price": {
+        "currency": "SAR",
+        "regular": null,
+        "sale": null,
+        "discountPercent": null,
+        "visible": false
+      },
+      "inventory": {
+        "stockStatus": "unknown",
+        "quantity": null,
+        "locationIds": []
+      },
+      "status": "draft",
+      "verified": false,
+      "verificationSource": "",
+      "createdAt": "",
+      "updatedAt": ""
+    }
+  ]
+}
