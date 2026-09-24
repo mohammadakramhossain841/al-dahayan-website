@@ -1,0 +1,604 @@
+{
+  "bumperComponents": [
+    {
+      "id": "VBC-001",
+      "code": "BUMPER_SYSTEM",
+      "name": "Vehicle Bumper System",
+      "category": "BUMPER"
+    },
+    {
+      "id": "VBC-002",
+      "code": "FRONT_BUMPER",
+      "name": "Front Bumper",
+      "category": "BUMPER"
+    },
+    {
+      "id": "VBC-003",
+      "code": "REAR_BUMPER",
+      "name": "Rear Bumper",
+      "category": "BUMPER"
+    },
+    {
+      "id": "VBC-004",
+      "code": "FRONT_BUMPER_COVER",
+      "name": "Front Bumper Cover",
+      "category": "COVER"
+    },
+    {
+      "id": "VBC-005",
+      "code": "REAR_BUMPER_COVER",
+      "name": "Rear Bumper Cover",
+      "category": "COVER"
+    },
+    {
+      "id": "VBC-006",
+      "code": "FRONT_BUMPER_REINFORCEMENT",
+      "name": "Front Bumper Reinforcement",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VBC-007",
+      "code": "REAR_BUMPER_REINFORCEMENT",
+      "name": "Rear Bumper Reinforcement",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VBC-008",
+      "code": "FRONT_BUMPER_ABSORBER",
+      "name": "Front Bumper Absorber",
+      "category": "ABSORBER"
+    },
+    {
+      "id": "VBC-009",
+      "code": "REAR_BUMPER_ABSORBER",
+      "name": "Rear Bumper Absorber",
+      "category": "ABSORBER"
+    },
+    {
+      "id": "VBC-010",
+      "code": "FRONT_BUMPER_BEAM",
+      "name": "Front Bumper Beam",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VBC-011",
+      "code": "REAR_BUMPER_BEAM",
+      "name": "Rear Bumper Beam",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VBC-012",
+      "code": "FRONT_BUMPER_BRACKET",
+      "name": "Front Bumper Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VBC-013",
+      "code": "REAR_BUMPER_BRACKET",
+      "name": "Rear Bumper Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VBC-014",
+      "code": "LEFT_FRONT_BUMPER_BRACKET",
+      "name": "Left Front Bumper Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VBC-015",
+      "code": "RIGHT_FRONT_BUMPER_BRACKET",
+      "name": "Right Front Bumper Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VBC-016",
+      "code": "LEFT_REAR_BUMPER_BRACKET",
+      "name": "Left Rear Bumper Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VBC-017",
+      "code": "RIGHT_REAR_BUMPER_BRACKET",
+      "name": "Right Rear Bumper Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VBC-018",
+      "code": "BUMPER_SIDE_BRACKET",
+      "name": "Bumper Side Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VBC-019",
+      "code": "BUMPER_CENTER_BRACKET",
+      "name": "Bumper Center Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VBC-020",
+      "code": "BUMPER_LOWER_BRACKET",
+      "name": "Bumper Lower Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VBC-021",
+      "code": "BUMPER_UPPER_BRACKET",
+      "name": "Bumper Upper Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VBC-022",
+      "code": "BUMPER_SIDE_SUPPORT",
+      "name": "Bumper Side Support",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VBC-023",
+      "code": "BUMPER_CENTER_SUPPORT",
+      "name": "Bumper Center Support",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VBC-024",
+      "code": "BUMPER_LOWER_SUPPORT",
+      "name": "Bumper Lower Support",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VBC-025",
+      "code": "BUMPER_UPPER_SUPPORT",
+      "name": "Bumper Upper Support",
+      "category": "SUPPORT"
+    },
+    {
+      "id": "VBC-026",
+      "code": "BUMPER_END_CAP",
+      "name": "Bumper End Cap",
+      "category": "COVER"
+    },
+    {
+      "id": "VBC-027",
+      "code": "LEFT_BUMPER_END_CAP",
+      "name": "Left Bumper End Cap",
+      "category": "COVER"
+    },
+    {
+      "id": "VBC-028",
+      "code": "RIGHT_BUMPER_END_CAP",
+      "name": "Right Bumper End Cap",
+      "category": "COVER"
+    },
+    {
+      "id": "VBC-029",
+      "code": "BUMPER_TRIM",
+      "name": "Bumper Trim",
+      "category": "TRIM"
+    },
+    {
+      "id": "VBC-030",
+      "code": "FRONT_BUMPER_TRIM",
+      "name": "Front Bumper Trim",
+      "category": "TRIM"
+    },
+    {
+      "id": "VBC-031",
+      "code": "REAR_BUMPER_TRIM",
+      "name": "Rear Bumper Trim",
+      "category": "TRIM"
+    },
+    {
+      "id": "VBC-032",
+      "code": "BUMPER_MOULDING",
+      "name": "Bumper Moulding",
+      "category": "TRIM"
+    },
+    {
+      "id": "VBC-033",
+      "code": "BUMPER_LOWER_MOULDING",
+      "name": "Bumper Lower Moulding",
+      "category": "TRIM"
+    },
+    {
+      "id": "VBC-034",
+      "code": "BUMPER_UPPER_MOULDING",
+      "name": "Bumper Upper Moulding",
+      "category": "TRIM"
+    },
+    {
+      "id": "VBC-035",
+      "code": "BUMPER_GRILLE",
+      "name": "Bumper Grille",
+      "category": "GRILLE"
+    },
+    {
+      "id": "VBC-036",
+      "code": "FRONT_BUMPER_GRILLE",
+      "name": "Front Bumper Grille",
+      "category": "GRILLE"
+    },
+    {
+      "id": "VBC-037",
+      "code": "LOWER_BUMPER_GRILLE",
+      "name": "Lower Bumper Grille",
+      "category": "GRILLE"
+    },
+    {
+      "id": "VBC-038",
+      "code": "BUMPER_AIR_INTAKE",
+      "name": "Bumper Air Intake",
+      "category": "AIR_INTAKE"
+    },
+    {
+      "id": "VBC-039",
+      "code": "BUMPER_AIR_DUCT",
+      "name": "Bumper Air Duct",
+      "category": "AIR_INTAKE"
+    },
+    {
+      "id": "VBC-040",
+      "code": "BUMPER_FOG_LAMP_HOUSING",
+      "name": "Fog Lamp Housing",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VBC-041",
+      "code": "LEFT_FOG_LAMP_BEZEL",
+      "name": "Left Fog Lamp Bezel",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VBC-042",
+      "code": "RIGHT_FOG_LAMP_BEZEL",
+      "name": "Right Fog Lamp Bezel",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VBC-043",
+      "code": "BUMPER_LIGHT_BEZEL",
+      "name": "Bumper Light Bezel",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VBC-044",
+      "code": "BUMPER_DAYTIME_RUNNING_LIGHT",
+      "name": "Bumper Daytime Running Light",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VBC-045",
+      "code": "BUMPER_REFLECTOR",
+      "name": "Bumper Reflector",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VBC-046",
+      "code": "LEFT_REAR_REFLECTOR",
+      "name": "Left Rear Bumper Reflector",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VBC-047",
+      "code": "RIGHT_REAR_REFLECTOR",
+      "name": "Right Rear Bumper Reflector",
+      "category": "LIGHTING"
+    },
+    {
+      "id": "VBC-048",
+      "code": "PARKING_SENSOR_HOLDER",
+      "name": "Parking Sensor Holder",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBC-049",
+      "code": "PARKING_SENSOR_BRACKET",
+      "name": "Parking Sensor Bracket",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBC-050",
+      "code": "BUMPER_PARKING_SENSOR",
+      "name": "Bumper Parking Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBC-051",
+      "code": "FRONT_CAMERA_BRACKET",
+      "name": "Front Camera Bracket",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VBC-052",
+      "code": "FRONT_CAMERA_COVER",
+      "name": "Front Camera Cover",
+      "category": "CAMERA"
+    },
+    {
+      "id": "VBC-053",
+      "code": "RADAR_SENSOR_BRACKET",
+      "name": "Radar Sensor Bracket",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBC-054",
+      "code": "RADAR_SENSOR_COVER",
+      "name": "Radar Sensor Cover",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VBC-055",
+      "code": "TOW_HOOK_COVER",
+      "name": "Tow Hook Cover",
+      "category": "COVER"
+    },
+    {
+      "id": "VBC-056",
+      "code": "FRONT_TOW_HOOK_COVER",
+      "name": "Front Tow Hook Cover",
+      "category": "COVER"
+    },
+    {
+      "id": "VBC-057",
+      "code": "REAR_TOW_HOOK_COVER",
+      "name": "Rear Tow Hook Cover",
+      "category": "COVER"
+    },
+    {
+      "id": "VBC-058",
+      "code": "BUMPER_TOW_HOOK",
+      "name": "Bumper Tow Hook",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBC-059",
+      "code": "BUMPER_FASTENER",
+      "name": "Bumper Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VBC-060",
+      "code": "BUMPER_BOLT",
+      "name": "Bumper Bolt",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VBC-061",
+      "code": "BUMPER_NUT",
+      "name": "Bumper Nut",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VBC-062",
+      "code": "BUMPER_CLIP",
+      "name": "Bumper Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VBC-063",
+      "code": "BUMPER_RETAINER",
+      "name": "Bumper Retainer",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VBC-064",
+      "code": "BUMPER_PUSH_CLIP",
+      "name": "Bumper Push Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VBC-065",
+      "code": "BUMPER_SEAL",
+      "name": "Bumper Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VBC-066",
+      "code": "BUMPER_WEATHER_SEAL",
+      "name": "Bumper Weather Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VBC-067",
+      "code": "BUMPER_GASKET",
+      "name": "Bumper Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VBC-068",
+      "code": "BUMPER_BRACE",
+      "name": "Bumper Brace",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VBC-069",
+      "code": "BUMPER_MOUNT",
+      "name": "Bumper Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VBC-070",
+      "code": "BUMPER_MOUNTING_PLATE",
+      "name": "Bumper Mounting Plate",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VBC-071",
+      "code": "BUMPER_MOUNTING_RAIL",
+      "name": "Bumper Mounting Rail",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VBC-072",
+      "code": "BUMPER_ENERGY_ABSORBER",
+      "name": "Bumper Energy Absorber",
+      "category": "ABSORBER"
+    },
+    {
+      "id": "VBC-073",
+      "code": "BUMPER_FOAM_ABSORBER",
+      "name": "Bumper Foam Absorber",
+      "category": "ABSORBER"
+    },
+    {
+      "id": "VBC-074",
+      "code": "BUMPER_CRASH_BOX",
+      "name": "Bumper Crash Box",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VBC-075",
+      "code": "BUMPER_CRASH_BRACKET",
+      "name": "Bumper Crash Bracket",
+      "category": "REINFORCEMENT"
+    },
+    {
+      "id": "VBC-076",
+      "code": "BUMPER_AIR_GUIDE",
+      "name": "Bumper Air Guide",
+      "category": "AIR_INTAKE"
+    },
+    {
+      "id": "VBC-077",
+      "code": "BUMPER_SPLASH_GUARD",
+      "name": "Bumper Splash Guard",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBC-078",
+      "code": "BUMPER_UNDER_COVER",
+      "name": "Bumper Under Cover",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBC-079",
+      "code": "BUMPER_SKID_PLATE",
+      "name": "Bumper Skid Plate",
+      "category": "PROTECTION"
+    },
+    {
+      "id": "VBC-080",
+      "code": "REAR_BUMPER_STEP_PAD",
+      "name": "Rear Bumper Step Pad",
+      "category": "TRIM"
+    },
+    {
+      "id": "VBC-081",
+      "code": "BUMPER_STEP_PAD",
+      "name": "Bumper Step Pad",
+      "category": "TRIM"
+    },
+    {
+      "id": "VBC-082",
+      "code": "BUMPER_LICENSE_PLATE_BRACKET",
+      "name": "Bumper License Plate Bracket",
+      "category": "BRACKET"
+    },
+    {
+      "id": "VBC-083",
+      "code": "BUMPER_LICENSE_PLATE_TRIM",
+      "name": "Bumper License Plate Trim",
+      "category": "TRIM"
+    },
+    {
+      "id": "VBC-084",
+      "code": "BUMPER_EXHAUST_CUTOUT",
+      "name": "Bumper Exhaust Cutout",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VBC-085",
+      "code": "BUMPER_EXHAUST_BEZEL",
+      "name": "Bumper Exhaust Bezel",
+      "category": "EXHAUST"
+    },
+    {
+      "id": "VBC-086",
+      "code": "BUMPER_DIFFUSER",
+      "name": "Bumper Diffuser",
+      "category": "AERODYNAMIC"
+    },
+    {
+      "id": "VBC-087",
+      "code": "BUMPER_SPOILER",
+      "name": "Bumper Spoiler",
+      "category": "AERODYNAMIC"
+    },
+    {
+      "id": "VBC-088",
+      "code": "BUMPER_AIR_DEFLECTOR",
+      "name": "Bumper Air Deflector",
+      "category": "AERODYNAMIC"
+    },
+    {
+      "id": "VBC-089",
+      "code": "BUMPER_WIRING_HARNESS",
+      "name": "Bumper Wiring Harness",
+      "category": "WIRING"
+    },
+    {
+      "id": "VBC-090",
+      "code": "BUMPER_CONNECTOR",
+      "name": "Bumper Electrical Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VBC-091",
+      "code": "BUMPER_REPAIR_KIT",
+      "name": "Bumper Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VBC-092",
+      "code": "BUMPER_SERVICE_KIT",
+      "name": "Bumper Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VBC-093",
+      "code": "BUMPER_DIAGNOSTIC_COMPONENT",
+      "name": "Bumper Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VBC-094",
+      "code": "BUMPER_MOUNTING_HARDWARE",
+      "name": "Bumper Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBC-095",
+      "code": "BUMPER_SENSOR_HARDWARE",
+      "name": "Bumper Sensor Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VBC-096",
+      "code": "BUMPER_BODY_COMPONENT",
+      "name": "General Bumper Body Component",
+      "category": "BODY"
+    },
+    {
+      "id": "VBC-097",
+      "code": "BUMPER_SAFETY_COMPONENT",
+      "name": "General Bumper Safety Component",
+      "category": "SAFETY"
+    },
+    {
+      "id": "VBC-098",
+      "code": "BUMPER_ELECTRICAL_COMPONENT",
+      "name": "General Bumper Electrical Component",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VBC-099",
+      "code": "BUMPER_GENERAL_COMPONENT",
+      "name": "General Bumper Component",
+      "category": "BUMPER"
+    },
+    {
+      "id": "VBC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Bumper Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
