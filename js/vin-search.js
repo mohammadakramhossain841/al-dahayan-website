@@ -1,658 +1,1084 @@
+/* =========================================
+   AL-DAHAYAN VIN SEARCH
+========================================= */
+
 (function () {
   "use strict";
 
-  let vehiclesData = [];
-  let compatibilityData = [];
-  let partsData = [];
+  let initialized = false;
 
-  let isLoaded = false;
+  let vehicles = [];
+  let compatibility = [];
+  let parts = [];
 
-  async function initializeVINSearch() {
-    await loadVINData();
-    setupVINInterface();
+  const state = {
+    vin: "",
+    vehicle: null,
+    compatibleParts: []
+  };
+
+  /* =========================================
+     Helpers
+  ========================================= */
+
+  function normalize(value) {
+    return String(value ?? "")
+      .trim()
+      .toUpperCase()
+      .replace(/\s+/g, "");
   }
 
-  async function loadVINData() {
-    try {
-      const [
-        vehicles,
-        compatibility,
-        parts
-      ] = await Promise.all([
-        loadJSON(
-          getDataPath(APP_CONFIG.dataFiles.vehicles)
-        ),
-        loadJSON(
-          getDataPath(APP_CONFIG.dataFiles.compatibility)
-        ),
-        loadJSON(
-          getDataPath(APP_CONFIG.dataFiles.oemParts)
-        )
-      ]);
-
-      vehiclesData = normalizeArray(vehicles);
-      compatibilityData = normalizeArray(compatibility);
-      partsData = normalizeArray(parts);
-
-      isLoaded = true;
-
-      return {
-        vehicles: vehiclesData,
-        compatibility: compatibilityData,
-        parts: partsData
-      };
-    } catch (error) {
-      console.error(
-        "Al-Dahayan VIN Search: Unable to load VIN data.",
-        error
-      );
-
-      vehiclesData = [];
-      compatibilityData = [];
-      partsData = [];
-
-      isLoaded = false;
-
-      return {
-        vehicles: [],
-        compatibility: [],
-        parts: []
-      };
+  function getValue(object, keys) {
+    for (const key of keys) {
+      if (
+        object &&
+        object[key] !== undefined &&
+        object[key] !== null
+      ) {
+        return object[key];
+      }
     }
+
+    return "";
   }
 
-  async function loadJSON(filePath) {
-    const response = await fetch(filePath);
+  function getVehicleID(vehicle) {
+    return getValue(vehicle, [
+      "id",
+      "vehicleId",
+      "vehicle_id"
+    ]);
+  }
+
+  function getPartID(part) {
+    return getValue(part, [
+      "id",
+      "partId",
+      "part_id"
+    ]);
+  }
+
+  function getPartOEM(part) {
+    return getValue(part, [
+      "oem",
+      "oemNumber",
+      "oem_number",
+      "partNumber",
+      "part_number"
+    ]);
+  }
+
+  function getVehicleVIN(vehicle) {
+    return getValue(vehicle, [
+      "vin",
+      "VIN",
+      "vinNumber",
+      "vin_number"
+    ]);
+  }
+
+  function getVehicleMake(vehicle) {
+    return getValue(vehicle, [
+      "make",
+      "brand",
+      "manufacturer"
+    ]);
+  }
+
+  function getVehicleModel(vehicle) {
+    return getValue(vehicle, [
+      "model",
+      "vehicleModel",
+      "vehicle_model"
+    ]);
+  }
+
+  function getVehicleYear(vehicle) {
+    return getValue(vehicle, [
+      "year",
+      "modelYear",
+      "model_year"
+    ]);
+  }
+
+  function getVehicleEngine(vehicle) {
+    return getValue(vehicle, [
+      "engine",
+      "engineType",
+      "engine_type"
+    ]);
+  }
+
+  /* =========================================
+     Data Loading
+  ========================================= */
+
+  async function loadJSON(fileName) {
+    if (
+      typeof window.getDataPath !==
+      "function"
+    ) {
+      throw new Error(
+        "getDataPath() is unavailable."
+      );
+    }
+
+    const path =
+      window.getDataPath(fileName);
+
+    const response =
+      await fetch(path);
 
     if (!response.ok) {
       throw new Error(
-        `Failed to load ${filePath}: ${response.status}`
+        `Unable to load ${fileName}: ${response.status}`
       );
     }
 
     return response.json();
   }
 
-  function normalizeArray(data) {
+  function normalizeArray(data, keys = []) {
     if (Array.isArray(data)) {
       return data;
     }
 
-    if (Array.isArray(data?.vehicles)) {
-      return data.vehicles;
-    }
-
-    if (Array.isArray(data?.compatibility)) {
-      return data.compatibility;
-    }
-
-    if (Array.isArray(data?.parts)) {
-      return data.parts;
-    }
-
-    if (Array.isArray(data?.oemParts)) {
-      return data.oemParts;
+    for (const key of keys) {
+      if (
+        data &&
+        Array.isArray(data[key])
+      ) {
+        return data[key];
+      }
     }
 
     return [];
   }
 
-  function setupVINInterface() {
-    const forms = document.querySelectorAll(
-      "[data-vin-form], #vinSearchForm, .vin-search-form"
-    );
+  async function loadData() {
+    try {
+      const [
+        vehicleData,
+        compatibilityData,
+        partData
+      ] = await Promise.all([
+        loadJSON("vehicles.json"),
+        loadJSON("compatibility.json"),
+        loadJSON("oem-parts.json")
+      ]);
 
-    forms.forEach((form) => {
-      if (form.dataset.vinInitialized === "true") {
-        return;
-      }
+      vehicles = normalizeArray(
+        vehicleData,
+        [
+          "vehicles",
+          "items",
+          "data"
+        ]
+      );
 
-      form.dataset.vinInitialized = "true";
-
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const input = form.querySelector(
-          "input[name='vin'], #vin, [data-vin-input]"
+      compatibility =
+        normalizeArray(
+          compatibilityData,
+          [
+            "compatibility",
+            "items",
+            "data"
+          ]
         );
 
-        const vin = input ? input.value : "";
+      parts = normalizeArray(
+        partData,
+        [
+          "parts",
+          "items",
+          "data"
+        ]
+      );
 
-        performVINSearch(vin);
-      });
-    });
+      return true;
+    } catch (error) {
+      console.error(
+        "Al-Dahayan VIN Search:",
+        error
+      );
 
-    const inputs = document.querySelectorAll(
-      "input[name='vin'], #vin, [data-vin-input]"
-    );
+      vehicles = [];
+      compatibility = [];
+      parts = [];
 
-    inputs.forEach((input) => {
-      input.addEventListener("input", () => {
-        input.value = input.value
-          .toUpperCase()
-          .replace(/[^A-Z0-9]/g, "")
-          .slice(0, 17);
-      });
-    });
+      return false;
+    }
   }
 
+  /* =========================================
+     VIN Validation
+  ========================================= */
+
   function validateVIN(vin) {
-    const normalizedVIN = normalizeVIN(vin);
+    const normalized =
+      normalize(vin);
 
-    if (!normalizedVIN) {
+    if (!normalized) {
       return {
         valid: false,
         message:
-          getCurrentLanguage() === "ar"
-            ? "يرجى إدخال رقم الهيكل VIN."
-            : "Please enter a VIN."
+          "Please enter a VIN."
       };
     }
 
-    if (normalizedVIN.length !== 17) {
+    if (normalized.length !== 17) {
       return {
         valid: false,
         message:
-          getCurrentLanguage() === "ar"
-            ? "يجب أن يتكون رقم VIN من 17 خانة."
-            : "VIN must contain 17 characters."
+          "VIN must contain exactly 17 characters."
       };
     }
 
-    if (/[IOQ]/.test(normalizedVIN)) {
+    if (
+      /[IOQ]/.test(normalized)
+    ) {
       return {
         valid: false,
         message:
-          getCurrentLanguage() === "ar"
-            ? "رقم VIN لا يمكن أن يحتوي على الأحرف I أو O أو Q."
-            : "VIN cannot contain the letters I, O, or Q."
+          "VIN cannot contain I, O or Q."
+      };
+    }
+
+    if (
+      !/^[A-HJ-NPR-Z0-9]{17}$/.test(
+        normalized
+      )
+    ) {
+      return {
+        valid: false,
+        message:
+          "Please enter a valid VIN."
       };
     }
 
     return {
       valid: true,
-      vin: normalizedVIN,
-      message: ""
+      vin: normalized
     };
   }
 
-  function normalizeVIN(vin) {
-    return String(vin || "")
-      .toUpperCase()
-      .replace(/[^A-Z0-9]/g, "");
-  }
+  /* =========================================
+     Vehicle Matching
+  ========================================= */
 
-  function performVINSearch(vin) {
-    const validation = validateVIN(vin);
+  function findVehicleByVIN(vin) {
+    const normalizedVIN =
+      normalize(vin);
 
-    if (!validation.valid) {
-      displayVINMessage(validation.message, "error");
-      return {
-        success: false,
-        error: validation.message
-      };
+    if (!normalizedVIN) {
+      return null;
     }
 
-    if (!isLoaded) {
-      const message =
-        getCurrentLanguage() === "ar"
-          ? "بيانات البحث غير متاحة حالياً."
-          : "VIN search data is currently unavailable.";
+    const exact =
+      vehicles.find(
+        (vehicle) =>
+          normalize(
+            getVehicleVIN(vehicle)
+          ) === normalizedVIN
+      );
 
-      displayVINMessage(message, "error");
-
-      return {
-        success: false,
-        error: message
-      };
+    if (exact) {
+      return exact;
     }
 
-    const result = identifyVehicleByVIN(
-      validation.vin
-    );
-
-    displayVINResults(result);
-
-    document.dispatchEvent(
-      new CustomEvent("alDahayanVINSearchCompleted", {
-        detail: result
-      })
-    );
-
-    return result;
-  }
-
-  function identifyVehicleByVIN(vin) {
     /*
-     * Foundation-level VIN matching.
-     *
-     * This is NOT a complete VIN decoder.
-     * Production VIN decoding can later be connected
-     * to a verified VIN data/API service.
-     */
+      Foundation-level VIN matching.
 
-    const exactVehicle = vehiclesData.find(
-      (vehicle) =>
-        normalizeVIN(vehicle.vin) === vin
-    );
+      If a full VIN decoder/API is added later,
+      this function can be replaced without
+      changing the public API.
+    */
 
-    if (exactVehicle) {
-      return buildVINResult(
-        vin,
-        exactVehicle,
-        "exact"
-      );
-    }
+    const wmi =
+      normalizedVIN.substring(0, 3);
 
-    const wmi = vin.substring(0, 3);
+    const wmiMatch =
+      vehicles.find((vehicle) => {
+        const vehicleVIN =
+          normalize(
+            getVehicleVIN(vehicle)
+          );
 
-    const wmiMatches = vehiclesData.filter(
-      (vehicle) =>
-        String(vehicle.wmi || "")
-          .toUpperCase() === wmi
-    );
+        return (
+          vehicleVIN &&
+          vehicleVIN.substring(0, 3) ===
+            wmi
+        );
+      });
 
-    if (wmiMatches.length) {
-      return buildVINResult(
-        vin,
-        wmiMatches[0],
-        "wmi"
-      );
-    }
-
-    return {
-      success: false,
-      vin,
-      matchType: "none",
-      vehicle: null,
-      compatibleParts: [],
-      message:
-        getCurrentLanguage() === "ar"
-          ? "لم يتم العثور على مركبة مطابقة في قاعدة البيانات الحالية."
-          : "No matching vehicle was found in the current database."
-    };
+    return wmiMatch || null;
   }
 
-  function buildVINResult(
-    vin,
-    vehicle,
-    matchType
+  /* =========================================
+     Compatibility Matching
+  ========================================= */
+
+  function getCompatibilityVehicleID(
+    item
   ) {
-    const compatibleParts =
-      getCompatibleParts(vehicle);
-
-    return {
-      success: true,
-      vin,
-      matchType,
-      vehicle,
-      compatibleParts,
-      message:
-        getCurrentLanguage() === "ar"
-          ? "تم العثور على بيانات متوافقة."
-          : "Compatible vehicle information found."
-    };
+    return getValue(item, [
+      "vehicleId",
+      "vehicle_id",
+      "vehicle",
+      "vehicleID"
+    ]);
   }
 
-  function getCompatibleParts(vehicle) {
+  function getCompatibilityPartID(
+    item
+  ) {
+    return getValue(item, [
+      "partId",
+      "part_id",
+      "part",
+      "partID"
+    ]);
+  }
+
+  function getCompatiblePartIDs(
+    vehicle
+  ) {
     if (!vehicle) {
       return [];
     }
 
-    const vehicleId =
-      vehicle.id ||
-      vehicle.vehicleId ||
-      vehicle.vehicle_id;
+    const vehicleID =
+      normalize(
+        getVehicleID(vehicle)
+      );
+
+    const matches =
+      compatibility.filter(
+        (item) => {
+
+          const itemVehicleID =
+            normalize(
+              getCompatibilityVehicleID(
+                item
+              )
+            );
+
+          return (
+            itemVehicleID &&
+            itemVehicleID ===
+              vehicleID
+          );
+        }
+      );
+
+    return matches
+      .map(
+        (item) =>
+          getCompatibilityPartID(
+            item
+          )
+      )
+      .filter(Boolean);
+  }
+
+  function getCompatibleParts(
+    vehicle
+  ) {
+    if (!vehicle) {
+      return [];
+    }
+
+    const partIDs =
+      getCompatiblePartIDs(
+        vehicle
+      );
+
+    if (partIDs.length) {
+      return parts.filter(
+        (part) =>
+          partIDs.some(
+            (id) =>
+              normalize(
+                getPartID(part)
+              ) ===
+              normalize(id)
+          )
+      );
+    }
+
+    /*
+      Fallback compatibility matching
+      by make / model / year.
+    */
 
     const make =
-      normalizeText(
-        vehicle.make ||
-        vehicle.brand
+      normalize(
+        getVehicleMake(vehicle)
       );
 
     const model =
-      normalizeText(
-        vehicle.model ||
-        vehicle.modelName
+      normalize(
+        getVehicleModel(vehicle)
       );
 
-    const year = String(
-      vehicle.year ||
+    const year =
+      String(
+        getVehicleYear(vehicle)
+      );
+
+    return parts.filter(
+      (part) => {
+
+        const partMake =
+          normalize(
+            getValue(part, [
+              "brand",
+              "make",
+              "manufacturer"
+            ])
+          );
+
+        const partModel =
+          normalize(
+            getValue(part, [
+              "model",
+              "vehicleModel",
+              "vehicle_model"
+            ])
+          );
+
+        const partYear =
+          String(
+            getValue(part, [
+              "year",
+              "modelYear",
+              "model_year"
+            ])
+          );
+
+        const makeMatch =
+          !make ||
+          !partMake ||
+          partMake === make;
+
+        const modelMatch =
+          !model ||
+          !partModel ||
+          partModel === model;
+
+        const yearMatch =
+          !year ||
+          !partYear ||
+          partYear === year;
+
+        return (
+          makeMatch &&
+          modelMatch &&
+          yearMatch
+        );
+      }
+    );
+  }
+
+  /* =========================================
+     Search VIN
+  ========================================= */
+
+  function searchVIN(vin) {
+    const validation =
+      validateVIN(vin);
+
+    if (!validation.valid) {
+      state.vin =
+        normalize(vin);
+
+      state.vehicle = null;
+      state.compatibleParts = [];
+
+      renderMessage(
+        validation.message,
+        "error"
+      );
+
+      return {
+        success: false,
+        vehicle: null,
+        parts: [],
+        message:
+          validation.message
+      };
+    }
+
+    const normalizedVIN =
+      validation.vin;
+
+    const vehicle =
+      findVehicleByVIN(
+        normalizedVIN
+      );
+
+    state.vin =
+      normalizedVIN;
+
+    state.vehicle =
+      vehicle;
+
+    if (!vehicle) {
+      state.compatibleParts = [];
+
+      renderVehicle(
+        null
+      );
+
+      renderParts([]);
+
+      renderMessage(
+        "No vehicle was found for this VIN.",
+        "warning"
+      );
+
+      return {
+        success: false,
+        vehicle: null,
+        parts: [],
+        message:
+          "No vehicle found."
+      };
+    }
+
+    const compatibleParts =
+      getCompatibleParts(
+        vehicle
+      );
+
+    state.compatibleParts =
+      compatibleParts;
+
+    renderVehicle(
+      vehicle
+    );
+
+    renderParts(
+      compatibleParts
+    );
+
+    renderMessage(
+      "",
       ""
     );
 
-    const matchingCompatibility =
-      compatibilityData.filter((record) => {
-        const recordVehicleId =
-          record.vehicleId ||
-          record.vehicle_id;
-
-        const recordMake =
-          normalizeText(
-            record.make ||
-            record.brand
-          );
-
-        const recordModel =
-          normalizeText(
-            record.model ||
-            record.modelName
-          );
-
-        const recordYear = String(
-          record.year ||
-          ""
-        );
-
-        if (
-          vehicleId &&
-          recordVehicleId &&
-          String(recordVehicleId) ===
-            String(vehicleId)
-        ) {
-          return true;
-        }
-
-        return (
-          (!make || !recordMake || make === recordMake) &&
-          (!model || !recordModel || model === recordModel) &&
-          (!year || !recordYear || year === recordYear)
-        );
-      });
-
-    const partIds = new Set();
-
-    matchingCompatibility.forEach(
-      (record) => {
-        const partId =
-          record.partId ||
-          record.part_id ||
-          record.oemPartId ||
-          record.oemNumber;
-
-        if (partId) {
-          partIds.add(String(partId));
-        }
-      }
-    );
-
-    return partsData.filter((part) => {
-      const identifiers = [
-        part.id,
-        part.partId,
-        part.oemPartId,
-        part.oemNumber,
-        part.partNumber,
-        part.partNo
-      ]
-        .filter(Boolean)
-        .map(String);
-
-      return identifiers.some((id) =>
-        partIds.has(id)
-      );
-    });
-  }
-
-  function displayVINResults(result) {
-    const container = document.querySelector(
-      "[data-vin-results], #vinResults, .vin-results"
-    );
-
-    if (!container) {
-      return;
-    }
-
-    container.innerHTML = "";
-
-    if (!result.success) {
-      displayVINMessage(
-        result.message,
-        "empty",
-        container
-      );
-
-      return;
-    }
-
-    const vehicle = result.vehicle;
-
-    const vehicleCard =
-      document.createElement("article");
-
-    vehicleCard.className =
-      "vin-vehicle-result";
-
-    vehicleCard.innerHTML = `
-      <div class="vin-result-header">
-        <h3>
-          ${
-            getCurrentLanguage() === "ar"
-              ? "بيانات المركبة"
-              : "Vehicle Information"
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanVINSearchComplete",
+        {
+          detail: {
+            vin:
+              normalizedVIN,
+            vehicle:
+              vehicle,
+            parts:
+              compatibleParts
           }
-        </h3>
-
-        <span class="vin-match-type">
-          ${escapeHTML(result.matchType)}
-        </span>
-      </div>
-
-      <div class="vin-vehicle-details">
-        ${
-          vehicle.make
-            ? `<p>
-                <strong>Make:</strong>
-                ${escapeHTML(vehicle.make)}
-              </p>`
-            : ""
         }
-
-        ${
-          vehicle.model
-            ? `<p>
-                <strong>Model:</strong>
-                ${escapeHTML(vehicle.model)}
-              </p>`
-            : ""
-        }
-
-        ${
-          vehicle.year
-            ? `<p>
-                <strong>Year:</strong>
-                ${escapeHTML(vehicle.year)}
-              </p>`
-            : ""
-        }
-
-        ${
-          vehicle.engine
-            ? `<p>
-                <strong>Engine:</strong>
-                ${escapeHTML(vehicle.engine)}
-              </p>`
-            : ""
-        }
-
-        <p>
-          <strong>VIN:</strong>
-          ${escapeHTML(result.vin)}
-        </p>
-      </div>
-    `;
-
-    container.appendChild(vehicleCard);
-
-    displayCompatibleParts(
-      result.compatibleParts,
-      container
+      )
     );
+
+    return {
+      success: true,
+      vehicle: vehicle,
+      parts: compatibleParts,
+      vin: normalizedVIN
+    };
   }
 
-  function displayCompatibleParts(
-    parts,
-    container
-  ) {
-    const section =
-      document.createElement("section");
-
-    section.className =
-      "vin-compatible-parts";
-
-    const title =
-      document.createElement("h3");
-
-    title.textContent =
-      getCurrentLanguage() === "ar"
-        ? "قطع الغيار المتوافقة"
-        : "Compatible Parts";
-
-    section.appendChild(title);
-
-    if (!parts.length) {
-      const empty =
-        document.createElement("p");
-
-      empty.textContent =
-        getCurrentLanguage() === "ar"
-          ? "لا توجد قطع متوافقة مسجلة حالياً."
-          : "No compatible parts are currently registered.";
-
-      section.appendChild(empty);
-
-      container.appendChild(section);
-
-      return;
-    }
-
-    const list =
-      document.createElement("div");
-
-    list.className =
-      "vin-parts-list";
-
-    parts.forEach((part) => {
-      const item =
-        document.createElement("article");
-
-      item.className =
-        "vin-compatible-part";
-
-      const name =
-        part.name ||
-        part.partName ||
-        "Automotive Part";
-
-      const number =
-        part.oemNumber ||
-        part.partNumber ||
-        part.partNo ||
-        "";
-
-      item.innerHTML = `
-        <h4>${escapeHTML(name)}</h4>
-
-        ${
-          number
-            ? `<p>
-                <strong>OEM:</strong>
-                ${escapeHTML(number)}
-              </p>`
-            : ""
-        }
-      `;
-
-      list.appendChild(item);
-    });
-
-    section.appendChild(list);
-
-    container.appendChild(section);
-  }
-
-  function displayVINMessage(
-    message,
-    type = "info",
-    container = null
-  ) {
-    const target =
-      container ||
-      document.querySelector(
-        "[data-vin-results], #vinResults, .vin-results"
-      );
-
-    if (!target) {
-      return;
-    }
-
-    target.innerHTML = "";
-
-    const messageElement =
-      document.createElement("div");
-
-    messageElement.className =
-      `vin-message vin-message-${type}`;
-
-    messageElement.textContent = message;
-
-    target.appendChild(messageElement);
-  }
-
-  function getCurrentLanguage() {
-    return (
-      document.documentElement.getAttribute("lang") ||
-      APP_CONFIG?.site?.defaultLanguage ||
-      "en"
-    );
-  }
-
-  function normalizeText(value) {
-    return String(value || "")
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ");
-  }
+  /* =========================================
+     Rendering
+  ========================================= */
 
   function escapeHTML(value) {
     if (
-      typeof window.AlDahayanUtils?.escapeHTML ===
-      "function"
+      window.AlDahayanUtils &&
+      typeof window.AlDahayanUtils
+        .escapeHTML === "function"
     ) {
-      return window.AlDahayanUtils.escapeHTML(value);
+      return window.AlDahayanUtils
+        .escapeHTML(value);
     }
 
-    const div =
-      document.createElement("div");
-
-    div.textContent =
-      String(value ?? "");
-
-    return div.innerHTML;
+    return String(value ?? "")
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+      .replace(
+        /</g,
+        "&lt;"
+      )
+      .replace(
+        />/g,
+        "&gt;"
+      )
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+      .replace(
+        /'/g,
+        "&#039;"
+      );
   }
+
+  function renderVehicle(
+    vehicle
+  ) {
+    document
+      .querySelectorAll(
+        "[data-vin-vehicle-result]"
+      )
+      .forEach((container) => {
+
+        if (!vehicle) {
+          container.innerHTML = "";
+          container.hidden = true;
+          return;
+        }
+
+        const make =
+          escapeHTML(
+            getVehicleMake(
+              vehicle
+            )
+          );
+
+        const model =
+          escapeHTML(
+            getVehicleModel(
+              vehicle
+            )
+          );
+
+        const year =
+          escapeHTML(
+            getVehicleYear(
+              vehicle
+            )
+          );
+
+        const engine =
+          escapeHTML(
+            getVehicleEngine(
+              vehicle
+            )
+          );
+
+        container.innerHTML = `
+          <div class="vehicle-card">
+
+            <div class="vehicle-card-content">
+
+              <h3>
+                ${make || "Vehicle"}
+                ${model || ""}
+              </h3>
+
+              ${
+                year
+                  ? `
+                    <p>
+                      <strong>Year:</strong>
+                      ${year}
+                    </p>
+                  `
+                  : ""
+              }
+
+              ${
+                engine
+                  ? `
+                    <p>
+                      <strong>Engine:</strong>
+                      ${engine}
+                    </p>
+                  `
+                  : ""
+              }
+
+            </div>
+
+          </div>
+        `;
+
+        container.hidden = false;
+      });
+  }
+
+  function renderParts(
+    compatibleParts
+  ) {
+    document
+      .querySelectorAll(
+        "[data-vin-parts-results]"
+      )
+      .forEach((container) => {
+
+        if (
+          !compatibleParts.length
+        ) {
+          container.innerHTML = `
+            <div class="search-empty">
+              <h3>
+                No compatible parts found.
+              </h3>
+              <p>
+                Please contact Al-Dahayan
+                for assistance.
+              </p>
+            </div>
+          `;
+
+          return;
+        }
+
+        container.innerHTML =
+          compatibleParts
+            .map(
+              (part) => {
+
+                const id =
+                  escapeHTML(
+                    getPartID(
+                      part
+                    )
+                  );
+
+                const oem =
+                  escapeHTML(
+                    getPartOEM(
+                      part
+                    )
+                  );
+
+                const name =
+                  escapeHTML(
+                    getValue(
+                      part,
+                      [
+                        "name",
+                        "partName",
+                        "part_name",
+                        "title"
+                      ]
+                    )
+                  );
+
+                return `
+                  <article
+                    class="part-card"
+                    data-part-id="${id}"
+                  >
+
+                    <div
+                      class="part-card-content"
+                    >
+
+                      <span
+                        class="part-card-oem"
+                      >
+                        ${
+                          oem || "—"
+                        }
+                      </span>
+
+                      <h3
+                        class="part-card-title"
+                      >
+                        ${
+                          name ||
+                          "Spare Part"
+                        }
+                      </h3>
+
+                      <div
+                        class="part-card-actions"
+                      >
+
+                        <button
+                          type="button"
+                          class="button primary"
+                          data-vin-inquire-part="${id}"
+                        >
+                          Inquiry
+                        </button>
+
+                      </div>
+
+                    </div>
+
+                  </article>
+                `;
+              }
+            )
+            .join("");
+      });
+
+    document
+      .querySelectorAll(
+        "[data-vin-result-summary]"
+      )
+      .forEach((element) => {
+        element.textContent =
+          `${compatibleParts.length} compatible part${
+            compatibleParts.length === 1
+              ? ""
+              : "s"
+          }`;
+      });
+  }
+
+  function renderMessage(
+    message,
+    type
+  ) {
+    document
+      .querySelectorAll(
+        "[data-vin-status]"
+      )
+      .forEach((element) => {
+
+        element.textContent =
+          message || "";
+
+        element.className =
+          `vin-status ${
+            type
+              ? `is-${type}`
+              : ""
+          }`;
+
+        element.hidden =
+          !message;
+      });
+  }
+
+  /* =========================================
+     Form
+  ========================================= */
+
+  function getVINInput() {
+    return document.querySelector(
+      "[data-vin-input]"
+    );
+  }
+
+  function getVINForm() {
+    return document.querySelector(
+      "[data-vin-search-form]"
+    );
+  }
+
+  function initializeForm() {
+    const form =
+      getVINForm();
+
+    const input =
+      getVINInput();
+
+    if (input) {
+      input.addEventListener(
+        "input",
+        () => {
+          input.value =
+            normalize(
+              input.value
+            ).substring(0, 17);
+        }
+      );
+    }
+
+    if (form) {
+      form.addEventListener(
+        "submit",
+        (event) => {
+          event.preventDefault();
+
+          const vin =
+            input
+              ? input.value
+              : "";
+
+          searchVIN(vin);
+        }
+      );
+    }
+  }
+
+  /* =========================================
+     Reset
+  ========================================= */
+
+  function reset() {
+    state.vin = "";
+    state.vehicle = null;
+    state.compatibleParts = [];
+
+    const form =
+      getVINForm();
+
+    if (form) {
+      form.reset();
+    }
+
+    renderVehicle(null);
+    renderParts([]);
+    renderMessage("", "");
+
+    return {
+      success: true
+    };
+  }
+
+  /* =========================================
+     Dynamic Events
+  ========================================= */
+
+  function initializeEvents() {
+    document.addEventListener(
+      "click",
+      (event) => {
+
+        const resetButton =
+          event.target.closest(
+            "[data-vin-reset]"
+          );
+
+        if (resetButton) {
+          event.preventDefault();
+          reset();
+          return;
+        }
+
+        const inquiryButton =
+          event.target.closest(
+            "[data-vin-inquire-part]"
+          );
+
+        if (inquiryButton) {
+          const id =
+            inquiryButton.getAttribute(
+              "data-vin-inquire-part"
+            );
+
+          const part =
+            parts.find(
+              (item) =>
+                normalize(
+                  getPartID(item)
+                ) ===
+                normalize(id)
+            );
+
+          if (part) {
+            document.dispatchEvent(
+              new CustomEvent(
+                "alDahayanPartInquiry",
+                {
+                  detail: {
+                    part: part,
+                    vin: state.vin,
+                    vehicle:
+                      state.vehicle
+                  }
+                }
+              )
+            );
+          }
+        }
+      }
+    );
+  }
+
+  /* =========================================
+     Initialize
+  ========================================= */
+
+  async function initializeVINSearch() {
+    if (initialized) {
+      return;
+    }
+
+    initialized = true;
+
+    await loadData();
+
+    initializeForm();
+
+    initializeEvents();
+
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanVINSearchReady",
+        {
+          detail: {
+            vehicles:
+              vehicles.length,
+            compatibility:
+              compatibility.length,
+            parts:
+              parts.length
+          }
+        }
+      )
+    );
+  }
+
+  /* =========================================
+     Public API
+  ========================================= */
 
   window.AlDahayanVINSearch = {
-    initialize: initializeVINSearch,
-    loadVINData,
-    validateVIN,
-    normalizeVIN,
-    performVINSearch,
-    identifyVehicleByVIN,
-    getCompatibleParts,
-    getVehicles: () => [...vehiclesData],
-    getCompatibility: () => [
-      ...compatibilityData
-    ],
-    getParts: () => [...partsData],
-    isLoaded: () => isLoaded
+
+    initialize:
+      initializeVINSearch,
+
+    search:
+      searchVIN,
+
+    validate:
+      validateVIN,
+
+    reset:
+      reset,
+
+    findVehicle:
+      findVehicleByVIN,
+
+    getCompatibleParts:
+      getCompatibleParts,
+
+    getState:
+      () => ({
+        vin: state.vin,
+        vehicle:
+          state.vehicle,
+        compatibleParts:
+          [
+            ...state.compatibleParts
+          ]
+      })
   };
 
-  if (document.readyState === "loading") {
-    document.addEventListener(
-      "DOMContentLoaded",
-      initializeVINSearch
-    );
-  } else {
-    initializeVINSearch();
-  }
+  window.initializeVINSearch =
+    initializeVINSearch;
+
+  /* =========================================
+     DOM Ready
+  ========================================= */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+      initializeVINSearch();
+    }
+  );
+
 })();
