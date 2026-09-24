@@ -1,0 +1,604 @@
+{
+  "coolingSystemComponents": [
+    {
+      "id": "VCSC-001",
+      "code": "ENGINE_COOLING_SYSTEM",
+      "name": "Engine Cooling System",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-002",
+      "code": "RADIATOR",
+      "name": "Radiator",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-003",
+      "code": "RADIATOR_CORE",
+      "name": "Radiator Core",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-004",
+      "code": "RADIATOR_TANK",
+      "name": "Radiator Tank",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-005",
+      "code": "RADIATOR_CAP",
+      "name": "Radiator Cap",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-006",
+      "code": "RADIATOR_DRAIN_PLUG",
+      "name": "Radiator Drain Plug",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCSC-007",
+      "code": "RADIATOR_DRAIN_VALVE",
+      "name": "Radiator Drain Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VCSC-008",
+      "code": "RADIATOR_FAN",
+      "name": "Radiator Fan",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-009",
+      "code": "RADIATOR_FAN_MOTOR",
+      "name": "Radiator Fan Motor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCSC-010",
+      "code": "COOLING_FAN_ASSEMBLY",
+      "name": "Cooling Fan Assembly",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-011",
+      "code": "COOLING_FAN_SHROUD",
+      "name": "Cooling Fan Shroud",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-012",
+      "code": "FAN_BLADE",
+      "name": "Cooling Fan Blade",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-013",
+      "code": "FAN_RELAY",
+      "name": "Cooling Fan Relay",
+      "category": "RELAY"
+    },
+    {
+      "id": "VCSC-014",
+      "code": "FAN_CONTROL_MODULE",
+      "name": "Cooling Fan Control Module",
+      "category": "ELECTRONICS"
+    },
+    {
+      "id": "VCSC-015",
+      "code": "FAN_RESISTOR",
+      "name": "Cooling Fan Resistor",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCSC-016",
+      "code": "WATER_PUMP",
+      "name": "Water Pump",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-017",
+      "code": "WATER_PUMP_ASSEMBLY",
+      "name": "Water Pump Assembly",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-018",
+      "code": "ELECTRIC_WATER_PUMP",
+      "name": "Electric Water Pump",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "VCSC-019",
+      "code": "WATER_PUMP_PULLEY",
+      "name": "Water Pump Pulley",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-020",
+      "code": "WATER_PUMP_GASKET",
+      "name": "Water Pump Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCSC-021",
+      "code": "WATER_PUMP_SEAL",
+      "name": "Water Pump Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCSC-022",
+      "code": "THERMOSTAT",
+      "name": "Thermostat",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-023",
+      "code": "THERMOSTAT_HOUSING",
+      "name": "Thermostat Housing",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-024",
+      "code": "THERMOSTAT_GASKET",
+      "name": "Thermostat Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCSC-025",
+      "code": "COOLANT_TEMPERATURE_SENSOR",
+      "name": "Coolant Temperature Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCSC-026",
+      "code": "COOLANT_TEMPERATURE_SWITCH",
+      "name": "Coolant Temperature Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VCSC-027",
+      "code": "COOLANT_LEVEL_SENSOR",
+      "name": "Coolant Level Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCSC-028",
+      "code": "COOLANT_LEVEL_SWITCH",
+      "name": "Coolant Level Switch",
+      "category": "SWITCH"
+    },
+    {
+      "id": "VCSC-029",
+      "code": "COOLANT_RESERVOIR",
+      "name": "Coolant Reservoir",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-030",
+      "code": "EXPANSION_TANK",
+      "name": "Expansion Tank",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-031",
+      "code": "COOLANT_RESERVOIR_CAP",
+      "name": "Coolant Reservoir Cap",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-032",
+      "code": "OVERFLOW_TANK",
+      "name": "Coolant Overflow Tank",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-033",
+      "code": "UPPER_RADIATOR_HOSE",
+      "name": "Upper Radiator Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VCSC-034",
+      "code": "LOWER_RADIATOR_HOSE",
+      "name": "Lower Radiator Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VCSC-035",
+      "code": "HEATER_HOSE",
+      "name": "Heater Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VCSC-036",
+      "code": "BYPASS_COOLANT_HOSE",
+      "name": "Bypass Coolant Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VCSC-037",
+      "code": "COOLANT_PIPE",
+      "name": "Coolant Pipe",
+      "category": "PIPE"
+    },
+    {
+      "id": "VCSC-038",
+      "code": "COOLANT_RETURN_PIPE",
+      "name": "Coolant Return Pipe",
+      "category": "PIPE"
+    },
+    {
+      "id": "VCSC-039",
+      "code": "COOLANT_INLET_PIPE",
+      "name": "Coolant Inlet Pipe",
+      "category": "PIPE"
+    },
+    {
+      "id": "VCSC-040",
+      "code": "COOLANT_OUTLET_PIPE",
+      "name": "Coolant Outlet Pipe",
+      "category": "PIPE"
+    },
+    {
+      "id": "VCSC-041",
+      "code": "COOLANT_FLANGE",
+      "name": "Coolant Flange",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-042",
+      "code": "COOLANT_PIPE_GASKET",
+      "name": "Coolant Pipe Gasket",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCSC-043",
+      "code": "COOLANT_PIPE_O_RING",
+      "name": "Coolant Pipe O-Ring",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCSC-044",
+      "code": "HOSE_CLAMP",
+      "name": "Coolant Hose Clamp",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCSC-045",
+      "code": "RADIATOR_HOSE_CLAMP",
+      "name": "Radiator Hose Clamp",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCSC-046",
+      "code": "COOLANT_LINE_CLIP",
+      "name": "Coolant Line Clip",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCSC-047",
+      "code": "RADIATOR_MOUNT",
+      "name": "Radiator Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VCSC-048",
+      "code": "RADIATOR_MOUNT_BUSHING",
+      "name": "Radiator Mount Bushing",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VCSC-049",
+      "code": "RADIATOR_BRACKET",
+      "name": "Radiator Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VCSC-050",
+      "code": "COOLING_FAN_MOUNT",
+      "name": "Cooling Fan Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "VCSC-051",
+      "code": "ENGINE_COOLANT",
+      "name": "Engine Coolant",
+      "category": "FLUID"
+    },
+    {
+      "id": "VCSC-052",
+      "code": "LONG_LIFE_COOLANT",
+      "name": "Long Life Coolant",
+      "category": "FLUID"
+    },
+    {
+      "id": "VCSC-053",
+      "code": "HYBRID_COOLANT",
+      "name": "Hybrid System Coolant",
+      "category": "FLUID"
+    },
+    {
+      "id": "VCSC-054",
+      "code": "INVERTER_COOLANT",
+      "name": "Inverter Coolant",
+      "category": "FLUID"
+    },
+    {
+      "id": "VCSC-055",
+      "code": "EV_BATTERY_COOLANT",
+      "name": "EV Battery Coolant",
+      "category": "FLUID"
+    },
+    {
+      "id": "VCSC-056",
+      "code": "COOLANT_FILTER",
+      "name": "Coolant Filter",
+      "category": "FILTER"
+    },
+    {
+      "id": "VCSC-057",
+      "code": "COOLANT_PRESSURE_CAP",
+      "name": "Coolant Pressure Cap",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-058",
+      "code": "COOLANT_PRESSURE_SENSOR",
+      "name": "Coolant Pressure Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCSC-059",
+      "code": "RADIATOR_PRESSURE_SENSOR",
+      "name": "Radiator Pressure Sensor",
+      "category": "SENSOR"
+    },
+    {
+      "id": "VCSC-060",
+      "code": "COOLANT_FLOW_CONTROL_VALVE",
+      "name": "Coolant Flow Control Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VCSC-061",
+      "code": "COOLANT_CONTROL_VALVE",
+      "name": "Coolant Control Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VCSC-062",
+      "code": "WATER_VALVE",
+      "name": "Water Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VCSC-063",
+      "code": "HEATER_CONTROL_VALVE",
+      "name": "Heater Control Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VCSC-064",
+      "code": "COOLANT_BYPASS_VALVE",
+      "name": "Coolant Bypass Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VCSC-065",
+      "code": "OIL_COOLER",
+      "name": "Engine Oil Cooler",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-066",
+      "code": "TRANSMISSION_OIL_COOLER",
+      "name": "Transmission Oil Cooler",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-067",
+      "code": "HYBRID_INVERTER_COOLER",
+      "name": "Hybrid Inverter Cooler",
+      "category": "HYBRID"
+    },
+    {
+      "id": "VCSC-068",
+      "code": "BATTERY_COOLING_UNIT",
+      "name": "Battery Cooling Unit",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCSC-069",
+      "code": "BATTERY_COOLING_PLATE",
+      "name": "Battery Cooling Plate",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCSC-070",
+      "code": "ELECTRIC_COOLANT_PUMP",
+      "name": "Electric Coolant Pump",
+      "category": "HYBRID_EV"
+    },
+    {
+      "id": "VCSC-071",
+      "code": "COOLANT_DEGAS_BOTTLE",
+      "name": "Coolant Degas Bottle",
+      "category": "COOLING"
+    },
+    {
+      "id": "VCSC-072",
+      "code": "COOLANT_DEGAS_HOSE",
+      "name": "Coolant Degas Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VCSC-073",
+      "code": "COOLANT_AIR_BLEED_VALVE",
+      "name": "Coolant Air Bleed Valve",
+      "category": "VALVE"
+    },
+    {
+      "id": "VCSC-074",
+      "code": "COOLANT_BLEED_SCREW",
+      "name": "Coolant Bleed Screw",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCSC-075",
+      "code": "RADIATOR_FAN_SHROUD_SEAL",
+      "name": "Radiator Fan Shroud Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCSC-076",
+      "code": "RADIATOR_SIDE_SEAL",
+      "name": "Radiator Side Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCSC-077",
+      "code": "RADIATOR_UPPER_SEAL",
+      "name": "Radiator Upper Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCSC-078",
+      "code": "RADIATOR_LOWER_SEAL",
+      "name": "Radiator Lower Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "VCSC-079",
+      "code": "COOLING_SYSTEM_RESERVOIR_HOSE",
+      "name": "Cooling System Reservoir Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VCSC-080",
+      "code": "COOLING_SYSTEM_RETURN_HOSE",
+      "name": "Cooling System Return Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VCSC-081",
+      "code": "COOLING_SYSTEM_BYPASS_HOSE",
+      "name": "Cooling System Bypass Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VCSC-082",
+      "code": "COOLANT_EXPANSION_TANK_HOSE",
+      "name": "Expansion Tank Hose",
+      "category": "HOSE"
+    },
+    {
+      "id": "VCSC-083",
+      "code": "COOLING_FAN_WIRING",
+      "name": "Cooling Fan Wiring",
+      "category": "WIRING"
+    },
+    {
+      "id": "VCSC-084",
+      "code": "COOLING_FAN_CONNECTOR",
+      "name": "Cooling Fan Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VCSC-085",
+      "code": "WATER_PUMP_CONNECTOR",
+      "name": "Water Pump Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VCSC-086",
+      "code": "COOLANT_SENSOR_CONNECTOR",
+      "name": "Coolant Sensor Connector",
+      "category": "CONNECTOR"
+    },
+    {
+      "id": "VCSC-087",
+      "code": "RADIATOR_SERVICE_KIT",
+      "name": "Radiator Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCSC-088",
+      "code": "WATER_PUMP_SERVICE_KIT",
+      "name": "Water Pump Service Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCSC-089",
+      "code": "COOLING_SYSTEM_REPAIR_KIT",
+      "name": "Cooling System Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCSC-090",
+      "code": "COOLING_SYSTEM_FLUSH_KIT",
+      "name": "Cooling System Flush Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCSC-091",
+      "code": "COOLANT_TEST_COMPONENT",
+      "name": "Coolant Test Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VCSC-092",
+      "code": "COOLING_SYSTEM_DIAGNOSTIC_COMPONENT",
+      "name": "Cooling System Diagnostic Component",
+      "category": "DIAGNOSTIC"
+    },
+    {
+      "id": "VCSC-093",
+      "code": "COOLING_SYSTEM_MOUNTING_HARDWARE",
+      "name": "Cooling System Mounting Hardware",
+      "category": "HARDWARE"
+    },
+    {
+      "id": "VCSC-094",
+      "code": "COOLANT_LINE_FASTENER",
+      "name": "Coolant Line Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "VCSC-095",
+      "code": "COOLING_SYSTEM_SEAL_KIT",
+      "name": "Cooling System Seal Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCSC-096",
+      "code": "COOLING_SYSTEM_GASKET_KIT",
+      "name": "Cooling System Gasket Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "VCSC-097",
+      "code": "COOLING_SYSTEM_PIPE_ASSEMBLY",
+      "name": "Cooling System Pipe Assembly",
+      "category": "PIPE"
+    },
+    {
+      "id": "VCSC-098",
+      "code": "COOLING_SYSTEM_HOSE_ASSEMBLY",
+      "name": "Cooling System Hose Assembly",
+      "category": "HOSE"
+    },
+    {
+      "id": "VCSC-099",
+      "code": "COOLING_SYSTEM_COMPONENT",
+      "name": "General Cooling System Component",
+      "category": "SERVICE"
+    },
+    {
+      "id": "VCSC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Cooling System Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
