@@ -1,1 +1,127 @@
+{
+  "company": {
+    "id": "ALD-001",
 
+    "name": {
+      "en": "Al-Dahayan Trading Company",
+      "ar": "شركة الضحيان التجارية"
+    },
+
+    "shortName": "Al-Dahayan",
+
+    "businessType": {
+      "en": "Automotive Spare Parts Trading",
+      "ar": "تجارة قطع غيار السيارات"
+    },
+
+    "specialization": {
+      "primary": [
+        "Toyota",
+        "Lexus"
+      ],
+      "markets": [
+        "Saudi Arabia"
+      ]
+    },
+
+    "about": {
+      "en": "Al-Dahayan Trading Company is an automotive spare-parts business focused on Toyota and Lexus parts. The website is designed to help customers identify parts, check compatibility and availability, and connect directly with the company.",
+      "ar": "شركة الضحيان التجارية هي شركة متخصصة في مجال قطع غيار السيارات، مع التركيز على قطع غيار تويوتا ولكزس. يهدف الموقع إلى مساعدة العملاء في تحديد القطع والتحقق من التوافق والتوفر والتواصل مباشرة مع الشركة."
+    },
+
+    "mission": {
+      "en": "To make Toyota and Lexus spare-parts identification and customer communication easier through a professional digital platform.",
+      "ar": "تسهيل تحديد قطع غيار تويوتا ولكزس والتواصل مع العملاء من خلال منصة رقمية احترافية."
+    },
+
+    "vision": {
+      "en": "To provide a trusted digital connection between customers and Al-Dahayan for automotive spare-parts needs.",
+      "ar": "توفير وسيلة رقمية موثوقة تربط العملاء بشركة الضحيان لتلبية احتياجات قطع غيار السيارات."
+    },
+
+    "services": [
+      "Genuine Toyota Parts",
+      "Genuine Lexus Parts",
+      "OEM Parts",
+      "Parts Identification",
+      "VIN Search",
+      "Vehicle-Based Parts Search",
+      "OEM Number Search",
+      "Availability Inquiry",
+      "Parts Sourcing",
+      "Customer Inquiry Support"
+    ],
+
+    "locations": {
+      "country": "Saudi Arabia",
+      "city": "",
+      "address": "",
+      "googleMapsUrl": ""
+    },
+
+    "branches": [
+      {
+        "id": "BR-001",
+        "name": {
+          "en": "Main Branch",
+          "ar": "الفرع الرئيسي"
+        },
+        "city": "",
+        "address": "",
+        "phone": "",
+        "whatsapp": "",
+        "email": "",
+        "workingHours": {
+          "saturday": "",
+          "sunday": "",
+          "monday": "",
+          "tuesday": "",
+          "wednesday": "",
+          "thursday": "",
+          "friday": ""
+        },
+        "active": true
+      }
+    ],
+
+    "contact": {
+      "phone": "",
+      "whatsapp": "",
+      "email": "",
+      "website": ""
+    },
+
+    "socialMedia": {
+      "facebook": "",
+      "instagram": "",
+      "tiktok": "",
+      "youtube": "",
+      "x": ""
+    },
+
+    "workingHours": {
+      "saturday": "",
+      "sunday": "",
+      "monday": "",
+      "tuesday": "",
+      "wednesday": "",
+      "thursday": "",
+      "friday": ""
+    },
+
+    "customerConnection": {
+      "whatsappEnabled": true,
+      "phoneEnabled": true,
+      "emailEnabled": true,
+      "inquiryEnabled": true,
+      "directCheckout": false
+    },
+
+    "websitePurpose": {
+      "en": "Company promotion, customer connection, spare-parts discovery, vehicle compatibility, VIN-based identification, stock availability, and customer inquiries.",
+      "ar": "التعريف بالشركة والتواصل مع العملاء والبحث عن قطع الغيار والتحقق من توافق المركبات والتعرف على القطع باستخدام رقم الهيكل والتحقق من التوفر واستقبال استفسارات العملاء."
+    },
+
+    "status": "active"
+  }
+}
