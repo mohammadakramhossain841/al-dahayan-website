@@ -1,1 +1,81 @@
+<!-- =========================================
+     AL-DAHAYAN REUSABLE MODAL
+========================================= -->
 
+<div
+  class="modal-component"
+  data-component="modal"
+  data-modal
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+  hidden
+>
+
+  <div
+    class="modal-overlay"
+    data-modal-overlay
+  ></div>
+
+
+  <div
+    class="modal-container"
+    data-modal-container
+  >
+
+    <!-- Header -->
+
+    <div class="modal-header">
+
+      <h2
+        id="modal-title"
+        class="modal-title"
+        data-modal-title
+      >
+        Information
+      </h2>
+
+      <button
+        type="button"
+        class="modal-close"
+        data-modal-close
+        aria-label="Close dialog"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <!-- Content -->
+
+    <div
+      class="modal-body"
+      data-modal-body
+    >
+      <p>
+        Information will appear here.
+      </p>
+    </div>
+
+
+    <!-- Footer -->
+
+    <div
+      class="modal-footer"
+      data-modal-footer
+    >
+
+      <button
+        type="button"
+        class="modal-button secondary"
+        data-modal-cancel
+      >
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
