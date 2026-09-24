@@ -5,28 +5,34 @@
 (function () {
   "use strict";
 
-  let applicationInitialized = false;
-  let pageInitialized = false;
+  let initialized = false;
+  let initializationPromise = null;
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-      startApplication();
-    }
-  );
+  /**
+   * Wait for component loader.
+   */
+  async function waitForComponents() {
+    if (
+      window.AlDahayanComponents &&
+      window.AlDahayanComponents.ready
+    ) {
+      try {
+        await window.AlDahayanComponents.ready;
+      } catch (error) {
+        console.error(
+          "Al-Dahayan Component Loader:",
+          error
+        );
+      }
 
-  async function startApplication() {
-    if (applicationInitialized) {
       return;
     }
 
-    applicationInitialized = true;
-
-    /*
-     * Component loader handles reusable HTML components.
-     * Wait for components before final page initialization.
-     */
-    if (window.AlDahayanComponents) {
+    if (
+      window.AlDahayanComponents &&
+      typeof window.AlDahayanComponents.load ===
+        "function"
+    ) {
       try {
         await window.AlDahayanComponents.load();
       } catch (error) {
@@ -36,146 +42,266 @@
         );
       }
     }
-
-    initializeCore();
-    initializePage();
   }
 
-  function initializeCore() {
-    /*
-     * These modules may already self-initialize.
-     * Only call them here when they are explicitly exposed.
-     */
-
+  /**
+   * Initialize language system.
+   */
+  function initializeLanguage() {
     if (
-      typeof window.AlDahayanLanguage?.initialize ===
+      typeof window.initializeLanguage ===
       "function"
     ) {
-      window.AlDahayanLanguage.initialize();
+      return window.initializeLanguage();
     }
 
     if (
-      typeof window.AlDahayanNavigation?.initialize ===
+      window.AlDahayanLanguage &&
+      typeof window.AlDahayanLanguage.init ===
+        "function"
+    ) {
+      return window.AlDahayanLanguage.init();
+    }
+
+    return null;
+  }
+
+  /**
+   * Initialize navigation system.
+   */
+  function initializeNavigation() {
+    if (
+      typeof window.initializeNavigation ===
       "function"
     ) {
-      window.AlDahayanNavigation.initialize();
+      return window.initializeNavigation();
     }
 
     if (
-      typeof window.AlDahayanSearch?.initialize ===
+      window.AlDahayanNavigation &&
+      typeof window.AlDahayanNavigation.init ===
+        "function"
+    ) {
+      return window.AlDahayanNavigation.init();
+    }
+
+    return null;
+  }
+
+  /**
+   * Initialize search system.
+   */
+  function initializeSearch() {
+    if (
+      typeof window.initializeSearch ===
       "function"
     ) {
-      window.AlDahayanSearch.initialize();
-    }
-  }
-
-  function initializePage() {
-    if (pageInitialized) {
-      return;
+      return window.initializeSearch();
     }
 
-    pageInitialized = true;
+    if (
+      window.AlDahayanSearch &&
+      typeof window.AlDahayanSearch.init ===
+        "function"
+    ) {
+      return window.AlDahayanSearch.init();
+    }
 
-    const page =
-      document.body?.dataset?.page || "";
-
-    document.dispatchEvent(
-      new CustomEvent(
-        "alDahayanPageReady",
-        {
-          detail: {
-            page: page,
-            config:
-              window.APP_CONFIG || {},
-            language:
-              getCurrentLanguage(),
-            direction:
-              document.documentElement.getAttribute(
-                "dir"
-              ) || "ltr"
-          }
-        }
-      )
-    );
+    return null;
   }
 
+  /**
+   * Initialize application.
+   */
+  async function initializeApp() {
+    if (initialized) {
+      return initializationPromise;
+    }
+
+    initialized = true;
+
+    initializationPromise =
+      (async function () {
+        /*
+         * Components must load first.
+         */
+        await waitForComponents();
+
+        /*
+         * Initialize shared systems.
+         */
+        initializeLanguage();
+        initializeNavigation();
+        initializeSearch();
+
+        /*
+         * Notify the rest of the application.
+         */
+        document.dispatchEvent(
+          new CustomEvent(
+            "alDahayanPageReady",
+            {
+              detail: {
+                initialized: true
+              }
+            }
+          )
+        );
+
+        return true;
+      })();
+
+    return initializationPromise;
+  }
+
+  /**
+   * Current language.
+   */
   function getCurrentLanguage() {
+    if (
+      window.AlDahayanLanguage &&
+      typeof window.AlDahayanLanguage.getCurrent ===
+        "function"
+    ) {
+      return window.AlDahayanLanguage.getCurrent();
+    }
+
+    if (
+      typeof window.getCurrentLanguage ===
+      "function"
+    ) {
+      return window.getCurrentLanguage();
+    }
+
     return (
-      document.documentElement.getAttribute(
-        "lang"
-      ) ||
-      window.APP_CONFIG?.site?.defaultLanguage ||
+      window.APP_CONFIG?.site
+        ?.defaultLanguage ||
       "en"
     );
   }
 
-  function setPageLanguage(language) {
+  /**
+   * Set language.
+   */
+  function setLanguage(language) {
     if (
-      !window.APP_CONFIG?.site?.supportedLanguages?.includes(
-        language
-      )
+      window.AlDahayanLanguage &&
+      typeof window.AlDahayanLanguage.set ===
+        "function"
     ) {
-      return false;
+      return window.AlDahayanLanguage.set(
+        language
+      );
     }
 
-    document.documentElement.setAttribute(
-      "lang",
-      language
-    );
-
-    const direction =
-      window.APP_CONFIG.site.direction?.[
+    if (
+      typeof window.setLanguage ===
+      "function"
+    ) {
+      return window.setLanguage(
         language
-      ] || "ltr";
+      );
+    }
 
-    document.documentElement.setAttribute(
-      "dir",
-      direction
-    );
-
-    localStorage.setItem(
-      "alDahayanLanguage",
-      language
-    );
-
-    document.dispatchEvent(
-      new CustomEvent(
-        "alDahayanLanguageChanged",
-        {
-          detail: {
-            language: language,
-            direction: direction
-          }
-        }
-      )
-    );
-
-    return true;
+    return false;
   }
 
+  /**
+   * Get stored language.
+   */
   function getStoredLanguage() {
-    return localStorage.getItem(
-      "alDahayanLanguage"
-    );
+    if (
+      window.AlDahayanLanguage &&
+      typeof window.AlDahayanLanguage.getStored ===
+        "function"
+    ) {
+      return window.AlDahayanLanguage.getStored();
+    }
+
+    if (
+      typeof window.getStoredLanguage ===
+      "function"
+    ) {
+      return window.getStoredLanguage();
+    }
+
+    return null;
   }
 
-  function isRTL() {
-    return getCurrentLanguage() === "ar";
-  }
-
+  /**
+   * Get current page.
+   */
   function getCurrentPage() {
-    return (
-      document.body?.dataset?.page || ""
-    );
+    const body =
+      document.body;
+
+    if (
+      body &&
+      body.dataset &&
+      body.dataset.page
+    ) {
+      return body.dataset.page;
+    }
+
+    const path =
+      window.location.pathname;
+
+    if (
+      path.includes(
+        "/pages/"
+      )
+    ) {
+      const file =
+        path.split("/").pop();
+
+      return file
+        ? file.replace(
+            /\.html$/i,
+            ""
+          )
+        : "home";
+    }
+
+    return "home";
   }
 
+  /**
+   * Public application API.
+   */
   window.AlDahayanApp = {
-    initialize: startApplication,
-    getCurrentLanguage,
-    setPageLanguage,
-    getStoredLanguage,
-    isRTL,
-    getCurrentPage
+    init:
+      initializeApp,
+
+    ready:
+      null,
+
+    getCurrentLanguage:
+      getCurrentLanguage,
+
+    setLanguage:
+      setLanguage,
+
+    getStoredLanguage:
+      getStoredLanguage,
+
+    getCurrentPage:
+      getCurrentPage,
+
+    isInitialized:
+      function () {
+        return initialized;
+      }
   };
+
+  window.initializeApp =
+    initializeApp;
+
+  /*
+   * Initialize only after DOM is ready.
+   */
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializeApp
+  );
 
 })();
