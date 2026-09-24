@@ -1,0 +1,354 @@
+{
+  "electricalSystems": [
+    {
+      "id": "ELEC-001",
+      "code": "12V_BATTERY",
+      "name": "12V Battery",
+      "category": "POWER",
+      "description": "Low-voltage battery used for vehicle electrical systems"
+    },
+    {
+      "id": "ELEC-002",
+      "code": "HIGH_VOLTAGE_BATTERY",
+      "name": "High-Voltage Battery",
+      "category": "HYBRID_EV",
+      "description": "High-voltage battery system used in hybrid and electric vehicles"
+    },
+    {
+      "id": "ELEC-003",
+      "code": "ALTERNATOR",
+      "name": "Alternator",
+      "category": "CHARGING",
+      "description": "Generates electrical power and charges the 12V battery"
+    },
+    {
+      "id": "ELEC-004",
+      "code": "STARTER_MOTOR",
+      "name": "Starter Motor",
+      "category": "STARTING",
+      "description": "Electric motor used to start the engine"
+    },
+    {
+      "id": "ELEC-005",
+      "code": "STARTER_SOLENOID",
+      "name": "Starter Solenoid",
+      "category": "STARTING",
+      "description": "Controls electrical connection to the starter motor"
+    },
+    {
+      "id": "ELEC-006",
+      "code": "ECU",
+      "name": "Engine Control Unit",
+      "category": "CONTROL",
+      "description": "Electronic control unit responsible for engine management"
+    },
+    {
+      "id": "ELEC-007",
+      "code": "TRANSMISSION_CONTROL_MODULE",
+      "name": "Transmission Control Module",
+      "category": "CONTROL",
+      "description": "Electronic control module for transmission operation"
+    },
+    {
+      "id": "ELEC-008",
+      "code": "BODY_CONTROL_MODULE",
+      "name": "Body Control Module",
+      "category": "CONTROL",
+      "description": "Controls various body electrical functions"
+    },
+    {
+      "id": "ELEC-009",
+      "code": "HYBRID_CONTROL_UNIT",
+      "name": "Hybrid Control Unit",
+      "category": "HYBRID_EV",
+      "description": "Controls hybrid powertrain functions"
+    },
+    {
+      "id": "ELEC-010",
+      "code": "EV_CONTROL_UNIT",
+      "name": "EV Control Unit",
+      "category": "HYBRID_EV",
+      "description": "Controls electric vehicle powertrain functions"
+    },
+    {
+      "id": "ELEC-011",
+      "code": "INVERTER",
+      "name": "Power Inverter",
+      "category": "HYBRID_EV",
+      "description": "Converts and manages electrical power in hybrid and electric systems"
+    },
+    {
+      "id": "ELEC-012",
+      "code": "DC_DC_CONVERTER",
+      "name": "DC-DC Converter",
+      "category": "HYBRID_EV",
+      "description": "Converts high-voltage DC power to low-voltage DC power"
+    },
+    {
+      "id": "ELEC-013",
+      "code": "ONBOARD_CHARGER",
+      "name": "Onboard Charger",
+      "category": "HYBRID_EV",
+      "description": "Converts AC charging power for the high-voltage battery"
+    },
+    {
+      "id": "ELEC-014",
+      "code": "FUSE",
+      "name": "Fuse",
+      "category": "PROTECTION",
+      "description": "Protects electrical circuits from excessive current"
+    },
+    {
+      "id": "ELEC-015",
+      "code": "RELAY",
+      "name": "Relay",
+      "category": "CONTROL",
+      "description": "Electrically controlled switch for vehicle circuits"
+    },
+    {
+      "id": "ELEC-016",
+      "code": "FUSE_BOX",
+      "name": "Fuse Box",
+      "category": "PROTECTION",
+      "description": "Houses vehicle electrical fuses"
+    },
+    {
+      "id": "ELEC-017",
+      "code": "MAIN_RELAY",
+      "name": "Main Relay",
+      "category": "CONTROL",
+      "description": "Controls primary electrical power distribution"
+    },
+    {
+      "id": "ELEC-018",
+      "code": "WIRING_HARNESS",
+      "name": "Wiring Harness",
+      "category": "WIRING",
+      "description": "Network of electrical wires connecting vehicle components"
+    },
+    {
+      "id": "ELEC-019",
+      "code": "CONNECTOR",
+      "name": "Electrical Connector",
+      "category": "WIRING",
+      "description": "Connector used to join electrical circuits"
+    },
+    {
+      "id": "ELEC-020",
+      "code": "GROUND_CABLE",
+      "name": "Ground Cable",
+      "category": "WIRING",
+      "description": "Electrical grounding connection"
+    },
+    {
+      "id": "ELEC-021",
+      "code": "OXYGEN_SENSOR",
+      "name": "Oxygen Sensor",
+      "category": "SENSORS",
+      "description": "Measures oxygen concentration in exhaust gases"
+    },
+    {
+      "id": "ELEC-022",
+      "code": "MASS_AIR_FLOW_SENSOR",
+      "name": "Mass Air Flow Sensor",
+      "category": "SENSORS",
+      "description": "Measures incoming engine air flow"
+    },
+    {
+      "id": "ELEC-023",
+      "code": "THROTTLE_POSITION_SENSOR",
+      "name": "Throttle Position Sensor",
+      "category": "SENSORS",
+      "description": "Detects throttle position"
+    },
+    {
+      "id": "ELEC-024",
+      "code": "COOLANT_TEMPERATURE_SENSOR",
+      "name": "Coolant Temperature Sensor",
+      "category": "SENSORS",
+      "description": "Measures engine coolant temperature"
+    },
+    {
+      "id": "ELEC-025",
+      "code": "CRANKSHAFT_POSITION_SENSOR",
+      "name": "Crankshaft Position Sensor",
+      "category": "SENSORS",
+      "description": "Detects crankshaft position and rotational speed"
+    },
+    {
+      "id": "ELEC-026",
+      "code": "CAMSHAFT_POSITION_SENSOR",
+      "name": "Camshaft Position Sensor",
+      "category": "SENSORS",
+      "description": "Detects camshaft position"
+    },
+    {
+      "id": "ELEC-027",
+      "code": "ABS_WHEEL_SPEED_SENSOR",
+      "name": "ABS Wheel Speed Sensor",
+      "category": "SENSORS",
+      "description": "Measures wheel rotational speed for ABS and related systems"
+    },
+    {
+      "id": "ELEC-028",
+      "code": "TPMS_SENSOR",
+      "name": "TPMS Sensor",
+      "category": "SENSORS",
+      "description": "Monitors tire pressure"
+    },
+    {
+      "id": "ELEC-029",
+      "code": "PARKING_SENSOR",
+      "name": "Parking Sensor",
+      "category": "DRIVER_ASSISTANCE",
+      "description": "Detects nearby objects during parking"
+    },
+    {
+      "id": "ELEC-030",
+      "code": "REAR_CAMERA",
+      "name": "Rear Camera",
+      "category": "DRIVER_ASSISTANCE",
+      "description": "Provides rear-view camera imagery"
+    },
+    {
+      "id": "ELEC-031",
+      "code": "SURROUND_CAMERA",
+      "name": "Surround View Camera",
+      "category": "DRIVER_ASSISTANCE",
+      "description": "Provides multi-camera vehicle surroundings view"
+    },
+    {
+      "id": "ELEC-032",
+      "code": "HEADLIGHT",
+      "name": "Headlight",
+      "category": "LIGHTING",
+      "description": "Front vehicle lighting assembly"
+    },
+    {
+      "id": "ELEC-033",
+      "code": "TAIL_LIGHT",
+      "name": "Tail Light",
+      "category": "LIGHTING",
+      "description": "Rear vehicle lighting assembly"
+    },
+    {
+      "id": "ELEC-034",
+      "code": "FOG_LIGHT",
+      "name": "Fog Light",
+      "category": "LIGHTING",
+      "description": "Auxiliary front or rear lighting"
+    },
+    {
+      "id": "ELEC-035",
+      "code": "TURN_SIGNAL",
+      "name": "Turn Signal",
+      "category": "LIGHTING",
+      "description": "Directional indicator lighting"
+    },
+    {
+      "id": "ELEC-036",
+      "code": "BRAKE_LIGHT",
+      "name": "Brake Light",
+      "category": "LIGHTING",
+      "description": "Rear warning light activated during braking"
+    },
+    {
+      "id": "ELEC-037",
+      "code": "INTERIOR_LIGHT",
+      "name": "Interior Light",
+      "category": "LIGHTING",
+      "description": "Lighting for the passenger compartment"
+    },
+    {
+      "id": "ELEC-038",
+      "code": "HORN",
+      "name": "Horn",
+      "category": "BODY_ELECTRICAL",
+      "description": "Audible vehicle warning device"
+    },
+    {
+      "id": "ELEC-039",
+      "code": "WIPER_MOTOR",
+      "name": "Windshield Wiper Motor",
+      "category": "BODY_ELECTRICAL",
+      "description": "Electric motor operating windshield wipers"
+    },
+    {
+      "id": "ELEC-040",
+      "code": "WINDOW_MOTOR",
+      "name": "Power Window Motor",
+      "category": "BODY_ELECTRICAL",
+      "description": "Electric motor for power windows"
+    },
+    {
+      "id": "ELEC-041",
+      "code": "DOOR_LOCK_ACTUATOR",
+      "name": "Door Lock Actuator",
+      "category": "BODY_ELECTRICAL",
+      "description": "Electric actuator for door locking"
+    },
+    {
+      "id": "ELEC-042",
+      "code": "AC_COMPRESSOR",
+      "name": "A/C Compressor",
+      "category": "HVAC",
+      "description": "Compresses refrigerant for vehicle air conditioning"
+    },
+    {
+      "id": "ELEC-043",
+      "code": "BLOWER_MOTOR",
+      "name": "Blower Motor",
+      "category": "HVAC",
+      "description": "Moves air through the vehicle HVAC system"
+    },
+    {
+      "id": "ELEC-044",
+      "code": "HVAC_CONTROL_PANEL",
+      "name": "HVAC Control Panel",
+      "category": "HVAC",
+      "description": "User control interface for heating and air conditioning"
+    },
+    {
+      "id": "ELEC-045",
+      "code": "INFOTAINMENT_UNIT",
+      "name": "Infotainment Unit",
+      "category": "INFOTAINMENT",
+      "description": "Vehicle multimedia and information system"
+    },
+    {
+      "id": "ELEC-046",
+      "code": "INSTRUMENT_CLUSTER",
+      "name": "Instrument Cluster",
+      "category": "INSTRUMENTATION",
+      "description": "Displays vehicle operating information to the driver"
+    },
+    {
+      "id": "ELEC-047",
+      "code": "KEYLESS_ENTRY_MODULE",
+      "name": "Keyless Entry Module",
+      "category": "SECURITY",
+      "description": "Controls keyless vehicle access functions"
+    },
+    {
+      "id": "ELEC-048",
+      "code": "IMMOBILIZER",
+      "name": "Immobilizer System",
+      "category": "SECURITY",
+      "description": "Electronic vehicle anti-start security system"
+    },
+    {
+      "id": "ELEC-049",
+      "code": "CHARGING_PORT",
+      "name": "EV Charging Port",
+      "category": "HYBRID_EV",
+      "description": "Vehicle charging connection for applicable hybrid and electric vehicles"
+    },
+    {
+      "id": "ELEC-050",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "category": "UNKNOWN",
+      "description": "Electrical system component not specified"
+    }
+  ]
+}
