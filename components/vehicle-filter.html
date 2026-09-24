@@ -1,1 +1,177 @@
+<!-- =========================================
+     AL-DAHAYAN REUSABLE VEHICLE FILTER
+========================================= -->
 
+<section
+  class="vehicle-filter-component"
+  data-component="vehicle-filter"
+  aria-labelledby="vehicle-filter-title"
+>
+
+  <div class="vehicle-filter-header">
+
+    <span class="vehicle-filter-eyebrow">
+      Vehicle Search
+    </span>
+
+    <h2
+      id="vehicle-filter-title"
+      class="vehicle-filter-title"
+    >
+      Find Your Vehicle
+    </h2>
+
+    <p class="vehicle-filter-description">
+      Select the vehicle details to find compatible parts.
+    </p>
+
+  </div>
+
+
+  <form
+    class="vehicle-filter-form"
+    data-vehicle-search-form
+  >
+
+    <div class="vehicle-filter-grid">
+
+      <!-- Make -->
+
+      <div class="vehicle-filter-field">
+
+        <label for="vehicle-filter-make">
+          Make
+        </label>
+
+        <select
+          id="vehicle-filter-make"
+          name="make"
+          data-vehicle-make
+        >
+          <option value="">
+            Select Make
+          </option>
+
+          <option value="Toyota">
+            Toyota
+          </option>
+
+          <option value="Lexus">
+            Lexus
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- Model -->
+
+      <div class="vehicle-filter-field">
+
+        <label for="vehicle-filter-model">
+          Model
+        </label>
+
+        <select
+          id="vehicle-filter-model"
+          name="model"
+          data-vehicle-model
+          disabled
+        >
+          <option value="">
+            Select Model
+          </option>
+        </select>
+
+      </div>
+
+
+      <!-- Year -->
+
+      <div class="vehicle-filter-field">
+
+        <label for="vehicle-filter-year">
+          Year
+        </label>
+
+        <select
+          id="vehicle-filter-year"
+          name="year"
+          data-vehicle-year
+          disabled
+        >
+          <option value="">
+            Select Year
+          </option>
+        </select>
+
+      </div>
+
+
+      <!-- Engine -->
+
+      <div class="vehicle-filter-field">
+
+        <label for="vehicle-filter-engine">
+          Engine
+        </label>
+
+        <select
+          id="vehicle-filter-engine"
+          name="engine"
+          data-vehicle-engine
+          disabled
+        >
+          <option value="">
+            Select Engine
+          </option>
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <!-- Actions -->
+
+    <div class="vehicle-filter-actions">
+
+      <button
+        type="submit"
+        class="vehicle-filter-submit"
+      >
+        Search Vehicle
+      </button>
+
+      <button
+        type="button"
+        class="vehicle-filter-reset"
+        data-vehicle-reset
+      >
+        Reset
+      </button>
+
+    </div>
+
+  </form>
+
+
+  <!-- Result Summary -->
+
+  <div
+    class="vehicle-filter-summary"
+    data-vehicle-result-summary
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <!-- Results -->
+
+  <div
+    class="vehicle-filter-results"
+    data-vehicle-results
+  ></div>
+
+</section>
