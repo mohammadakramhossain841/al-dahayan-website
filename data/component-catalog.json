@@ -1,0 +1,405 @@
+{
+  "catalogType": "vehicle-component-catalog",
+  "version": "1.0",
+  "status": "reference",
+  "verifiedCompatibility": false,
+  "description": "Central index of available Toyota and Lexus vehicle component reference files.",
+  "componentFiles": [
+    {
+      "file": "vehicle-engine-systems.json",
+      "category": "engine"
+    },
+    {
+      "file": "vehicle-transmission-systems.json",
+      "category": "transmission"
+    },
+    {
+      "file": "vehicle-drivetrain-systems.json",
+      "category": "drivetrain"
+    },
+    {
+      "file": "vehicle-fuel-system-components.json",
+      "category": "fuel"
+    },
+    {
+      "file": "vehicle-battery-components.json",
+      "category": "battery"
+    },
+    {
+      "file": "vehicle-cooling-system-components.json",
+      "category": "cooling"
+    },
+    {
+      "file": "vehicle-exhaust-emission-systems.json",
+      "category": "exhaust-emission"
+    },
+    {
+      "file": "vehicle-air-conditioning-systems.json",
+      "category": "air-conditioning"
+    },
+    {
+      "file": "vehicle-brake-systems.json",
+      "category": "brake"
+    },
+    {
+      "file": "vehicle-suspension-systems.json",
+      "category": "suspension"
+    },
+    {
+      "file": "vehicle-steering-systems.json",
+      "category": "steering"
+    },
+    {
+      "file": "vehicle-wheel-components.json",
+      "category": "wheel"
+    },
+    {
+      "file": "vehicle-wheel-hub-components.json",
+      "category": "wheel-hub"
+    },
+    {
+      "file": "vehicle-axle-components.json",
+      "category": "axle"
+    },
+    {
+      "file": "vehicle-bearing-components.json",
+      "category": "bearing"
+    },
+    {
+      "file": "vehicle-clutch-components.json",
+      "category": "clutch"
+    },
+    {
+      "file": "vehicle-steering-components.json",
+      "category": "steering"
+    },
+    {
+      "file": "vehicle-steering-knuckle-components.json",
+      "category": "steering-knuckle"
+    },
+    {
+      "file": "vehicle-control-arm-components.json",
+      "category": "control-arm"
+    },
+    {
+      "file": "vehicle-stabilizer-components.json",
+      "category": "stabilizer"
+    },
+    {
+      "file": "vehicle-ball-joint-components.json",
+      "category": "ball-joint"
+    },
+    {
+      "file": "vehicle-tie-rod-components.json",
+      "category": "tie-rod"
+    },
+    {
+      "file": "vehicle-drag-link-components.json",
+      "category": "drag-link"
+    },
+    {
+      "file": "vehicle-pitman-arm-components.json",
+      "category": "pitman-arm"
+    },
+    {
+      "file": "vehicle-idler-arm-components.json",
+      "category": "idler-arm"
+    },
+    {
+      "file": "vehicle-center-link-components.json",
+      "category": "center-link"
+    },
+    {
+      "file": "vehicle-damper-components.json",
+      "category": "damper"
+    },
+    {
+      "file": "vehicle-spring-components.json",
+      "category": "spring"
+    },
+    {
+      "file": "vehicle-strut-components.json",
+      "category": "strut"
+    },
+    {
+      "file": "vehicle-bushing-components.json",
+      "category": "bushing"
+    },
+    {
+      "file": "vehicle-pulley-components.json",
+      "category": "pulley"
+    },
+    {
+      "file": "vehicle-belt-components.json",
+      "category": "belt"
+    },
+    {
+      "file": "vehicle-gasket-components.json",
+      "category": "gasket"
+    },
+    {
+      "file": "vehicle-o-ring-components.json",
+      "category": "o-ring"
+    },
+    {
+      "file": "vehicle-seal-components.json",
+      "category": "seal"
+    },
+    {
+      "file": "vehicle-grommet-components.json",
+      "category": "grommet"
+    },
+    {
+      "file": "vehicle-clamp-components.json",
+      "category": "clamp"
+    },
+    {
+      "file": "vehicle-hanger-components.json",
+      "category": "hanger"
+    },
+    {
+      "file": "vehicle-insulator-components.json",
+      "category": "insulator"
+    },
+    {
+      "file": "vehicle-spacer-components.json",
+      "category": "spacer"
+    },
+    {
+      "file": "vehicle-boot-components.json",
+      "category": "boot"
+    },
+    {
+      "file": "vehicle-guard-components.json",
+      "category": "guard"
+    },
+    {
+      "file": "vehicle-liner-components.json",
+      "category": "liner"
+    },
+    {
+      "file": "vehicle-cover-components.json",
+      "category": "cover"
+    },
+    {
+      "file": "vehicle-pad-components.json",
+      "category": "pad"
+    },
+    {
+      "file": "vehicle-disk-components.json",
+      "category": "disk"
+    },
+    {
+      "file": "vehicle-pipe-components.json",
+      "category": "pipe"
+    },
+    {
+      "file": "vehicle-cable-components.json",
+      "category": "cable"
+    },
+    {
+      "file": "vehicle-handle-components.json",
+      "category": "handle"
+    },
+    {
+      "file": "vehicle-latch-components.json",
+      "category": "latch"
+    },
+    {
+      "file": "vehicle-lock-components.json",
+      "category": "lock"
+    },
+    {
+      "file": "vehicle-hinge-components.json",
+      "category": "hinge"
+    },
+    {
+      "file": "vehicle-bracket-components.json",
+      "category": "bracket"
+    },
+    {
+      "file": "vehicle-hardware-components.json",
+      "category": "hardware"
+    },
+    {
+      "file": "vehicle-mount-components.json",
+      "category": "mount"
+    },
+    {
+      "file": "vehicle-clip-components.json",
+      "category": "clip"
+    },
+    {
+      "file": "vehicle-valve-components.json",
+      "category": "valve"
+    },
+    {
+      "file": "vehicle-wiring-components.json",
+      "category": "wiring"
+    },
+    {
+      "file": "vehicle-relay-components.json",
+      "category": "relay"
+    },
+    {
+      "file": "vehicle-connector-components.json",
+      "category": "connector"
+    },
+    {
+      "file": "vehicle-actuator-components.json",
+      "category": "actuator"
+    },
+    {
+      "file": "vehicle-motor-components.json",
+      "category": "motor"
+    },
+    {
+      "file": "vehicle-pump-components.json",
+      "category": "pump"
+    },
+    {
+      "file": "vehicle-module-components.json",
+      "category": "module"
+    },
+    {
+      "file": "vehicle-sensor-components.json",
+      "category": "sensor"
+    },
+    {
+      "file": "vehicle-ecu-components.json",
+      "category": "ecu"
+    },
+    {
+      "file": "vehicle-fuse-relay-components.json",
+      "category": "fuse-relay"
+    },
+    {
+      "file": "vehicle-parking-sensor-components.json",
+      "category": "parking-sensor"
+    },
+    {
+      "file": "vehicle-camera-components.json",
+      "category": "camera"
+    },
+    {
+      "file": "vehicle-radar-components.json",
+      "category": "radar"
+    },
+    {
+      "file": "vehicle-adas-components.json",
+      "category": "adas"
+    },
+    {
+      "file": "vehicle-tpms-components.json",
+      "category": "tpms"
+    },
+    {
+      "file": "vehicle-airbag-components.json",
+      "category": "airbag"
+    },
+    {
+      "file": "vehicle-alternator-components.json",
+      "category": "alternator"
+    },
+    {
+      "file": "vehicle-starter-motor-components.json",
+      "category": "starter"
+    },
+    {
+      "file": "vehicle-lighting-components.json",
+      "category": "lighting"
+    },
+    {
+      "file": "vehicle-headlight-components.json",
+      "category": "headlight"
+    },
+    {
+      "file": "vehicle-taillight-components.json",
+      "category": "taillight"
+    },
+    {
+      "file": "vehicle-fog-light-components.json",
+      "category": "fog-light"
+    },
+    {
+      "file": "vehicle-horn-components.json",
+      "category": "horn"
+    },
+    {
+      "file": "vehicle-wiper-washer-components.json",
+      "category": "wiper-washer"
+    },
+    {
+      "file": "vehicle-glass-components.json",
+      "category": "glass"
+    },
+    {
+      "file": "vehicle-window-components.json",
+      "category": "window"
+    },
+    {
+      "file": "vehicle-mirror-components.json",
+      "category": "mirror"
+    },
+    {
+      "file": "vehicle-door-components.json",
+      "category": "door"
+    },
+    {
+      "file": "vehicle-seat-components.json",
+      "category": "seat"
+    },
+    {
+      "file": "vehicle-body-components.json",
+      "category": "body"
+    },
+    {
+      "file": "vehicle-chassis-components.json",
+      "category": "chassis"
+    },
+    {
+      "file": "vehicle-bumper-components.json",
+      "category": "bumper"
+    },
+    {
+      "file": "vehicle-fender-components.json",
+      "category": "fender"
+    },
+    {
+      "file": "vehicle-hood-components.json",
+      "category": "hood"
+    },
+    {
+      "file": "vehicle-trunk-tailgate-components.json",
+      "category": "trunk-tailgate"
+    },
+    {
+      "file": "vehicle-roof-components.json",
+      "category": "roof"
+    },
+    {
+      "file": "vehicle-grille-components.json",
+      "category": "grille"
+    },
+    {
+      "file": "vehicle-spoiler-components.json",
+      "category": "spoiler"
+    },
+    {
+      "file": "vehicle-brake-caliper-components.json",
+      "category": "brake-caliper"
+    },
+    {
+      "file": "vehicle-brake-master-cylinder-components.json",
+      "category": "brake-master-cylinder"
+    },
+    {
+      "file": "vehicle-brake-disc-components.json",
+      "category": "brake-disc"
+    },
+    {
+      "file": "vehicle-brake-drum-components.json",
+      "category": "brake-drum"
+    }
+  ]
+}
