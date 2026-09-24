@@ -1,0 +1,101 @@
+{
+  "version": "1.0.0",
+  "colors": [
+    {
+      "code": "WHITE",
+      "name": "White",
+      "family": "White",
+      "description": "White exterior color."
+    },
+    {
+      "code": "BLACK",
+      "name": "Black",
+      "family": "Black",
+      "description": "Black exterior color."
+    },
+    {
+      "code": "SILVER",
+      "name": "Silver",
+      "family": "Silver",
+      "description": "Silver or metallic silver exterior color."
+    },
+    {
+      "code": "GRAY",
+      "name": "Gray",
+      "family": "Gray",
+      "description": "Gray or metallic gray exterior color."
+    },
+    {
+      "code": "BLUE",
+      "name": "Blue",
+      "family": "Blue",
+      "description": "Blue exterior color."
+    },
+    {
+      "code": "RED",
+      "name": "Red",
+      "family": "Red",
+      "description": "Red exterior color."
+    },
+    {
+      "code": "GREEN",
+      "name": "Green",
+      "family": "Green",
+      "description": "Green exterior color."
+    },
+    {
+      "code": "BROWN",
+      "name": "Brown",
+      "family": "Brown",
+      "description": "Brown or bronze-toned exterior color."
+    },
+    {
+      "code": "BEIGE",
+      "name": "Beige",
+      "family": "Beige",
+      "description": "Beige or light tan exterior color."
+    },
+    {
+      "code": "GOLD",
+      "name": "Gold",
+      "family": "Gold",
+      "description": "Gold or champagne-toned exterior color."
+    },
+    {
+      "code": "ORANGE",
+      "name": "Orange",
+      "family": "Orange",
+      "description": "Orange exterior color."
+    },
+    {
+      "code": "YELLOW",
+      "name": "Yellow",
+      "family": "Yellow",
+      "description": "Yellow exterior color."
+    },
+    {
+      "code": "PURPLE",
+      "name": "Purple",
+      "family": "Purple",
+      "description": "Purple or violet exterior color."
+    },
+    {
+      "code": "TWO_TONE",
+      "name": "Two-Tone",
+      "family": "Multi-Color",
+      "description": "Vehicle with two primary exterior color treatments."
+    },
+    {
+      "code": "OTHER",
+      "name": "Other",
+      "family": "Other",
+      "description": "Exterior color not covered by the standard color list."
+    },
+    {
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "family": "Unknown",
+      "description": "Vehicle color has not yet been verified."
+    }
+  ]
+}
