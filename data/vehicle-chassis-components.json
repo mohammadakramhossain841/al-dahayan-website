@@ -1,0 +1,604 @@
+{
+  "chassisComponents": [
+    {
+      "id": "CHC-001",
+      "code": "CHASSIS_ASSEMBLY",
+      "name": "Chassis Assembly",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "CHC-002",
+      "code": "FRAME_ASSEMBLY",
+      "name": "Frame Assembly",
+      "category": "FRAME"
+    },
+    {
+      "id": "CHC-003",
+      "code": "LADDER_FRAME",
+      "name": "Ladder Frame",
+      "category": "FRAME"
+    },
+    {
+      "id": "CHC-004",
+      "code": "FRONT_FRAME_RAIL",
+      "name": "Front Frame Rail",
+      "category": "FRAME"
+    },
+    {
+      "id": "CHC-005",
+      "code": "REAR_FRAME_RAIL",
+      "name": "Rear Frame Rail",
+      "category": "FRAME"
+    },
+    {
+      "id": "CHC-006",
+      "code": "LEFT_FRAME_RAIL",
+      "name": "Left Frame Rail",
+      "category": "FRAME"
+    },
+    {
+      "id": "CHC-007",
+      "code": "RIGHT_FRAME_RAIL",
+      "name": "Right Frame Rail",
+      "category": "FRAME"
+    },
+    {
+      "id": "CHC-008",
+      "code": "FRONT_CROSSMEMBER",
+      "name": "Front Crossmember",
+      "category": "FRAME"
+    },
+    {
+      "id": "CHC-009",
+      "code": "REAR_CROSSMEMBER",
+      "name": "Rear Crossmember",
+      "category": "FRAME"
+    },
+    {
+      "id": "CHC-010",
+      "code": "CENTER_CROSSMEMBER",
+      "name": "Center Crossmember",
+      "category": "FRAME"
+    },
+    {
+      "id": "CHC-011",
+      "code": "SUBFRAME_ASSEMBLY",
+      "name": "Subframe Assembly",
+      "category": "SUBFRAME"
+    },
+    {
+      "id": "CHC-012",
+      "code": "FRONT_SUBFRAME",
+      "name": "Front Subframe",
+      "category": "SUBFRAME"
+    },
+    {
+      "id": "CHC-013",
+      "code": "REAR_SUBFRAME",
+      "name": "Rear Subframe",
+      "category": "SUBFRAME"
+    },
+    {
+      "id": "CHC-014",
+      "code": "ENGINE_CRADLE",
+      "name": "Engine Cradle",
+      "category": "SUBFRAME"
+    },
+    {
+      "id": "CHC-015",
+      "code": "TRANSMISSION_CROSSMEMBER",
+      "name": "Transmission Crossmember",
+      "category": "SUBFRAME"
+    },
+    {
+      "id": "CHC-016",
+      "code": "BODY_SHELL",
+      "name": "Body Shell",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-017",
+      "code": "BODY_FRAME",
+      "name": "Body Frame",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-018",
+      "code": "FLOOR_PAN",
+      "name": "Floor Pan",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-019",
+      "code": "FRONT_FLOOR_PAN",
+      "name": "Front Floor Pan",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-020",
+      "code": "REAR_FLOOR_PAN",
+      "name": "Rear Floor Pan",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-021",
+      "code": "CENTER_FLOOR_SECTION",
+      "name": "Center Floor Section",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-022",
+      "code": "FLOOR_CROSSMEMBER",
+      "name": "Floor Crossmember",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-023",
+      "code": "ROCKER_PANEL",
+      "name": "Rocker Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-024",
+      "code": "LEFT_ROCKER_PANEL",
+      "name": "Left Rocker Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-025",
+      "code": "RIGHT_ROCKER_PANEL",
+      "name": "Right Rocker Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-026",
+      "code": "A_PILLAR",
+      "name": "A-Pillar",
+      "category": "BODY_STRUCTURE"
+    },
+    {
+      "id": "CHC-027",
+      "code": "B_PILLAR",
+      "name": "B-Pillar",
+      "category": "BODY_STRUCTURE"
+    },
+    {
+      "id": "CHC-028",
+      "code": "C_PILLAR",
+      "name": "C-Pillar",
+      "category": "BODY_STRUCTURE"
+    },
+    {
+      "id": "CHC-029",
+      "code": "D_PILLAR",
+      "name": "D-Pillar",
+      "category": "BODY_STRUCTURE"
+    },
+    {
+      "id": "CHC-030",
+      "code": "ROOF_PANEL",
+      "name": "Roof Panel",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-031",
+      "code": "ROOF_RAIL",
+      "name": "Roof Rail",
+      "category": "BODY_STRUCTURE"
+    },
+    {
+      "id": "CHC-032",
+      "code": "ROOF_CROSSMEMBER",
+      "name": "Roof Crossmember",
+      "category": "BODY_STRUCTURE"
+    },
+    {
+      "id": "CHC-033",
+      "code": "SUNROOF_FRAME",
+      "name": "Sunroof Frame",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-034",
+      "code": "HOOD_PANEL",
+      "name": "Hood Panel",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "CHC-035",
+      "code": "HOOD_HINGE",
+      "name": "Hood Hinge",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "CHC-036",
+      "code": "HOOD_LATCH",
+      "name": "Hood Latch",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "CHC-037",
+      "code": "HOOD_LATCH_CABLE",
+      "name": "Hood Latch Cable",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "CHC-038",
+      "code": "FRONT_FENDER",
+      "name": "Front Fender",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "CHC-039",
+      "code": "LEFT_FRONT_FENDER",
+      "name": "Left Front Fender",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "CHC-040",
+      "code": "RIGHT_FRONT_FENDER",
+      "name": "Right Front Fender",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "CHC-041",
+      "code": "FENDER_LINER",
+      "name": "Fender Liner",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "CHC-042",
+      "code": "FRONT_BUMPER",
+      "name": "Front Bumper",
+      "category": "BUMPER"
+    },
+    {
+      "id": "CHC-043",
+      "code": "FRONT_BUMPER_COVER",
+      "name": "Front Bumper Cover",
+      "category": "BUMPER"
+    },
+    {
+      "id": "CHC-044",
+      "code": "FRONT_BUMPER_REINFORCEMENT",
+      "name": "Front Bumper Reinforcement",
+      "category": "BUMPER"
+    },
+    {
+      "id": "CHC-045",
+      "code": "FRONT_BUMPER_ABSORBER",
+      "name": "Front Bumper Absorber",
+      "category": "BUMPER"
+    },
+    {
+      "id": "CHC-046",
+      "code": "REAR_BUMPER",
+      "name": "Rear Bumper",
+      "category": "BUMPER"
+    },
+    {
+      "id": "CHC-047",
+      "code": "REAR_BUMPER_COVER",
+      "name": "Rear Bumper Cover",
+      "category": "BUMPER"
+    },
+    {
+      "id": "CHC-048",
+      "code": "REAR_BUMPER_REINFORCEMENT",
+      "name": "Rear Bumper Reinforcement",
+      "category": "BUMPER"
+    },
+    {
+      "id": "CHC-049",
+      "code": "REAR_BUMPER_ABSORBER",
+      "name": "Rear Bumper Absorber",
+      "category": "BUMPER"
+    },
+    {
+      "id": "CHC-050",
+      "code": "FRONT_BUMPER_BRACKET",
+      "name": "Front Bumper Bracket",
+      "category": "BUMPER"
+    },
+    {
+      "id": "CHC-051",
+      "code": "REAR_BUMPER_BRACKET",
+      "name": "Rear Bumper Bracket",
+      "category": "BUMPER"
+    },
+    {
+      "id": "CHC-052",
+      "code": "FRONT_DOOR",
+      "name": "Front Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "CHC-053",
+      "code": "REAR_DOOR",
+      "name": "Rear Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "CHC-054",
+      "code": "LEFT_FRONT_DOOR",
+      "name": "Left Front Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "CHC-055",
+      "code": "RIGHT_FRONT_DOOR",
+      "name": "Right Front Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "CHC-056",
+      "code": "LEFT_REAR_DOOR",
+      "name": "Left Rear Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "CHC-057",
+      "code": "RIGHT_REAR_DOOR",
+      "name": "Right Rear Door",
+      "category": "DOOR"
+    },
+    {
+      "id": "CHC-058",
+      "code": "DOOR_SHELL",
+      "name": "Door Shell",
+      "category": "DOOR"
+    },
+    {
+      "id": "CHC-059",
+      "code": "DOOR_HINGE",
+      "name": "Door Hinge",
+      "category": "DOOR_HARDWARE"
+    },
+    {
+      "id": "CHC-060",
+      "code": "DOOR_CHECK",
+      "name": "Door Check",
+      "category": "DOOR_HARDWARE"
+    },
+    {
+      "id": "CHC-061",
+      "code": "DOOR_LATCH",
+      "name": "Door Latch",
+      "category": "DOOR_HARDWARE"
+    },
+    {
+      "id": "CHC-062",
+      "code": "DOOR_LOCK_ACTUATOR",
+      "name": "Door Lock Actuator",
+      "category": "DOOR_HARDWARE"
+    },
+    {
+      "id": "CHC-063",
+      "code": "DOOR_HANDLE",
+      "name": "Door Handle",
+      "category": "DOOR_HARDWARE"
+    },
+    {
+      "id": "CHC-064",
+      "code": "DOOR_WINDOW_REGULATOR",
+      "name": "Door Window Regulator",
+      "category": "DOOR_HARDWARE"
+    },
+    {
+      "id": "CHC-065",
+      "code": "DOOR_WINDOW_GLASS",
+      "name": "Door Window Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "CHC-066",
+      "code": "DOOR_WEATHERSTRIP",
+      "name": "Door Weatherstrip",
+      "category": "SEAL"
+    },
+    {
+      "id": "CHC-067",
+      "code": "WINDSHIELD",
+      "name": "Windshield",
+      "category": "GLASS"
+    },
+    {
+      "id": "CHC-068",
+      "code": "WINDSHIELD_MOULDING",
+      "name": "Windshield Moulding",
+      "category": "GLASS_HARDWARE"
+    },
+    {
+      "id": "CHC-069",
+      "code": "REAR_GLASS",
+      "name": "Rear Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "CHC-070",
+      "code": "QUARTER_GLASS",
+      "name": "Quarter Glass",
+      "category": "GLASS"
+    },
+    {
+      "id": "CHC-071",
+      "code": "SIDE_MIRROR",
+      "name": "Side Mirror",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "CHC-072",
+      "code": "SIDE_MIRROR_GLASS",
+      "name": "Side Mirror Glass",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "CHC-073",
+      "code": "SIDE_MIRROR_ACTUATOR",
+      "name": "Side Mirror Actuator",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "CHC-074",
+      "code": "SIDE_MIRROR_COVER",
+      "name": "Side Mirror Cover",
+      "category": "EXTERIOR"
+    },
+    {
+      "id": "CHC-075",
+      "code": "TRUNK_LID",
+      "name": "Trunk Lid",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "CHC-076",
+      "code": "TRUNK_HINGE",
+      "name": "Trunk Hinge",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "CHC-077",
+      "code": "TRUNK_LATCH",
+      "name": "Trunk Latch",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "CHC-078",
+      "code": "TAILGATE",
+      "name": "Tailgate",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "CHC-079",
+      "code": "TAILGATE_HINGE",
+      "name": "Tailgate Hinge",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "CHC-080",
+      "code": "TAILGATE_LATCH",
+      "name": "Tailgate Latch",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "CHC-081",
+      "code": "FUEL_DOOR",
+      "name": "Fuel Door",
+      "category": "BODY_PANEL"
+    },
+    {
+      "id": "CHC-082",
+      "code": "FUEL_DOOR_HINGE",
+      "name": "Fuel Door Hinge",
+      "category": "BODY_HARDWARE"
+    },
+    {
+      "id": "CHC-083",
+      "code": "FUEL_DOOR_ACTUATOR",
+      "name": "Fuel Door Actuator",
+      "category": "ELECTRICAL"
+    },
+    {
+      "id": "CHC-084",
+      "code": "WHEEL_ARCH",
+      "name": "Wheel Arch",
+      "category": "BODY"
+    },
+    {
+      "id": "CHC-085",
+      "code": "SPLASH_SHIELD",
+      "name": "Splash Shield",
+      "category": "BODY_PROTECTION"
+    },
+    {
+      "id": "CHC-086",
+      "code": "UNDERBODY_COVER",
+      "name": "Underbody Cover",
+      "category": "BODY_PROTECTION"
+    },
+    {
+      "id": "CHC-087",
+      "code": "ENGINE_UNDERCOVER",
+      "name": "Engine Undercover",
+      "category": "BODY_PROTECTION"
+    },
+    {
+      "id": "CHC-088",
+      "code": "CHASSIS_BRACE",
+      "name": "Chassis Brace",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "CHC-089",
+      "code": "STRUT_TOWER",
+      "name": "Strut Tower",
+      "category": "BODY_STRUCTURE"
+    },
+    {
+      "id": "CHC-090",
+      "code": "STRUT_TOWER_BRACE",
+      "name": "Strut Tower Brace",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "CHC-091",
+      "code": "TOW_HOOK",
+      "name": "Tow Hook",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "CHC-092",
+      "code": "TOWING_POINT",
+      "name": "Towing Point",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "CHC-093",
+      "code": "JACKING_POINT",
+      "name": "Jacking Point",
+      "category": "CHASSIS"
+    },
+    {
+      "id": "CHC-094",
+      "code": "BODY_MOUNT",
+      "name": "Body Mount",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "CHC-095",
+      "code": "BODY_MOUNT_BUSHING",
+      "name": "Body Mount Bushing",
+      "category": "BUSHING"
+    },
+    {
+      "id": "CHC-096",
+      "code": "CHASSIS_MOUNTING_BRACKET",
+      "name": "Chassis Mounting Bracket",
+      "category": "MOUNTING"
+    },
+    {
+      "id": "CHC-097",
+      "code": "BODY_SEAL",
+      "name": "Body Seal",
+      "category": "SEAL"
+    },
+    {
+      "id": "CHC-098",
+      "code": "CHASSIS_FASTENER",
+      "name": "Chassis Fastener",
+      "category": "FASTENER"
+    },
+    {
+      "id": "CHC-099",
+      "code": "CHASSIS_REPAIR_KIT",
+      "name": "Chassis Repair Kit",
+      "category": "SERVICE_KIT"
+    },
+    {
+      "id": "CHC-100",
+      "code": "UNKNOWN",
+      "name": "Unknown Chassis Component",
+      "category": "UNKNOWN"
+    }
+  ]
+}
