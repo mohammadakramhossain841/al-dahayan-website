@@ -1,0 +1,221 @@
+{
+  "suspensionSystems": [
+    {
+      "id": "SUSP-001",
+      "code": "FRONT_SUSPENSION",
+      "name": "Front Suspension",
+      "category": "SUSPENSION_TYPE",
+      "description": "Suspension system supporting the front axle"
+    },
+    {
+      "id": "SUSP-002",
+      "code": "REAR_SUSPENSION",
+      "name": "Rear Suspension",
+      "category": "SUSPENSION_TYPE",
+      "description": "Suspension system supporting the rear axle"
+    },
+    {
+      "id": "SUSP-003",
+      "code": "MACPHERSON_STRUT",
+      "name": "MacPherson Strut",
+      "category": "SUSPENSION_TYPE",
+      "description": "Independent suspension using a strut assembly"
+    },
+    {
+      "id": "SUSP-004",
+      "code": "DOUBLE_WISHBONE",
+      "name": "Double Wishbone",
+      "category": "SUSPENSION_TYPE",
+      "description": "Independent suspension using upper and lower control arms"
+    },
+    {
+      "id": "SUSP-005",
+      "code": "MULTI_LINK",
+      "name": "Multi-Link Suspension",
+      "category": "SUSPENSION_TYPE",
+      "description": "Independent suspension using multiple suspension links"
+    },
+    {
+      "id": "SUSP-006",
+      "code": "TORSION_BEAM",
+      "name": "Torsion Beam",
+      "category": "SUSPENSION_TYPE",
+      "description": "Semi-independent rear suspension using a torsion beam"
+    },
+    {
+      "id": "SUSP-007",
+      "code": "SOLID_AXLE",
+      "name": "Solid Axle",
+      "category": "SUSPENSION_TYPE",
+      "description": "Suspension using a rigid axle connecting both wheels"
+    },
+    {
+      "id": "SUSP-008",
+      "code": "LEAF_SPRING",
+      "name": "Leaf Spring",
+      "category": "SPRING_TYPE",
+      "description": "Suspension using leaf springs"
+    },
+    {
+      "id": "SUSP-009",
+      "code": "COIL_SPRING",
+      "name": "Coil Spring",
+      "category": "SPRING_TYPE",
+      "description": "Suspension using coil springs"
+    },
+    {
+      "id": "SUSP-010",
+      "code": "AIR_SUSPENSION",
+      "name": "Air Suspension",
+      "category": "SUSPENSION_TYPE",
+      "description": "Suspension using air springs"
+    },
+    {
+      "id": "SUSP-011",
+      "code": "ADAPTIVE_SUSPENSION",
+      "name": "Adaptive Suspension",
+      "category": "SUSPENSION_TYPE",
+      "description": "Electronically controlled suspension damping system"
+    },
+    {
+      "id": "SUSP-012",
+      "code": "ELECTRONICALLY_CONTROLLED_SUSPENSION",
+      "name": "Electronically Controlled Suspension",
+      "category": "SUSPENSION_TYPE",
+      "description": "Suspension system with electronic control of damping or ride characteristics"
+    },
+    {
+      "id": "SUSP-013",
+      "code": "SHOCK_ABSORBER",
+      "name": "Shock Absorber",
+      "category": "COMPONENT",
+      "description": "Controls suspension movement and damping"
+    },
+    {
+      "id": "SUSP-014",
+      "code": "STRUT_ASSEMBLY",
+      "name": "Strut Assembly",
+      "category": "COMPONENT",
+      "description": "Combined suspension strut and related components"
+    },
+    {
+      "id": "SUSP-015",
+      "code": "COIL_SPRING",
+      "name": "Coil Spring",
+      "category": "COMPONENT",
+      "description": "Supports vehicle weight and absorbs suspension movement"
+    },
+    {
+      "id": "SUSP-016",
+      "code": "LEAF_SPRING",
+      "name": "Leaf Spring",
+      "category": "COMPONENT",
+      "description": "Spring assembly commonly used on rear or commercial applications"
+    },
+    {
+      "id": "SUSP-017",
+      "code": "CONTROL_ARM",
+      "name": "Control Arm",
+      "category": "COMPONENT",
+      "description": "Suspension linkage connecting the wheel assembly to the chassis"
+    },
+    {
+      "id": "SUSP-018",
+      "code": "UPPER_CONTROL_ARM",
+      "name": "Upper Control Arm",
+      "category": "COMPONENT",
+      "description": "Upper suspension control arm"
+    },
+    {
+      "id": "SUSP-019",
+      "code": "LOWER_CONTROL_ARM",
+      "name": "Lower Control Arm",
+      "category": "COMPONENT",
+      "description": "Lower suspension control arm"
+    },
+    {
+      "id": "SUSP-020",
+      "code": "BALL_JOINT",
+      "name": "Ball Joint",
+      "category": "COMPONENT",
+      "description": "Pivoting joint connecting suspension components"
+    },
+    {
+      "id": "SUSP-021",
+      "code": "STABILIZER_BAR",
+      "name": "Stabilizer Bar",
+      "category": "COMPONENT",
+      "description": "Reduces body roll during cornering"
+    },
+    {
+      "id": "SUSP-022",
+      "code": "STABILIZER_LINK",
+      "name": "Stabilizer Link",
+      "category": "COMPONENT",
+      "description": "Link connecting the stabilizer bar to suspension components"
+    },
+    {
+      "id": "SUSP-023",
+      "code": "SUSPENSION_BUSHING",
+      "name": "Suspension Bushing",
+      "category": "COMPONENT",
+      "description": "Flexible mounting component that reduces vibration and movement"
+    },
+    {
+      "id": "SUSP-024",
+      "code": "STRUT_MOUNT",
+      "name": "Strut Mount",
+      "category": "COMPONENT",
+      "description": "Upper mounting component for applicable strut assemblies"
+    },
+    {
+      "id": "SUSP-025",
+      "code": "STRUT_BEARING",
+      "name": "Strut Bearing",
+      "category": "COMPONENT",
+      "description": "Bearing allowing strut assembly rotation where applicable"
+    },
+    {
+      "id": "SUSP-026",
+      "code": "AIR_SPRING",
+      "name": "Air Spring",
+      "category": "COMPONENT",
+      "description": "Air-filled suspension spring"
+    },
+    {
+      "id": "SUSP-027",
+      "code": "AIR_SUSPENSION_COMPRESSOR",
+      "name": "Air Suspension Compressor",
+      "category": "COMPONENT",
+      "description": "Compressor supplying air to an air suspension system"
+    },
+    {
+      "id": "SUSP-028",
+      "code": "RIDE_HEIGHT_SENSOR",
+      "name": "Ride Height Sensor",
+      "category": "SENSOR",
+      "description": "Measures vehicle ride height for applicable suspension systems"
+    },
+    {
+      "id": "SUSP-029",
+      "code": "ACTIVE_SUSPENSION_ACTUATOR",
+      "name": "Active Suspension Actuator",
+      "category": "ELECTRONIC",
+      "description": "Actuator used to actively control suspension movement"
+    },
+    {
+      "id": "SUSP-030",
+      "code": "SUSPENSION_CONTROL_MODULE",
+      "name": "Suspension Control Module",
+      "category": "ELECTRONIC",
+      "description": "Electronic module controlling applicable suspension functions"
+    },
+    {
+      "id": "SUSP-031",
+      "code": "UNKNOWN",
+      "name": "Unknown",
+      "category": "UNKNOWN",
+      "description": "Suspension system specification not available"
+    }
+  ]
+}
