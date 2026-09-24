@@ -1,0 +1,100 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Bulk verification rules for Toyota and Lexus OEM catalog records and compatibility data.",
+  "supportedVerificationLevels": [
+    "unverified",
+    "reviewed",
+    "verified"
+  ],
+  "updateModes": [
+    "selected",
+    "filtered",
+    "imported"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.verify",
+    "requireConfirmation": true
+  },
+  "selectionRules": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 500,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requirePreview": true
+  },
+  "verificationRules": {
+    "allowBulkReviewed": true,
+    "allowBulkVerified": false,
+    "allowBulkUnverified": true,
+    "defaultImportedLevel": "unverified",
+    "verifiedRequiresSource": true,
+    "verifiedRequiresEvidence": true,
+    "verifiedRequiresCompatibilityReview": true
+  },
+  "sourceRules": {
+    "allowedSources": [
+      "manufacturer_catalog",
+      "official_parts_catalog",
+      "authorized_distributor",
+      "supplier_document",
+      "physical_part_check",
+      "manual_review"
+    ],
+    "requireSourceForReviewed": false,
+    "requireSourceForVerified": true
+  },
+  "evidenceRules": {
+    "allowEvidenceReference": true,
+    "requireEvidenceForVerified": true,
+    "allowMultipleEvidenceReferences": true,
+    "preserveEvidenceHistory": true
+  },
+  "validation": {
+    "validateBeforeUpdate": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "showAffectedRecords": true,
+    "showOldAndNewVerification": true,
+    "generatePreview": true
+  },
+  "compatibilityProtection": {
+    "doNotAutomaticallyVerifyVehicleCompatibility": true,
+    "doNotAutomaticallyVerifySupersession": true,
+    "requireSeparateCompatibilityReview": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousLevel": true,
+    "recordNewLevel": true,
+    "recordSource": true,
+    "recordEvidence": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.verify"
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalUpdated": true,
+    "showTotalSkipped": true,
+    "showTotalFailed": true,
+    "showVerificationWarnings": true,
+    "generateVerificationReport": true
+  },
+  "safety": {
+    "neverAutomaticallyMarkRecordsVerified": true,
+    "neverDeleteVerificationHistory": true,
+    "neverDeleteEvidenceReferences": true,
+    "preserveAuditHistory": true
+  }
+}
