@@ -66,6 +66,18 @@
   }
 
   /* =========================================
+     Navigation
+  ========================================= */
+
+  function navigateTo(path) {
+    if (!path) {
+      return;
+    }
+
+    window.location.href = path;
+  }
+
+  /* =========================================
      Open Menu
   ========================================= */
 
@@ -166,10 +178,12 @@
       return "/";
     }
 
-    return path
-      .split("?")[0]
-      .split("#")[0]
-      .replace(/\/+$/, "") || "/";
+    return (
+      path
+        .split("?")[0]
+        .split("#")[0]
+        .replace(/\/+$/, "") || "/"
+    );
   }
 
   function getCurrentPage() {
@@ -435,7 +449,9 @@
 
         if (toggle) {
           event.preventDefault();
+
           toggleMenu();
+
           return;
         }
 
@@ -446,7 +462,9 @@
 
         if (close) {
           event.preventDefault();
+
           closeMenu();
+
           return;
         }
 
@@ -531,6 +549,9 @@
 
     setActive:
       setActiveNavigation,
+
+    navigateTo:
+      navigateTo,
 
     getCurrentPage:
       getCurrentPage
