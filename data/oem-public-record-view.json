@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public website detail view configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "record": {
+    "showOnlyPublished": true,
+    "showOnlyPubliclyVisible": true,
+    "hideArchived": true,
+    "hideDisabled": true
+  },
+
+  "header": {
+    "showPrimaryImage": true,
+    "showPartName": true,
+    "showOemNumber": true,
+    "showBrand": true,
+    "showVerificationBadge": true,
+    "showStockStatus": true
+  },
+
+  "information": {
+    "showDescription": true,
+    "showArabicDescription": true,
+    "showCategory": true,
+    "showSubcategory": true,
+    "showPartType": true
+  },
+
+  "compatibility": {
+    "enabled": true,
+    "showBrand": true,
+    "showModels": true,
+    "showModelYears": true,
+    "showEngineCodes": true,
+    "showBodyTypes": true,
+    "showTransmissions": true,
+    "showDriveTypes": true,
+    "showMarketSpecs": true,
+    "showRegions": true,
+    "showCompatibleOemNumbers": true,
+    "showSupersededOemNumbers": false
+  },
+
+  "pricing": {
+    "enabled": true,
+    "showRegularPrice": true,
+    "showSalePrice": true,
+    "showDiscountPercent": true,
+    "showCurrency": true,
+    "hideInternalPricingNotes": true
+  },
+
+  "availability": {
+    "enabled": true,
+    "showStatus": true,
+    "showAvailabilityMessage": true,
+    "showExactQuantity": false,
+    "showExactLocation": false,
+    "allowInquiryWhenInStock": true,
+    "allowInquiryWhenLowStock": true,
+    "allowInquiryWhenOutOfStock": true,
+    "allowInquiryWhenOnOrder": true,
+    "allowInquiryWhenUnknown": true
+  },
+
+  "images": {
+    "enabled": true,
+    "showGallery": true,
+    "allowImageZoom": true,
+    "allowImageSharing": true,
+    "showImageAltText": false
+  },
+
+  "actions": {
+    "inquiry": true,
+    "whatsapp": true,
+    "phone": true,
+    "copyOemNumber": true,
+    "share": true,
+    "backToCatalog": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true,
+    "preserveArabicContent": true
+  },
+
+  "safety": {
+    "neverExposeInternalNotes": true,
+    "neverExposeAdminPermissions": true,
+    "neverExposeAuditHistory": true,
+    "neverExposeExactInventoryLocation": true,
+    "neverExposePrivateSupplierInformation": true,
+    "neverExposeUnpublishedRecords": true,
+    "neverExposeUnauthorizedPricingData": true
+  }
+}
