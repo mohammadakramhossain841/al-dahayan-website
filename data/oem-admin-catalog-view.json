@@ -1,0 +1,158 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin catalog view configuration for managing Toyota and Lexus OEM records in the Al-Dahayan Admin Panel.",
+  "enabled": true,
+  "page": {
+    "title": "OEM Catalog",
+    "defaultPageSize": 20,
+    "allowedPageSizes": [
+      20,
+      50,
+      100
+    ]
+  },
+  "columns": [
+    {
+      "field": "oemNumber",
+      "label": "OEM Number",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "partName",
+      "label": "Part Name",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "brand",
+      "label": "Brand",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "category",
+      "label": "Category",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "stockStatus",
+      "label": "Stock",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "salePrice",
+      "label": "Sale Price",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "status",
+      "label": "Status",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "verificationLevel",
+      "label": "Verification",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "updatedAt",
+      "label": "Updated",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    }
+  ],
+  "filters": [
+    "brand",
+    "category",
+    "subcategory",
+    "model",
+    "modelYear",
+    "engineCode",
+    "bodyType",
+    "marketSpec",
+    "stockStatus",
+    "status",
+    "verificationLevel"
+  ],
+  "search": {
+    "enabled": true,
+    "fields": [
+      "oemNumber",
+      "partName",
+      "arabicName",
+      "compatibleOemNumbers",
+      "supersededOemNumbers"
+    ],
+    "allowPartialMatch": true,
+    "allowExactMatch": true,
+    "allowArabicSearch": true
+  },
+  "selection": {
+    "enabled": true,
+    "allowSelectAll": true,
+    "allowMultiSelect": true,
+    "maximumSelectedRecords": 5000
+  },
+  "rowActions": {
+    "view": true,
+    "edit": true,
+    "duplicate": true,
+    "archive": true,
+    "restore": true,
+    "disable": true
+  },
+  "bulkActions": {
+    "enabled": true,
+    "import": true,
+    "export": true,
+    "update": true,
+    "priceUpdate": true,
+    "stockUpdate": true,
+    "compatibilityUpdate": true,
+    "verificationUpdate": true,
+    "imageUpdate": true,
+    "categoryUpdate": true,
+    "archive": true,
+    "restore": true
+  },
+  "display": {
+    "showImages": true,
+    "showStockStatus": true,
+    "showPrice": true,
+    "showVerificationStatus": true,
+    "showRecordStatus": true,
+    "preserveArabicText": true
+  },
+  "permissions": {
+    "view": "oem.view",
+    "create": "oem.create",
+    "edit": "oem.edit",
+    "import": "oem.import",
+    "export": "oem.export",
+    "archive": "oem.archive",
+    "restore": "oem.restore"
+  },
+  "safety": {
+    "neverModifyRecordsThroughSorting": true,
+    "neverModifyRecordsThroughFiltering": true,
+    "requireConfirmationForBulkActions": true,
+    "preserveAuditHistory": true,
+    "preserveChangeHistory": true
+  }
+}
