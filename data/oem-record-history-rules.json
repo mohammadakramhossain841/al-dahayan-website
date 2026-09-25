@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level history and versioning rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "enabled": true,
+  "trackedActions": [
+    "create",
+    "update",
+    "publish",
+    "archive",
+    "restore",
+    "disable",
+    "price_update",
+    "stock_update",
+    "image_update",
+    "compatibility_update",
+    "verification_update",
+    "category_update",
+    "metadata_update",
+    "import_update",
+    "rollback"
+  ],
+  "historyRecord": {
+    "requiredFields": [
+      "historyId",
+      "recordId",
+      "action",
+      "changedAt"
+    ],
+    "includeOemNumber": true,
+    "includePreviousData": true,
+    "includeNewData": true,
+    "includeChangedFields": true,
+    "includeSource": true,
+    "includeUser": true,
+    "includeReason": true
+  },
+  "versioning": {
+    "enabled": true,
+    "createVersionBeforeUpdate": true,
+    "createVersionAfterUpdate": true,
+    "incrementVersionNumber": true,
+    "preservePreviousVersions": true,
+    "allowVersionComparison": true
+  },
+  "comparison": {
+    "enabled": true,
+    "allowBeforeAfterComparison": true,
+    "showChangedFieldsOnly": true,
+    "showAddedFields": true,
+    "showRemovedFields": true,
+    "showModifiedFields": true
+  },
+  "rollback": {
+    "enabled": true,
+    "allowRollback": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.rollback",
+    "requireConfirmation": true,
+    "createRollbackHistoryRecord": true
+  },
+  "retention": {
+    "retainHistory": true,
+    "allowAutomaticHistoryDeletion": false,
+    "allowManualHistoryDeletion": false
+  },
+  "security": {
+    "publicAccess": false,
+    "requireAuthentication": true,
+    "requireAdminPermission": true,
+    "preventHistoryModification": true,
+    "excludeCredentials": true,
+    "excludeSecurityTokens": true
+  },
+  "search": {
+    "enabled": true,
+    "searchFields": [
+      "recordId",
+      "oemNumber",
+      "historyId",
+      "action",
+      "userId"
+    ],
+    "allowDateRangeFilter": true,
+    "allowActionFilter": true,
+    "allowUserFilter": true
+  },
+  "reporting": {
+    "generateHistoryReport": true,
+    "includeTotalChanges": true,
+    "includeChangedRecords": true,
+    "includeVersionCount": true,
+    "includeRollbackCount": true,
+    "includeFailedActions": true
+  },
+  "safety": {
+    "neverDeleteHistoryAutomatically": true,
+    "neverModifyHistoricalValues": true,
+    "neverExposePrivateHistoryPublicly": true,
+    "preserveOriginalOemNumber": true,
+    "preserveAuditHistory": true
+  }
+}
