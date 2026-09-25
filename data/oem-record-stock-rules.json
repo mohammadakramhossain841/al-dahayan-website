@@ -1,0 +1,107 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level inventory and stock rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "stockStatus": {
+    "allowedValues": [
+      "in_stock",
+      "low_stock",
+      "out_of_stock",
+      "on_order",
+      "unknown"
+    ],
+    "default": "unknown"
+  },
+  "quantity": {
+    "enabled": true,
+    "type": "integer",
+    "minimum": 0,
+    "allowNegativeQuantity": false
+  },
+  "thresholds": {
+    "lowStockEnabled": true,
+    "lowStockMinimum": 1,
+    "lowStockMaximum": 5,
+    "outOfStockQuantity": 0
+  },
+  "statusRules": {
+    "in_stockRequiresPositiveQuantity": false,
+    "low_stockRequiresPositiveQuantity": true,
+    "out_of_stockQuantity": 0,
+    "on_orderMayHaveZeroQuantity": true,
+    "unknownMayHaveUnknownQuantity": true,
+    "automaticallyCalculateStatus": false
+  },
+  "locations": {
+    "enabled": true,
+    "allowMultipleLocations": true,
+    "storeLocationIds": true,
+    "showLocationOnPublicWebsite": false,
+    "allowLocationSpecificQuantity": true
+  },
+  "availability": {
+    "showAvailabilityMessage": true,
+    "allowCustomAvailabilityMessage": true,
+    "showExactQuantityPublicly": false,
+    "showExactLocationPublicly": false
+  },
+  "validation": {
+    "validateBeforeSave": true,
+    "validateBeforePublish": true,
+    "validateQuantity": true,
+    "validateStockStatus": true,
+    "validateLocationIds": true,
+    "blockInvalidValues": true,
+    "showWarnings": true
+  },
+  "publicWebsite": {
+    "showStockStatus": true,
+    "showAvailabilityMessage": true,
+    "showQuantity": false,
+    "showLocation": false,
+    "allowInquiryForOutOfStock": true,
+    "allowInquiryForOnOrder": true
+  },
+  "adminPanel": {
+    "allowStockStatusEdit": true,
+    "allowQuantityEdit": true,
+    "allowLocationEdit": true,
+    "showExactQuantity": true,
+    "showLocations": true,
+    "showStockHistory": true
+  },
+  "permissions": {
+    "view": "oem.view",
+    "edit": "oem.stock_update",
+    "export": "oem.export"
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousStockStatus": true,
+    "recordNewStockStatus": true,
+    "recordPreviousQuantity": true,
+    "recordNewQuantity": true,
+    "recordPreviousLocations": true,
+    "recordNewLocations": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.stock_update"
+  },
+  "safety": {
+    "neverAllowNegativeQuantity": true,
+    "neverModifyOemNumber": true,
+    "neverModifyCompatibility": true,
+    "neverAutomaticallyVerifyStock": true,
+    "neverDeleteCatalogRecords": true,
+    "preserveStockHistory": true,
+    "preserveAuditHistory": true
+  }
+}
