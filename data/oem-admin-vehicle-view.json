@@ -1,0 +1,188 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin vehicle compatibility management view for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Vehicle Compatibility",
+    "defaultPageSize": 20,
+    "allowFiltering": true,
+    "allowSorting": true,
+    "allowSearch": true
+  },
+
+  "columns": [
+    {
+      "field": "vehicleId",
+      "label": "Vehicle ID",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "brand",
+      "label": "Brand",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "model",
+      "label": "Model",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "modelYear",
+      "label": "Model Year",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "engineCode",
+      "label": "Engine",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "bodyType",
+      "label": "Body Type",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "marketSpec",
+      "label": "Market",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "partCount",
+      "label": "OEM Parts",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "status",
+      "label": "Status",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    }
+  ],
+
+  "filters": [
+    "brand",
+    "model",
+    "modelYear",
+    "engineCode",
+    "bodyType",
+    "transmission",
+    "driveType",
+    "marketSpec",
+    "region",
+    "status"
+  ],
+
+  "search": {
+    "enabled": true,
+    "fields": [
+      "vehicleId",
+      "brand",
+      "model",
+      "engineCode",
+      "chassisCode"
+    ],
+    "allowPartialMatch": true,
+    "allowExactMatch": true
+  },
+
+  "vehicleRules": {
+    "allowMultipleEngines": true,
+    "allowMultipleModelYears": true,
+    "allowMultipleBodyTypes": true,
+    "allowMultipleTransmissions": true,
+    "allowMultipleDriveTypes": true,
+    "allowMultipleMarkets": true,
+    "allowMultipleRegions": true,
+    "requireValidVehicleId": true,
+    "requireCompatibilityReview": true
+  },
+
+  "actions": {
+    "view": true,
+    "create": true,
+    "edit": true,
+    "addPartCompatibility": true,
+    "removePartCompatibility": true,
+    "viewCompatibleParts": true,
+    "validateCompatibility": true,
+    "viewHistory": true,
+    "export": true
+  },
+
+  "bulkActions": {
+    "enabled": true,
+    "allowBulkPartAssignment": true,
+    "allowBulkPartRemoval": true,
+    "allowBulkModelUpdate": true,
+    "allowBulkYearUpdate": true,
+    "allowBulkEngineUpdate": true,
+    "requirePreview": true,
+    "requireConfirmation": true,
+    "maximumSelectedRecords": 1000
+  },
+
+  "validation": {
+    "enabled": true,
+    "validateVehicleId": true,
+    "validateModel": true,
+    "validateModelYear": true,
+    "validateEngineCode": true,
+    "validateBodyType": true,
+    "validateMarketSpec": true,
+    "detectDuplicateVehicleRelations": true,
+    "detectConflictingRelations": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "blockInvalidRelations": true
+  },
+
+  "history": {
+    "enabled": true,
+    "recordPreviousRelations": true,
+    "recordNewRelations": true,
+    "recordChangedFields": true,
+    "recordChangedBy": true,
+    "recordTimestamp": true,
+    "requireChangeReason": true
+  },
+
+  "permissions": {
+    "view": "oem.vehicle_view",
+    "create": "oem.vehicle_create",
+    "edit": "oem.vehicle_update",
+    "validate": "oem.compatibility_validate",
+    "bulkEdit": "oem.vehicle_update",
+    "export": "oem.export",
+    "history": "oem.history_view"
+  },
+
+  "safety": {
+    "neverAssumeVehicleCompatibility": true,
+    "neverCreateUnvalidatedRelations": true,
+    "neverDeleteVehicleHistory": true,
+    "requireValidationBeforeSave": true,
+    "requireCompatibilityReviewBeforePublish": true,
+    "requireConfirmationForBulkChanges": true,
+    "preservePreviousValues": true,
+    "preserveAuditHistory": true
+  }
+}
