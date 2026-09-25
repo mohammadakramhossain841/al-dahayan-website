@@ -1,0 +1,101 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Endpoint mapping for the public Toyota and Lexus OEM catalog API.",
+  "enabled": true,
+
+  "endpoints": {
+    "catalog": {
+      "method": "GET",
+      "path": "/api/oem/catalog",
+      "dataSource": "oem-catalog.json",
+      "supportsPagination": true,
+      "supportsFiltering": true,
+      "supportsSorting": true
+    },
+
+    "record": {
+      "method": "GET",
+      "path": "/api/oem/record",
+      "dataSource": "oem-catalog.json",
+      "supportsOemNumber": true
+    },
+
+    "search": {
+      "method": "GET",
+      "path": "/api/oem/search",
+      "dataSource": "oem-search-index.json",
+      "supportsOemNumber": true,
+      "supportsPartName": true,
+      "supportsBrand": true,
+      "supportsModel": true,
+      "supportsCategory": true
+    },
+
+    "filters": {
+      "method": "GET",
+      "path": "/api/oem/filters",
+      "dataSource": "oem-record-filter-rules.json",
+      "supportsBrand": true,
+      "supportsCategory": true,
+      "supportsModel": true,
+      "supportsModelYear": true,
+      "supportsEngineCode": true,
+      "supportsStockStatus": true
+    },
+
+    "categories": {
+      "method": "GET",
+      "path": "/api/oem/categories",
+      "dataSource": "oem-category-map.json"
+    },
+
+    "vehicles": {
+      "method": "GET",
+      "path": "/api/oem/vehicles",
+      "dataSource": "oem-vehicle-map.json"
+    },
+
+    "compatibility": {
+      "method": "GET",
+      "path": "/api/oem/compatibility",
+      "dataSource": "oem-record-compatibility-rules.json"
+    },
+
+    "availability": {
+      "method": "GET",
+      "path": "/api/oem/availability",
+      "dataSource": "oem-record-availability-rules.json"
+    },
+
+    "inquiry": {
+      "method": "POST",
+      "path": "/api/oem/inquiry",
+      "dataSource": "inquiries.json",
+      "requiresValidation": true
+    }
+  },
+
+  "security": {
+    "publicReadOnly": true,
+    "inquiryWriteOnly": true,
+    "adminEndpointsExcluded": true,
+    "supplierDataExcluded": true,
+    "customerPrivateDataExcluded": true
+  },
+
+  "response": {
+    "format": "json",
+    "includePagination": true,
+    "includeRequestId": true,
+    "includeSafeErrors": true
+  },
+
+  "languages": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en"
+  }
+}
