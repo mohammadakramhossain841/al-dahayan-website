@@ -7,6 +7,7 @@
     let companyData = {};
     let effectiveConfig = {};
     let socialChannels = [];
+    let initialized = false;
 
     /**
      * ---------------------------------------------------------
@@ -38,6 +39,30 @@
         return safeText(value).replace(/[^\d]/g, "");
     }
 
+    function getDataPath(fileName) {
+        if (
+            CONFIG &&
+            typeof CONFIG.getDataPath === "function"
+        ) {
+            return CONFIG.getDataPath(fileName);
+        }
+
+        if (
+            window.AlDahayanConfig &&
+            typeof window.AlDahayanConfig.getDataPath === "function"
+        ) {
+            return window.AlDahayanConfig.getDataPath(fileName);
+        }
+
+        if (
+            typeof window.getDataPath === "function"
+        ) {
+            return window.getDataPath(fileName);
+        }
+
+        return `../data/${fileName}`;
+    }
+
     function getElementValue(element) {
         if (!element) return "";
 
@@ -51,14 +76,63 @@
 
     /**
      * ---------------------------------------------------------
+     * Safe URL Helpers
+     * ---------------------------------------------------------
+     */
+
+    function isAllowedExternalUrl(value) {
+        const url = safeText(value).trim();
+
+        if (!url) return false;
+
+        try {
+            const parsed = new URL(url, window.location.href);
+
+            return [
+                "http:",
+                "https:",
+                "mailto:",
+                "tel:"
+            ].includes(parsed.protocol);
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function normalizeExternalUrl(value) {
+        const url = safeText(value).trim();
+
+        if (!url) return "";
+
+        if (
+            url.startsWith("http://") ||
+            url.startsWith("https://") ||
+            url.startsWith("mailto:") ||
+            url.startsWith("tel:")
+        ) {
+            return isAllowedExternalUrl(url) ? url : "";
+        }
+
+        if (
+            url.startsWith("www.")
+        ) {
+            const fullUrl = `https://${url}`;
+            return isAllowedExternalUrl(fullUrl)
+                ? fullUrl
+                : "";
+        }
+
+        return "";
+    }
+
+    /**
+     * ---------------------------------------------------------
      * Company Data
      * ---------------------------------------------------------
      */
 
     async function loadCompanyData() {
-        const dataPath = CONFIG
-            ? CONFIG.getDataPath("company.json")
-            : "data/company.json";
+        const dataPath = getDataPath("company.json");
 
         try {
             const response = await fetch(dataPath, {
@@ -66,15 +140,27 @@
             });
 
             if (!response.ok) {
-                throw new Error(`Company data request failed: ${response.status}`);
+                throw new Error(
+                    `Company data request failed: ${response.status}`
+                );
             }
 
-            companyData = await response.json();
+            const data = await response.json();
+
+            companyData =
+                data && typeof data === "object"
+                    ? data
+                    : {};
+
             return companyData;
         } catch (error) {
-            console.warn("Unable to load company.json:", error);
+            console.warn(
+                "Unable to load company.json:",
+                error
+            );
 
             companyData = {};
+
             return companyData;
         }
     }
@@ -86,8 +172,12 @@
      */
 
     function loadEffectiveConfig() {
-        if (CONFIG && typeof CONFIG.getEffectiveAppConfig === "function") {
-            effectiveConfig = CONFIG.getEffectiveAppConfig();
+        if (
+            CONFIG &&
+            typeof CONFIG.getEffectiveAppConfig === "function"
+        ) {
+            effectiveConfig =
+                CONFIG.getEffectiveAppConfig() || {};
         } else {
             effectiveConfig = {};
         }
@@ -100,11 +190,13 @@
             CONFIG &&
             typeof CONFIG.getAdminSocialChannels === "function"
         ) {
-            const channels = CONFIG.getAdminSocialChannels();
+            const channels =
+                CONFIG.getAdminSocialChannels();
 
-            socialChannels = Array.isArray(channels)
-                ? channels
-                : [];
+            socialChannels =
+                Array.isArray(channels)
+                    ? channels
+                    : [];
         } else {
             socialChannels = [];
         }
@@ -118,8 +210,14 @@
      * ---------------------------------------------------------
      */
 
-    function getNestedValue(object, path, fallback = "") {
-        if (!object || !path) return fallback;
+    function getNestedValue(
+        object,
+        path,
+        fallback = ""
+    ) {
+        if (!object || !path) {
+            return fallback;
+        }
 
         const parts = path.split(".");
         let current = object;
@@ -155,7 +253,10 @@
         return (
             effectiveConfig?.company?.name ||
             getNestedValue(companyData, "name") ||
-            getNestedValue(companyData, "companyName") ||
+            getNestedValue(
+                companyData,
+                "companyName"
+            ) ||
             "Al-Dahayan Trading Company"
         );
     }
@@ -163,8 +264,14 @@
     function getArabicCompanyName() {
         return (
             effectiveConfig?.company?.arabicName ||
-            getNestedValue(companyData, "arabicName") ||
-            getNestedValue(companyData, "companyArabicName") ||
+            getNestedValue(
+                companyData,
+                "arabicName"
+            ) ||
+            getNestedValue(
+                companyData,
+                "companyArabicName"
+            ) ||
             "شركة الضحيان التجارية"
         );
     }
@@ -172,7 +279,10 @@
     function getCountry() {
         return (
             effectiveConfig?.company?.country ||
-            getNestedValue(companyData, "country") ||
+            getNestedValue(
+                companyData,
+                "country"
+            ) ||
             "Saudi Arabia"
         );
     }
@@ -180,8 +290,14 @@
     function getPhone() {
         return (
             effectiveConfig?.contact?.phone ||
-            getNestedValue(companyData, "phone") ||
-            getNestedValue(companyData, "contact.phone") ||
+            getNestedValue(
+                companyData,
+                "phone"
+            ) ||
+            getNestedValue(
+                companyData,
+                "contact.phone"
+            ) ||
             ""
         );
     }
@@ -189,8 +305,14 @@
     function getWhatsApp() {
         return (
             effectiveConfig?.contact?.whatsapp ||
-            getNestedValue(companyData, "whatsapp") ||
-            getNestedValue(companyData, "contact.whatsapp") ||
+            getNestedValue(
+                companyData,
+                "whatsapp"
+            ) ||
+            getNestedValue(
+                companyData,
+                "contact.whatsapp"
+            ) ||
             ""
         );
     }
@@ -198,9 +320,46 @@
     function getEmail() {
         return (
             effectiveConfig?.contact?.email ||
-            getNestedValue(companyData, "email") ||
-            getNestedValue(companyData, "contact.email") ||
+            getNestedValue(
+                companyData,
+                "email"
+            ) ||
+            getNestedValue(
+                companyData,
+                "contact.email"
+            ) ||
             ""
+        );
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Google Maps
+     * ---------------------------------------------------------
+     */
+
+    function getMapsUrl() {
+        const adminMaps =
+            getSocialUrl("Google Maps");
+
+        const companyMaps =
+            getNestedValue(
+                companyData,
+                "googleMaps"
+            ) ||
+            getNestedValue(
+                companyData,
+                "maps"
+            ) ||
+            getNestedValue(
+                companyData,
+                "contact.googleMaps"
+            ) ||
+            "";
+
+        return (
+            normalizeExternalUrl(adminMaps) ||
+            normalizeExternalUrl(companyMaps)
         );
     }
 
@@ -208,42 +367,44 @@
      * ---------------------------------------------------------
      * Social Channels
      * ---------------------------------------------------------
-     *
-     * Admin Panel controls:
-     * Facebook
-     * YouTube
-     * TikTok
-     * X
-     * Instagram
-     * LinkedIn
-     * WhatsApp
-     * Google Maps
-     * Website
-     * Other
      */
 
     function getSocialChannel(platform) {
-        const target = safeText(platform).toLowerCase();
+        const target =
+            safeText(platform)
+                .trim()
+                .toLowerCase();
 
-        return socialChannels.find((channel) => {
-            return (
-                safeText(channel.platform).toLowerCase() === target &&
-                channel.active !== false
-            );
-        }) || null;
+        return (
+            socialChannels.find((channel) => {
+                if (!channel) return false;
+
+                const channelPlatform =
+                    safeText(channel.platform)
+                        .trim()
+                        .toLowerCase();
+
+                return (
+                    channelPlatform === target &&
+                    channel.active !== false
+                );
+            }) || null
+        );
     }
 
     function getSocialUrl(platform) {
-        const channel = getSocialChannel(platform);
+        const channel =
+            getSocialChannel(platform);
 
         if (!channel) return "";
 
-        return (
+        const rawUrl =
             channel.url ||
             channel.link ||
             channel.value ||
-            ""
-        ).trim();
+            "";
+
+        return normalizeExternalUrl(rawUrl);
     }
 
     /**
@@ -253,28 +414,46 @@
      */
 
     function applyTextContent() {
-        $all("[data-company-name]").forEach((element) => {
-            element.textContent = getCompanyName();
+        $all(
+            "[data-company-name]"
+        ).forEach((element) => {
+            element.textContent =
+                getCompanyName();
         });
 
-        $all("[data-company-arabic-name]").forEach((element) => {
-            element.textContent = getArabicCompanyName();
+        $all(
+            "[data-company-arabic-name]"
+        ).forEach((element) => {
+            element.textContent =
+                getArabicCompanyName();
         });
 
-        $all("[data-company-country]").forEach((element) => {
-            element.textContent = getCountry();
+        $all(
+            "[data-company-country]"
+        ).forEach((element) => {
+            element.textContent =
+                getCountry();
         });
 
-        $all("[data-company-phone]").forEach((element) => {
-            element.textContent = getPhone();
+        $all(
+            "[data-company-phone]"
+        ).forEach((element) => {
+            element.textContent =
+                getPhone();
         });
 
-        $all("[data-company-whatsapp]").forEach((element) => {
-            element.textContent = getWhatsApp();
+        $all(
+            "[data-company-whatsapp]"
+        ).forEach((element) => {
+            element.textContent =
+                getWhatsApp();
         });
 
-        $all("[data-company-email]").forEach((element) => {
-            element.textContent = getEmail();
+        $all(
+            "[data-company-email]"
+        ).forEach((element) => {
+            element.textContent =
+                getEmail();
         });
     }
 
@@ -288,18 +467,35 @@
         const phone = getPhone();
 
         $all(
-            '[data-contact="phone"], [data-company-phone-link], a[href^="tel:"]'
+            [
+                '[data-contact="phone"]',
+                "[data-company-phone-link]",
+                'a[href^="tel:"]'
+            ].join(", ")
         ).forEach((element) => {
-            if (!phone) return;
+            if (!phone) {
+                return;
+            }
+
+            const normalized =
+                normalizePhone(phone);
+
+            if (!normalized) {
+                return;
+            }
 
             element.setAttribute(
                 "href",
-                `tel:${normalizePhone(phone)}`
+                `tel:${normalized}`
             );
 
             if (
-                element.hasAttribute("data-company-phone-link") ||
-                element.getAttribute("data-contact") === "phone"
+                element.hasAttribute(
+                    "data-company-phone-link"
+                ) ||
+                element.getAttribute(
+                    "data-contact"
+                ) === "phone"
             ) {
                 element.textContent = phone;
             }
@@ -313,12 +509,19 @@
      */
 
     function applyEmailLinks() {
-        const email = getEmail();
+        const email =
+            getEmail().trim();
 
-        if (!email) return;
+        if (!email) {
+            return;
+        }
 
         $all(
-            '[data-contact="email"], [data-company-email-link], a[href^="mailto:"]'
+            [
+                '[data-contact="email"]',
+                "[data-company-email-link]",
+                'a[href^="mailto:"]'
+            ].join(", ")
         ).forEach((element) => {
             element.setAttribute(
                 "href",
@@ -326,8 +529,12 @@
             );
 
             if (
-                element.hasAttribute("data-company-email-link") ||
-                element.getAttribute("data-contact") === "email"
+                element.hasAttribute(
+                    "data-company-email-link"
+                ) ||
+                element.getAttribute(
+                    "data-contact"
+                ) === "email"
             ) {
                 element.textContent = email;
             }
@@ -341,26 +548,54 @@
      */
 
     function applyWhatsAppLinks() {
-        const whatsapp = getWhatsApp();
+        const whatsapp =
+            getWhatsApp();
 
-        if (!whatsapp) return;
+        if (!whatsapp) {
+            return;
+        }
 
-        const number = normalizeWhatsApp(whatsapp);
+        const number =
+            normalizeWhatsApp(whatsapp);
+
+        if (!number) {
+            return;
+        }
 
         const whatsappUrl =
             `https://wa.me/${number}`;
 
         $all(
-            '[data-contact="whatsapp"], [data-company-whatsapp-link], a[href*="wa.me"]'
+            [
+                '[data-contact="whatsapp"]',
+                "[data-company-whatsapp-link]",
+                'a[href*="wa.me"]'
+            ].join(", ")
         ).forEach((element) => {
-            element.setAttribute("href", whatsappUrl);
+            element.setAttribute(
+                "href",
+                whatsappUrl
+            );
+
+            element.setAttribute(
+                "target",
+                "_blank"
+            );
+
+            element.setAttribute(
+                "rel",
+                "noopener noreferrer"
+            );
 
             if (
-                element.hasAttribute("data-company-whatsapp-link") ||
-                element.getAttribute("data-contact") === "whatsapp"
+                element.hasAttribute(
+                    "data-company-whatsapp-link"
+                ) ||
+                element.getAttribute(
+                    "data-contact"
+                ) === "whatsapp"
             ) {
-                element.setAttribute("target", "_blank");
-                element.setAttribute("rel", "noopener noreferrer");
+                element.style.display = "";
             }
         });
     }
@@ -373,20 +608,36 @@
 
     function applyMapsLinks() {
         const mapsUrl =
-            getSocialUrl("Google Maps") ||
-            getNestedValue(companyData, "googleMaps") ||
-            getNestedValue(companyData, "maps") ||
-            getNestedValue(companyData, "contact.googleMaps") ||
-            "";
-
-        if (!mapsUrl) return;
+            getMapsUrl();
 
         $all(
-            '[data-contact="maps"], [data-company-maps], a[href*="google.com/maps"]'
+            [
+                '[data-contact="maps"]',
+                "[data-company-maps]",
+                'a[href*="google.com/maps"]'
+            ].join(", ")
         ).forEach((element) => {
-            element.setAttribute("href", mapsUrl);
-            element.setAttribute("target", "_blank");
-            element.setAttribute("rel", "noopener noreferrer");
+            if (!mapsUrl) {
+                element.style.display = "none";
+                return;
+            }
+
+            element.setAttribute(
+                "href",
+                mapsUrl
+            );
+
+            element.setAttribute(
+                "target",
+                "_blank"
+            );
+
+            element.setAttribute(
+                "rel",
+                "noopener noreferrer"
+            );
+
+            element.style.display = "";
         });
     }
 
@@ -412,34 +663,83 @@
             other: "Other"
         };
 
-        $all("[data-social]").forEach((element) => {
-            const key = safeText(
-                element.getAttribute("data-social")
-            ).toLowerCase();
+        $all("[data-social]")
+            .forEach((element) => {
+                const key =
+                    safeText(
+                        element.getAttribute(
+                            "data-social"
+                        )
+                    )
+                        .trim()
+                        .toLowerCase();
 
-            const platform = socialMap[key];
+                const platform =
+                    socialMap[key];
 
-            if (!platform) return;
+                if (!platform) {
+                    return;
+                }
 
-            const url = getSocialUrl(platform);
+                let url =
+                    getSocialUrl(platform);
 
-            if (!url) {
-                element.style.display = "none";
-                return;
-            }
+                /*
+                 * WhatsApp can also use the
+                 * main Admin contact number.
+                 */
+                if (
+                    platform === "WhatsApp" &&
+                    !url
+                ) {
+                    const whatsapp =
+                        normalizeWhatsApp(
+                            getWhatsApp()
+                        );
 
-            element.setAttribute("href", url);
+                    if (whatsapp) {
+                        url =
+                            `https://wa.me/${whatsapp}`;
+                    }
+                }
 
-            if (!url.startsWith("tel:")) {
-                element.setAttribute("target", "_blank");
+                if (!url) {
+                    element.style.display =
+                        "none";
+
+                    element.removeAttribute(
+                        "href"
+                    );
+
+                    return;
+                }
+
                 element.setAttribute(
-                    "rel",
-                    "noopener noreferrer"
+                    "href",
+                    url
                 );
-            }
 
-            element.style.display = "";
-        });
+                if (
+                    url.startsWith(
+                        "http://"
+                    ) ||
+                    url.startsWith(
+                        "https://"
+                    )
+                ) {
+                    element.setAttribute(
+                        "target",
+                        "_blank"
+                    );
+
+                    element.setAttribute(
+                        "rel",
+                        "noopener noreferrer"
+                    );
+                }
+
+                element.style.display = "";
+            });
     }
 
     /**
@@ -449,36 +749,49 @@
      */
 
     function applyGenericContactElements() {
-        $all("[data-contact-value]").forEach((element) => {
-            const type = safeText(
-                element.getAttribute("data-contact-value")
-            ).toLowerCase();
+        $all(
+            "[data-contact-value]"
+        ).forEach((element) => {
+            const type =
+                safeText(
+                    element.getAttribute(
+                        "data-contact-value"
+                    )
+                )
+                    .trim()
+                    .toLowerCase();
 
             switch (type) {
                 case "company":
                 case "company-name":
-                    element.textContent = getCompanyName();
+                    element.textContent =
+                        getCompanyName();
                     break;
 
                 case "arabic-company":
                 case "arabic-company-name":
-                    element.textContent = getArabicCompanyName();
+                    element.textContent =
+                        getArabicCompanyName();
                     break;
 
                 case "country":
-                    element.textContent = getCountry();
+                    element.textContent =
+                        getCountry();
                     break;
 
                 case "phone":
-                    element.textContent = getPhone();
+                    element.textContent =
+                        getPhone();
                     break;
 
                 case "whatsapp":
-                    element.textContent = getWhatsApp();
+                    element.textContent =
+                        getWhatsApp();
                     break;
 
                 case "email":
-                    element.textContent = getEmail();
+                    element.textContent =
+                        getEmail();
                     break;
 
                 default:
@@ -494,28 +807,56 @@
      */
 
     function applyContactVisibility() {
-        const phone = getPhone();
-        const whatsapp = getWhatsApp();
-        const email = getEmail();
+        const phone =
+            Boolean(getPhone());
 
-        $all("[data-show-if-contact]").forEach((element) => {
-            const type = safeText(
-                element.getAttribute("data-show-if-contact")
-            ).toLowerCase();
+        const whatsapp =
+            Boolean(getWhatsApp());
+
+        const email =
+            Boolean(getEmail());
+
+        const maps =
+            Boolean(getMapsUrl());
+
+        $all(
+            "[data-show-if-contact]"
+        ).forEach((element) => {
+            const type =
+                safeText(
+                    element.getAttribute(
+                        "data-show-if-contact"
+                    )
+                )
+                    .trim()
+                    .toLowerCase();
 
             let available = false;
 
-            if (type === "phone") {
-                available = Boolean(phone);
-            } else if (type === "whatsapp") {
-                available = Boolean(whatsapp);
-            } else if (type === "email") {
-                available = Boolean(email);
-            } else if (type === "maps") {
-                available = Boolean(getSocialUrl("Google Maps"));
+            switch (type) {
+                case "phone":
+                    available = phone;
+                    break;
+
+                case "whatsapp":
+                    available = whatsapp;
+                    break;
+
+                case "email":
+                    available = email;
+                    break;
+
+                case "maps":
+                    available = maps;
+                    break;
+
+                default:
+                    available = false;
+                    break;
             }
 
-            element.style.display = available ? "" : "none";
+            element.style.display =
+                available ? "" : "none";
         });
     }
 
@@ -527,21 +868,40 @@
 
     function dispatchContactUpdate() {
         document.dispatchEvent(
-            new CustomEvent("alDahayanContactUpdated", {
-                detail: {
-                    company: {
-                        name: getCompanyName(),
-                        arabicName: getArabicCompanyName(),
-                        country: getCountry()
-                    },
-                    contact: {
-                        phone: getPhone(),
-                        whatsapp: getWhatsApp(),
-                        email: getEmail()
-                    },
-                    social: socialChannels
+            new CustomEvent(
+                "alDahayanContactUpdated",
+                {
+                    detail: {
+                        company: {
+                            name:
+                                getCompanyName(),
+
+                            arabicName:
+                                getArabicCompanyName(),
+
+                            country:
+                                getCountry()
+                        },
+
+                        contact: {
+                            phone:
+                                getPhone(),
+
+                            whatsapp:
+                                getWhatsApp(),
+
+                            email:
+                                getEmail()
+                        },
+
+                        maps:
+                            getMapsUrl(),
+
+                        social:
+                            [...socialChannels]
+                    }
                 }
-            })
+            )
         );
     }
 
@@ -569,17 +929,94 @@
 
     /**
      * ---------------------------------------------------------
+     * Refresh From Admin Settings
+     * ---------------------------------------------------------
+     */
+
+    function refreshFromAdminSettings() {
+        loadEffectiveConfig();
+        loadSocialChannels();
+        applyContactSettings();
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Storage Change Listener
+     *
+     * Allows contact information to refresh
+     * when Admin settings change in another tab.
+     * ---------------------------------------------------------
+     */
+
+    function setupStorageListener() {
+        window.addEventListener(
+            "storage",
+            function (event) {
+                const relevantKeys = [
+                    "alDahayanWebsiteSettings",
+                    "alDahayanSocialChannels",
+                    "alDahayanAISettings"
+                ];
+
+                if (
+                    event.key === null ||
+                    relevantKeys.includes(event.key)
+                ) {
+                    refreshFromAdminSettings();
+                }
+            }
+        );
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Custom Admin Update Events
+     * ---------------------------------------------------------
+     */
+
+    function setupAdminEventListeners() {
+        document.addEventListener(
+            "alDahayanSettingsUpdated",
+            refreshFromAdminSettings
+        );
+
+        document.addEventListener(
+            "alDahayanSocialChannelsUpdated",
+            refreshFromAdminSettings
+        );
+
+        document.addEventListener(
+            "alDahayanConfigUpdated",
+            refreshFromAdminSettings
+        );
+    }
+
+    /**
+     * ---------------------------------------------------------
      * Initialize
      * ---------------------------------------------------------
      */
 
     async function init() {
+        if (initialized) {
+            refresh();
+            return;
+        }
+
         try {
             await loadCompanyData();
+
             applyContactSettings();
 
+            setupStorageListener();
+            setupAdminEventListeners();
+
+            initialized = true;
+
             document.dispatchEvent(
-                new CustomEvent("alDahayanContactReady")
+                new CustomEvent(
+                    "alDahayanContactReady"
+                )
             );
         } catch (error) {
             console.error(
@@ -601,6 +1038,20 @@
 
     /**
      * ---------------------------------------------------------
+     * Reload Company Data
+     * ---------------------------------------------------------
+     */
+
+    async function reload() {
+        await loadCompanyData();
+
+        applyContactSettings();
+
+        return getCompanyData();
+    }
+
+    /**
+     * ---------------------------------------------------------
      * Public API
      * ---------------------------------------------------------
      */
@@ -608,6 +1059,7 @@
     window.AlDahayanContact = {
         init,
         refresh,
+        reload,
 
         getCompanyName,
         getArabicCompanyName,
@@ -616,6 +1068,8 @@
         getPhone,
         getWhatsApp,
         getEmail,
+
+        getMapsUrl,
 
         getSocialChannel,
         getSocialUrl,
@@ -626,6 +1080,14 @@
 
         getSocialChannels: function () {
             return [...socialChannels];
+        },
+
+        getEffectiveConfig: function () {
+            return effectiveConfig;
+        },
+
+        isInitialized: function () {
+            return initialized;
         }
     };
 
@@ -635,7 +1097,9 @@
      * ---------------------------------------------------------
      */
 
-    if (document.readyState === "loading") {
+    if (
+        document.readyState === "loading"
+    ) {
         document.addEventListener(
             "DOMContentLoaded",
             init,
