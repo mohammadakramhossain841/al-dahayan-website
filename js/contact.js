@@ -1,637 +1,648 @@
-/* =========================================
-   AL-DAHAYAN CONTACT SYSTEM
-========================================= */
-
 (function () {
-  "use strict";
+    "use strict";
 
-  let initialized = false;
-  let companyData = null;
+    const CONFIG = window.AlDahayanConfig || null;
+    const UTILS = window.AlDahayanUtils || null;
 
-  function normalize(value) {
-    return String(value ?? "").trim();
-  }
+    let companyData = {};
+    let effectiveConfig = {};
+    let socialChannels = [];
 
-  function escapeHTML(value) {
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  }
+    /**
+     * ---------------------------------------------------------
+     * Basic Helpers
+     * ---------------------------------------------------------
+     */
 
-  function getElements() {
-    return {
-      companyName: document.querySelector(
-        "[data-company-name]"
-      ),
-
-      companyArabicName: document.querySelector(
-        "[data-company-arabic-name]"
-      ),
-
-      description: document.querySelector(
-        "[data-company-description]"
-      ),
-
-      phone: document.querySelectorAll(
-        "[data-contact-phone]"
-      ),
-
-      whatsapp: document.querySelectorAll(
-        "[data-contact-whatsapp]"
-      ),
-
-      email: document.querySelectorAll(
-        "[data-contact-email]"
-      ),
-
-      address: document.querySelectorAll(
-        "[data-company-address]"
-      ),
-
-      city: document.querySelectorAll(
-        "[data-company-city]"
-      ),
-
-      country: document.querySelectorAll(
-        "[data-company-country]"
-      ),
-
-      website: document.querySelectorAll(
-        "[data-company-website]"
-      ),
-
-      map: document.querySelectorAll(
-        "[data-contact-map]"
-      ),
-
-      facebook: document.querySelectorAll(
-        "[data-contact-facebook]"
-      ),
-
-      instagram: document.querySelectorAll(
-        "[data-contact-instagram]"
-      ),
-
-      linkedin: document.querySelectorAll(
-        "[data-contact-linkedin]"
-      ),
-
-      twitter: document.querySelectorAll(
-        "[data-contact-twitter]"
-      )
-    };
-  }
-
-  async function loadCompanyData() {
-    if (companyData) {
-      return companyData;
+    function $(selector, parent = document) {
+        return parent.querySelector(selector);
     }
 
-    if (
-      typeof window.getDataPath !==
-      "function"
-    ) {
-      throw new Error(
-        "getDataPath() is not available."
-      );
+    function $all(selector, parent = document) {
+        return Array.from(parent.querySelectorAll(selector));
     }
 
-    const response = await fetch(
-      window.getDataPath("company.json"),
-      {
-        cache: "no-cache"
-      }
-    );
+    function safeText(value, fallback = "") {
+        if (value === null || value === undefined || value === "") {
+            return fallback;
+        }
 
-    if (!response.ok) {
-      throw new Error(
-        `Failed to load company.json: ${response.status}`
-      );
+        return String(value);
     }
 
-    const data =
-      await response.json();
+    function normalizePhone(value) {
+        return safeText(value).replace(/[^\d+]/g, "");
+    }
 
-    companyData =
-      data.company ||
-      data.data ||
-      data;
+    function normalizeWhatsApp(value) {
+        return safeText(value).replace(/[^\d]/g, "");
+    }
 
-    return companyData;
-  }
+    function getElementValue(element) {
+        if (!element) return "";
 
-  function getNested(
-    object,
-    paths
-  ) {
-    for (const path of paths) {
-      const parts =
-        path.split(".");
+        return (
+            element.getAttribute("data-value") ||
+            element.getAttribute("data-contact") ||
+            element.textContent ||
+            ""
+        ).trim();
+    }
 
-      let value =
-        object;
+    /**
+     * ---------------------------------------------------------
+     * Company Data
+     * ---------------------------------------------------------
+     */
 
-      for (const part of parts) {
+    async function loadCompanyData() {
+        const dataPath = CONFIG
+            ? CONFIG.getDataPath("company.json")
+            : "data/company.json";
+
+        try {
+            const response = await fetch(dataPath, {
+                cache: "no-cache"
+            });
+
+            if (!response.ok) {
+                throw new Error(`Company data request failed: ${response.status}`);
+            }
+
+            companyData = await response.json();
+            return companyData;
+        } catch (error) {
+            console.warn("Unable to load company.json:", error);
+
+            companyData = {};
+            return companyData;
+        }
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Admin Settings
+     * ---------------------------------------------------------
+     */
+
+    function loadEffectiveConfig() {
+        if (CONFIG && typeof CONFIG.getEffectiveAppConfig === "function") {
+            effectiveConfig = CONFIG.getEffectiveAppConfig();
+        } else {
+            effectiveConfig = {};
+        }
+
+        return effectiveConfig;
+    }
+
+    function loadSocialChannels() {
         if (
-          value === null ||
-          value === undefined
+            CONFIG &&
+            typeof CONFIG.getAdminSocialChannels === "function"
         ) {
-          break;
+            const channels = CONFIG.getAdminSocialChannels();
+
+            socialChannels = Array.isArray(channels)
+                ? channels
+                : [];
+        } else {
+            socialChannels = [];
         }
 
-        value =
-          value[part];
-      }
-
-      if (
-        value !== undefined &&
-        value !== null &&
-        value !== ""
-      ) {
-        return value;
-      }
+        return socialChannels;
     }
 
-    return "";
-  }
-
-  function getCompanyInfo() {
-    const data =
-      companyData || {};
-
-    return {
-      name:
-        getNested(data, [
-          "name",
-          "companyName",
-          "company.name"
-        ]),
-
-      arabicName:
-        getNested(data, [
-          "arabicName",
-          "companyArabicName",
-          "company.arabicName"
-        ]),
-
-      description:
-        getNested(data, [
-          "description",
-          "company.description"
-        ]),
-
-      phone:
-        getNested(data, [
-          "phone",
-          "contact.phone",
-          "contact.phoneNumber"
-        ]),
-
-      whatsapp:
-        getNested(data, [
-          "whatsapp",
-          "contact.whatsapp",
-          "contact.whatsappNumber"
-        ]),
-
-      email:
-        getNested(data, [
-          "email",
-          "contact.email"
-        ]),
-
-      address:
-        getNested(data, [
-          "address",
-          "location.address",
-          "contact.address"
-        ]),
-
-      city:
-        getNested(data, [
-          "city",
-          "location.city",
-          "contact.city"
-        ]),
-
-      country:
-        getNested(data, [
-          "country",
-          "location.country",
-          "contact.country"
-        ]),
-
-      website:
-        getNested(data, [
-          "website",
-          "contact.website"
-        ]),
-
-      map:
-        getNested(data, [
-          "map",
-          "mapUrl",
-          "mapURL",
-          "location.map",
-          "location.mapUrl"
-        ]),
-
-      facebook:
-        getNested(data, [
-          "social.facebook",
-          "facebook"
-        ]),
-
-      instagram:
-        getNested(data, [
-          "social.instagram",
-          "instagram"
-        ]),
-
-      linkedin:
-        getNested(data, [
-          "social.linkedin",
-          "linkedin"
-        ]),
-
-      twitter:
-        getNested(data, [
-          "social.twitter",
-          "twitter",
-          "x"
-        ])
-    };
-  }
-
-  function setText(
-    elements,
-    value
-  ) {
-    if (!elements) {
-      return;
-    }
-
-    elements.forEach((element) => {
-      if (!value) {
-        element.hidden = true;
-        return;
-      }
-
-      element.textContent =
-        value;
-
-      element.hidden = false;
-    });
-  }
-
-  function setLink(
-    elements,
-    href,
-    options = {}
-  ) {
-    if (!elements) {
-      return;
-    }
-
-    elements.forEach((element) => {
-      if (!href) {
-        element.hidden = true;
-        return;
-      }
-
-      element.hidden = false;
-
-      element.href = href;
-
-      if (options.target) {
-        element.target =
-          options.target;
-      }
-
-      if (options.rel) {
-        element.rel =
-          options.rel;
-      }
-    });
-  }
-
-  function normalizePhone(
-    phone
-  ) {
-    return normalize(phone)
-      .replace(
-        /[^\d+]/g,
-        ""
-      );
-  }
-
-  function normalizeWhatsApp(
-    whatsapp
-  ) {
-    return normalize(whatsapp)
-      .replace(
-        /[^\d]/g,
-        ""
-      );
-  }
-
-  function createMapURL(
-    info
-  ) {
-    if (info.map) {
-      return info.map;
-    }
-
-    const query = [
-      info.address,
-      info.city,
-      info.country
-    ]
-      .filter(Boolean)
-      .join(", ");
-
-    if (!query) {
-      return "";
-    }
-
-    return (
-      "https://www.google.com/maps/search/?api=1&query=" +
-      encodeURIComponent(query)
-    );
-  }
-
-  function applyCompanyData() {
-    const elements =
-      getElements();
-
-    const info =
-      getCompanyInfo();
-
-    setText(
-      elements.companyName,
-      info.name
-    );
-
-    setText(
-      elements.companyArabicName,
-      info.arabicName
-    );
-
-    setText(
-      elements.description,
-      info.description
-    );
-
-    setText(
-      elements.address,
-      info.address
-    );
-
-    setText(
-      elements.city,
-      info.city
-    );
-
-    setText(
-      elements.country,
-      info.country
-    );
-
-    setText(
-      elements.website,
-      info.website
-    );
-
-    const phone =
-      normalizePhone(
-        info.phone
-      );
-
-    const whatsapp =
-      normalizeWhatsApp(
-        info.whatsapp
-      );
-
-    if (phone) {
-      setLink(
-        elements.phone,
-        `tel:${phone}`
-      );
-
-      setText(
-        elements.phone,
-        info.phone
-      );
-    } else {
-      setLink(
-        elements.phone,
-        ""
-      );
-    }
-
-    if (whatsapp) {
-      setLink(
-        elements.whatsapp,
-        `https://wa.me/${whatsapp}`,
-        {
-          target: "_blank",
-          rel:
-            "noopener noreferrer"
-        }
-      );
-
-      setText(
-        elements.whatsapp,
-        info.whatsapp
-      );
-    } else {
-      setLink(
-        elements.whatsapp,
-        ""
-      );
-    }
-
-    if (info.email) {
-      setLink(
-        elements.email,
-        `mailto:${info.email}`
-      );
-
-      setText(
-        elements.email,
-        info.email
-      );
-    } else {
-      setLink(
-        elements.email,
-        ""
-      );
-    }
-
-    const mapURL =
-      createMapURL(info);
-
-    setLink(
-      elements.map,
-      mapURL,
-      {
-        target: "_blank",
-        rel:
-          "noopener noreferrer"
-      }
-    );
-
-    if (info.website) {
-      let websiteURL =
-        info.website;
-
-      if (
-        !/^https?:\/\//i.test(
-          websiteURL
-        )
-      ) {
-        websiteURL =
-          `https://${websiteURL}`;
-      }
-
-      setLink(
-        elements.website,
-        websiteURL,
-        {
-          target: "_blank",
-          rel:
-            "noopener noreferrer"
-        }
-      );
-    } else {
-      setLink(
-        elements.website,
-        ""
-      );
-    }
-
-    applySocialLink(
-      elements.facebook,
-      info.facebook
-    );
-
-    applySocialLink(
-      elements.instagram,
-      info.instagram
-    );
-
-    applySocialLink(
-      elements.linkedin,
-      info.linkedin
-    );
-
-    applySocialLink(
-      elements.twitter,
-      info.twitter
-    );
-  }
-
-  function applySocialLink(
-    elements,
-    url
-  ) {
-    if (!url) {
-      setLink(
-        elements,
-        ""
-      );
-
-      return;
-    }
-
-    let finalURL =
-      normalize(url);
-
-    if (
-      !/^https?:\/\//i.test(
-        finalURL
-      )
-    ) {
-      finalURL =
-        `https://${finalURL}`;
-    }
-
-    setLink(
-      elements,
-      finalURL,
-      {
-        target: "_blank",
-        rel:
-          "noopener noreferrer"
-      }
-    );
-  }
-
-  function initializeContact() {
-    if (initialized) {
-      return;
-    }
-
-    initialized = true;
-
-    loadCompanyData()
-      .then(() => {
-        applyCompanyData();
-
-        document.dispatchEvent(
-          new CustomEvent(
-            "alDahayanContactReady",
-            {
-              detail: {
-                company:
-                  getCompanyInfo()
-              }
+    /**
+     * ---------------------------------------------------------
+     * Nested Data Helper
+     * ---------------------------------------------------------
+     */
+
+    function getNestedValue(object, path, fallback = "") {
+        if (!object || !path) return fallback;
+
+        const parts = path.split(".");
+        let current = object;
+
+        for (const part of parts) {
+            if (
+                current === null ||
+                current === undefined ||
+                typeof current !== "object" ||
+                !(part in current)
+            ) {
+                return fallback;
             }
-          )
-        );
-      })
-      .catch((error) => {
-        console.error(
-          "Al-Dahayan Contact:",
-          error
-        );
 
+            current = current[part];
+        }
+
+        return current ?? fallback;
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Company Information Resolution
+     *
+     * Priority:
+     * 1. Admin Panel settings
+     * 2. company.json
+     * 3. config.js defaults
+     * ---------------------------------------------------------
+     */
+
+    function getCompanyName() {
+        return (
+            effectiveConfig?.company?.name ||
+            getNestedValue(companyData, "name") ||
+            getNestedValue(companyData, "companyName") ||
+            "Al-Dahayan Trading Company"
+        );
+    }
+
+    function getArabicCompanyName() {
+        return (
+            effectiveConfig?.company?.arabicName ||
+            getNestedValue(companyData, "arabicName") ||
+            getNestedValue(companyData, "companyArabicName") ||
+            "شركة الضحيان التجارية"
+        );
+    }
+
+    function getCountry() {
+        return (
+            effectiveConfig?.company?.country ||
+            getNestedValue(companyData, "country") ||
+            "Saudi Arabia"
+        );
+    }
+
+    function getPhone() {
+        return (
+            effectiveConfig?.contact?.phone ||
+            getNestedValue(companyData, "phone") ||
+            getNestedValue(companyData, "contact.phone") ||
+            ""
+        );
+    }
+
+    function getWhatsApp() {
+        return (
+            effectiveConfig?.contact?.whatsapp ||
+            getNestedValue(companyData, "whatsapp") ||
+            getNestedValue(companyData, "contact.whatsapp") ||
+            ""
+        );
+    }
+
+    function getEmail() {
+        return (
+            effectiveConfig?.contact?.email ||
+            getNestedValue(companyData, "email") ||
+            getNestedValue(companyData, "contact.email") ||
+            ""
+        );
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Social Channels
+     * ---------------------------------------------------------
+     *
+     * Admin Panel controls:
+     * Facebook
+     * YouTube
+     * TikTok
+     * X
+     * Instagram
+     * LinkedIn
+     * WhatsApp
+     * Google Maps
+     * Website
+     * Other
+     */
+
+    function getSocialChannel(platform) {
+        const target = safeText(platform).toLowerCase();
+
+        return socialChannels.find((channel) => {
+            return (
+                safeText(channel.platform).toLowerCase() === target &&
+                channel.active !== false
+            );
+        }) || null;
+    }
+
+    function getSocialUrl(platform) {
+        const channel = getSocialChannel(platform);
+
+        if (!channel) return "";
+
+        return (
+            channel.url ||
+            channel.link ||
+            channel.value ||
+            ""
+        ).trim();
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Apply Text Content
+     * ---------------------------------------------------------
+     */
+
+    function applyTextContent() {
+        $all("[data-company-name]").forEach((element) => {
+            element.textContent = getCompanyName();
+        });
+
+        $all("[data-company-arabic-name]").forEach((element) => {
+            element.textContent = getArabicCompanyName();
+        });
+
+        $all("[data-company-country]").forEach((element) => {
+            element.textContent = getCountry();
+        });
+
+        $all("[data-company-phone]").forEach((element) => {
+            element.textContent = getPhone();
+        });
+
+        $all("[data-company-whatsapp]").forEach((element) => {
+            element.textContent = getWhatsApp();
+        });
+
+        $all("[data-company-email]").forEach((element) => {
+            element.textContent = getEmail();
+        });
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Apply Phone Links
+     * ---------------------------------------------------------
+     */
+
+    function applyPhoneLinks() {
+        const phone = getPhone();
+
+        $all(
+            '[data-contact="phone"], [data-company-phone-link], a[href^="tel:"]'
+        ).forEach((element) => {
+            if (!phone) return;
+
+            element.setAttribute(
+                "href",
+                `tel:${normalizePhone(phone)}`
+            );
+
+            if (
+                element.hasAttribute("data-company-phone-link") ||
+                element.getAttribute("data-contact") === "phone"
+            ) {
+                element.textContent = phone;
+            }
+        });
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Apply Email Links
+     * ---------------------------------------------------------
+     */
+
+    function applyEmailLinks() {
+        const email = getEmail();
+
+        if (!email) return;
+
+        $all(
+            '[data-contact="email"], [data-company-email-link], a[href^="mailto:"]'
+        ).forEach((element) => {
+            element.setAttribute(
+                "href",
+                `mailto:${email}`
+            );
+
+            if (
+                element.hasAttribute("data-company-email-link") ||
+                element.getAttribute("data-contact") === "email"
+            ) {
+                element.textContent = email;
+            }
+        });
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Apply WhatsApp Links
+     * ---------------------------------------------------------
+     */
+
+    function applyWhatsAppLinks() {
+        const whatsapp = getWhatsApp();
+
+        if (!whatsapp) return;
+
+        const number = normalizeWhatsApp(whatsapp);
+
+        const whatsappUrl =
+            `https://wa.me/${number}`;
+
+        $all(
+            '[data-contact="whatsapp"], [data-company-whatsapp-link], a[href*="wa.me"]'
+        ).forEach((element) => {
+            element.setAttribute("href", whatsappUrl);
+
+            if (
+                element.hasAttribute("data-company-whatsapp-link") ||
+                element.getAttribute("data-contact") === "whatsapp"
+            ) {
+                element.setAttribute("target", "_blank");
+                element.setAttribute("rel", "noopener noreferrer");
+            }
+        });
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Apply Maps Links
+     * ---------------------------------------------------------
+     */
+
+    function applyMapsLinks() {
+        const mapsUrl =
+            getSocialUrl("Google Maps") ||
+            getNestedValue(companyData, "googleMaps") ||
+            getNestedValue(companyData, "maps") ||
+            getNestedValue(companyData, "contact.googleMaps") ||
+            "";
+
+        if (!mapsUrl) return;
+
+        $all(
+            '[data-contact="maps"], [data-company-maps], a[href*="google.com/maps"]'
+        ).forEach((element) => {
+            element.setAttribute("href", mapsUrl);
+            element.setAttribute("target", "_blank");
+            element.setAttribute("rel", "noopener noreferrer");
+        });
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Apply Social Links
+     * ---------------------------------------------------------
+     */
+
+    function applySocialLinks() {
+        const socialMap = {
+            facebook: "Facebook",
+            youtube: "YouTube",
+            tiktok: "TikTok",
+            x: "X",
+            twitter: "X",
+            instagram: "Instagram",
+            linkedin: "LinkedIn",
+            whatsapp: "WhatsApp",
+            googlemaps: "Google Maps",
+            "google-maps": "Google Maps",
+            website: "Website",
+            other: "Other"
+        };
+
+        $all("[data-social]").forEach((element) => {
+            const key = safeText(
+                element.getAttribute("data-social")
+            ).toLowerCase();
+
+            const platform = socialMap[key];
+
+            if (!platform) return;
+
+            const url = getSocialUrl(platform);
+
+            if (!url) {
+                element.style.display = "none";
+                return;
+            }
+
+            element.setAttribute("href", url);
+
+            if (!url.startsWith("tel:")) {
+                element.setAttribute("target", "_blank");
+                element.setAttribute(
+                    "rel",
+                    "noopener noreferrer"
+                );
+            }
+
+            element.style.display = "";
+        });
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Generic Contact Elements
+     * ---------------------------------------------------------
+     */
+
+    function applyGenericContactElements() {
+        $all("[data-contact-value]").forEach((element) => {
+            const type = safeText(
+                element.getAttribute("data-contact-value")
+            ).toLowerCase();
+
+            switch (type) {
+                case "company":
+                case "company-name":
+                    element.textContent = getCompanyName();
+                    break;
+
+                case "arabic-company":
+                case "arabic-company-name":
+                    element.textContent = getArabicCompanyName();
+                    break;
+
+                case "country":
+                    element.textContent = getCountry();
+                    break;
+
+                case "phone":
+                    element.textContent = getPhone();
+                    break;
+
+                case "whatsapp":
+                    element.textContent = getWhatsApp();
+                    break;
+
+                case "email":
+                    element.textContent = getEmail();
+                    break;
+
+                default:
+                    break;
+            }
+        });
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Contact Visibility
+     * ---------------------------------------------------------
+     */
+
+    function applyContactVisibility() {
+        const phone = getPhone();
+        const whatsapp = getWhatsApp();
+        const email = getEmail();
+
+        $all("[data-show-if-contact]").forEach((element) => {
+            const type = safeText(
+                element.getAttribute("data-show-if-contact")
+            ).toLowerCase();
+
+            let available = false;
+
+            if (type === "phone") {
+                available = Boolean(phone);
+            } else if (type === "whatsapp") {
+                available = Boolean(whatsapp);
+            } else if (type === "email") {
+                available = Boolean(email);
+            } else if (type === "maps") {
+                available = Boolean(getSocialUrl("Google Maps"));
+            }
+
+            element.style.display = available ? "" : "none";
+        });
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Dispatch Public Contact Update Event
+     * ---------------------------------------------------------
+     */
+
+    function dispatchContactUpdate() {
         document.dispatchEvent(
-          new CustomEvent(
-            "alDahayanContactError",
-            {
-              detail: {
+            new CustomEvent("alDahayanContactUpdated", {
+                detail: {
+                    company: {
+                        name: getCompanyName(),
+                        arabicName: getArabicCompanyName(),
+                        country: getCountry()
+                    },
+                    contact: {
+                        phone: getPhone(),
+                        whatsapp: getWhatsApp(),
+                        email: getEmail()
+                    },
+                    social: socialChannels
+                }
+            })
+        );
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Main Apply Function
+     * ---------------------------------------------------------
+     */
+
+    function applyContactSettings() {
+        loadEffectiveConfig();
+        loadSocialChannels();
+
+        applyTextContent();
+        applyPhoneLinks();
+        applyEmailLinks();
+        applyWhatsAppLinks();
+        applyMapsLinks();
+        applySocialLinks();
+        applyGenericContactElements();
+        applyContactVisibility();
+
+        dispatchContactUpdate();
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Initialize
+     * ---------------------------------------------------------
+     */
+
+    async function init() {
+        try {
+            await loadCompanyData();
+            applyContactSettings();
+
+            document.dispatchEvent(
+                new CustomEvent("alDahayanContactReady")
+            );
+        } catch (error) {
+            console.error(
+                "Al-Dahayan contact system initialization failed:",
                 error
-              }
-            }
-          )
+            );
+        }
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Refresh
+     * ---------------------------------------------------------
+     */
+
+    function refresh() {
+        applyContactSettings();
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Public API
+     * ---------------------------------------------------------
+     */
+
+    window.AlDahayanContact = {
+        init,
+        refresh,
+
+        getCompanyName,
+        getArabicCompanyName,
+        getCountry,
+
+        getPhone,
+        getWhatsApp,
+        getEmail,
+
+        getSocialChannel,
+        getSocialUrl,
+
+        getCompanyData: function () {
+            return companyData;
+        },
+
+        getSocialChannels: function () {
+            return [...socialChannels];
+        }
+    };
+
+    /**
+     * ---------------------------------------------------------
+     * Auto Initialize
+     * ---------------------------------------------------------
+     */
+
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            init,
+            { once: true }
         );
-      });
-  }
-
-  window.AlDahayanContact = {
-    init:
-      initializeContact,
-
-    load:
-      loadCompanyData,
-
-    getCompany:
-      getCompanyInfo,
-
-    refresh:
-      applyCompanyData
-  };
-
-  window.initializeContact =
-    initializeContact;
-
-  document.addEventListener(
-    "DOMContentLoaded",
-    initializeContact
-  );
+    } else {
+        init();
+    }
 
 })();
