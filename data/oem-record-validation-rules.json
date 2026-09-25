@@ -1,0 +1,239 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level validation rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "enabled": true,
+  "validationStages": [
+    "create",
+    "update",
+    "import",
+    "publish",
+    "bulk_operation"
+  ],
+  "requiredFields": [
+    "id",
+    "oemNumber",
+    "partName",
+    "brand",
+    "category",
+    "status",
+    "verificationLevel",
+    "createdAt",
+    "updatedAt"
+  ],
+  "fieldValidation": {
+    "id": {
+      "required": true,
+      "type": "string",
+      "trimWhitespace": true,
+      "mustBeUnique": true
+    },
+    "oemNumber": {
+      "required": true,
+      "type": "string",
+      "trimWhitespace": true,
+      "minimumLength": 3,
+      "maximumLength": 50,
+      "mustBeUnique": true,
+      "normalizeForComparison": true,
+      "preserveOriginalValue": true
+    },
+    "partName": {
+      "required": true,
+      "type": "string",
+      "minimumLength": 2,
+      "maximumLength": 200,
+      "trimWhitespace": true
+    },
+    "arabicName": {
+      "required": false,
+      "type": "string",
+      "maximumLength": 200,
+      "preserveArabicText": true
+    },
+    "brand": {
+      "required": true,
+      "allowedValues": [
+        "Toyota",
+        "Lexus"
+      ]
+    },
+    "category": {
+      "required": true,
+      "type": "string",
+      "minimumLength": 2,
+      "maximumLength": 100
+    },
+    "subcategory": {
+      "required": false,
+      "type": "string",
+      "maximumLength": 100
+    },
+    "description": {
+      "required": false,
+      "type": "string",
+      "maximumLength": 2000
+    },
+    "arabicDescription": {
+      "required": false,
+      "type": "string",
+      "maximumLength": 2000,
+      "preserveArabicText": true
+    },
+    "models": {
+      "required": false,
+      "type": "array",
+      "removeDuplicateValues": true
+    },
+    "modelYears": {
+      "required": false,
+      "type": "array",
+      "itemsMustBeInteger": true,
+      "minimumYear": 1950,
+      "maximumYear": 2100,
+      "removeDuplicateValues": true
+    },
+    "engineCodes": {
+      "required": false,
+      "type": "array",
+      "removeDuplicateValues": true
+    },
+    "bodyTypes": {
+      "required": false,
+      "type": "array",
+      "removeDuplicateValues": true
+    },
+    "marketSpecs": {
+      "required": false,
+      "type": "array",
+      "removeDuplicateValues": true
+    },
+    "compatibleOemNumbers": {
+      "required": false,
+      "type": "array",
+      "normalizeValues": true,
+      "removeDuplicateValues": true
+    },
+    "supersededOemNumbers": {
+      "required": false,
+      "type": "array",
+      "normalizeValues": true,
+      "removeDuplicateValues": true
+    },
+    "condition": {
+      "required": false,
+      "allowedValues": [
+        "new",
+        "used",
+        "refurbished",
+        "unknown"
+      ]
+    },
+    "genuine": {
+      "required": false,
+      "type": "boolean"
+    },
+    "aftermarket": {
+      "required": false,
+      "type": "boolean"
+    },
+    "regularPrice": {
+      "required": false,
+      "type": "number",
+      "minimum": 0
+    },
+    "salePrice": {
+      "required": false,
+      "type": "number",
+      "minimum": 0
+    },
+    "discountPercent": {
+      "required": false,
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "currency": {
+      "required": false,
+      "allowedValues": [
+        "SAR"
+      ]
+    },
+    "stockStatus": {
+      "required": false,
+      "allowedValues": [
+        "in_stock",
+        "low_stock",
+        "out_of_stock",
+        "on_order",
+        "unknown"
+      ]
+    },
+    "quantity": {
+      "required": false,
+      "type": "integer",
+      "minimum": 0
+    },
+    "locationIds": {
+      "required": false,
+      "type": "array",
+      "removeDuplicateValues": true
+    },
+    "status": {
+      "required": true,
+      "allowedValues": [
+        "draft",
+        "active",
+        "archived",
+        "disabled"
+      ]
+    },
+    "verificationLevel": {
+      "required": true,
+      "allowedValues": [
+        "unverified",
+        "reviewed",
+        "verified"
+      ]
+    },
+    "verificationSource": {
+      "required": false,
+      "type": "string",
+      "maximumLength": 500
+    }
+  },
+  "crossFieldRules": {
+    "salePriceCannotExceedRegularPrice": true,
+    "discountPercentMustBeBetweenZeroAndHundred": true,
+    "verifiedRequiresVerificationSource": true,
+    "activeRequiresOemNumber": true,
+    "activeRequiresPartName": true,
+    "activeRequiresBrand": true,
+    "activeRequiresCategory": true,
+    "quantityCannotBeNegative": true
+  },
+  "duplicateValidation": {
+    "enabled": true,
+    "checkOemNumber": true,
+    "checkNormalizedOemNumber": true,
+    "checkWithinOperation": true,
+    "checkAgainstCatalog": true,
+    "blockConfirmedDuplicates": true,
+    "reviewPossibleDuplicates": true
+  },
+  "result": {
+    "showErrors": true,
+    "showWarnings": true,
+    "showAffectedFields": true,
+    "showValidationSummary": true,
+    "generateValidationReport": true
+  },
+  "safety": {
+    "neverSilentlyCorrectOemNumber": true,
+    "neverSilentlyChangeBrand": true,
+    "neverAutomaticallyMarkVerified": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "preserveOriginalImportedValues": true,
+    "preserveArabicText": true
+  }
+}
