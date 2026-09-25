@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Request tracing and correlation configuration for the public Toyota and Lexus OEM catalog API.",
+  "enabled": true,
+
+  "requestId": {
+    "enabled": true,
+    "header": "X-Request-ID",
+    "generateWhenMissing": true,
+    "preserveValidClientRequestId": true,
+    "maximumLength": 128
+  },
+
+  "correlation": {
+    "enabled": true,
+    "header": "X-Correlation-ID",
+    "generateWhenMissing": true,
+    "linkRelatedRequests": true
+  },
+
+  "response": {
+    "includeRequestId": true,
+    "includeCorrelationId": true,
+    "includeTimestamp": true,
+    "includeApiVersion": true
+  },
+
+  "logging": {
+    "includeRequestId": true,
+    "includeCorrelationId": true,
+    "includeEndpoint": true,
+    "includeHttpMethod": true,
+    "includeResponseStatus": true,
+    "includeProcessingTime": true,
+    "neverLogPasswords": true,
+    "neverLogApiSecrets": true,
+    "neverLogCustomerSensitiveData": true
+  },
+
+  "security": {
+    "sanitizeRequestId": true,
+    "rejectInvalidRequestId": true,
+    "preventHeaderInjection": true,
+    "neverExposeInternalTraceData": true
+  },
+
+  "performance": {
+    "measureProcessingTime": true,
+    "unit": "milliseconds"
+  },
+
+  "errors": {
+    "includeRequestIdForClientSupport": true,
+    "includeSafeErrorCode": true,
+    "hideInternalTraceDetails": true
+  },
+
+  "languages": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en"
+  }
+}
