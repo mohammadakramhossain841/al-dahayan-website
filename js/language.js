@@ -79,6 +79,13 @@
       dashboard: "Dashboard",
       enabled: "Enabled",
       disabled: "Disabled",
+      source: "Source",
+      priority: "Priority",
+      type: "Type",
+      filter: "Filter",
+      clear: "Clear",
+      refresh: "Refresh",
+      closeAll: "Close All",
 
       /* =====================================
          Company
@@ -290,6 +297,12 @@
       vinFoundationNotice:
         "VIN search is currently a foundation feature and may require additional verification for exact vehicle configuration.",
 
+      vinNotVerified:
+        "Vehicle could not be verified.",
+
+      compatibilityNotVerified:
+        "Compatibility could not be verified.",
+
       /* =====================================
          Inventory
       ===================================== */
@@ -330,6 +343,9 @@
       quantity:
         "Quantity",
 
+      stockQuantity:
+        "Stock Quantity",
+
       availableQuantity:
         "Available Quantity",
 
@@ -369,6 +385,36 @@
       unverifiedStock:
         "Unverified Stock",
 
+      stockVerification:
+        "Stock Verification",
+
+      availabilityUnknown:
+        "Availability Unknown",
+
+      exactQuantityHidden:
+        "Exact quantity is not displayed.",
+
+      stockVerified:
+        "Verified",
+
+      stockNotVerified:
+        "Not Verified",
+
+      verificationRequired:
+        "Verification Required",
+
+      stockMode:
+        "Stock Mode",
+
+      automatic:
+        "Automatic",
+
+      manual:
+        "Manual",
+
+      manualStatus:
+        "Manual Status",
+
       /* =====================================
          Price
       ===================================== */
@@ -384,6 +430,9 @@
 
       askForPrice:
         "Ask for Price",
+
+      priceVerificationRequired:
+        "Price verification required",
 
       /* =====================================
          Services
@@ -543,11 +592,51 @@
       cancelled:
         "Cancelled",
 
+      closed:
+        "Closed",
+
+      awaitingCustomer:
+        "Awaiting Customer",
+
       noResponse:
         "No Response",
 
       followUpRequired:
         "Follow-up Required",
+
+      replied:
+        "Replied",
+
+      notContacted:
+        "Not Contacted",
+
+      /* Inquiry Sources */
+
+      website:
+        "Website",
+
+      aiAssistantSource:
+        "AI Assistant",
+
+      whatsappSource:
+        "WhatsApp",
+
+      otherSource:
+        "Other",
+
+      /* Priorities */
+
+      lowPriority:
+        "Low",
+
+      normalPriority:
+        "Normal",
+
+      highPriority:
+        "High",
+
+      urgentPriority:
+        "Urgent",
 
       /* =====================================
          Contact
@@ -625,6 +714,15 @@
 
       salesBranch:
         "Sales Branch",
+
+      branchActive:
+        "Active Branch",
+
+      branchInactive:
+        "Inactive Branch",
+
+      branchDeactivated:
+        "Branch Deactivated",
 
       /* =====================================
          Breadcrumb
@@ -757,6 +855,18 @@
       aiCustomerLocationDisabled:
         "Customer location collection is not required.",
 
+      aiBranchRecommendationDisabled:
+        "Proactive branch recommendations are disabled.",
+
+      aiUnverifiedPriceDisabled:
+        "Unverified price information cannot be provided.",
+
+      aiUnverifiedCompanyFactsDisabled:
+        "Unverified company information cannot be provided.",
+
+      aiHumanHandover:
+        "A team member can confirm the details.",
+
       /* =====================================
          Admin Panel
       ===================================== */
@@ -788,7 +898,7 @@
       inventoryAlerts:
         "Inventory Alerts",
 
-      /* Admin sections */
+      /* Admin Sections */
 
       adminInventory:
         "Inventory",
@@ -814,7 +924,15 @@
       adminSettings:
         "Website Settings",
 
-      /* Admin inventory */
+      adminPayment:
+        "Payment",
+
+      adminAudit:
+        "Audit History",
+
+      /* =====================================
+         Admin Inventory
+      ===================================== */
 
       addPart:
         "Add Part",
@@ -827,9 +945,6 @@
 
       updateStock:
         "Update Stock",
-
-      stockQuantity:
-        "Stock Quantity",
 
       stockMode:
         "Stock Mode",
@@ -867,7 +982,39 @@
       changedAt:
         "Changed At",
 
-      /* Admin inquiry */
+      activateRecord:
+        "Activate Record",
+
+      deactivateRecord:
+        "Deactivate Record",
+
+      onRequestStatus:
+        "On Request",
+
+      automaticStockCalculation:
+        "Automatic Stock Calculation",
+
+      lowStockThreshold:
+        "Low Stock Threshold",
+
+      exactQuantityDisplay:
+        "Exact Quantity Display",
+
+      exactQuantityDisplayEnabled:
+        "Exact quantity display enabled",
+
+      exactQuantityDisplayDisabled:
+        "Exact quantity display disabled",
+
+      branchId:
+        "Branch ID",
+
+      partId:
+        "Part ID",
+
+      /* =====================================
+         Admin Inquiry
+      ===================================== */
 
       pendingFollowUps:
         "Pending Follow-ups",
@@ -899,7 +1046,24 @@
       markCompleted:
         "Mark Completed",
 
-      /* Admin AI */
+      quotation:
+        "Quotation",
+
+      quotationPending:
+        "Quotation Pending",
+
+      quotationSent:
+        "Quotation Sent",
+
+      quotationAccepted:
+        "Quotation Accepted",
+
+      quotationRejected:
+        "Quotation Rejected",
+
+      /* =====================================
+         Admin AI
+      ===================================== */
 
       aiSettings:
         "AI Settings",
@@ -928,7 +1092,24 @@
       proactiveBranchRecommendation:
         "Proactive Branch Recommendation",
 
-      /* Admin social */
+      verifiedDataOnly:
+        "Verified Data Only",
+
+      allowUnverifiedStock:
+        "Allow Unverified Stock",
+
+      allowUnverifiedPrice:
+        "Allow Unverified Price",
+
+      allowUnverifiedCompanyFacts:
+        "Allow Unverified Company Facts",
+
+      humanHandover:
+        "Human Handover",
+
+      /* =====================================
+         Admin Social
+      ===================================== */
 
       socialMedia:
         "Social Media",
@@ -948,7 +1129,33 @@
       activeChannel:
         "Active Channel",
 
-      /* Admin settings */
+      inactiveChannel:
+        "Inactive Channel",
+
+      facebook:
+        "Facebook",
+
+      youtube:
+        "YouTube",
+
+      tiktok:
+        "TikTok",
+
+      x:
+        "X",
+
+      instagram:
+        "Instagram",
+
+      linkedin:
+        "LinkedIn",
+
+      googleMaps:
+        "Google Maps",
+
+      /* =====================================
+         Admin Settings
+      ===================================== */
 
       websiteSettings:
         "Website Settings",
@@ -965,8 +1172,26 @@
       featureSettings:
         "Feature Settings",
 
+      inventorySettings:
+        "Inventory Settings",
+
+      aiSettingsSection:
+        "AI Settings",
+
+      branchSettings:
+        "Branch Settings",
+
+      socialSettings:
+        "Social Settings",
+
       paymentSettings:
         "Payment Settings",
+
+      apiSettings:
+        "API Settings",
+
+      securitySettings:
+        "Security Settings",
 
       paymentSystem:
         "Payment System",
@@ -985,6 +1210,105 @@
 
       paymentCurrentlyDisabled:
         "Online payment is currently disabled.",
+
+      currencySAR:
+        "Saudi Riyal (SAR)",
+
+      /* =====================================
+         Roles / Permissions
+      ===================================== */
+
+      roles:
+        "Roles",
+
+      permissions:
+        "Permissions",
+
+      superAdmin:
+        "Super Admin",
+
+      inventoryManager:
+        "Inventory Manager",
+
+      staff:
+        "Staff",
+
+      viewOnly:
+        "View Only",
+
+      fullAccess:
+        "Full Access",
+
+      inventoryAccess:
+        "Inventory Access",
+
+      inquiryAccess:
+        "Inquiry Access",
+
+      branchAccess:
+        "Branch Access",
+
+      settingsAccess:
+        "Settings Access",
+
+      /* =====================================
+         API / Backend
+      ===================================== */
+
+      api:
+        "API",
+
+      backend:
+        "Backend",
+
+      apiVersion:
+        "API Version",
+
+      backendConnected:
+        "Backend Connected",
+
+      backendDisconnected:
+        "Backend Disconnected",
+
+      localData:
+        "Local Data",
+
+      production:
+        "Production",
+
+      development:
+        "Development",
+
+      /* =====================================
+         Security / Privacy
+      ===================================== */
+
+      security:
+        "Security",
+
+      privacy:
+        "Privacy",
+
+      verifiedData:
+        "Verified Data",
+
+      unverifiedData:
+        "Unverified Data",
+
+      customerLocation:
+        "Customer Location",
+
+      customerLocationNotCollected:
+        "Customer location is not collected.",
+
+      customerLocationDisabled:
+        "Customer location collection is disabled.",
+
+      secureInformation:
+        "Secure Information",
+
+      dataProtection:
+        "Data Protection",
 
       /* =====================================
          Empty / Error
@@ -1008,6 +1332,12 @@
       noInquiriesFound:
         "No inquiries found.",
 
+      noSocialChannels:
+        "No social channels configured.",
+
+      noData:
+        "No data available.",
+
       dataLoading:
         "Loading data...",
 
@@ -1022,6 +1352,12 @@
 
       saveError:
         "Unable to save changes.",
+
+      deleteSuccess:
+        "Deleted successfully.",
+
+      operationCancelled:
+        "Operation cancelled.",
 
       /* =====================================
          Modal / Loading
@@ -1045,6 +1381,12 @@
 
       menu:
         "Menu",
+
+      expand:
+        "Expand",
+
+      collapse:
+        "Collapse",
 
       /* =====================================
          SEO / Page Titles
@@ -1140,6 +1482,13 @@
       dashboard: "لوحة التحكم",
       enabled: "مفعّل",
       disabled: "معطّل",
+      source: "المصدر",
+      priority: "الأولوية",
+      type: "النوع",
+      filter: "تصفية",
+      clear: "مسح",
+      refresh: "تحديث",
+      closeAll: "إغلاق الكل",
 
       /* Company */
 
@@ -1339,6 +1688,12 @@
       vinFoundationNotice:
         "بحث VIN هو حالياً ميزة أساسية وقد يتطلب التحقق الإضافي لتحديد مواصفات المركبة بدقة.",
 
+      vinNotVerified:
+        "تعذر التحقق من المركبة.",
+
+      compatibilityNotVerified:
+        "تعذر التحقق من التوافق.",
+
       /* Inventory */
 
       inventoryTitle:
@@ -1376,6 +1731,9 @@
 
       quantity:
         "الكمية",
+
+      stockQuantity:
+        "كمية المخزون",
 
       availableQuantity:
         "الكمية المتوفرة",
@@ -1416,6 +1774,36 @@
       unverifiedStock:
         "مخزون غير موثّق",
 
+      stockVerification:
+        "التحقق من المخزون",
+
+      availabilityUnknown:
+        "التوفر غير معروف",
+
+      exactQuantityHidden:
+        "لا يتم عرض الكمية الدقيقة.",
+
+      stockVerified:
+        "موثّق",
+
+      stockNotVerified:
+        "غير موثّق",
+
+      verificationRequired:
+        "التحقق مطلوب",
+
+      stockMode:
+        "وضع المخزون",
+
+      automatic:
+        "تلقائي",
+
+      manual:
+        "يدوي",
+
+      manualStatus:
+        "الحالة اليدوية",
+
       /* Price */
 
       price:
@@ -1429,6 +1817,9 @@
 
       askForPrice:
         "طلب السعر",
+
+      priceVerificationRequired:
+        "يلزم التحقق من السعر",
 
       /* Services */
 
@@ -1584,11 +1975,51 @@
       cancelled:
         "ملغى",
 
+      closed:
+        "مغلق",
+
+      awaitingCustomer:
+        "بانتظار العميل",
+
       noResponse:
         "لا يوجد رد",
 
       followUpRequired:
         "تحتاج إلى متابعة",
+
+      replied:
+        "تم الرد",
+
+      notContacted:
+        "لم يتم التواصل",
+
+      /* Sources */
+
+      website:
+        "الموقع الإلكتروني",
+
+      aiAssistantSource:
+        "المساعد الذكي",
+
+      whatsappSource:
+        "واتساب",
+
+      otherSource:
+        "أخرى",
+
+      /* Priorities */
+
+      lowPriority:
+        "منخفضة",
+
+      normalPriority:
+        "عادية",
+
+      highPriority:
+        "مرتفعة",
+
+      urgentPriority:
+        "عاجلة",
 
       /* Contact */
 
@@ -1662,6 +2093,15 @@
 
       salesBranch:
         "فرع المبيعات",
+
+      branchActive:
+        "فرع نشط",
+
+      branchInactive:
+        "فرع غير نشط",
+
+      branchDeactivated:
+        "تم تعطيل الفرع",
 
       /* Breadcrumb */
 
@@ -1784,6 +2224,18 @@
       aiCustomerLocationDisabled:
         "لا يلزم جمع موقع العميل.",
 
+      aiBranchRecommendationDisabled:
+        "اقتراح الفروع بشكل استباقي معطّل.",
+
+      aiUnverifiedPriceDisabled:
+        "لا يمكن تقديم معلومات سعر غير موثقة.",
+
+      aiUnverifiedCompanyFactsDisabled:
+        "لا يمكن تقديم معلومات غير موثقة عن الشركة.",
+
+      aiHumanHandover:
+        "يمكن لأحد أعضاء الفريق تأكيد التفاصيل.",
+
       /* Admin */
 
       adminPanel:
@@ -1837,7 +2289,13 @@
       adminSettings:
         "إعدادات الموقع",
 
-      /* Admin inventory */
+      adminPayment:
+        "الدفع",
+
+      adminAudit:
+        "سجل التدقيق",
+
+      /* Admin Inventory */
 
       addPart:
         "إضافة قطعة",
@@ -1850,9 +2308,6 @@
 
       updateStock:
         "تحديث المخزون",
-
-      stockQuantity:
-        "كمية المخزون",
 
       stockMode:
         "وضع المخزون",
@@ -1890,7 +2345,37 @@
       changedAt:
         "وقت التغيير",
 
-      /* Admin inquiry */
+      activateRecord:
+        "تفعيل السجل",
+
+      deactivateRecord:
+        "تعطيل السجل",
+
+      onRequestStatus:
+        "عند الطلب",
+
+      automaticStockCalculation:
+        "الحساب التلقائي للمخزون",
+
+      lowStockThreshold:
+        "حد المخزون المنخفض",
+
+      exactQuantityDisplay:
+        "عرض الكمية الدقيقة",
+
+      exactQuantityDisplayEnabled:
+        "عرض الكمية الدقيقة مفعّل",
+
+      exactQuantityDisplayDisabled:
+        "عرض الكمية الدقيقة معطّل",
+
+      branchId:
+        "معرّف الفرع",
+
+      partId:
+        "معرّف القطعة",
+
+      /* Admin Inquiry */
 
       pendingFollowUps:
         "المتابعات المعلقة",
@@ -1922,6 +2407,21 @@
       markCompleted:
         "تحديد كمكتمل",
 
+      quotation:
+        "عرض السعر",
+
+      quotationPending:
+        "عرض السعر قيد الانتظار",
+
+      quotationSent:
+        "تم إرسال عرض السعر",
+
+      quotationAccepted:
+        "تم قبول عرض السعر",
+
+      quotationRejected:
+        "تم رفض عرض السعر",
+
       /* Admin AI */
 
       aiSettings:
@@ -1951,7 +2451,22 @@
       proactiveBranchRecommendation:
         "اقتراح الفروع بشكل استباقي",
 
-      /* Admin social */
+      verifiedDataOnly:
+        "البيانات الموثقة فقط",
+
+      allowUnverifiedStock:
+        "السماح بالمخزون غير الموثق",
+
+      allowUnverifiedPrice:
+        "السماح بالسعر غير الموثق",
+
+      allowUnverifiedCompanyFacts:
+        "السماح بمعلومات الشركة غير الموثقة",
+
+      humanHandover:
+        "التحويل إلى الموظف",
+
+      /* Social */
 
       socialMedia:
         "وسائل التواصل الاجتماعي",
@@ -1971,7 +2486,31 @@
       activeChannel:
         "قناة نشطة",
 
-      /* Admin settings */
+      inactiveChannel:
+        "قناة غير نشطة",
+
+      facebook:
+        "Facebook",
+
+      youtube:
+        "YouTube",
+
+      tiktok:
+        "TikTok",
+
+      x:
+        "X",
+
+      instagram:
+        "Instagram",
+
+      linkedin:
+        "LinkedIn",
+
+      googleMaps:
+        "خرائط Google",
+
+      /* Settings */
 
       websiteSettings:
         "إعدادات الموقع",
@@ -1988,8 +2527,26 @@
       featureSettings:
         "إعدادات الميزات",
 
+      inventorySettings:
+        "إعدادات المخزون",
+
+      aiSettingsSection:
+        "إعدادات المساعد الذكي",
+
+      branchSettings:
+        "إعدادات الفروع",
+
+      socialSettings:
+        "إعدادات التواصل الاجتماعي",
+
       paymentSettings:
         "إعدادات الدفع",
+
+      apiSettings:
+        "إعدادات API",
+
+      securitySettings:
+        "إعدادات الأمان",
 
       paymentSystem:
         "نظام الدفع",
@@ -2008,6 +2565,99 @@
 
       paymentCurrentlyDisabled:
         "الدفع الإلكتروني معطّل حالياً.",
+
+      currencySAR:
+        "الريال السعودي (SAR)",
+
+      /* Roles */
+
+      roles:
+        "الأدوار",
+
+      permissions:
+        "الصلاحيات",
+
+      superAdmin:
+        "مدير النظام",
+
+      inventoryManager:
+        "مدير المخزون",
+
+      staff:
+        "الموظف",
+
+      viewOnly:
+        "عرض فقط",
+
+      fullAccess:
+        "صلاحية كاملة",
+
+      inventoryAccess:
+        "صلاحية المخزون",
+
+      inquiryAccess:
+        "صلاحية الاستفسارات",
+
+      branchAccess:
+        "صلاحية الفروع",
+
+      settingsAccess:
+        "صلاحية الإعدادات",
+
+      /* API */
+
+      api:
+        "API",
+
+      backend:
+        "الخلفية البرمجية",
+
+      apiVersion:
+        "إصدار API",
+
+      backendConnected:
+        "الخلفية البرمجية متصلة",
+
+      backendDisconnected:
+        "الخلفية البرمجية غير متصلة",
+
+      localData:
+        "البيانات المحلية",
+
+      production:
+        "الإنتاج",
+
+      development:
+        "التطوير",
+
+      /* Security */
+
+      security:
+        "الأمان",
+
+      privacy:
+        "الخصوصية",
+
+      verifiedData:
+        "بيانات موثقة",
+
+      unverifiedData:
+        "بيانات غير موثقة",
+
+      customerLocation:
+        "موقع العميل",
+
+      customerLocationNotCollected:
+        "لا يتم جمع موقع العميل.",
+
+      customerLocationDisabled:
+        "جمع موقع العميل معطّل.",
+
+      secureInformation:
+        "معلومات آمنة",
+
+      dataProtection:
+        "حماية البيانات",
 
       /* Empty / Error */
 
@@ -2029,6 +2679,12 @@
       noInquiriesFound:
         "لم يتم العثور على استفسارات.",
 
+      noSocialChannels:
+        "لم يتم إعداد قنوات التواصل الاجتماعي.",
+
+      noData:
+        "لا توجد بيانات متاحة.",
+
       dataLoading:
         "جارٍ تحميل البيانات...",
 
@@ -2043,6 +2699,12 @@
 
       saveError:
         "تعذر حفظ التغييرات.",
+
+      deleteSuccess:
+        "تم الحذف بنجاح.",
+
+      operationCancelled:
+        "تم إلغاء العملية.",
 
       /* Modal */
 
@@ -2062,6 +2724,12 @@
 
       menu:
         "القائمة",
+
+      expand:
+        "توسيع",
+
+      collapse:
+        "طي",
 
       /* Page Titles */
 
@@ -2564,9 +3232,7 @@
         language
       );
     } catch (error) {
-      console.warn(
-        "Al-Dahayan Language: unable to save language preference."
-      );
+      /* Storage may be unavailable. */
     }
 
     document.dispatchEvent(
@@ -2655,7 +3321,19 @@
      SWITCHER EVENTS
   ========================================= */
 
+  let switcherEventsInitialized =
+    false;
+
   function initializeLanguageSwitcher() {
+    if (
+      switcherEventsInitialized
+    ) {
+      return;
+    }
+
+    switcherEventsInitialized =
+      true;
+
     document.addEventListener(
       "click",
       function (event) {
@@ -2711,7 +3389,19 @@
      COMPONENT SYNC
   ========================================= */
 
+  let componentSyncInitialized =
+    false;
+
   function initializeComponentLanguageSync() {
+    if (
+      componentSyncInitialized
+    ) {
+      return;
+    }
+
+    componentSyncInitialized =
+      true;
+
     document.addEventListener(
       "alDahayanComponentsLoaded",
       function () {
@@ -2726,7 +3416,19 @@
      CONFIG SYNC
   ========================================= */
 
+  let configSyncInitialized =
+    false;
+
   function initializeConfigLanguageSync() {
+    if (
+      configSyncInitialized
+    ) {
+      return;
+    }
+
+    configSyncInitialized =
+      true;
+
     document.addEventListener(
       "alDahayanConfigUpdated",
       function () {
