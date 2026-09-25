@@ -1,1 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <title>
+        Customer Inquiries | Al-Dahayan Trading Company
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================================
+         ADMIN HEADER
+         ========================================= -->
+
+    <header class="site-header">
+
+        <div class="container">
+
+            <div class="header-inner">
+
+                <a
+                    href="dashboard.html"
+                    class="logo"
+                    aria-label="Al-Dahayan Admin Dashboard"
+                >
+                    <img
+                        src="../assets/images/al-dahayan-logo.png"
+                        alt="Al-Dahayan Trading Company"
+                    >
+                </a>
+
+                <div class="admin-header-title">
+                    <span>Administration</span>
+                    <strong>Customer Inquiries</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+         ========================================= -->
+
+    <main class="admin-dashboard">
+
+        <div class="container">
+
+            <!-- Page Heading -->
+
+            <section class="admin-page-heading">
+
+                <span class="admin-eyebrow">
+                    Admin Panel
+                </span>
+
+                <h1>
+                    Customer Inquiries
+                </h1>
+
+                <p>
+                    Manage customer inquiries, communication status,
+                    follow-ups, quotations, and completed requests.
+                </p>
+
+            </section>
+
+
+            <!-- =====================================
+                 INQUIRY SUMMARY
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <h2>
+                        Inquiry Overview
+                    </h2>
+
+                </div>
+
+
+                <div class="admin-stat-grid">
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            New
+                        </span>
+
+                        <strong id="newCount">
+                            0
+                        </strong>
+
+                        <small>
+                            New inquiries
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            In Progress
+                        </span>
+
+                        <strong id="progressCount">
+                            0
+                        </strong>
+
+                        <small>
+                            Active requests
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            Quoted
+                        </span>
+
+                        <strong id="quotedCount">
+                            0
+                        </strong>
+
+                        <small>
+                            Quotation stage
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            Completed
+                        </span>
+
+                        <strong id="completedCount">
+                            0
+                        </strong>
+
+                        <small>
+                            Completed inquiries
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            Follow-up
+                        </span>
+
+                        <strong id="followUpCount">
+                            0
+                        </strong>
+
+                        <small>
+                            Follow-up required
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 SEARCH & FILTERS
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <h2>
+                        Inquiry Records
+                    </h2>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="refreshButton"
+                    >
+                        Refresh
+                    </button>
+
+                </div>
+
+
+                <div class="admin-table-container">
+
+                    <div
+                        style="
+                            padding:24px;
+                            display:grid;
+                            gap:16px;
+                        "
+                    >
+
+                        <!-- Search -->
+
+                        <div>
+
+                            <label
+                                for="inquirySearch"
+                                style="
+                                    display:block;
+                                    margin-bottom:7px;
+                                    font-weight:700;
+                                "
+                            >
+                                Search
+                            </label>
+
+                            <input
+                                type="search"
+                                id="inquirySearch"
+                                class="form-control"
+                                placeholder="Search customer, WhatsApp, OEM, Part ID..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <!-- Filters -->
+
+                        <div
+                            style="
+                                display:grid;
+                                grid-template-columns:
+                                repeat(4,minmax(0,1fr));
+                                gap:16px;
+                            "
+                        >
+
+                            <div>
+
+                                <label
+                                    for="statusFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Inquiry Status
+                                </label>
+
+                                <select
+                                    id="statusFilter"
+                                    class="form-control"
+                                >
+
+                                    <option value="">
+                                        All Status
+                                    </option>
+
+                                    <option value="new">
+                                        New
+                                    </option>
+
+                                    <option value="contacted">
+                                        Contacted
+                                    </option>
+
+                                    <option value="in_progress">
+                                        In Progress
+                                    </option>
+
+                                    <option value="quoted">
+                                        Quoted
+                                    </option>
+
+                                    <option value="completed">
+                                        Completed
+                                    </option>
+
+                                    <option value="cancelled">
+                                        Cancelled
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div>
+
+                                <label
+                                    for="communicationFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Communication
+                                </label>
+
+                                <select
+                                    id="communicationFilter"
+                                    class="form-control"
+                                >
+
+                                    <option value="">
+                                        All Communication
+                                    </option>
+
+                                    <option value="not_contacted">
+                                        Not Contacted
+                                    </option>
+
+                                    <option value="contacted">
+                                        Contacted
+                                    </option>
+
+                                    <option value="replied">
+                                        Replied
+                                    </option>
+
+                                    <option value="follow_up_required">
+                                        Follow-up Required
+                                    </option>
+
+                                    <option value="completed">
+                                        Completed
+                                    </option>
+
+                                    <option value="no_response">
+                                        No Response
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div>
+
+                                <label
+                                    for="sourceFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Source
+                                </label>
+
+                                <select
+                                    id="sourceFilter"
+                                    class="form-control"
+                                >
+
+                                    <option value="">
+                                        All Sources
+                                    </option>
+
+                                    <option value="website">
+                                        Website
+                                    </option>
+
+                                    <option value="ai_assistant">
+                                        AI Assistant
+                                    </option>
+
+                                    <option value="whatsapp">
+                                        WhatsApp
+                                    </option>
+
+                                    <option value="other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div>
+
+                                <label
+                                    for="dateFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="dateFilter"
+                                    class="form-control"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 INQUIRY TABLE
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-table-container">
+
+                    <div
+                        style="
+                            overflow-x:auto;
+                        "
+                    >
+
+                        <table
+                            style="
+                                width:100%;
+                                border-collapse:collapse;
+                                min-width:1400px;
+                            "
+                        >
+
+                            <thead>
+
+                                <tr
+                                    style="
+                                        background:#111111;
+                                        color:#ffffff;
+                                        text-align:left;
+                                    "
+                                >
+
+                                    <th style="padding:14px;">
+                                        Inquiry ID
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Customer
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Contact
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Part / OEM
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Vehicle
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Qty
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Source
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Status
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Communication
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Assigned
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Date
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Action
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="inquiryTableBody">
+
+                                <tr>
+
+                                    <td
+                                        colspan="12"
+                                        style="
+                                            padding:40px;
+                                            text-align:center;
+                                            color:#666666;
+                                        "
+                                    >
+                                        Loading inquiries...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 WORKFLOW
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <h2>
+                        Inquiry Workflow
+                    </h2>
+
+                </div>
+
+
+                <div class="admin-management-grid">
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            01. New
+                        </strong>
+
+                        <span>
+                            Customer inquiry received and awaiting
+                            staff review.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            02. Contacted
+                        </strong>
+
+                        <span>
+                            Staff has contacted the customer.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            03. In Progress
+                        </strong>
+
+                        <span>
+                            Team is checking availability,
+                            compatibility, or customer requirements.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            04. Quoted
+                        </strong>
+
+                        <span>
+                            A quotation or availability response
+                            has been provided.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            05. Completed
+                        </strong>
+
+                        <span>
+                            Customer inquiry has been completed.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Communication
+                        </strong>
+
+                        <span>
+                            Communication tracking is separate from
+                            the main inquiry status.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 ADMIN NOTE
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-empty-state">
+
+                    <strong>
+                        Customer Privacy
+                    </strong>
+
+                    <p>
+                        Customer location is not collected as part
+                        of this inquiry management workflow.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <p>
+                ©
+                <span id="currentYear"></span>
+                Al-Dahayan Trading Company.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         SCRIPTS
+         ========================================= -->
+
+    <script src="../js/config.js"></script>
+    <script src="../js/utils.js"></script>
+
+    <script>
+
+        (function () {
+
+            "use strict";
+
+
+            const searchInput =
+                document.getElementById(
+                    "inquirySearch"
+                );
+
+            const statusFilter =
+                document.getElementById(
+                    "statusFilter"
+                );
+
+            const communicationFilter =
+                document.getElementById(
+                    "communicationFilter"
+                );
+
+            const sourceFilter =
+                document.getElementById(
+                    "sourceFilter"
+                );
+
+            const dateFilter =
+                document.getElementById(
+                    "dateFilter"
+                );
+
+            const tableBody =
+                document.getElementById(
+                    "inquiryTableBody"
+                );
+
+
+            const currentYear =
+                document.getElementById(
+                    "currentYear"
+                );
+
+
+            const newCount =
+                document.getElementById(
+                    "newCount"
+                );
+
+            const progressCount =
+                document.getElementById(
+                    "progressCount"
+                );
+
+            const quotedCount =
+                document.getElementById(
+                    "quotedCount"
+                );
+
+            const completedCount =
+                document.getElementById(
+                    "completedCount"
+                );
+
+            const followUpCount =
+                document.getElementById(
+                    "followUpCount"
+                );
+
+
+            let inquiries = [];
+
+
+            if (currentYear) {
+
+                currentYear.textContent =
+                    new Date().getFullYear();
+
+            }
+
+
+            function escapeHTML(value) {
+
+                const div =
+                    document.createElement("div");
+
+                div.textContent =
+                    value == null
+                        ? ""
+                        : String(value);
+
+                return div.innerHTML;
+
+            }
+
+
+            function normalizeStatus(
+                inquiry
+            ) {
+
+                return String(
+                    inquiry.status || "new"
+                )
+                .trim()
+                .toLowerCase();
+
+            }
+
+
+            function normalizeCommunication(
+                inquiry
+            ) {
+
+                return String(
+                    inquiry.communicationStatus
+                    || inquiry.communication_status
+                    || inquiry.preferredContact
+                    || "not_contacted"
+                )
+                .trim()
+                .toLowerCase()
+                .replace(/\s+/g, "_");
+
+            }
+
+
+            function normalizeSource(
+                inquiry
+            ) {
+
+                return String(
+                    inquiry.source || "other"
+                )
+                .trim()
+                .toLowerCase()
+                .replace(/\s+/g, "_");
+
+            }
+
+
+            function getCustomer(
+                inquiry
+            ) {
+
+                if (
+                    inquiry.customer
+                    && typeof inquiry.customer === "object"
+                ) {
+
+                    return inquiry.customer;
+
+                }
+
+                return {};
+
+            }
+
+
+            function getCustomerName(
+                inquiry
+            ) {
+
+                const customer =
+                    getCustomer(inquiry);
+
+
+                return (
+                    inquiry.customerName
+                    || customer.name
+                    || "Unknown"
+                );
+
+            }
+
+
+            function getCustomerContact(
+                inquiry
+            ) {
+
+                const customer =
+                    getCustomer(inquiry);
+
+
+                return (
+                    inquiry.whatsapp
+                    || inquiry.phone
+                    || customer.whatsapp
+                    || customer.phone
+                    || inquiry.contact
+                    || "—"
+                );
+
+            }
+
+
+            function getPartName(
+                inquiry
+            ) {
+
+                return (
+                    inquiry.requiredPart
+                    || inquiry.partName
+                    || inquiry.part
+                    || "—"
+                );
+
+            }
+
+
+            function getOEM(
+                inquiry
+            ) {
+
+                return (
+                    inquiry.oemNumber
+                    || inquiry.oem
+                    || "—"
+                );
+
+            }
+
+
+            function getVehicle(
+                inquiry
+            ) {
+
+                const make =
+                    inquiry.make
+                    || inquiry.brand
+                    || inquiry.vehicleMake
+                    || "";
+
+                const model =
+                    inquiry.model
+                    || inquiry.vehicleModel
+                    || "";
+
+                const year =
+                    inquiry.modelYear
+                    || inquiry.year
+                    || "";
+
+
+                const vehicle = [
+                    make,
+                    model,
+                    year
+                ]
+                .filter(Boolean)
+                .join(" ");
+
+
+                return vehicle || "—";
+
+            }
+
+
+            function getQuantity(
+                inquiry
+            ) {
+
+                return (
+                    inquiry.quantityRequired
+                    || inquiry.quantity
+                    || 1
+                );
+
+            }
+
+
+            function getDate(
+                inquiry
+            ) {
+
+                return (
+                    inquiry.inquiryDate
+                    || inquiry.createdAt
+                    || inquiry.date
+                    || ""
+                );
+
+            }
+
+
+            function getDateOnly(
+                inquiry
+            ) {
+
+                const value =
+                    getDate(inquiry);
+
+
+                if (!value) {
+                    return "";
+                }
+
+
+                return String(value)
+                    .substring(0, 10);
+
+            }
+
+
+            function statusHTML(
+                status
+            ) {
+
+                const config = {
+
+                    new: {
+                        text: "New",
+                        bg: "#fff7df",
+                        color: "#a87500"
+                    },
+
+                    contacted: {
+                        text: "Contacted",
+                        bg: "#eef4ff",
+                        color: "#345b9b"
+                    },
+
+                    in_progress: {
+                        text: "In Progress",
+                        bg: "#eef4ff",
+                        color: "#345b9b"
+                    },
+
+                    quoted: {
+                        text: "Quoted",
+                        bg: "#f3ecff",
+                        color: "#7045a3"
+                    },
+
+                    completed: {
+                        text: "Completed",
+                        bg: "#e9f7ef",
+                        color: "#16834a"
+                    },
+
+                    cancelled: {
+                        text: "Cancelled",
+                        bg: "#fdecec",
+                        color: "#d71920"
+                    }
+
+                };
+
+
+                const item =
+                    config[status]
+                    || config.new;
+
+
+                return `
+                    <span
+                        style="
+                            display:inline-block;
+                            padding:5px 9px;
+                            border-radius:20px;
+                            background:${item.bg};
+                            color:${item.color};
+                            font-size:12px;
+                            font-weight:700;
+                            white-space:nowrap;
+                        "
+                    >
+                        ${item.text}
+                    </span>
+                `;
+
+            }
+
+
+            function communicationHTML(
+                status
+            ) {
+
+                const labels = {
+
+                    not_contacted: "Not Contacted",
+
+                    contacted: "Contacted",
+
+                    replied: "Replied",
+
+                    follow_up_required:
+                        "Follow-up Required",
+
+                    completed: "Completed",
+
+                    no_response: "No Response"
+
+                };
+
+
+                return `
+                    <span
+                        style="
+                            font-size:12px;
+                            font-weight:700;
+                            white-space:nowrap;
+                        "
+                    >
+                        ${
+                            labels[status]
+                            || "Not Contacted"
+                        }
+                    </span>
+                `;
+
+            }
+
+
+            function renderSummary() {
+
+                let newTotal = 0;
+                let progressTotal = 0;
+                let quotedTotal = 0;
+                let completedTotal = 0;
+                let followUpTotal = 0;
+
+
+                inquiries.forEach(
+                    function (inquiry) {
+
+                        const status =
+                            normalizeStatus(
+                                inquiry
+                            );
+
+
+                        const communication =
+                            normalizeCommunication(
+                                inquiry
+                            );
+
+
+                        if (
+                            status === "new"
+                        ) {
+                            newTotal++;
+                        }
+
+
+                        if (
+                            status === "in_progress"
+                            || status === "contacted"
+                        ) {
+                            progressTotal++;
+                        }
+
+
+                        if (
+                            status === "quoted"
+                        ) {
+                            quotedTotal++;
+                        }
+
+
+                        if (
+                            status === "completed"
+                        ) {
+                            completedTotal++;
+                        }
+
+
+                        if (
+                            communication
+                            === "follow_up_required"
+                        ) {
+                            followUpTotal++;
+                        }
+
+                    }
+                );
+
+
+                newCount.textContent =
+                    newTotal;
+
+                progressCount.textContent =
+                    progressTotal;
+
+                quotedCount.textContent =
+                    quotedTotal;
+
+                completedCount.textContent =
+                    completedTotal;
+
+                followUpCount.textContent =
+                    followUpTotal;
+
+            }
+
+
+            function renderInquiries() {
+
+                const query =
+                    searchInput.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const selectedStatus =
+                    statusFilter.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const selectedCommunication =
+                    communicationFilter.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const selectedSource =
+                    sourceFilter.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const selectedDate =
+                    dateFilter.value
+                        .trim();
+
+
+                const filtered =
+                    inquiries.filter(
+                        function (inquiry) {
+
+                            const customer =
+                                getCustomer(
+                                    inquiry
+                                );
+
+
+                            const searchable = [
+
+                                inquiry.id,
+
+                                getCustomerName(
+                                    inquiry
+                                ),
+
+                                getCustomerContact(
+                                    inquiry
+                                ),
+
+                                getPartName(
+                                    inquiry
+                                ),
+
+                                getOEM(
+                                    inquiry
+                                ),
+
+                                getVehicle(
+                                    inquiry
+                                ),
+
+                                inquiry.message,
+
+                                inquiry.notes,
+
+                                inquiry.assignedTo,
+
+                                customer.name,
+
+                                customer.phone,
+
+                                customer.whatsapp
+
+                            ]
+                            .filter(Boolean)
+                            .join(" ")
+                            .toLowerCase();
+
+
+                            const matchesSearch =
+                                !query
+                                || searchable.includes(
+                                    query
+                                );
+
+
+                            const matchesStatus =
+                                !selectedStatus
+                                || normalizeStatus(
+                                    inquiry
+                                )
+                                === selectedStatus;
+
+
+                            const matchesCommunication =
+                                !selectedCommunication
+                                || normalizeCommunication(
+                                    inquiry
+                                )
+                                === selectedCommunication;
+
+
+                            const matchesSource =
+                                !selectedSource
+                                || normalizeSource(
+                                    inquiry
+                                )
+                                === selectedSource;
+
+
+                            const matchesDate =
+                                !selectedDate
+                                || getDateOnly(
+                                    inquiry
+                                )
+                                === selectedDate;
+
+
+                            return (
+                                matchesSearch
+                                && matchesStatus
+                                && matchesCommunication
+                                && matchesSource
+                                && matchesDate
+                            );
+
+                        }
+                    );
+
+
+                if (!filtered.length) {
+
+                    tableBody.innerHTML = `
+                        <tr>
+
+                            <td
+                                colspan="12"
+                                style="
+                                    padding:40px;
+                                    text-align:center;
+                                    color:#666666;
+                                "
+                            >
+                                No inquiry records found.
+                            </td>
+
+                        </tr>
+                    `;
+
+                    return;
+
+                }
+
+
+                tableBody.innerHTML =
+                    filtered.map(
+                        function (inquiry) {
+
+                            const status =
+                                normalizeStatus(
+                                    inquiry
+                                );
+
+
+                            const communication =
+                                normalizeCommunication(
+                                    inquiry
+                                );
+
+
+                            const source =
+                                normalizeSource(
+                                    inquiry
+                                );
+
+
+                            const date =
+                                getDateOnly(
+                                    inquiry
+                                )
+                                || "—";
+
+
+                            const assigned =
+                                inquiry.assignedTo
+                                || "Unassigned";
+
+
+                            return `
+
+                                <tr
+                                    style="
+                                        border-bottom:
+                                        1px solid #e4e4e4;
+                                    "
+                                >
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            inquiry.id
+                                            || "—"
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            getCustomerName(
+                                                inquiry
+                                            )
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                            white-space:nowrap;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            getCustomerContact(
+                                                inquiry
+                                            )
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+
+                                        <strong>
+                                            ${escapeHTML(
+                                                getPartName(
+                                                    inquiry
+                                                )
+                                            )}
+                                        </strong>
+
+                                        <br>
+
+                                        <small
+                                            style="
+                                                color:#666666;
+                                            "
+                                        >
+                                            OEM:
+                                            ${escapeHTML(
+                                                getOEM(
+                                                    inquiry
+                                                )
+                                            )}
+                                        </small>
+
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            getVehicle(
+                                                inquiry
+                                            )
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            getQuantity(
+                                                inquiry
+                                            )
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            source
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${statusHTML(
+                                            status
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${communicationHTML(
+                                            communication
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            assigned
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                            white-space:nowrap;
+                                            color:#666666;
+                                            font-size:12px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            date
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            data-view-inquiry="${escapeHTML(
+                                                inquiry.id
+                                                || ""
+                                            )}"
+                                        >
+                                            View
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            `;
+
+                        }
+                    ).join("");
+
+
+                document
+                    .querySelectorAll(
+                        "[data-view-inquiry]"
+                    )
+                    .forEach(
+                        function (button) {
+
+                            button.addEventListener(
+                                "click",
+                                function () {
+
+                                    const id =
+                                        this.dataset
+                                            .viewInquiry;
+
+
+                                    alert(
+                                        "Inquiry: "
+                                        + id
+                                        + "\n\n"
+                                        + "Detailed inquiry view "
+                                        + "will be connected to "
+                                        + "the Admin API in the "
+                                        + "next stage."
+                                    );
+
+                                }
+                            );
+
+                        }
+                    );
+
+            }
+
+
+            async function loadInquiries() {
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "../data/inquiries.json",
+                            {
+                                cache: "no-store"
+                            }
+                        );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Failed to load inquiries."
+                        );
+
+                    }
+
+
+                    const data =
+                        await response.json();
+
+
+                    inquiries =
+                        Array.isArray(data)
+                            ? data
+                            : (
+                                Array.isArray(
+                                    data.inquiries
+                                )
+                                    ? data.inquiries
+                                    : []
+                            );
+
+
+                    renderSummary();
+                    renderInquiries();
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Admin Inquiries:",
+                        error
+                    );
+
+
+                    tableBody.innerHTML = `
+                        <tr>
+
+                            <td
+                                colspan="12"
+                                style="
+                                    padding:40px;
+                                    text-align:center;
+                                    color:#d71920;
+                                "
+                            >
+                                Unable to load inquiry data.
+                            </td>
+
+                        </tr>
+                    `;
+
+                }
+
+            }
+
+
+            [
+                searchInput,
+                statusFilter,
+                communicationFilter,
+                sourceFilter,
+                dateFilter
+            ]
+            .forEach(
+                function (element) {
+
+                    element.addEventListener(
+                        "input",
+                        renderInquiries
+                    );
+
+                    element.addEventListener(
+                        "change",
+                        renderInquiries
+                    );
+
+                }
+            );
+
+
+            document
+                .getElementById(
+                    "refreshButton"
+                )
+                .addEventListener(
+                    "click",
+                    loadInquiries
+                );
+
+
+            loadInquiries();
+
+        })();
+
+    </script>
+
+</body>
+
+</html>
