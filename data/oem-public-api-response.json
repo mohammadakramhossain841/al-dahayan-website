@@ -1,0 +1,111 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public API response structure for Toyota and Lexus OEM catalog services.",
+  "enabled": true,
+
+  "response": {
+    "success": true,
+    "data": true,
+    "pagination": true,
+    "filters": true,
+    "meta": true
+  },
+
+  "record": {
+    "oemNumber": true,
+    "partName": true,
+    "brand": true,
+    "category": true,
+    "description": true,
+    "images": true,
+    "pricing": true,
+    "stockStatus": true,
+    "compatibility": true,
+    "verificationStatus": true
+  },
+
+  "vehicle": {
+    "make": true,
+    "model": true,
+    "modelYear": true,
+    "generation": true,
+    "engine": true,
+    "bodyType": true,
+    "transmission": true,
+    "driveType": true
+  },
+
+  "pricing": {
+    "showRegularPrice": true,
+    "showSalePrice": true,
+    "showDiscount": true,
+    "showCurrency": true,
+    "hidePurchasePrice": true,
+    "hideProfitMargin": true
+  },
+
+  "stock": {
+    "showAvailability": true,
+    "showStockStatus": true,
+    "showQuantity": false,
+    "showLocation": false
+  },
+
+  "images": {
+    "enabled": true,
+    "includePrimaryImage": true,
+    "includeGalleryImages": true,
+    "includeAltText": true
+  },
+
+  "compatibility": {
+    "enabled": true,
+    "includeVehicleModels": true,
+    "includeModelYears": true,
+    "includeEngineCodes": true,
+    "includeFitmentStatus": true,
+    "includeVerificationStatus": true
+  },
+
+  "pagination": {
+    "enabled": true,
+    "includeCurrentPage": true,
+    "includePageSize": true,
+    "includeTotalRecords": true,
+    "includeTotalPages": true,
+    "includeHasNextPage": true,
+    "includeHasPreviousPage": true
+  },
+
+  "metadata": {
+    "includeApiVersion": true,
+    "includeRequestTimestamp": true,
+    "includeLanguage": true
+  },
+
+  "security": {
+    "excludeInternalFields": true,
+    "excludeSupplierData": true,
+    "excludeCustomerData": true,
+    "excludeAdminData": true,
+    "excludePrivateInventoryData": true,
+    "excludeAuditData": true
+  },
+
+  "errors": {
+    "includeErrorCode": true,
+    "includeSafeMessage": true,
+    "includeFieldErrors": true,
+    "hideInternalDetails": true
+  },
+
+  "languages": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  }
+}
