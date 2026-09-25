@@ -1,0 +1,132 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin export view configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Export",
+    "defaultFormat": "csv",
+    "allowFormatSelection": true,
+    "allowFiltering": true,
+    "allowFieldSelection": true
+  },
+
+  "formats": [
+    "csv",
+    "xlsx",
+    "json"
+  ],
+
+  "availableFields": [
+    "recordId",
+    "oemNumber",
+    "partName",
+    "arabicName",
+    "description",
+    "brand",
+    "category",
+    "subcategory",
+    "models",
+    "modelYears",
+    "engineCodes",
+    "bodyTypes",
+    "transmissions",
+    "driveTypes",
+    "marketSpecs",
+    "regions",
+    "compatibleOemNumbers",
+    "supersededOemNumbers",
+    "currency",
+    "regularPrice",
+    "salePrice",
+    "discountPercent",
+    "priceVisibility",
+    "stockStatus",
+    "quantity",
+    "locations",
+    "primaryImage",
+    "galleryImages",
+    "verificationLevel",
+    "verificationSource",
+    "status",
+    "published",
+    "createdAt",
+    "createdBy",
+    "updatedAt",
+    "updatedBy"
+  ],
+
+  "defaultFields": [
+    "oemNumber",
+    "partName",
+    "brand",
+    "category",
+    "models",
+    "modelYears",
+    "regularPrice",
+    "salePrice",
+    "discountPercent",
+    "stockStatus",
+    "verificationLevel",
+    "status",
+    "updatedAt"
+  ],
+
+  "filters": [
+    "brand",
+    "category",
+    "subcategory",
+    "model",
+    "modelYear",
+    "stockStatus",
+    "verificationLevel",
+    "status",
+    "published",
+    "dateRange"
+  ],
+
+  "exportRules": {
+    "allowFilteredExport": true,
+    "allowFullCatalogExport": true,
+    "allowSelectedRecordExport": true,
+    "allowCustomFieldSelection": true,
+    "includeArchivedRecords": false,
+    "includeInternalNotes": false,
+    "includeSensitiveData": false,
+    "preserveOemNumberFormatting": true,
+    "preserveArabicText": true
+  },
+
+  "limits": {
+    "maximumSelectedRecords": 10000,
+    "maximumExportRecords": 100000,
+    "requireConfirmationAboveRecords": 5000
+  },
+
+  "history": {
+    "enabled": true,
+    "recordExportUser": true,
+    "recordExportFormat": true,
+    "recordExportFilters": true,
+    "recordExportFields": true,
+    "recordExportCount": true,
+    "recordTimestamp": true
+  },
+
+  "permissions": {
+    "view": "oem.export",
+    "selectedExport": "oem.export",
+    "fullExport": "oem.export_full",
+    "sensitiveExport": "oem.export_sensitive"
+  },
+
+  "safety": {
+    "neverExportUnauthorizedFields": true,
+    "neverExportInternalNotesPublicly": true,
+    "neverExposeSensitiveDataWithoutPermission": true,
+    "requirePermissionValidation": true,
+    "requireConfirmationForLargeExports": true,
+    "preserveExportHistory": true
+  }
+}
