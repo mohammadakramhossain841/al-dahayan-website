@@ -1,0 +1,167 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin stock and inventory view configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Stock",
+    "defaultPageSize": 20,
+    "allowFiltering": true,
+    "allowSorting": true,
+    "allowSearch": true
+  },
+
+  "columns": [
+    {
+      "field": "oemNumber",
+      "label": "OEM Number",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "partName",
+      "label": "Part Name",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "brand",
+      "label": "Brand",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "stockStatus",
+      "label": "Stock Status",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "quantity",
+      "label": "Quantity",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "locations",
+      "label": "Locations",
+      "visible": true,
+      "sortable": false,
+      "searchable": true
+    },
+    {
+      "field": "availabilityMessage",
+      "label": "Availability",
+      "visible": true,
+      "sortable": false,
+      "searchable": true
+    },
+    {
+      "field": "updatedAt",
+      "label": "Updated",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    }
+  ],
+
+  "filters": [
+    "brand",
+    "category",
+    "stockStatus",
+    "location",
+    "status"
+  ],
+
+  "search": {
+    "enabled": true,
+    "fields": [
+      "oemNumber",
+      "partName",
+      "arabicName",
+      "locationName"
+    ],
+    "allowPartialMatch": true,
+    "allowExactMatch": true,
+    "allowArabicSearch": true
+  },
+
+  "stockStatuses": [
+    "in_stock",
+    "low_stock",
+    "out_of_stock",
+    "on_order",
+    "unknown"
+  ],
+
+  "stockRules": {
+    "allowStatusEdit": true,
+    "allowQuantityEdit": true,
+    "allowLocationEdit": true,
+    "allowAvailabilityMessageEdit": true,
+    "preventNegativeQuantity": true,
+    "allowMultipleLocations": true,
+    "allowLocationSpecificQuantity": true,
+    "automaticallyCalculateStatus": false
+  },
+
+  "bulkActions": {
+    "enabled": true,
+    "allowBulkStatusUpdate": true,
+    "allowBulkQuantityUpdate": true,
+    "allowBulkLocationUpdate": true,
+    "allowBulkAvailabilityMessageUpdate": true,
+    "requirePreview": true,
+    "requireConfirmation": true,
+    "maximumSelectedRecords": 5000
+  },
+
+  "actions": {
+    "view": true,
+    "edit": true,
+    "save": true,
+    "viewLocations": true,
+    "viewHistory": true,
+    "restorePreviousStock": true,
+    "export": true
+  },
+
+  "history": {
+    "enabled": true,
+    "recordPreviousStatus": true,
+    "recordNewStatus": true,
+    "recordPreviousQuantity": true,
+    "recordNewQuantity": true,
+    "recordPreviousLocations": true,
+    "recordNewLocations": true,
+    "recordChangedBy": true,
+    "recordTimestamp": true,
+    "requireChangeReason": true
+  },
+
+  "permissions": {
+    "view": "oem.stock_view",
+    "edit": "oem.stock_update",
+    "bulkEdit": "oem.stock_update",
+    "export": "oem.export",
+    "history": "oem.history_view",
+    "rollback": "oem.stock_rollback"
+  },
+
+  "safety": {
+    "neverAllowNegativeQuantity": true,
+    "neverUpdateWithoutValidation": true,
+    "neverUpdateWithoutAudit": true,
+    "neverDeleteStockHistory": true,
+    "neverExposeInternalInventoryNotesPublicly": true,
+    "requireConfirmationForBulkChanges": true,
+    "preservePreviousValues": true,
+    "preserveLocationHistory": true
+  }
+}
