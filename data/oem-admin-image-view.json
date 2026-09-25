@@ -1,0 +1,173 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin image management view configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Images",
+    "defaultPageSize": 20,
+    "allowFiltering": true,
+    "allowSorting": true,
+    "allowSearch": true
+  },
+
+  "columns": [
+    {
+      "field": "oemNumber",
+      "label": "OEM Number",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "partName",
+      "label": "Part Name",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "brand",
+      "label": "Brand",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "primaryImage",
+      "label": "Primary Image",
+      "visible": true,
+      "sortable": false,
+      "searchable": false
+    },
+    {
+      "field": "imageCount",
+      "label": "Image Count",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "imageStatus",
+      "label": "Image Status",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "updatedAt",
+      "label": "Updated",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    }
+  ],
+
+  "filters": [
+    "brand",
+    "category",
+    "imageStatus",
+    "status"
+  ],
+
+  "search": {
+    "enabled": true,
+    "fields": [
+      "oemNumber",
+      "partName",
+      "arabicName"
+    ],
+    "allowPartialMatch": true,
+    "allowExactMatch": true,
+    "allowArabicSearch": true
+  },
+
+  "imageStatuses": [
+    "missing",
+    "available",
+    "pending_review",
+    "approved",
+    "rejected"
+  ],
+
+  "imageRules": {
+    "allowUpload": true,
+    "allowReplace": true,
+    "allowRemove": true,
+    "allowReorder": true,
+    "allowSetPrimary": true,
+    "allowAltTextEdit": true,
+    "allowCaptionEdit": true,
+    "requirePrimaryImage": false,
+    "allowMultipleImages": true
+  },
+
+  "validation": {
+    "validateFileType": true,
+    "validateFileSize": true,
+    "validateImageDimensions": true,
+    "validateImageUrl": true,
+    "validateAltText": true,
+    "showWarnings": true,
+    "blockInvalidImages": true
+  },
+
+  "allowedFormats": [
+    "jpg",
+    "jpeg",
+    "png",
+    "webp"
+  ],
+
+  "bulkActions": {
+    "enabled": true,
+    "allowBulkImageAssignment": true,
+    "allowBulkImageRemoval": true,
+    "allowBulkStatusUpdate": true,
+    "requirePreview": true,
+    "requireConfirmation": true,
+    "maximumSelectedRecords": 500
+  },
+
+  "actions": {
+    "view": true,
+    "upload": true,
+    "replace": true,
+    "remove": true,
+    "setPrimary": true,
+    "reorder": true,
+    "editMetadata": true,
+    "viewHistory": true
+  },
+
+  "history": {
+    "enabled": true,
+    "recordPreviousImages": true,
+    "recordNewImages": true,
+    "recordPrimaryImageChanges": true,
+    "recordMetadataChanges": true,
+    "recordChangedBy": true,
+    "recordTimestamp": true,
+    "requireChangeReason": true
+  },
+
+  "permissions": {
+    "view": "oem.image_view",
+    "upload": "oem.image_upload",
+    "edit": "oem.image_edit",
+    "remove": "oem.image_delete",
+    "bulkEdit": "oem.image_edit",
+    "history": "oem.history_view"
+  },
+
+  "safety": {
+    "neverReplaceWithoutValidation": true,
+    "neverDeleteWithoutConfirmation": true,
+    "neverDeleteImageHistory": true,
+    "preservePreviousImages": true,
+    "preserveAuditHistory": true,
+    "requirePermissionForImageDeletion": true,
+    "requireConfirmationForBulkChanges": true
+  }
+}
