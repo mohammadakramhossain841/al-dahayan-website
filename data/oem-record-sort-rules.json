@@ -1,0 +1,143 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Sorting rules for Toyota and Lexus OEM catalog records on the Al-Dahayan platform.",
+  "defaultSort": {
+    "field": "oemNumber",
+    "direction": "ascending"
+  },
+  "allowedSortFields": [
+    "oemNumber",
+    "partName",
+    "brand",
+    "category",
+    "subcategory",
+    "regularPrice",
+    "salePrice",
+    "discountPercent",
+    "stockStatus",
+    "quantity",
+    "status",
+    "verificationLevel",
+    "createdAt",
+    "updatedAt"
+  ],
+  "directions": [
+    "ascending",
+    "descending"
+  ],
+  "fieldRules": {
+    "oemNumber": {
+      "type": "string",
+      "caseSensitive": false,
+      "naturalSort": true
+    },
+    "partName": {
+      "type": "string",
+      "caseSensitive": false,
+      "naturalSort": true
+    },
+    "brand": {
+      "type": "string",
+      "caseSensitive": false
+    },
+    "category": {
+      "type": "string",
+      "caseSensitive": false
+    },
+    "subcategory": {
+      "type": "string",
+      "caseSensitive": false
+    },
+    "regularPrice": {
+      "type": "number",
+      "missingValue": "last"
+    },
+    "salePrice": {
+      "type": "number",
+      "missingValue": "last"
+    },
+    "discountPercent": {
+      "type": "number",
+      "missingValue": "last"
+    },
+    "stockStatus": {
+      "type": "enum",
+      "order": [
+        "in_stock",
+        "low_stock",
+        "on_order",
+        "out_of_stock",
+        "unknown"
+      ]
+    },
+    "quantity": {
+      "type": "number",
+      "missingValue": "last"
+    },
+    "status": {
+      "type": "enum",
+      "order": [
+        "active",
+        "draft",
+        "archived",
+        "disabled"
+      ]
+    },
+    "verificationLevel": {
+      "type": "enum",
+      "order": [
+        "verified",
+        "reviewed",
+        "unverified"
+      ]
+    },
+    "createdAt": {
+      "type": "datetime",
+      "missingValue": "last"
+    },
+    "updatedAt": {
+      "type": "datetime",
+      "missingValue": "last"
+    }
+  },
+  "publicWebsite": {
+    "allowedFields": [
+      "oemNumber",
+      "partName",
+      "brand",
+      "category",
+      "regularPrice",
+      "salePrice",
+      "discountPercent",
+      "stockStatus",
+      "createdAt",
+      "updatedAt"
+    ],
+    "defaultSort": "relevance"
+  },
+  "adminPanel": {
+    "allowAllConfiguredFields": true,
+    "allowCustomSort": true,
+    "rememberUserSort": true
+  },
+  "multiSort": {
+    "enabled": true,
+    "maximumSortFields": 3,
+    "preservePriorityOrder": true
+  },
+  "pagination": {
+    "defaultPageSize": 20,
+    "allowedPageSizes": [
+      20,
+      50,
+      100
+    ],
+    "maximumPageSize": 100
+  },
+  "safety": {
+    "sortingMustNotModifyRecords": true,
+    "sortingMustNotChangeCatalogData": true,
+    "preserveArabicText": true
+  }
+}
