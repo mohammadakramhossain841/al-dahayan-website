@@ -1,0 +1,132 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Security rules for protecting Toyota and Lexus OEM catalog records and related administrative operations in the Al-Dahayan platform.",
+  "enabled": true,
+  "authentication": {
+    "requiredForAdminPanel": true,
+    "requiredForWriteOperations": true,
+    "requiredForBulkOperations": true,
+    "sessionRequired": true
+  },
+  "authorization": {
+    "denyByDefault": true,
+    "requirePermissionForEveryWrite": true,
+    "requirePermissionForSensitiveRead": true,
+    "verifyRoleBeforeAction": true,
+    "recordDeniedActions": true
+  },
+  "protectedFields": [
+    "id",
+    "oemNumber",
+    "createdAt",
+    "createdBy",
+    "updatedAt",
+    "updatedBy",
+    "verificationLevel",
+    "verificationSource"
+  ],
+  "fieldProtection": {
+    "id": {
+      "editable": false,
+      "deletable": false
+    },
+    "oemNumber": {
+      "editableByDefault": false,
+      "requireExtraPermission": true,
+      "requireConfirmation": true,
+      "requireReason": true
+    },
+    "verificationLevel": {
+      "editableByDefault": false,
+      "requireVerificationPermission": true,
+      "requireSource": true
+    },
+    "createdAt": {
+      "editable": false
+    },
+    "createdBy": {
+      "editable": false
+    }
+  },
+  "inputSecurity": {
+    "validateAllInput": true,
+    "trimUnexpectedWhitespace": true,
+    "rejectMalformedRequests": true,
+    "rejectUnexpectedFields": false,
+    "preventInjectionPatterns": true,
+    "preserveOriginalOemValue": true,
+    "preserveArabicText": true
+  },
+  "apiSecurity": {
+    "requireHttpsInProduction": true,
+    "requireAuthenticationForWrites": true,
+    "requireAuthorizationForWrites": true,
+    "rateLimitingEnabled": true,
+    "requestLoggingEnabled": true,
+    "errorDetailsRestricted": true
+  },
+  "publicWebsite": {
+    "allowActiveCatalogRead": true,
+    "hidePrivateNotes": true,
+    "hideAuditMetadata": true,
+    "hideUserIdentifiers": true,
+    "hideCredentials": true,
+    "hideSecurityTokens": true,
+    "hideInternalOperationIds": true
+  },
+  "adminSecurity": {
+    "allowPublicAdminAccess": false,
+    "requireAuthenticatedSession": true,
+    "requirePermissionChecks": true,
+    "requireSensitiveActionConfirmation": true,
+    "recordLoginEvents": true,
+    "recordPermissionFailures": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordCreateActions": true,
+    "recordUpdateActions": true,
+    "recordDeleteAttempts": true,
+    "recordPublishActions": true,
+    "recordArchiveActions": true,
+    "recordRestoreActions": true,
+    "recordVerificationActions": true,
+    "recordPermissionFailures": true,
+    "preserveAuditHistory": true,
+    "auditRecordsReadOnly": true
+  },
+  "dataProtection": {
+    "neverExposeCredentials": true,
+    "neverExposePasswords": true,
+    "neverExposeAuthenticationTokens": true,
+    "neverExposePrivateNotes": true,
+    "neverExposeInternalAuditDataPublicly": true,
+    "neverExposeSecurityConfigurationPublicly": true
+  },
+  "deletion": {
+    "permanentDeleteDisabledByDefault": true,
+    "allowSoftDeleteOnly": true,
+    "requireExtraPermissionForPermanentDelete": true,
+    "requireConfirmation": true,
+    "requireReason": true,
+    "preserveHistory": true
+  },
+  "rollback": {
+    "enabled": true,
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requireConfirmation": true,
+    "preserveRollbackHistory": true
+  },
+  "safety": {
+    "neverAutomaticallyVerifyRecords": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "neverAutomaticallyDeleteRecords": true,
+    "neverAutomaticallyDeleteImages": true,
+    "neverModifyProtectedFieldsSilently": true,
+    "preserveAuditHistory": true,
+    "preserveChangeHistory": true,
+    "preserveArabicText": true
+  }
+}
