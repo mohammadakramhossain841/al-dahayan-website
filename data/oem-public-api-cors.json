@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "CORS configuration for the public Toyota and Lexus OEM catalog API.",
+  "enabled": true,
+
+  "policy": {
+    "allowCredentials": false,
+    "allowWildcardOrigin": false,
+    "allowPrivateNetwork": false
+  },
+
+  "origins": {
+    "mode": "allowlist",
+    "allowed": [
+      "https://mohammadakramhossain841.github.io"
+    ],
+    "allowLocalDevelopment": true,
+    "developmentOrigins": [
+      "http://localhost",
+      "http://127.0.0.1"
+    ]
+  },
+
+  "methods": {
+    "allowed": [
+      "GET",
+      "POST",
+      "OPTIONS"
+    ],
+    "publicReadMethods": [
+      "GET"
+    ],
+    "publicInquiryMethods": [
+      "POST"
+    ]
+  },
+
+  "headers": {
+    "allowedRequestHeaders": [
+      "Content-Type",
+      "Accept",
+      "Accept-Language",
+      "X-Request-ID"
+    ],
+    "exposedResponseHeaders": [
+      "Content-Type",
+      "ETag",
+      "Last-Modified",
+      "X-Request-ID",
+      "X-RateLimit-Limit",
+      "X-RateLimit-Remaining",
+      "X-RateLimit-Reset",
+      "Retry-After"
+    ]
+  },
+
+  "preflight": {
+    "enabled": true,
+    "maxAgeSeconds": 600
+  },
+
+  "security": {
+    "rejectUnknownOrigins": true,
+    "rejectInvalidMethods": true,
+    "rejectInvalidHeaders": true,
+    "neverAllowCredentialsForWildcardOrigin": true,
+    "neverExposeInternalHeaders": true
+  },
+
+  "errors": {
+    "originNotAllowed": "ORIGIN_NOT_ALLOWED",
+    "methodNotAllowed": "METHOD_NOT_ALLOWED",
+    "headerNotAllowed": "HEADER_NOT_ALLOWED"
+  }
+}
