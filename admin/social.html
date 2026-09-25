@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Social Media | Al-Dahayan Admin Panel</title>
+
+    <meta
+        name="description"
+        content="Al-Dahayan Trading Company Admin Panel - Social Media and Online Channels Management"
+    >
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="admin-dashboard">
+
+        <!-- =========================
+             ADMIN HEADER
+        ========================== -->
+        <header class="admin-header">
+            <div class="container">
+
+                <div class="admin-header-inner">
+
+                    <a href="dashboard.html" class="admin-brand">
+                        <img
+                            src="../assets/images/al-dahayan-logo.png"
+                            alt="Al-Dahayan Trading Company"
+                            class="admin-logo"
+                        >
+                    </a>
+
+                    <div class="admin-header-title">
+                        <span>AL-DAHAYAN</span>
+                        <strong>ADMIN PANEL</strong>
+                    </div>
+
+                </div>
+
+            </div>
+        </header>
+
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+        <main class="container">
+
+            <!-- Page Heading -->
+            <section class="admin-page-heading">
+
+                <div>
+                    <span class="admin-eyebrow">
+                        ONLINE CHANNELS
+                    </span>
+
+                    <h1>
+                        Social Media
+                    </h1>
+
+                    <p>
+                        Manage Al-Dahayan's social media,
+                        WhatsApp, Google Maps and other online channels.
+                    </p>
+                </div>
+
+                <div>
+                    <a
+                        href="dashboard.html"
+                        class="btn btn-secondary"
+                    >
+                        ← Dashboard
+                    </a>
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SUMMARY
+            ========================== -->
+            <section class="admin-stat-grid">
+
+                <article class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        Total Channels
+                    </span>
+
+                    <strong id="totalChannels">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        Active
+                    </span>
+
+                    <strong id="activeChannels">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        Inactive
+                    </span>
+
+                    <strong id="inactiveChannels">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        WhatsApp
+                    </span>
+
+                    <strong id="whatsappChannels">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        Maps
+                    </span>
+
+                    <strong id="mapsChannels">
+                        0
+                    </strong>
+
+                </article>
+
+            </section>
+
+
+            <!-- =========================
+                 CHANNEL FORM
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            Add / Edit Channel
+                        </h2>
+
+                        <p>
+                            Add an official online channel or update
+                            an existing channel.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="channelForm">
+
+                    <div class="admin-filter-grid">
+
+                        <!-- Platform -->
+                        <div class="form-group">
+
+                            <label for="platform">
+                                Platform
+                            </label>
+
+                            <select
+                                id="platform"
+                                class="form-control"
+                                required
+                            >
+
+                                <option value="">
+                                    Select Platform
+                                </option>
+
+                                <option value="Facebook">
+                                    Facebook
+                                </option>
+
+                                <option value="YouTube">
+                                    YouTube
+                                </option>
+
+                                <option value="TikTok">
+                                    TikTok
+                                </option>
+
+                                <option value="X">
+                                    X
+                                </option>
+
+                                <option value="Instagram">
+                                    Instagram
+                                </option>
+
+                                <option value="LinkedIn">
+                                    LinkedIn
+                                </option>
+
+                                <option value="WhatsApp">
+                                    WhatsApp
+                                </option>
+
+                                <option value="Google Maps">
+                                    Google Maps
+                                </option>
+
+                                <option value="Website">
+                                    Website
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Channel Name -->
+                        <div class="form-group">
+
+                            <label for="channelName">
+                                Channel Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="channelName"
+                                class="form-control"
+                                placeholder="Example: Al-Dahayan Official"
+                                maxlength="150"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- URL -->
+                        <div class="form-group">
+
+                            <label for="channelUrl">
+                                URL
+                            </label>
+
+                            <input
+                                type="url"
+                                id="channelUrl"
+                                class="form-control"
+                                placeholder="https://..."
+                                maxlength="500"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Status -->
+                        <div class="form-group">
+
+                            <label for="channelStatus">
+                                Status
+                            </label>
+
+                            <select
+                                id="channelStatus"
+                                class="form-control"
+                            >
+
+                                <option value="active">
+                                    Active
+                                </option>
+
+                                <option value="inactive">
+                                    Inactive
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-action-grid">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Save Channel
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            id="resetFormButton"
+                        >
+                            Clear Form
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- =========================
+                 CHANNEL FILTER
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            Channel Directory
+                        </h2>
+
+                        <p id="channelResultCount">
+                            Loading channels...
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="admin-filter-grid">
+
+                    <div class="form-group">
+
+                        <label for="channelSearch">
+                            Search
+                        </label>
+
+                        <input
+                            type="search"
+                            id="channelSearch"
+                            class="form-control"
+                            placeholder="Search platform or channel..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="channelPlatformFilter">
+                            Platform
+                        </label>
+
+                        <select
+                            id="channelPlatformFilter"
+                            class="form-control"
+                        >
+
+                            <option value="">
+                                All Platforms
+                            </option>
+
+                            <option value="Facebook">
+                                Facebook
+                            </option>
+
+                            <option value="YouTube">
+                                YouTube
+                            </option>
+
+                            <option value="TikTok">
+                                TikTok
+                            </option>
+
+                            <option value="X">
+                                X
+                            </option>
+
+                            <option value="Instagram">
+                                Instagram
+                            </option>
+
+                            <option value="LinkedIn">
+                                LinkedIn
+                            </option>
+
+                            <option value="WhatsApp">
+                                WhatsApp
+                            </option>
+
+                            <option value="Google Maps">
+                                Google Maps
+                            </option>
+
+                            <option value="Website">
+                                Website
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="channelStatusFilter">
+                            Status
+                        </label>
+
+                        <select
+                            id="channelStatusFilter"
+                            class="form-control"
+                        >
+
+                            <option value="">
+                                All Status
+                            </option>
+
+                            <option value="active">
+                                Active
+                            </option>
+
+                            <option value="inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CHANNEL TABLE
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-table-container">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ID
+                                </th>
+
+                                <th>
+                                    Platform
+                                </th>
+
+                                <th>
+                                    Channel Name
+                                </th>
+
+                                <th>
+                                    URL
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="channelTableBody">
+
+                            <tr>
+                                <td colspan="6">
+                                    Loading...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CHANNEL MANAGEMENT
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+
+                        <h2>
+                            Channel Management
+                        </h2>
+
+                        <p>
+                            Online channel control rules.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-management-grid">
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Official Links
+                        </h3>
+
+                        <p>
+                            Only official Al-Dahayan social and
+                            communication links should be published.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Active / Inactive
+                        </h3>
+
+                        <p>
+                            Channels can be deactivated without
+                            permanently removing their records.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Website Integration
+                        </h3>
+
+                        <p>
+                            Active channels can later be displayed
+                            automatically in the website footer and contact areas.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            WhatsApp
+                        </h3>
+
+                        <p>
+                            WhatsApp can be used as the primary
+                            customer communication connection.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 MESSAGE
+            ========================== -->
+            <section class="admin-section">
+
+                <div
+                    id="saveMessage"
+                    class="admin-empty-state"
+                    style="display:none;"
+                ></div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+        <footer class="admin-footer">
+
+            <div class="container">
+
+                <p>
+                    © <span id="adminYear"></span>
+                    Al-Dahayan Trading Company.
+                    Admin Panel.
+                </p>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+    <script>
+
+        const STORAGE_KEY =
+            "alDahayanSocialChannels";
+
+
+        const defaultChannels = [
+
+            {
+                id: "SOC-001",
+                platform: "Facebook",
+                name: "Al-Dahayan Official",
+                url: "",
+                active: false
+            },
+
+            {
+                id: "SOC-002",
+                platform: "YouTube",
+                name: "Al-Dahayan Official",
+                url: "",
+                active: false
+            },
+
+            {
+                id: "SOC-003",
+                platform: "TikTok",
+                name: "Al-Dahayan Official",
+                url: "",
+                active: false
+            },
+
+            {
+                id: "SOC-004",
+                platform: "X",
+                name: "Al-Dahayan Official",
+                url: "",
+                active: false
+            },
+
+            {
+                id: "SOC-005",
+                platform: "Instagram",
+                name: "Al-Dahayan Official",
+                url: "",
+                active: false
+            },
+
+            {
+                id: "SOC-006",
+                platform: "LinkedIn",
+                name: "Al-Dahayan Official",
+                url: "",
+                active: false
+            },
+
+            {
+                id: "SOC-007",
+                platform: "WhatsApp",
+                name: "Al-Dahayan WhatsApp",
+                url: "",
+                active: false
+            },
+
+            {
+                id: "SOC-008",
+                platform: "Google Maps",
+                name: "Al-Dahayan Locations",
+                url: "",
+                active: false
+            },
+
+            {
+                id: "SOC-009",
+                platform: "Website",
+                name: "Al-Dahayan Website",
+                url: "",
+                active: true
+            }
+
+        ];
+
+
+        const state = {
+            channels: []
+        };
+
+
+        let editingId = null;
+
+
+        /* =========================
+           HELPERS
+        ========================== */
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        function normalize(value) {
+
+            return String(value || "")
+                .trim()
+                .toLowerCase();
+
+        }
+
+
+        function saveChannels() {
+
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(
+                    state.channels
+                )
+            );
+
+        }
+
+
+        function loadChannels() {
+
+            try {
+
+                const stored =
+                    JSON.parse(
+                        localStorage.getItem(
+                            STORAGE_KEY
+                        )
+                    );
+
+
+                if (
+                    Array.isArray(stored)
+                ) {
+
+                    state.channels =
+                        stored;
+
+                } else {
+
+                    state.channels =
+                        [...defaultChannels];
+
+                    saveChannels();
+
+                }
+
+            } catch (error) {
+
+                state.channels =
+                    [...defaultChannels];
+
+                saveChannels();
+
+            }
+
+
+            updateSummary();
+            renderChannels();
+
+        }
+
+
+        /* =========================
+           SUMMARY
+        ========================== */
+
+        function updateSummary() {
+
+            const channels =
+                state.channels;
+
+
+            document.getElementById(
+                "totalChannels"
+            ).textContent =
+                channels.length;
+
+
+            document.getElementById(
+                "activeChannels"
+            ).textContent =
+                channels.filter(
+                    channel =>
+                        channel.active !== false
+                ).length;
+
+
+            document.getElementById(
+                "inactiveChannels"
+            ).textContent =
+                channels.filter(
+                    channel =>
+                        channel.active === false
+                ).length;
+
+
+            document.getElementById(
+                "whatsappChannels"
+            ).textContent =
+                channels.filter(
+                    channel =>
+                        normalize(channel.platform) ===
+                        "whatsapp"
+                ).length;
+
+
+            document.getElementById(
+                "mapsChannels"
+            ).textContent =
+                channels.filter(
+                    channel =>
+                        normalize(channel.platform) ===
+                        "google maps"
+                ).length;
+
+        }
+
+
+        /* =========================
+           FILTER
+        ========================== */
+
+        function getFilteredChannels() {
+
+            const search =
+                normalize(
+                    document.getElementById(
+                        "channelSearch"
+                    ).value
+                );
+
+
+            const platform =
+                normalize(
+                    document.getElementById(
+                        "channelPlatformFilter"
+                    ).value
+                );
+
+
+            const status =
+                document.getElementById(
+                    "channelStatusFilter"
+                ).value;
+
+
+            return state.channels.filter(
+                channel => {
+
+                    const channelId =
+                        normalize(
+                            channel.id
+                        );
+
+                    const channelPlatform =
+                        normalize(
+                            channel.platform
+                        );
+
+                    const channelName =
+                        normalize(
+                            channel.name
+                        );
+
+                    const channelUrl =
+                        normalize(
+                            channel.url
+                        );
+
+
+                    const matchesSearch =
+                        !search ||
+                        channelId.includes(search) ||
+                        channelPlatform.includes(search) ||
+                        channelName.includes(search) ||
+                        channelUrl.includes(search);
+
+
+                    const matchesPlatform =
+                        !platform ||
+                        channelPlatform === platform;
+
+
+                    const matchesStatus =
+                        !status ||
+                        (
+                            status === "active" &&
+                            channel.active !== false
+                        ) ||
+                        (
+                            status === "inactive" &&
+                            channel.active === false
+                        );
+
+
+                    return (
+                        matchesSearch &&
+                        matchesPlatform &&
+                        matchesStatus
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           STATUS
+        ========================== */
+
+        function getStatusHTML(channel) {
+
+            if (
+                channel.active !== false
+            ) {
+
+                return `
+                    <span class="stock-badge stock-in">
+                        Active
+                    </span>
+                `;
+
+            }
+
+
+            return `
+                <span class="stock-badge stock-out">
+                    Inactive
+                </span>
+            `;
+
+        }
+
+
+        /* =========================
+           RENDER
+        ========================== */
+
+        function renderChannels() {
+
+            const tableBody =
+                document.getElementById(
+                    "channelTableBody"
+                );
+
+
+            const channels =
+                getFilteredChannels();
+
+
+            document.getElementById(
+                "channelResultCount"
+            ).textContent =
+                `${channels.length} channel${
+                    channels.length === 1 ? "" : "s"
+                } found.`;
+
+
+            if (!channels.length) {
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6">
+
+                            <div class="admin-empty-state">
+                                No channels found.
+                            </div>
+
+                        </td>
+                    </tr>
+                `;
+
+                return;
+
+            }
+
+
+            tableBody.innerHTML =
+                channels.map(
+                    channel => {
+
+                        const safeId =
+                            escapeHTML(
+                                channel.id
+                            );
+
+                        const safePlatform =
+                            escapeHTML(
+                                channel.platform
+                            );
+
+                        const safeName =
+                            escapeHTML(
+                                channel.name
+                            );
+
+                        const safeUrl =
+                            escapeHTML(
+                                channel.url
+                            );
+
+
+                        const urlDisplay =
+                            channel.url
+                                ? `
+                                    <a
+                                        href="${safeUrl}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Open
+                                    </a>
+                                  `
+                                : "Not configured";
+
+
+                        return `
+                            <tr>
+
+                                <td>
+                                    <strong>
+                                        ${safeId}
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    ${safePlatform}
+                                </td>
+
+                                <td>
+                                    ${safeName}
+                                </td>
+
+                                <td>
+                                    ${urlDisplay}
+                                </td>
+
+                                <td>
+                                    ${getStatusHTML(channel)}
+                                </td>
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-secondary"
+                                        data-edit-channel="${safeId}"
+                                    >
+                                        Edit
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-secondary"
+                                        data-toggle-channel="${safeId}"
+                                    >
+                                        ${
+                                            channel.active !== false
+                                                ? "Deactivate"
+                                                : "Activate"
+                                        }
+                                    </button>
+
+                                </td>
+
+                            </tr>
+                        `;
+
+                    }
+                ).join("");
+
+        }
+
+
+        /* =========================
+           FORM
+        ========================== */
+
+        function resetForm() {
+
+            document.getElementById(
+                "channelForm"
+            ).reset();
+
+
+            document.getElementById(
+                "channelStatus"
+            ).value =
+                "active";
+
+
+            editingId = null;
+
+        }
+
+
+        function editChannel(id) {
+
+            const channel =
+                state.channels.find(
+                    item =>
+                        item.id === id
+                );
+
+
+            if (!channel) {
+                return;
+            }
+
+
+            editingId = id;
+
+
+            document.getElementById(
+                "platform"
+            ).value =
+                channel.platform;
+
+
+            document.getElementById(
+                "channelName"
+            ).value =
+                channel.name;
+
+
+            document.getElementById(
+                "channelUrl"
+            ).value =
+                channel.url;
+
+
+            document.getElementById(
+                "channelStatus"
+            ).value =
+                channel.active !== false
+                    ? "active"
+                    : "inactive";
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+        function saveChannel(event) {
+
+            event.preventDefault();
+
+
+            const platform =
+                document.getElementById(
+                    "platform"
+                ).value.trim();
+
+
+            const name =
+                document.getElementById(
+                    "channelName"
+                ).value.trim();
+
+
+            const url =
+                document.getElementById(
+                    "channelUrl"
+                ).value.trim();
+
+
+            const active =
+                document.getElementById(
+                    "channelStatus"
+                ).value === "active";
+
+
+            if (
+                !platform ||
+                !name ||
+                !url
+            ) {
+
+                showMessage(
+                    "Please complete all required fields."
+                );
+
+                return;
+
+            }
+
+
+            if (editingId) {
+
+                const channel =
+                    state.channels.find(
+                        item =>
+                            item.id === editingId
+                    );
+
+
+                if (channel) {
+
+                    channel.platform =
+                        platform;
+
+                    channel.name =
+                        name;
+
+                    channel.url =
+                        url;
+
+                    channel.active =
+                        active;
+
+                }
+
+            } else {
+
+                const nextNumber =
+                    state.channels.length + 1;
+
+
+                state.channels.push({
+
+                    id:
+                        `SOC-${String(
+                            nextNumber
+                        ).padStart(3, "0")}`,
+
+                    platform,
+
+                    name,
+
+                    url,
+
+                    active
+
+                });
+
+            }
+
+
+            saveChannels();
+
+            updateSummary();
+
+            renderChannels();
+
+            resetForm();
+
+
+            showMessage(
+                "Channel saved locally. It will be connected to the Admin API in the backend implementation stage."
+            );
+
+        }
+
+
+        /* =========================
+           TOGGLE
+        ========================== */
+
+        function toggleChannel(id) {
+
+            const channel =
+                state.channels.find(
+                    item =>
+                        item.id === id
+                );
+
+
+            if (!channel) {
+                return;
+            }
+
+
+            channel.active =
+                channel.active === false;
+
+
+            saveChannels();
+
+            updateSummary();
+
+            renderChannels();
+
+
+            showMessage(
+                `Channel ${
+                    channel.active
+                        ? "activated"
+                        : "deactivated"
+                }.`
+            );
+
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        function showMessage(message) {
+
+            const element =
+                document.getElementById(
+                    "saveMessage"
+                );
+
+
+            element.textContent =
+                message;
+
+
+            element.style.display =
+                "block";
+
+
+            window.setTimeout(
+                function () {
+
+                    element.style.display =
+                        "none";
+
+                },
+                4500
+            );
+
+        }
+
+
+        /* =========================
+           EVENTS
+        ========================== */
+
+        document.getElementById(
+            "channelForm"
+        ).addEventListener(
+            "submit",
+            saveChannel
+        );
+
+
+        document.getElementById(
+            "resetFormButton"
+        ).addEventListener(
+            "click",
+            resetForm
+        );
+
+
+        document.getElementById(
+            "channelSearch"
+        ).addEventListener(
+            "input",
+            renderChannels
+        );
+
+
+        document.getElementById(
+            "channelPlatformFilter"
+        ).addEventListener(
+            "change",
+            renderChannels
+        );
+
+
+        document.getElementById(
+            "channelStatusFilter"
+        ).addEventListener(
+            "change",
+            renderChannels
+        );
+
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                const editButton =
+                    event.target.closest(
+                        "[data-edit-channel]"
+                    );
+
+
+                if (editButton) {
+
+                    editChannel(
+                        editButton.getAttribute(
+                            "data-edit-channel"
+                        )
+                    );
+
+                    return;
+
+                }
+
+
+                const toggleButton =
+                    event.target.closest(
+                        "[data-toggle-channel]"
+                    );
+
+
+                if (toggleButton) {
+
+                    toggleChannel(
+                        toggleButton.getAttribute(
+                            "data-toggle-channel"
+                        )
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           YEAR
+        ========================== */
+
+        document.getElementById(
+            "adminYear"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        /* =========================
+           INIT
+        ========================== */
+
+        loadChannels();
+
+    </script>
+
+</body>
+</html>
