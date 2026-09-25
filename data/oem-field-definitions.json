@@ -1,0 +1,264 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Central field definitions for Toyota and Lexus OEM catalog records used by the Al-Dahayan Admin Panel.",
+  "fields": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "editable": false,
+      "unique": true
+    },
+    "oemNumber": {
+      "type": "string",
+      "required": true,
+      "editable": true,
+      "unique": true,
+      "searchable": true
+    },
+    "partName": {
+      "type": "string",
+      "required": true,
+      "editable": true,
+      "searchable": true
+    },
+    "arabicName": {
+      "type": "string",
+      "required": false,
+      "editable": true,
+      "searchable": true,
+      "preserveArabicText": true
+    },
+    "brand": {
+      "type": "enum",
+      "required": true,
+      "editable": true,
+      "allowedValues": [
+        "Toyota",
+        "Lexus"
+      ],
+      "filterable": true
+    },
+    "category": {
+      "type": "string",
+      "required": true,
+      "editable": true,
+      "filterable": true
+    },
+    "subcategory": {
+      "type": "string",
+      "required": false,
+      "editable": true,
+      "filterable": true
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "editable": true
+    },
+    "arabicDescription": {
+      "type": "string",
+      "required": false,
+      "editable": true,
+      "preserveArabicText": true
+    },
+    "models": {
+      "type": "array",
+      "itemType": "string",
+      "required": false,
+      "editable": true,
+      "filterable": true
+    },
+    "modelYears": {
+      "type": "array",
+      "itemType": "integer",
+      "required": false,
+      "editable": true,
+      "filterable": true
+    },
+    "engineCodes": {
+      "type": "array",
+      "itemType": "string",
+      "required": false,
+      "editable": true,
+      "filterable": true
+    },
+    "bodyTypes": {
+      "type": "array",
+      "itemType": "string",
+      "required": false,
+      "editable": true,
+      "filterable": true
+    },
+    "marketSpecs": {
+      "type": "array",
+      "itemType": "string",
+      "required": false,
+      "editable": true,
+      "filterable": true
+    },
+    "compatibleOemNumbers": {
+      "type": "array",
+      "itemType": "string",
+      "required": false,
+      "editable": true,
+      "searchable": true
+    },
+    "supersededOemNumbers": {
+      "type": "array",
+      "itemType": "string",
+      "required": false,
+      "editable": true,
+      "searchable": true
+    },
+    "partType": {
+      "type": "string",
+      "required": false,
+      "editable": true
+    },
+    "condition": {
+      "type": "enum",
+      "required": false,
+      "editable": true,
+      "allowedValues": [
+        "new",
+        "used",
+        "refurbished",
+        "unknown"
+      ]
+    },
+    "genuine": {
+      "type": "boolean",
+      "required": false,
+      "editable": true
+    },
+    "aftermarket": {
+      "type": "boolean",
+      "required": false,
+      "editable": true
+    },
+    "primaryImage": {
+      "type": "string",
+      "required": false,
+      "editable": true
+    },
+    "galleryImages": {
+      "type": "array",
+      "itemType": "string",
+      "required": false,
+      "editable": true
+    },
+    "regularPrice": {
+      "type": "number",
+      "required": false,
+      "editable": true,
+      "minimum": 0,
+      "currency": "SAR"
+    },
+    "salePrice": {
+      "type": "number",
+      "required": false,
+      "editable": true,
+      "minimum": 0,
+      "currency": "SAR"
+    },
+    "discountPercent": {
+      "type": "number",
+      "required": false,
+      "editable": true,
+      "minimum": 0,
+      "maximum": 100
+    },
+    "currency": {
+      "type": "enum",
+      "required": false,
+      "editable": true,
+      "allowedValues": [
+        "SAR"
+      ]
+    },
+    "priceVisibility": {
+      "type": "enum",
+      "required": false,
+      "editable": true,
+      "allowedValues": [
+        "visible",
+        "hidden",
+        "contact_for_price"
+      ]
+    },
+    "stockStatus": {
+      "type": "enum",
+      "required": false,
+      "editable": true,
+      "allowedValues": [
+        "in_stock",
+        "low_stock",
+        "out_of_stock",
+        "on_order",
+        "unknown"
+      ],
+      "filterable": true
+    },
+    "quantity": {
+      "type": "integer",
+      "required": false,
+      "editable": true,
+      "minimum": 0
+    },
+    "locationIds": {
+      "type": "array",
+      "itemType": "string",
+      "required": false,
+      "editable": true
+    },
+    "status": {
+      "type": "enum",
+      "required": true,
+      "editable": true,
+      "allowedValues": [
+        "draft",
+        "active",
+        "archived",
+        "disabled"
+      ],
+      "filterable": true
+    },
+    "verificationLevel": {
+      "type": "enum",
+      "required": true,
+      "editable": true,
+      "allowedValues": [
+        "unverified",
+        "reviewed",
+        "verified"
+      ],
+      "filterable": true
+    },
+    "verificationSource": {
+      "type": "string",
+      "required": false,
+      "editable": true
+    },
+    "createdAt": {
+      "type": "datetime",
+      "required": true,
+      "editable": false
+    },
+    "updatedAt": {
+      "type": "datetime",
+      "required": true,
+      "editable": false
+    },
+    "createdBy": {
+      "type": "string",
+      "required": false,
+      "editable": false
+    },
+    "updatedBy": {
+      "type": "string",
+      "required": false,
+      "editable": false
+    }
+  }
+}
