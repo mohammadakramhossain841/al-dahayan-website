@@ -1,0 +1,131 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Validation rules for public OEM catalog API query parameters.",
+  "enabled": true,
+
+  "parameters": {
+    "oemNumber": {
+      "type": "string",
+      "required": false,
+      "minLength": 2,
+      "maxLength": 40,
+      "trim": true
+    },
+
+    "partName": {
+      "type": "string",
+      "required": false,
+      "minLength": 1,
+      "maxLength": 120,
+      "trim": true
+    },
+
+    "brand": {
+      "type": "string",
+      "required": false,
+      "allowedValues": [
+        "Toyota",
+        "Lexus"
+      ]
+    },
+
+    "category": {
+      "type": "string",
+      "required": false,
+      "maxLength": 100
+    },
+
+    "model": {
+      "type": "string",
+      "required": false,
+      "maxLength": 100
+    },
+
+    "modelYear": {
+      "type": "integer",
+      "required": false,
+      "minimum": 1900,
+      "maximum": 2100
+    },
+
+    "engineCode": {
+      "type": "string",
+      "required": false,
+      "maxLength": 40
+    },
+
+    "bodyType": {
+      "type": "string",
+      "required": false,
+      "maxLength": 60
+    },
+
+    "stockStatus": {
+      "type": "string",
+      "required": false,
+      "allowedValues": [
+        "in_stock",
+        "low_stock",
+        "out_of_stock",
+        "on_order",
+        "unknown"
+      ]
+    },
+
+    "page": {
+      "type": "integer",
+      "required": false,
+      "minimum": 1,
+      "default": 1
+    },
+
+    "pageSize": {
+      "type": "integer",
+      "required": false,
+      "minimum": 1,
+      "maximum": 96,
+      "default": 24
+    },
+
+    "sort": {
+      "type": "string",
+      "required": false,
+      "allowedValues": [
+        "relevance",
+        "oem_asc",
+        "oem_desc",
+        "name_asc",
+        "name_desc",
+        "price_asc",
+        "price_desc",
+        "newest"
+      ]
+    }
+  },
+
+  "rules": {
+    "trimWhitespace": true,
+    "normalizeOemNumber": true,
+    "caseInsensitiveSearch": true,
+    "rejectInvalidTypes": true,
+    "rejectInvalidRanges": true,
+    "rejectUnknownParameters": true,
+    "sanitizeTextInput": true
+  },
+
+  "security": {
+    "rejectInternalParameters": true,
+    "rejectAdminParameters": true,
+    "rejectSupplierParameters": true,
+    "rejectCustomerPrivateParameters": true
+  },
+
+  "errors": {
+    "invalidParameter": "INVALID_QUERY_PARAMETER",
+    "invalidType": "INVALID_PARAMETER_TYPE",
+    "invalidRange": "INVALID_PARAMETER_RANGE",
+    "unknownParameter": "UNKNOWN_QUERY_PARAMETER",
+    "invalidValue": "INVALID_PARAMETER_VALUE"
+  }
+}
