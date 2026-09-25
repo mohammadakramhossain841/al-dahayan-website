@@ -1,0 +1,133 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin settings view configuration for managing OEM catalog behavior and administrative preferences.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Catalog Settings",
+    "allowEdit": true,
+    "requireSaveConfirmation": true
+  },
+
+  "sections": [
+    "catalog",
+    "search",
+    "inventory",
+    "pricing",
+    "verification",
+    "images",
+    "publication",
+    "import",
+    "export",
+    "audit"
+  ],
+
+  "catalog": {
+    "defaultBrand": "Toyota",
+    "supportedBrands": [
+      "Toyota",
+      "Lexus"
+    ],
+    "allowFutureBrands": true,
+    "allowArchivedRecords": true
+  },
+
+  "search": {
+    "partialMatch": true,
+    "exactMatch": true,
+    "oemNumberSearch": true,
+    "arabicSearch": true,
+    "vehicleSearch": true,
+    "searchArchivedRecords": false
+  },
+
+  "inventory": {
+    "showStockStatus": true,
+    "showExactQuantityToAdmin": true,
+    "showExactQuantityPublicly": false,
+    "allowMultipleLocations": true,
+    "preventNegativeQuantity": true
+  },
+
+  "pricing": {
+    "defaultCurrency": "SAR",
+    "allowRegularPrice": true,
+    "allowSalePrice": true,
+    "allowDiscount": true,
+    "preventNegativePrices": true,
+    "autoCalculateDiscount": true
+  },
+
+  "verification": {
+    "defaultLevel": "unverified",
+    "requireVerificationForPublication": true,
+    "allowManualVerification": true,
+    "preserveVerificationHistory": true
+  },
+
+  "images": {
+    "allowImages": true,
+    "allowMultipleImages": true,
+    "requirePrimaryImage": false,
+    "allowedFormats": [
+      "jpg",
+      "jpeg",
+      "png",
+      "webp"
+    ]
+  },
+
+  "publication": {
+    "defaultPublished": false,
+    "requireReviewBeforePublication": true,
+    "allowUnpublish": true,
+    "allowArchive": true
+  },
+
+  "import": {
+    "requireValidation": true,
+    "requirePreview": true,
+    "requireConfirmation": true,
+    "allowCreate": true,
+    "allowUpdate": true,
+    "allowSkipDuplicates": true
+  },
+
+  "export": {
+    "defaultFormat": "csv",
+    "allowCsv": true,
+    "allowXlsx": true,
+    "allowJson": true,
+    "includeInternalNotes": false
+  },
+
+  "audit": {
+    "enabled": true,
+    "recordCreate": true,
+    "recordUpdate": true,
+    "recordImport": true,
+    "recordExport": true,
+    "recordPriceChanges": true,
+    "recordStockChanges": true,
+    "recordCompatibilityChanges": true,
+    "recordVerificationChanges": true,
+    "recordImageChanges": true,
+    "recordPublicationChanges": true,
+    "allowHistoryDeletion": false
+  },
+
+  "permissions": {
+    "view": "oem.settings_view",
+    "edit": "oem.settings_update"
+  },
+
+  "safety": {
+    "requirePermissionForChanges": true,
+    "requireConfirmationBeforeSave": true,
+    "preservePreviousSettings": true,
+    "preserveAuditHistory": true,
+    "neverDisableAuditWithoutAuthorization": true,
+    "neverAutomaticallyPublishUnverifiedRecords": true
+  }
+}
