@@ -1,5 +1,6 @@
 /* =========================================
    AL-DAHAYAN MODAL SYSTEM
+   Centralized, Accessible & Config-Aware
 ========================================= */
 
 (function () {
@@ -9,10 +10,51 @@
   let activeModal = null;
   let previousFocusedElement = null;
 
+  const DEFAULT_SELECTOR = "[data-modal]";
+
+  /* =========================================
+     CONFIG
+  ========================================= */
+
+  function getConfig() {
+    return window.AlDahayanConfig || null;
+  }
+
+  function getEffectiveConfig() {
+    const config = getConfig();
+
+    if (
+      config &&
+      typeof config.getEffectiveAppConfig ===
+        "function"
+    ) {
+      return config.getEffectiveAppConfig();
+    }
+
+    return {};
+  }
+
+  /* =========================================
+     MODAL HELPERS
+  ========================================= */
+
   function getModal(
-    selector = "[data-modal]"
+    selector = DEFAULT_SELECTOR
   ) {
-    return document.querySelector(selector);
+    if (!selector) {
+      selector = DEFAULT_SELECTOR;
+    }
+
+    try {
+      return document.querySelector(selector);
+    } catch (error) {
+      console.warn(
+        "Al-Dahayan Modal: invalid selector.",
+        selector
+      );
+
+      return null;
+    }
   }
 
   function getElements(modal) {
@@ -21,35 +63,72 @@
     }
 
     return {
-      overlay: modal.querySelector(
-        "[data-modal-overlay]"
-      ),
+      overlay:
+        modal.querySelector(
+          "[data-modal-overlay]"
+        ),
 
-      container: modal.querySelector(
-        "[data-modal-container]"
-      ),
+      container:
+        modal.querySelector(
+          "[data-modal-container]"
+        ),
 
-      title: modal.querySelector(
-        "[data-modal-title]"
-      ),
+      title:
+        modal.querySelector(
+          "[data-modal-title]"
+        ),
 
-      body: modal.querySelector(
-        "[data-modal-body]"
-      ),
+      body:
+        modal.querySelector(
+          "[data-modal-body]"
+        ),
 
-      footer: modal.querySelector(
-        "[data-modal-footer]"
-      ),
+      footer:
+        modal.querySelector(
+          "[data-modal-footer]"
+        ),
 
-      close: modal.querySelector(
-        "[data-modal-close]"
-      ),
+      close:
+        modal.querySelector(
+          "[data-modal-close]"
+        ),
 
-      cancel: modal.querySelector(
-        "[data-modal-cancel]"
-      )
+      cancel:
+        modal.querySelector(
+          "[data-modal-cancel]"
+        )
     };
   }
+
+  function getFocusableElements(modal) {
+    if (!modal) {
+      return [];
+    }
+
+    return Array.from(
+      modal.querySelectorAll(
+        [
+          "button:not([disabled])",
+          "[href]",
+          "input:not([disabled])",
+          "select:not([disabled])",
+          "textarea:not([disabled])",
+          "[tabindex]:not([tabindex='-1'])"
+        ].join(",")
+      )
+    ).filter(function (element) {
+      return (
+        !element.hidden &&
+        element.getAttribute(
+          "aria-hidden"
+        ) !== "true"
+      );
+    });
+  }
+
+  /* =========================================
+     CONTENT
+  ========================================= */
 
   function setContent(
     modal,
@@ -87,6 +166,96 @@
     }
   }
 
+  /* =========================================
+     ACCESSIBILITY
+  ========================================= */
+
+  function prepareModal(modal) {
+    if (!modal) {
+      return;
+    }
+
+    if (
+      !modal.hasAttribute("role")
+    ) {
+      modal.setAttribute(
+        "role",
+        "dialog"
+      );
+    }
+
+    if (
+      !modal.hasAttribute(
+        "aria-modal"
+      )
+    ) {
+      modal.setAttribute(
+        "aria-modal",
+        "true"
+      );
+    }
+
+    if (
+      !modal.hasAttribute(
+        "aria-hidden"
+      )
+    ) {
+      modal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+    }
+
+    if (!modal.hasAttribute("tabindex")) {
+      modal.setAttribute(
+        "tabindex",
+        "-1"
+      );
+    }
+
+    const elements =
+      getElements(modal);
+
+    if (
+      elements.container &&
+      !elements.container.hasAttribute(
+        "tabindex"
+      )
+    ) {
+      elements.container.setAttribute(
+        "tabindex",
+        "-1"
+      );
+    }
+
+    if (
+      elements.title &&
+      !elements.title.id
+    ) {
+      elements.title.id =
+        "al-dahayan-modal-title-" +
+        Math.random()
+          .toString(36)
+          .slice(2, 9);
+    }
+
+    if (
+      elements.title &&
+      !modal.hasAttribute(
+        "aria-labelledby"
+      )
+    ) {
+      modal.setAttribute(
+        "aria-labelledby",
+        elements.title.id
+      );
+    }
+  }
+
+  /* =========================================
+     OPEN
+  ========================================= */
+
   function openModal(
     options = {}
   ) {
@@ -94,7 +263,7 @@
       options.modal ||
       getModal(
         options.selector ||
-          "[data-modal]"
+          DEFAULT_SELECTOR
       );
 
     if (!modal) {
@@ -108,6 +277,19 @@
     if (activeModal) {
       closeModal();
     }
+
+    const config =
+      getEffectiveConfig();
+
+    if (
+      config &&
+      config.features &&
+      config.features.modal === false
+    ) {
+      return false;
+    }
+
+    prepareModal(modal);
 
     previousFocusedElement =
       document.activeElement;
@@ -123,27 +305,41 @@
       "is-open"
     );
 
-    document.body.classList.add(
-      "modal-open"
-    );
-
     modal.setAttribute(
       "aria-hidden",
       "false"
     );
 
-    activeModal =
-      modal;
+    modal.setAttribute(
+      "data-modal-open",
+      "true"
+    );
+
+    document.body.classList.add(
+      "modal-open"
+    );
+
+    activeModal = modal;
 
     const elements =
       getElements(modal);
 
-    if (elements.close) {
-      elements.close.focus();
-    } else if (
-      elements.container
+    const focusTarget =
+      elements.close ||
+      getFocusableElements(modal)[0] ||
+      elements.container ||
+      modal;
+
+    if (
+      focusTarget &&
+      typeof focusTarget.focus ===
+        "function"
     ) {
-      elements.container.focus();
+      window.requestAnimationFrame(
+        function () {
+          focusTarget.focus();
+        }
+      );
     }
 
     document.dispatchEvent(
@@ -160,6 +356,10 @@
 
     return true;
   }
+
+  /* =========================================
+     CLOSE
+  ========================================= */
 
   function closeModal() {
     if (!activeModal) {
@@ -180,19 +380,30 @@
       "true"
     );
 
+    modal.setAttribute(
+      "data-modal-open",
+      "false"
+    );
+
     document.body.classList.remove(
       "modal-open"
     );
 
-    activeModal =
-      null;
+    activeModal = null;
 
     if (
       previousFocusedElement &&
+      document.contains(
+        previousFocusedElement
+      ) &&
       typeof previousFocusedElement.focus ===
         "function"
     ) {
-      previousFocusedElement.focus();
+      window.requestAnimationFrame(
+        function () {
+          previousFocusedElement.focus();
+        }
+      );
     }
 
     previousFocusedElement =
@@ -212,6 +423,10 @@
     return true;
   }
 
+  /* =========================================
+     TOGGLE
+  ========================================= */
+
   function toggleModal(
     options = {}
   ) {
@@ -224,36 +439,94 @@
     );
   }
 
+  /* =========================================
+     BUTTON DATA
+  ========================================= */
+
+  function getButtonOptions(
+    button
+  ) {
+    if (!button) {
+      return {};
+    }
+
+    const title =
+      button.dataset
+        .modalTitle || "";
+
+    const content =
+      button.dataset
+        .modalContent || "";
+
+    const html =
+      button.dataset
+        .modalHtml;
+
+    const footerHTML =
+      button.dataset
+        .modalFooter || "";
+
+    const target =
+      button.dataset
+        .modalTarget;
+
+    const options = {
+      title,
+      selector:
+        target ||
+        DEFAULT_SELECTOR
+    };
+
+    if (
+      html !== undefined
+    ) {
+      options.html = html;
+    } else {
+      options.content =
+        content;
+    }
+
+    if (
+      footerHTML
+    ) {
+      options.footerHTML =
+        footerHTML;
+    }
+
+    return options;
+  }
+
+  /* =========================================
+     CLICK HANDLER
+  ========================================= */
+
   function handleClick(
     event
   ) {
+    const target =
+      event.target;
+
+    if (
+      !target ||
+      typeof target.closest !==
+        "function"
+    ) {
+      return;
+    }
+
     const openButton =
-      event.target.closest(
+      target.closest(
         "[data-modal-open]"
       );
 
     if (openButton) {
       event.preventDefault();
 
-      const title =
-        openButton.dataset
-          .modalTitle || "";
-
-      const content =
-        openButton.dataset
-          .modalContent || "";
-
-      const target =
-        openButton.dataset
-          .modalTarget;
-
-      openModal({
-        title,
-        content,
-        selector:
-          target ||
-          "[data-modal]"
-      });
+      openModal(
+        getButtonOptions(
+          openButton
+        )
+      );
 
       return;
     }
@@ -268,25 +541,31 @@
       );
 
     if (
-      event.target ===
-      elements.overlay
+      elements.overlay &&
+      target ===
+        elements.overlay
     ) {
       closeModal();
       return;
     }
 
     if (
-      event.target.closest(
+      target.closest(
         "[data-modal-close]"
       ) ||
-      event.target.closest(
+      target.closest(
         "[data-modal-cancel]"
       )
     ) {
       event.preventDefault();
+
       closeModal();
     }
   }
+
+  /* =========================================
+     KEYBOARD
+  ========================================= */
 
   function handleKeydown(
     event
@@ -296,33 +575,48 @@
     }
 
     if (
-      event.key === "Escape"
+      event.key ===
+      "Escape"
     ) {
       event.preventDefault();
+
       closeModal();
+
       return;
     }
 
     if (
-      event.key !== "Tab"
+      event.key !==
+      "Tab"
     ) {
       return;
     }
 
     const focusable =
-      activeModal.querySelectorAll(
-        [
-          "button:not([disabled])",
-          "[href]",
-          "input:not([disabled])",
-          "select:not([disabled])",
-          "textarea:not([disabled])",
-          "[tabindex]:not([tabindex='-1'])"
-        ].join(",")
+      getFocusableElements(
+        activeModal
       );
 
     if (!focusable.length) {
       event.preventDefault();
+
+      const elements =
+        getElements(
+          activeModal
+        );
+
+      const fallback =
+        elements.container ||
+        activeModal;
+
+      if (
+        fallback &&
+        typeof fallback.focus ===
+          "function"
+      ) {
+        fallback.focus();
+      }
+
       return;
     }
 
@@ -340,16 +634,26 @@
         first
     ) {
       event.preventDefault();
+
       last.focus();
-    } else if (
+
+      return;
+    }
+
+    if (
       !event.shiftKey &&
       document.activeElement ===
         last
     ) {
       event.preventDefault();
+
       first.focus();
     }
   }
+
+  /* =========================================
+     INITIALIZATION
+  ========================================= */
 
   function initializeModal() {
     if (initialized) {
@@ -370,14 +674,30 @@
 
     document
       .querySelectorAll(
-        "[data-modal]"
+        DEFAULT_SELECTOR
       )
-      .forEach((modal) => {
-        modal.hidden = true;
+      .forEach(function (
+        modal
+      ) {
+        prepareModal(
+          modal
+        );
+
+        modal.hidden =
+          true;
+
+        modal.classList.remove(
+          "is-open"
+        );
 
         modal.setAttribute(
           "aria-hidden",
           "true"
+        );
+
+        modal.setAttribute(
+          "data-modal-open",
+          "false"
         );
       });
 
@@ -388,8 +708,15 @@
     );
   }
 
+  /* =========================================
+     PUBLIC API
+  ========================================= */
+
   window.AlDahayanModal = {
     init:
+      initializeModal,
+
+    initialize:
       initializeModal,
 
     open:
@@ -401,21 +728,58 @@
     toggle:
       toggleModal,
 
+    setContent:
+      setContent,
+
     get:
       getModal,
+
+    getElements:
+      getElements,
+
+    getFocusableElements:
+      getFocusableElements,
 
     getActive:
       function () {
         return activeModal;
+      },
+
+    isOpen:
+      function () {
+        return !!activeModal;
+      },
+
+    isInitialized:
+      function () {
+        return initialized;
       }
   };
+
+  /* =========================================
+     LEGACY GLOBAL SUPPORT
+  ========================================= */
 
   window.initializeModal =
     initializeModal;
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    initializeModal
-  );
+  /* =========================================
+     DOM READY
+  ========================================= */
+
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializeModal,
+      {
+        once: true
+      }
+    );
+  } else {
+    initializeModal();
+  }
 
 })();
