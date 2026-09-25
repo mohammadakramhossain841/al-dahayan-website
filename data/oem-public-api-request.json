@@ -1,0 +1,135 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public API request configuration for Toyota and Lexus OEM catalog services.",
+  "enabled": true,
+
+  "methods": {
+    "catalog": ["GET"],
+    "record": ["GET"],
+    "search": ["GET"],
+    "filters": ["GET"],
+    "categories": ["GET"],
+    "vehicles": ["GET"],
+    "compatibility": ["GET"],
+    "availability": ["GET"],
+    "inquiry": ["POST"]
+  },
+
+  "queryParameters": {
+    "oemNumber": {
+      "enabled": true,
+      "type": "string",
+      "trimWhitespace": true
+    },
+    "partName": {
+      "enabled": true,
+      "type": "string",
+      "trimWhitespace": true
+    },
+    "brand": {
+      "enabled": true,
+      "type": "string"
+    },
+    "category": {
+      "enabled": true,
+      "type": "string"
+    },
+    "model": {
+      "enabled": true,
+      "type": "string"
+    },
+    "modelYear": {
+      "enabled": true,
+      "type": "integer"
+    },
+    "engineCode": {
+      "enabled": true,
+      "type": "string"
+    },
+    "bodyType": {
+      "enabled": true,
+      "type": "string"
+    },
+    "stockStatus": {
+      "enabled": true,
+      "type": "string"
+    },
+    "page": {
+      "enabled": true,
+      "type": "integer",
+      "minimum": 1
+    },
+    "pageSize": {
+      "enabled": true,
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 96
+    },
+    "sort": {
+      "enabled": true,
+      "type": "string"
+    }
+  },
+
+  "requestBody": {
+    "inquiry": {
+      "enabled": true,
+      "requiredFields": [
+        "name",
+        "phone",
+        "message"
+      ],
+      "optionalFields": [
+        "email",
+        "oemNumber",
+        "partName",
+        "quantity",
+        "make",
+        "model",
+        "modelYear",
+        "engineCode",
+        "vin"
+      ]
+    }
+  },
+
+  "validation": {
+    "rejectUnknownParameters": true,
+    "validateTypes": true,
+    "validateRanges": true,
+    "trimStrings": true,
+    "sanitizeStrings": true,
+    "rejectEmptyRequiredFields": true
+  },
+
+  "security": {
+    "allowPublicReadRequests": true,
+    "allowPublicWriteRequests": false,
+    "allowInquirySubmission": true,
+    "neverAcceptAdminFields": true,
+    "neverAcceptSupplierFields": true,
+    "neverAcceptInternalFields": true
+  },
+
+  "pagination": {
+    "defaultPage": 1,
+    "defaultPageSize": 24,
+    "maximumPageSize": 96
+  },
+
+  "language": {
+    "parameter": "language",
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en"
+  },
+
+  "responseFormat": {
+    "format": "json",
+    "includeContentType": true,
+    "includeRequestId": true
+  }
+}
