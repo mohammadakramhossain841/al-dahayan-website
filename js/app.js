@@ -1,854 +1,979 @@
+/* =========================================
+   AL-DAHAYAN APPLICATION CORE
+   Centralized Application Orchestrator
+========================================= */
+
 (function () {
-    "use strict";
+  "use strict";
 
-    const CONFIG = window.AlDahayanConfig || {};
-    const UTILS = window.AlDahayanUtils || {};
+  let initialized = false;
+  let initializationPromise = null;
 
-    let appInitialized = false;
-    let componentLoadCompleted = false;
+  /* =========================================
+     CONFIG
+  ========================================= */
 
-    /**
-     * ---------------------------------------------------------
-     * Helpers
-     * ---------------------------------------------------------
-     */
+  function getConfig() {
+    return window.AlDahayanConfig || null;
+  }
 
-    function $(selector, parent = document) {
-        return parent.querySelector(selector);
-    }
+  function getEffectiveConfig() {
+    const config = getConfig();
 
-    function $all(selector, parent = document) {
-        return Array.from(parent.querySelectorAll(selector));
-    }
-
-    function safeCall(callback, fallback = null) {
-        try {
-            if (typeof callback === "function") {
-                return callback();
-            }
-        } catch (error) {
-            console.warn("Al-Dahayan app operation failed:", error);
-        }
-
-        return fallback;
-    }
-
-    function dispatch(name, detail = {}) {
-        document.dispatchEvent(
-            new CustomEvent(name, {
-                detail
-            })
-        );
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Configuration
-     * ---------------------------------------------------------
-     */
-
-    function getConfig() {
-        if (
-            CONFIG &&
-            typeof CONFIG.getEffectiveAppConfig === "function"
-        ) {
-            return CONFIG.getEffectiveAppConfig();
-        }
-
-        return CONFIG.config || {};
-    }
-
-    function isFeatureEnabled(featureName) {
-        if (
-            CONFIG &&
-            typeof CONFIG.isFeatureEnabled === "function"
-        ) {
-            return CONFIG.isFeatureEnabled(featureName);
-        }
-
-        const config = getConfig();
-
-        return (
-            config.features &&
-            config.features[featureName] === true
-        );
-    }
-
-    function isAIEnabled() {
-        if (
-            CONFIG &&
-            typeof CONFIG.isAIEnabled === "function"
-        ) {
-            return CONFIG.isAIEnabled();
-        }
-
-        const config = getConfig();
-
-        return config.ai?.enabled === true;
-    }
-
-    function isInventoryEnabled() {
-        if (
-            CONFIG &&
-            typeof CONFIG.isInventoryEnabled === "function"
-        ) {
-            return CONFIG.isInventoryEnabled();
-        }
-
-        const config = getConfig();
-
-        return (
-            config.inventory?.enabled === true &&
-            config.features?.inventory === true
-        );
-    }
-
-    function isInquiryEnabled() {
-        if (
-            CONFIG &&
-            typeof CONFIG.isInquiryEnabled === "function"
-        ) {
-            return CONFIG.isInquiryEnabled();
-        }
-
-        const config = getConfig();
-
-        return (
-            config.inquiry?.enabled === true &&
-            config.features?.inquiry === true
-        );
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Feature Attribute Support
-     *
-     * Example:
-     *
-     * <div data-feature="vinSearch">
-     * <div data-feature="inventory">
-     * <div data-feature="aiAssistant">
-     * ---------------------------------------------------------
-     */
-
-    function applyFeatureVisibility() {
-        const featureElements = $all("[data-feature]");
-
-        featureElements.forEach((element) => {
-            const featureName =
-                element.getAttribute("data-feature");
-
-            if (!featureName) return;
-
-            const enabled =
-                isFeatureEnabled(featureName);
-
-            element.hidden = !enabled;
-
-            element.setAttribute(
-                "aria-hidden",
-                enabled ? "false" : "true"
-            );
-        });
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Navigation Feature Visibility
-     *
-     * Useful for:
-     * OEM Search
-     * Vehicle Search
-     * VIN Search
-     * Inventory
-     * Inquiry
-     * AI Assistant
-     * ---------------------------------------------------------
-     */
-
-    function applyNavigationFeatureVisibility() {
-        const featureMap = {
-            oemSearch: [
-                '[data-feature-link="oemSearch"]',
-                'a[href*="parts"]'
-            ],
-
-            vehicleSearch: [
-                '[data-feature-link="vehicleSearch"]',
-                'a[href*="vehicles"]'
-            ],
-
-            vinSearch: [
-                '[data-feature-link="vinSearch"]',
-                'a[href*="vin"]'
-            ],
-
-            inventory: [
-                '[data-feature-link="inventory"]',
-                'a[href*="inventory"]'
-            ],
-
-            inquiry: [
-                '[data-feature-link="inquiry"]',
-                'a[href*="inquiry"]'
-            ],
-
-            aiAssistant: [
-                '[data-feature-link="aiAssistant"]'
-            ]
-        };
-
-        Object.keys(featureMap).forEach((featureName) => {
-            const enabled =
-                featureName === "aiAssistant"
-                    ? isAIEnabled()
-                    : isFeatureEnabled(featureName);
-
-            featureMap[featureName].forEach((selector) => {
-                $all(selector).forEach((element) => {
-                    if (
-                        element.hasAttribute("data-feature-link") ||
-                        element.closest("[data-feature]")
-                    ) {
-                        element.hidden = !enabled;
-                    }
-                });
-            });
-        });
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Inventory Configuration
-     * ---------------------------------------------------------
-     */
-
-    function applyInventorySettings() {
-        const config = getConfig();
-        const inventoryConfig =
-            config.inventory || {};
-
-        const threshold =
-            Number(inventoryConfig.lowStockThreshold);
-
-        const quantityDisplay =
-            inventoryConfig.quantityDisplay === true;
-
-        document.documentElement.dataset.inventoryEnabled =
-            isInventoryEnabled() ? "true" : "false";
-
-        document.documentElement.dataset.quantityDisplay =
-            quantityDisplay ? "true" : "false";
-
-        document.documentElement.dataset.lowStockThreshold =
-            Number.isFinite(threshold) && threshold > 0
-                ? String(threshold)
-                : "5";
-
-        dispatch(
-            "alDahayanInventorySettingsApplied",
-            {
-                enabled: isInventoryEnabled(),
-                lowStockThreshold:
-                    Number.isFinite(threshold) && threshold > 0
-                        ? threshold
-                        : 5,
-                quantityDisplay
-            }
-        );
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Inquiry Configuration
-     * ---------------------------------------------------------
-     */
-
-    function applyInquirySettings() {
-        const config = getConfig();
-        const inquiryConfig =
-            config.inquiry || {};
-
-        const enabled =
-            isInquiryEnabled();
-
-        document.documentElement.dataset.inquiryEnabled =
-            enabled ? "true" : "false";
-
-        document.documentElement.dataset.customerLocationCollection =
-            inquiryConfig.collectCustomerLocation === true
-                ? "true"
-                : "false";
-
-        $all("[data-inquiry-form]").forEach((form) => {
-            form.hidden = !enabled;
-
-            form.setAttribute(
-                "aria-hidden",
-                enabled ? "false" : "true"
-            );
-        });
-
-        dispatch(
-            "alDahayanInquirySettingsApplied",
-            {
-                enabled,
-                customerLocationCollection:
-                    inquiryConfig.collectCustomerLocation === true
-            }
-        );
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * AI Configuration
-     * ---------------------------------------------------------
-     */
-
-    function applyAISettings() {
-        const config = getConfig();
-        const aiConfig =
-            config.ai || {};
-
-        const enabled =
-            isAIEnabled();
-
-        document.documentElement.dataset.aiEnabled =
-            enabled ? "true" : "false";
-
-        document.documentElement.dataset.aiSalesMode =
-            aiConfig.salesMode === true
-                ? "true"
-                : "false";
-
-        document.documentElement.dataset.aiInventoryVerification =
-            aiConfig.inventoryVerificationRequired !== false
-                ? "true"
-                : "false";
-
-        document.documentElement.dataset.aiWhatsAppConnection =
-            aiConfig.whatsappConnection !== false
-                ? "true"
-                : "false";
-
-        document.documentElement.dataset.aiCustomerLocation =
-            aiConfig.customerLocationCollection === true
-                ? "true"
-                : "false";
-
-        document.documentElement.dataset.aiBranchRecommendation =
-            aiConfig.proactiveBranchRecommendation === true
-                ? "true"
-                : "false";
-
-        $all("[data-ai-assistant]").forEach((element) => {
-            element.hidden = !enabled;
-
-            element.setAttribute(
-                "aria-hidden",
-                enabled ? "false" : "true"
-            );
-        });
-
-        dispatch(
-            "alDahayanAISettingsApplied",
-            {
-                enabled,
-                salesMode:
-                    aiConfig.salesMode === true,
-                inventoryVerification:
-                    aiConfig.inventoryVerificationRequired !== false,
-                whatsappConnection:
-                    aiConfig.whatsappConnection !== false,
-                customerLocationCollection:
-                    aiConfig.customerLocationCollection === true,
-                proactiveBranchRecommendation:
-                    aiConfig.proactiveBranchRecommendation === true
-            }
-        );
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Payment Configuration
-     *
-     * Payment remains OFF.
-     * ---------------------------------------------------------
-     */
-
-    function applyPaymentSettings() {
-        const config = getConfig();
-        const payment =
-            config.payment || {};
-
-        const enabled =
-            payment.enabled === true &&
-            payment.onlinePayment === true;
-
-        document.documentElement.dataset.paymentEnabled =
-            enabled ? "true" : "false";
-
-        document.documentElement.dataset.paymentCurrency =
-            payment.currency || "SAR";
-
-        $all("[data-payment-feature]").forEach((element) => {
-            element.hidden = !enabled;
-        });
-
-        dispatch(
-            "alDahayanPaymentSettingsApplied",
-            {
-                enabled,
-                currency:
-                    payment.currency || "SAR"
-            }
-        );
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Language / Direction
-     * ---------------------------------------------------------
-     */
-
-    function applyInitialLanguage() {
-        const config = getConfig();
-        const defaultLanguage =
-            config.site?.defaultLanguage || "en";
-
-        const supportedLanguages =
-            Array.isArray(config.site?.supportedLanguages)
-                ? config.site.supportedLanguages
-                : ["en", "ar"];
-
-        let language = defaultLanguage;
-
-        try {
-            const stored =
-                localStorage.getItem(
-                    "alDahayanLanguage"
-                );
-
-            if (
-                stored &&
-                supportedLanguages.includes(stored)
-            ) {
-                language = stored;
-            }
-        } catch (error) {
-            console.warn(
-                "Unable to read saved language:",
-                error
-            );
-        }
-
-        document.documentElement.lang =
-            language;
-
-        const direction =
-            config.site?.direction?.[language] ||
-            (language === "ar" ? "rtl" : "ltr");
-
-        document.documentElement.dir =
-            direction;
-
-        dispatch(
-            "alDahayanInitialLanguageApplied",
-            {
-                language,
-                direction
-            }
-        );
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Body / Website State
-     * ---------------------------------------------------------
-     */
-
-    function applyWebsiteState() {
-        const config = getConfig();
-
-        document.body.dataset.environment =
-            config.environment?.mode ||
-            "development";
-
-        document.body.dataset.production =
-            config.environment?.production
-                ? "true"
-                : "false";
-
-        document.body.dataset.company =
-            config.company?.name ||
-            "Al-Dahayan Trading Company";
-
-        document.body.dataset.country =
-            config.company?.country ||
-            "Saudi Arabia";
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Public Website Feature Status
-     * ---------------------------------------------------------
-     */
-
-    function getFeatureStatus() {
-        return {
-            oemSearch:
-                isFeatureEnabled("oemSearch"),
-
-            vehicleSearch:
-                isFeatureEnabled("vehicleSearch"),
-
-            vinSearch:
-                isFeatureEnabled("vinSearch"),
-
-            inventory:
-                isInventoryEnabled(),
-
-            inquiry:
-                isInquiryEnabled(),
-
-            aiAssistant:
-                isAIEnabled(),
-
-            bilingual:
-                isFeatureEnabled("bilingual")
-        };
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Apply All Admin-Controlled Settings
-     * ---------------------------------------------------------
-     */
-
-    function applyAdminControlledSettings() {
-        applyWebsiteState();
-        applyInitialLanguage();
-
-        applyFeatureVisibility();
-        applyNavigationFeatureVisibility();
-
-        applyInventorySettings();
-        applyInquirySettings();
-        applyAISettings();
-        applyPaymentSettings();
-
-        dispatch(
-            "alDahayanAdminSettingsApplied",
-            {
-                config: getConfig(),
-                features:
-                    getFeatureStatus()
-            }
-        );
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Component Loader Integration
-     * ---------------------------------------------------------
-     */
-
-    function detectComponentLoader() {
-        if (
-            window.AlDahayanComponentLoader &&
-            typeof window.AlDahayanComponentLoader === "object"
-        ) {
-            componentLoadCompleted = true;
-            return true;
-        }
-
-        return false;
-    }
-
-    function waitForComponents() {
-        return new Promise((resolve) => {
-            if (detectComponentLoader()) {
-                resolve();
-                return;
-            }
-
-            let resolved = false;
-
-            const finish = () => {
-                if (resolved) return;
-
-                resolved = true;
-                componentLoadCompleted = true;
-
-                resolve();
-            };
-
-            document.addEventListener(
-                "alDahayanComponentsReady",
-                finish,
-                { once: true }
-            );
-
-            setTimeout(finish, 1500);
-        });
-    }
-
-    /**
-     * ---------------------------------------------------------
-     * Initialize Existing Modules
-     * ---------------------------------------------------------
-     */
-
-    function initializeModule(
-        objectName,
-        methodName = "init"
+    if (
+      config &&
+      typeof config.getEffectiveAppConfig ===
+        "function"
     ) {
-        const module =
-            window[objectName];
-
-        if (
-            !module ||
-            typeof module[methodName] !== "function"
-        ) {
-            return false;
-        }
-
-        safeCall(() => {
-            module[methodName]();
-        });
-
-        return true;
+      return config.getEffectiveAppConfig();
     }
 
-    function initializeModules() {
-        /*
-         * Language and navigation are initialized
-         * only if their modules exist.
-         */
+    return config || {};
+  }
 
-        initializeModule(
-            "AlDahayanLanguage"
-        );
+  function getFeatureConfig() {
+    const config =
+      getEffectiveConfig();
 
-        initializeModule(
-            "AlDahayanNavigation"
-        );
+    return config.features || {};
+  }
 
-        /*
-         * Contact is responsible for:
-         * company information
-         * phone
-         * WhatsApp
-         * email
-         * social channels
-         */
+  function isFeatureEnabled(
+    featureName,
+    defaultValue = true
+  ) {
+    const features =
+      getFeatureConfig();
 
-        initializeModule(
-            "AlDahayanContact"
-        );
-
-        /*
-         * Search modules
-         */
-
-        if (isFeatureEnabled("oemSearch")) {
-            initializeModule(
-                "AlDahayanSearch"
-            );
-
-            initializeModule(
-                "AlDahayanPartsSearch"
-            );
-        }
-
-        if (isFeatureEnabled("vehicleSearch")) {
-            initializeModule(
-                "AlDahayanVehicleSearch"
-            );
-        }
-
-        if (isFeatureEnabled("vinSearch")) {
-            initializeModule(
-                "AlDahayanVINSearch"
-            );
-        }
-
-        /*
-         * Inventory should initialize only
-         * when Admin has enabled it.
-         */
-
-        if (isInventoryEnabled()) {
-            initializeModule(
-                "AlDahayanInventory"
-            );
-        }
-
-        /*
-         * Inquiry should initialize only
-         * when Admin has enabled it.
-         */
-
-        if (isInquiryEnabled()) {
-            initializeModule(
-                "AlDahayanInquiry"
-            );
-        }
-
-        /*
-         * AI module may be added later.
-         * The app layer already exposes its state.
-         */
-
-        if (isAIEnabled()) {
-            initializeModule(
-                "AlDahayanAI"
-            );
-        }
+    if (
+      Object.prototype.hasOwnProperty.call(
+        features,
+        featureName
+      )
+    ) {
+      return features[featureName] !== false;
     }
 
-    /**
-     * ---------------------------------------------------------
-     * Page Ready Event
-     * ---------------------------------------------------------
+    return defaultValue;
+  }
+
+  /* =========================================
+     COMPONENT LOADER
+  ========================================= */
+
+  async function waitForComponents() {
+    const components =
+      window.AlDahayanComponents;
+
+    if (!components) {
+      return [];
+    }
+
+    try {
+      /*
+       * The component loader exposes
+       * initialize/init, not ready.
+       */
+      if (
+        typeof components.initialize ===
+        "function"
+      ) {
+        return await components.initialize();
+      }
+
+      if (
+        typeof components.init ===
+        "function"
+      ) {
+        return await components.init();
+      }
+
+      /*
+       * Legacy fallback.
+       */
+      if (
+        typeof window.initializeComponents ===
+        "function"
+      ) {
+        return await window.initializeComponents();
+      }
+    } catch (error) {
+      console.error(
+        "Al-Dahayan Component Loader:",
+        error
+      );
+    }
+
+    return [];
+  }
+
+  /* =========================================
+     LANGUAGE
+  ========================================= */
+
+  function initializeLanguage() {
+    if (
+      typeof window.initializeLanguage ===
+      "function"
+    ) {
+      return window.initializeLanguage();
+    }
+
+    if (
+      window.AlDahayanLanguage &&
+      typeof window.AlDahayanLanguage.init ===
+        "function"
+    ) {
+      return window.AlDahayanLanguage.init();
+    }
+
+    return null;
+  }
+
+  /* =========================================
+     NAVIGATION
+  ========================================= */
+
+  function initializeNavigation() {
+    if (
+      typeof window.initializeNavigation ===
+      "function"
+    ) {
+      return window.initializeNavigation();
+    }
+
+    if (
+      window.AlDahayanNavigation &&
+      typeof window.AlDahayanNavigation.init ===
+        "function"
+    ) {
+      return window.AlDahayanNavigation.init();
+    }
+
+    return null;
+  }
+
+  /* =========================================
+     SEARCH
+  ========================================= */
+
+  function initializeSearch() {
+    if (
+      !isFeatureEnabled(
+        "oemSearch",
+        true
+      ) &&
+      !isFeatureEnabled(
+        "vehicleSearch",
+        true
+      )
+    ) {
+      return null;
+    }
+
+    if (
+      typeof window.initializeSearch ===
+      "function"
+    ) {
+      return window.initializeSearch();
+    }
+
+    if (
+      window.AlDahayanSearch &&
+      typeof window.AlDahayanSearch.init ===
+        "function"
+    ) {
+      return window.AlDahayanSearch.init();
+    }
+
+    return null;
+  }
+
+  /* =========================================
+     INVENTORY
+  ========================================= */
+
+  function initializeInventory() {
+    if (
+      !isFeatureEnabled(
+        "inventory",
+        true
+      )
+    ) {
+      return null;
+    }
+
+    const inventory =
+      window.AlDahayanInventory;
+
+    if (!inventory) {
+      return null;
+    }
+
+    try {
+      if (
+        typeof inventory.initialize ===
+        "function"
+      ) {
+        return inventory.initialize();
+      }
+
+      if (
+        typeof inventory.init ===
+        "function"
+      ) {
+        return inventory.init();
+      }
+    } catch (error) {
+      console.error(
+        "Al-Dahayan Inventory:",
+        error
+      );
+    }
+
+    return null;
+  }
+
+  /* =========================================
+     INQUIRY
+  ========================================= */
+
+  function initializeInquiry() {
+    if (
+      !isFeatureEnabled(
+        "inquiry",
+        true
+      )
+    ) {
+      return null;
+    }
+
+    const inquiry =
+      window.AlDahayanInquiry;
+
+    if (!inquiry) {
+      return null;
+    }
+
+    try {
+      if (
+        typeof inquiry.initialize ===
+        "function"
+      ) {
+        return inquiry.initialize();
+      }
+
+      if (
+        typeof inquiry.init ===
+        "function"
+      ) {
+        return inquiry.init();
+      }
+    } catch (error) {
+      console.error(
+        "Al-Dahayan Inquiry:",
+        error
+      );
+    }
+
+    return null;
+  }
+
+  /* =========================================
+     CONTACT
+  ========================================= */
+
+  function initializeContact() {
+    const contact =
+      window.AlDahayanContact;
+
+    if (!contact) {
+      return null;
+    }
+
+    try {
+      if (
+        typeof contact.initialize ===
+        "function"
+      ) {
+        return contact.initialize();
+      }
+
+      if (
+        typeof contact.init ===
+        "function"
+      ) {
+        return contact.init();
+      }
+    } catch (error) {
+      console.error(
+        "Al-Dahayan Contact:",
+        error
+      );
+    }
+
+    return null;
+  }
+
+  /* =========================================
+     MODAL
+  ========================================= */
+
+  function initializeModal() {
+    if (
+      !isFeatureEnabled(
+        "modal",
+        true
+      )
+    ) {
+      return null;
+    }
+
+    const modal =
+      window.AlDahayanModal;
+
+    if (!modal) {
+      return null;
+    }
+
+    try {
+      if (
+        typeof modal.initialize ===
+        "function"
+      ) {
+        return modal.initialize();
+      }
+
+      if (
+        typeof modal.init ===
+        "function"
+      ) {
+        return modal.init();
+      }
+    } catch (error) {
+      console.error(
+        "Al-Dahayan Modal:",
+        error
+      );
+    }
+
+    return null;
+  }
+
+  /* =========================================
+     VIN SEARCH
+  ========================================= */
+
+  function initializeVINSearch() {
+    if (
+      !isFeatureEnabled(
+        "vinSearch",
+        true
+      )
+    ) {
+      return null;
+    }
+
+    const vin =
+      window.AlDahayanVINSearch;
+
+    if (!vin) {
+      return null;
+    }
+
+    try {
+      if (
+        typeof vin.initialize ===
+        "function"
+      ) {
+        return vin.initialize();
+      }
+
+      if (
+        typeof vin.init ===
+        "function"
+      ) {
+        return vin.init();
+      }
+    } catch (error) {
+      console.error(
+        "Al-Dahayan VIN Search:",
+        error
+      );
+    }
+
+    return null;
+  }
+
+  /* =========================================
+     APPLICATION STATE
+  ========================================= */
+
+  function applyApplicationState() {
+    const config =
+      getEffectiveConfig();
+
+    const features =
+      config.features || {};
+
+    const body =
+      document.body;
+
+    if (!body) {
+      return;
+    }
+
+    /*
+     * Website feature state.
      */
+    Object.keys(features).forEach(
+      function (feature) {
+        body.dataset[
+          "feature" +
+          feature.charAt(0).toUpperCase() +
+          feature.slice(1)
+        ] =
+          features[feature] === false
+            ? "disabled"
+            : "enabled";
+      }
+    );
 
-    function dispatchPageReady() {
-        dispatch(
-            "alDahayanPageReady",
-            {
-                config: getConfig(),
-                features:
-                    getFeatureStatus(),
-                componentsReady:
-                    componentLoadCompleted
-            }
-        );
+    /*
+     * Payment is intentionally
+     * disabled until enabled
+     * from Admin/production backend.
+     */
+    if (
+      config.payment &&
+      config.payment.enabled === false
+    ) {
+      body.dataset.payment =
+        "disabled";
+    } else {
+      body.dataset.payment =
+        "enabled";
     }
 
-    /**
-     * ---------------------------------------------------------
-     * Application Initialization
-     * ---------------------------------------------------------
+    /*
+     * Customer location collection
+     * remains disabled.
      */
+    body.dataset.customerLocation =
+      "disabled";
+  }
 
-    async function init() {
-        if (appInitialized) {
-            return;
+  /* =========================================
+     AI STATE
+  ========================================= */
+
+  function applyAIState() {
+    const config =
+      getEffectiveConfig();
+
+    const ai =
+      config.ai || {};
+
+    const body =
+      document.body;
+
+    if (!body) {
+      return;
+    }
+
+    body.dataset.ai =
+      ai.enabled === false
+        ? "disabled"
+        : "enabled";
+
+    /*
+     * AI must never collect customer
+     * location or proactively
+     * recommend branches.
+     */
+    body.dataset.aiLocationCollection =
+      "disabled";
+
+    body.dataset.aiBranchRecommendation =
+      "disabled";
+
+    /*
+     * AI stock information must be
+     * verified through Inventory.
+     */
+    body.dataset.aiStockVerification =
+      "required";
+
+    /*
+     * AI communication channel.
+     */
+    body.dataset.aiWhatsApp =
+      ai.whatsappConnect === false
+        ? "disabled"
+        : "enabled";
+  }
+
+  /* =========================================
+     INVENTORY STATE
+  ========================================= */
+
+  function applyInventoryState() {
+    const config =
+      getEffectiveConfig();
+
+    const inventory =
+      config.inventory || {};
+
+    const body =
+      document.body;
+
+    if (!body) {
+      return;
+    }
+
+    body.dataset.inventory =
+      inventory.enabled === false
+        ? "disabled"
+        : "enabled";
+
+    body.dataset.inventoryVerification =
+      inventory.requireVerifiedStock === false
+        ? "optional"
+        : "required";
+
+    body.dataset.inventoryQuantityDisplay =
+      inventory.quantityDisplay === true
+        ? "enabled"
+        : "disabled";
+  }
+
+  /* =========================================
+     INQUIRY STATE
+  ========================================= */
+
+  function applyInquiryState() {
+    const config =
+      getEffectiveConfig();
+
+    const inquiry =
+      config.inquiry || {};
+
+    const body =
+      document.body;
+
+    if (!body) {
+      return;
+    }
+
+    body.dataset.inquiry =
+      inquiry.enabled === false
+        ? "disabled"
+        : "enabled";
+
+    /*
+     * Customer location is never
+     * part of the inquiry form.
+     */
+    body.dataset.inquiryLocation =
+      "disabled";
+  }
+
+  /* =========================================
+     LANGUAGE
+  ========================================= */
+
+  function getCurrentLanguage() {
+    if (
+      window.AlDahayanLanguage &&
+      typeof window.AlDahayanLanguage.getCurrent ===
+        "function"
+    ) {
+      return window.AlDahayanLanguage.getCurrent();
+    }
+
+    if (
+      typeof window.getCurrentLanguage ===
+      "function"
+    ) {
+      return window.getCurrentLanguage();
+    }
+
+    const config =
+      getEffectiveConfig();
+
+    return (
+      config.site?.defaultLanguage ||
+      "en"
+    );
+  }
+
+  function setLanguage(
+    language
+  ) {
+    if (
+      window.AlDahayanLanguage &&
+      typeof window.AlDahayanLanguage.set ===
+        "function"
+    ) {
+      return window.AlDahayanLanguage.set(
+        language
+      );
+    }
+
+    if (
+      typeof window.setLanguage ===
+      "function"
+    ) {
+      return window.setLanguage(
+        language
+      );
+    }
+
+    return false;
+  }
+
+  function getStoredLanguage() {
+    if (
+      window.AlDahayanLanguage &&
+      typeof window.AlDahayanLanguage.getStored ===
+        "function"
+    ) {
+      return window.AlDahayanLanguage.getStored();
+    }
+
+    if (
+      typeof window.getStoredLanguage ===
+      "function"
+    ) {
+      return window.getStoredLanguage();
+    }
+
+    return null;
+  }
+
+  /* =========================================
+     CURRENT PAGE
+  ========================================= */
+
+  function getCurrentPage() {
+    const body =
+      document.body;
+
+    if (
+      body &&
+      body.dataset &&
+      body.dataset.page
+    ) {
+      return body.dataset.page;
+    }
+
+    const path =
+      window.location.pathname ||
+      "";
+
+    if (
+      path.includes("/pages/")
+    ) {
+      const file =
+        path.split("/").pop();
+
+      return file
+        ? file.replace(
+            /\.html$/i,
+            ""
+          )
+        : "home";
+    }
+
+    if (
+      path.includes("/admin/")
+    ) {
+      const file =
+        path.split("/").pop();
+
+      return file
+        ? file.replace(
+            /\.html$/i,
+            ""
+          )
+        : "admin";
+    }
+
+    return "home";
+  }
+
+  /* =========================================
+     PAGE READY EVENT
+  ========================================= */
+
+  function dispatchPageReady() {
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanPageReady",
+        {
+          detail: {
+            initialized: true,
+            page:
+              getCurrentPage(),
+            language:
+              getCurrentLanguage(),
+            timestamp:
+              new Date().toISOString()
+          }
         }
+      )
+    );
+  }
 
-        appInitialized = true;
+  /* =========================================
+     APPLICATION INITIALIZATION
+  ========================================= */
 
+  async function initializeApp(
+    options = {}
+  ) {
+    if (
+      initialized &&
+      !options.force
+    ) {
+      return (
+        initializationPromise ||
+        Promise.resolve(true)
+      );
+    }
+
+    initialized = true;
+
+    initializationPromise =
+      (async function () {
         /*
-         * Apply Admin settings BEFORE initializing
-         * feature-dependent modules.
+         * 1. Load dynamic components.
          */
-
-        applyAdminControlledSettings();
-
-        /*
-         * Wait briefly for dynamically loaded components.
-         */
-
         await waitForComponents();
 
         /*
-         * Re-apply visibility after components load.
+         * 2. Initialize shared language
+         * system first.
          */
-
-        applyAdminControlledSettings();
+        initializeLanguage();
 
         /*
-         * Initialize existing public modules.
+         * 3. Apply global application state.
          */
-
-        initializeModules();
+        applyApplicationState();
+        applyAIState();
+        applyInventoryState();
+        applyInquiryState();
 
         /*
-         * Re-apply contact settings after Contact module.
+         * 4. Initialize UI systems.
          */
+        initializeNavigation();
+        initializeModal();
 
-        if (
-            window.AlDahayanContact &&
-            typeof window.AlDahayanContact.refresh === "function"
-        ) {
-            safeCall(() => {
-                window.AlDahayanContact.refresh();
-            });
-        }
+        /*
+         * 5. Initialize data/search systems.
+         */
+        initializeInventory();
+        initializeSearch();
+        initializeVINSearch();
 
+        /*
+         * 6. Initialize customer connection.
+         */
+        initializeInquiry();
+        initializeContact();
+
+        /*
+         * 7. Notify the application.
+         */
         dispatchPageReady();
-    }
 
-    /**
-     * ---------------------------------------------------------
-     * Refresh
-     * ---------------------------------------------------------
-     */
+        return true;
+      })();
 
-    function refresh() {
-        applyAdminControlledSettings();
+    return initializationPromise;
+  }
 
-        if (
-            window.AlDahayanContact &&
-            typeof window.AlDahayanContact.refresh === "function"
-        ) {
-            safeCall(() => {
-                window.AlDahayanContact.refresh();
-            });
+  /* =========================================
+     REFRESH APPLICATION
+  ========================================= */
+
+  async function refreshApp() {
+    initialized = false;
+    initializationPromise = null;
+
+    return initializeApp({
+      force: true
+    });
+  }
+
+  /* =========================================
+     EVENT SYNCHRONIZATION
+  ========================================= */
+
+  function handleConfigUpdated() {
+    applyApplicationState();
+    applyAIState();
+    applyInventoryState();
+    applyInquiryState();
+
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanAppRefreshed",
+        {
+          detail: {
+            reason:
+              "config-updated"
+          }
         }
+      )
+    );
+  }
 
-        dispatch(
-            "alDahayanAppRefreshed",
-            {
-                config: getConfig(),
-                features:
-                    getFeatureStatus()
-            }
-        );
-    }
+  function handleSettingsUpdated() {
+    applyApplicationState();
+    applyAIState();
+    applyInventoryState();
+    applyInquiryState();
 
-    /**
-     * ---------------------------------------------------------
-     * Public API
-     * ---------------------------------------------------------
-     */
-
-    window.AlDahayanApp = {
-        init,
-        refresh,
-
-        getConfig,
-        getFeatureStatus,
-
-        isFeatureEnabled,
-        isAIEnabled,
-        isInventoryEnabled,
-        isInquiryEnabled,
-
-        get componentLoadCompleted() {
-            return componentLoadCompleted;
-        },
-
-        get initialized() {
-            return appInitialized;
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanAppRefreshed",
+        {
+          detail: {
+            reason:
+              "settings-updated"
+          }
         }
-    };
+      )
+    );
+  }
 
-    /**
-     * ---------------------------------------------------------
-     * Auto Start
-     * ---------------------------------------------------------
-     */
+  function handleLanguageChanged() {
+    applyApplicationState();
+  }
 
-    if (document.readyState === "loading") {
-        document.addEventListener(
-            "DOMContentLoaded",
-            init,
-            { once: true }
-        );
-    } else {
-        init();
+  /* =========================================
+     PUBLIC APPLICATION API
+  ========================================= */
+
+  window.AlDahayanApp = {
+
+    init:
+      initializeApp,
+
+    initialize:
+      initializeApp,
+
+    refresh:
+      refreshApp,
+
+    ready:
+      null,
+
+    getCurrentLanguage:
+      getCurrentLanguage,
+
+    setLanguage:
+      setLanguage,
+
+    getStoredLanguage:
+      getStoredLanguage,
+
+    getCurrentPage:
+      getCurrentPage,
+
+    getConfig:
+      getEffectiveConfig,
+
+    isFeatureEnabled:
+      isFeatureEnabled,
+
+    isInitialized:
+      function () {
+        return initialized;
+      },
+
+    getState:
+      function () {
+        return {
+          initialized,
+          page:
+            getCurrentPage(),
+          language:
+            getCurrentLanguage(),
+          config:
+            getEffectiveConfig()
+        };
+      }
+  };
+
+  /* =========================================
+     LEGACY GLOBAL SUPPORT
+  ========================================= */
+
+  window.initializeApp =
+    initializeApp;
+
+  /* =========================================
+     EVENTS
+  ========================================= */
+
+  document.addEventListener(
+    "alDahayanConfigUpdated",
+    handleConfigUpdated
+  );
+
+  document.addEventListener(
+    "alDahayanSettingsUpdated",
+    handleSettingsUpdated
+  );
+
+  document.addEventListener(
+    "alDahayanLanguageChanged",
+    handleLanguageChanged
+  );
+
+  document.addEventListener(
+    "alDahayanLanguageApplied",
+    handleLanguageChanged
+  );
+
+  /*
+   * Components are loaded dynamically.
+   * Re-apply application state when
+   * component loading finishes.
+   */
+  document.addEventListener(
+    "alDahayanComponentsLoaded",
+    function () {
+      applyApplicationState();
+      applyAIState();
+      applyInventoryState();
+      applyInquiryState();
     }
+  );
+
+  /* =========================================
+     DOM READY
+  ========================================= */
+
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+        initializeApp();
+      },
+      {
+        once: true
+      }
+    );
+  } else {
+    initializeApp();
+  }
 
 })();
