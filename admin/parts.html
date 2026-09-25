@@ -1,1 +1,861 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
 
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <title>Parts Management | Al-Dahayan Trading Company</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================================
+         ADMIN HEADER
+         ========================================= -->
+
+    <header class="site-header">
+        <div class="container">
+
+            <div class="header-inner">
+
+                <a
+                    href="dashboard.html"
+                    class="logo"
+                    aria-label="Al-Dahayan Admin Dashboard"
+                >
+                    <img
+                        src="../assets/images/al-dahayan-logo.png"
+                        alt="Al-Dahayan Trading Company"
+                    >
+                </a>
+
+                <div class="admin-header-title">
+                    <span>Administration</span>
+                    <strong>Parts Management</strong>
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+         ========================================= -->
+
+    <main class="admin-dashboard">
+
+        <div class="container">
+
+            <!-- Page Heading -->
+
+            <section class="admin-page-heading">
+
+                <span class="admin-eyebrow">
+                    Admin Panel
+                </span>
+
+                <h1>
+                    Parts Management
+                </h1>
+
+                <p>
+                    Manage Toyota and Lexus OEM parts, compatibility,
+                    categories, and active catalog records from one place.
+                </p>
+
+            </section>
+
+
+            <!-- =====================================
+                 SEARCH & FILTERS
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            Parts Catalog
+                        </h2>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="addPartButton"
+                    >
+                        + Add Part
+                    </button>
+
+                </div>
+
+
+                <div class="admin-table-container">
+
+                    <div
+                        style="
+                            padding: 24px;
+                            display: grid;
+                            gap: 16px;
+                        "
+                    >
+
+                        <!-- Search -->
+
+                        <div>
+
+                            <label
+                                for="partSearch"
+                                style="
+                                    display:block;
+                                    margin-bottom:7px;
+                                    font-weight:700;
+                                "
+                            >
+                                Search
+                            </label>
+
+                            <input
+                                type="search"
+                                id="partSearch"
+                                class="form-control"
+                                placeholder="Search OEM number, part name or Part ID..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <!-- Filters -->
+
+                        <div
+                            style="
+                                display:grid;
+                                grid-template-columns:
+                                repeat(3, minmax(0, 1fr));
+                                gap:16px;
+                            "
+                        >
+
+                            <div>
+
+                                <label
+                                    for="brandFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Brand
+                                </label>
+
+                                <select
+                                    id="brandFilter"
+                                    class="form-control"
+                                >
+                                    <option value="">
+                                        All Brands
+                                    </option>
+
+                                    <option value="Toyota">
+                                        Toyota
+                                    </option>
+
+                                    <option value="Lexus">
+                                        Lexus
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                            <div>
+
+                                <label
+                                    for="categoryFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Category
+                                </label>
+
+                                <select
+                                    id="categoryFilter"
+                                    class="form-control"
+                                >
+                                    <option value="">
+                                        All Categories
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                            <div>
+
+                                <label
+                                    for="statusFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Status
+                                </label>
+
+                                <select
+                                    id="statusFilter"
+                                    class="form-control"
+                                >
+                                    <option value="">
+                                        All Status
+                                    </option>
+
+                                    <option value="active">
+                                        Active
+                                    </option>
+
+                                    <option value="inactive">
+                                        Inactive
+                                    </option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 CATALOG TABLE
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-table-container">
+
+                    <div
+                        style="
+                            overflow-x:auto;
+                        "
+                    >
+
+                        <table
+                            style="
+                                width:100%;
+                                border-collapse:collapse;
+                                min-width:900px;
+                            "
+                        >
+
+                            <thead>
+
+                                <tr
+                                    style="
+                                        background:#111111;
+                                        color:#ffffff;
+                                        text-align:left;
+                                    "
+                                >
+
+                                    <th style="padding:14px;">
+                                        Part ID
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        OEM Number
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Part Name
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Brand
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Category
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Vehicle
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Status
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Action
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="partsTableBody">
+
+                                <tr>
+
+                                    <td
+                                        colspan="8"
+                                        style="
+                                            padding:40px;
+                                            text-align:center;
+                                            color:#666666;
+                                        "
+                                    >
+                                        Loading parts...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 ADMIN NOTE
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-empty-state">
+
+                    <strong>
+                        Admin Control Principle
+                    </strong>
+
+                    <p>
+                        Parts should be managed from the Admin Panel.
+                        Routine catalog changes should not require editing
+                        the public website code.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <p>
+                ©
+                <span id="currentYear"></span>
+                Al-Dahayan Trading Company.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         SCRIPTS
+         ========================================= -->
+
+    <script src="../js/config.js"></script>
+    <script src="../js/utils.js"></script>
+
+    <script>
+
+        (function () {
+
+            "use strict";
+
+            const searchInput =
+                document.getElementById("partSearch");
+
+            const brandFilter =
+                document.getElementById("brandFilter");
+
+            const categoryFilter =
+                document.getElementById("categoryFilter");
+
+            const statusFilter =
+                document.getElementById("statusFilter");
+
+            const tableBody =
+                document.getElementById("partsTableBody");
+
+            const addPartButton =
+                document.getElementById("addPartButton");
+
+            const currentYear =
+                document.getElementById("currentYear");
+
+
+            if (currentYear) {
+                currentYear.textContent =
+                    new Date().getFullYear();
+            }
+
+
+            let parts = [];
+
+
+            function escapeHTML(value) {
+
+                const div =
+                    document.createElement("div");
+
+                div.textContent =
+                    value == null ? "" : String(value);
+
+                return div.innerHTML;
+            }
+
+
+            function getVehicleText(part) {
+
+                if (
+                    Array.isArray(part.model)
+                    && part.model.length
+                ) {
+                    return part.model.join(", ");
+                }
+
+                if (part.model) {
+                    return String(part.model);
+                }
+
+                return "—";
+            }
+
+
+            function getStatus(part) {
+
+                return part.active === false
+                    ? "inactive"
+                    : "active";
+            }
+
+
+            function renderParts() {
+
+                const query =
+                    searchInput.value
+                        .trim()
+                        .toLowerCase();
+
+                const brand =
+                    brandFilter.value
+                        .trim()
+                        .toLowerCase();
+
+                const category =
+                    categoryFilter.value
+                        .trim()
+                        .toLowerCase();
+
+                const status =
+                    statusFilter.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const filtered =
+                    parts.filter(function (part) {
+
+                        const searchable = [
+                            part.id,
+                            part.oemNumber,
+                            part.partNumber,
+                            part.partName,
+                            part.description,
+                            part.brand,
+                            part.category,
+                            getVehicleText(part)
+                        ]
+                        .filter(Boolean)
+                        .join(" ")
+                        .toLowerCase();
+
+
+                        const matchesSearch =
+                            !query
+                            || searchable.includes(query);
+
+
+                        const matchesBrand =
+                            !brand
+                            || String(part.brand || "")
+                                .toLowerCase()
+                                === brand;
+
+
+                        const matchesCategory =
+                            !category
+                            || String(part.category || "")
+                                .toLowerCase()
+                                === category;
+
+
+                        const matchesStatus =
+                            !status
+                            || getStatus(part)
+                                === status;
+
+
+                        return (
+                            matchesSearch
+                            && matchesBrand
+                            && matchesCategory
+                            && matchesStatus
+                        );
+
+                    });
+
+
+                if (!filtered.length) {
+
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td
+                                colspan="8"
+                                style="
+                                    padding:40px;
+                                    text-align:center;
+                                    color:#666666;
+                                "
+                            >
+                                No parts found.
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+
+                tableBody.innerHTML =
+                    filtered.map(function (part) {
+
+                        const active =
+                            getStatus(part) === "active";
+
+
+                        const statusHTML = active
+                            ? `
+                                <span
+                                    style="
+                                        display:inline-block;
+                                        padding:5px 9px;
+                                        border-radius:20px;
+                                        background:#e9f7ef;
+                                        color:#16834a;
+                                        font-size:12px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Active
+                                </span>
+                              `
+                            : `
+                                <span
+                                    style="
+                                        display:inline-block;
+                                        padding:5px 9px;
+                                        border-radius:20px;
+                                        background:#f1f1f1;
+                                        color:#666666;
+                                        font-size:12px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Inactive
+                                </span>
+                              `;
+
+
+                        return `
+                            <tr
+                                style="
+                                    border-bottom:
+                                    1px solid #e4e4e4;
+                                "
+                            >
+
+                                <td style="padding:14px;">
+                                    ${escapeHTML(part.id || "—")}
+                                </td>
+
+                                <td
+                                    style="
+                                        padding:14px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    ${escapeHTML(
+                                        part.oemNumber || "—"
+                                    )}
+                                </td>
+
+                                <td style="padding:14px;">
+                                    ${escapeHTML(
+                                        part.partName || "—"
+                                    )}
+                                </td>
+
+                                <td style="padding:14px;">
+                                    ${escapeHTML(
+                                        part.brand || "—"
+                                    )}
+                                </td>
+
+                                <td style="padding:14px;">
+                                    ${escapeHTML(
+                                        part.category || "—"
+                                    )}
+                                </td>
+
+                                <td style="padding:14px;">
+                                    ${escapeHTML(
+                                        getVehicleText(part)
+                                    )}
+                                </td>
+
+                                <td style="padding:14px;">
+                                    ${statusHTML}
+                                </td>
+
+                                <td style="padding:14px;">
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-secondary"
+                                        data-edit-part="${escapeHTML(
+                                            part.id || ""
+                                        )}"
+                                    >
+                                        Edit
+                                    </button>
+
+                                </td>
+
+                            </tr>
+                        `;
+
+                    }).join("");
+
+
+                document
+                    .querySelectorAll("[data-edit-part]")
+                    .forEach(function (button) {
+
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                const partId =
+                                    this.dataset.editPart;
+
+                                alert(
+                                    "Edit Part: "
+                                    + partId
+                                    + "\n\n"
+                                    + "Part editor will be connected "
+                                    + "to the Admin API in the next stage."
+                                );
+
+                            }
+                        );
+
+                    });
+
+            }
+
+
+            function populateCategories() {
+
+                const categories =
+                    new Set();
+
+
+                parts.forEach(function (part) {
+
+                    if (part.category) {
+                        categories.add(
+                            String(part.category)
+                        );
+                    }
+
+                });
+
+
+                Array
+                    .from(categories)
+                    .sort()
+                    .forEach(function (category) {
+
+                        const option =
+                            document.createElement("option");
+
+                        option.value =
+                            category;
+
+                        option.textContent =
+                            category;
+
+                        categoryFilter.appendChild(
+                            option
+                        );
+
+                    });
+
+            }
+
+
+            async function loadParts() {
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "../data/oem-parts.json",
+                            {
+                                cache: "no-store"
+                            }
+                        );
+
+
+                    if (!response.ok) {
+                        throw new Error(
+                            "Failed to load OEM parts."
+                        );
+                    }
+
+
+                    const data =
+                        await response.json();
+
+
+                    parts =
+                        Array.isArray(data)
+                            ? data
+                            : (
+                                Array.isArray(data.parts)
+                                    ? data.parts
+                                    : []
+                            );
+
+
+                    populateCategories();
+
+                    renderParts();
+
+                } catch (error) {
+
+                    console.error(
+                        "Admin Parts:",
+                        error
+                    );
+
+
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td
+                                colspan="8"
+                                style="
+                                    padding:40px;
+                                    text-align:center;
+                                    color:#d71920;
+                                "
+                            >
+                                Unable to load parts catalog.
+                            </td>
+                        </tr>
+                    `;
+
+                }
+
+            }
+
+
+            [
+                searchInput,
+                brandFilter,
+                categoryFilter,
+                statusFilter
+            ].forEach(function (element) {
+
+                element.addEventListener(
+                    "input",
+                    renderParts
+                );
+
+                element.addEventListener(
+                    "change",
+                    renderParts
+                );
+
+            });
+
+
+            addPartButton.addEventListener(
+                "click",
+                function () {
+
+                    alert(
+                        "Add Part form will be connected "
+                        + "to the Admin API in the next stage."
+                    );
+
+                }
+            );
+
+
+            loadParts();
+
+        })();
+
+    </script>
+
+</body>
+</html>
