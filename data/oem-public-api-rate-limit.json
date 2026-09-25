@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Rate limiting configuration for the public Toyota and Lexus OEM catalog API.",
+  "enabled": true,
+
+  "defaults": {
+    "windowSeconds": 60,
+    "requestsPerWindow": 120,
+    "burstLimit": 30
+  },
+
+  "endpoints": {
+    "catalog": {
+      "enabled": true,
+      "requestsPerWindow": 120,
+      "burstLimit": 30
+    },
+
+    "record": {
+      "enabled": true,
+      "requestsPerWindow": 120,
+      "burstLimit": 30
+    },
+
+    "search": {
+      "enabled": true,
+      "requestsPerWindow": 180,
+      "burstLimit": 40
+    },
+
+    "filters": {
+      "enabled": true,
+      "requestsPerWindow": 120,
+      "burstLimit": 30
+    },
+
+    "categories": {
+      "enabled": true,
+      "requestsPerWindow": 120,
+      "burstLimit": 30
+    },
+
+    "vehicles": {
+      "enabled": true,
+      "requestsPerWindow": 120,
+      "burstLimit": 30
+    },
+
+    "compatibility": {
+      "enabled": true,
+      "requestsPerWindow": 120,
+      "burstLimit": 30
+    },
+
+    "availability": {
+      "enabled": true,
+      "requestsPerWindow": 60,
+      "burstLimit": 15
+    },
+
+    "inquiry": {
+      "enabled": true,
+      "requestsPerWindow": 10,
+      "burstLimit": 3
+    }
+  },
+
+  "identity": {
+    "useIpAddress": true,
+    "useAuthenticatedUser": true,
+    "useApiKeyWhenConfigured": true
+  },
+
+  "response": {
+    "statusCode": 429,
+    "errorCode": "RATE_LIMIT_EXCEEDED",
+    "includeRetryAfter": true,
+    "includeLimitHeaders": true
+  },
+
+  "security": {
+    "blockRepeatedAbuse": true,
+    "blockSuspiciousBurstTraffic": true,
+    "protectInquiryEndpoint": true,
+    "neverExposeInternalRateLimitRules": true
+  },
+
+  "logging": {
+    "logRateLimitEvents": true,
+    "logBlockedRequests": true,
+    "neverLogSensitiveCustomerData": true
+  }
+}
