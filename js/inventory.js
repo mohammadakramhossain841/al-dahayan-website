@@ -1,1272 +1,949 @@
-/* =========================================
-   AL-DAHAYAN INVENTORY / STOCK SYSTEM
-========================================= */
-
 (function () {
-  "use strict";
+    "use strict";
 
-  let initialized = false;
+    const CONFIG = window.AlDahayanConfig || {};
 
-  let inventory = [];
-  let parts = [];
-  let locations = [];
+    let inventoryRecords = [];
+    let partsRecords = [];
+    let locationRecords = [];
 
-  let inventoryRecords = [];
-  let filteredInventory = [];
+    let initialized = false;
 
-  const state = {
-    query: "",
-    status: "",
-    location: "",
-    category: ""
-  };
+    /**
+     * ---------------------------------------------------------
+     * Helpers
+     * ---------------------------------------------------------
+     */
 
-  function normalize(value) {
-    return String(value ?? "")
-      .trim()
-      .toLowerCase();
-  }
-
-  function escapeHTML(value) {
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  }
-
-  function getPartId(part) {
-    return (
-      part?.id ||
-      part?.partId ||
-      part?.part_id ||
-      ""
-    );
-  }
-
-  function getOEM(part) {
-    return (
-      part?.oem ||
-      part?.oemNumber ||
-      part?.oem_number ||
-      part?.partNumber ||
-      part?.part_number ||
-      ""
-    );
-  }
-
-  function getPartName(part) {
-    return (
-      part?.name ||
-      part?.partName ||
-      part?.part_name ||
-      ""
-    );
-  }
-
-  function getCategory(part) {
-    return (
-      part?.category ||
-      part?.categoryName ||
-      part?.category_name ||
-      ""
-    );
-  }
-
-  function getInventoryPartId(record) {
-    return (
-      record?.partId ||
-      record?.part_id ||
-      record?.oemPartId ||
-      record?.oem_part_id ||
-      record?.productId ||
-      record?.product_id ||
-      ""
-    );
-  }
-
-  function getLocationId(record) {
-    return (
-      record?.locationId ||
-      record?.location_id ||
-      record?.warehouseId ||
-      record?.warehouse_id ||
-      ""
-    );
-  }
-
-  function getQuantity(record) {
-    const value =
-      record?.quantity ??
-      record?.qty ??
-      record?.stockQuantity ??
-      record?.stock_quantity ??
-      0;
-
-    const number = Number(value);
-
-    return Number.isFinite(number)
-      ? number
-      : 0;
-  }
-
-  function getReserved(record) {
-    const value =
-      record?.reserved ??
-      record?.reservedQuantity ??
-      record?.reserved_quantity ??
-      0;
-
-    const number = Number(value);
-
-    return Number.isFinite(number)
-      ? number
-      : 0;
-  }
-
-  function getAvailableQuantity(record) {
-    return Math.max(
-      0,
-      getQuantity(record) -
-        getReserved(record)
-    );
-  }
-
-  function getStatus(record) {
-    const explicitStatus =
-      normalize(
-        record?.status ||
-        record?.stockStatus ||
-        record?.stock_status
-      );
-
-    if (explicitStatus) {
-      return explicitStatus;
+    function normalize(value) {
+        return String(value ?? "")
+            .trim()
+            .toLowerCase();
     }
 
-    const available =
-      getAvailableQuantity(record);
+    function number(value, fallback = 0) {
+        const parsed = Number(value);
 
-    if (available <= 0) {
-      return "out-of-stock";
+        return Number.isFinite(parsed)
+            ? parsed
+            : fallback;
     }
 
-    if (available <= 5) {
-      return "low-stock";
-    }
-
-    return "in-stock";
-  }
-
-  function getStatusLabel(status) {
-    const labels = {
-      "in-stock": "In Stock",
-      "low-stock": "Low Stock",
-      "out-of-stock": "Out of Stock",
-      "on-order": "On Order",
-      "discontinued": "Discontinued"
-    };
-
-    return (
-      labels[status] ||
-      "Unknown"
-    );
-  }
-
-  function uniqueSorted(values) {
-    return [
-      ...new Set(
-        values
-          .filter(Boolean)
-          .map((value) =>
-            String(value).trim()
-          )
-      )
-    ].sort((a, b) =>
-      a.localeCompare(
-        b,
-        undefined,
-        {
-          numeric: true,
-          sensitivity: "base"
+    function getInventoryConfig() {
+        if (
+            CONFIG &&
+            typeof CONFIG.getEffectiveAppConfig === "function"
+        ) {
+            return (
+                CONFIG.getEffectiveAppConfig().inventory || {}
+            );
         }
-      )
-    );
-  }
-
-  async function fetchJSON(fileName) {
-    if (
-      typeof window.getDataPath !==
-      "function"
-    ) {
-      throw new Error(
-        "getDataPath() is not available."
-      );
-    }
-
-    const response = await fetch(
-      window.getDataPath(fileName),
-      {
-        cache: "no-cache"
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(
-        `Failed to load ${fileName}: ${response.status}`
-      );
-    }
-
-    return response.json();
-  }
-
-  function extractArray(data, keys = []) {
-    if (Array.isArray(data)) {
-      return data;
-    }
-
-    for (const key of keys) {
-      if (Array.isArray(data?.[key])) {
-        return data[key];
-      }
-    }
-
-    if (Array.isArray(data?.data)) {
-      return data.data;
-    }
-
-    return [];
-  }
-
-  async function loadData() {
-    const [
-      inventoryData,
-      partsData,
-      locationsData
-    ] = await Promise.all([
-      fetchJSON("inventory.json"),
-      fetchJSON("oem-parts.json"),
-      fetchJSON("locations.json")
-    ]);
-
-    inventory =
-      extractArray(
-        inventoryData,
-        ["inventory", "items", "records"]
-      );
-
-    parts =
-      extractArray(
-        partsData,
-        ["parts", "oemParts"]
-      );
-
-    locations =
-      extractArray(
-        locationsData,
-        ["locations", "warehouses"]
-      );
-
-    buildInventoryRecords();
-
-    return inventoryRecords;
-  }
-
-  function findPart(partId) {
-    const target =
-      normalize(partId);
-
-    return (
-      parts.find(
-        (part) =>
-          normalize(
-            getPartId(part)
-          ) === target
-      ) || null
-    );
-  }
-
-  function findLocation(locationId) {
-    const target =
-      normalize(locationId);
-
-    return (
-      locations.find(
-        (location) =>
-          normalize(
-            location.id ||
-            location.locationId ||
-            location.location_id ||
-            ""
-          ) === target
-      ) || null
-    );
-  }
-
-  function getLocationName(location) {
-    if (!location) {
-      return "";
-    }
-
-    return (
-      location.name ||
-      location.locationName ||
-      location.location_name ||
-      location.warehouse ||
-      location.city ||
-      ""
-    );
-  }
-
-  function buildInventoryRecords() {
-    inventoryRecords =
-      inventory.map((record) => {
-        const part =
-          findPart(
-            getInventoryPartId(record)
-          );
-
-        const location =
-          findLocation(
-            getLocationId(record)
-          );
-
-        const quantity =
-          getQuantity(record);
-
-        const reserved =
-          getReserved(record);
-
-        const available =
-          Math.max(
-            0,
-            quantity - reserved
-          );
-
-        const status =
-          getStatus({
-            ...record,
-            quantity,
-            reserved
-          });
 
         return {
-          ...record,
-
-          part,
-          location,
-
-          partId:
-            getInventoryPartId(record),
-
-          locationId:
-            getLocationId(record),
-
-          quantity,
-          reserved,
-          available,
-
-          status,
-
-          oem:
-            getOEM(part) ||
-            record.oem ||
-            record.oemNumber ||
-            "",
-
-          partName:
-            getPartName(part) ||
-            record.partName ||
-            record.part_name ||
-            "",
-
-          category:
-            getCategory(part) ||
-            record.category ||
-            "",
-
-          locationName:
-            getLocationName(location) ||
-            record.locationName ||
-            record.location_name ||
-            ""
+            lowStockThreshold: 5,
+            quantityDisplay: false,
+            allowManualOverride: true,
+            allowOnRequest: true,
+            requireVerifiedStock: true,
+            defaultStatus: "unknown"
         };
-      });
-
-    filteredInventory =
-      [...inventoryRecords];
-  }
-
-  function getElements() {
-    return {
-      form: document.querySelector(
-        "[data-inventory-search-form]"
-      ),
-
-      query: document.querySelector(
-        "[data-inventory-query]"
-      ),
-
-      status: document.querySelector(
-        "[data-inventory-status]"
-      ),
-
-      location: document.querySelector(
-        "[data-inventory-location]"
-      ),
-
-      category: document.querySelector(
-        "[data-inventory-category]"
-      ),
-
-      reset: document.querySelector(
-        "[data-inventory-reset]"
-      ),
-
-      summary: document.querySelector(
-        "[data-inventory-result-summary]"
-      ),
-
-      results: document.querySelector(
-        "[data-inventory-results]"
-      ),
-
-      total: document.querySelector(
-        "[data-inventory-total]"
-      ),
-
-      available: document.querySelector(
-        "[data-inventory-available]"
-      ),
-
-      lowStock: document.querySelector(
-        "[data-inventory-low-stock]"
-      ),
-
-      outOfStock: document.querySelector(
-        "[data-inventory-out-of-stock]"
-      )
-    };
-  }
-
-  function setSelectOptions(
-    select,
-    values,
-    placeholder
-  ) {
-    if (!select) {
-      return;
     }
 
-    const currentValue =
-      select.value;
+    function getDataPath(file) {
+        if (
+            CONFIG &&
+            typeof CONFIG.getDataPath === "function"
+        ) {
+            return CONFIG.getDataPath(file);
+        }
 
-    select.innerHTML = "";
-
-    const placeholderOption =
-      document.createElement("option");
-
-    placeholderOption.value = "";
-    placeholderOption.textContent =
-      placeholder;
-
-    select.appendChild(
-      placeholderOption
-    );
-
-    values.forEach((value) => {
-      const option =
-        document.createElement("option");
-
-      option.value = value;
-      option.textContent = value;
-
-      select.appendChild(option);
-    });
-
-    if (
-      values.includes(currentValue)
-    ) {
-      select.value =
-        currentValue;
+        return `../data/${file}`;
     }
-  }
 
-  function updateFilterOptions() {
-    const elements =
-      getElements();
+    /**
+     * ---------------------------------------------------------
+     * Load Data
+     * ---------------------------------------------------------
+     */
 
-    const statuses =
-      uniqueSorted(
-        inventoryRecords.map(
-          (record) =>
-            record.status
-        )
-      );
+    async function loadJSON(file) {
+        const response = await fetch(
+            getDataPath(file),
+            {
+                cache: "no-cache"
+            }
+        );
 
-    const locationNames =
-      uniqueSorted(
-        inventoryRecords.map(
-          (record) =>
-            record.locationName
-        )
-      );
+        if (!response.ok) {
+            throw new Error(
+                `Unable to load ${file}: ${response.status}`
+            );
+        }
 
-    const categories =
-      uniqueSorted(
-        inventoryRecords.map(
-          (record) =>
-            record.category
-        )
-      );
+        return response.json();
+    }
 
-    setSelectOptions(
-      elements.status,
-      statuses,
-      "All Stock Status"
-    );
+    async function loadInventoryData() {
+        try {
+            const [
+                inventory,
+                parts,
+                locations
+            ] = await Promise.all([
+                loadJSON("inventory.json"),
+                loadJSON("oem-parts.json"),
+                loadJSON("locations.json")
+            ]);
 
-    setSelectOptions(
-      elements.location,
-      locationNames,
-      "All Locations"
-    );
+            inventoryRecords =
+                Array.isArray(inventory)
+                    ? inventory
+                    : [];
 
-    setSelectOptions(
-      elements.category,
-      categories,
-      "All Categories"
-    );
-  }
+            partsRecords =
+                Array.isArray(parts)
+                    ? parts
+                    : [];
 
-  function applyFilters() {
-    const query =
-      normalize(state.query);
+            locationRecords =
+                Array.isArray(locations)
+                    ? locations
+                    : [];
 
-    const status =
-      normalize(state.status);
-
-    const location =
-      normalize(state.location);
-
-    const category =
-      normalize(state.category);
-
-    filteredInventory =
-      inventoryRecords.filter(
-        (record) => {
-          const searchableText = [
-            record.oem,
-            record.partName,
-            record.category,
-            record.locationName,
-            record.status,
-            record.part?.brand,
-            record.part?.model
-          ]
-            .map(normalize)
-            .join(" ");
-
-          const matchesQuery =
-            !query ||
-            searchableText.includes(
-              query
+            return true;
+        } catch (error) {
+            console.error(
+                "Al-Dahayan inventory data loading failed:",
+                error
             );
 
-          const matchesStatus =
-            !status ||
-            normalize(
-              record.status
-            ) === status;
+            inventoryRecords = [];
+            partsRecords = [];
+            locationRecords = [];
 
-          const matchesLocation =
-            !location ||
-            normalize(
-              record.locationName
-            ) === location;
-
-          const matchesCategory =
-            !category ||
-            normalize(
-              record.category
-            ) === category;
-
-          return (
-            matchesQuery &&
-            matchesStatus &&
-            matchesLocation &&
-            matchesCategory
-          );
+            return false;
         }
-      );
-
-    renderResults();
-  }
-
-  function renderSummary() {
-    const elements =
-      getElements();
-
-    if (!elements.summary) {
-      return;
     }
 
-    const count =
-      filteredInventory.length;
+    /**
+     * ---------------------------------------------------------
+     * Part Lookup
+     * ---------------------------------------------------------
+     */
 
-    elements.summary.textContent =
-      `${count} inventory record${
-        count === 1 ? "" : "s"
-      } found`;
-  }
+    function getPartById(partId) {
+        const target = normalize(partId);
 
-  function renderStatistics() {
-    const elements =
-      getElements();
-
-    const total =
-      inventoryRecords.length;
-
-    const available =
-      inventoryRecords.filter(
-        (record) =>
-          record.status ===
-          "in-stock"
-      ).length;
-
-    const lowStock =
-      inventoryRecords.filter(
-        (record) =>
-          record.status ===
-          "low-stock"
-      ).length;
-
-    const outOfStock =
-      inventoryRecords.filter(
-        (record) =>
-          record.status ===
-          "out-of-stock"
-      ).length;
-
-    if (elements.total) {
-      elements.total.textContent =
-        total;
+        return partsRecords.find((part) => {
+            return normalize(part.id) === target;
+        }) || null;
     }
 
-    if (elements.available) {
-      elements.available.textContent =
-        available;
+    function getPartByOEM(oemNumber) {
+        const target = normalize(oemNumber);
+
+        return partsRecords.filter((part) => {
+            return normalize(part.oemNumber) === target;
+        });
     }
 
-    if (elements.lowStock) {
-      elements.lowStock.textContent =
-        lowStock;
+    /**
+     * ---------------------------------------------------------
+     * Location Lookup
+     * ---------------------------------------------------------
+     */
+
+    function getLocationById(locationId) {
+        const target = normalize(locationId);
+
+        return locationRecords.find((location) => {
+            return normalize(location.id) === target;
+        }) || null;
     }
 
-    if (elements.outOfStock) {
-      elements.outOfStock.textContent =
-        outOfStock;
-    }
-  }
+    /**
+     * ---------------------------------------------------------
+     * Stock Status
+     *
+     * Automatic:
+     * 0       = OUT OF STOCK
+     * 1–5     = LOW STOCK
+     * 6+      = IN STOCK
+     *
+     * Manual:
+     * Admin can override with:
+     * in_stock
+     * low_stock
+     * out_of_stock
+     * on_request
+     * unknown
+     * ---------------------------------------------------------
+     */
 
-  function renderStockBadge(status) {
-    const label =
-      getStatusLabel(status);
+    function calculateAutomaticStatus(quantity) {
+        const config = getInventoryConfig();
 
-    return `
-      <span
-        class="stock-badge stock-${escapeHTML(
-          status
-        )}"
-      >
-        ${escapeHTML(label)}
-      </span>
-    `;
-  }
+        const threshold =
+            number(
+                config.lowStockThreshold,
+                5
+            );
 
-  function renderInventoryCard(
-    record
-  ) {
-    const part =
-      record.part;
+        const qty = number(quantity, 0);
 
-    const partId =
-      record.partId;
-
-    const image =
-      part?.image ||
-      part?.imageUrl ||
-      part?.image_url ||
-      "";
-
-    return `
-      <article
-        class="inventory-card"
-        data-inventory-id="${escapeHTML(
-          record.id || ""
-        )}"
-      >
-
-        ${
-          image
-            ? `
-              <div class="inventory-card-image">
-                <img
-                  src="${escapeHTML(image)}"
-                  alt="${escapeHTML(
-                    record.partName
-                  )}"
-                  loading="lazy"
-                >
-              </div>
-            `
-            : ""
+        if (qty <= 0) {
+            return "out_of_stock";
         }
 
-        <div class="inventory-card-content">
+        if (qty <= threshold) {
+            return "low_stock";
+        }
 
-          <div class="inventory-card-header">
+        return "in_stock";
+    }
 
-            <div>
-              ${
-                record.oem
-                  ? `
-                    <span class="inventory-card-oem">
-                      ${escapeHTML(
-                        record.oem
-                      )}
-                    </span>
-                  `
-                  : ""
-              }
+    function normalizeStatus(status) {
+        const value = normalize(status);
 
-              <h3 class="inventory-card-title">
-                ${escapeHTML(
-                  record.partName ||
-                  "Spare Part"
-                )}
-              </h3>
-            </div>
+        const aliases = {
+            in_stock: "in_stock",
+            "in stock": "in_stock",
 
-            ${renderStockBadge(
-              record.status
-            )}
+            low_stock: "low_stock",
+            "low stock": "low_stock",
 
-          </div>
+            out_of_stock: "out_of_stock",
+            "out of stock": "out_of_stock",
 
-          ${
-            record.category
-              ? `
-                <p>
-                  <strong>Category:</strong>
-                  ${escapeHTML(
-                    record.category
-                  )}
-                </p>
-              `
-              : ""
-          }
+            on_request: "on_request",
+            "on request": "on_request",
 
-          ${
-            record.locationName
-              ? `
-                <p>
-                  <strong>Location:</strong>
-                  ${escapeHTML(
-                    record.locationName
-                  )}
-                </p>
-              `
-              : ""
-          }
+            unknown: "unknown",
 
-          <div class="inventory-quantity">
+            discontinued: "discontinued"
+        };
 
-            <span>
-              <strong>Available:</strong>
-              ${escapeHTML(
-                record.available
-              )}
-            </span>
+        return aliases[value] || "unknown";
+    }
 
-            <span>
-              <strong>Reserved:</strong>
-              ${escapeHTML(
-                record.reserved
-              )}
-            </span>
+    function getRecordControlMode(record) {
+        return (
+            record.controlMode ||
+            record.statusMode ||
+            record.mode ||
+            "automatic"
+        ).toLowerCase();
+    }
 
-          </div>
+    function getEffectiveStatus(record) {
+        const config = getInventoryConfig();
 
-          <div class="inventory-card-actions">
+        const mode =
+            getRecordControlMode(record);
 
-            ${
-              partId
-                ? `
-                  <button
-                    type="button"
-                    class="inventory-card-button"
-                    data-inventory-part
-                    data-part-id="${escapeHTML(
-                      partId
-                    )}"
-                  >
-                    View Part
-                  </button>
-                `
-                : ""
+        const manualStatus =
+            normalizeStatus(
+                record.manualStatus ||
+                record.overrideStatus ||
+                record.status
+            );
+
+        if (
+            mode === "manual" &&
+            config.allowManualOverride !== false
+        ) {
+            return manualStatus;
+        }
+
+        if (
+            manualStatus === "on_request" &&
+            config.allowOnRequest !== false &&
+            mode === "manual"
+        ) {
+            return "on_request";
+        }
+
+        return calculateAutomaticStatus(
+            getAvailableQuantity(record)
+        );
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Quantity
+     * ---------------------------------------------------------
+     */
+
+    function getAvailableQuantity(record) {
+        if (
+            record.availableQuantity !== undefined &&
+            record.availableQuantity !== null
+        ) {
+            return Math.max(
+                0,
+                number(record.availableQuantity)
+            );
+        }
+
+        const quantity =
+            number(record.quantity, 0);
+
+        const reserved =
+            number(
+                record.reservedQuantity,
+                0
+            );
+
+        return Math.max(
+            0,
+            quantity - reserved
+        );
+    }
+
+    function getQuantityDisplay() {
+        const config = getInventoryConfig();
+
+        return config.quantityDisplay === true;
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Verified Stock
+     *
+     * AI / public website must never treat
+     * unverified data as confirmed stock.
+     * ---------------------------------------------------------
+     */
+
+    function isVerifiedRecord(record) {
+        const config = getInventoryConfig();
+
+        if (
+            config.requireVerifiedStock !== true
+        ) {
+            return true;
+        }
+
+        if (
+            record.verified === true ||
+            record.stockVerified === true ||
+            record.verifiedStock === true
+        ) {
+            return true;
+        }
+
+        /*
+         * Existing inventory records may not yet have
+         * an explicit verified flag.
+         *
+         * They remain unverified until Admin/backend
+         * marks them as verified.
+         */
+        return false;
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Normalize Inventory Record
+     * ---------------------------------------------------------
+     */
+
+    function normalizeRecord(record) {
+        const part =
+            getPartById(record.partId);
+
+        const location =
+            getLocationById(
+                record.locationId ||
+                record.branchId
+            );
+
+        const available =
+            getAvailableQuantity(record);
+
+        const status =
+            getEffectiveStatus(record);
+
+        return {
+            id: record.id || "",
+            partId: record.partId || "",
+            oemNumber:
+                record.oemNumber ||
+                part?.oemNumber ||
+                "",
+
+            partName:
+                record.partName ||
+                part?.partName ||
+                "",
+
+            brand:
+                record.brand ||
+                part?.brand ||
+                "",
+
+            category:
+                record.category ||
+                part?.category ||
+                "",
+
+            model:
+                record.model ||
+                part?.model ||
+                [],
+
+            locationId:
+                record.locationId ||
+                record.branchId ||
+                "",
+
+            locationName:
+                location?.name ||
+                "",
+
+            locationType:
+                location?.type ||
+                "",
+
+            quantity:
+                number(record.quantity, 0),
+
+            reservedQuantity:
+                number(
+                    record.reservedQuantity,
+                    0
+                ),
+
+            availableQuantity:
+                available,
+
+            status,
+
+            controlMode:
+                getRecordControlMode(record),
+
+            lastUpdated:
+                record.lastUpdated ||
+                null,
+
+            active:
+                record.active !== false,
+
+            verified:
+                isVerifiedRecord(record)
+        };
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Get Active Records
+     * ---------------------------------------------------------
+     */
+
+    function getActiveRecords() {
+        return inventoryRecords
+            .filter((record) => {
+                return record.active !== false;
+            })
+            .map(normalizeRecord);
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Search Inventory
+     * ---------------------------------------------------------
+     */
+
+    function search(query = {}) {
+        const records =
+            getActiveRecords();
+
+        const q =
+            normalize(query.query);
+
+        const oem =
+            normalize(query.oemNumber);
+
+        const partId =
+            normalize(query.partId);
+
+        const brand =
+            normalize(query.brand);
+
+        const category =
+            normalize(query.category);
+
+        const model =
+            normalize(query.model);
+
+        const status =
+            normalize(query.status);
+
+        return records.filter((record) => {
+
+            if (
+                q &&
+                ![
+                    record.oemNumber,
+                    record.partName,
+                    record.partId,
+                    record.brand,
+                    record.category,
+                    ...(Array.isArray(record.model)
+                        ? record.model
+                        : [record.model])
+                ]
+                    .join(" ")
+                    .toLowerCase()
+                    .includes(q)
+            ) {
+                return false;
             }
 
-            <button
-              type="button"
-              class="inventory-card-button secondary"
-              data-inventory-inquiry
-              data-part-id="${escapeHTML(
+            if (
+                oem &&
+                normalize(record.oemNumber) !== oem
+            ) {
+                return false;
+            }
+
+            if (
+                partId &&
+                normalize(record.partId) !== partId
+            ) {
+                return false;
+            }
+
+            if (
+                brand &&
+                normalize(record.brand) !== brand
+            ) {
+                return false;
+            }
+
+            if (
+                category &&
+                normalize(record.category) !== category
+            ) {
+                return false;
+            }
+
+            if (
+                model &&
+                !(
+                    Array.isArray(record.model)
+                        ? record.model
+                        : [record.model]
+                )
+                    .map(normalize)
+                    .includes(model)
+            ) {
+                return false;
+            }
+
+            if (
+                status &&
+                record.status !== status
+            ) {
+                return false;
+            }
+
+            return true;
+        });
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * OEM Stock
+     * ---------------------------------------------------------
+     */
+
+    function getOEMStock(oemNumber) {
+        const records =
+            search({
+                oemNumber
+            });
+
+        return {
+            oemNumber,
+            records,
+            verified:
+                records.some(
+                    (record) =>
+                        record.verified === true
+                ),
+            totalRecords:
+                records.length
+        };
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Part Stock
+     * ---------------------------------------------------------
+     */
+
+    function getPartStock(partId) {
+        const records =
+            search({
                 partId
-              )}"
-            >
-              Inquiry
-            </button>
+            });
 
-          </div>
-
-        </div>
-
-      </article>
-    `;
-  }
-
-  function renderResults() {
-    const elements =
-      getElements();
-
-    renderSummary();
-    renderStatistics();
-
-    if (!elements.results) {
-      return;
-    }
-
-    if (!filteredInventory.length) {
-      elements.results.innerHTML = `
-        <div class="search-empty">
-          <h3>No inventory records found</h3>
-          <p>
-            Try changing your search or stock filters.
-          </p>
-        </div>
-      `;
-
-      return;
-    }
-
-    elements.results.innerHTML =
-      filteredInventory
-        .map(renderInventoryCard)
-        .join("");
-  }
-
-  function findInventoryById(id) {
-    const target =
-      normalize(id);
-
-    return (
-      inventoryRecords.find(
-        (record) =>
-          normalize(
-            record.id
-          ) === target
-      ) || null
-    );
-  }
-
-  function findStockByPartId(
-    partId
-  ) {
-    const target =
-      normalize(partId);
-
-    return inventoryRecords.filter(
-      (record) =>
-        normalize(
-          record.partId
-        ) === target
-    );
-  }
-
-  function getPartStock(partId) {
-    const records =
-      findStockByPartId(partId);
-
-    const quantity =
-      records.reduce(
-        (total, record) =>
-          total +
-          record.quantity,
-        0
-      );
-
-    const reserved =
-      records.reduce(
-        (total, record) =>
-          total +
-          record.reserved,
-        0
-      );
-
-    const available =
-      records.reduce(
-        (total, record) =>
-          total +
-          record.available,
-        0
-      );
-
-    let status =
-      "out-of-stock";
-
-    if (available > 5) {
-      status = "in-stock";
-    } else if (available > 0) {
-      status = "low-stock";
-    }
-
-    return {
-      partId,
-      quantity,
-      reserved,
-      available,
-      status,
-      records
-    };
-  }
-
-  function handlePartView(partId) {
-    const part =
-      parts.find(
-        (item) =>
-          normalize(
-            getPartId(item)
-          ) ===
-          normalize(partId)
-      );
-
-    if (!part) {
-      return;
-    }
-
-    document.dispatchEvent(
-      new CustomEvent(
-        "alDahayanPartSelected",
-        {
-          detail: {
-            part,
-            id: partId
-          }
-        }
-      )
-    );
-  }
-
-  function handleInquiry(partId) {
-    const part =
-      parts.find(
-        (item) =>
-          normalize(
-            getPartId(item)
-          ) ===
-          normalize(partId)
-      );
-
-    document.dispatchEvent(
-      new CustomEvent(
-        "alDahayanInventoryInquiry",
-        {
-          detail: {
-            part,
+        return {
             partId,
-            stock:
-              getPartStock(partId)
-          }
+            records,
+            verified:
+                records.some(
+                    (record) =>
+                        record.verified === true
+                ),
+            totalRecords:
+                records.length
+        };
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Verified Availability
+     *
+     * Important:
+     * No verified record = UNKNOWN
+     *
+     * Never convert unknown into OUT OF STOCK.
+     * ---------------------------------------------------------
+     */
+
+    function getVerifiedAvailability(identifier) {
+        let records = [];
+
+        if (
+            identifier &&
+            typeof identifier === "object"
+        ) {
+            records =
+                search(identifier);
+        } else {
+            records =
+                search({
+                    oemNumber: identifier
+                });
         }
-      )
-    );
 
-    const inquiryPage =
-      typeof window.getPagePath ===
-      "function"
-        ? window.getPagePath(
-            "inquiry.html"
-          )
-        : "../pages/inquiry.html";
+        const verifiedRecords =
+            records.filter(
+                (record) =>
+                    record.verified === true
+            );
 
-    if (partId) {
-      window.location.href =
-        `${inquiryPage}?part=${encodeURIComponent(
-          partId
-        )}`;
-    } else {
-      window.location.href =
-        inquiryPage;
-    }
-  }
+        if (
+            verifiedRecords.length === 0
+        ) {
+            return {
+                status: "unknown",
+                verified: false,
+                records: [],
+                message:
+                    "Stock availability is not verified."
+            };
+        }
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
+        const statuses =
+            verifiedRecords.map(
+                (record) =>
+                    record.status
+            );
 
-    const elements =
-      getElements();
+        if (
+            statuses.includes("in_stock")
+        ) {
+            return {
+                status: "in_stock",
+                verified: true,
+                records: verifiedRecords,
+                message:
+                    "Verified stock is available."
+            };
+        }
 
-    state.query =
-      elements.query?.value || "";
+        if (
+            statuses.includes("low_stock")
+        ) {
+            return {
+                status: "low_stock",
+                verified: true,
+                records: verifiedRecords,
+                message:
+                    "Verified stock is available in limited quantity."
+            };
+        }
 
-    state.status =
-      elements.status?.value || "";
+        if (
+            statuses.includes("on_request")
+        ) {
+            return {
+                status: "on_request",
+                verified: true,
+                records: verifiedRecords,
+                message:
+                    "Part is available on request."
+            };
+        }
 
-    state.location =
-      elements.location?.value || "";
-
-    state.category =
-      elements.category?.value || "";
-
-    applyFilters();
-  }
-
-  function handleFilterChange() {
-    const elements =
-      getElements();
-
-    state.status =
-      elements.status?.value || "";
-
-    state.location =
-      elements.location?.value || "";
-
-    state.category =
-      elements.category?.value || "";
-
-    applyFilters();
-  }
-
-  function resetSearch() {
-    const elements =
-      getElements();
-
-    state.query = "";
-    state.status = "";
-    state.location = "";
-    state.category = "";
-
-    if (elements.form) {
-      elements.form.reset();
-    }
-
-    updateFilterOptions();
-
-    filteredInventory =
-      [...inventoryRecords];
-
-    renderResults();
-  }
-
-  function bindEvents() {
-    const elements =
-      getElements();
-
-    elements.form?.addEventListener(
-      "submit",
-      handleFormSubmit
-    );
-
-    elements.query?.addEventListener(
-      "input",
-      handleFormSubmit
-    );
-
-    elements.status?.addEventListener(
-      "change",
-      handleFilterChange
-    );
-
-    elements.location?.addEventListener(
-      "change",
-      handleFilterChange
-    );
-
-    elements.category?.addEventListener(
-      "change",
-      handleFilterChange
-    );
-
-    elements.reset?.addEventListener(
-      "click",
-      resetSearch
-    );
-
-    elements.results?.addEventListener(
-      "click",
-      (event) => {
-        const viewButton =
-          event.target.closest(
-            "[data-inventory-part]"
-          );
-
-        if (viewButton) {
-          handlePartView(
-            viewButton.getAttribute(
-              "data-part-id"
+        if (
+            verifiedRecords.every(
+                (record) =>
+                    record.status ===
+                    "out_of_stock"
             )
-          );
-
-          return;
+        ) {
+            return {
+                status: "out_of_stock",
+                verified: true,
+                records: verifiedRecords,
+                message:
+                    "Verified records show no available stock."
+            };
         }
 
-        const inquiryButton =
-          event.target.closest(
-            "[data-inventory-inquiry]"
-          );
+        return {
+            status: "unknown",
+            verified: true,
+            records: verifiedRecords,
+            message:
+                "Availability requires confirmation."
+        };
+    }
 
-        if (inquiryButton) {
-          handleInquiry(
-            inquiryButton.getAttribute(
-              "data-part-id"
+    /**
+     * ---------------------------------------------------------
+     * Customer-safe Stock Result
+     *
+     * Exact quantity is hidden unless Admin enables it.
+     * Branch details are not proactively exposed here.
+     * ---------------------------------------------------------
+     */
+
+    function getCustomerStock(identifier) {
+        const result =
+            getVerifiedAvailability(
+                identifier
+            );
+
+        const showQuantity =
+            getQuantityDisplay();
+
+        const records =
+            result.records.map(
+                (record) => ({
+                    id: record.id,
+                    partId: record.partId,
+                    oemNumber:
+                        record.oemNumber,
+                    partName:
+                        record.partName,
+                    brand:
+                        record.brand,
+                    status:
+                        record.status,
+                    quantity:
+                        showQuantity
+                            ? record.availableQuantity
+                            : null,
+                    lastUpdated:
+                        record.lastUpdated
+                })
+            );
+
+        return {
+            status:
+                result.status,
+
+            verified:
+                result.verified,
+
+            records,
+
+            message:
+                result.message
+        };
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Statistics
+     * ---------------------------------------------------------
+     */
+
+    function getStats() {
+        const records =
+            getActiveRecords();
+
+        return {
+            total:
+                records.length,
+
+            inStock:
+                records.filter(
+                    (record) =>
+                        record.status ===
+                        "in_stock"
+                ).length,
+
+            lowStock:
+                records.filter(
+                    (record) =>
+                        record.status ===
+                        "low_stock"
+                ).length,
+
+            outOfStock:
+                records.filter(
+                    (record) =>
+                        record.status ===
+                        "out_of_stock"
+                ).length,
+
+            onRequest:
+                records.filter(
+                    (record) =>
+                        record.status ===
+                        "on_request"
+                ).length,
+
+            unknown:
+                records.filter(
+                    (record) =>
+                        record.status ===
+                        "unknown"
+                ).length,
+
+            verified:
+                records.filter(
+                    (record) =>
+                        record.verified === true
+                ).length,
+
+            unverified:
+                records.filter(
+                    (record) =>
+                        record.verified !== true
+                ).length
+        };
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Inventory Event
+     * ---------------------------------------------------------
+     */
+
+    function dispatchInventoryReady() {
+        document.dispatchEvent(
+            new CustomEvent(
+                "alDahayanInventoryReady",
+                {
+                    detail: {
+                        stats:
+                            getStats()
+                    }
+                }
             )
-          );
+        );
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Refresh
+     * ---------------------------------------------------------
+     */
+
+    async function refresh() {
+        await loadInventoryData();
+
+        dispatchInventoryReady();
+
+        return getStats();
+    }
+
+    /**
+     * ---------------------------------------------------------
+     * Initialize
+     * ---------------------------------------------------------
+     */
+
+    async function init() {
+        if (initialized) {
+            return getStats();
         }
-      }
-    );
-  }
 
-  async function initializeInventory() {
-    if (initialized) {
-      return;
+        initialized = true;
+
+        await loadInventoryData();
+
+        dispatchInventoryReady();
+
+        return getStats();
     }
 
-    initialized = true;
+    /**
+     * ---------------------------------------------------------
+     * Public API
+     * ---------------------------------------------------------
+     */
 
-    try {
-      await loadData();
+    window.AlDahayanInventory = {
 
-      updateFilterOptions();
-      bindEvents();
-      renderResults();
+        init,
 
-      document.dispatchEvent(
-        new CustomEvent(
-          "alDahayanInventoryReady",
-          {
-            detail: {
-              count:
-                inventoryRecords.length
-            }
-          }
-        )
-      );
+        refresh,
 
-    } catch (error) {
-      console.error(
-        "Al-Dahayan Inventory:",
-        error
-      );
+        search,
 
-      const elements =
-        getElements();
+        getStats,
 
-      if (elements.results) {
-        elements.results.innerHTML = `
-          <div class="search-error">
-            <h3>
-              Unable to load inventory
-            </h3>
-            <p>
-              Please try again later.
-            </p>
-          </div>
-        `;
-      }
+        getPartById,
 
-      if (elements.summary) {
-        elements.summary.textContent =
-          "Inventory data unavailable";
-      }
-    }
-  }
+        getPartByOEM,
 
-  window.AlDahayanInventory = {
-    init:
-      initializeInventory,
+        getLocationById,
 
-    load:
-      loadData,
+        getPartStock,
 
-    search: function (
-      filters = {}
-    ) {
-      state.query =
-        filters.query || "";
+        getOEMStock,
 
-      state.status =
-        filters.status || "";
+        getVerifiedAvailability,
 
-      state.location =
-        filters.location || "";
+        getCustomerStock,
 
-      state.category =
-        filters.category || "";
+        getActiveRecords,
 
-      applyFilters();
+        calculateAutomaticStatus,
 
-      return [
-        ...filteredInventory
-      ];
-    },
+        getEffectiveStatus,
 
-    reset:
-      resetSearch,
+        getAvailableQuantity,
 
-    getAll: function () {
-      return [
-        ...inventoryRecords
-      ];
-    },
+        isVerifiedRecord,
 
-    getResults: function () {
-      return [
-        ...filteredInventory
-      ];
-    },
+        getQuantityDisplay,
 
-    findById:
-      findInventoryById,
+        getInventoryConfig: function () {
+            return {
+                ...getInventoryConfig()
+            };
+        },
 
-    findByPartId:
-      findStockByPartId,
+        getRawInventory: function () {
+            return [...inventoryRecords];
+        },
 
-    getPartStock:
-      getPartStock,
+        getRawParts: function () {
+            return [...partsRecords];
+        },
 
-    getParts: function () {
-      return [...parts];
-    },
-
-    getLocations: function () {
-      return [...locations];
-    },
-
-    getState: function () {
-      return {
-        ...state
-      };
-    }
-  };
-
-  window.initializeInventory =
-    initializeInventory;
-
-  document.addEventListener(
-    "DOMContentLoaded",
-    initializeInventory
-  );
+        getRawLocations: function () {
+            return [...locationRecords];
+        }
+    };
 
 })();
