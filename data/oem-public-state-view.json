@@ -1,0 +1,80 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public empty, loading and error state configuration for the Toyota and Lexus OEM catalog.",
+  "enabled": true,
+
+  "loading": {
+    "enabled": true,
+    "showLoadingIndicator": true,
+    "showLoadingMessage": true,
+    "preventDuplicateRequests": true
+  },
+
+  "empty": {
+    "enabled": true,
+    "showEmptyState": true,
+    "showSearchSuggestion": true,
+    "showClearFiltersAction": true,
+    "showBackToCatalogAction": true
+  },
+
+  "noResults": {
+    "enabled": true,
+    "showMessage": true,
+    "suggestAlternativeSearch": true,
+    "suggestRelatedParts": true,
+    "suggestVehicleSearch": true,
+    "allowInquiry": true
+  },
+
+  "error": {
+    "enabled": true,
+    "showUserFriendlyMessage": true,
+    "hideTechnicalDetails": true,
+    "allowRetry": true,
+    "allowBackToCatalog": true,
+    "allowContactSupport": true
+  },
+
+  "messages": {
+    "loading": "Loading...",
+    "noResults": "No matching parts found.",
+    "noCompatibility": "No verified compatibility found.",
+    "temporaryError": "Something went wrong. Please try again.",
+    "dataUnavailable": "This information is currently unavailable."
+  },
+
+  "navigation": {
+    "clearSearch": true,
+    "clearFilters": true,
+    "retry": true,
+    "backToCatalog": true,
+    "openVehicleSearch": true,
+    "openInquiry": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "visibility": {
+    "publishedRecordsOnly": true,
+    "publicRecordsOnly": true,
+    "hideArchived": true,
+    "hideDisabled": true
+  },
+
+  "safety": {
+    "neverExposeTechnicalErrors": true,
+    "neverExposeDatabaseErrors": true,
+    "neverExposeInternalPaths": true,
+    "neverExposeInternalRecordIds": true,
+    "neverExposePrivateData": true
+  }
+}
