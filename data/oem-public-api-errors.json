@@ -1,0 +1,110 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public API error handling configuration for Toyota and Lexus OEM catalog services.",
+  "enabled": true,
+
+  "errorResponse": {
+    "includeSuccess": true,
+    "includeError": true,
+    "includeErrorCode": true,
+    "includeMessage": true,
+    "includeFieldErrors": true,
+    "includeRequestId": true,
+    "includeTimestamp": true
+  },
+
+  "httpStatusCodes": {
+    "400": "BAD_REQUEST",
+    "401": "UNAUTHORIZED",
+    "403": "FORBIDDEN",
+    "404": "NOT_FOUND",
+    "409": "CONFLICT",
+    "422": "VALIDATION_ERROR",
+    "429": "RATE_LIMITED",
+    "500": "INTERNAL_SERVER_ERROR",
+    "503": "SERVICE_UNAVAILABLE"
+  },
+
+  "validationErrors": {
+    "invalidOemNumber": "INVALID_OEM_NUMBER",
+    "invalidPartName": "INVALID_PART_NAME",
+    "invalidVehicle": "INVALID_VEHICLE",
+    "invalidModelYear": "INVALID_MODEL_YEAR",
+    "invalidEngineCode": "INVALID_ENGINE_CODE",
+    "invalidPage": "INVALID_PAGE",
+    "invalidPageSize": "INVALID_PAGE_SIZE",
+    "invalidSort": "INVALID_SORT",
+    "missingRequiredField": "MISSING_REQUIRED_FIELD"
+  },
+
+  "resourceErrors": {
+    "recordNotFound": "OEM_RECORD_NOT_FOUND",
+    "vehicleNotFound": "VEHICLE_NOT_FOUND",
+    "categoryNotFound": "CATEGORY_NOT_FOUND",
+    "compatibilityNotFound": "COMPATIBILITY_NOT_FOUND",
+    "availabilityNotFound": "AVAILABILITY_NOT_FOUND"
+  },
+
+  "securityErrors": {
+    "unauthorized": "UNAUTHORIZED_REQUEST",
+    "forbidden": "FORBIDDEN_REQUEST",
+    "rateLimited": "RATE_LIMIT_EXCEEDED",
+    "originNotAllowed": "ORIGIN_NOT_ALLOWED"
+  },
+
+  "serverErrors": {
+    "databaseUnavailable": "DATABASE_UNAVAILABLE",
+    "serviceUnavailable": "SERVICE_UNAVAILABLE",
+    "internalError": "INTERNAL_SERVER_ERROR",
+    "temporaryFailure": "TEMPORARY_FAILURE"
+  },
+
+  "messages": {
+    "en": {
+      "generic": "Unable to complete the request.",
+      "notFound": "The requested record was not found.",
+      "validation": "Please check the submitted information.",
+      "rateLimited": "Too many requests. Please try again later.",
+      "server": "The service is temporarily unavailable."
+    },
+    "ar": {
+      "generic": "تعذر إكمال الطلب.",
+      "notFound": "لم يتم العثور على السجل المطلوب.",
+      "validation": "يرجى التحقق من المعلومات المدخلة.",
+      "rateLimited": "تم تجاوز عدد الطلبات المسموح به. يرجى المحاولة لاحقًا.",
+      "server": "الخدمة غير متاحة مؤقتًا."
+    }
+  },
+
+  "security": {
+    "hideStackTrace": true,
+    "hideDatabaseDetails": true,
+    "hideInternalPaths": true,
+    "hideServerDetails": true,
+    "hideSupplierInformation": true,
+    "hideCustomerInformation": true
+  },
+
+  "logging": {
+    "logServerErrors": true,
+    "logSecurityErrors": true,
+    "logValidationErrors": true,
+    "neverExposeLogsPublicly": true
+  },
+
+  "retry": {
+    "allowRetryFor503": true,
+    "allowRetryFor429": true,
+    "allowRetryFor500": false,
+    "retryAfterHeader": true
+  },
+
+  "languages": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en"
+  }
+}
