@@ -1,0 +1,193 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin record view and edit configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Record",
+    "mode": "view_edit",
+    "allowCreate": true,
+    "allowEdit": true,
+    "allowDuplicate": true
+  },
+
+  "sections": [
+    "basic",
+    "classification",
+    "vehicleCompatibility",
+    "pricing",
+    "inventory",
+    "images",
+    "verification",
+    "publication",
+    "metadata",
+    "history"
+  ],
+
+  "basic": {
+    "fields": [
+      "oemNumber",
+      "partName",
+      "arabicName",
+      "description",
+      "arabicDescription",
+      "brand",
+      "partNumberType"
+    ],
+    "requiredFields": [
+      "oemNumber",
+      "partName",
+      "brand"
+    ]
+  },
+
+  "classification": {
+    "fields": [
+      "category",
+      "subcategory",
+      "componentType",
+      "partGroup"
+    ],
+    "allowCategoryChange": true
+  },
+
+  "vehicleCompatibility": {
+    "fields": [
+      "models",
+      "modelYears",
+      "engineCodes",
+      "bodyTypes",
+      "transmissions",
+      "driveTypes",
+      "marketSpecs",
+      "regions",
+      "compatibleOemNumbers",
+      "supersededOemNumbers"
+    ],
+    "allowMultipleValues": true,
+    "requireCompatibilityVerification": false
+  },
+
+  "pricing": {
+    "fields": [
+      "currency",
+      "regularPrice",
+      "salePrice",
+      "discountPercent",
+      "priceVisibility",
+      "priceType"
+    ],
+    "allowPriceEdit": true,
+    "requireValidSalePrice": true,
+    "preventNegativePrices": true
+  },
+
+  "inventory": {
+    "fields": [
+      "stockStatus",
+      "quantity",
+      "locations",
+      "availabilityMessage"
+    ],
+    "allowStockEdit": true,
+    "allowMultipleLocations": true,
+    "preventNegativeQuantity": true,
+    "hideExactQuantityFromPublic": true
+  },
+
+  "images": {
+    "fields": [
+      "primaryImage",
+      "galleryImages",
+      "imageAltText"
+    ],
+    "allowUpload": true,
+    "allowReplace": true,
+    "allowRemove": true,
+    "requirePrimaryImage": false
+  },
+
+  "verification": {
+    "fields": [
+      "verificationLevel",
+      "verificationSource",
+      "verificationDate",
+      "verifiedBy",
+      "verificationNotes"
+    ],
+    "allowManualVerification": true,
+    "requireVerificationReason": true
+  },
+
+  "publication": {
+    "fields": [
+      "status",
+      "published",
+      "publicVisibility",
+      "searchable"
+    ],
+    "allowPublish": true,
+    "allowUnpublish": true,
+    "allowArchive": true,
+    "requirePublishConfirmation": true
+  },
+
+  "metadata": {
+    "fields": [
+      "recordId",
+      "createdAt",
+      "createdBy",
+      "updatedAt",
+      "updatedBy",
+      "source",
+      "tags"
+    ],
+    "readOnlyFields": [
+      "recordId",
+      "createdAt",
+      "createdBy"
+    ]
+  },
+
+  "history": {
+    "enabled": true,
+    "showChangeHistory": true,
+    "showAuditHistory": true,
+    "showImportHistory": true,
+    "showAvailabilityHistory": true,
+    "allowRollback": true,
+    "requireRollbackPermission": true
+  },
+
+  "actions": {
+    "save": true,
+    "saveAndPublish": true,
+    "saveAndContinue": true,
+    "duplicate": true,
+    "archive": true,
+    "restore": true,
+    "export": true
+  },
+
+  "permissions": {
+    "view": "oem.view",
+    "create": "oem.create",
+    "edit": "oem.edit",
+    "publish": "oem.publish",
+    "archive": "oem.archive",
+    "restore": "oem.restore",
+    "export": "oem.export",
+    "rollback": "oem.rollback"
+  },
+
+  "safety": {
+    "requireValidationBeforeSave": true,
+    "requireConfirmationBeforePublish": true,
+    "neverDeletePermanently": true,
+    "preserveChangeHistory": true,
+    "preserveAuditHistory": true,
+    "preservePreviousValues": true,
+    "requireReasonForSensitiveChanges": true
+  }
+}
