@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public vehicle search configuration for Toyota and Lexus OEM catalog discovery.",
+  "enabled": true,
+
+  "search": {
+    "enabled": true,
+    "brand": true,
+    "model": true,
+    "generation": true,
+    "modelYear": true,
+    "engineCode": true,
+    "bodyType": true,
+    "transmission": true,
+    "driveType": true,
+    "marketSpec": true,
+    "region": true,
+    "trim": true
+  },
+
+  "selection": {
+    "allowBrandSelection": true,
+    "allowModelSelection": true,
+    "allowYearSelection": true,
+    "allowEngineSelection": true,
+    "allowMultipleFilters": true,
+    "resetDependentFields": true
+  },
+
+  "results": {
+    "showCompatibleParts": true,
+    "showPartCount": true,
+    "showOemNumber": true,
+    "showPartName": true,
+    "showCategory": true,
+    "showPrice": true,
+    "showStockStatus": true,
+    "showVerificationBadge": true,
+    "pageSize": 24,
+    "allowPagination": true
+  },
+
+  "matching": {
+    "exactVehicleMatchFirst": true,
+    "requireVerifiedCompatibility": true,
+    "showUnverifiedMatches": false,
+    "neverAssumeCompatibility": true
+  },
+
+  "navigation": {
+    "openVehicleDetails": true,
+    "openPartDetails": true,
+    "openInquiry": true,
+    "preserveSearchSelection": true,
+    "preserveLanguage": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true,
+    "allowArabicSearch": true
+  },
+
+  "visibility": {
+    "publishedVehiclesOnly": true,
+    "publicVehiclesOnly": true,
+    "publishedPartsOnly": true,
+    "publicPartsOnly": true,
+    "hideArchived": true,
+    "hideDisabled": true
+  },
+
+  "safety": {
+    "neverExposeInternalVehicleIds": true,
+    "neverExposeInternalFitmentNotes": true,
+    "neverExposeSupplierInformation": true,
+    "neverExposePrivateInventoryData": true,
+    "neverShowUnverifiedCompatibilityAsVerified": true
+  }
+}
