@@ -1,0 +1,133 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level verification rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "verificationLevels": [
+    "unverified",
+    "reviewed",
+    "verified"
+  ],
+  "defaultLevel": "unverified",
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "viewPermission": "oem.view",
+    "reviewPermission": "oem.edit",
+    "verifyPermission": "oem.verify",
+    "requireConfirmation": true
+  },
+  "verificationSources": [
+    "manufacturer_catalog",
+    "authorized_supplier",
+    "official_parts_database",
+    "dealer_source",
+    "verified_internal_record",
+    "manual_document_review",
+    "other"
+  ],
+  "recordRules": {
+    "verifiedRequiresSource": true,
+    "verifiedRequiresManualConfirmation": true,
+    "reviewedRequiresReviewAction": true,
+    "unverifiedMayBePublished": true,
+    "automaticVerification": false,
+    "automaticVerificationFromSearch": false,
+    "automaticVerificationFromImport": false
+  },
+  "oemNumber": {
+    "requiredForVerification": true,
+    "mustPassValidation": true,
+    "mustBeNormalizedForComparison": true,
+    "preserveOriginalValue": true
+  },
+  "compatibility": {
+    "verificationRequiredForVerifiedCompatibility": true,
+    "vehicleReferenceMustBeValid": true,
+    "modelReferenceMustBeValid": true,
+    "engineReferenceMustBeValid": false,
+    "marketSpecReferenceMustBeValid": false,
+    "manualConfirmationRequired": true
+  },
+  "verificationData": {
+    "requiredForVerified": [
+      "verificationLevel",
+      "verificationSource",
+      "verifiedBy",
+      "verifiedAt"
+    ],
+    "optionalFields": [
+      "verificationNotes",
+      "sourceReference",
+      "documentReference"
+    ]
+  },
+  "validation": {
+    "validateBeforeVerification": true,
+    "validateOemNumber": true,
+    "validateBrand": true,
+    "validatePartName": true,
+    "validateCategory": true,
+    "validateCompatibility": true,
+    "validateVerificationSource": true,
+    "blockInvalidVerification": true,
+    "showWarnings": true
+  },
+  "publicWebsite": {
+    "showVerificationStatus": true,
+    "showVerificationSource": false,
+    "showVerificationNotes": false,
+    "showUnverifiedNotice": true,
+    "showReviewedNotice": true,
+    "showVerifiedNotice": true
+  },
+  "adminPanel": {
+    "showVerificationLevel": true,
+    "showVerificationSource": true,
+    "showVerificationHistory": true,
+    "showVerifiedBy": true,
+    "showVerifiedAt": true,
+    "allowManualReview": true,
+    "allowManualVerification": true
+  },
+  "transitions": {
+    "unverified": [
+      "reviewed",
+      "verified"
+    ],
+    "reviewed": [
+      "unverified",
+      "verified"
+    ],
+    "verified": [
+      "reviewed",
+      "unverified"
+    ]
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousLevel": true,
+    "recordNewLevel": true,
+    "recordSource": true,
+    "recordVerifiedBy": true,
+    "recordTimestamp": true,
+    "recordReason": true,
+    "preserveVerificationHistory": true
+  },
+  "rollback": {
+    "enabled": true,
+    "allowRollback": true,
+    "requirePermission": true,
+    "rollbackPermission": "oem.verify",
+    "requireConfirmation": true,
+    "preserveRollbackHistory": true
+  },
+  "safety": {
+    "neverAutomaticallyVerifyRecords": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "neverTreatSearchMatchAsVerification": true,
+    "neverTreatImportAsVerification": true,
+    "neverSilentlyChangeVerificationLevel": true,
+    "preserveVerificationHistory": true,
+    "preserveAuditHistory": true
+  }
+}
