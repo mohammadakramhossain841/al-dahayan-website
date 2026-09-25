@@ -1,0 +1,114 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level alias and alternate-name rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "enabled": true,
+  "aliasTypes": [
+    "oem_alias",
+    "part_name_alias",
+    "arabic_name_alias",
+    "model_alias",
+    "category_alias",
+    "search_alias"
+  ],
+  "fields": {
+    "oemAliases": {
+      "enabled": true,
+      "type": "array",
+      "allowMultiple": true,
+      "searchable": true
+    },
+    "partNameAliases": {
+      "enabled": true,
+      "type": "array",
+      "allowMultiple": true,
+      "searchable": true
+    },
+    "arabicNameAliases": {
+      "enabled": true,
+      "type": "array",
+      "allowMultiple": true,
+      "searchable": true,
+      "preserveArabicText": true
+    },
+    "modelAliases": {
+      "enabled": true,
+      "type": "array",
+      "allowMultiple": true,
+      "searchable": true
+    }
+  },
+  "normalization": {
+    "trimWhitespace": true,
+    "ignoreCaseForComparison": true,
+    "normalizeOemSeparators": true,
+    "preserveOriginalAlias": true,
+    "normalizeArabicText": false
+  },
+  "matching": {
+    "allowExactAliasMatch": true,
+    "allowPartialAliasMatch": true,
+    "aliasMatchPriority": 80,
+    "oemAliasExactMatchPriority": 90
+  },
+  "validation": {
+    "validateAliasType": true,
+    "removeDuplicateAliases": true,
+    "preventAliasEqualToPrimaryValue": true,
+    "preventEmptyAliases": true,
+    "maximumAliasesPerType": 50,
+    "showWarnings": true,
+    "blockInvalidAliases": true
+  },
+  "search": {
+    "enabled": true,
+    "searchOemAliases": true,
+    "searchPartNameAliases": true,
+    "searchArabicNameAliases": true,
+    "searchModelAliases": true,
+    "includeAliasesInSuggestions": true
+  },
+  "publicWebsite": {
+    "useAliasesForSearch": true,
+    "showAliases": false,
+    "showMatchedAlias": true,
+    "allowAliasCopy": false
+  },
+  "adminPanel": {
+    "allowAliasEdit": true,
+    "showAllAliases": true,
+    "allowBulkAliasUpdate": true,
+    "showAliasHistory": true
+  },
+  "permissions": {
+    "view": "oem.view",
+    "edit": "oem.edit",
+    "bulkEdit": "oem.edit",
+    "export": "oem.export"
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousAliases": true,
+    "recordNewAliases": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.edit",
+    "preserveRollbackHistory": true
+  },
+  "safety": {
+    "neverModifyPrimaryOemNumberAutomatically": true,
+    "neverTreatAliasMatchAsCompatibilityVerification": true,
+    "neverAutomaticallyPromoteAliasToPrimaryValue": true,
+    "neverDeletePrimaryRecordBecauseOfAliasChange": true,
+    "preserveAliasHistory": true,
+    "preserveAuditHistory": true
+  }
+}
