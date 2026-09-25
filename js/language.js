@@ -4019,4 +4019,312 @@
 
   function toggleLanguage() {
 
-   
+    const current =
+      getCurrentLanguage();
+
+    const next =
+      current === "en"
+        ? "ar"
+        : "en";
+
+    return setLanguage(
+      next
+    );
+  }
+
+
+  /* =========================================
+     SWITCHER EVENTS
+  ========================================= */
+
+  let switcherEventsInitialized =
+    false;
+
+
+  function initializeLanguageSwitcher() {
+
+    if (
+      switcherEventsInitialized
+    ) {
+      return;
+    }
+
+    switcherEventsInitialized =
+      true;
+
+
+    document.addEventListener(
+      "click",
+      function (event) {
+
+        const target =
+          event.target.closest(
+            "[data-language-switch]"
+          );
+
+        if (!target) {
+          return;
+        }
+
+        event.preventDefault();
+
+        const language =
+          target.getAttribute(
+            "data-language-switch"
+          );
+
+        setLanguage(
+          language
+        );
+      }
+    );
+
+
+    document.addEventListener(
+      "click",
+      function (event) {
+
+        const target =
+          event.target.closest(
+            "[data-language-option]"
+          );
+
+        if (!target) {
+          return;
+        }
+
+        event.preventDefault();
+
+        const language =
+          target.getAttribute(
+            "data-language-option"
+          );
+
+        setLanguage(
+          language
+        );
+      }
+    );
+  }
+
+
+  /* =========================================
+     COMPONENT SYNC
+  ========================================= */
+
+  let componentSyncInitialized =
+    false;
+
+
+  function initializeComponentLanguageSync() {
+
+    if (
+      componentSyncInitialized
+    ) {
+      return;
+    }
+
+    componentSyncInitialized =
+      true;
+
+
+    document.addEventListener(
+      "alDahayanComponentsLoaded",
+      function () {
+
+        applyLanguage(
+          getCurrentLanguage()
+        );
+      }
+    );
+  }
+
+
+  /* =========================================
+     CONFIG SYNC
+  ========================================= */
+
+  let configSyncInitialized =
+    false;
+
+
+  function initializeConfigLanguageSync() {
+
+    if (
+      configSyncInitialized
+    ) {
+      return;
+    }
+
+    configSyncInitialized =
+      true;
+
+
+    document.addEventListener(
+      "alDahayanConfigUpdated",
+      function () {
+
+        applyLanguage(
+          getCurrentLanguage()
+        );
+      }
+    );
+
+
+    window.addEventListener(
+      "storage",
+      function (event) {
+
+        if (
+          event.key ===
+          LANGUAGE_STORAGE_KEY
+        ) {
+
+          applyLanguage(
+            event.newValue ||
+              DEFAULT_LANGUAGE
+          );
+        }
+      }
+    );
+  }
+
+
+  /* =========================================
+     INITIALIZE
+  ========================================= */
+
+  let initialized =
+    false;
+
+
+  function initializeLanguage() {
+
+    if (initialized) {
+      return;
+    }
+
+    initialized =
+      true;
+
+
+    initializeLanguageSwitcher();
+
+    initializeComponentLanguageSync();
+
+    initializeConfigLanguageSync();
+
+
+    applyLanguage(
+      getCurrentLanguage()
+    );
+
+
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanLanguageReady",
+        {
+          detail: {
+            language:
+              getCurrentLanguage()
+          }
+        }
+      )
+    );
+  }
+
+
+  /* =========================================
+     PUBLIC API
+  ========================================= */
+
+  window.AlDahayanLanguage = {
+
+    initialize:
+      initializeLanguage,
+
+    init:
+      initializeLanguage,
+
+    apply:
+      applyLanguage,
+
+    set:
+      setLanguage,
+
+    get:
+      getCurrentLanguage,
+
+    getStored:
+      getStoredLanguage,
+
+    toggle:
+      toggleLanguage,
+
+    translate:
+      translate,
+
+    isSupported:
+      isSupportedLanguage,
+
+    getDirection:
+      getDirection,
+
+    supportedLanguages:
+      [
+        ...SUPPORTED_LANGUAGES
+      ],
+
+    translations:
+      translations,
+
+    isInitialized:
+      function () {
+        return initialized;
+      }
+  };
+
+
+  /* =========================================
+     BACKWARD COMPATIBILITY
+  ========================================= */
+
+  window.initializeLanguage =
+    initializeLanguage;
+
+  window.setLanguage =
+    setLanguage;
+
+  window.getCurrentLanguage =
+    getCurrentLanguage;
+
+  window.getStoredLanguage =
+    getStoredLanguage;
+
+  window.translate =
+    translate;
+
+
+  /* =========================================
+     DOM READY
+  ========================================= */
+
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializeLanguage,
+      {
+        once: true
+      }
+    );
+
+  } else {
+
+    initializeLanguage();
+  }
+
+})();
