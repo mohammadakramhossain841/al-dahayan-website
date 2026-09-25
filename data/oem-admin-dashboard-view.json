@@ -1,0 +1,116 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin dashboard view configuration for monitoring Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Catalog Dashboard",
+    "defaultRange": "all",
+    "allowDateRangeFilter": true
+  },
+
+  "summaryCards": [
+    {
+      "id": "total_records",
+      "label": "Total OEM Records",
+      "source": "oem_catalog",
+      "metric": "count",
+      "enabled": true
+    },
+    {
+      "id": "published_records",
+      "label": "Published Records",
+      "source": "oem_catalog",
+      "metric": "published_count",
+      "enabled": true
+    },
+    {
+      "id": "unverified_records",
+      "label": "Unverified Records",
+      "source": "oem_catalog",
+      "metric": "unverified_count",
+      "enabled": true
+    },
+    {
+      "id": "in_stock_records",
+      "label": "In Stock",
+      "source": "inventory",
+      "metric": "in_stock_count",
+      "enabled": true
+    },
+    {
+      "id": "low_stock_records",
+      "label": "Low Stock",
+      "source": "inventory",
+      "metric": "low_stock_count",
+      "enabled": true
+    },
+    {
+      "id": "out_of_stock_records",
+      "label": "Out of Stock",
+      "source": "inventory",
+      "metric": "out_of_stock_count",
+      "enabled": true
+    }
+  ],
+
+  "breakdowns": {
+    "byBrand": true,
+    "byCategory": true,
+    "byStockStatus": true,
+    "byVerificationLevel": true,
+    "byPublicationStatus": true,
+    "byModel": true
+  },
+
+  "recentActivity": {
+    "enabled": true,
+    "limit": 20,
+    "includeCreated": true,
+    "includeUpdated": true,
+    "includeImported": true,
+    "includeArchived": true,
+    "includeRestored": true,
+    "includeVerified": true
+  },
+
+  "alerts": {
+    "enabled": true,
+    "unverifiedRecords": true,
+    "validationErrors": true,
+    "duplicateRecords": true,
+    "outOfStockRecords": true,
+    "lowStockRecords": true,
+    "pendingImports": true,
+    "failedImports": true
+  },
+
+  "quickActions": {
+    "addRecord": true,
+    "importRecords": true,
+    "exportRecords": true,
+    "viewUnverified": true,
+    "viewLowStock": true,
+    "viewOutOfStock": true,
+    "viewDuplicates": true,
+    "viewImportHistory": true
+  },
+
+  "permissions": {
+    "view": "oem.dashboard",
+    "viewInventory": "oem.stock_view",
+    "viewVerification": "oem.verification_view",
+    "viewHistory": "oem.history_view",
+    "import": "oem.import",
+    "export": "oem.export"
+  },
+
+  "safety": {
+    "dashboardReadOnly": true,
+    "neverModifyRecordsFromSummaryCards": true,
+    "neverModifyInventoryFromCharts": true,
+    "preserveAuditHistory": true,
+    "respectUserPermissions": true
+  }
+}
