@@ -1,0 +1,100 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public inquiry configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "form": {
+    "enabled": true,
+    "allowGuestInquiry": true,
+    "requireName": true,
+    "requirePhone": true,
+    "requireEmail": false,
+    "requireMessage": false,
+    "requireConsent": true
+  },
+
+  "prefill": [
+    "oemNumber",
+    "partName",
+    "brand",
+    "model",
+    "modelYear",
+    "engineCode",
+    "stockStatus"
+  ],
+
+  "optionalFields": [
+    "quantity",
+    "vehicleModel",
+    "vehicleYear",
+    "vehicleEngine",
+    "vin",
+    "message"
+  ],
+
+  "validation": {
+    "validateName": true,
+    "validatePhone": true,
+    "validateEmail": true,
+    "validateQuantity": true,
+    "validateVin": true,
+    "preventNegativeQuantity": true,
+    "showErrors": true
+  },
+
+  "contactMethods": {
+    "websiteForm": true,
+    "whatsapp": true,
+    "phone": true,
+    "email": true
+  },
+
+  "whatsapp": {
+    "enabled": true,
+    "includeOemNumber": true,
+    "includePartName": true,
+    "includeVehicleInformation": true,
+    "includeQuantity": true,
+    "includeVin": true,
+    "includeCustomerMessage": true
+  },
+
+  "security": {
+    "allowPublicSubmission": true,
+    "preventEmptySubmission": true,
+    "preventDuplicateRapidSubmission": true,
+    "sanitizeUserInput": true,
+    "neverExposeInternalNotes": true,
+    "neverExposeAdminData": true
+  },
+
+  "storage": {
+    "storeInquiryReference": true,
+    "storeOemNumber": true,
+    "storePartReference": true,
+    "storeCustomerInformation": true,
+    "storeSubmissionTimestamp": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "permissions": {
+    "publicSubmit": "inquiry.create"
+  },
+
+  "safety": {
+    "neverExposeCustomerDataPublicly": true,
+    "neverExposeInternalInquiryNotes": true,
+    "neverExposeAdminPermissions": true,
+    "requireConsentBeforeSubmission": true,
+    "preserveInquiryHistory": true
+  }
+}
