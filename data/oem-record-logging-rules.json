@@ -1,0 +1,113 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Operational logging rules for Toyota and Lexus OEM catalog records and administrative actions in the Al-Dahayan platform.",
+  "enabled": true,
+  "loggedActions": [
+    "create",
+    "update",
+    "publish",
+    "unpublish",
+    "archive",
+    "restore",
+    "disable",
+    "price_update",
+    "stock_update",
+    "image_update",
+    "compatibility_update",
+    "verification_update",
+    "category_update",
+    "metadata_update",
+    "import",
+    "export",
+    "bulk_operation",
+    "rollback",
+    "permission_denied",
+    "validation_failed"
+  ],
+  "requiredFields": [
+    "logId",
+    "timestamp",
+    "action",
+    "status"
+  ],
+  "context": {
+    "recordId": true,
+    "oemNumber": true,
+    "operationId": true,
+    "importId": true,
+    "userId": true,
+    "userRole": true,
+    "source": true,
+    "requestType": true
+  },
+  "result": {
+    "recordSuccess": true,
+    "recordFailure": true,
+    "recordWarning": true,
+    "recordSkipped": true,
+    "recordAffectedCount": true,
+    "recordDuration": true
+  },
+  "errorLogging": {
+    "enabled": true,
+    "recordErrorCode": true,
+    "recordErrorMessage": true,
+    "recordField": true,
+    "recordRowNumber": true,
+    "exposeInternalDetailsPublicly": false
+  },
+  "privacy": {
+    "recordCredentials": false,
+    "recordPasswords": false,
+    "recordAuthenticationTokens": false,
+    "recordSecurityTokens": false,
+    "recordPrivateNotes": false,
+    "recordUnnecessaryPersonalData": false
+  },
+  "retention": {
+    "enabled": true,
+    "retainOperationalLogs": true,
+    "allowAutomaticDeletion": false,
+    "allowManualDeletion": false
+  },
+  "search": {
+    "enabled": true,
+    "searchFields": [
+      "logId",
+      "recordId",
+      "oemNumber",
+      "operationId",
+      "userId",
+      "action",
+      "status"
+    ],
+    "allowDateRangeFilter": true,
+    "allowActionFilter": true,
+    "allowUserFilter": true,
+    "allowStatusFilter": true
+  },
+  "reporting": {
+    "generateOperationalReports": true,
+    "includeSuccessCount": true,
+    "includeFailureCount": true,
+    "includeWarningCount": true,
+    "includeSkippedCount": true,
+    "includeDuration": true
+  },
+  "security": {
+    "publicAccess": false,
+    "requireAuthentication": true,
+    "requireAdminPermission": true,
+    "logsReadOnly": true,
+    "preventLogModification": true,
+    "protectSensitiveData": true
+  },
+  "safety": {
+    "neverExposePrivateLogsPublicly": true,
+    "neverExposeCredentials": true,
+    "neverExposeSecurityTokens": true,
+    "preserveArabicText": true,
+    "preserveAuditHistory": true
+  }
+}
