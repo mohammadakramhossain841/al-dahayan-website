@@ -2,6 +2,9 @@
    AL-DAHAYAN TRADING COMPANY
    Main Website Stylesheet
    Toyota & Lexus Automotive Spare Parts Platform
+
+   Brand:
+   Red / Black / White
    ========================================================= */
 
 
@@ -10,43 +13,52 @@
    ========================================================= */
 
 :root {
-    --primary: #0b1f33;
-    --primary-light: #163653;
-    --accent: #c89b3c;
-    --accent-light: #e0bd70;
+    /* Brand */
+    --primary: #111111;
+    --primary-light: #242424;
+    --accent: #d71920;
+    --accent-light: #ef3b42;
 
+    /* Colors */
     --white: #ffffff;
-    --black: #111111;
+    --black: #000000;
 
-    --text: #25313d;
-    --text-light: #667381;
+    --text: #1f1f1f;
+    --text-light: #666666;
 
-    --background: #f6f8fa;
+    --background: #f7f7f7;
     --surface: #ffffff;
-    --border: #e2e7ec;
+    --border: #e4e4e4;
 
     --success: #16834a;
-    --danger: #c0392b;
+    --danger: #d71920;
+    --warning: #a87500;
 
+    /* Layout */
     --container: 1200px;
 
+    /* Radius */
     --radius-sm: 6px;
     --radius-md: 12px;
     --radius-lg: 18px;
 
+    /* Shadows */
     --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.10);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.14);
 
+    /* Motion */
     --transition: 0.25s ease;
 }
 
 
 /* =========================================================
-   2. RESET
+   2. RESET / BASE
    ========================================================= */
 
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -54,9 +66,12 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
+    min-height: 100vh;
+
     font-family:
         Arial,
         Helvetica,
@@ -66,11 +81,14 @@ body {
     color: var(--text);
 
     line-height: 1.6;
+
+    text-rendering: optimizeLegibility;
 }
 
 img {
-    max-width: 100%;
     display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 a {
@@ -83,6 +101,27 @@ input,
 select,
 textarea {
     font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+    cursor: not-allowed;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none !important;
 }
 
 
@@ -105,16 +144,26 @@ textarea {
    ========================================================= */
 
 .site-header {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-
     position: sticky;
     top: 0;
     z-index: 1000;
 
+    background: var(--white);
+
+    border-bottom: 1px solid var(--border);
+
     box-shadow: var(--shadow-sm);
 }
 
+/*
+   Current index.html uses:
+   .container.header-inner
+
+   Older pages may use:
+   .header-container
+*/
+
+.header-inner,
 .header-container {
     min-height: 78px;
 
@@ -125,12 +174,41 @@ textarea {
     gap: 25px;
 }
 
+
+/* =========================================================
+   5. LOGO / BRAND
+   ========================================================= */
+
+.site-logo {
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    text-decoration: none;
+}
+
+.site-logo-image {
+    display: block;
+
+    width: auto;
+    height: 58px;
+    max-width: 220px;
+
+    object-fit: contain;
+}
+
 .brand {
     display: flex;
     flex-direction: column;
-    line-height: 1.1;
+
+    align-items: flex-start;
 
     min-width: 190px;
+
+    line-height: 1.1;
+
+    text-decoration: none;
 }
 
 .brand-name {
@@ -143,6 +221,8 @@ textarea {
 }
 
 .brand-subtitle {
+    margin-top: 5px;
+
     color: var(--accent);
 
     font-size: 11px;
@@ -150,9 +230,12 @@ textarea {
 
     text-transform: uppercase;
     letter-spacing: 1px;
-
-    margin-top: 5px;
 }
+
+
+/* =========================================================
+   6. MAIN NAVIGATION
+   ========================================================= */
 
 .main-navigation {
     display: flex;
@@ -160,27 +243,64 @@ textarea {
     justify-content: center;
 
     gap: 24px;
+
+    min-width: 0;
 }
 
-.main-navigation a {
+.main-navigation a,
+.main-navigation .nav-link {
+    position: relative;
+
     color: var(--text);
 
     font-size: 14px;
     font-weight: 600;
 
-    transition: color var(--transition);
+    white-space: nowrap;
+
+    transition:
+        color var(--transition);
 }
 
-.main-navigation a:hover {
+.main-navigation a:hover,
+.main-navigation .nav-link:hover {
     color: var(--accent);
 }
 
+.main-navigation a.active,
+.main-navigation .nav-link.active,
+.main-navigation a[aria-current="page"],
+.main-navigation .nav-link[aria-current="page"] {
+    color: var(--accent);
+}
+
+
+/* =========================================================
+   7. HEADER ACTIONS
+   ========================================================= */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
 .header-inquiry {
-    background: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 0 17px;
+
+    background: var(--accent);
     color: var(--white);
 
-    padding: 11px 18px;
-
+    border: 1px solid var(--accent);
     border-radius: var(--radius-sm);
 
     font-size: 13px;
@@ -188,36 +308,119 @@ textarea {
 
     transition:
         background var(--transition),
+        border-color var(--transition),
         transform var(--transition);
 }
 
 .header-inquiry:hover {
-    background: var(--primary-light);
+    background: var(--accent-light);
+    border-color: var(--accent-light);
+
+    color: var(--white);
+
     transform: translateY(-2px);
 }
 
 
 /* =========================================================
-   5. HERO SECTION
+   8. LANGUAGE SWITCHER
+   ========================================================= */
+
+.language-switcher {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.language-switcher button,
+.language-switcher a,
+.language-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 34px;
+
+    padding: 0 10px;
+
+    background: var(--white);
+    color: var(--primary);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+}
+
+.language-switcher button:hover,
+.language-switcher a:hover,
+.language-button:hover {
+    background: var(--primary);
+    color: var(--white);
+
+    border-color: var(--primary);
+}
+
+.language-switcher button.active,
+.language-switcher a.active,
+.language-button.active {
+    background: var(--accent);
+    color: var(--white);
+
+    border-color: var(--accent);
+}
+
+
+/* =========================================================
+   9. HERO SECTION
    ========================================================= */
 
 .hero-section {
+    position: relative;
+
     min-height: 620px;
 
     display: flex;
     align-items: center;
 
+    overflow: hidden;
+
     background:
         linear-gradient(
             135deg,
-            var(--primary) 0%,
-            var(--primary-light) 100%
+            #111111 0%,
+            #242424 60%,
+            #111111 100%
         );
 
     color: var(--white);
+}
 
-    position: relative;
-    overflow: hidden;
+.hero-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 620px;
+    height: 620px;
+
+    right: -250px;
+    bottom: -320px;
+
+    border: 1px solid rgba(215, 25, 32, 0.22);
+
+    border-radius: 50%;
+
+    pointer-events: none;
 }
 
 .hero-section::after {
@@ -231,9 +434,11 @@ textarea {
     right: -160px;
     top: -160px;
 
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.10);
 
     border-radius: 50%;
+
+    pointer-events: none;
 }
 
 .hero-container {
@@ -245,8 +450,11 @@ textarea {
     max-width: 760px;
 }
 
-.hero-label {
+.hero-label,
+.eyebrow {
     display: inline-block;
+
+    margin-bottom: 20px;
 
     color: var(--accent-light);
 
@@ -254,54 +462,46 @@ textarea {
     font-weight: 800;
 
     letter-spacing: 2px;
-
-    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .hero-content h1 {
+    margin-bottom: 25px;
+
+    color: var(--white);
+
     font-size: clamp(42px, 6vw, 72px);
 
     line-height: 1.08;
-
     letter-spacing: -1.5px;
-
-    margin-bottom: 25px;
 }
 
 .hero-content h1 span {
     display: block;
+
     color: var(--accent-light);
 }
 
-.hero-content p {
+.hero-content p,
+.hero-description {
     max-width: 680px;
+
+    margin-bottom: 35px;
 
     color: rgba(255, 255, 255, 0.82);
 
     font-size: 18px;
     line-height: 1.8;
-
-    margin-bottom: 35px;
-}
-
-.hero-actions,
-.connection-actions,
-.cta-actions {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-
-    flex-wrap: wrap;
 }
 
 
 /* =========================================================
-   6. BUTTONS
+   10. BUTTONS
    ========================================================= */
 
+.button,
 .btn {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
 
@@ -309,41 +509,75 @@ textarea {
 
     padding: 0 24px;
 
+    border: 1px solid transparent;
     border-radius: var(--radius-sm);
 
     font-size: 14px;
     font-weight: 700;
 
+    text-align: center;
+
     transition:
         transform var(--transition),
         background var(--transition),
-        border-color var(--transition);
+        border-color var(--transition),
+        color var(--transition),
+        opacity var(--transition);
 }
 
+.button:hover,
 .btn:hover {
     transform: translateY(-2px);
 }
 
+.button-primary,
 .btn-primary {
     background: var(--accent);
     color: var(--white);
+
+    border-color: var(--accent);
 }
 
+.button-primary:hover,
 .btn-primary:hover {
     background: var(--accent-light);
+    border-color: var(--accent-light);
+
+    color: var(--white);
 }
 
+.button-secondary,
 .btn-secondary {
     background: transparent;
-
     color: inherit;
 
-    border: 1px solid currentColor;
+    border-color: currentColor;
+}
+
+.button-secondary:hover,
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
 }
 
 
 /* =========================================================
-   7. SECTION COMMON
+   11. ACTION GROUPS
+   ========================================================= */
+
+.hero-actions,
+.connection-actions,
+.cta-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   12. COMMON SECTION
    ========================================================= */
 
 section {
@@ -351,11 +585,11 @@ section {
 }
 
 .section-heading {
-    text-align: center;
-
     max-width: 720px;
 
     margin: 0 auto 50px;
+
+    text-align: center;
 }
 
 .section-heading span,
@@ -370,13 +604,13 @@ section {
 }
 
 .section-heading h2 {
+    margin: 10px 0 15px;
+
     color: var(--primary);
 
     font-size: clamp(30px, 4vw, 44px);
 
     line-height: 1.2;
-
-    margin: 10px 0 15px;
 }
 
 .section-heading p {
@@ -387,7 +621,7 @@ section {
 
 
 /* =========================================================
-   8. SEARCH SECTION
+   13. SEARCH SECTION
    ========================================================= */
 
 .search-section {
@@ -397,20 +631,18 @@ section {
 .search-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 24px;
 }
 
 .search-card {
+    padding: 32px;
+
     background: var(--surface);
 
     border: 1px solid var(--border);
-
     border-radius: var(--radius-lg);
-
-    padding: 32px;
 
     box-shadow: var(--shadow-sm);
 
@@ -428,7 +660,8 @@ section {
     box-shadow: var(--shadow-md);
 }
 
-.search-icon {
+.search-icon,
+.search-card-icon {
     width: 58px;
     height: 58px;
 
@@ -436,24 +669,23 @@ section {
     align-items: center;
     justify-content: center;
 
-    background: var(--primary);
+    margin-bottom: 22px;
 
+    background: var(--primary);
     color: var(--accent-light);
 
     border-radius: var(--radius-md);
 
     font-size: 12px;
     font-weight: 800;
-
-    margin-bottom: 22px;
 }
 
 .search-card h3 {
+    margin-bottom: 10px;
+
     color: var(--primary);
 
     font-size: 20px;
-
-    margin-bottom: 10px;
 }
 
 .search-card p {
@@ -464,7 +696,69 @@ section {
 
 
 /* =========================================================
-   9. COMPANY SECTION
+   14. SEARCH FORM
+   ========================================================= */
+
+.part-search-form {
+    width: 100%;
+}
+
+.part-search-input {
+    width: 100%;
+
+    min-height: 48px;
+
+    padding: 0 15px;
+
+    background: var(--white);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.part-search-input:focus {
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px rgba(215, 25, 32, 0.12);
+}
+
+.search-results {
+    width: 100%;
+}
+
+
+/* =========================================================
+   15. SCREEN READER ONLY
+   ========================================================= */
+
+.sr-only {
+    position: absolute !important;
+
+    width: 1px !important;
+    height: 1px !important;
+
+    padding: 0 !important;
+    margin: -1px !important;
+
+    overflow: hidden !important;
+
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+
+    border: 0 !important;
+}
+
+
+/* =========================================================
+   16. COMPANY SECTION
    ========================================================= */
 
 .company-section {
@@ -478,36 +772,37 @@ section {
 
 .company-content {
     max-width: 800px;
+
     text-align: center;
 }
 
 .company-content h2 {
+    margin: 12px 0 22px;
+
     color: var(--primary);
 
     font-size: clamp(32px, 4vw, 48px);
 
     line-height: 1.2;
-
-    margin: 12px 0 22px;
 }
 
 .company-content p {
+    margin-bottom: 15px;
+
     color: var(--text-light);
 
     font-size: 16px;
-
-    margin-bottom: 15px;
 }
 
 .text-link {
     display: inline-block;
 
+    margin-top: 12px;
+
     color: var(--primary);
 
     font-size: 14px;
     font-weight: 800;
-
-    margin-top: 12px;
 
     transition: color var(--transition);
 }
@@ -518,7 +813,7 @@ section {
 
 
 /* =========================================================
-   10. SERVICES
+   17. SERVICES
    ========================================================= */
 
 .services-section {
@@ -528,8 +823,7 @@ section {
 .services-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     gap: 20px;
 }
@@ -540,26 +834,28 @@ section {
     background: var(--background);
 
     border: 1px solid var(--border);
-
     border-radius: var(--radius-md);
 
     transition:
         transform var(--transition),
-        box-shadow var(--transition);
+        box-shadow var(--transition),
+        border-color var(--transition);
 }
 
 .service-card:hover {
     transform: translateY(-5px);
 
+    border-color: rgba(215, 25, 32, 0.25);
+
     box-shadow: var(--shadow-md);
 }
 
 .service-card h3 {
+    margin-bottom: 12px;
+
     color: var(--primary);
 
     font-size: 18px;
-
-    margin-bottom: 12px;
 }
 
 .service-card p {
@@ -570,15 +866,16 @@ section {
 
 
 /* =========================================================
-   11. CUSTOMER CONNECTION
+   18. CUSTOMER CONNECTION
    ========================================================= */
 
 .connection-section {
     background:
         linear-gradient(
             135deg,
-            var(--primary),
-            #102d49
+            #111111 0%,
+            #242424 65%,
+            #111111 100%
         );
 
     color: var(--white);
@@ -600,19 +897,21 @@ section {
 }
 
 .connection-content h2 {
+    margin: 12px 0 20px;
+
+    color: var(--white);
+
     font-size: clamp(32px, 5vw, 52px);
 
     line-height: 1.15;
-
-    margin: 12px 0 20px;
 }
 
 .connection-content p {
-    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+
+    color: rgba(255, 255, 255, 0.80);
 
     font-size: 17px;
-
-    margin-bottom: 30px;
 }
 
 .connection-actions {
@@ -621,7 +920,7 @@ section {
 
 
 /* =========================================================
-   12. TRUST SECTION
+   19. TRUST SECTION
    ========================================================= */
 
 .trust-section {
@@ -631,35 +930,47 @@ section {
 .trust-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     gap: 20px;
 }
 
-.trust-item {
+.trust-item,
+.trust-card {
+    padding: 28px;
+
     background: var(--white);
 
     border: 1px solid var(--border);
-
     border-radius: var(--radius-md);
 
-    padding: 28px;
-
     text-align: center;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
 }
 
-.trust-item strong {
+.trust-item:hover,
+.trust-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: var(--shadow-sm);
+}
+
+.trust-item strong,
+.trust-card strong {
     display: block;
+
+    margin-bottom: 10px;
 
     color: var(--primary);
 
     font-size: 17px;
-
-    margin-bottom: 10px;
 }
 
-.trust-item p {
+.trust-item p,
+.trust-card p {
     color: var(--text-light);
 
     font-size: 14px;
@@ -667,57 +978,70 @@ section {
 
 
 /* =========================================================
-   13. FINAL CTA
+   20. FINAL CTA
    ========================================================= */
 
-.final-cta {
+.final-cta,
+.cta-section {
     background: var(--white);
 
     text-align: center;
 }
 
-.final-cta h2 {
+.final-cta h2,
+.cta-section h2 {
+    margin-bottom: 15px;
+
     color: var(--primary);
 
     font-size: clamp(30px, 4vw, 44px);
 
     line-height: 1.2;
-
-    margin-bottom: 15px;
 }
 
-.final-cta p {
-    color: var(--text-light);
-
+.final-cta p,
+.cta-section p {
     margin-bottom: 25px;
+
+    color: var(--text-light);
 }
 
 .cta-actions {
     justify-content: center;
 }
 
-.final-cta .btn-secondary {
+.final-cta .btn-secondary,
+.cta-section .btn-secondary {
     color: var(--primary);
 
     border-color: var(--primary);
 }
 
+.final-cta .btn-secondary:hover,
+.cta-section .btn-secondary:hover {
+    color: var(--accent);
+
+    border-color: var(--accent);
+
+    background: transparent;
+}
+
 
 /* =========================================================
-   14. FOOTER
+   21. FOOTER
    ========================================================= */
 
 .site-footer {
-    background: var(--primary);
+    background: #111111;
 
     color: var(--white);
 }
 
+.footer-inner,
 .footer-container {
     display: grid;
 
-    grid-template-columns:
-        2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
 
     gap: 50px;
 
@@ -726,19 +1050,21 @@ section {
 }
 
 .footer-company h3 {
+    margin-bottom: 8px;
+
+    color: var(--white);
+
     font-size: 22px;
 
     letter-spacing: 1.5px;
-
-    margin-bottom: 8px;
 }
 
 .footer-company p {
+    margin-bottom: 6px;
+
     color: rgba(255, 255, 255, 0.68);
 
     font-size: 14px;
-
-    margin-bottom: 6px;
 }
 
 .footer-links,
@@ -751,11 +1077,11 @@ section {
 
 .footer-links h4,
 .footer-contact h4 {
+    margin-bottom: 7px;
+
     color: var(--accent-light);
 
     font-size: 14px;
-
-    margin-bottom: 7px;
 }
 
 .footer-links a,
@@ -770,235 +1096,26 @@ section {
 
 .footer-links a:hover,
 .footer-contact a:hover {
-    color: var(--white);
+    color: var(--accent-light);
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-
     padding: 20px 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
 
     text-align: center;
 }
 
 .footer-bottom p {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.50);
 
     font-size: 12px;
 }
 
 
 /* =========================================================
-   15. RESPONSIVE — TABLET
-   ========================================================= */
-
-@media (max-width: 1000px) {
-
-    .main-navigation {
-        gap: 14px;
-    }
-
-    .main-navigation a {
-        font-size: 13px;
-    }
-
-    .search-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .services-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .trust-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .footer-container {
-        grid-template-columns:
-            1fr 1fr;
-    }
-}
-
-
-/* =========================================================
-   16. RESPONSIVE — MOBILE
-   ========================================================= */
-
-@media (max-width: 720px) {
-
-    .container {
-        width: min(
-            calc(100% - 28px),
-            var(--container)
-        );
-    }
-
-    section {
-        padding: 65px 0;
-    }
-
-    .site-header {
-        position: relative;
-    }
-
-    .header-container {
-        min-height: auto;
-
-        padding: 18px 0;
-
-        flex-wrap: wrap;
-    }
-
-    .brand {
-        min-width: auto;
-    }
-
-    .main-navigation {
-        order: 3;
-
-        width: 100%;
-
-        overflow-x: auto;
-
-        justify-content: flex-start;
-
-        padding-bottom: 5px;
-    }
-
-    .main-navigation a {
-        white-space: nowrap;
-    }
-
-    .header-inquiry {
-        margin-left: auto;
-    }
-
-    .hero-section {
-        min-height: 560px;
-    }
-
-    .hero-content h1 {
-        font-size: 42px;
-    }
-
-    .hero-content p {
-        font-size: 16px;
-    }
-
-    .search-grid,
-    .services-grid,
-    .trust-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .search-card,
-    .service-card,
-    .trust-item {
-        padding: 24px;
-    }
-
-    .footer-container {
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-    }
-}
-
-
-/* =========================================================
-   17. SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 430px) {
-
-    .hero-content h1 {
-        font-size: 35px;
-    }
-
-    .hero-actions,
-    .connection-actions,
-    .cta-actions {
-        flex-direction: column;
-
-        align-items: stretch;
-    }
-
-    .btn {
-        width: 100%;
-    }
-
-    .header-inquiry {
-        padding: 9px 12px;
-
-        font-size: 12px;
-    }
-
-    .brand-name {
-        font-size: 19px;
-    }
-}
-
-
-/* =========================================================
-   18. ACCESSIBILITY
-   ========================================================= */
-
-:focus-visible {
-    outline: 3px solid var(--accent);
-
-    outline-offset: 3px;
-}
-
-
-/* =========================================================
-   19. RTL SUPPORT
-   ========================================================= */
-
-html[dir="rtl"] {
-    direction: rtl;
-}
-
-html[dir="rtl"] .hero-content,
-html[dir="rtl"] .company-content {
-    text-align: right;
-}
-
-html[dir="rtl"] .main-navigation {
-    direction: rtl;
-}
-
-html[dir="rtl"] .brand {
-    text-align: right;
-}
-
-html[dir="rtl"] .footer-company,
-html[dir="rtl"] .footer-links,
-html[dir="rtl"] .footer-contact {
-    text-align: right;
-}
-
-
-/* =========================================================
-   20. REUSABLE COMPONENT BASE
-   ========================================================= */
-
-[data-component] {
-    box-sizing: border-box;
-}
-
-[data-component] *,
-[data-component] *::before,
-[data-component] *::after {
-    box-sizing: border-box;
-}
-
-
-/* =========================================================
-   21. MODAL COMPONENT
+   22. MODAL COMPONENT
    ========================================================= */
 
 .modal-component {
@@ -1021,7 +1138,7 @@ html[dir="rtl"] .footer-contact {
     position: absolute;
     inset: 0;
 
-    background: rgba(11, 31, 51, 0.72);
+    background: rgba(0, 0, 0, 0.76);
 
     backdrop-filter: blur(3px);
 }
@@ -1076,12 +1193,12 @@ html[dir="rtl"] .footer-contact {
 
     padding: 0;
 
-    border: 0;
-    border-radius: var(--radius-sm);
-
     background: transparent;
 
     color: var(--text);
+
+    border: 0;
+    border-radius: var(--radius-sm);
 
     font-size: 28px;
     line-height: 1;
@@ -1095,6 +1212,7 @@ html[dir="rtl"] .footer-contact {
 
 .modal-close:hover {
     background: var(--background);
+
     color: var(--accent);
 }
 
@@ -1120,7 +1238,6 @@ html[dir="rtl"] .footer-contact {
 
 .modal-button {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
 
@@ -1138,7 +1255,8 @@ html[dir="rtl"] .footer-contact {
     transition:
         transform var(--transition),
         background var(--transition),
-        border-color var(--transition);
+        border-color var(--transition),
+        color var(--transition);
 }
 
 .modal-button:hover {
@@ -1146,37 +1264,38 @@ html[dir="rtl"] .footer-contact {
 }
 
 .modal-button:not(.secondary) {
-    background: var(--primary);
+    background: var(--accent);
     color: var(--white);
 
-    border: 1px solid var(--primary);
+    border: 1px solid var(--accent);
 }
 
 .modal-button:not(.secondary):hover {
-    background: var(--primary-light);
+    background: var(--accent-light);
+
+    border-color: var(--accent-light);
 }
 
 .modal-button.secondary {
     background: var(--white);
-
     color: var(--primary);
 
     border: 1px solid var(--border);
 }
 
 .modal-button.secondary:hover {
-    border-color: var(--accent);
     color: var(--accent);
+
+    border-color: var(--accent);
 }
 
 
 /* =========================================================
-   22. LOADING COMPONENT
+   23. LOADING COMPONENT
    ========================================================= */
 
 .loading-component {
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -1193,18 +1312,17 @@ html[dir="rtl"] .footer-contact {
     width: 22px;
     height: 22px;
 
-    border: 3px solid var(--border);
+    flex-shrink: 0;
 
+    border: 3px solid var(--border);
     border-top-color: var(--accent);
 
     border-radius: 50%;
 
-    animation:
-        alDahayanSpin 0.8s linear infinite;
+    animation: alDahayanSpin 0.8s linear infinite;
 }
 
 @keyframes alDahayanSpin {
-
     to {
         transform: rotate(360deg);
     }
@@ -1212,12 +1330,11 @@ html[dir="rtl"] .footer-contact {
 
 
 /* =========================================================
-   23. STOCK BADGE
+   24. STOCK BADGES / STATUS
    ========================================================= */
 
 .stock-badge {
     display: inline-flex;
-
     align-items: center;
 
     gap: 6px;
@@ -1234,43 +1351,50 @@ html[dir="rtl"] .footer-contact {
     line-height: 1;
 }
 
-.stock-badge.available {
-    background: rgba(22, 131, 74, 0.1);
+.stock-badge.available,
+.stock-badge.in-stock,
+.stock-status.in-stock {
+    background: rgba(22, 131, 74, 0.10);
+
     color: var(--success);
 }
 
 .stock-badge.low {
-    background: rgba(200, 155, 60, 0.12);
-    color: #9a741f;
+    background: rgba(168, 117, 0, 0.12);
+
+    color: var(--warning);
 }
 
 .stock-badge.out,
-.stock-badge.unavailable {
-    background: rgba(192, 57, 43, 0.1);
+.stock-badge.unavailable,
+.stock-badge.out-of-stock,
+.stock-status.out-of-stock {
+    background: rgba(215, 25, 32, 0.10);
+
     color: var(--danger);
 }
 
 .stock-badge.unknown {
     background: var(--background);
+
     color: var(--text-light);
 }
 
 
 /* =========================================================
-   24. VEHICLE & PART CARDS
+   25. VEHICLE & PART CARDS
    ========================================================= */
 
 .vehicle-card,
 .part-card {
+    overflow: hidden;
+
     background: var(--white);
 
     border: 1px solid var(--border);
-
     border-radius: var(--radius-md);
 
     box-shadow: var(--shadow-sm);
-
-    overflow: hidden;
 
     transition:
         transform var(--transition),
@@ -1313,28 +1437,27 @@ html[dir="rtl"] .footer-contact {
 
 
 /* =========================================================
-   25. PART DETAILS
+   26. PART DETAILS
    ========================================================= */
 
 .part-details {
+    padding: 24px;
+
     background: var(--white);
 
     border: 1px solid var(--border);
-
     border-radius: var(--radius-md);
-
-    padding: 24px;
 
     box-shadow: var(--shadow-sm);
 }
 
 .part-details-title {
+    margin-bottom: 12px;
+
     color: var(--primary);
 
     font-size: 22px;
     font-weight: 800;
-
-    margin-bottom: 12px;
 }
 
 .part-details-description {
@@ -1347,17 +1470,16 @@ html[dir="rtl"] .footer-contact {
 
 
 /* =========================================================
-   26. PRICE DISPLAY
+   27. PRICE DISPLAY
    ========================================================= */
 
 .price-display {
+    padding: 18px;
+
     background: var(--white);
 
     border: 1px solid var(--border);
-
     border-radius: var(--radius-md);
-
-    padding: 18px;
 
     box-shadow: var(--shadow-sm);
 }
@@ -1370,37 +1492,36 @@ html[dir="rtl"] .footer-contact {
 }
 
 .price-display-inquiry {
+    margin-top: 5px;
+
     color: var(--text-light);
 
     font-size: 13px;
-
-    margin-top: 5px;
 }
 
 
 /* =========================================================
-   27. CONTACT CARD
+   28. CONTACT CARD
    ========================================================= */
 
 .contact-card {
+    padding: 22px;
+
     background: var(--white);
 
     border: 1px solid var(--border);
-
     border-radius: var(--radius-md);
-
-    padding: 22px;
 
     box-shadow: var(--shadow-sm);
 }
 
 .contact-card-title {
+    margin-bottom: 12px;
+
     color: var(--primary);
 
     font-size: 19px;
     font-weight: 800;
-
-    margin-bottom: 12px;
 }
 
 .contact-card a {
@@ -1415,12 +1536,12 @@ html[dir="rtl"] .footer-contact {
 
 
 /* =========================================================
-   28. WHATSAPP BUTTON
+   29. WHATSAPP BUTTON
    ========================================================= */
 
-.whatsapp-button {
+.whatsapp-button,
+.btn-whatsapp {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
 
@@ -1430,10 +1551,10 @@ html[dir="rtl"] .footer-contact {
 
     padding: 0 20px;
 
-    background: var(--success);
+    background: #25d366;
+    color: #ffffff;
 
-    color: var(--white);
-
+    border: 1px solid #25d366;
     border-radius: var(--radius-sm);
 
     font-size: 14px;
@@ -1443,20 +1564,23 @@ html[dir="rtl"] .footer-contact {
 
     transition:
         transform var(--transition),
+        background var(--transition),
         opacity var(--transition);
 }
 
-.whatsapp-button:hover {
-    color: var(--white);
+.whatsapp-button:hover,
+.btn-whatsapp:hover {
+    background: #1ebe5d;
+    color: #ffffff;
 
-    opacity: 0.9;
+    opacity: 1;
 
     transform: translateY(-2px);
 }
 
 
 /* =========================================================
-   29. SEARCH BOX
+   30. SEARCH BOX
    ========================================================= */
 
 .search-box {
@@ -1471,11 +1595,9 @@ html[dir="rtl"] .footer-contact {
     padding: 0 15px;
 
     background: var(--white);
-
     color: var(--text);
 
     border: 1px solid var(--border);
-
     border-radius: var(--radius-sm);
 
     outline: none;
@@ -1489,12 +1611,12 @@ html[dir="rtl"] .footer-contact {
     border-color: var(--accent);
 
     box-shadow:
-        0 0 0 3px rgba(200, 155, 60, 0.12);
+        0 0 0 3px rgba(215, 25, 32, 0.12);
 }
 
 
 /* =========================================================
-   30. VEHICLE & PART FILTERS
+   31. VEHICLE / PART FILTERS
    ========================================================= */
 
 .vehicle-filter,
@@ -1513,11 +1635,9 @@ html[dir="rtl"] .footer-contact {
     padding: 0 13px;
 
     background: var(--white);
-
     color: var(--text);
 
     border: 1px solid var(--border);
-
     border-radius: var(--radius-sm);
 
     outline: none;
@@ -1534,17 +1654,16 @@ html[dir="rtl"] .footer-contact {
     border-color: var(--accent);
 
     box-shadow:
-        0 0 0 3px rgba(200, 155, 60, 0.12);
+        0 0 0 3px rgba(215, 25, 32, 0.12);
 }
 
 
 /* =========================================================
-   31. BREADCRUMBS
+   32. BREADCRUMBS
    ========================================================= */
 
 .breadcrumbs {
     display: flex;
-
     align-items: center;
 
     flex-wrap: wrap;
@@ -1577,7 +1696,7 @@ html[dir="rtl"] .footer-contact {
 
 
 /* =========================================================
-   32. INQUIRY FORM
+   33. INQUIRY FORM
    ========================================================= */
 
 .inquiry-form {
@@ -1605,11 +1724,9 @@ html[dir="rtl"] .footer-contact {
     padding: 10px 13px;
 
     background: var(--white);
-
     color: var(--text);
 
     border: 1px solid var(--border);
-
     border-radius: var(--radius-sm);
 
     outline: none;
@@ -1631,75 +1748,95 @@ html[dir="rtl"] .footer-contact {
     border-color: var(--accent);
 
     box-shadow:
-        0 0 0 3px rgba(200, 155, 60, 0.12);
+        0 0 0 3px rgba(215, 25, 32, 0.12);
 }
 
 
 /* =========================================================
-   33. LANGUAGE SWITCHER
+   34. PRIMARY ACTION STATES
    ========================================================= */
 
-.language-switcher {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 6px;
-}
-
-.language-switcher button,
-.language-switcher a {
-    min-height: 34px;
-
-    padding: 0 10px;
-
-    background: var(--white);
-
-    color: var(--primary);
-
-    border: 1px solid var(--border);
-
-    border-radius: var(--radius-sm);
-
-    font-size: 12px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition:
-        background var(--transition),
-        color var(--transition),
-        border-color var(--transition);
-}
-
-.language-switcher button:hover,
-.language-switcher a:hover {
-    background: var(--primary);
-
+button[data-action="primary"],
+[data-primary-action] {
+    background: var(--accent);
     color: var(--white);
 
-    border-color: var(--primary);
+    border-color: var(--accent);
+}
+
+button[data-action="primary"]:hover,
+[data-primary-action]:hover {
+    background: var(--accent-light);
+
+    border-color: var(--accent-light);
 }
 
 
 /* =========================================================
-   34. COMPONENT FOCUS
+   35. GLOBAL ACCESSIBILITY
    ========================================================= */
 
-.modal-button:focus-visible,
-.modal-close:focus-visible,
-.whatsapp-button:focus-visible,
-.language-switcher button:focus-visible,
-.language-switcher a:focus-visible {
+:focus-visible {
     outline: 3px solid var(--accent);
 
     outline-offset: 3px;
 }
 
+.modal-button:focus-visible,
+.modal-close:focus-visible,
+.whatsapp-button:focus-visible,
+.btn-whatsapp:focus-visible,
+.btn:focus-visible,
+.button:focus-visible,
+.language-switcher button:focus-visible,
+.language-switcher a:focus-visible,
+.language-button:focus-visible {
+    outline: 3px solid var(--accent);
+
+    outline-offset: 3px;
+}
+
+button:disabled,
+.btn:disabled,
+.button:disabled,
+.modal-button:disabled,
+.whatsapp-button:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
 
 /* =========================================================
-   35. COMPONENT RTL
+   36. RTL SUPPORT
    ========================================================= */
+
+html[dir="rtl"] {
+    direction: rtl;
+}
+
+html[dir="rtl"] .hero-content,
+html[dir="rtl"] .company-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .main-navigation {
+    direction: rtl;
+}
+
+html[dir="rtl"] .brand {
+    align-items: flex-end;
+
+    text-align: right;
+}
+
+html[dir="rtl"] .footer-company,
+html[dir="rtl"] .footer-links,
+html[dir="rtl"] .footer-contact {
+    text-align: right;
+}
 
 html[dir="rtl"] .modal-header {
     text-align: right;
@@ -1717,10 +1854,161 @@ html[dir="rtl"] .part-details {
 
 
 /* =========================================================
-   36. COMPONENT RESPONSIVE
+   37. DATA COMPONENT BASE
+   ========================================================= */
+
+[data-component] {
+    box-sizing: border-box;
+}
+
+[data-component] *,
+[data-component] *::before,
+[data-component] *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   38. TABLET RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .main-navigation {
+        gap: 14px;
+    }
+
+    .main-navigation a,
+    .main-navigation .nav-link {
+        font-size: 13px;
+    }
+
+    .search-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-inner,
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .header-inner,
+    .header-container {
+        gap: 15px;
+    }
+
+    .site-logo-image {
+        max-width: 190px;
+    }
+}
+
+
+/* =========================================================
+   39. MOBILE RESPONSIVE
    ========================================================= */
 
 @media (max-width: 720px) {
+
+    .container {
+        width: min(
+            calc(100% - 28px),
+            var(--container)
+        );
+    }
+
+    section {
+        padding: 65px 0;
+    }
+
+    .site-header {
+        position: relative;
+    }
+
+    .header-inner,
+    .header-container {
+        min-height: auto;
+
+        padding: 14px 0;
+
+        flex-wrap: wrap;
+    }
+
+    .site-logo-image {
+        height: 48px;
+        max-width: 180px;
+    }
+
+    .brand {
+        min-width: auto;
+    }
+
+    .main-navigation {
+        order: 3;
+
+        width: 100%;
+
+        justify-content: flex-start;
+
+        overflow-x: auto;
+
+        padding-bottom: 5px;
+
+        scrollbar-width: thin;
+    }
+
+    .main-navigation::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .main-navigation a,
+    .main-navigation .nav-link {
+        white-space: nowrap;
+    }
+
+    .header-actions {
+        margin-left: auto;
+    }
+
+    .hero-section {
+        min-height: 560px;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .hero-content p,
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .search-grid,
+    .services-grid,
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-card,
+    .service-card,
+    .trust-item,
+    .trust-card {
+        padding: 24px;
+    }
+
+    .footer-inner,
+    .footer-container {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
 
     .modal-component {
         padding: 12px;
@@ -1758,314 +2046,96 @@ html[dir="rtl"] .part-details {
     .part-details {
         padding: 18px;
     }
-
 }
 
 
 /* =========================================================
-   37. FINAL COMPONENT ACCESSIBILITY
+   40. SMALL MOBILE
    ========================================================= */
 
-.modal-button:disabled,
-.whatsapp-button:disabled,
-.btn:disabled {
-    opacity: 0.55;
+@media (max-width: 430px) {
 
-    cursor: not-allowed;
+    .container {
+        width: min(
+            calc(100% - 24px),
+            var(--container)
+        );
+    }
 
-    transform: none;
+    .site-logo-image {
+        height: 44px;
+        max-width: 160px;
+    }
+
+    .brand-name {
+        font-size: 19px;
+    }
+
+    .brand-subtitle {
+        font-size: 9px;
+    }
+
+    .language-switcher {
+        gap: 4px;
+    }
+
+    .language-switcher button,
+    .language-switcher a,
+    .language-button {
+        min-height: 31px;
+
+        padding: 0 8px;
+
+        font-size: 11px;
+    }
+
+    .header-inquiry {
+        min-height: 38px;
+
+        padding: 0 12px;
+
+        font-size: 12px;
+    }
+
+    .hero-content h1 {
+        font-size: 35px;
+    }
+
+    .hero-actions,
+    .connection-actions,
+    .cta-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .btn,
+    .button {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   41. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 
 /* =========================================================
    END OF AL-DAHAYAN MAIN STYLESHEET
    ========================================================= */
-
-
-/* =========================================================
-   AL-DAHAYAN BRAND IDENTITY
-   Logo-based Red / Black / White Theme
-   ========================================================= */
-
-:root {
-    --primary: #111111;
-    --primary-light: #242424;
-
-    --accent: #d71920;
-    --accent-light: #ef3b42;
-
-    --white: #ffffff;
-    --black: #000000;
-
-    --text: #1f1f1f;
-    --text-light: #666666;
-
-    --background: #f7f7f7;
-    --surface: #ffffff;
-    --border: #e4e4e4;
-
-    --success: #16834a;
-    --danger: #d71920;
-
-    --container: 1200px;
-
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 18px;
-
-    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.10);
-    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.14);
-
-    --transition: 0.25s ease;
-}
-
-/* Brand */
-.brand-name {
-    color: var(--primary);
-}
-
-.brand-subtitle {
-    color: var(--accent);
-}
-
-/* Navigation */
-.main-navigation a:hover {
-    color: var(--accent);
-}
-
-.header-inquiry {
-    background: var(--accent);
-    color: var(--white);
-}
-
-.header-inquiry:hover {
-    background: var(--accent-light);
-}
-
-/* Hero */
-.hero-section {
-    background:
-        linear-gradient(
-            135deg,
-            #111111 0%,
-            #242424 60%,
-            #111111 100%
-        );
-}
-
-.hero-label {
-    color: var(--accent-light);
-}
-
-.hero-content h1 span {
-    color: var(--accent-light);
-}
-
-/* Buttons */
-.btn-primary {
-    background: var(--accent);
-    color: var(--white);
-}
-
-.btn-primary:hover {
-    background: var(--accent-light);
-}
-
-/* Section headings */
-.section-heading span,
-.section-label {
-    color: var(--accent);
-}
-
-.section-heading h2 {
-    color: var(--primary);
-}
-
-/* Search */
-.search-card:hover {
-    border-color: var(--accent);
-}
-
-.search-icon {
-    background: var(--primary);
-    color: var(--accent-light);
-}
-
-.search-card h3 {
-    color: var(--primary);
-}
-
-/* Company */
-.company-content h2 {
-    color: var(--primary);
-}
-
-.text-link {
-    color: var(--primary);
-}
-
-.text-link:hover {
-    color: var(--accent);
-}
-
-/* Services */
-.service-card h3 {
-    color: var(--primary);
-}
-
-.service-card:hover {
-    border-color: rgba(215, 25, 32, 0.25);
-}
-
-/* Customer connection */
-.connection-section {
-    background:
-        linear-gradient(
-            135deg,
-            #111111 0%,
-            #242424 65%,
-            #111111 100%
-        );
-}
-
-.connection-content .section-label {
-    color: var(--accent-light);
-}
-
-/* Trust */
-.trust-item strong {
-    color: var(--primary);
-}
-
-/* Final CTA */
-.final-cta h2 {
-    color: var(--primary);
-}
-
-.final-cta .btn-secondary {
-    color: var(--primary);
-    border-color: var(--primary);
-}
-
-.final-cta .btn-secondary:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-}
-
-/* Footer */
-.site-footer {
-    background: #111111;
-}
-
-.footer-links h4,
-.footer-contact h4 {
-    color: var(--accent-light);
-}
-
-.footer-links a:hover,
-.footer-contact a:hover {
-    color: var(--accent-light);
-}
-
-/* Accessibility */
-:focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 3px;
-}
-
-/* Modal */
-.modal-overlay {
-    background: rgba(0, 0, 0, 0.76);
-}
-
-.modal-title {
-    color: var(--primary);
-}
-
-.modal-close:hover {
-    color: var(--accent);
-}
-
-/* Stock / status */
-.stock-badge.in-stock,
-.stock-status.in-stock {
-    color: var(--success);
-}
-
-.stock-badge.out-of-stock,
-.stock-status.out-of-stock {
-    color: var(--danger);
-}
-
-/* Links and interactive elements */
-a:hover {
-    color: var(--accent);
-}
-
-/* Form focus */
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: var(--accent);
-    outline-color: var(--accent);
-}
-
-/* Inquiry / WhatsApp */
-.whatsapp-button,
-.btn-whatsapp {
-    background: #25d366;
-    color: #ffffff;
-}
-
-.whatsapp-button:hover,
-.btn-whatsapp:hover {
-    background: #1ebe5d;
-}
-
-/* Primary action states */
-button[data-action="primary"],
-[data-primary-action] {
-    background: var(--accent);
-    color: var(--white);
-}
-
-button[data-action="primary"]:hover,
-[data-primary-action]:hover {
-    background: var(--accent-light);
-}
-
-/* RTL brand alignment */
-html[dir="rtl"] .brand {
-    text-align: right;
-}
-
-/* =========================================================
-   AL-DAHAYAN BRAND LOGO
-   ========================================================= */
-
-.site-logo-image {
-    display: block;
-    width: auto;
-    height: 58px;
-    max-width: 220px;
-    object-fit: contain;
-}
-
-/* Keep the logo area aligned inside the header */
-.site-logo,
-.brand {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-/* Prevent the logo from becoming too large on smaller screens */
-@media (max-width: 768px) {
-
-    .site-logo-image {
-        height: 48px;
-        max-width: 180px;
-    }
-
-}
