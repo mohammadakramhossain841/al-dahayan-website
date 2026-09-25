@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Assistant | Al-Dahayan Admin Panel</title>
+
+    <meta
+        name="description"
+        content="Al-Dahayan Trading Company Admin Panel - AI Assistant Management"
+    >
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="admin-dashboard">
+
+        <!-- =========================
+             ADMIN HEADER
+        ========================== -->
+        <header class="admin-header">
+            <div class="container">
+
+                <div class="admin-header-inner">
+
+                    <a href="dashboard.html" class="admin-brand">
+                        <img
+                            src="../assets/images/al-dahayan-logo.png"
+                            alt="Al-Dahayan Trading Company"
+                            class="admin-logo"
+                        >
+                    </a>
+
+                    <div class="admin-header-title">
+                        <span>AL-DAHAYAN</span>
+                        <strong>ADMIN PANEL</strong>
+                    </div>
+
+                </div>
+
+            </div>
+        </header>
+
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+        <main class="container">
+
+            <!-- Page Heading -->
+            <section class="admin-page-heading">
+
+                <div>
+                    <span class="admin-eyebrow">
+                        AI MANAGEMENT
+                    </span>
+
+                    <h1>
+                        AI Assistant
+                    </h1>
+
+                    <p>
+                        Control the website AI sales assistant,
+                        knowledge settings and customer connection flow.
+                    </p>
+                </div>
+
+                <div>
+                    <a
+                        href="dashboard.html"
+                        class="btn btn-secondary"
+                    >
+                        ← Dashboard
+                    </a>
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 AI STATUS
+            ========================== -->
+            <section class="admin-stat-grid">
+
+                <article class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        AI Assistant
+                    </span>
+
+                    <strong id="aiStatus">
+                        ON
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        Languages
+                    </span>
+
+                    <strong>
+                        EN / AR
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        Inventory Verification
+                    </span>
+
+                    <strong>
+                        Required
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        WhatsApp Connection
+                    </span>
+
+                    <strong>
+                        Enabled
+                    </strong>
+
+                </article>
+
+            </section>
+
+
+            <!-- =========================
+                 GENERAL AI SETTINGS
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            General AI Settings
+                        </h2>
+
+                        <p>
+                            Main controls for the Al-Dahayan AI Assistant.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="admin-status-grid">
+
+                    <!-- AI ON/OFF -->
+                    <article class="admin-status-card">
+
+                        <div class="admin-status-dot"></div>
+
+                        <div>
+
+                            <h3>
+                                AI Assistant
+                            </h3>
+
+                            <p>
+                                Allow the AI Assistant to appear
+                                on the public website.
+                            </p>
+
+                        </div>
+
+                        <label
+                            class="admin-switch"
+                            style="margin-left:auto;"
+                        >
+
+                            <input
+                                type="checkbox"
+                                id="aiEnabled"
+                                checked
+                            >
+
+                            <span>
+                                ON
+                            </span>
+
+                        </label>
+
+                    </article>
+
+
+                    <!-- SALES MODE -->
+                    <article class="admin-status-card">
+
+                        <div class="admin-status-dot"></div>
+
+                        <div>
+
+                            <h3>
+                                Sales Assistant Mode
+                            </h3>
+
+                            <p>
+                                AI should understand customer needs
+                                and guide them toward an inquiry.
+                            </p>
+
+                        </div>
+
+                        <label
+                            class="admin-switch"
+                            style="margin-left:auto;"
+                        >
+
+                            <input
+                                type="checkbox"
+                                id="salesMode"
+                                checked
+                            >
+
+                            <span>
+                                ON
+                            </span>
+
+                        </label>
+
+                    </article>
+
+
+                    <!-- INVENTORY VERIFICATION -->
+                    <article class="admin-status-card">
+
+                        <div class="admin-status-dot"></div>
+
+                        <div>
+
+                            <h3>
+                                Inventory Verification
+                            </h3>
+
+                            <p>
+                                AI must verify inventory before
+                                claiming that a part is available.
+                            </p>
+
+                        </div>
+
+                        <label
+                            class="admin-switch"
+                            style="margin-left:auto;"
+                        >
+
+                            <input
+                                type="checkbox"
+                                id="inventoryVerification"
+                                checked
+                            >
+
+                            <span>
+                                REQUIRED
+                            </span>
+
+                        </label>
+
+                    </article>
+
+
+                    <!-- WHATSAPP -->
+                    <article class="admin-status-card">
+
+                        <div class="admin-status-dot"></div>
+
+                        <div>
+
+                            <h3>
+                                WhatsApp Connection
+                            </h3>
+
+                            <p>
+                                Allow AI conversations to connect
+                                customers with Al-Dahayan.
+                            </p>
+
+                        </div>
+
+                        <label
+                            class="admin-switch"
+                            style="margin-left:auto;"
+                        >
+
+                            <input
+                                type="checkbox"
+                                id="whatsappConnection"
+                                checked
+                            >
+
+                            <span>
+                                ON
+                            </span>
+
+                        </label>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 AI BEHAVIOR
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            AI Behavior
+                        </h2>
+
+                        <p>
+                            Define what the assistant is allowed
+                            to understand and handle.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="admin-management-grid">
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Toyota & Lexus Parts
+                        </h3>
+
+                        <p>
+                            AI can help customers identify Toyota
+                            and Lexus automotive spare parts.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            OEM Identification
+                        </h3>
+
+                        <p>
+                            AI can work with verified OEM numbers,
+                            part names and vehicle compatibility.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Vehicle Questions
+                        </h3>
+
+                        <p>
+                            AI can understand vehicle make,
+                            model and model year requirements.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            VIN Assistance
+                        </h3>
+
+                        <p>
+                            AI can guide customers through the
+                            website VIN search process.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Customer Inquiry
+                        </h3>
+
+                        <p>
+                            AI can collect required inquiry
+                            information before connecting to WhatsApp.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Human Connection
+                        </h3>
+
+                        <p>
+                            When verification is unavailable,
+                            AI should connect the customer with the team.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CUSTOMER INFORMATION
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            Customer Information
+                        </h2>
+
+                        <p>
+                            Information the AI may collect during
+                            a sales conversation.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="admin-management-grid">
+
+                    <article class="admin-management-card">
+                        <h3>Customer Name</h3>
+                        <p>Allowed</p>
+                    </article>
+
+                    <article class="admin-management-card">
+                        <h3>WhatsApp / Phone</h3>
+                        <p>Allowed</p>
+                    </article>
+
+                    <article class="admin-management-card">
+                        <h3>Required Part</h3>
+                        <p>Allowed</p>
+                    </article>
+
+                    <article class="admin-management-card">
+                        <h3>OEM Number</h3>
+                        <p>Allowed</p>
+                    </article>
+
+                    <article class="admin-management-card">
+                        <h3>Vehicle</h3>
+                        <p>Allowed</p>
+                    </article>
+
+                    <article class="admin-management-card">
+                        <h3>Quantity Required</h3>
+                        <p>Allowed</p>
+                    </article>
+
+                    <article class="admin-management-card">
+                        <h3>Inquiry Date</h3>
+                        <p>System Generated</p>
+                    </article>
+
+                    <article class="admin-management-card">
+                        <h3>Contact Status</h3>
+                        <p>Admin Controlled</p>
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 PRIVACY RULES
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            AI Safety & Privacy Rules
+                        </h2>
+
+                        <p>
+                            Rules that must remain active for customer protection.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="admin-management-grid">
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            No Customer Location
+                        </h3>
+
+                        <p>
+                            AI must not request, collect or track
+                            the customer's physical location.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            No Unverified Stock
+                        </h3>
+
+                        <p>
+                            AI must never invent or guess stock availability.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            No Unverified Price
+                        </h3>
+
+                        <p>
+                            AI must not provide an unverified company price.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            No False Company Information
+                        </h3>
+
+                        <p>
+                            Company facts must come from verified
+                            company-controlled data.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            No Proactive Branch Recommendation
+                        </h3>
+
+                        <p>
+                            AI should not proactively recommend
+                            or collect branch-location information.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Human Handover
+                        </h3>
+
+                        <p>
+                            If information cannot be verified,
+                            AI should connect the customer to the team.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 AI INSTRUCTIONS
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            AI Instructions
+                        </h2>
+
+                        <p>
+                            Admin-controlled instructions for future
+                            AI configuration.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="aiInstructions">
+                        Assistant Instructions
+                    </label>
+
+                    <textarea
+                        id="aiInstructions"
+                        class="form-control"
+                        rows="10"
+                        placeholder="Enter approved AI instructions..."
+                    >You are the Al-Dahayan Trading Company sales assistant. Help customers with Toyota and Lexus automotive spare parts. Use only verified company data. Never invent stock, prices, compatibility or company information. Do not request or collect customer location. When verification is unavailable, connect the customer with the Al-Dahayan team through WhatsApp.</textarea>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="saveInstructionsButton"
+                >
+                    Save AI Instructions
+                </button>
+
+            </section>
+
+
+            <!-- =========================
+                 KNOWLEDGE AREAS
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            AI Knowledge Sources
+                        </h2>
+
+                        <p>
+                            Verified data sources the AI may use.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="admin-management-grid">
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            OEM & Parts Database
+                        </h3>
+
+                        <p>
+                            Verified OEM numbers and part information.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Vehicle Catalog
+                        </h3>
+
+                        <p>
+                            Toyota and Lexus vehicle compatibility data.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Live Inventory
+                        </h3>
+
+                        <p>
+                            Verified stock status and quantity data.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Company Information
+                        </h3>
+
+                        <p>
+                            Approved company and service information.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 AI FLOW
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            Customer AI Flow
+                        </h2>
+
+                        <p>
+                            Standard customer connection workflow.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="admin-action-grid">
+
+                    <article class="admin-action-card">
+
+                        <div class="admin-action-icon">
+                            01
+                        </div>
+
+                        <h3>
+                            Customer
+                        </h3>
+
+                        <p>
+                            Customer starts a conversation
+                            with the AI Assistant.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-action-card">
+
+                        <div class="admin-action-icon">
+                            02
+                        </div>
+
+                        <h3>
+                            Understand Need
+                        </h3>
+
+                        <p>
+                            AI understands part, OEM,
+                            vehicle and quantity requirements.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-action-card">
+
+                        <div class="admin-action-icon">
+                            03
+                        </div>
+
+                        <h3>
+                            Verify Data
+                        </h3>
+
+                        <p>
+                            AI checks verified OEM,
+                            compatibility and inventory data.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-action-card">
+
+                        <div class="admin-action-icon">
+                            04
+                        </div>
+
+                        <h3>
+                            WhatsApp
+                        </h3>
+
+                        <p>
+                            Customer is connected with
+                            the Al-Dahayan team.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SAVE STATUS
+            ========================== -->
+            <section class="admin-section">
+
+                <div
+                    id="saveMessage"
+                    class="admin-empty-state"
+                    style="display:none;"
+                ></div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+        <footer class="admin-footer">
+
+            <div class="container">
+
+                <p>
+                    © <span id="adminYear"></span>
+                    Al-Dahayan Trading Company.
+                    Admin Panel.
+                </p>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+    <script>
+
+        const STORAGE_KEY =
+            "alDahayanAISettings";
+
+
+        const defaultSettings = {
+
+            aiEnabled: true,
+
+            salesMode: true,
+
+            inventoryVerification: true,
+
+            whatsappConnection: true,
+
+            instructions:
+                "You are the Al-Dahayan Trading Company sales assistant. Help customers with Toyota and Lexus automotive spare parts. Use only verified company data. Never invent stock, prices, compatibility or company information. Do not request or collect customer location. When verification is unavailable, connect the customer with the Al-Dahayan team through WhatsApp."
+
+        };
+
+
+        /* =========================
+           LOAD SETTINGS
+        ========================== */
+
+        function loadSettings() {
+
+            let settings = null;
+
+            try {
+
+                settings =
+                    JSON.parse(
+                        localStorage.getItem(
+                            STORAGE_KEY
+                        )
+                    );
+
+            } catch (error) {
+
+                settings = null;
+
+            }
+
+
+            if (!settings) {
+
+                settings = {
+                    ...defaultSettings
+                };
+
+            }
+
+
+            document.getElementById(
+                "aiEnabled"
+            ).checked =
+                settings.aiEnabled !== false;
+
+
+            document.getElementById(
+                "salesMode"
+            ).checked =
+                settings.salesMode !== false;
+
+
+            document.getElementById(
+                "inventoryVerification"
+            ).checked =
+                settings.inventoryVerification !== false;
+
+
+            document.getElementById(
+                "whatsappConnection"
+            ).checked =
+                settings.whatsappConnection !== false;
+
+
+            document.getElementById(
+                "aiInstructions"
+            ).value =
+                settings.instructions ||
+                defaultSettings.instructions;
+
+
+            updateAIStatus();
+
+        }
+
+
+        /* =========================
+           SAVE SETTINGS
+        ========================== */
+
+        function saveSettings() {
+
+            const settings = {
+
+                aiEnabled:
+                    document.getElementById(
+                        "aiEnabled"
+                    ).checked,
+
+                salesMode:
+                    document.getElementById(
+                        "salesMode"
+                    ).checked,
+
+                inventoryVerification:
+                    document.getElementById(
+                        "inventoryVerification"
+                    ).checked,
+
+                whatsappConnection:
+                    document.getElementById(
+                        "whatsappConnection"
+                    ).checked,
+
+                instructions:
+                    document.getElementById(
+                        "aiInstructions"
+                    ).value.trim()
+
+            };
+
+
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(settings)
+            );
+
+
+            updateAIStatus();
+
+            showSaveMessage(
+                "AI settings saved locally. They will be connected to the Admin API in the backend implementation stage."
+            );
+
+        }
+
+
+        /* =========================
+           AI STATUS
+        ========================== */
+
+        function updateAIStatus() {
+
+            const enabled =
+                document.getElementById(
+                    "aiEnabled"
+                ).checked;
+
+
+            document.getElementById(
+                "aiStatus"
+            ).textContent =
+                enabled ? "ON" : "OFF";
+
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        function showSaveMessage(message) {
+
+            const element =
+                document.getElementById(
+                    "saveMessage"
+                );
+
+
+            element.textContent =
+                message;
+
+            element.style.display =
+                "block";
+
+
+            window.setTimeout(
+                function () {
+
+                    element.style.display =
+                        "none";
+
+                },
+                5000
+            );
+
+        }
+
+
+        /* =========================
+           EVENTS
+        ========================== */
+
+        document.getElementById(
+            "aiEnabled"
+        ).addEventListener(
+            "change",
+            updateAIStatus
+        );
+
+
+        document.getElementById(
+            "saveInstructionsButton"
+        ).addEventListener(
+            "click",
+            saveSettings
+        );
+
+
+        document.getElementById(
+            "salesMode"
+        ).addEventListener(
+            "change",
+            saveSettings
+        );
+
+
+        document.getElementById(
+            "inventoryVerification"
+        ).addEventListener(
+            "change",
+            saveSettings
+        );
+
+
+        document.getElementById(
+            "whatsappConnection"
+        ).addEventListener(
+            "change",
+            saveSettings
+        );
+
+
+        /* =========================
+           YEAR
+        ========================== */
+
+        document.getElementById(
+            "adminYear"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        /* =========================
+           INIT
+        ========================== */
+
+        loadSettings();
+
+    </script>
+
+</body>
+</html>
