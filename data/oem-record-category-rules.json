@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level category and subcategory rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "enabled": true,
+  "category": {
+    "required": true,
+    "type": "string",
+    "allowCustomValues": true,
+    "preserveOriginalValue": true,
+    "allowChange": true
+  },
+  "subcategory": {
+    "required": false,
+    "type": "string",
+    "allowCustomValues": true,
+    "preserveOriginalValue": true,
+    "allowChange": true
+  },
+  "categorySource": {
+    "useCentralCategoryMap": true,
+    "categoryMapFile": "oem-category-map.json",
+    "allowAdminDefinedCategories": true,
+    "requireCategoryValidation": true
+  },
+  "validation": {
+    "validateCategory": true,
+    "validateSubcategory": true,
+    "validateCategoryRelationship": true,
+    "trimWhitespace": true,
+    "removeDuplicateValues": true,
+    "blockEmptyRequiredCategory": true,
+    "showWarnings": true
+  },
+  "search": {
+    "categorySearchEnabled": true,
+    "subcategorySearchEnabled": true,
+    "categoryFilterEnabled": true,
+    "subcategoryFilterEnabled": true
+  },
+  "publicWebsite": {
+    "showCategory": true,
+    "showSubcategory": true,
+    "allowCategoryFilter": true,
+    "allowSubcategoryFilter": true
+  },
+  "adminPanel": {
+    "allowCategoryEdit": true,
+    "allowSubcategoryEdit": true,
+    "showCategoryMap": true,
+    "allowBulkCategoryUpdate": true,
+    "showCategoryHistory": true
+  },
+  "permissions": {
+    "view": "oem.view",
+    "edit": "oem.edit",
+    "bulkEdit": "oem.edit",
+    "export": "oem.export"
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousCategory": true,
+    "recordNewCategory": true,
+    "recordPreviousSubcategory": true,
+    "recordNewSubcategory": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.edit",
+    "preserveRollbackHistory": true
+  },
+  "safety": {
+    "neverSilentlyChangeCategory": true,
+    "neverSilentlyChangeSubcategory": true,
+    "neverDeleteRecordWhenCategoryChanges": true,
+    "preserveCategoryHistory": true,
+    "preserveAuditHistory": true
+  }
+}
