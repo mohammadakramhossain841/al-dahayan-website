@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Versioning configuration for the public Toyota and Lexus OEM catalog API.",
+  "enabled": true,
+
+  "current": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "version": "v1"
+  },
+
+  "supportedVersions": [
+    "v1"
+  ],
+
+  "defaultVersion": "v1",
+
+  "routing": {
+    "versionInPath": true,
+    "versionInHeader": false,
+    "versionInQuery": false,
+    "exampleBasePath": "/api/v1/oem"
+  },
+
+  "compatibility": {
+    "backwardCompatibleMinorChanges": true,
+    "backwardCompatiblePatchChanges": true,
+    "breakingChangesRequireMajorVersion": true,
+    "deprecatedVersionsRemainReadable": true,
+    "deprecatedVersionsAllowWrites": false
+  },
+
+  "deprecation": {
+    "enabled": true,
+    "includeWarningHeader": true,
+    "includeSunsetHeader": true,
+    "minimumNoticeDays": 90
+  },
+
+  "response": {
+    "includeApiVersion": true,
+    "includeRequestId": true,
+    "includeTimestamp": true
+  },
+
+  "security": {
+    "rejectUnsupportedVersions": true,
+    "rejectMalformedVersions": true,
+    "neverExposeInternalApiVersions": true
+  },
+
+  "documentation": {
+    "documentVersion": true,
+    "documentBreakingChanges": true,
+    "documentDeprecatedEndpoints": true
+  },
+
+  "languages": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en"
+  }
+}
