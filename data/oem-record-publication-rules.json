@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Publication rules for making Toyota and Lexus OEM catalog records available on the Al-Dahayan public website.",
+  "enabled": true,
+  "targetStatus": "active",
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.publish",
+    "requireConfirmation": true,
+    "requireReason": true
+  },
+  "prePublicationValidation": {
+    "enabled": true,
+    "validateOemNumber": true,
+    "validatePartName": true,
+    "validateBrand": true,
+    "validateCategory": true,
+    "validatePricing": true,
+    "validateInventory": true,
+    "validateImages": true,
+    "validateCompatibility": true,
+    "validateRequiredFields": true,
+    "validateDuplicateStatus": true
+  },
+  "requiredFields": [
+    "oemNumber",
+    "partName",
+    "brand",
+    "category",
+    "status",
+    "verificationLevel"
+  ],
+  "verification": {
+    "allowUnverifiedRecords": true,
+    "requireVerifiedCompatibility": false,
+    "automaticallyVerifyRecord": false,
+    "automaticallyVerifyCompatibility": false,
+    "showVerificationStatusPublicly": true
+  },
+  "contentRules": {
+    "requireValidOemNumber": true,
+    "requireNonEmptyPartName": true,
+    "requireSupportedBrand": true,
+    "requireValidCategory": true,
+    "preserveArabicText": true,
+    "allowMissingOptionalDescriptions": true
+  },
+  "pricingRules": {
+    "allowMissingPrice": true,
+    "allowContactForPrice": true,
+    "validateSalePrice": true,
+    "preventNegativePrice": true
+  },
+  "inventoryRules": {
+    "allowUnknownStock": true,
+    "allowOutOfStock": true,
+    "allowOnOrder": true,
+    "doNotRequirePositiveQuantity": true
+  },
+  "imageRules": {
+    "requirePrimaryImage": false,
+    "validatePrimaryImageWhenProvided": true,
+    "validateGalleryImagesWhenProvided": true,
+    "requireAltText": true
+  },
+  "publicationActions": {
+    "publish": true,
+    "unpublish": true,
+    "returnToDraft": true,
+    "archive": true,
+    "disable": true
+  },
+  "publicWebsite": {
+    "showOnlyActiveRecords": true,
+    "hideDraftRecords": true,
+    "hideArchivedRecords": true,
+    "hideDisabledRecords": true,
+    "allowUnverifiedRecords": true,
+    "showAvailabilityStatus": true,
+    "showPricingWhenConfigured": true,
+    "showCompatibilityNotice": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousStatus": true,
+    "recordNewStatus": true,
+    "recordValidationResult": true,
+    "recordPublishedBy": true,
+    "recordTimestamp": true,
+    "recordReason": true,
+    "preservePublicationHistory": true
+  },
+  "rollback": {
+    "enabled": true,
+    "allowUnpublish": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.publish",
+    "requireConfirmation": true
+  },
+  "safety": {
+    "neverAutomaticallyPublishRecords": true,
+    "neverAutomaticallyVerifyRecords": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "neverModifyOemNumberDuringPublication": true,
+    "neverDeleteRecordDuringUnpublish": true,
+    "preserveAuditHistory": true,
+    "preserveChangeHistory": true
+  }
+}
