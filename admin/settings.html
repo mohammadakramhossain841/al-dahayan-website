@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Website Settings | Al-Dahayan Admin Panel</title>
+
+    <meta
+        name="description"
+        content="Al-Dahayan Trading Company Admin Panel - Website Settings"
+    >
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="admin-dashboard">
+
+    <!-- =========================
+         ADMIN HEADER
+    ========================== -->
+    <header class="admin-header">
+        <div class="container">
+
+            <div class="admin-header-inner">
+
+                <a href="dashboard.html" class="admin-brand">
+                    <img
+                        src="../assets/images/al-dahayan-logo.png"
+                        alt="Al-Dahayan Trading Company"
+                        class="admin-logo"
+                    >
+                </a>
+
+                <div class="admin-header-title">
+                    <span>AL-DAHAYAN</span>
+                    <strong>ADMIN PANEL</strong>
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+    <main class="container">
+
+        <!-- Page Heading -->
+        <section class="admin-page-heading">
+
+            <div>
+                <span class="admin-eyebrow">
+                    WEBSITE CONTROL
+                </span>
+
+                <h1>
+                    Website Settings
+                </h1>
+
+                <p>
+                    Manage company information, contact details,
+                    website configuration and future payment settings.
+                </p>
+            </div>
+
+            <div>
+                <a
+                    href="dashboard.html"
+                    class="btn btn-secondary"
+                >
+                    ← Dashboard
+                </a>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COMPANY INFORMATION
+        ========================== -->
+        <section class="admin-section">
+
+            <div class="admin-section-heading">
+
+                <div>
+                    <h2>
+                        Company Information
+                    </h2>
+
+                    <p>
+                        Main company information displayed across
+                        the public website.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form id="companyForm">
+
+                <div class="admin-filter-grid">
+
+                    <!-- English Name -->
+                    <div class="form-group">
+
+                        <label for="companyName">
+                            Company Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="companyName"
+                            class="form-control"
+                            value="Al-Dahayan Trading Company"
+                            maxlength="150"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Arabic Name -->
+                    <div class="form-group">
+
+                        <label for="companyArabicName">
+                            Arabic Company Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="companyArabicName"
+                            class="form-control"
+                            value="شركة الضحيان التجارية"
+                            maxlength="150"
+                            dir="rtl"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Country -->
+                    <div class="form-group">
+
+                        <label for="country">
+                            Country
+                        </label>
+
+                        <input
+                            type="text"
+                            id="country"
+                            class="form-control"
+                            value="Saudi Arabia"
+                            maxlength="100"
+                        >
+
+                    </div>
+
+
+                    <!-- Website -->
+                    <div class="form-group">
+
+                        <label for="website">
+                            Website URL
+                        </label>
+
+                        <input
+                            type="url"
+                            id="website"
+                            class="form-control"
+                            placeholder="https://..."
+                            maxlength="500"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Description -->
+                <div class="form-group">
+
+                    <label for="companyDescription">
+                        Company Description
+                    </label>
+
+                    <textarea
+                        id="companyDescription"
+                        class="form-control"
+                        rows="6"
+                        maxlength="2000"
+                    >Al-Dahayan Trading Company specializes in Toyota and Lexus automotive spare parts and customer connection services in Saudi Arabia.</textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Save Company Information
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT SETTINGS
+        ========================== -->
+        <section class="admin-section">
+
+            <div class="admin-section-heading">
+
+                <div>
+                    <h2>
+                        Contact Settings
+                    </h2>
+
+                    <p>
+                        Manage the main customer communication channels.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form id="contactForm">
+
+                <div class="admin-filter-grid">
+
+                    <!-- Phone -->
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            class="form-control"
+                            placeholder="+966..."
+                            maxlength="50"
+                        >
+
+                    </div>
+
+
+                    <!-- WhatsApp -->
+                    <div class="form-group">
+
+                        <label for="whatsapp">
+                            WhatsApp
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="whatsapp"
+                            class="form-control"
+                            placeholder="+966..."
+                            maxlength="50"
+                        >
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="info@example.com"
+                            maxlength="150"
+                        >
+
+                    </div>
+
+
+                    <!-- Customer Contact -->
+                    <div class="form-group">
+
+                        <label for="preferredContact">
+                            Primary Contact Channel
+                        </label>
+
+                        <select
+                            id="preferredContact"
+                            class="form-control"
+                        >
+
+                            <option value="whatsapp">
+                                WhatsApp
+                            </option>
+
+                            <option value="phone">
+                                Phone
+                            </option>
+
+                            <option value="email">
+                                Email
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Save Contact Settings
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- =========================
+             LANGUAGE SETTINGS
+        ========================== -->
+        <section class="admin-section">
+
+            <div class="admin-section-heading">
+
+                <div>
+                    <h2>
+                        Language Settings
+                    </h2>
+
+                    <p>
+                        Public website language configuration.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="admin-management-grid">
+
+                <article class="admin-management-card">
+
+                    <h3>
+                        English
+                    </h3>
+
+                    <p>
+                        Active
+                    </p>
+
+                </article>
+
+
+                <article class="admin-management-card">
+
+                    <h3>
+                        العربية
+                    </h3>
+
+                    <p>
+                        Active
+                    </p>
+
+                </article>
+
+
+                <article class="admin-management-card">
+
+                    <h3>
+                        Bengali
+                    </h3>
+
+                    <p>
+                        Future Option
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WEBSITE FEATURES
+        ========================== -->
+        <section class="admin-section">
+
+            <div class="admin-section-heading">
+
+                <div>
+                    <h2>
+                        Website Features
+                    </h2>
+
+                    <p>
+                        Main public website features.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="admin-status-grid">
+
+                <!-- OEM -->
+                <article class="admin-status-card">
+
+                    <div class="admin-status-dot"></div>
+
+                    <div>
+
+                        <h3>
+                            OEM Search
+                        </h3>
+
+                        <p>
+                            Search Toyota and Lexus parts by OEM number.
+                        </p>
+
+                    </div>
+
+                    <label
+                        class="admin-switch"
+                        style="margin-left:auto;"
+                    >
+
+                        <input
+                            type="checkbox"
+                            id="oemSearch"
+                            checked
+                        >
+
+                        <span>
+                            ON
+                        </span>
+
+                    </label>
+
+                </article>
+
+
+                <!-- Vehicle -->
+                <article class="admin-status-card">
+
+                    <div class="admin-status-dot"></div>
+
+                    <div>
+
+                        <h3>
+                            Vehicle Search
+                        </h3>
+
+                        <p>
+                            Search parts by vehicle information.
+                        </p>
+
+                    </div>
+
+                    <label
+                        class="admin-switch"
+                        style="margin-left:auto;"
+                    >
+
+                        <input
+                            type="checkbox"
+                            id="vehicleSearch"
+                            checked
+                        >
+
+                        <span>
+                            ON
+                        </span>
+
+                    </label>
+
+                </article>
+
+
+                <!-- VIN -->
+                <article class="admin-status-card">
+
+                    <div class="admin-status-dot"></div>
+
+                    <div>
+
+                        <h3>
+                            VIN Search
+                        </h3>
+
+                        <p>
+                            Allow customers to use VIN search.
+                        </p>
+
+                    </div>
+
+                    <label
+                        class="admin-switch"
+                        style="margin-left:auto;"
+                    >
+
+                        <input
+                            type="checkbox"
+                            id="vinSearch"
+                            checked
+                        >
+
+                        <span>
+                            ON
+                        </span>
+
+                    </label>
+
+                </article>
+
+
+                <!-- Inventory -->
+                <article class="admin-status-card">
+
+                    <div class="admin-status-dot"></div>
+
+                    <div>
+
+                        <h3>
+                            Live Inventory
+                        </h3>
+
+                        <p>
+                            Connect public search with verified inventory.
+                        </p>
+
+                    </div>
+
+                    <label
+                        class="admin-switch"
+                        style="margin-left:auto;"
+                    >
+
+                        <input
+                            type="checkbox"
+                            id="inventory"
+                            checked
+                        >
+
+                        <span>
+                            ON
+                        </span>
+
+                    </label>
+
+                </article>
+
+
+                <!-- Inquiry -->
+                <article class="admin-status-card">
+
+                    <div class="admin-status-dot"></div>
+
+                    <div>
+
+                        <h3>
+                            Customer Inquiry
+                        </h3>
+
+                        <p>
+                            Allow customers to submit part inquiries.
+                        </p>
+
+                    </div>
+
+                    <label
+                        class="admin-switch"
+                        style="margin-left:auto;"
+                    >
+
+                        <input
+                            type="checkbox"
+                            id="inquiry"
+                            checked
+                        >
+
+                        <span>
+                            ON
+                        </span>
+
+                    </label>
+
+                </article>
+
+
+                <!-- AI -->
+                <article class="admin-status-card">
+
+                    <div class="admin-status-dot"></div>
+
+                    <div>
+
+                        <h3>
+                            AI Assistant
+                        </h3>
+
+                        <p>
+                            Website AI sales assistant.
+                        </p>
+
+                    </div>
+
+                    <label
+                        class="admin-switch"
+                        style="margin-left:auto;"
+                    >
+
+                        <input
+                            type="checkbox"
+                            id="aiAssistant"
+                            checked
+                        >
+
+                        <span>
+                            ON
+                        </span>
+
+                    </label>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             INVENTORY DISPLAY
+        ========================== -->
+        <section class="admin-section">
+
+            <div class="admin-section-heading">
+
+                <div>
+                    <h2>
+                        Inventory Display
+                    </h2>
+
+                    <p>
+                        Control how stock information is presented
+                        to website customers.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="admin-filter-grid">
+
+                <div class="form-group">
+
+                    <label for="quantityDisplay">
+                        Customer Quantity Display
+                    </label>
+
+                    <select
+                        id="quantityDisplay"
+                        class="form-control"
+                    >
+
+                        <option value="hidden">
+                            Hide Exact Quantity
+                        </option>
+
+                        <option value="show">
+                            Show Exact Quantity
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="lowStockThreshold">
+                        Low Stock Threshold
+                    </label>
+
+                    <input
+                        type="number"
+                        id="lowStockThreshold"
+                        class="form-control"
+                        min="1"
+                        max="999"
+                        value="5"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                id="saveInventoryDisplay"
+            >
+                Save Inventory Display
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             PAYMENT SETTINGS
+        ========================== -->
+        <section class="admin-section">
+
+            <div class="admin-section-heading">
+
+                <div>
+                    <h2>
+                        Payment Settings
+                    </h2>
+
+                    <p>
+                        Payment infrastructure is prepared for future use.
+                        Online payment is currently disabled.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="admin-status-grid">
+
+                <article class="admin-status-card">
+
+                    <div class="admin-status-dot"></div>
+
+                    <div>
+
+                        <h3>
+                            Payment System
+                        </h3>
+
+                        <p>
+                            Current status: OFF
+                        </p>
+
+                    </div>
+
+                    <strong style="margin-left:auto;">
+                        OFF
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-status-card">
+
+                    <div class="admin-status-dot"></div>
+
+                    <div>
+
+                        <h3>
+                            Online Payment
+                        </h3>
+
+                        <p>
+                            Customer online payment is disabled.
+                        </p>
+
+                    </div>
+
+                    <strong style="margin-left:auto;">
+                        DISABLED
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-status-card">
+
+                    <div class="admin-status-dot"></div>
+
+                    <div>
+
+                        <h3>
+                            Payment Gateway
+                        </h3>
+
+                        <p>
+                            No gateway connected.
+                        </p>
+
+                    </div>
+
+                    <strong style="margin-left:auto;">
+                        NOT CONNECTED
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-status-card">
+
+                    <div class="admin-status-dot"></div>
+
+                    <div>
+
+                        <h3>
+                            Currency
+                        </h3>
+
+                        <p>
+                            Default transaction currency.
+                        </p>
+
+                    </div>
+
+                    <strong style="margin-left:auto;">
+                        SAR
+                    </strong>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SAVE MESSAGE
+        ========================== -->
+        <section class="admin-section">
+
+            <div
+                id="saveMessage"
+                class="admin-empty-state"
+                style="display:none;"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="admin-footer">
+
+        <div class="container">
+
+            <p>
+                © <span id="adminYear"></span>
+                Al-Dahayan Trading Company.
+                Admin Panel.
+            </p>
+
+        </div>
+
+    </footer>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+<script>
+
+    const STORAGE_KEY =
+        "alDahayanWebsiteSettings";
+
+
+    const defaultSettings = {
+
+        company: {
+            name: "Al-Dahayan Trading Company",
+            arabicName: "شركة الضحيان التجارية",
+            country: "Saudi Arabia",
+            website: "",
+            description:
+                "Al-Dahayan Trading Company specializes in Toyota and Lexus automotive spare parts and customer connection services in Saudi Arabia."
+        },
+
+        contact: {
+            phone: "",
+            whatsapp: "",
+            email: "",
+            preferredContact: "whatsapp"
+        },
+
+        features: {
+            oemSearch: true,
+            vehicleSearch: true,
+            vinSearch: true,
+            inventory: true,
+            inquiry: true,
+            aiAssistant: true
+        },
+
+        inventoryDisplay: {
+            quantityDisplay: "hidden",
+            lowStockThreshold: 5
+        }
+
+    };
+
+
+    /* =========================
+       LOAD
+    ========================== */
+
+    function loadSettings() {
+
+        let settings = null;
+
+        try {
+
+            settings =
+                JSON.parse(
+                    localStorage.getItem(
+                        STORAGE_KEY
+                    )
+                );
+
+        } catch (error) {
+
+            settings = null;
+
+        }
+
+
+        if (!settings) {
+
+            settings = structuredClone(
+                defaultSettings
+            );
+
+            saveSettings(settings);
+
+        }
+
+
+        /* Company */
+
+        document.getElementById(
+            "companyName"
+        ).value =
+            settings.company?.name ||
+            defaultSettings.company.name;
+
+
+        document.getElementById(
+            "companyArabicName"
+        ).value =
+            settings.company?.arabicName ||
+            defaultSettings.company.arabicName;
+
+
+        document.getElementById(
+            "country"
+        ).value =
+            settings.company?.country ||
+            defaultSettings.company.country;
+
+
+        document.getElementById(
+            "website"
+        ).value =
+            settings.company?.website ||
+            "";
+
+
+        document.getElementById(
+            "companyDescription"
+        ).value =
+            settings.company?.description ||
+            "";
+
+
+        /* Contact */
+
+        document.getElementById(
+            "phone"
+        ).value =
+            settings.contact?.phone ||
+            "";
+
+
+        document.getElementById(
+            "whatsapp"
+        ).value =
+            settings.contact?.whatsapp ||
+            "";
+
+
+        document.getElementById(
+            "email"
+        ).value =
+            settings.contact?.email ||
+            "";
+
+
+        document.getElementById(
+            "preferredContact"
+        ).value =
+            settings.contact?.preferredContact ||
+            "whatsapp";
+
+
+        /* Features */
+
+        document.getElementById(
+            "oemSearch"
+        ).checked =
+            settings.features?.oemSearch !== false;
+
+
+        document.getElementById(
+            "vehicleSearch"
+        ).checked =
+            settings.features?.vehicleSearch !== false;
+
+
+        document.getElementById(
+            "vinSearch"
+        ).checked =
+            settings.features?.vinSearch !== false;
+
+
+        document.getElementById(
+            "inventory"
+        ).checked =
+            settings.features?.inventory !== false;
+
+
+        document.getElementById(
+            "inquiry"
+        ).checked =
+            settings.features?.inquiry !== false;
+
+
+        document.getElementById(
+            "aiAssistant"
+        ).checked =
+            settings.features?.aiAssistant !== false;
+
+
+        /* Inventory */
+
+        document.getElementById(
+            "quantityDisplay"
+        ).value =
+            settings.inventoryDisplay?.quantityDisplay ||
+            "hidden";
+
+
+        document.getElementById(
+            "lowStockThreshold"
+        ).value =
+            settings.inventoryDisplay?.lowStockThreshold ||
+            5;
+
+    }
+
+
+    /* =========================
+       SAVE ALL
+    ========================== */
+
+    function saveSettings(settings) {
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(settings)
+        );
+
+    }
+
+
+    /* =========================
+       GET CURRENT SETTINGS
+    ========================== */
+
+    function collectSettings() {
+
+        return {
+
+            company: {
+
+                name:
+                    document.getElementById(
+                        "companyName"
+                    ).value.trim(),
+
+                arabicName:
+                    document.getElementById(
+                        "companyArabicName"
+                    ).value.trim(),
+
+                country:
+                    document.getElementById(
+                        "country"
+                    ).value.trim(),
+
+                website:
+                    document.getElementById(
+                        "website"
+                    ).value.trim(),
+
+                description:
+                    document.getElementById(
+                        "companyDescription"
+                    ).value.trim()
+
+            },
+
+
+            contact: {
+
+                phone:
+                    document.getElementById(
+                        "phone"
+                    ).value.trim(),
+
+                whatsapp:
+                    document.getElementById(
+                        "whatsapp"
+                    ).value.trim(),
+
+                email:
+                    document.getElementById(
+                        "email"
+                    ).value.trim(),
+
+                preferredContact:
+                    document.getElementById(
+                        "preferredContact"
+                    ).value
+
+            },
+
+
+            features: {
+
+                oemSearch:
+                    document.getElementById(
+                        "oemSearch"
+                    ).checked,
+
+                vehicleSearch:
+                    document.getElementById(
+                        "vehicleSearch"
+                    ).checked,
+
+                vinSearch:
+                    document.getElementById(
+                        "vinSearch"
+                    ).checked,
+
+                inventory:
+                    document.getElementById(
+                        "inventory"
+                    ).checked,
+
+                inquiry:
+                    document.getElementById(
+                        "inquiry"
+                    ).checked,
+
+                aiAssistant:
+                    document.getElementById(
+                        "aiAssistant"
+                    ).checked
+
+            },
+
+
+            inventoryDisplay: {
+
+                quantityDisplay:
+                    document.getElementById(
+                        "quantityDisplay"
+                    ).value,
+
+                lowStockThreshold:
+                    Number(
+                        document.getElementById(
+                            "lowStockThreshold"
+                        ).value
+                    ) || 5
+
+            }
+
+        };
+
+    }
+
+
+    /* =========================
+       MESSAGE
+    ========================== */
+
+    function showMessage(message) {
+
+        const element =
+            document.getElementById(
+                "saveMessage"
+            );
+
+
+        element.textContent =
+            message;
+
+
+        element.style.display =
+            "block";
+
+
+        window.setTimeout(
+            function () {
+
+                element.style.display =
+                    "none";
+
+            },
+            4500
+        );
+
+    }
+
+
+    /* =========================
+       COMPANY FORM
+    ========================== */
+
+    document.getElementById(
+        "companyForm"
+    ).addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+            const settings =
+                collectSettings();
+
+            saveSettings(settings);
+
+            showMessage(
+                "Company information saved locally. It will be connected to the Admin API later."
+            );
+
+        }
+    );
+
+
+    /* =========================
+       CONTACT FORM
+    ========================== */
+
+    document.getElementById(
+        "contactForm"
+    ).addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+            const settings =
+                collectSettings();
+
+            saveSettings(settings);
+
+            showMessage(
+                "Contact settings saved locally. They will be connected to the Admin API later."
+            );
+
+        }
+    );
+
+
+    /* =========================
+       FEATURE SETTINGS
+    ========================== */
+
+    [
+        "oemSearch",
+        "vehicleSearch",
+        "vinSearch",
+        "inventory",
+        "inquiry",
+        "aiAssistant"
+    ].forEach(
+        function(id) {
+
+            document.getElementById(
+                id
+            ).addEventListener(
+                "change",
+                function() {
+
+                    const settings =
+                        collectSettings();
+
+                    saveSettings(settings);
+
+                    showMessage(
+                        "Website feature settings saved locally."
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================
+       INVENTORY DISPLAY
+    ========================== */
+
+    document.getElementById(
+        "saveInventoryDisplay"
+    ).addEventListener(
+        "click",
+        function() {
+
+            const threshold =
+                Number(
+                    document.getElementById(
+                        "lowStockThreshold"
+                    ).value
+                );
+
+
+            if (
+                !Number.isInteger(threshold) ||
+                threshold < 1
+            ) {
+
+                showMessage(
+                    "Low stock threshold must be a whole number greater than 0."
+                );
+
+                return;
+
+            }
+
+
+            const settings =
+                collectSettings();
+
+            saveSettings(settings);
+
+            showMessage(
+                "Inventory display settings saved locally."
+            );
+
+        }
+    );
+
+
+    /* =========================
+       YEAR
+    ========================== */
+
+    document.getElementById(
+        "adminYear"
+    ).textContent =
+        new Date().getFullYear();
+
+
+    /* =========================
+       INIT
+    ========================== */
+
+    loadSettings();
+
+</script>
+
+</body>
+</html>
