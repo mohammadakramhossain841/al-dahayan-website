@@ -1,0 +1,77 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public pricing display configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "pricing": {
+    "enabled": true,
+    "showRegularPrice": true,
+    "showSalePrice": true,
+    "showDiscountPercent": true,
+    "showCurrency": true,
+    "showPriceAvailability": true
+  },
+
+  "currency": {
+    "default": "SAR",
+    "supported": [
+      "SAR"
+    ],
+    "showCurrencySymbol": true,
+    "showCurrencyCode": true
+  },
+
+  "discount": {
+    "enabled": true,
+    "calculateFromRegularAndSalePrice": true,
+    "showOnlyWhenDiscountExists": true,
+    "hideZeroDiscount": true
+  },
+
+  "priceVisibility": {
+    "publishedRecordsOnly": true,
+    "publicRecordsOnly": true,
+    "hideArchivedRecords": true,
+    "hideDisabledRecords": true
+  },
+
+  "priceStates": {
+    "showPrice": true,
+    "allowInquiryWhenPriceMissing": true,
+    "allowInquiryWhenPriceOnRequest": true,
+    "showPriceOnRequestMessage": true
+  },
+
+  "inquiry": {
+    "enabled": true,
+    "includeOemNumber": true,
+    "includePartName": true,
+    "includeDisplayedPrice": false,
+    "includeRequestedQuantity": true,
+    "includeVehicleInformation": true
+  },
+
+  "sorting": {
+    "allowPriceLowToHigh": true,
+    "allowPriceHighToLow": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "safety": {
+    "neverExposeInternalPricingNotes": true,
+    "neverExposeSupplierCost": true,
+    "neverExposePurchasePrice": true,
+    "neverExposeProfitMargin": true,
+    "neverExposePrivateDiscountRules": true,
+    "neverExposeUnauthorizedPricingData": true
+  }
+}
