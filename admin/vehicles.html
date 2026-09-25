@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vehicles | Al-Dahayan Admin Panel</title>
+
+    <meta
+        name="description"
+        content="Al-Dahayan Trading Company Admin Panel - Vehicle Catalog Management"
+    >
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="admin-dashboard">
+
+        <!-- =========================
+             ADMIN HEADER
+        ========================== -->
+        <header class="admin-header">
+            <div class="container">
+
+                <div class="admin-header-inner">
+
+                    <a href="dashboard.html" class="admin-brand">
+                        <img
+                            src="../assets/images/al-dahayan-logo.png"
+                            alt="Al-Dahayan Trading Company"
+                            class="admin-logo"
+                        >
+                    </a>
+
+                    <div class="admin-header-title">
+                        <span>AL-DAHAYAN</span>
+                        <strong>ADMIN PANEL</strong>
+                    </div>
+
+                </div>
+
+            </div>
+        </header>
+
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+        <main class="container">
+
+            <!-- Page Heading -->
+            <section class="admin-page-heading">
+
+                <div>
+                    <span class="admin-eyebrow">
+                        VEHICLE MANAGEMENT
+                    </span>
+
+                    <h1>
+                        Vehicles
+                    </h1>
+
+                    <p>
+                        Manage Toyota and Lexus vehicle catalog,
+                        models, generations and compatibility data.
+                    </p>
+                </div>
+
+                <div>
+                    <a
+                        href="dashboard.html"
+                        class="btn btn-secondary"
+                    >
+                        ← Dashboard
+                    </a>
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SUMMARY
+            ========================== -->
+            <section class="admin-stat-grid">
+
+                <article class="admin-stat-card">
+                    <span class="admin-stat-label">
+                        Total Vehicles
+                    </span>
+
+                    <strong id="totalVehicles">
+                        0
+                    </strong>
+                </article>
+
+
+                <article class="admin-stat-card">
+                    <span class="admin-stat-label">
+                        Toyota
+                    </span>
+
+                    <strong id="toyotaVehicles">
+                        0
+                    </strong>
+                </article>
+
+
+                <article class="admin-stat-card">
+                    <span class="admin-stat-label">
+                        Lexus
+                    </span>
+
+                    <strong id="lexusVehicles">
+                        0
+                    </strong>
+                </article>
+
+
+                <article class="admin-stat-card">
+                    <span class="admin-stat-label">
+                        Active
+                    </span>
+
+                    <strong id="activeVehicles">
+                        0
+                    </strong>
+                </article>
+
+
+                <article class="admin-stat-card">
+                    <span class="admin-stat-label">
+                        Inactive
+                    </span>
+
+                    <strong id="inactiveVehicles">
+                        0
+                    </strong>
+                </article>
+
+            </section>
+
+
+            <!-- =========================
+                 SEARCH & FILTERS
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+                    <div>
+                        <h2>
+                            Vehicle Catalog
+                        </h2>
+
+                        <p>
+                            Search and filter vehicle records.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="admin-filter-grid">
+
+                    <!-- Search -->
+                    <div class="form-group">
+
+                        <label for="vehicleSearch">
+                            Search
+                        </label>
+
+                        <input
+                            type="search"
+                            id="vehicleSearch"
+                            class="form-control"
+                            placeholder="Vehicle ID, model, generation..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <!-- Brand -->
+                    <div class="form-group">
+
+                        <label for="brandFilter">
+                            Brand
+                        </label>
+
+                        <select
+                            id="brandFilter"
+                            class="form-control"
+                        >
+                            <option value="">
+                                All Brands
+                            </option>
+
+                            <option value="Toyota">
+                                Toyota
+                            </option>
+
+                            <option value="Lexus">
+                                Lexus
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <!-- Status -->
+                    <div class="form-group">
+
+                        <label for="statusFilter">
+                            Status
+                        </label>
+
+                        <select
+                            id="statusFilter"
+                            class="form-control"
+                        >
+                            <option value="">
+                                All Status
+                            </option>
+
+                            <option value="active">
+                                Active
+                            </option>
+
+                            <option value="inactive">
+                                Inactive
+                            </option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 VEHICLE TABLE
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            Vehicle Records
+                        </h2>
+
+                        <p id="vehicleResultCount">
+                            Loading vehicle records...
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="addVehicleButton"
+                    >
+                        + Add Vehicle
+                    </button>
+
+                </div>
+
+
+                <div class="admin-table-container">
+
+                    <table class="admin-table">
+
+                        <thead>
+                            <tr>
+                                <th>
+                                    Vehicle ID
+                                </th>
+
+                                <th>
+                                    Brand
+                                </th>
+
+                                <th>
+                                    Model
+                                </th>
+
+                                <th>
+                                    Generation
+                                </th>
+
+                                <th>
+                                    Year
+                                </th>
+
+                                <th>
+                                    Engine
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="vehicleTableBody">
+
+                            <tr>
+                                <td colspan="8">
+                                    Loading...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 VEHICLE MANAGEMENT
+            ========================== -->
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>
+                            Vehicle Management
+                        </h2>
+
+                        <p>
+                            Administrative controls for the vehicle catalog.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="admin-management-grid">
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Vehicle Information
+                        </h3>
+
+                        <p>
+                            Manage brand, model, generation, year range,
+                            engine and vehicle identification data.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Compatibility
+                        </h3>
+
+                        <p>
+                            Connect vehicles with verified OEM parts
+                            and compatibility records.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Active / Inactive
+                        </h3>
+
+                        <p>
+                            Vehicles can be deactivated without permanently
+                            deleting catalog history.
+                        </p>
+
+                    </article>
+
+
+                    <article class="admin-management-card">
+
+                        <h3>
+                            Inventory Connection
+                        </h3>
+
+                        <p>
+                            Vehicle records can be connected with the
+                            live inventory and customer part search system.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+        <footer class="admin-footer">
+
+            <div class="container">
+
+                <p>
+                    © <span id="adminYear"></span>
+                    Al-Dahayan Trading Company.
+                    Admin Panel.
+                </p>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+    <script>
+
+        const state = {
+            vehicles: []
+        };
+
+
+        /* =========================
+           HELPERS
+        ========================== */
+
+        function normalize(value) {
+            return String(value || "")
+                .trim()
+                .toLowerCase();
+        }
+
+
+        function escapeHTML(value) {
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+        function getVehicleBrand(vehicle) {
+
+            return (
+                vehicle.brand ||
+                vehicle.make ||
+                vehicle.manufacturer ||
+                ""
+            );
+        }
+
+
+        function getVehicleModel(vehicle) {
+
+            return (
+                vehicle.model ||
+                vehicle.modelName ||
+                ""
+            );
+        }
+
+
+        function getGeneration(vehicle) {
+
+            return (
+                vehicle.generation ||
+                vehicle.generationName ||
+                ""
+            );
+        }
+
+
+        function getYearFrom(vehicle) {
+
+            return (
+                vehicle.yearFrom ||
+                vehicle.fromYear ||
+                vehicle.startYear ||
+                ""
+            );
+        }
+
+
+        function getYearTo(vehicle) {
+
+            return (
+                vehicle.yearTo ||
+                vehicle.toYear ||
+                vehicle.endYear ||
+                ""
+            );
+        }
+
+
+        function getEngine(vehicle) {
+
+            return (
+                vehicle.engine ||
+                vehicle.engineType ||
+                vehicle.engineName ||
+                ""
+            );
+        }
+
+
+        function isActive(vehicle) {
+
+            return vehicle.active !== false;
+        }
+
+
+        function getYearDisplay(vehicle) {
+
+            const from = getYearFrom(vehicle);
+            const to = getYearTo(vehicle);
+
+            if (from && to) {
+                return `${from}–${to}`;
+            }
+
+            if (from) {
+                return `${from}+`;
+            }
+
+            if (to) {
+                return `Until ${to}`;
+            }
+
+            if (vehicle.year) {
+                return vehicle.year;
+            }
+
+            return "—";
+        }
+
+
+        /* =========================
+           LOAD VEHICLES
+        ========================== */
+
+        async function loadVehicles() {
+
+            const tableBody =
+                document.getElementById("vehicleTableBody");
+
+            try {
+
+                const response =
+                    await fetch("../data/vehicles.json", {
+                        cache: "no-store"
+                    });
+
+                if (!response.ok) {
+                    throw new Error(
+                        `HTTP ${response.status}`
+                    );
+                }
+
+                const data = await response.json();
+
+                if (Array.isArray(data)) {
+
+                    state.vehicles = data;
+
+                } else if (Array.isArray(data.vehicles)) {
+
+                    state.vehicles = data.vehicles;
+
+                } else if (Array.isArray(data.data)) {
+
+                    state.vehicles = data.data;
+
+                } else {
+
+                    state.vehicles = [];
+
+                }
+
+                updateSummary();
+                renderVehicles();
+
+            } catch (error) {
+
+                console.error(
+                    "Vehicle catalog load error:",
+                    error
+                );
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="8">
+                            Unable to load vehicle data.
+                        </td>
+                    </tr>
+                `;
+
+                document.getElementById(
+                    "vehicleResultCount"
+                ).textContent =
+                    "Vehicle data could not be loaded.";
+
+            }
+
+        }
+
+
+        /* =========================
+           SUMMARY
+        ========================== */
+
+        function updateSummary() {
+
+            const vehicles =
+                state.vehicles;
+
+            const total =
+                vehicles.length;
+
+            const toyota =
+                vehicles.filter(vehicle =>
+                    normalize(getVehicleBrand(vehicle)) === "toyota"
+                ).length;
+
+            const lexus =
+                vehicles.filter(vehicle =>
+                    normalize(getVehicleBrand(vehicle)) === "lexus"
+                ).length;
+
+            const active =
+                vehicles.filter(
+                    vehicle => isActive(vehicle)
+                ).length;
+
+            const inactive =
+                total - active;
+
+
+            document.getElementById(
+                "totalVehicles"
+            ).textContent = total;
+
+            document.getElementById(
+                "toyotaVehicles"
+            ).textContent = toyota;
+
+            document.getElementById(
+                "lexusVehicles"
+            ).textContent = lexus;
+
+            document.getElementById(
+                "activeVehicles"
+            ).textContent = active;
+
+            document.getElementById(
+                "inactiveVehicles"
+            ).textContent = inactive;
+
+        }
+
+
+        /* =========================
+           FILTER
+        ========================== */
+
+        function getFilteredVehicles() {
+
+            const search =
+                normalize(
+                    document.getElementById(
+                        "vehicleSearch"
+                    ).value
+                );
+
+            const brand =
+                normalize(
+                    document.getElementById(
+                        "brandFilter"
+                    ).value
+                );
+
+            const status =
+                document.getElementById(
+                    "statusFilter"
+                ).value;
+
+
+            return state.vehicles.filter(vehicle => {
+
+                const vehicleId =
+                    normalize(
+                        vehicle.id ||
+                        vehicle.vehicleId
+                    );
+
+                const vehicleBrand =
+                    normalize(
+                        getVehicleBrand(vehicle)
+                    );
+
+                const model =
+                    normalize(
+                        getVehicleModel(vehicle)
+                    );
+
+                const generation =
+                    normalize(
+                        getGeneration(vehicle)
+                    );
+
+                const engine =
+                    normalize(
+                        getEngine(vehicle)
+                    );
+
+
+                const matchesSearch =
+                    !search ||
+                    vehicleId.includes(search) ||
+                    vehicleBrand.includes(search) ||
+                    model.includes(search) ||
+                    generation.includes(search) ||
+                    engine.includes(search);
+
+
+                const matchesBrand =
+                    !brand ||
+                    vehicleBrand === brand;
+
+
+                const matchesStatus =
+                    !status ||
+                    (
+                        status === "active" &&
+                        isActive(vehicle)
+                    ) ||
+                    (
+                        status === "inactive" &&
+                        !isActive(vehicle)
+                    );
+
+
+                return (
+                    matchesSearch &&
+                    matchesBrand &&
+                    matchesStatus
+                );
+
+            });
+
+        }
+
+
+        /* =========================
+           STATUS
+        ========================== */
+
+        function getStatusHTML(vehicle) {
+
+            if (isActive(vehicle)) {
+
+                return `
+                    <span class="stock-badge stock-in">
+                        Active
+                    </span>
+                `;
+
+            }
+
+            return `
+                <span class="stock-badge stock-out">
+                    Inactive
+                </span>
+            `;
+
+        }
+
+
+        /* =========================
+           RENDER
+        ========================== */
+
+        function renderVehicles() {
+
+            const tableBody =
+                document.getElementById(
+                    "vehicleTableBody"
+                );
+
+            const vehicles =
+                getFilteredVehicles();
+
+
+            document.getElementById(
+                "vehicleResultCount"
+            ).textContent =
+                `${vehicles.length} vehicle record${
+                    vehicles.length === 1 ? "" : "s"
+                } found.`;
+
+
+            if (!vehicles.length) {
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="8">
+                            <div class="admin-empty-state">
+                                No vehicle records found.
+                            </div>
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+
+            tableBody.innerHTML =
+                vehicles.map(vehicle => {
+
+                    const id =
+                        vehicle.id ||
+                        vehicle.vehicleId ||
+                        "—";
+
+                    const brand =
+                        getVehicleBrand(vehicle) ||
+                        "—";
+
+                    const model =
+                        getVehicleModel(vehicle) ||
+                        "—";
+
+                    const generation =
+                        getGeneration(vehicle) ||
+                        "—";
+
+                    const year =
+                        getYearDisplay(vehicle);
+
+                    const engine =
+                        getEngine(vehicle) ||
+                        "—";
+
+
+                    return `
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    ${escapeHTML(id)}
+                                </strong>
+                            </td>
+
+                            <td>
+                                ${escapeHTML(brand)}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(model)}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(generation)}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(year)}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(engine)}
+                            </td>
+
+                            <td>
+                                ${getStatusHTML(vehicle)}
+                            </td>
+
+                            <td>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-edit-vehicle="${escapeHTML(id)}"
+                                >
+                                    Edit
+                                </button>
+
+                            </td>
+
+                        </tr>
+                    `;
+
+                }).join("");
+
+        }
+
+
+        /* =========================
+           EVENTS
+        ========================== */
+
+        document
+            .getElementById("vehicleSearch")
+            .addEventListener(
+                "input",
+                renderVehicles
+            );
+
+
+        document
+            .getElementById("brandFilter")
+            .addEventListener(
+                "change",
+                renderVehicles
+            );
+
+
+        document
+            .getElementById("statusFilter")
+            .addEventListener(
+                "change",
+                renderVehicles
+            );
+
+
+        document
+            .getElementById("addVehicleButton")
+            .addEventListener(
+                "click",
+                function () {
+
+                    alert(
+                        "Add Vehicle will be connected to the Admin API in the next implementation stage."
+                    );
+
+                }
+            );
+
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                const button =
+                    event.target.closest(
+                        "[data-edit-vehicle]"
+                    );
+
+                if (!button) {
+                    return;
+                }
+
+                const vehicleId =
+                    button.getAttribute(
+                        "data-edit-vehicle"
+                    );
+
+                alert(
+                    `Edit Vehicle: ${vehicleId}\n\nVehicle editing will be connected to the Admin API later.`
+                );
+
+            }
+        );
+
+
+        /* =========================
+           YEAR
+        ========================== */
+
+        document.getElementById(
+            "adminYear"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        /* =========================
+           INIT
+        ========================== */
+
+        loadVehicles();
+
+    </script>
+
+</body>
+</html>
