@@ -1,0 +1,107 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level permissions for Toyota and Lexus OEM catalog management in the Al-Dahayan Admin Panel.",
+  "roles": {
+    "super_admin": {
+      "permissions": [
+        "oem.create",
+        "oem.view",
+        "oem.edit",
+        "oem.publish",
+        "oem.archive",
+        "oem.restore",
+        "oem.disable",
+        "oem.price_update",
+        "oem.stock_update",
+        "oem.image_manage",
+        "oem.verify",
+        "oem.import",
+        "oem.export",
+        "oem.audit_view",
+        "oem.history_view",
+        "oem.rollback"
+      ]
+    },
+    "admin": {
+      "permissions": [
+        "oem.create",
+        "oem.view",
+        "oem.edit",
+        "oem.publish",
+        "oem.archive",
+        "oem.restore",
+        "oem.price_update",
+        "oem.stock_update",
+        "oem.image_manage",
+        "oem.import",
+        "oem.export",
+        "oem.audit_view",
+        "oem.history_view"
+      ]
+    },
+    "catalog_manager": {
+      "permissions": [
+        "oem.create",
+        "oem.view",
+        "oem.edit",
+        "oem.import",
+        "oem.export",
+        "oem.image_manage",
+        "oem.history_view"
+      ]
+    },
+    "inventory_manager": {
+      "permissions": [
+        "oem.view",
+        "oem.stock_update",
+        "oem.history_view"
+      ]
+    },
+    "viewer": {
+      "permissions": [
+        "oem.view"
+      ]
+    }
+  },
+  "recordRestrictions": {
+    "oemNumber": {
+      "editableBy": [
+        "super_admin"
+      ],
+      "requireExtraConfirmation": true
+    },
+    "verificationLevel": {
+      "editableBy": [
+        "super_admin"
+      ],
+      "requireVerificationSource": true
+    },
+    "status": {
+      "publishAllowedFor": [
+        "super_admin",
+        "admin"
+      ],
+      "disableAllowedFor": [
+        "super_admin"
+      ]
+    },
+    "auditHistory": {
+      "editable": false,
+      "deletable": false
+    }
+  },
+  "operationRules": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "denyByDefault": true,
+    "recordPermissionChecks": true,
+    "recordDeniedActions": true
+  },
+  "security": {
+    "neverExposeCredentials": true,
+    "neverExposeSecurityTokens": true,
+    "neverAllowPublicAdminAccess": true,
+    "preserveAuditHistory": true
+  }
+}
