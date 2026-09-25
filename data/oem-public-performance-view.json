@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public performance configuration for Toyota and Lexus OEM catalog pages.",
+  "enabled": true,
+
+  "loading": {
+    "lazyLoadImages": true,
+    "deferNonCriticalContent": true,
+    "loadVisibleRecordsFirst": true,
+    "showLoadingState": true
+  },
+
+  "data": {
+    "usePagination": true,
+    "avoidLoadingAllRecords": true,
+    "maximumInitialRecords": 24,
+    "allowServerSidePagination": true,
+    "allowServerSideFiltering": true,
+    "allowServerSideSorting": true
+  },
+
+  "search": {
+    "debounceMilliseconds": 250,
+    "minimumSearchCharacters": 2,
+    "cacheResults": true,
+    "cacheDurationSeconds": 300,
+    "cancelPreviousRequest": true
+  },
+
+  "images": {
+    "lazyLoad": true,
+    "responsiveImages": true,
+    "useOptimizedFormats": true,
+    "preserveAspectRatio": true,
+    "avoidLayoutShift": true
+  },
+
+  "caching": {
+    "enabled": true,
+    "cacheCatalogData": true,
+    "cacheCategoryData": true,
+    "cacheVehicleData": true,
+    "cacheSearchResults": true
+  },
+
+  "network": {
+    "avoidDuplicateRequests": true,
+    "retryFailedRequests": true,
+    "maximumRetries": 2,
+    "requestTimeoutMilliseconds": 10000
+  },
+
+  "frontend": {
+    "minimizeDomUpdates": true,
+    "useEventDelegation": true,
+    "avoidBlockingScripts": true,
+    "deferNonCriticalScripts": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "safety": {
+    "neverCachePrivateCustomerData": true,
+    "neverCacheInternalInventoryData": true,
+    "neverCacheAdminData": true,
+    "neverExposeInternalApiDetails": true
+  }
+}
