@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Health monitoring configuration for the public Toyota and Lexus OEM catalog API.",
+  "enabled": true,
+
+  "healthChecks": {
+    "api": {
+      "enabled": true,
+      "path": "/api/health",
+      "method": "GET"
+    },
+
+    "database": {
+      "enabled": true,
+      "checkConnectivity": true,
+      "timeoutMs": 3000
+    },
+
+    "catalogData": {
+      "enabled": true,
+      "checkAvailability": true,
+      "requiredFiles": [
+        "oem-catalog.json",
+        "oem-search-index.json"
+      ]
+    },
+
+    "inventoryData": {
+      "enabled": true,
+      "checkAvailability": true,
+      "requiredFiles": [
+        "inventory.json"
+      ]
+    }
+  },
+
+  "status": {
+    "healthy": "healthy",
+    "degraded": "degraded",
+    "unavailable": "unavailable"
+  },
+
+  "timeouts": {
+    "apiTimeoutMs": 3000,
+    "databaseTimeoutMs": 3000,
+    "dataTimeoutMs": 3000
+  },
+
+  "monitoring": {
+    "enabled": true,
+    "checkIntervalSeconds": 60,
+    "recordFailures": true,
+    "recordRecovery": true
+  },
+
+  "alerts": {
+    "enabled": true,
+    "alertOnRepeatedFailures": true,
+    "failureThreshold": 3,
+    "recoveryNotification": true
+  },
+
+  "response": {
+    "includeOverallStatus": true,
+    "includeComponentStatus": true,
+    "includeTimestamp": true,
+    "includeRequestId": true,
+    "hideInternalDetails": true
+  },
+
+  "security": {
+    "publicHealthEndpoint": true,
+    "hideDatabaseDetails": true,
+    "hideFileSystemPaths": true,
+    "hideInternalServices": true
+  }
+}
