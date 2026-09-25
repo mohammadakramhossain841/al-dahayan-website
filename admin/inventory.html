@@ -1,1 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <title>
+        Inventory Management | Al-Dahayan Trading Company
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================================
+         ADMIN HEADER
+         ========================================= -->
+
+    <header class="site-header">
+
+        <div class="container">
+
+            <div class="header-inner">
+
+                <a
+                    href="dashboard.html"
+                    class="logo"
+                    aria-label="Al-Dahayan Admin Dashboard"
+                >
+                    <img
+                        src="../assets/images/al-dahayan-logo.png"
+                        alt="Al-Dahayan Trading Company"
+                    >
+                </a>
+
+                <div class="admin-header-title">
+                    <span>Administration</span>
+                    <strong>Live Inventory</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+         ========================================= -->
+
+    <main class="admin-dashboard">
+
+        <div class="container">
+
+            <!-- Page Heading -->
+
+            <section class="admin-page-heading">
+
+                <span class="admin-eyebrow">
+                    Admin Panel
+                </span>
+
+                <h1>
+                    Live Inventory
+                </h1>
+
+                <p>
+                    Manage verified stock quantities, availability,
+                    branch references, and inventory status.
+                </p>
+
+            </section>
+
+
+            <!-- =====================================
+                 INVENTORY SUMMARY
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <h2>
+                        Inventory Overview
+                    </h2>
+
+                </div>
+
+
+                <div class="admin-stat-grid">
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            Total Records
+                        </span>
+
+                        <strong id="totalRecords">
+                            0
+                        </strong>
+
+                        <small>
+                            Inventory records
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            In Stock
+                        </span>
+
+                        <strong id="inStockRecords">
+                            0
+                        </strong>
+
+                        <small>
+                            Verified available
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            Low Stock
+                        </span>
+
+                        <strong id="lowStockRecords">
+                            0
+                        </strong>
+
+                        <small>
+                            Quantity 1–5
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            Out of Stock
+                        </span>
+
+                        <strong id="outOfStockRecords">
+                            0
+                        </strong>
+
+                        <small>
+                            Quantity 0
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            On Request
+                        </span>
+
+                        <strong id="onRequestRecords">
+                            0
+                        </strong>
+
+                        <small>
+                            Manual availability
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 SEARCH & FILTERS
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <h2>
+                        Inventory Records
+                    </h2>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="addInventoryButton"
+                    >
+                        + Add Inventory
+                    </button>
+
+                </div>
+
+
+                <div class="admin-table-container">
+
+                    <div
+                        style="
+                            padding:24px;
+                            display:grid;
+                            gap:16px;
+                        "
+                    >
+
+                        <!-- Search -->
+
+                        <div>
+
+                            <label
+                                for="inventorySearch"
+                                style="
+                                    display:block;
+                                    margin-bottom:7px;
+                                    font-weight:700;
+                                "
+                            >
+                                Search
+                            </label>
+
+                            <input
+                                type="search"
+                                id="inventorySearch"
+                                class="form-control"
+                                placeholder="Search OEM number, Part ID or branch..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <!-- Filters -->
+
+                        <div
+                            style="
+                                display:grid;
+                                grid-template-columns:
+                                repeat(4,minmax(0,1fr));
+                                gap:16px;
+                            "
+                        >
+
+                            <div>
+
+                                <label
+                                    for="brandFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Brand
+                                </label>
+
+                                <select
+                                    id="brandFilter"
+                                    class="form-control"
+                                >
+
+                                    <option value="">
+                                        All Brands
+                                    </option>
+
+                                    <option value="Toyota">
+                                        Toyota
+                                    </option>
+
+                                    <option value="Lexus">
+                                        Lexus
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div>
+
+                                <label
+                                    for="statusFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Stock Status
+                                </label>
+
+                                <select
+                                    id="statusFilter"
+                                    class="form-control"
+                                >
+
+                                    <option value="">
+                                        All Status
+                                    </option>
+
+                                    <option value="in_stock">
+                                        In Stock
+                                    </option>
+
+                                    <option value="low_stock">
+                                        Low Stock
+                                    </option>
+
+                                    <option value="out_of_stock">
+                                        Out of Stock
+                                    </option>
+
+                                    <option value="on_request">
+                                        On Request
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div>
+
+                                <label
+                                    for="controlModeFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Control Mode
+                                </label>
+
+                                <select
+                                    id="controlModeFilter"
+                                    class="form-control"
+                                >
+
+                                    <option value="">
+                                        All Modes
+                                    </option>
+
+                                    <option value="automatic">
+                                        Automatic
+                                    </option>
+
+                                    <option value="manual">
+                                        Manual Override
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div>
+
+                                <label
+                                    for="activeFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Record
+                                </label>
+
+                                <select
+                                    id="activeFilter"
+                                    class="form-control"
+                                >
+
+                                    <option value="">
+                                        All Records
+                                    </option>
+
+                                    <option value="active">
+                                        Active
+                                    </option>
+
+                                    <option value="inactive">
+                                        Inactive
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 INVENTORY TABLE
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-table-container">
+
+                    <div
+                        style="
+                            overflow-x:auto;
+                        "
+                    >
+
+                        <table
+                            style="
+                                width:100%;
+                                border-collapse:collapse;
+                                min-width:1100px;
+                            "
+                        >
+
+                            <thead>
+
+                                <tr
+                                    style="
+                                        background:#111111;
+                                        color:#ffffff;
+                                        text-align:left;
+                                    "
+                                >
+
+                                    <th style="padding:14px;">
+                                        Inventory ID
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        OEM Number
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Part
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Brand
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Branch
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Quantity
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Status
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Mode
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Updated
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Action
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="inventoryTableBody">
+
+                                <tr>
+
+                                    <td
+                                        colspan="10"
+                                        style="
+                                            padding:40px;
+                                            text-align:center;
+                                            color:#666666;
+                                        "
+                                    >
+                                        Loading inventory...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 INVENTORY RULES
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <h2>
+                        Stock Rules
+                    </h2>
+
+                </div>
+
+
+                <div class="admin-management-grid">
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Automatic Stock
+                        </strong>
+
+                        <span>
+                            Quantity 0 = Out of Stock,
+                            1–5 = Low Stock,
+                            6+ = In Stock.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Manual Override
+                        </strong>
+
+                        <span>
+                            Admin can manually set
+                            availability such as On Request.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Verified Data
+                        </strong>
+
+                        <span>
+                            Customer-facing stock must come
+                            from verified inventory records.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Branch Reference
+                        </strong>
+
+                        <span>
+                            Inventory stores a Branch ID.
+                            Branch details remain in Locations.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Active / Inactive
+                        </strong>
+
+                        <span>
+                            Records should normally be deactivated
+                            instead of permanently deleted.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Change History
+                        </strong>
+
+                        <span>
+                            Future Admin API will record
+                            who changed stock and when.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 ADMIN NOTE
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-empty-state">
+
+                    <strong>
+                        Inventory Control Center
+                    </strong>
+
+                    <p>
+                        This page is the administrative control layer
+                        for verified stock. Customer-facing inventory
+                        should never be based on unverified assumptions.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <p>
+                ©
+                <span id="currentYear"></span>
+                Al-Dahayan Trading Company.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         SCRIPTS
+         ========================================= -->
+
+    <script src="../js/config.js"></script>
+    <script src="../js/utils.js"></script>
+
+    <script>
+
+        (function () {
+
+            "use strict";
+
+
+            const searchInput =
+                document.getElementById(
+                    "inventorySearch"
+                );
+
+            const brandFilter =
+                document.getElementById(
+                    "brandFilter"
+                );
+
+            const statusFilter =
+                document.getElementById(
+                    "statusFilter"
+                );
+
+            const controlModeFilter =
+                document.getElementById(
+                    "controlModeFilter"
+                );
+
+            const activeFilter =
+                document.getElementById(
+                    "activeFilter"
+                );
+
+            const tableBody =
+                document.getElementById(
+                    "inventoryTableBody"
+                );
+
+            const currentYear =
+                document.getElementById(
+                    "currentYear"
+                );
+
+
+            const totalRecords =
+                document.getElementById(
+                    "totalRecords"
+                );
+
+            const inStockRecords =
+                document.getElementById(
+                    "inStockRecords"
+                );
+
+            const lowStockRecords =
+                document.getElementById(
+                    "lowStockRecords"
+                );
+
+            const outOfStockRecords =
+                document.getElementById(
+                    "outOfStockRecords"
+                );
+
+            const onRequestRecords =
+                document.getElementById(
+                    "onRequestRecords"
+                );
+
+
+            let inventory = [];
+            let parts = [];
+            let locations = [];
+
+
+            if (currentYear) {
+
+                currentYear.textContent =
+                    new Date().getFullYear();
+
+            }
+
+
+            function escapeHTML(value) {
+
+                const div =
+                    document.createElement("div");
+
+                div.textContent =
+                    value == null
+                        ? ""
+                        : String(value);
+
+                return div.innerHTML;
+
+            }
+
+
+            function getAvailableQuantity(record) {
+
+                const quantity =
+                    Number(record.quantity) || 0;
+
+                const reserved =
+                    Number(
+                        record.reservedQuantity
+                    ) || 0;
+
+                return Math.max(
+                    0,
+                    quantity - reserved
+                );
+
+            }
+
+
+            function calculateStatus(record) {
+
+                const manual =
+                    String(
+                        record.controlMode || ""
+                    ).toLowerCase()
+                    === "manual";
+
+
+                if (manual) {
+
+                    return String(
+                        record.status || "on_request"
+                    ).toLowerCase();
+
+                }
+
+
+                const quantity =
+                    getAvailableQuantity(record);
+
+
+                if (quantity <= 0) {
+                    return "out_of_stock";
+                }
+
+                if (quantity <= 5) {
+                    return "low_stock";
+                }
+
+                return "in_stock";
+
+            }
+
+
+            function getStatusLabel(status) {
+
+                const labels = {
+
+                    in_stock: "In Stock",
+
+                    low_stock: "Low Stock",
+
+                    out_of_stock: "Out of Stock",
+
+                    on_request: "On Request"
+
+                };
+
+                return labels[status]
+                    || "Unknown";
+
+            }
+
+
+            function getStatusHTML(status) {
+
+                const config = {
+
+                    in_stock: {
+                        text: "In Stock",
+                        bg: "#e9f7ef",
+                        color: "#16834a"
+                    },
+
+                    low_stock: {
+                        text: "Low Stock",
+                        bg: "#fff7df",
+                        color: "#a87500"
+                    },
+
+                    out_of_stock: {
+                        text: "Out of Stock",
+                        bg: "#fdecec",
+                        color: "#d71920"
+                    },
+
+                    on_request: {
+                        text: "On Request",
+                        bg: "#f1f1f1",
+                        color: "#555555"
+                    }
+
+                };
+
+
+                const item =
+                    config[status]
+                    || config.on_request;
+
+
+                return `
+                    <span
+                        style="
+                            display:inline-block;
+                            padding:5px 9px;
+                            border-radius:20px;
+                            background:${item.bg};
+                            color:${item.color};
+                            font-size:12px;
+                            font-weight:700;
+                            white-space:nowrap;
+                        "
+                    >
+                        ${item.text}
+                    </span>
+                `;
+
+            }
+
+
+            function findPart(record) {
+
+                return parts.find(function (part) {
+
+                    return String(part.id)
+                        === String(record.partId);
+
+                });
+
+            }
+
+
+            function findPartByOEM(record) {
+
+                return parts.find(function (part) {
+
+                    return String(
+                        part.oemNumber || ""
+                    ).toLowerCase()
+                    === String(
+                        record.oemNumber || ""
+                    ).toLowerCase();
+
+                });
+
+            }
+
+
+            function findLocation(record) {
+
+                return locations.find(
+                    function (location) {
+
+                        return String(
+                            location.id
+                        )
+                        === String(
+                            record.locationId
+                        );
+
+                    }
+                );
+
+            }
+
+
+            function renderSummary() {
+
+                const active =
+                    inventory.filter(function (record) {
+
+                        return record.active !== false;
+
+                    });
+
+
+                let inStock = 0;
+                let lowStock = 0;
+                let outOfStock = 0;
+                let onRequest = 0;
+
+
+                active.forEach(function (record) {
+
+                    const status =
+                        calculateStatus(record);
+
+
+                    if (status === "in_stock") {
+                        inStock++;
+                    }
+
+                    else if (
+                        status === "low_stock"
+                    ) {
+                        lowStock++;
+                    }
+
+                    else if (
+                        status === "out_of_stock"
+                    ) {
+                        outOfStock++;
+                    }
+
+                    else if (
+                        status === "on_request"
+                    ) {
+                        onRequest++;
+                    }
+
+                });
+
+
+                totalRecords.textContent =
+                    active.length;
+
+                inStockRecords.textContent =
+                    inStock;
+
+                lowStockRecords.textContent =
+                    lowStock;
+
+                outOfStockRecords.textContent =
+                    outOfStock;
+
+                onRequestRecords.textContent =
+                    onRequest;
+
+            }
+
+
+            function renderInventory() {
+
+                const query =
+                    searchInput.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const brand =
+                    brandFilter.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const status =
+                    statusFilter.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const controlMode =
+                    controlModeFilter.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const activeFilterValue =
+                    activeFilter.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const filtered =
+                    inventory.filter(
+                        function (record) {
+
+
+                            const part =
+                                findPart(record)
+                                || findPartByOEM(record);
+
+
+                            const location =
+                                findLocation(record);
+
+
+                            const currentStatus =
+                                calculateStatus(record);
+
+
+                            const vehicleText =
+                                part
+                                    ? (
+                                        Array.isArray(
+                                            part.model
+                                        )
+                                            ? part.model.join(" ")
+                                            : part.model || ""
+                                    )
+                                    : "";
+
+
+                            const searchable = [
+
+                                record.id,
+
+                                record.oemNumber,
+
+                                record.partId,
+
+                                record.locationId,
+
+                                part
+                                    ? part.partName
+                                    : "",
+
+                                part
+                                    ? part.brand
+                                    : "",
+
+                                vehicleText,
+
+                                location
+                                    ? location.name
+                                    : "",
+
+                                location
+                                    ? location.city
+                                    : ""
+
+                            ]
+                            .filter(Boolean)
+                            .join(" ")
+                            .toLowerCase();
+
+
+                            const matchesSearch =
+                                !query
+                                || searchable.includes(query);
+
+
+                            const matchesBrand =
+                                !brand
+                                || (
+                                    part
+                                    && String(
+                                        part.brand || ""
+                                    )
+                                    .toLowerCase()
+                                    === brand
+                                );
+
+
+                            const matchesStatus =
+                                !status
+                                || currentStatus
+                                    === status;
+
+
+                            const matchesControlMode =
+                                !controlMode
+                                || String(
+                                    record.controlMode
+                                    || "automatic"
+                                )
+                                .toLowerCase()
+                                === controlMode;
+
+
+                            const matchesActive =
+                                !activeFilterValue
+                                || (
+                                    activeFilterValue
+                                    === "active"
+                                    && record.active !== false
+                                )
+                                || (
+                                    activeFilterValue
+                                    === "inactive"
+                                    && record.active === false
+                                );
+
+
+                            return (
+
+                                matchesSearch
+                                && matchesBrand
+                                && matchesStatus
+                                && matchesControlMode
+                                && matchesActive
+
+                            );
+
+                        }
+                    );
+
+
+                if (!filtered.length) {
+
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td
+                                colspan="10"
+                                style="
+                                    padding:40px;
+                                    text-align:center;
+                                    color:#666666;
+                                "
+                            >
+                                No inventory records found.
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+
+                }
+
+
+                tableBody.innerHTML =
+                    filtered.map(
+                        function (record) {
+
+
+                            const part =
+                                findPart(record)
+                                || findPartByOEM(record);
+
+
+                            const location =
+                                findLocation(record);
+
+
+                            const status =
+                                calculateStatus(record);
+
+
+                            const available =
+                                getAvailableQuantity(
+                                    record
+                                );
+
+
+                            const mode =
+                                String(
+                                    record.controlMode
+                                    || "automatic"
+                                )
+                                .toLowerCase();
+
+
+                            const active =
+                                record.active !== false;
+
+
+                            const updated =
+                                record.lastUpdated
+                                || "—";
+
+
+                            return `
+
+                                <tr
+                                    style="
+                                        border-bottom:
+                                        1px solid #e4e4e4;
+                                        opacity:
+                                        ${active ? "1" : "0.55"};
+                                    "
+                                >
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            record.id || "—"
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            record.oemNumber
+                                            || (
+                                                part
+                                                    ? part.oemNumber
+                                                    : "—"
+                                            )
+                                            || "—"
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            part
+                                                ? part.partName
+                                                : "Unknown Part"
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            part
+                                                ? part.brand
+                                                : "—"
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            location
+                                                ? location.name
+                                                : (
+                                                    record.locationId
+                                                    || "—"
+                                                )
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        ${available}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${getStatusHTML(
+                                            status
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+
+                                        <span
+                                            style="
+                                                font-size:12px;
+                                                font-weight:700;
+                                            "
+                                        >
+                                            ${
+                                                mode === "manual"
+                                                    ? "Manual"
+                                                    : "Automatic"
+                                            }
+                                        </span>
+
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                            white-space:nowrap;
+                                            font-size:12px;
+                                            color:#666666;
+                                        "
+                                    >
+                                        ${escapeHTML(updated)}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            data-edit-inventory="${escapeHTML(
+                                                record.id || ""
+                                            )}"
+                                        >
+                                            Edit
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            `;
+
+                        }
+                    ).join("");
+
+
+                document
+                    .querySelectorAll(
+                        "[data-edit-inventory]"
+                    )
+                    .forEach(function (button) {
+
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                const id =
+                                    this.dataset
+                                        .editInventory;
+
+
+                                alert(
+                                    "Edit Inventory: "
+                                    + id
+                                    + "\n\n"
+                                    + "Inventory editor will be "
+                                    + "connected to the Admin API "
+                                    + "in the next stage."
+                                );
+
+                            }
+                        );
+
+                    });
+
+            }
+
+
+            async function loadJSON(
+                url
+            ) {
+
+                const response =
+                    await fetch(
+                        url,
+                        {
+                            cache: "no-store"
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Failed to load "
+                        + url
+                    );
+
+                }
+
+
+                return response.json();
+
+            }
+
+
+            async function loadData() {
+
+                try {
+
+                    const results =
+                        await Promise.all([
+
+                            loadJSON(
+                                "../data/inventory.json"
+                            ),
+
+                            loadJSON(
+                                "../data/oem-parts.json"
+                            ),
+
+                            loadJSON(
+                                "../data/locations.json"
+                            )
+
+                        ]);
+
+
+                    const inventoryData =
+                        results[0];
+
+                    parts =
+                        Array.isArray(results[1])
+                            ? results[1]
+                            : (
+                                Array.isArray(
+                                    results[1].parts
+                                )
+                                    ? results[1].parts
+                                    : []
+                            );
+
+
+                    locations =
+                        Array.isArray(results[2])
+                            ? results[2]
+                            : (
+                                Array.isArray(
+                                    results[2].locations
+                                )
+                                    ? results[2].locations
+                                    : []
+                            );
+
+
+                    inventory =
+                        Array.isArray(
+                            inventoryData
+                        )
+                            ? inventoryData
+                            : (
+                                Array.isArray(
+                                    inventoryData.inventory
+                                )
+                                    ? inventoryData.inventory
+                                    : []
+                            );
+
+
+                    renderSummary();
+                    renderInventory();
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Admin Inventory:",
+                        error
+                    );
+
+
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td
+                                colspan="10"
+                                style="
+                                    padding:40px;
+                                    text-align:center;
+                                    color:#d71920;
+                                "
+                            >
+                                Unable to load inventory data.
+                            </td>
+                        </tr>
+                    `;
+
+                }
+
+            }
+
+
+            [
+                searchInput,
+                brandFilter,
+                statusFilter,
+                controlModeFilter,
+                activeFilter
+            ]
+            .forEach(function (element) {
+
+                element.addEventListener(
+                    "input",
+                    renderInventory
+                );
+
+                element.addEventListener(
+                    "change",
+                    renderInventory
+                );
+
+            });
+
+
+            document
+                .getElementById(
+                    "addInventoryButton"
+                )
+                .addEventListener(
+                    "click",
+                    function () {
+
+                        alert(
+                            "Add Inventory form will be "
+                            + "connected to the Admin API "
+                            + "in the next stage."
+                        );
+
+                    }
+                );
+
+
+            loadData();
+
+        })();
+
+    </script>
+
+</body>
+
+</html>
