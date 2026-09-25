@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public compatibility display configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "compatibility": {
+    "enabled": true,
+    "showBrand": true,
+    "showModel": true,
+    "showModelYears": true,
+    "showEngineCodes": true,
+    "showBodyTypes": true,
+    "showTransmissions": true,
+    "showDriveTypes": true,
+    "showMarketSpecs": true,
+    "showRegions": true
+  },
+
+  "vehicleIdentification": {
+    "showVehicleFamily": true,
+    "showGeneration": true,
+    "showTrim": true,
+    "showChassisCode": true,
+    "showFuelType": true
+  },
+
+  "oemRelations": {
+    "showCompatibleOemNumbers": true,
+    "showSupersededOemNumbers": false,
+    "showAlternativeOemNumbers": true,
+    "requireVerifiedRelationship": true
+  },
+
+  "display": {
+    "groupByBrand": true,
+    "groupByModel": true,
+    "groupByModelYear": true,
+    "groupByEngine": true,
+    "allowExpandCollapse": true,
+    "showCompatibilitySummary": true
+  },
+
+  "search": {
+    "allowModelClick": true,
+    "allowYearClick": true,
+    "allowEngineClick": true,
+    "allowBodyTypeClick": true,
+    "preserveCurrentOem": true
+  },
+
+  "inquiry": {
+    "enabled": true,
+    "includeSelectedVehicle": true,
+    "includeModelYear": true,
+    "includeEngineCode": true,
+    "includeBodyType": true,
+    "includeVin": true
+  },
+
+  "visibility": {
+    "publishedRecordsOnly": true,
+    "publicRecordsOnly": true,
+    "hideArchived": true,
+    "hideDisabled": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true,
+    "preserveArabicVehicleNames": true
+  },
+
+  "safety": {
+    "requireVerifiedCompatibility": true,
+    "neverAssumeCompatibility": true,
+    "neverShowUnverifiedCompatibilityAsVerified": true,
+    "neverExposeInternalCompatibilityNotes": true,
+    "neverExposeSupplierInformation": true,
+    "neverExposePrivateVehicleData": true
+  }
+}
