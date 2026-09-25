@@ -1,0 +1,115 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Image management rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "supportedImageTypes": [
+    "primary",
+    "gallery",
+    "thumbnail",
+    "installation",
+    "diagram"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.image_manage",
+    "requireConfirmationForDelete": true
+  },
+  "upload": {
+    "enabled": true,
+    "maximumImagesPerRecord": 20,
+    "maximumFileSizeMB": 10,
+    "allowedExtensions": [
+      ".jpg",
+      ".jpeg",
+      ".png",
+      ".webp"
+    ],
+    "allowedMimeTypes": [
+      "image/jpeg",
+      "image/png",
+      "image/webp"
+    ]
+  },
+  "storage": {
+    "recommendedDirectory": "assets/images/oem/",
+    "storeImageUrlInRecord": true,
+    "storeBinaryDataInCatalog": false,
+    "preserveExistingImagesByDefault": true
+  },
+  "primaryImage": {
+    "requiredForActiveRecord": false,
+    "onePrimaryImagePerRecord": true,
+    "allowReplace": true,
+    "allowRemove": true,
+    "requireValidImage": true
+  },
+  "gallery": {
+    "enabled": true,
+    "maximumImages": 20,
+    "allowMultipleImages": true,
+    "preventDuplicateImageUrls": true,
+    "preserveExistingImagesByDefault": true
+  },
+  "validation": {
+    "validateFileType": true,
+    "validateFileSize": true,
+    "validateImageUrl": true,
+    "detectDuplicateImages": true,
+    "requirePreview": true,
+    "blockInvalidImages": true,
+    "allowWarnings": true
+  },
+  "updateActions": {
+    "add": true,
+    "replace": true,
+    "setPrimary": true,
+    "remove": true,
+    "reorderGallery": true
+  },
+  "deleteRules": {
+    "catalogReferenceDeleteAllowed": true,
+    "physicalFileDeleteAutomatically": false,
+    "requireExtraPermission": true,
+    "requireConfirmation": true,
+    "preserveImageHistory": true
+  },
+  "recordProtection": {
+    "doNotModifyOemNumber": true,
+    "doNotModifyPartName": true,
+    "doNotModifyCompatibility": true,
+    "doNotModifyPricing": true,
+    "doNotModifyInventory": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousImages": true,
+    "recordNewImages": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "preserveRollbackHistory": true
+  },
+  "publicWebsite": {
+    "showPrimaryImage": true,
+    "showGalleryImages": true,
+    "showInstallationImages": true,
+    "showDiagramImages": true,
+    "fallbackImageEnabled": true,
+    "requireAltText": true
+  },
+  "safety": {
+    "neverStoreBinaryImageDataInCatalog": true,
+    "neverAutomaticallyDeletePhysicalFiles": true,
+    "neverOverwriteWithoutValidation": true,
+    "preserveImageHistory": true,
+    "preserveAuditHistory": true
+  }
+}
