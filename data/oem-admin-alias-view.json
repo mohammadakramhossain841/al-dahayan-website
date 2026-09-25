@@ -1,0 +1,175 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin alias and OEM cross-reference management view for Toyota and Lexus catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Aliases",
+    "defaultPageSize": 20,
+    "allowFiltering": true,
+    "allowSorting": true,
+    "allowSearch": true
+  },
+
+  "aliasTypes": [
+    "alternative_oem",
+    "superseded_oem",
+    "replacement_oem",
+    "manufacturer_alias",
+    "internal_alias",
+    "supplier_reference"
+  ],
+
+  "columns": [
+    {
+      "field": "oemNumber",
+      "label": "Primary OEM",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "aliasNumber",
+      "label": "Alias / Reference",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "aliasType",
+      "label": "Alias Type",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "brand",
+      "label": "Brand",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "source",
+      "label": "Source",
+      "visible": true,
+      "sortable": false,
+      "searchable": true
+    },
+    {
+      "field": "verificationLevel",
+      "label": "Verification",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "status",
+      "label": "Status",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    }
+  ],
+
+  "filters": [
+    "brand",
+    "aliasType",
+    "verificationLevel",
+    "status"
+  ],
+
+  "search": {
+    "enabled": true,
+    "fields": [
+      "oemNumber",
+      "aliasNumber",
+      "partName",
+      "source"
+    ],
+    "allowPartialMatch": true,
+    "allowExactMatch": true
+  },
+
+  "aliasRules": {
+    "allowCreate": true,
+    "allowEdit": true,
+    "allowArchive": true,
+    "allowRestore": true,
+    "allowMultipleAliases": true,
+    "preventSelfReference": true,
+    "preventDuplicateAliasRelations": true,
+    "requireValidOemNumbers": true,
+    "requireVerificationBeforePublicUse": true
+  },
+
+  "actions": {
+    "view": true,
+    "create": true,
+    "edit": true,
+    "archive": true,
+    "restore": true,
+    "verify": true,
+    "viewRelatedRecord": true,
+    "viewHistory": true,
+    "export": true
+  },
+
+  "bulkActions": {
+    "enabled": true,
+    "allowBulkCreate": true,
+    "allowBulkArchive": true,
+    "allowBulkRestore": true,
+    "allowBulkVerification": true,
+    "requirePreview": true,
+    "requireConfirmation": true,
+    "maximumSelectedRecords": 1000
+  },
+
+  "validation": {
+    "enabled": true,
+    "validatePrimaryOem": true,
+    "validateAliasOem": true,
+    "validateAliasType": true,
+    "detectDuplicateRelations": true,
+    "detectSelfReferences": true,
+    "detectConflictingRelations": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "blockInvalidRelations": true
+  },
+
+  "history": {
+    "enabled": true,
+    "recordPreviousValues": true,
+    "recordNewValues": true,
+    "recordChangedFields": true,
+    "recordChangedBy": true,
+    "recordTimestamp": true,
+    "requireChangeReason": true
+  },
+
+  "permissions": {
+    "view": "oem.alias_view",
+    "create": "oem.alias_create",
+    "edit": "oem.alias_update",
+    "verify": "oem.alias_verify",
+    "archive": "oem.alias_archive",
+    "restore": "oem.alias_restore",
+    "export": "oem.export",
+    "history": "oem.history_view"
+  },
+
+  "safety": {
+    "neverAssumeAliasEquivalence": true,
+    "neverPublishUnverifiedAliases": true,
+    "neverCreateSelfReferences": true,
+    "neverCreateDuplicateRelations": true,
+    "neverDeleteAliasHistory": true,
+    "requireValidationBeforeSave": true,
+    "requireConfirmationForBulkChanges": true,
+    "preservePreviousValues": true,
+    "preserveAuditHistory": true
+  }
+}
