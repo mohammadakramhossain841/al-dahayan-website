@@ -1,0 +1,107 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Display and presentation rules for Toyota and Lexus OEM catalog records on the Al-Dahayan website and Admin Panel.",
+  "publicWebsite": {
+    "showOnlyActiveRecords": true,
+    "showDisabledRecords": false,
+    "showArchivedRecords": false,
+    "showDraftRecords": false,
+    "allowUnverifiedRecords": true,
+    "showVerificationStatus": true,
+    "showStockStatus": true,
+    "showPricing": true,
+    "showImages": true,
+    "showCompatibility": true
+  },
+  "adminPanel": {
+    "showDraftRecords": true,
+    "showActiveRecords": true,
+    "showArchivedRecords": true,
+    "showDisabledRecords": true,
+    "showVerificationStatus": true,
+    "showAuditMetadata": true,
+    "showInventoryData": true,
+    "showPricingData": true,
+    "showImageData": true
+  },
+  "oemNumber": {
+    "required": true,
+    "displayFullValue": true,
+    "preserveOriginalFormatting": true,
+    "allowCopy": true,
+    "allowSearch": true
+  },
+  "partName": {
+    "required": true,
+    "displayFullValue": true,
+    "allowSearch": true
+  },
+  "arabicText": {
+    "preserveArabicText": true,
+    "supportRtl": true,
+    "displayWhenAvailable": true
+  },
+  "brand": {
+    "display": true,
+    "allowedValues": [
+      "Toyota",
+      "Lexus"
+    ]
+  },
+  "category": {
+    "display": true,
+    "showSubcategory": true,
+    "allowFiltering": true
+  },
+  "compatibility": {
+    "displayModels": true,
+    "displayModelYears": true,
+    "displayEngineCodes": true,
+    "displayBodyTypes": true,
+    "displayMarketSpecs": true,
+    "displayCompatibleOemNumbers": true,
+    "displaySupersededOemNumbers": true,
+    "showUnverifiedCompatibilityNotice": true
+  },
+  "pricing": {
+    "defaultCurrency": "SAR",
+    "showRegularPrice": true,
+    "showSalePrice": true,
+    "showDiscountPercent": true,
+    "hidePriceWhenConfigured": true,
+    "contactForPriceSupported": true
+  },
+  "inventory": {
+    "showStockStatus": true,
+    "showQuantity": false,
+    "showLocation": false,
+    "showAvailabilityMessage": true
+  },
+  "images": {
+    "showPrimaryImage": true,
+    "showGalleryImages": true,
+    "showInstallationImages": true,
+    "showDiagramImages": true,
+    "fallbackImageEnabled": true
+  },
+  "actions": {
+    "allowInquiry": true,
+    "allowWhatsAppContact": true,
+    "allowPhoneContact": true,
+    "allowCopyOemNumber": true,
+    "allowShare": true
+  },
+  "accessibility": {
+    "requireImageAltText": true,
+    "keyboardAccessibleActions": true,
+    "showTextAlongsideColorIndicators": true,
+    "supportRtl": true
+  },
+  "safety": {
+    "neverExposePrivateNotes": true,
+    "neverExposeAdminCredentials": true,
+    "neverExposeSecurityTokens": true,
+    "neverExposeInternalAuditDataOnPublicWebsite": true
+  }
+}
