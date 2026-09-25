@@ -17,11 +17,17 @@
     "ar"
   ];
 
+
   /* =========================================
      TRANSLATIONS
   ========================================= */
 
   const translations = {
+
+    /* =======================================
+       ENGLISH
+    ======================================= */
+
     en: {
 
       /* =====================================
@@ -87,6 +93,7 @@
       refresh: "Refresh",
       closeAll: "Close All",
 
+
       /* =====================================
          Company
       ===================================== */
@@ -121,6 +128,7 @@
       visionText:
         "To build a professional digital platform connecting customers with the right automotive spare-parts solutions.",
 
+
       /* =====================================
          Navigation
       ===================================== */
@@ -149,6 +157,7 @@
       switchToEnglish:
         "English",
 
+
       /* =====================================
          Hero
       ===================================== */
@@ -170,6 +179,7 @@
 
       connectWithUs:
         "Connect With Us",
+
 
       /* =====================================
          Search
@@ -232,6 +242,7 @@
       resultsFound:
         "results found",
 
+
       /* =====================================
          Vehicle Search
       ===================================== */
@@ -262,6 +273,7 @@
 
       vehicleInformation:
         "Vehicle Information",
+
 
       /* =====================================
          VIN
@@ -302,6 +314,7 @@
 
       compatibilityNotVerified:
         "Compatibility could not be verified.",
+
 
       /* =====================================
          Inventory
@@ -415,6 +428,7 @@
       manualStatus:
         "Manual Status",
 
+
       /* =====================================
          Price
       ===================================== */
@@ -433,6 +447,7 @@
 
       priceVerificationRequired:
         "Price verification required",
+
 
       /* =====================================
          Services
@@ -485,6 +500,7 @@
 
       inquirySupportText:
         "Connect directly with the company for availability and pricing information.",
+
 
       /* =====================================
          Inquiry
@@ -610,6 +626,7 @@
       notContacted:
         "Not Contacted",
 
+
       /* Inquiry Sources */
 
       website:
@@ -624,6 +641,7 @@
       otherSource:
         "Other",
 
+
       /* Priorities */
 
       lowPriority:
@@ -637,6 +655,7 @@
 
       urgentPriority:
         "Urgent",
+
 
       /* =====================================
          Contact
@@ -674,6 +693,7 @@
 
       contactUs:
         "Contact Us",
+
 
       /* =====================================
          Branches
@@ -724,6 +744,7 @@
       branchDeactivated:
         "Branch Deactivated",
 
+
       /* =====================================
          Breadcrumb
       ===================================== */
@@ -755,6 +776,7 @@
       breadcrumbBranches:
         "Branches",
 
+
       /* =====================================
          Footer
       ===================================== */
@@ -780,6 +802,7 @@
       terms:
         "Terms & Conditions",
 
+
       /* =====================================
          Customer Connection
       ===================================== */
@@ -796,6 +819,7 @@
       askAvailability:
         "Ask Availability",
 
+
       /* =====================================
          Trust
       ===================================== */
@@ -811,6 +835,7 @@
 
       transparentProcess:
         "Clear & Transparent Process",
+
 
       /* =====================================
          AI Assistant
@@ -867,6 +892,7 @@
       aiHumanHandover:
         "A team member can confirm the details.",
 
+
       /* =====================================
          Admin Panel
       ===================================== */
@@ -897,6 +923,7 @@
 
       inventoryAlerts:
         "Inventory Alerts",
+
 
       /* Admin Sections */
 
@@ -929,6 +956,7 @@
 
       adminAudit:
         "Audit History",
+
 
       /* =====================================
          Admin Inventory
@@ -1012,6 +1040,7 @@
       partId:
         "Part ID",
 
+
       /* =====================================
          Admin Inquiry
       ===================================== */
@@ -1061,6 +1090,7 @@
       quotationRejected:
         "Quotation Rejected",
 
+
       /* =====================================
          Admin AI
       ===================================== */
@@ -1107,6 +1137,7 @@
       humanHandover:
         "Human Handover",
 
+
       /* =====================================
          Admin Social
       ===================================== */
@@ -1152,6 +1183,7 @@
 
       googleMaps:
         "Google Maps",
+
 
       /* =====================================
          Admin Settings
@@ -1214,6 +1246,7 @@
       currencySAR:
         "Saudi Riyal (SAR)",
 
+
       /* =====================================
          Roles / Permissions
       ===================================== */
@@ -1251,6 +1284,7 @@
       settingsAccess:
         "Settings Access",
 
+
       /* =====================================
          API / Backend
       ===================================== */
@@ -1278,6 +1312,7 @@
 
       development:
         "Development",
+
 
       /* =====================================
          Security / Privacy
@@ -1309,6 +1344,7 @@
 
       dataProtection:
         "Data Protection",
+
 
       /* =====================================
          Empty / Error
@@ -1359,6 +1395,7 @@
       operationCancelled:
         "Operation cancelled.",
 
+
       /* =====================================
          Modal / Loading
       ===================================== */
@@ -1371,6 +1408,7 @@
 
       pleaseWait:
         "Please wait...",
+
 
       /* =====================================
          Accessibility
@@ -1387,6 +1425,7 @@
 
       collapse:
         "Collapse",
+
 
       /* =====================================
          SEO / Page Titles
@@ -1422,6 +1461,7 @@
       pageTitleAdmin:
         "Admin Panel | Al-Dahayan"
     },
+
 
     /* =======================================
        ARABIC
@@ -1490,6 +1530,7 @@
       refresh: "تحديث",
       closeAll: "إغلاق الكل",
 
+
       /* Company */
 
       companyName:
@@ -1522,6 +1563,7 @@
       visionText:
         "بناء منصة رقمية احترافية تربط العملاء بحلول قطع غيار السيارات المناسبة.",
 
+
       /* Navigation */
 
       mainNavigation:
@@ -1548,6 +1590,7 @@
       switchToEnglish:
         "English",
 
+
       /* Hero */
 
       heroTitle:
@@ -1567,6 +1610,7 @@
 
       connectWithUs:
         "تواصل معنا",
+
 
       /* Search */
 
@@ -1627,6 +1671,7 @@
       resultsFound:
         "نتيجة",
 
+
       /* Vehicle */
 
       vehicleSearchTitle:
@@ -1655,6 +1700,7 @@
 
       vehicleInformation:
         "معلومات المركبة",
+
 
       /* VIN */
 
@@ -1693,6 +1739,7 @@
 
       compatibilityNotVerified:
         "تعذر التحقق من التوافق.",
+
 
       /* Inventory */
 
@@ -1804,6 +1851,7 @@
       manualStatus:
         "الحالة اليدوية",
 
+
       /* Price */
 
       price:
@@ -1820,6 +1868,7 @@
 
       priceVerificationRequired:
         "يلزم التحقق من السعر",
+
 
       /* Services */
 
@@ -1870,6 +1919,7 @@
 
       inquirySupportText:
         "التواصل مباشرة مع الشركة لمعرفة التوفر والأسعار.",
+
 
       /* Inquiry */
 
@@ -1993,6 +2043,7 @@
       notContacted:
         "لم يتم التواصل",
 
+
       /* Sources */
 
       website:
@@ -2007,6 +2058,7 @@
       otherSource:
         "أخرى",
 
+
       /* Priorities */
 
       lowPriority:
@@ -2020,6 +2072,7 @@
 
       urgentPriority:
         "عاجلة",
+
 
       /* Contact */
 
@@ -2055,6 +2108,7 @@
 
       contactUs:
         "اتصل بنا",
+
 
       /* Branches */
 
@@ -2103,6 +2157,7 @@
       branchDeactivated:
         "تم تعطيل الفرع",
 
+
       /* Breadcrumb */
 
       breadcrumbHome:
@@ -2132,6 +2187,7 @@
       breadcrumbBranches:
         "الفروع",
 
+
       /* Footer */
 
       quickLinks:
@@ -2155,6 +2211,7 @@
       terms:
         "الشروط والأحكام",
 
+
       /* Connection */
 
       customerConnection:
@@ -2169,6 +2226,7 @@
       askAvailability:
         "الاستفسار عن التوفر",
 
+
       /* Trust */
 
       professionalService:
@@ -2182,6 +2240,7 @@
 
       transparentProcess:
         "عملية واضحة وشفافة",
+
 
       /* AI */
 
@@ -2235,6 +2294,7 @@
 
       aiHumanHandover:
         "يمكن لأحد أعضاء الفريق تأكيد التفاصيل.",
+
 
       /* Admin */
 
@@ -2294,6 +2354,7 @@
 
       adminAudit:
         "سجل التدقيق",
+
 
       /* Admin Inventory */
 
@@ -2375,6 +2436,7 @@
       partId:
         "معرّف القطعة",
 
+
       /* Admin Inquiry */
 
       pendingFollowUps:
@@ -2422,6 +2484,7 @@
       quotationRejected:
         "تم رفض عرض السعر",
 
+
       /* Admin AI */
 
       aiSettings:
@@ -2466,6 +2529,7 @@
       humanHandover:
         "التحويل إلى الموظف",
 
+
       /* Social */
 
       socialMedia:
@@ -2509,6 +2573,7 @@
 
       googleMaps:
         "خرائط Google",
+
 
       /* Settings */
 
@@ -2569,6 +2634,7 @@
       currencySAR:
         "الريال السعودي (SAR)",
 
+
       /* Roles */
 
       roles:
@@ -2604,6 +2670,7 @@
       settingsAccess:
         "صلاحية الإعدادات",
 
+
       /* API */
 
       api:
@@ -2629,6 +2696,7 @@
 
       development:
         "التطوير",
+
 
       /* Security */
 
@@ -2658,6 +2726,7 @@
 
       dataProtection:
         "حماية البيانات",
+
 
       /* Empty / Error */
 
@@ -2706,6 +2775,7 @@
       operationCancelled:
         "تم إلغاء العملية.",
 
+
       /* Modal */
 
       information:
@@ -2716,6 +2786,7 @@
 
       pleaseWait:
         "يرجى الانتظار...",
+
 
       /* Accessibility */
 
@@ -2730,6 +2801,7 @@
 
       collapse:
         "طي",
+
 
       /* Page Titles */
 
@@ -2765,6 +2837,7 @@
     }
   };
 
+
   /* =========================================
      UTILITY
   ========================================= */
@@ -2776,6 +2849,7 @@
       language
     );
   }
+
 
   function getStoredLanguage() {
     try {
@@ -2789,10 +2863,12 @@
       )
         ? stored
         : null;
+
     } catch (error) {
       return null;
     }
   }
+
 
   function getCurrentLanguage() {
     const htmlLanguage =
@@ -2818,6 +2894,7 @@
     return DEFAULT_LANGUAGE;
   }
 
+
   function getDirection(
     language
   ) {
@@ -2826,13 +2903,587 @@
       : "ltr";
   }
 
+
+  /* =========================================
+     TRANSLATION KEY ALIASES
+     Supports existing HTML dotted keys
+     with the centralized flat dictionaries.
+  ========================================= */
+
+  const keyAliases = {
+
+    /* Navigation */
+
+    "nav.home":
+      "home",
+
+    "nav.about":
+      "about",
+
+    "nav.parts":
+      "parts",
+
+    "nav.vehicles":
+      "vehicles",
+
+    "nav.vin":
+      "vinSearch",
+
+    "nav.inventory":
+      "inventory",
+
+    "nav.services":
+      "services",
+
+    "nav.contact":
+      "contact",
+
+    "nav.inquiry":
+      "inquiry",
+
+
+    /* Hero */
+
+    "hero.title":
+      "heroTitle",
+
+    "hero.subtitle":
+      "heroSubtitle",
+
+    "hero.description":
+      "heroDescription",
+
+    "hero.findParts":
+      "searchParts",
+
+    "hero.findYourPart":
+      "findYourPart",
+
+    "hero.connect":
+      "connectWithUs",
+
+    "hero.makeInquiry":
+      "submitInquiry",
+
+
+    /* Search */
+
+    "search.title":
+      "searchPartsTitle",
+
+    "search.description":
+      "searchPartsDescription",
+
+    "search.button":
+      "search",
+
+    "search.reset":
+      "reset",
+
+    "search.oem.title":
+      "searchByOEM",
+
+    "search.oem.description":
+      "enterOEM",
+
+    "search.oem.number":
+      "oemNumber",
+
+    "search.oem.placeholder":
+      "enterOEM",
+
+
+    /* Company */
+
+    "company.name":
+      "companyName",
+
+    "company.description":
+      "companyDescription",
+
+    "company.about":
+      "aboutCompany",
+
+    "company.overview":
+      "companyOverview",
+
+    "company.learnMore":
+      "learnMore",
+
+    "company.mission":
+      "mission",
+
+    "company.missionText":
+      "missionText",
+
+    "company.vision":
+      "vision",
+
+    "company.visionText":
+      "visionText",
+
+
+    /* Services */
+
+    "services.title":
+      "servicesTitle",
+
+    "services.description":
+      "servicesDescription",
+
+    "services.parts":
+      "sparePartsService",
+
+    "services.oem":
+      "oemSourcing",
+
+    "services.vin":
+      "vinIdentification",
+
+    "services.vehicle":
+      "vehicleSearchService",
+
+    "services.identification":
+      "partIdentification",
+
+    "services.stock":
+      "stockAvailability",
+
+    "services.inquiry":
+      "inquirySupport",
+
+
+    /* Customer Connection */
+
+    "connection.title":
+      "customerConnection",
+
+    "connection.description":
+      "customerConnectionText",
+
+    "connection.inquiry":
+      "requestPart",
+
+    "connection.contact":
+      "contactUs",
+
+    "connection.availability":
+      "askAvailability",
+
+
+    /* CTA */
+
+    "cta.title":
+      "customerConnection",
+
+    "cta.description":
+      "customerConnectionText",
+
+    "cta.parts":
+      "searchParts",
+
+    "cta.inquiry":
+      "submitInquiry",
+
+    "cta.contact":
+      "contactUs",
+
+
+    /* Inventory */
+
+    "inventory.title":
+      "inventoryTitle",
+
+    "inventory.description":
+      "inventoryDescription",
+
+    "inventory.stock":
+      "stock",
+
+    "inventory.status":
+      "stockStatus",
+
+    "inventory.available":
+      "available",
+
+    "inventory.inStock":
+      "inStock",
+
+    "inventory.lowStock":
+      "lowStock",
+
+    "inventory.outOfStock":
+      "outOfStock",
+
+    "inventory.onRequest":
+      "onRequest",
+
+    "inventory.quantity":
+      "quantity",
+
+    "inventory.lastUpdated":
+      "lastUpdated",
+
+
+    /* Vehicle */
+
+    "vehicle.title":
+      "vehicleSearchTitle",
+
+    "vehicle.description":
+      "vehicleSearchDescription",
+
+    "vehicle.make":
+      "make",
+
+    "vehicle.model":
+      "model",
+
+    "vehicle.year":
+      "year",
+
+    "vehicle.engine":
+      "engine",
+
+    "vehicle.search":
+      "search",
+
+    "vehicle.details":
+      "vehicleDetails",
+
+    "vehicle.compatibleParts":
+      "compatibleParts",
+
+
+    /* VIN */
+
+    "vin.title":
+      "vinSearchTitle",
+
+    "vin.description":
+      "vinSearchDescription",
+
+    "vin.input":
+      "enterVIN",
+
+    "vin.search":
+      "searchVIN",
+
+    "vin.validate":
+      "validateVIN",
+
+    "vin.results":
+      "vinResults",
+
+
+    /* Inquiry */
+
+    "inquiry.title":
+      "inquiryTitle",
+
+    "inquiry.description":
+      "inquiryDescription",
+
+    "inquiry.name":
+      "customerName",
+
+    "inquiry.phone":
+      "phone",
+
+    "inquiry.whatsapp":
+      "whatsapp",
+
+    "inquiry.email":
+      "email",
+
+    "inquiry.message":
+      "customerMessage",
+
+    "inquiry.part":
+      "requestedPart",
+
+    "inquiry.quantity":
+      "requestedQuantity",
+
+    "inquiry.submit":
+      "submitInquiry",
+
+    "inquiry.send":
+      "sendInquiry",
+
+    "inquiry.whatsappButton":
+      "whatsappInquiry",
+
+    "inquiry.status":
+      "inquiryStatus",
+
+
+    /* Contact */
+
+    "contact.title":
+      "contactTitle",
+
+    "contact.description":
+      "contactDescription",
+
+    "contact.phone":
+      "phoneNumber",
+
+    "contact.email":
+      "emailAddress",
+
+    "contact.hours":
+      "workingHours",
+
+    "contact.message":
+      "sendMessage",
+
+    "contact.call":
+      "callNow",
+
+
+    /* Branches */
+
+    "branches.title":
+      "branches",
+
+    "branches.name":
+      "branchName",
+
+    "branches.address":
+      "branchAddress",
+
+    "branches.phone":
+      "branchPhone",
+
+    "branches.whatsapp":
+      "branchWhatsApp",
+
+    "branches.services":
+      "branchServices",
+
+    "branches.hours":
+      "branchHours",
+
+    "branches.status":
+      "branchStatus",
+
+
+    /* AI */
+
+    "ai.title":
+      "aiAssistantTitle",
+
+    "ai.description":
+      "aiAssistantDescription",
+
+    "ai.welcome":
+      "aiWelcome",
+
+    "ai.placeholder":
+      "aiInputPlaceholder",
+
+    "ai.send":
+      "aiSend",
+
+    "ai.thinking":
+      "aiThinking",
+
+    "ai.whatsapp":
+      "aiConnectWhatsApp",
+
+    "ai.handover":
+      "aiHandover",
+
+
+    /* Footer */
+
+    "footer.quickLinks":
+      "quickLinks",
+
+    "footer.company":
+      "company",
+
+    "footer.support":
+      "customerSupport",
+
+    "footer.followUs":
+      "followUs",
+
+    "footer.privacy":
+      "privacyPolicy",
+
+    "footer.terms":
+      "terms",
+
+    "footer.rights":
+      "allRightsReserved",
+
+
+    /* Common */
+
+    "common.search":
+      "search",
+
+    "common.reset":
+      "reset",
+
+    "common.submit":
+      "submit",
+
+    "common.save":
+      "save",
+
+    "common.update":
+      "update",
+
+    "common.edit":
+      "edit",
+
+    "common.delete":
+      "delete",
+
+    "common.cancel":
+      "cancel",
+
+    "common.close":
+      "close",
+
+    "common.loading":
+      "loading",
+
+    "common.noResults":
+      "noResults",
+
+    "common.error":
+      "error",
+
+    "common.status":
+      "status",
+
+    "common.active":
+      "active",
+
+    "common.inactive":
+      "inactive"
+  };
+
+
+  /* =========================================
+     NESTED TRANSLATION SUPPORT
+  ========================================= */
+
+  function getNestedTranslation(
+    object,
+    key
+  ) {
+    if (
+      !object ||
+      !key
+    ) {
+      return undefined;
+    }
+
+    const parts =
+      key.split(".");
+
+    let current =
+      object;
+
+    for (
+      let i = 0;
+      i < parts.length;
+      i++
+    ) {
+      if (
+        current === null ||
+        current === undefined ||
+        typeof current !== "object" ||
+        !(parts[i] in current)
+      ) {
+        return undefined;
+      }
+
+      current =
+        current[parts[i]];
+    }
+
+    return typeof current === "string"
+      ? current
+      : undefined;
+  }
+
+
+  /* =========================================
+     RESOLVE TRANSLATION
+  ========================================= */
+
+  function resolveTranslation(
+    dictionary,
+    key
+  ) {
+    if (
+      !dictionary ||
+      !key
+    ) {
+      return undefined;
+    }
+
+
+    /* 1. Exact flat key */
+
+    if (
+      Object.prototype.hasOwnProperty.call(
+        dictionary,
+        key
+      )
+    ) {
+      return dictionary[key];
+    }
+
+
+    /* 2. Alias */
+
+    const alias =
+      keyAliases[key];
+
+    if (
+      alias &&
+      Object.prototype.hasOwnProperty.call(
+        dictionary,
+        alias
+      )
+    ) {
+      return dictionary[alias];
+    }
+
+
+    /* 3. Nested key */
+
+    const nested =
+      getNestedTranslation(
+        dictionary,
+        key
+      );
+
+    if (
+      nested !== undefined
+    ) {
+      return nested;
+    }
+
+    return undefined;
+  }
+
+
   /* =========================================
      TRANSLATION
   ========================================= */
 
   function translate(
     key,
-    language = getCurrentLanguage()
+    language =
+      getCurrentLanguage()
   ) {
     if (!key) {
       return "";
@@ -2846,12 +3497,44 @@
         DEFAULT_LANGUAGE
       ] || {};
 
-    return (
-      selected[key] ??
-      fallback[key] ??
-      key
-    );
+
+    /* Selected language */
+
+    const selectedTranslation =
+      resolveTranslation(
+        selected,
+        key
+      );
+
+    if (
+      selectedTranslation !==
+      undefined
+    ) {
+      return selectedTranslation;
+    }
+
+
+    /* English fallback */
+
+    const fallbackTranslation =
+      resolveTranslation(
+        fallback,
+        key
+      );
+
+    if (
+      fallbackTranslation !==
+      undefined
+    ) {
+      return fallbackTranslation;
+    }
+
+
+    /* Original key */
+
+    return key;
   }
+
 
   /* =========================================
      TEXT
@@ -2866,6 +3549,7 @@
       )
       .forEach(
         function (element) {
+
           const key =
             element.getAttribute(
               "data-i18n"
@@ -2884,6 +3568,7 @@
       );
   }
 
+
   /* =========================================
      PLACEHOLDERS
   ========================================= */
@@ -2897,6 +3582,7 @@
       )
       .forEach(
         function (element) {
+
           const key =
             element.getAttribute(
               "data-i18n-placeholder"
@@ -2917,6 +3603,7 @@
       );
   }
 
+
   /* =========================================
      VALUE TRANSLATION
   ========================================= */
@@ -2930,6 +3617,7 @@
       )
       .forEach(
         function (element) {
+
           const key =
             element.getAttribute(
               "data-i18n-value"
@@ -2948,16 +3636,19 @@
       );
   }
 
+
   /* =========================================
      PAGE TITLE
   ========================================= */
 
   function getPageTitleKey() {
+
     const page =
       document.body?.dataset?.page ||
       "";
 
     const pageMap = {
+
       home:
         "pageTitleHome",
 
@@ -2995,6 +3686,7 @@
     );
   }
 
+
   function applyDocumentTitle(
     language
   ) {
@@ -3016,6 +3708,7 @@
     }
   }
 
+
   /* =========================================
      ACCESSIBILITY
   ========================================= */
@@ -3023,12 +3716,14 @@
   function applyAccessibilityTranslations(
     language
   ) {
+
     document
       .querySelectorAll(
         "[data-i18n-aria-label]"
       )
       .forEach(
         function (element) {
+
           const key =
             element.getAttribute(
               "data-i18n-aria-label"
@@ -3048,12 +3743,14 @@
         }
       );
 
+
     document
       .querySelectorAll(
         "[data-i18n-title]"
       )
       .forEach(
         function (element) {
+
           const key =
             element.getAttribute(
               "data-i18n-title"
@@ -3073,6 +3770,7 @@
         }
       );
   }
+
 
   /* =========================================
      DIRECTION
@@ -3124,6 +3822,7 @@
     );
   }
 
+
   /* =========================================
      LANGUAGE SWITCHER
   ========================================= */
@@ -3131,12 +3830,14 @@
   function updateLanguageSwitcher(
     language
   ) {
+
     document
       .querySelectorAll(
         "[data-language-option]"
       )
       .forEach(
         function (element) {
+
           const option =
             element.getAttribute(
               "data-language-option"
@@ -3162,12 +3863,14 @@
         }
       );
 
+
     document
       .querySelectorAll(
         "[data-language-switch]"
       )
       .forEach(
         function (element) {
+
           const target =
             element.getAttribute(
               "data-language-switch"
@@ -3181,6 +3884,7 @@
       );
   }
 
+
   /* =========================================
      FULL APPLICATION
   ========================================= */
@@ -3189,6 +3893,7 @@
     language =
       getCurrentLanguage()
   ) {
+
     if (
       !isSupportedLanguage(
         language
@@ -3197,6 +3902,7 @@
       language =
         DEFAULT_LANGUAGE;
     }
+
 
     applyDirection(
       language
@@ -3226,6 +3932,7 @@
       language
     );
 
+
     try {
       localStorage.setItem(
         LANGUAGE_STORAGE_KEY,
@@ -3234,6 +3941,7 @@
     } catch (error) {
       /* Storage may be unavailable. */
     }
+
 
     document.dispatchEvent(
       new CustomEvent(
@@ -3250,8 +3958,10 @@
       )
     );
 
+
     return language;
   }
+
 
   /* =========================================
      SET LANGUAGE
@@ -3260,6 +3970,7 @@
   function setLanguage(
     language
   ) {
+
     if (
       !isSupportedLanguage(
         language
@@ -3275,10 +3986,12 @@
       language
     );
 
+
     if (
       previousLanguage !==
       language
     ) {
+
       document.dispatchEvent(
         new CustomEvent(
           "alDahayanLanguageChanged",
@@ -3299,284 +4012,11 @@
     return true;
   }
 
+
   /* =========================================
      TOGGLE
   ========================================= */
 
   function toggleLanguage() {
-    const current =
-      getCurrentLanguage();
 
-    const next =
-      current === "en"
-        ? "ar"
-        : "en";
-
-    return setLanguage(
-      next
-    );
-  }
-
-  /* =========================================
-     SWITCHER EVENTS
-  ========================================= */
-
-  let switcherEventsInitialized =
-    false;
-
-  function initializeLanguageSwitcher() {
-    if (
-      switcherEventsInitialized
-    ) {
-      return;
-    }
-
-    switcherEventsInitialized =
-      true;
-
-    document.addEventListener(
-      "click",
-      function (event) {
-        const target =
-          event.target.closest(
-            "[data-language-switch]"
-          );
-
-        if (!target) {
-          return;
-        }
-
-        event.preventDefault();
-
-        const language =
-          target.getAttribute(
-            "data-language-switch"
-          );
-
-        setLanguage(
-          language
-        );
-      }
-    );
-
-    document.addEventListener(
-      "click",
-      function (event) {
-        const target =
-          event.target.closest(
-            "[data-language-option]"
-          );
-
-        if (!target) {
-          return;
-        }
-
-        event.preventDefault();
-
-        const language =
-          target.getAttribute(
-            "data-language-option"
-          );
-
-        setLanguage(
-          language
-        );
-      }
-    );
-  }
-
-  /* =========================================
-     COMPONENT SYNC
-  ========================================= */
-
-  let componentSyncInitialized =
-    false;
-
-  function initializeComponentLanguageSync() {
-    if (
-      componentSyncInitialized
-    ) {
-      return;
-    }
-
-    componentSyncInitialized =
-      true;
-
-    document.addEventListener(
-      "alDahayanComponentsLoaded",
-      function () {
-        applyLanguage(
-          getCurrentLanguage()
-        );
-      }
-    );
-  }
-
-  /* =========================================
-     CONFIG SYNC
-  ========================================= */
-
-  let configSyncInitialized =
-    false;
-
-  function initializeConfigLanguageSync() {
-    if (
-      configSyncInitialized
-    ) {
-      return;
-    }
-
-    configSyncInitialized =
-      true;
-
-    document.addEventListener(
-      "alDahayanConfigUpdated",
-      function () {
-        applyLanguage(
-          getCurrentLanguage()
-        );
-      }
-    );
-
-    window.addEventListener(
-      "storage",
-      function (event) {
-        if (
-          event.key ===
-          LANGUAGE_STORAGE_KEY
-        ) {
-          applyLanguage(
-            event.newValue ||
-              DEFAULT_LANGUAGE
-          );
-        }
-      }
-    );
-  }
-
-  /* =========================================
-     INITIALIZE
-  ========================================= */
-
-  let initialized =
-    false;
-
-  function initializeLanguage() {
-    if (initialized) {
-      return;
-    }
-
-    initialized = true;
-
-    initializeLanguageSwitcher();
-
-    initializeComponentLanguageSync();
-
-    initializeConfigLanguageSync();
-
-    applyLanguage(
-      getCurrentLanguage()
-    );
-
-    document.dispatchEvent(
-      new CustomEvent(
-        "alDahayanLanguageReady",
-        {
-          detail: {
-            language:
-              getCurrentLanguage()
-          }
-        }
-      )
-    );
-  }
-
-  /* =========================================
-     PUBLIC API
-  ========================================= */
-
-  window.AlDahayanLanguage = {
-
-    initialize:
-      initializeLanguage,
-
-    init:
-      initializeLanguage,
-
-    apply:
-      applyLanguage,
-
-    set:
-      setLanguage,
-
-    get:
-      getCurrentLanguage,
-
-    getStored:
-      getStoredLanguage,
-
-    toggle:
-      toggleLanguage,
-
-    translate:
-      translate,
-
-    isSupported:
-      isSupportedLanguage,
-
-    getDirection:
-      getDirection,
-
-    supportedLanguages:
-      [
-        ...SUPPORTED_LANGUAGES
-      ],
-
-    translations:
-      translations,
-
-    isInitialized:
-      function () {
-        return initialized;
-      }
-  };
-
-  /* =========================================
-     BACKWARD COMPATIBILITY
-  ========================================= */
-
-  window.initializeLanguage =
-    initializeLanguage;
-
-  window.setLanguage =
-    setLanguage;
-
-  window.getCurrentLanguage =
-    getCurrentLanguage;
-
-  window.getStoredLanguage =
-    getStoredLanguage;
-
-  window.translate =
-    translate;
-
-  /* =========================================
-     DOM READY
-  ========================================= */
-
-  if (
-    document.readyState ===
-    "loading"
-  ) {
-    document.addEventListener(
-      "DOMContentLoaded",
-      initializeLanguage,
-      {
-        once: true
-      }
-    );
-  } else {
-    initializeLanguage();
-  }
-
-})();
+   
