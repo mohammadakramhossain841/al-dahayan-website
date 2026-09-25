@@ -1,0 +1,110 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level pricing rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "currency": {
+    "default": "SAR",
+    "allowedCurrencies": [
+      "SAR"
+    ],
+    "allowCurrencyChange": false
+  },
+  "priceFields": {
+    "regularPrice": {
+      "enabled": true,
+      "type": "number",
+      "minimum": 0,
+      "required": false
+    },
+    "salePrice": {
+      "enabled": true,
+      "type": "number",
+      "minimum": 0,
+      "required": false
+    },
+    "discountPercent": {
+      "enabled": true,
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "required": false
+    }
+  },
+  "pricingRules": {
+    "allowZeroPrice": true,
+    "allowNegativePrice": false,
+    "salePriceCannotExceedRegularPrice": true,
+    "discountPercentMustRemainBetweenZeroAndHundred": true,
+    "calculateDiscountAutomatically": false,
+    "automaticallyChangePrices": false
+  },
+  "visibility": {
+    "allowedValues": [
+      "visible",
+      "hidden",
+      "contact_for_price"
+    ],
+    "default": "visible",
+    "allowPublicPriceDisplay": true,
+    "contactForPriceSupported": true
+  },
+  "rounding": {
+    "enabled": true,
+    "decimalPlaces": 2,
+    "roundingMode": "standard"
+  },
+  "validation": {
+    "validateBeforeSave": true,
+    "validateBeforePublish": true,
+    "blockInvalidPrices": true,
+    "showWarnings": true,
+    "showPriceSummary": true
+  },
+  "publicWebsite": {
+    "showRegularPrice": true,
+    "showSalePrice": true,
+    "showDiscountPercent": true,
+    "showCurrency": true,
+    "hidePriceWhenConfigured": true,
+    "showContactForPrice": true
+  },
+  "adminPanel": {
+    "allowPriceEdit": true,
+    "showRegularPrice": true,
+    "showSalePrice": true,
+    "showDiscountPercent": true,
+    "showPriceHistory": true,
+    "showPreviousPrice": true
+  },
+  "permissions": {
+    "view": "oem.view",
+    "edit": "oem.price_update",
+    "export": "oem.export"
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousPrice": true,
+    "recordNewPrice": true,
+    "recordCurrency": true,
+    "recordVisibility": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.price_update"
+  },
+  "safety": {
+    "neverAllowNegativePrices": true,
+    "neverModifyOemNumber": true,
+    "neverModifyCompatibility": true,
+    "neverDeleteCatalogRecords": true,
+    "preservePriceHistory": true,
+    "preserveAuditHistory": true
+  }
+}
