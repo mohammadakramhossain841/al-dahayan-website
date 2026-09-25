@@ -1,0 +1,119 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin import view configuration for safely importing Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Import",
+    "defaultStep": "upload",
+    "allowStepNavigation": true
+  },
+
+  "steps": [
+    "upload",
+    "mapping",
+    "validation",
+    "preview",
+    "import",
+    "report"
+  ],
+
+  "upload": {
+    "enabled": true,
+    "allowedFormats": [
+      "csv",
+      "xlsx",
+      "json"
+    ],
+    "maximumFileSizeMB": 25,
+    "allowMultipleFiles": false,
+    "requireFileName": true
+  },
+
+  "mapping": {
+    "enabled": true,
+    "allowAutomaticMapping": true,
+    "allowManualMapping": true,
+    "showUnmappedFields": true,
+    "requireRequiredFieldsMapped": true,
+    "allowSaveMappingProfile": true,
+    "allowLoadMappingProfile": true
+  },
+
+  "validation": {
+    "enabled": true,
+    "validateRequiredFields": true,
+    "validateOemNumbers": true,
+    "validateDuplicates": true,
+    "validateCategories": true,
+    "validateCompatibility": true,
+    "validatePrices": true,
+    "validateStock": true,
+    "validateImages": true,
+    "validateStatus": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "allowContinueWithWarnings": true,
+    "blockImportOnErrors": true
+  },
+
+  "preview": {
+    "enabled": true,
+    "showNewRecords": true,
+    "showUpdatedRecords": true,
+    "showDuplicateRecords": true,
+    "showInvalidRecords": true,
+    "showWarnings": true,
+    "allowRecordInspection": true,
+    "requirePreviewBeforeImport": true
+  },
+
+  "import": {
+    "enabled": true,
+    "allowCreate": true,
+    "allowUpdate": true,
+    "allowSkipDuplicates": true,
+    "allowArchiveMissingRecords": false,
+    "requireConfirmation": true,
+    "createRestorePointBeforeImport": true,
+    "createImportHistory": true,
+    "createAuditLog": true,
+    "createChangeHistory": true
+  },
+
+  "report": {
+    "enabled": true,
+    "showTotalRows": true,
+    "showCreatedRows": true,
+    "showUpdatedRows": true,
+    "showSkippedRows": true,
+    "showDuplicateRows": true,
+    "showInvalidRows": true,
+    "showWarningRows": true,
+    "showErrorRows": true,
+    "allowDownload": true,
+    "allowExport": true
+  },
+
+  "permissions": {
+    "view": "oem.import",
+    "upload": "oem.import",
+    "validate": "oem.import",
+    "preview": "oem.import",
+    "execute": "oem.import",
+    "downloadReport": "oem.export"
+  },
+
+  "safety": {
+    "neverImportWithoutValidation": true,
+    "neverImportWithoutPreview": true,
+    "neverDeleteExistingRecordsAutomatically": true,
+    "neverOverwriteWithoutUpdateRules": true,
+    "neverPublishUnverifiedRecordsAutomatically": true,
+    "preservePreviousValues": true,
+    "preserveImportHistory": true,
+    "preserveAuditHistory": true,
+    "requireUserConfirmation": true
+  }
+}
