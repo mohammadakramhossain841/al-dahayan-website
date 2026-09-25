@@ -1,0 +1,123 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level metadata rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "enabled": true,
+  "metadataFields": {
+    "createdAt": {
+      "enabled": true,
+      "editable": false,
+      "required": true
+    },
+    "updatedAt": {
+      "enabled": true,
+      "editable": false,
+      "required": true
+    },
+    "createdBy": {
+      "enabled": true,
+      "editable": false,
+      "required": false
+    },
+    "updatedBy": {
+      "enabled": true,
+      "editable": false,
+      "required": false
+    },
+    "source": {
+      "enabled": true,
+      "editable": true,
+      "required": false
+    },
+    "sourceFile": {
+      "enabled": true,
+      "editable": false,
+      "required": false
+    },
+    "importId": {
+      "enabled": true,
+      "editable": false,
+      "required": false
+    },
+    "operationId": {
+      "enabled": true,
+      "editable": false,
+      "required": false
+    },
+    "notes": {
+      "enabled": true,
+      "editable": true,
+      "required": false,
+      "public": false
+    }
+  },
+  "timestamps": {
+    "useIso8601": true,
+    "storeTimezone": true,
+    "updateUpdatedAtOnRecordChange": true,
+    "doNotModifyCreatedAt": true
+  },
+  "sourceTracking": {
+    "enabled": true,
+    "allowedSources": [
+      "manual",
+      "csv_import",
+      "xlsx_import",
+      "api",
+      "migration",
+      "system"
+    ],
+    "preserveOriginalSource": true
+  },
+  "validation": {
+    "validateTimestamps": true,
+    "validateSource": true,
+    "validateUserReferences": true,
+    "preventInvalidDates": true,
+    "preventFutureCreatedAt": true
+  },
+  "publicWebsite": {
+    "showCreatedAt": false,
+    "showUpdatedAt": false,
+    "showCreatedBy": false,
+    "showUpdatedBy": false,
+    "showSource": false,
+    "showImportId": false,
+    "showOperationId": false,
+    "showPrivateNotes": false
+  },
+  "adminPanel": {
+    "showCreatedAt": true,
+    "showUpdatedAt": true,
+    "showCreatedBy": true,
+    "showUpdatedBy": true,
+    "showSource": true,
+    "showSourceFile": true,
+    "showImportId": true,
+    "showOperationId": true,
+    "showPrivateNotes": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordMetadataChanges": true,
+    "recordPreviousValues": true,
+    "recordNewValues": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true
+  },
+  "security": {
+    "privateMetadataRequiresAdminAccess": true,
+    "neverExposeUserIdentifiersPublicly": true,
+    "neverExposeImportIdentifiersPublicly": true,
+    "neverExposeOperationIdentifiersPublicly": true,
+    "neverExposePrivateNotesPublicly": true
+  },
+  "safety": {
+    "neverModifyCreatedAtAutomatically": true,
+    "neverDeleteAuditMetadata": true,
+    "preserveOriginalSource": true,
+    "preserveHistory": true,
+    "preserveArabicText": true
+  }
+}
