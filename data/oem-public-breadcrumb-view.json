@@ -1,0 +1,59 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public breadcrumb navigation configuration for Toyota and Lexus OEM catalog pages.",
+  "enabled": true,
+
+  "breadcrumb": {
+    "enabled": true,
+    "showHome": true,
+    "showCatalog": true,
+    "showCategory": true,
+    "showSubcategory": true,
+    "showBrand": true,
+    "showModel": true,
+    "showPartName": true,
+    "showCurrentPage": true
+  },
+
+  "navigation": {
+    "homeClickable": true,
+    "catalogClickable": true,
+    "categoryClickable": true,
+    "subcategoryClickable": true,
+    "brandClickable": true,
+    "modelClickable": true,
+    "currentPageClickable": false
+  },
+
+  "behavior": {
+    "preserveLanguage": true,
+    "preserveSearchContext": true,
+    "preserveFilters": true,
+    "truncateLongLabels": true,
+    "maximumLabelLength": 60
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "visibility": {
+    "publishedRecordsOnly": true,
+    "publicRecordsOnly": true,
+    "hideArchived": true,
+    "hideDisabled": true
+  },
+
+  "safety": {
+    "neverExposeInternalRecordIds": true,
+    "neverExposeAdminPaths": true,
+    "neverExposePrivateData": true,
+    "neverExposeInternalCategories": true
+  }
+}
