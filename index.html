@@ -73,9 +73,14 @@
         aria-label="Al-Dahayan Trading Company Home"
       >
         <img
-          src="assets/images/al-dahayan-logo.png"
+          src="./assets/images/al-dahayan-logo.png"
           alt="ALDAHAYAN TRADING COMPANY"
           class="site-logo-image"
+          width="220"
+          height="70"
+          loading="eager"
+          decoding="async"
+          onerror="this.style.display='none'; this.parentElement.classList.add('logo-load-error');"
         >
       </a>
 
@@ -89,9 +94,7 @@
           class="nav-link active"
           data-nav-link="home"
         >
-          <span data-i18n="nav.home">
-            Home
-          </span>
+          <span data-i18n="nav.home">Home</span>
         </a>
 
         <a
@@ -99,9 +102,7 @@
           class="nav-link"
           data-nav-link="about"
         >
-          <span data-i18n="nav.about">
-            About
-          </span>
+          <span data-i18n="nav.about">About</span>
         </a>
 
         <a
@@ -109,9 +110,7 @@
           class="nav-link"
           data-nav-link="parts"
         >
-          <span data-i18n="nav.parts">
-            Parts
-          </span>
+          <span data-i18n="nav.parts">Parts</span>
         </a>
 
         <a
@@ -119,9 +118,7 @@
           class="nav-link"
           data-nav-link="vehicles"
         >
-          <span data-i18n="nav.vehicles">
-            Vehicles
-          </span>
+          <span data-i18n="nav.vehicles">Vehicles</span>
         </a>
 
         <a
@@ -129,9 +126,7 @@
           class="nav-link"
           data-nav-link="vin"
         >
-          <span data-i18n="nav.vin">
-            VIN Search
-          </span>
+          <span data-i18n="nav.vin">VIN Search</span>
         </a>
 
         <a
@@ -139,9 +134,7 @@
           class="nav-link"
           data-nav-link="services"
         >
-          <span data-i18n="nav.services">
-            Services
-          </span>
+          <span data-i18n="nav.services">Services</span>
         </a>
 
         <a
@@ -149,9 +142,7 @@
           class="nav-link"
           data-nav-link="contact"
         >
-          <span data-i18n="nav.contact">
-            Contact
-          </span>
+          <span data-i18n="nav.contact">Contact</span>
         </a>
 
       </nav>
@@ -200,7 +191,10 @@
 
         <div class="hero-text">
 
-          <p class="eyebrow">
+          <p
+            class="eyebrow"
+            data-i18n="hero.eyebrow"
+          >
             Toyota & Lexus Automotive Spare Parts
           </p>
 
@@ -257,7 +251,10 @@
 
         <div class="section-heading">
 
-          <p class="eyebrow">
+          <p
+            class="eyebrow"
+            data-i18n="search.eyebrow"
+          >
             Search
           </p>
 
@@ -298,6 +295,7 @@
               <label
                 for="oemSearch"
                 class="sr-only"
+                data-i18n="search.oem.label"
               >
                 OEM Part Number
               </label>
@@ -405,7 +403,10 @@
 
         <div class="section-heading">
 
-          <p class="eyebrow">
+          <p
+            class="eyebrow"
+            data-i18n="company.eyebrow"
+          >
             Al-Dahayan
           </p>
 
@@ -452,7 +453,10 @@
 
         <div class="section-heading">
 
-          <p class="eyebrow">
+          <p
+            class="eyebrow"
+            data-i18n="services.eyebrow"
+          >
             Services
           </p>
 
@@ -466,11 +470,11 @@
 
           <article class="service-card">
 
-            <h3>
+            <h3 data-i18n="services.genuineParts.title">
               Genuine Parts
             </h3>
 
-            <p>
+            <p data-i18n="services.genuineParts.description">
               Toyota and Lexus spare-parts
               identification and sourcing support.
             </p>
@@ -480,11 +484,11 @@
 
           <article class="service-card">
 
-            <h3>
+            <h3 data-i18n="services.oemIdentification.title">
               OEM Identification
             </h3>
 
-            <p>
+            <p data-i18n="services.oemIdentification.description">
               Search and identify parts using
               OEM part numbers.
             </p>
@@ -494,11 +498,11 @@
 
           <article class="service-card">
 
-            <h3>
+            <h3 data-i18n="services.vinSearch.title">
               VIN Search
             </h3>
 
-            <p>
+            <p data-i18n="services.vinSearch.description">
               Vehicle identification and
               compatibility search architecture.
             </p>
@@ -508,11 +512,11 @@
 
           <article class="service-card">
 
-            <h3>
+            <h3 data-i18n="services.customerInquiry.title">
               Customer Inquiry
             </h3>
 
-            <p>
+            <p data-i18n="services.customerInquiry.description">
               Connect directly with Al-Dahayan
               for availability and part inquiries.
             </p>
@@ -538,7 +542,10 @@
 
           <div>
 
-            <p class="eyebrow">
+            <p
+              class="eyebrow"
+              data-i18n="connection.eyebrow"
+            >
               Customer Connection
             </p>
 
@@ -593,11 +600,14 @@
 
         <div class="section-heading">
 
-          <p class="eyebrow">
+          <p
+            class="eyebrow"
+            data-i18n="trust.eyebrow"
+          >
             Why This Platform
           </p>
 
-          <h2>
+          <h2 data-i18n="trust.title">
             Built Around Customer Connection
           </h2>
 
@@ -607,11 +617,11 @@
 
           <article class="trust-card">
 
-            <h3>
+            <h3 data-i18n="trust.focus.title">
               Toyota & Lexus Focus
             </h3>
 
-            <p>
+            <p data-i18n="trust.focus.description">
               Designed specifically around
               Toyota and Lexus spare-parts discovery.
             </p>
@@ -621,11 +631,11 @@
 
           <article class="trust-card">
 
-            <h3>
+            <h3 data-i18n="trust.compatibility.title">
               Compatibility
             </h3>
 
-            <p>
+            <p data-i18n="trust.compatibility.description">
               Vehicle and VIN-based architecture
               helps customers identify compatible parts.
             </p>
@@ -635,11 +645,11 @@
 
           <article class="trust-card">
 
-            <h3>
+            <h3 data-i18n="trust.connection.title">
               Direct Connection
             </h3>
 
-            <p>
+            <p data-i18n="trust.connection.description">
               Customers can connect with
               Al-Dahayan instead of using a standard
               checkout system.
