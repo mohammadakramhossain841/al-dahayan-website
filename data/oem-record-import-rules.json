@@ -1,0 +1,114 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level rules for importing Toyota and Lexus OEM catalog records into the Al-Dahayan platform.",
+  "supportedFormats": [
+    "csv",
+    "xlsx"
+  ],
+  "importModes": [
+    "create_new",
+    "update_existing"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "importPermission": "oem.import",
+    "updatePermission": "oem.edit",
+    "requireConfirmation": true
+  },
+  "matching": {
+    "primaryField": "oemNumber",
+    "allowIdMatching": true,
+    "allowOemNumberMatching": true,
+    "normalizeBeforeMatching": true,
+    "allowFuzzyMatching": false,
+    "ambiguousMatchAction": "review"
+  },
+  "createRules": {
+    "defaultStatus": "draft",
+    "defaultVerificationLevel": "unverified",
+    "requireOemNumber": true,
+    "requirePartName": true,
+    "requireBrand": true,
+    "requireCategory": true,
+    "allowMissingOptionalFields": true
+  },
+  "updateRules": {
+    "allowExistingRecordUpdate": true,
+    "preserveUnmappedFields": true,
+    "overwriteOnlyImportedFields": true,
+    "emptyImportedValueAction": "preserve_existing",
+    "preventOemNumberChange": true,
+    "preventIdChange": true
+  },
+  "validation": {
+    "validateColumns": true,
+    "validateFieldTypes": true,
+    "validateRequiredFields": true,
+    "validateAllowedValues": true,
+    "validateCrossFieldRules": true,
+    "validateDuplicates": true,
+    "validateImages": true,
+    "validatePricing": true,
+    "validateInventory": true,
+    "validateCompatibility": true,
+    "blockOnErrors": true,
+    "allowWarnings": true,
+    "requirePreview": true,
+    "requireFinalConfirmation": true
+  },
+  "duplicateProtection": {
+    "enabled": true,
+    "checkWithinImport": true,
+    "checkAgainstCatalog": true,
+    "blockConfirmedDuplicates": true,
+    "reviewPossibleDuplicates": true,
+    "automaticMerge": false
+  },
+  "batchProcessing": {
+    "enabled": true,
+    "batchSize": 100,
+    "maximumRecords": 5000,
+    "stopOnCriticalError": true,
+    "continueAfterWarnings": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordImportId": true,
+    "recordSourceFile": true,
+    "recordPreviousValues": true,
+    "recordNewValues": true,
+    "recordChangedFields": true,
+    "recordImportedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeImport": true,
+    "storePreviousValues": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.edit"
+  },
+  "result": {
+    "showTotalRows": true,
+    "showCreatedRows": true,
+    "showUpdatedRows": true,
+    "showSkippedRows": true,
+    "showWarningRows": true,
+    "showErrorRows": true,
+    "showDuplicateRows": true,
+    "generateImportReport": true
+  },
+  "safety": {
+    "neverPermanentlyDeleteRecords": true,
+    "neverAutomaticallyMergeDuplicates": true,
+    "neverAutomaticallyVerifyRecords": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "neverOverwriteUnmappedFields": true,
+    "preserveAuditHistory": true,
+    "preserveChangeHistory": true
+  }
+}
