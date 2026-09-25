@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <title>
+        Branches Management | Al-Dahayan Trading Company
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================================
+         ADMIN HEADER
+         ========================================= -->
+
+    <header class="site-header">
+
+        <div class="container">
+
+            <div class="header-inner">
+
+                <a
+                    href="dashboard.html"
+                    class="logo"
+                    aria-label="Al-Dahayan Admin Dashboard"
+                >
+                    <img
+                        src="../assets/images/al-dahayan-logo.png"
+                        alt="Al-Dahayan Trading Company"
+                    >
+                </a>
+
+                <div class="admin-header-title">
+                    <span>Administration</span>
+                    <strong>Branches & Locations</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+         ========================================= -->
+
+    <main class="admin-dashboard">
+
+        <div class="container">
+
+            <!-- PAGE HEADING -->
+
+            <section class="admin-page-heading">
+
+                <span class="admin-eyebrow">
+                    Admin Panel
+                </span>
+
+                <h1>
+                    Branches & Locations
+                </h1>
+
+                <p>
+                    Manage Al-Dahayan branches, sales locations,
+                    warehouses, contact information, working hours,
+                    services, and active status.
+                </p>
+
+            </section>
+
+
+            <!-- =====================================
+                 SUMMARY
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <h2>
+                        Location Overview
+                    </h2>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="addBranchButton"
+                    >
+                        + Add Location
+                    </button>
+
+                </div>
+
+
+                <div class="admin-stat-grid">
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            Total Locations
+                        </span>
+
+                        <strong id="totalLocations">
+                            0
+                        </strong>
+
+                        <small>
+                            All records
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            Active
+                        </span>
+
+                        <strong id="activeLocations">
+                            0
+                        </strong>
+
+                        <small>
+                            Currently active
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            Branches
+                        </span>
+
+                        <strong id="branchLocations">
+                            0
+                        </strong>
+
+                        <small>
+                            Branch locations
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            Sales
+                        </span>
+
+                        <strong id="salesLocations">
+                            0
+                        </strong>
+
+                        <small>
+                            Sales locations
+                        </small>
+
+                    </div>
+
+
+                    <div class="admin-stat-card">
+
+                        <span class="admin-stat-label">
+                            Warehouses
+                        </span>
+
+                        <strong id="warehouseLocations">
+                            0
+                        </strong>
+
+                        <small>
+                            Warehouse locations
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 SEARCH & FILTERS
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <h2>
+                        Location Records
+                    </h2>
+
+                </div>
+
+
+                <div class="admin-table-container">
+
+                    <div
+                        style="
+                            padding:24px;
+                            display:grid;
+                            gap:16px;
+                        "
+                    >
+
+                        <!-- SEARCH -->
+
+                        <div>
+
+                            <label
+                                for="locationSearch"
+                                style="
+                                    display:block;
+                                    margin-bottom:7px;
+                                    font-weight:700;
+                                "
+                            >
+                                Search
+                            </label>
+
+                            <input
+                                type="search"
+                                id="locationSearch"
+                                class="form-control"
+                                placeholder="Search location, city, district or address..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <!-- FILTERS -->
+
+                        <div
+                            style="
+                                display:grid;
+                                grid-template-columns:
+                                repeat(2,minmax(0,1fr));
+                                gap:16px;
+                            "
+                        >
+
+                            <div>
+
+                                <label
+                                    for="typeFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Location Type
+                                </label>
+
+                                <select
+                                    id="typeFilter"
+                                    class="form-control"
+                                >
+
+                                    <option value="">
+                                        All Types
+                                    </option>
+
+                                    <option value="branch">
+                                        Branch
+                                    </option>
+
+                                    <option value="sales">
+                                        Sales
+                                    </option>
+
+                                    <option value="warehouse">
+                                        Warehouse
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div>
+
+                                <label
+                                    for="activeFilter"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Status
+                                </label>
+
+                                <select
+                                    id="activeFilter"
+                                    class="form-control"
+                                >
+
+                                    <option value="">
+                                        All Status
+                                    </option>
+
+                                    <option value="active">
+                                        Active
+                                    </option>
+
+                                    <option value="inactive">
+                                        Inactive
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 LOCATION TABLE
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-table-container">
+
+                    <div
+                        style="
+                            overflow-x:auto;
+                        "
+                    >
+
+                        <table
+                            style="
+                                width:100%;
+                                border-collapse:collapse;
+                                min-width:1250px;
+                            "
+                        >
+
+                            <thead>
+
+                                <tr
+                                    style="
+                                        background:#111111;
+                                        color:#ffffff;
+                                        text-align:left;
+                                    "
+                                >
+
+                                    <th style="padding:14px;">
+                                        Location ID
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Name
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Type
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        City
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        District
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Phone
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        WhatsApp
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Services
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Status
+                                    </th>
+
+                                    <th style="padding:14px;">
+                                        Action
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="locationTableBody">
+
+                                <tr>
+
+                                    <td
+                                        colspan="10"
+                                        style="
+                                            padding:40px;
+                                            text-align:center;
+                                            color:#666666;
+                                        "
+                                    >
+                                        Loading locations...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 LOCATION CONTROL RULES
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+
+                    <h2>
+                        Location Control
+                    </h2>
+
+                </div>
+
+
+                <div class="admin-management-grid">
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Unlimited Locations
+                        </strong>
+
+                        <span>
+                            New branches and locations can be added
+                            without redesigning the website.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Branch Information
+                        </strong>
+
+                        <span>
+                            Name, image, address, phone, WhatsApp,
+                            maps, hours and services.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Active / Inactive
+                        </strong>
+
+                        <span>
+                            Deactivate a location instead of permanently
+                            deleting its historical record.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Inventory Reference
+                        </strong>
+
+                        <span>
+                            Inventory records reference a Location ID
+                            rather than duplicating branch information.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Maps
+                        </strong>
+
+                        <span>
+                            Google Maps link or coordinates can be
+                            managed as location data.
+                        </span>
+
+                    </div>
+
+
+                    <div class="admin-management-card">
+
+                        <strong>
+                            Customer Privacy
+                        </strong>
+
+                        <span>
+                            Branch management does not collect
+                            customer location data.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 NOTE
+                 ===================================== -->
+
+            <section class="admin-section">
+
+                <div class="admin-empty-state">
+
+                    <strong>
+                        Branch Management
+                    </strong>
+
+                    <p>
+                        Routine branch information should eventually
+                        be controlled from this Admin Panel without
+                        requiring repository code changes.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <p>
+                ©
+                <span id="currentYear"></span>
+                Al-Dahayan Trading Company.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         SCRIPTS
+         ========================================= -->
+
+    <script src="../js/config.js"></script>
+    <script src="../js/utils.js"></script>
+
+    <script>
+
+        (function () {
+
+            "use strict";
+
+
+            const searchInput =
+                document.getElementById(
+                    "locationSearch"
+                );
+
+            const typeFilter =
+                document.getElementById(
+                    "typeFilter"
+                );
+
+            const activeFilter =
+                document.getElementById(
+                    "activeFilter"
+                );
+
+            const tableBody =
+                document.getElementById(
+                    "locationTableBody"
+                );
+
+
+            const totalLocations =
+                document.getElementById(
+                    "totalLocations"
+                );
+
+            const activeLocations =
+                document.getElementById(
+                    "activeLocations"
+                );
+
+            const branchLocations =
+                document.getElementById(
+                    "branchLocations"
+                );
+
+            const salesLocations =
+                document.getElementById(
+                    "salesLocations"
+                );
+
+            const warehouseLocations =
+                document.getElementById(
+                    "warehouseLocations"
+                );
+
+
+            const currentYear =
+                document.getElementById(
+                    "currentYear"
+                );
+
+
+            let locations = [];
+
+
+            if (currentYear) {
+
+                currentYear.textContent =
+                    new Date().getFullYear();
+
+            }
+
+
+            function escapeHTML(value) {
+
+                const div =
+                    document.createElement("div");
+
+                div.textContent =
+                    value == null
+                        ? ""
+                        : String(value);
+
+                return div.innerHTML;
+
+            }
+
+
+            function normalizeType(location) {
+
+                return String(
+                    location.type || "branch"
+                )
+                .trim()
+                .toLowerCase();
+
+            }
+
+
+            function getServices(location) {
+
+                if (
+                    Array.isArray(
+                        location.services
+                    )
+                ) {
+
+                    return location.services.join(", ");
+
+                }
+
+
+                if (
+                    typeof location.services
+                    === "string"
+                ) {
+
+                    return location.services;
+
+                }
+
+
+                return "—";
+
+            }
+
+
+            function getStatusHTML(location) {
+
+                const active =
+                    location.active !== false;
+
+
+                if (active) {
+
+                    return `
+                        <span
+                            style="
+                                display:inline-block;
+                                padding:5px 9px;
+                                border-radius:20px;
+                                background:#e9f7ef;
+                                color:#16834a;
+                                font-size:12px;
+                                font-weight:700;
+                            "
+                        >
+                            Active
+                        </span>
+                    `;
+
+                }
+
+
+                return `
+                    <span
+                        style="
+                            display:inline-block;
+                            padding:5px 9px;
+                            border-radius:20px;
+                            background:#f1f1f1;
+                            color:#666666;
+                            font-size:12px;
+                            font-weight:700;
+                        "
+                    >
+                        Inactive
+                    </span>
+                `;
+
+            }
+
+
+            function renderSummary() {
+
+                totalLocations.textContent =
+                    locations.length;
+
+
+                activeLocations.textContent =
+                    locations.filter(
+                        function (location) {
+
+                            return (
+                                location.active !== false
+                            );
+
+                        }
+                    ).length;
+
+
+                branchLocations.textContent =
+                    locations.filter(
+                        function (location) {
+
+                            return (
+                                normalizeType(
+                                    location
+                                )
+                                === "branch"
+                            );
+
+                        }
+                    ).length;
+
+
+                salesLocations.textContent =
+                    locations.filter(
+                        function (location) {
+
+                            return (
+                                normalizeType(
+                                    location
+                                )
+                                === "sales"
+                            );
+
+                        }
+                    ).length;
+
+
+                warehouseLocations.textContent =
+                    locations.filter(
+                        function (location) {
+
+                            return (
+                                normalizeType(
+                                    location
+                                )
+                                === "warehouse"
+                            );
+
+                        }
+                    ).length;
+
+            }
+
+
+            function renderLocations() {
+
+                const query =
+                    searchInput.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const selectedType =
+                    typeFilter.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const selectedActive =
+                    activeFilter.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const filtered =
+                    locations.filter(
+                        function (location) {
+
+                            const searchable = [
+
+                                location.id,
+
+                                location.name,
+
+                                location.arabicName,
+
+                                location.type,
+
+                                location.country,
+
+                                location.city,
+
+                                location.district,
+
+                                location.address,
+
+                                location.phone,
+
+                                location.whatsapp,
+
+                                getServices(
+                                    location
+                                )
+
+                            ]
+                            .filter(Boolean)
+                            .join(" ")
+                            .toLowerCase();
+
+
+                            const matchesSearch =
+                                !query
+                                || searchable.includes(
+                                    query
+                                );
+
+
+                            const matchesType =
+                                !selectedType
+                                || normalizeType(
+                                    location
+                                )
+                                === selectedType;
+
+
+                            const matchesActive =
+                                !selectedActive
+                                || (
+                                    selectedActive
+                                    === "active"
+                                    && location.active
+                                    !== false
+                                )
+                                || (
+                                    selectedActive
+                                    === "inactive"
+                                    && location.active
+                                    === false
+                                );
+
+
+                            return (
+                                matchesSearch
+                                && matchesType
+                                && matchesActive
+                            );
+
+                        }
+                    );
+
+
+                if (!filtered.length) {
+
+                    tableBody.innerHTML = `
+                        <tr>
+
+                            <td
+                                colspan="10"
+                                style="
+                                    padding:40px;
+                                    text-align:center;
+                                    color:#666666;
+                                "
+                            >
+                                No location records found.
+                            </td>
+
+                        </tr>
+                    `;
+
+                    return;
+
+                }
+
+
+                tableBody.innerHTML =
+                    filtered.map(
+                        function (location) {
+
+                            const active =
+                                location.active !== false;
+
+
+                            return `
+
+                                <tr
+                                    style="
+                                        border-bottom:
+                                        1px solid #e4e4e4;
+                                        opacity:
+                                        ${active ? "1" : "0.55"};
+                                    "
+                                >
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            location.id || "—"
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+
+                                        <strong>
+                                            ${escapeHTML(
+                                                location.name
+                                                || "—"
+                                            )}
+                                        </strong>
+
+                                        ${
+                                            location.arabicName
+                                            ? `
+                                                <br>
+                                                <small
+                                                    style="
+                                                        color:#666666;
+                                                    "
+                                                >
+                                                    ${escapeHTML(
+                                                        location.arabicName
+                                                    )}
+                                                </small>
+                                            `
+                                            : ""
+                                        }
+
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            normalizeType(
+                                                location
+                                            )
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            location.city
+                                            || "—"
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            location.district
+                                            || "—"
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                            white-space:nowrap;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            location.phone
+                                            || "—"
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                            white-space:nowrap;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            location.whatsapp
+                                            || "—"
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                            max-width:220px;
+                                        "
+                                    >
+                                        ${escapeHTML(
+                                            getServices(
+                                                location
+                                            )
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+                                        ${getStatusHTML(
+                                            location
+                                        )}
+                                    </td>
+
+
+                                    <td
+                                        style="
+                                            padding:14px;
+                                        "
+                                    >
+
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            data-edit-location="${escapeHTML(
+                                                location.id
+                                                || ""
+                                            )}"
+                                        >
+                                            Edit
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            `;
+
+                        }
+                    ).join("");
+
+
+                document
+                    .querySelectorAll(
+                        "[data-edit-location]"
+                    )
+                    .forEach(
+                        function (button) {
+
+                            button.addEventListener(
+                                "click",
+                                function () {
+
+                                    const id =
+                                        this.dataset
+                                            .editLocation;
+
+
+                                    alert(
+                                        "Edit Location: "
+                                        + id
+                                        + "\n\n"
+                                        + "Location editor will be "
+                                        + "connected to the Admin API "
+                                        + "in the next stage."
+                                    );
+
+                                }
+                            );
+
+                        }
+                    );
+
+            }
+
+
+            async function loadLocations() {
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "../data/locations.json",
+                            {
+                                cache: "no-store"
+                            }
+                        );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Failed to load locations."
+                        );
+
+                    }
+
+
+                    const data =
+                        await response.json();
+
+
+                    locations =
+                        Array.isArray(data)
+                            ? data
+                            : (
+                                Array.isArray(
+                                    data.locations
+                                )
+                                    ? data.locations
+                                    : []
+                            );
+
+
+                    renderSummary();
+                    renderLocations();
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Admin Branches:",
+                        error
+                    );
+
+
+                    tableBody.innerHTML = `
+                        <tr>
+
+                            <td
+                                colspan="10"
+                                style="
+                                    padding:40px;
+                                    text-align:center;
+                                    color:#d71920;
+                                "
+                            >
+                                Unable to load location data.
+                            </td>
+
+                        </tr>
+                    `;
+
+                }
+
+            }
+
+
+            [
+                searchInput,
+                typeFilter,
+                activeFilter
+            ]
+            .forEach(
+                function (element) {
+
+                    element.addEventListener(
+                        "input",
+                        renderLocations
+                    );
+
+                    element.addEventListener(
+                        "change",
+                        renderLocations
+                    );
+
+                }
+            );
+
+
+            document
+                .getElementById(
+                    "addBranchButton"
+                )
+                .addEventListener(
+                    "click",
+                    function () {
+
+                        alert(
+                            "Add Location form will be "
+                            + "connected to the Admin API "
+                            + "in the next stage."
+                        );
+
+                    }
+                );
+
+
+            loadLocations();
+
+        })();
+
+    </script>
+
+</body>
+
+</html>
