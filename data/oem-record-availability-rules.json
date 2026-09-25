@@ -1,0 +1,122 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public and administrative availability rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "enabled": true,
+  "availabilityStatuses": [
+    "in_stock",
+    "low_stock",
+    "out_of_stock",
+    "on_order",
+    "unknown"
+  ],
+  "defaultStatus": "unknown",
+  "availabilityLogic": {
+    "useStockStatus": true,
+    "useQuantity": true,
+    "useLocationAvailability": true,
+    "automaticallyCalculateAvailability": false,
+    "allowManualAvailabilityMessage": true
+  },
+  "quantityRules": {
+    "minimum": 0,
+    "negativeQuantityAllowed": false,
+    "exactQuantityPubliclyVisible": false,
+    "exactQuantityAdminVisible": true
+  },
+  "locationRules": {
+    "allowMultipleLocations": true,
+    "requireValidLocationIds": true,
+    "allowLocationSpecificAvailability": true,
+    "showLocationPublicly": false,
+    "showLocationToAdmin": true
+  },
+  "statusRules": {
+    "in_stock": {
+      "enabled": true,
+      "requiresPositiveQuantity": false,
+      "publicMessageKey": "in_stock"
+    },
+    "low_stock": {
+      "enabled": true,
+      "requiresPositiveQuantity": true,
+      "publicMessageKey": "low_stock"
+    },
+    "out_of_stock": {
+      "enabled": true,
+      "requiresZeroQuantity": false,
+      "publicMessageKey": "out_of_stock"
+    },
+    "on_order": {
+      "enabled": true,
+      "publicMessageKey": "on_order"
+    },
+    "unknown": {
+      "enabled": true,
+      "publicMessageKey": "availability_unknown"
+    }
+  },
+  "validation": {
+    "validateStatus": true,
+    "validateQuantity": true,
+    "validateLocationIds": true,
+    "validateAvailabilityMessage": true,
+    "blockNegativeQuantity": true,
+    "showWarnings": true
+  },
+  "publicWebsite": {
+    "showAvailabilityStatus": true,
+    "showAvailabilityMessage": true,
+    "showExactQuantity": false,
+    "showExactLocation": false,
+    "allowInquiryWhenInStock": true,
+    "allowInquiryWhenLowStock": true,
+    "allowInquiryWhenOutOfStock": true,
+    "allowInquiryWhenOnOrder": true,
+    "allowInquiryWhenUnknown": true
+  },
+  "adminPanel": {
+    "showAvailabilityStatus": true,
+    "showQuantity": true,
+    "showLocations": true,
+    "allowStatusEdit": true,
+    "allowQuantityEdit": true,
+    "allowLocationEdit": true,
+    "showAvailabilityHistory": true
+  },
+  "permissions": {
+    "view": "oem.view",
+    "edit": "oem.stock_update",
+    "bulkEdit": "oem.stock_update",
+    "export": "oem.export"
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousStatus": true,
+    "recordNewStatus": true,
+    "recordPreviousQuantity": true,
+    "recordNewQuantity": true,
+    "recordPreviousLocations": true,
+    "recordNewLocations": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.stock_update",
+    "preserveRollbackHistory": true
+  },
+  "safety": {
+    "neverAllowNegativeQuantity": true,
+    "neverAutomaticallyVerifyAvailability": true,
+    "neverExposeExactLocationPublicly": true,
+    "neverExposeInternalInventoryNotes": true,
+    "preserveAvailabilityHistory": true,
+    "preserveAuditHistory": true
+  }
+}
