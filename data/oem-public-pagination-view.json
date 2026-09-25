@@ -1,0 +1,96 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public pagination and result navigation configuration for the Toyota and Lexus OEM catalog.",
+  "enabled": true,
+
+  "pagination": {
+    "enabled": true,
+    "pageSize": 24,
+    "allowedPageSizes": [
+      12,
+      24,
+      48,
+      96
+    ],
+    "defaultPageSize": 24,
+    "maximumPageSize": 96,
+    "showPageNumbers": true,
+    "showPreviousButton": true,
+    "showNextButton": true,
+    "showFirstButton": false,
+    "showLastButton": false
+  },
+
+  "navigation": {
+    "preserveSearchQuery": true,
+    "preserveFilters": true,
+    "preserveSort": true,
+    "preserveLanguage": true,
+    "scrollToResultsOnPageChange": true
+  },
+
+  "sorting": {
+    "enabled": true,
+    "default": "relevance",
+    "options": [
+      {
+        "id": "relevance",
+        "label": "Relevance"
+      },
+      {
+        "id": "nameAsc",
+        "label": "Name A-Z"
+      },
+      {
+        "id": "nameDesc",
+        "label": "Name Z-A"
+      },
+      {
+        "id": "priceAsc",
+        "label": "Price Low to High"
+      },
+      {
+        "id": "priceDesc",
+        "label": "Price High to Low"
+      },
+      {
+        "id": "newest",
+        "label": "Newest"
+      }
+    ]
+  },
+
+  "results": {
+    "showResultCount": true,
+    "showCurrentRange": true,
+    "showEmptyState": true,
+    "showLoadingState": true,
+    "showErrorState": true
+  },
+
+  "performance": {
+    "limitPublicResults": true,
+    "maximumReturnedRecords": 96,
+    "avoidLoadingAllRecordsAtOnce": true,
+    "allowServerSidePagination": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "safety": {
+    "showOnlyPublishedRecords": true,
+    "showOnlyPubliclyVisibleRecords": true,
+    "hideArchivedRecords": true,
+    "hideDisabledRecords": true,
+    "neverExposeInternalSortFields": true,
+    "neverExposeInternalRecordIds": true
+  }
+}
