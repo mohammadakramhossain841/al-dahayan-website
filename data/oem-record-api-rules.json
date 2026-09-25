@@ -1,0 +1,134 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "API access and data-handling rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "enabled": true,
+  "authentication": {
+    "requiredForAdminActions": true,
+    "requiredForWriteOperations": true,
+    "requiredForBulkOperations": true,
+    "publicReadAllowed": true
+  },
+  "permissions": {
+    "read": "oem.view",
+    "create": "oem.create",
+    "update": "oem.edit",
+    "publish": "oem.publish",
+    "archive": "oem.archive",
+    "restore": "oem.restore",
+    "disable": "oem.disable",
+    "priceUpdate": "oem.price_update",
+    "stockUpdate": "oem.stock_update",
+    "imageManage": "oem.image_manage",
+    "verify": "oem.verify",
+    "import": "oem.import",
+    "export": "oem.export",
+    "auditView": "oem.audit_view",
+    "historyView": "oem.history_view",
+    "rollback": "oem.rollback"
+  },
+  "publicRead": {
+    "enabled": true,
+    "includeOnlyActiveRecords": true,
+    "excludeDraftRecords": true,
+    "excludeArchivedRecords": true,
+    "excludeDisabledRecords": true,
+    "excludePrivateFields": true,
+    "excludeAuditMetadata": true,
+    "excludeInternalNotes": true,
+    "excludeUserIdentifiers": true,
+    "excludeSecurityData": true
+  },
+  "writeOperations": {
+    "create": true,
+    "update": true,
+    "publish": true,
+    "archive": true,
+    "restore": true,
+    "disable": true,
+    "priceUpdate": true,
+    "stockUpdate": true,
+    "imageUpdate": true,
+    "compatibilityUpdate": true,
+    "verificationUpdate": true,
+    "categoryUpdate": true,
+    "metadataUpdate": true
+  },
+  "validation": {
+    "validateRequest": true,
+    "validateAuthentication": true,
+    "validatePermission": true,
+    "validateRecord": true,
+    "validateFieldValues": true,
+    "validateDuplicateStatus": true,
+    "validateStatusTransition": true,
+    "validateVerificationRules": true,
+    "blockInvalidRequests": true
+  },
+  "response": {
+    "returnRecordId": true,
+    "returnOemNumber": true,
+    "returnStatus": true,
+    "returnVerificationLevel": true,
+    "returnStockStatus": true,
+    "returnValidationWarnings": true,
+    "returnPrivateFields": false,
+    "returnCredentials": false,
+    "returnSecurityTokens": false
+  },
+  "pagination": {
+    "enabled": true,
+    "defaultPageSize": 20,
+    "maximumPageSize": 100,
+    "allowPageParameter": true
+  },
+  "filtering": {
+    "enabled": true,
+    "useRecordFilterRules": true,
+    "allowMultipleFilters": true,
+    "allowSorting": true,
+    "allowSearch": true
+  },
+  "rateLimiting": {
+    "enabled": true,
+    "publicReadRequestsPerMinute": 120,
+    "authenticatedRequestsPerMinute": 300,
+    "bulkRequestsPerMinute": 20,
+    "writeRequestsPerMinute": 60
+  },
+  "audit": {
+    "enabled": true,
+    "recordReadActionsForAdmin": true,
+    "recordWriteActions": true,
+    "recordUserId": true,
+    "recordOperationId": true,
+    "recordTimestamp": true,
+    "recordRequestType": true,
+    "recordResult": true
+  },
+  "errors": {
+    "returnStructuredErrors": true,
+    "exposeInternalErrorDetails": false,
+    "exposeDatabaseDetails": false,
+    "exposeCredentials": false,
+    "exposeSecurityTokens": false
+  },
+  "security": {
+    "requireHttpsInProduction": true,
+    "validateInput": true,
+    "preventUnauthorizedWrite": true,
+    "preventPublicAdminAccess": true,
+    "preventDataLeakage": true,
+    "neverExposePrivateNotes": true,
+    "neverExposeAuthenticationData": true,
+    "neverExposeSecurityTokens": true
+  },
+  "safety": {
+    "neverAutomaticallyVerifyRecords": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "neverPermanentlyDeleteRecordsThroughPublicApi": true,
+    "preserveAuditHistory": true,
+    "preserveChangeHistory": true,
+    "preserveArabicText": true
+  }
+}
