@@ -1,5 +1,6 @@
 /* =========================================
    AL-DAHAYAN PARTS SEARCH
+   OEM + INVENTORY INTEGRATION
 ========================================= */
 
 (function () {
@@ -18,6 +19,21 @@
     category: ""
   };
 
+  /**
+   * ---------------------------------------------------------
+   * CONFIG
+   * ---------------------------------------------------------
+   */
+
+  const CONFIG = window.AlDahayanConfig || null;
+  const UTILS = window.AlDahayanUtils || null;
+
+  /**
+   * ---------------------------------------------------------
+   * Basic Helpers
+   * ---------------------------------------------------------
+   */
+
   function normalize(value) {
     return String(value ?? "")
       .trim()
@@ -31,6 +47,23 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
+  }
+
+  function getDataPath(fileName) {
+    if (
+      CONFIG &&
+      typeof CONFIG.getDataPath === "function"
+    ) {
+      return CONFIG.getDataPath(fileName);
+    }
+
+    if (
+      typeof window.getDataPath === "function"
+    ) {
+      return window.getDataPath(fileName);
+    }
+
+    return `../data/${fileName}`;
   }
 
   function getPartId(part) {
@@ -108,6 +141,16 @@
     );
   }
 
+  function getActive(part) {
+    return part.active !== false;
+  }
+
+  /**
+   * ---------------------------------------------------------
+   * Array Helpers
+   * ---------------------------------------------------------
+   */
+
   function uniqueSorted(values) {
     return [
       ...new Set(
@@ -123,19 +166,19 @@
     );
   }
 
-  async function loadParts() {
-    if (parts.length) {
+  /**
+   * ---------------------------------------------------------
+   * Load OEM Parts
+   * ---------------------------------------------------------
+   */
+
+  async function loadParts(force = false) {
+    if (parts.length && !force) {
       return parts;
     }
 
-    if (typeof window.getDataPath !== "function") {
-      throw new Error(
-        "getDataPath() is not available."
-      );
-    }
-
     const response = await fetch(
-      window.getDataPath("oem-parts.json"),
+      getDataPath("oem-parts.json"),
       {
         cache: "no-cache"
       }
@@ -161,23 +204,31 @@
       parts = [];
     }
 
+    /*
+     * Inactive OEM records must not appear
+     * in the public search.
+     */
+    parts = parts.filter(getActive);
+
     filteredParts = [...parts];
 
     return parts;
   }
 
-  async function loadCategories() {
-    if (categories.length) {
-      return categories;
-    }
+  /**
+   * ---------------------------------------------------------
+   * Load Categories
+   * ---------------------------------------------------------
+   */
 
-    if (typeof window.getDataPath !== "function") {
-      return [];
+  async function loadCategories(force = false) {
+    if (categories.length && !force) {
+      return categories;
     }
 
     try {
       const response = await fetch(
-        window.getDataPath(
+        getDataPath(
           "part-categories.json"
         ),
         {
@@ -186,21 +237,25 @@
       );
 
       if (!response.ok) {
-        return [];
+        categories = [];
+        return categories;
       }
 
       const data = await response.json();
 
       if (Array.isArray(data)) {
         categories = data;
-      } else if (Array.isArray(data.categories)) {
+      } else if (
+        Array.isArray(data.categories)
+      ) {
         categories = data.categories;
-      } else if (Array.isArray(data.data)) {
+      } else if (
+        Array.isArray(data.data)
+      ) {
         categories = data.data;
       } else {
         categories = [];
       }
-
     } catch (error) {
       console.warn(
         "Al-Dahayan Parts Search: categories unavailable.",
@@ -212,6 +267,12 @@
 
     return categories;
   }
+
+  /**
+   * ---------------------------------------------------------
+   * DOM Elements
+   * ---------------------------------------------------------
+   */
 
   function getElements() {
     return {
@@ -257,6 +318,12 @@
     };
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Filter Options
+   * ---------------------------------------------------------
+   */
+
   function setSelectOptions(
     select,
     values,
@@ -301,7 +368,13 @@
     );
 
     const models = uniqueSorted(
-      parts.map(getModel)
+      parts.flatMap((part) => {
+        const model = getModel(part);
+
+        return Array.isArray(model)
+          ? model
+          : [model];
+      })
     );
 
     const partCategories = uniqueSorted(
@@ -327,6 +400,37 @@
     );
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Model Matching
+   * ---------------------------------------------------------
+   */
+
+  function modelMatches(part, target) {
+    if (!target) {
+      return true;
+    }
+
+    const model = getModel(part);
+
+    if (Array.isArray(model)) {
+      return model.some(
+        (item) =>
+          normalize(item) === target
+      );
+    }
+
+    return (
+      normalize(model) === target
+    );
+  }
+
+  /**
+   * ---------------------------------------------------------
+   * Apply Filters
+   * ---------------------------------------------------------
+   */
+
   function applyFilters() {
     const query = normalize(state.query);
     const oem = normalize(state.oem);
@@ -335,6 +439,10 @@
     const category = normalize(state.category);
 
     filteredParts = parts.filter((part) => {
+      if (!getActive(part)) {
+        return false;
+      }
+
       const partOEM = normalize(
         getOEM(part)
       );
@@ -347,9 +455,13 @@
         getBrand(part)
       );
 
-      const partModel = normalize(
+      const partModel = Array.isArray(
         getModel(part)
-      );
+      )
+        ? getModel(part)
+            .map(normalize)
+            .join(" ")
+        : normalize(getModel(part));
 
       const partCategory = normalize(
         getCategory(part)
@@ -380,7 +492,7 @@
 
       const matchesModel =
         !model ||
-        partModel === model;
+        modelMatches(part, model);
 
       const matchesCategory =
         !category ||
@@ -396,7 +508,218 @@
     });
 
     renderResults();
+
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanPartsSearchCompleted",
+        {
+          detail: {
+            filters: {
+              ...state
+            },
+            count: filteredParts.length
+          }
+        }
+      )
+    );
   }
+
+  /**
+   * ---------------------------------------------------------
+   * Inventory Verification
+   * ---------------------------------------------------------
+   */
+
+  function getInventoryAvailability(part) {
+    const inventory =
+      window.AlDahayanInventory;
+
+    if (
+      !inventory ||
+      typeof inventory.getVerifiedAvailability !==
+        "function"
+    ) {
+      return {
+        verified: false,
+        status: "unknown",
+        quantity: null,
+        availableQuantity: null,
+        lastUpdated: "",
+        branchId: null
+      };
+    }
+
+    try {
+      return (
+        inventory.getVerifiedAvailability({
+          partId: getPartId(part),
+          oemNumber: getOEM(part)
+        }) || {
+          verified: false,
+          status: "unknown",
+          quantity: null,
+          availableQuantity: null,
+          lastUpdated: "",
+          branchId: null
+        }
+      );
+    } catch (error) {
+      console.warn(
+        "Al-Dahayan Parts Search: inventory verification failed.",
+        error
+      );
+
+      return {
+        verified: false,
+        status: "unknown",
+        quantity: null,
+        availableQuantity: null,
+        lastUpdated: "",
+        branchId: null
+      };
+    }
+  }
+
+  /**
+   * ---------------------------------------------------------
+   * Inventory Status
+   * ---------------------------------------------------------
+   */
+
+  function getInventoryStatusLabel(
+    availability
+  ) {
+    if (!availability?.verified) {
+      return "AVAILABILITY TO BE CONFIRMED";
+    }
+
+    switch (
+      normalize(availability.status)
+    ) {
+      case "in_stock":
+      case "in-stock":
+        return "IN STOCK";
+
+      case "low_stock":
+      case "low-stock":
+        return "LOW STOCK";
+
+      case "out_of_stock":
+      case "out-of-stock":
+        return "OUT OF STOCK";
+
+      case "on_request":
+      case "on-request":
+        return "ON REQUEST";
+
+      default:
+        return "AVAILABILITY TO BE CONFIRMED";
+    }
+  }
+
+  function getInventoryStatusClass(
+    availability
+  ) {
+    if (!availability?.verified) {
+      return "stock-unknown";
+    }
+
+    switch (
+      normalize(availability.status)
+    ) {
+      case "in_stock":
+      case "in-stock":
+        return "stock-in";
+
+      case "low_stock":
+      case "low-stock":
+        return "stock-low";
+
+      case "out_of_stock":
+      case "out-of-stock":
+        return "stock-out";
+
+      case "on_request":
+      case "on-request":
+        return "stock-request";
+
+      default:
+        return "stock-unknown";
+    }
+  }
+
+  function shouldShowQuantity() {
+    const config =
+      CONFIG &&
+      typeof CONFIG.getEffectiveAppConfig ===
+        "function"
+        ? CONFIG.getEffectiveAppConfig()
+        : {};
+
+    return (
+      config?.inventory?.quantityDisplay === true
+    );
+  }
+
+  function renderInventoryBadge(
+    availability
+  ) {
+    const label =
+      getInventoryStatusLabel(
+        availability
+      );
+
+    const statusClass =
+      getInventoryStatusClass(
+        availability
+      );
+
+    const showQuantity =
+      shouldShowQuantity();
+
+    let quantityHTML = "";
+
+    if (
+      availability?.verified &&
+      showQuantity &&
+      Number.isFinite(
+        Number(
+          availability.availableQuantity
+        )
+      )
+    ) {
+      quantityHTML = `
+        <span class="stock-quantity">
+          ${escapeHTML(
+            availability.availableQuantity
+          )} available
+        </span>
+      `;
+    }
+
+    return `
+      <div
+        class="part-card-stock ${escapeHTML(
+          statusClass
+        )}"
+        data-stock-status="${escapeHTML(
+          availability?.status ||
+            "unknown"
+        )}"
+      >
+        <span class="stock-badge">
+          ${escapeHTML(label)}
+        </span>
+        ${quantityHTML}
+      </div>
+    `;
+  }
+
+  /**
+   * ---------------------------------------------------------
+   * Summary
+   * ---------------------------------------------------------
+   */
 
   function renderSummary() {
     const elements = getElements();
@@ -409,8 +732,16 @@
       filteredParts.length;
 
     elements.summary.textContent =
-      `${count} part${count === 1 ? "" : "s"} found`;
+      `${count} part${
+        count === 1 ? "" : "s"
+      } found`;
   }
+
+  /**
+   * ---------------------------------------------------------
+   * Part Card
+   * ---------------------------------------------------------
+   */
 
   function renderPartCard(part) {
     const id = getPartId(part);
@@ -421,6 +752,9 @@
     const category = getCategory(part);
     const year = getYear(part);
     const image = getImage(part);
+
+    const availability =
+      getInventoryAvailability(part);
 
     const imageHTML = image
       ? `
@@ -434,10 +768,16 @@
       `
       : "";
 
+    const modelText =
+      Array.isArray(model)
+        ? model.join(", ")
+        : model;
+
     return `
       <article
         class="part-card"
         data-part-id="${escapeHTML(id)}"
+        data-oem-number="${escapeHTML(oem)}"
       >
 
         ${imageHTML}
@@ -445,6 +785,7 @@
         <div class="part-card-content">
 
           <div class="part-card-header">
+
             ${
               oem
                 ? `
@@ -464,6 +805,7 @@
                 `
                 : ""
             }
+
           </div>
 
           <h3 class="part-card-title">
@@ -471,28 +813,46 @@
           </h3>
 
           ${
-            brand || model
+            brand || modelText || year
               ? `
                 <p class="part-card-vehicle">
+
                   ${
                     brand
-                      ? `<strong>${escapeHTML(brand)}</strong>`
+                      ? `
+                        <strong>
+                          ${escapeHTML(brand)}
+                        </strong>
+                      `
                       : ""
                   }
+
                   ${
-                    model
-                      ? ` ${escapeHTML(model)}`
+                    modelText
+                      ? `
+                        ${escapeHTML(
+                          modelText
+                        )}
+                      `
                       : ""
                   }
+
                   ${
                     year
-                      ? ` (${escapeHTML(year)})`
+                      ? `
+                        (${escapeHTML(year)})
+                      `
                       : ""
                   }
+
                 </p>
               `
               : ""
           }
+
+          ${renderInventoryBadge(
+            availability
+          )}
 
           <div class="part-card-actions">
 
@@ -522,6 +882,12 @@
     `;
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Render Results
+   * ---------------------------------------------------------
+   */
+
   function renderResults() {
     const elements = getElements();
 
@@ -534,11 +900,16 @@
     if (!filteredParts.length) {
       elements.results.innerHTML = `
         <div class="search-empty">
-          <h3>No parts found</h3>
+
+          <h3>
+            No parts found
+          </h3>
+
           <p>
             Try another OEM number, part name,
             brand, model, or category.
           </p>
+
         </div>
       `;
 
@@ -550,6 +921,12 @@
         .map(renderPartCard)
         .join("");
   }
+
+  /**
+   * ---------------------------------------------------------
+   * Find Parts
+   * ---------------------------------------------------------
+   */
 
   function findPartById(id) {
     const target = normalize(id);
@@ -588,13 +965,21 @@
 
     return parts.filter(
       (part) =>
-        normalize(getOEM(part)).includes(target)
+        normalize(
+          getOEM(part)
+        ).includes(target)
     );
   }
 
   function getPartDetails(id) {
     return findPartById(id);
   }
+
+  /**
+   * ---------------------------------------------------------
+   * Suggestions
+   * ---------------------------------------------------------
+   */
 
   function showSuggestions() {
     const elements = getElements();
@@ -614,11 +999,20 @@
 
     const matches = parts
       .filter((part) => {
+        const model =
+          getModel(part);
+
+        const modelText =
+          Array.isArray(model)
+            ? model.join(" ")
+            : model;
+
         const text = [
           getOEM(part),
           getPartName(part),
           getBrand(part),
-          getModel(part)
+          modelText,
+          getCategory(part)
         ]
           .map(normalize)
           .join(" ");
@@ -636,9 +1030,14 @@
     elements.suggestions.innerHTML =
       matches
         .map((part) => {
-          const id = getPartId(part);
-          const oem = getOEM(part);
-          const name = getPartName(part);
+          const id =
+            getPartId(part);
+
+          const oem =
+            getOEM(part);
+
+          const name =
+            getPartName(part);
 
           return `
             <button
@@ -647,8 +1046,11 @@
               data-part-suggestion
               data-part-id="${escapeHTML(id)}"
             >
+
               <strong>
-                ${escapeHTML(oem || name)}
+                ${escapeHTML(
+                  oem || name
+                )}
               </strong>
 
               ${
@@ -660,6 +1062,7 @@
                   `
                   : ""
               }
+
             </button>
           `;
         })
@@ -677,6 +1080,12 @@
 
     elements.suggestions.hidden = true;
   }
+
+  /**
+   * ---------------------------------------------------------
+   * Form Events
+   * ---------------------------------------------------------
+   */
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -753,6 +1162,12 @@
     renderResults();
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Part Selection
+   * ---------------------------------------------------------
+   */
+
   function handleViewPart(id) {
     const part =
       findPartById(id);
@@ -767,44 +1182,68 @@
         {
           detail: {
             part,
-            id
+            id,
+            inventory:
+              getInventoryAvailability(part)
           }
         }
       )
     );
   }
+
+  /**
+   * ---------------------------------------------------------
+   * Inquiry
+   * ---------------------------------------------------------
+   */
 
   function handleInquiry(part) {
     if (!part) {
       return;
     }
 
+    const inventory =
+      getInventoryAvailability(part);
+
     document.dispatchEvent(
       new CustomEvent(
         "alDahayanPartInquiry",
         {
           detail: {
-            part
+            part,
+            inventory
           }
         }
       )
     );
 
     const inquiryPage =
-      typeof window.getPagePath === "function"
-        ? window.getPagePath("inquiry.html")
+      typeof window.getPagePath ===
+      "function"
+        ? window.getPagePath(
+            "inquiry.html"
+          )
         : "../pages/inquiry.html";
 
-    const id = getPartId(part);
+    const id =
+      getPartId(part);
 
     if (id) {
       window.location.href =
-        `${inquiryPage}?part=${encodeURIComponent(id)}`;
+        `${inquiryPage}?part=${encodeURIComponent(
+          id
+        )}`;
     } else {
       window.location.href =
         inquiryPage;
     }
   }
+
+  /**
+   * ---------------------------------------------------------
+   * Bind Events
+   * ---------------------------------------------------------
+   */
 
   function bindEvents() {
     const elements = getElements();
@@ -930,14 +1369,48 @@
         }
       }
     );
+
+    /*
+     * Inventory changes should refresh
+     * public part cards.
+     */
+    document.addEventListener(
+      "alDahayanInventoryReady",
+      () => {
+        renderResults();
+      }
+    );
+
+    document.addEventListener(
+      "alDahayanInventoryUpdated",
+      () => {
+        renderResults();
+      }
+    );
   }
+
+  /**
+   * ---------------------------------------------------------
+   * Refresh
+   * ---------------------------------------------------------
+   */
+
+  function refresh() {
+    updateFilterOptions();
+    applyFilters();
+  }
+
+  /**
+   * ---------------------------------------------------------
+   * Initialize
+   * ---------------------------------------------------------
+   */
 
   async function initializePartsSearch() {
     if (initialized) {
+      refresh();
       return;
     }
-
-    initialized = true;
 
     try {
       await Promise.all([
@@ -948,6 +1421,8 @@
       updateFilterOptions();
       bindEvents();
       renderResults();
+
+      initialized = true;
 
       document.dispatchEvent(
         new CustomEvent(
@@ -966,15 +1441,21 @@
         error
       );
 
-      const elements = getElements();
+      const elements =
+        getElements();
 
       if (elements.results) {
         elements.results.innerHTML = `
           <div class="search-error">
-            <h3>Unable to load parts</h3>
+
+            <h3>
+              Unable to load parts
+            </h3>
+
             <p>
               Please try again later.
             </p>
+
           </div>
         `;
       }
@@ -986,10 +1467,21 @@
     }
   }
 
-  window.AlDahayanPartsSearch = {
-    init: initializePartsSearch,
+  /**
+   * ---------------------------------------------------------
+   * Public API
+   * ---------------------------------------------------------
+   */
 
-    load: loadParts,
+  window.AlDahayanPartsSearch = {
+
+    init:
+      initializePartsSearch,
+
+    load:
+      loadParts,
+
+    refresh,
 
     search: function (filters = {}) {
       state.query =
@@ -1012,7 +1504,8 @@
       return [...filteredParts];
     },
 
-    reset: resetSearch,
+    reset:
+      resetSearch,
 
     getAll: function () {
       return [...parts];
@@ -1022,13 +1515,23 @@
       return [...filteredParts];
     },
 
-    findById: findPartById,
+    findById:
+      findPartById,
 
-    findByOEM: findByOEM,
+    findByOEM:
+      findByOEM,
 
-    searchByOEM: searchByOEM,
+    searchByOEM:
+      searchByOEM,
 
-    getDetails: getPartDetails,
+    getDetails:
+      getPartDetails,
+
+    getInventoryAvailability:
+      getInventoryAvailability,
+
+    getStockLabel:
+      getInventoryStatusLabel,
 
     getCategories: function () {
       return [...categories];
@@ -1042,7 +1545,14 @@
 
     getModels: function () {
       return uniqueSorted(
-        parts.map(getModel)
+        parts.flatMap((part) => {
+          const model =
+            getModel(part);
+
+          return Array.isArray(model)
+            ? model
+            : [model];
+        })
       );
     },
 
@@ -1050,15 +1560,27 @@
       return {
         ...state
       };
+    },
+
+    isInitialized: function () {
+      return initialized;
     }
   };
 
   window.initializePartsSearch =
     initializePartsSearch;
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    initializePartsSearch
-  );
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializePartsSearch,
+      { once: true }
+    );
+  } else {
+    initializePartsSearch();
+  }
 
 })();
