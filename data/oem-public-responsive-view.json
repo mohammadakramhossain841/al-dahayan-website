@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Responsive display configuration for Toyota and Lexus OEM catalog pages across mobile, tablet and desktop devices.",
+  "enabled": true,
+
+  "breakpoints": {
+    "mobile": {
+      "maxWidth": 767,
+      "columns": 1
+    },
+    "tablet": {
+      "minWidth": 768,
+      "maxWidth": 1023,
+      "columns": 2
+    },
+    "desktop": {
+      "minWidth": 1024,
+      "columns": 3
+    },
+    "largeDesktop": {
+      "minWidth": 1440,
+      "columns": 4
+    }
+  },
+
+  "catalog": {
+    "responsiveGrid": true,
+    "fluidContainer": true,
+    "responsiveImages": true,
+    "responsiveFilters": true,
+    "responsivePagination": true,
+    "responsiveBreadcrumbs": true
+  },
+
+  "mobile": {
+    "stackFilters": true,
+    "collapsibleFilters": true,
+    "stickySearch": false,
+    "showCompactCards": true,
+    "showTouchFriendlyActions": true,
+    "minimumTouchTarget": 44
+  },
+
+  "tablet": {
+    "showTwoColumnLayout": true,
+    "allowExpandableFilters": true,
+    "showResponsiveCards": true
+  },
+
+  "desktop": {
+    "showMultiColumnCatalog": true,
+    "showExpandedFilters": true,
+    "showFullPartInformation": true
+  },
+
+  "images": {
+    "useResponsiveSizing": true,
+    "preserveAspectRatio": true,
+    "lazyLoad": true,
+    "avoidLayoutShift": true
+  },
+
+  "performance": {
+    "lazyLoadImages": true,
+    "deferNonCriticalContent": true,
+    "avoidLoadingHiddenContent": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "visibility": {
+    "publishedRecordsOnly": true,
+    "publicRecordsOnly": true,
+    "hideArchived": true,
+    "hideDisabled": true
+  },
+
+  "safety": {
+    "avoidHorizontalOverflow": true,
+    "neverHideRequiredInformation": true,
+    "neverExposeInternalData": true,
+    "neverExposePrivateInventoryData": true
+  }
+}
