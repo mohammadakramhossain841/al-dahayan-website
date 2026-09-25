@@ -1,0 +1,106 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public SEO configuration for Toyota and Lexus OEM catalog pages.",
+  "enabled": true,
+
+  "indexing": {
+    "allowIndex": true,
+    "allowFollow": true,
+    "indexPublishedRecordsOnly": true,
+    "excludeArchivedRecords": true,
+    "excludeDisabledRecords": true,
+    "excludePrivateRecords": true
+  },
+
+  "metadata": {
+    "title": {
+      "enabled": true,
+      "includePartName": true,
+      "includeOemNumber": true,
+      "includeBrand": true,
+      "maxLength": 60
+    },
+
+    "description": {
+      "enabled": true,
+      "includePartName": true,
+      "includeOemNumber": true,
+      "includeBrand": true,
+      "includeCompatibility": true,
+      "maxLength": 160
+    },
+
+    "keywords": {
+      "enabled": false
+    }
+  },
+
+  "canonical": {
+    "enabled": true,
+    "usePublicUrlOnly": true,
+    "removeInternalParameters": true,
+    "preserveLanguage": true
+  },
+
+  "structuredData": {
+    "enabled": true,
+    "product": true,
+    "breadcrumb": true,
+    "organization": true,
+    "website": true
+  },
+
+  "openGraph": {
+    "enabled": true,
+    "title": true,
+    "description": true,
+    "image": true,
+    "url": true,
+    "type": "website"
+  },
+
+  "twitterCard": {
+    "enabled": true,
+    "cardType": "summary_large_image",
+    "title": true,
+    "description": true,
+    "image": true
+  },
+
+  "images": {
+    "usePrimaryImage": true,
+    "requireAbsoluteUrl": true,
+    "generateAltText": true,
+    "includeOemNumberInAltText": true,
+    "includePartNameInAltText": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true,
+    "generateLanguageAlternates": true
+  },
+
+  "sitemap": {
+    "includePublishedRecords": true,
+    "excludeArchivedRecords": true,
+    "excludeDisabledRecords": true,
+    "includeCatalogPages": true,
+    "includeCategoryPages": true,
+    "includeVehiclePages": true
+  },
+
+  "safety": {
+    "neverIndexAdminPages": true,
+    "neverIndexPrivateData": true,
+    "neverExposeInternalRecordIds": true,
+    "neverExposeSupplierInformation": true,
+    "neverExposeInternalPricingNotes": true,
+    "neverPublishUnverifiedCompatibilityAsVerified": true
+  }
+}
