@@ -1,0 +1,162 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin pricing view configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Pricing",
+    "defaultPageSize": 20,
+    "allowFiltering": true,
+    "allowSorting": true,
+    "allowSearch": true
+  },
+
+  "columns": [
+    {
+      "field": "oemNumber",
+      "label": "OEM Number",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "partName",
+      "label": "Part Name",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "brand",
+      "label": "Brand",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "currency",
+      "label": "Currency",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "regularPrice",
+      "label": "Regular Price",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "salePrice",
+      "label": "Sale Price",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "discountPercent",
+      "label": "Discount %",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "priceVisibility",
+      "label": "Price Visibility",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "updatedAt",
+      "label": "Updated",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    }
+  ],
+
+  "filters": [
+    "brand",
+    "category",
+    "currency",
+    "priceVisibility",
+    "priceType",
+    "status"
+  ],
+
+  "search": {
+    "enabled": true,
+    "fields": [
+      "oemNumber",
+      "partName",
+      "arabicName"
+    ],
+    "allowPartialMatch": true,
+    "allowExactMatch": true,
+    "allowArabicSearch": true
+  },
+
+  "pricingRules": {
+    "allowRegularPriceEdit": true,
+    "allowSalePriceEdit": true,
+    "allowDiscountEdit": true,
+    "allowCurrencyEdit": true,
+    "preventNegativePrices": true,
+    "requireNumericPrices": true,
+    "salePriceCannotExceedRegularPrice": true,
+    "automaticallyCalculateDiscount": true,
+    "preserveManualDiscount": false
+  },
+
+  "bulkActions": {
+    "enabled": true,
+    "allowBulkPriceUpdate": true,
+    "allowBulkDiscountUpdate": true,
+    "allowBulkCurrencyUpdate": true,
+    "requirePreview": true,
+    "requireConfirmation": true,
+    "maximumSelectedRecords": 5000
+  },
+
+  "actions": {
+    "view": true,
+    "edit": true,
+    "save": true,
+    "restorePreviousPrice": true,
+    "viewHistory": true,
+    "export": true
+  },
+
+  "history": {
+    "enabled": true,
+    "recordPreviousPrice": true,
+    "recordNewPrice": true,
+    "recordPreviousDiscount": true,
+    "recordNewDiscount": true,
+    "recordCurrencyChange": true,
+    "recordChangedBy": true,
+    "recordTimestamp": true,
+    "requireChangeReason": true
+  },
+
+  "permissions": {
+    "view": "oem.price_view",
+    "edit": "oem.price_update",
+    "bulkEdit": "oem.price_update",
+    "export": "oem.export",
+    "history": "oem.history_view",
+    "rollback": "oem.price_rollback"
+  },
+
+  "safety": {
+    "neverAllowNegativePrices": true,
+    "neverUpdateWithoutValidation": true,
+    "neverUpdateWithoutAudit": true,
+    "neverDeletePriceHistory": true,
+    "requireConfirmationForBulkChanges": true,
+    "preservePreviousValues": true
+  }
+}
