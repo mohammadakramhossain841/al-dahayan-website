@@ -1,20 +1,206 @@
+/* =========================================
+   AL-DAHAYAN SHARED UTILITIES
+   Centralized, Safe & Config-Aware
+========================================= */
+
 (function () {
   "use strict";
 
-  /*
-   * Al-Dahayan Shared Utilities
-   *
-   * Common helper functions used across
-   * the website frontend.
-   */
+  /* =========================================
+     CONFIG
+  ========================================= */
 
-  function qs(selector, parent = document) {
-    return parent.querySelector(selector);
+  function getConfig() {
+    return window.AlDahayanConfig || null;
   }
 
-  function qsa(selector, parent = document) {
+  function getEffectiveConfig() {
+    const config = getConfig();
+
+    if (
+      config &&
+      typeof config.getEffectiveAppConfig ===
+        "function"
+    ) {
+      return config.getEffectiveAppConfig();
+    }
+
+    return config || {};
+  }
+
+  function getRootPath() {
+    const config =
+      getEffectiveConfig();
+
+    if (
+      config.paths &&
+      typeof config.paths.root ===
+        "string"
+    ) {
+      return config.paths.root;
+    }
+
+    if (
+      typeof window.getProjectRoot ===
+      "function"
+    ) {
+      return window.getProjectRoot();
+    }
+
+    const path =
+      window.location.pathname || "";
+
+    if (
+      path.includes("/pages/") ||
+      path.includes("/admin/")
+    ) {
+      return "../";
+    }
+
+    return "./";
+  }
+
+  function getDataPath(
+    file
+  ) {
+    if (!file) {
+      return null;
+    }
+
+    const config =
+      getEffectiveConfig();
+
+    if (
+      config.paths &&
+      typeof config.paths.data ===
+        "string"
+    ) {
+      return (
+        config.paths.data +
+        String(file).replace(
+          /^\/+/,
+          ""
+        )
+      );
+    }
+
+    return (
+      getRootPath() +
+      "data/" +
+      String(file).replace(
+        /^\/+/,
+        ""
+      )
+    );
+  }
+
+  function getPagePath(
+    file
+  ) {
+    if (!file) {
+      return null;
+    }
+
+    const config =
+      getEffectiveConfig();
+
+    if (
+      config.paths &&
+      typeof config.paths.pages ===
+        "string"
+    ) {
+      return (
+        config.paths.pages +
+        String(file).replace(
+          /^\/+/,
+          ""
+        )
+      );
+    }
+
+    return (
+      getRootPath() +
+      "pages/" +
+      String(file).replace(
+        /^\/+/,
+        ""
+      )
+    );
+  }
+
+  function getComponentPath(
+    file
+  ) {
+    if (!file) {
+      return null;
+    }
+
+    const config =
+      getEffectiveConfig();
+
+    if (
+      config.paths &&
+      typeof config.paths.components ===
+        "string"
+    ) {
+      return (
+        config.paths.components +
+        String(file).replace(
+          /^\/+/,
+          ""
+        )
+      );
+    }
+
+    return (
+      getRootPath() +
+      "components/" +
+      String(file).replace(
+        /^\/+/,
+        ""
+      )
+    );
+  }
+
+  /* =========================================
+     DOM
+  ========================================= */
+
+  function qs(
+    selector,
+    parent = document
+  ) {
+    if (
+      !selector ||
+      !parent ||
+      typeof parent.querySelector !==
+        "function"
+    ) {
+      return null;
+    }
+
+    return parent.querySelector(
+      selector
+    );
+  }
+
+  function qsa(
+    selector,
+    parent = document
+  ) {
+    if (
+      !selector ||
+      !parent ||
+      typeof parent.querySelectorAll !==
+        "function"
+    ) {
+      return [];
+    }
+
     return Array.from(
-      parent.querySelectorAll(selector)
+      parent.querySelectorAll(
+        selector
+      )
     );
   }
 
@@ -23,8 +209,10 @@
     parent = document
   ) {
     if (
+      typeof Element !==
+      "undefined" &&
       selectorOrElement instanceof
-      Element
+        Element
     ) {
       return selectorOrElement;
     }
@@ -46,6 +234,14 @@
     tagName,
     options = {}
   ) {
+    if (
+      !tagName ||
+      typeof document.createElement !==
+        "function"
+    ) {
+      return null;
+    }
+
     const element =
       document.createElement(
         tagName
@@ -57,7 +253,8 @@
     }
 
     if (options.id) {
-      element.id = options.id;
+      element.id =
+        options.id;
     }
 
     if (
@@ -68,9 +265,12 @@
         options.textContent;
     }
 
-    if (options.html) {
+    if (
+      options.html !==
+      undefined
+    ) {
       element.innerHTML =
-        options.html;
+        String(options.html);
     }
 
     if (options.attributes) {
@@ -97,8 +297,14 @@
         options.dataset
       ).forEach(
         ([key, value]) => {
-          element.dataset[key] =
-            String(value);
+          if (
+            value !==
+              undefined &&
+            value !== null
+          ) {
+            element.dataset[key] =
+              String(value);
+          }
         }
       );
     }
@@ -106,15 +312,23 @@
     return element;
   }
 
-  function normalizeText(value) {
-    return String(value || "")
+  /* =========================================
+     TEXT / NORMALIZATION
+  ========================================= */
+
+  function normalizeText(
+    value
+  ) {
+    return String(value ?? "")
       .toLowerCase()
       .trim()
       .replace(/\s+/g, " ");
   }
 
-  function normalizeOEM(value) {
-    return String(value || "")
+  function normalizeOEM(
+    value
+  ) {
+    return String(value ?? "")
       .toUpperCase()
       .replace(
         /[\s\-_.]/g,
@@ -122,18 +336,57 @@
       );
   }
 
-  function normalizeVIN(value) {
-    return String(value || "")
+  function isValidOEM(
+    value
+  ) {
+    const normalized =
+      normalizeOEM(value);
+
+    if (!normalized) {
+      return false;
+    }
+
+    /*
+     * OEM values may contain
+     * letters and numbers.
+     */
+    return /^[A-Z0-9]+$/.test(
+      normalized
+    );
+  }
+
+  function normalizeVIN(
+    value
+  ) {
+    return String(value ?? "")
       .toUpperCase()
       .replace(
         /[^A-Z0-9]/g,
         ""
       )
+      .replace(
+        /[IOQ]/g,
+        ""
+      )
       .slice(0, 17);
   }
 
-  function normalizePhone(value) {
-    return String(value || "")
+  function isValidVIN(
+    value
+  ) {
+    const vin =
+      normalizeVIN(value);
+
+    return (
+      vin.length === 17 &&
+      !/[IOQ]/.test(vin)
+    );
+  }
+
+  function normalizePhone(
+    value
+  ) {
+    return String(value ?? "")
       .replace(
         /[^0-9+]/g,
         ""
@@ -144,7 +397,29 @@
       );
   }
 
-  function escapeHTML(value) {
+  function isValidPhone(
+    value
+  ) {
+    const phone =
+      normalizePhone(value);
+
+    return (
+      /^\d{7,15}$/.test(
+        phone
+      )
+    );
+  }
+
+  function escapeHTML(
+    value
+  ) {
+    if (
+      typeof document ===
+      "undefined"
+    ) {
+      return String(value ?? "");
+    }
+
     const div =
       document.createElement(
         "div"
@@ -156,7 +431,9 @@
     return div.innerHTML;
   }
 
-  function isEmpty(value) {
+  function isEmpty(
+    value
+  ) {
     if (
       value === null ||
       value === undefined
@@ -179,6 +456,16 @@
       return value.length === 0;
     }
 
+    if (
+      typeof value ===
+      "object"
+    ) {
+      return (
+        Object.keys(value).length ===
+        0
+      );
+    }
+
     return false;
   }
 
@@ -187,9 +474,10 @@
   ) {
     return [
       ...new Set(
-        (Array.isArray(values)
-          ? values
-          : []
+        (
+          Array.isArray(values)
+            ? values
+            : []
         )
           .filter(
             (value) =>
@@ -197,12 +485,96 @@
                 undefined &&
               value !== null
           )
-          .map((value) =>
-            String(value).trim()
+          .map(
+            (value) =>
+              String(value).trim()
           )
           .filter(Boolean)
       )
     ];
+  }
+
+  /* =========================================
+     OBJECT / ARRAY
+  ========================================= */
+
+  function getNestedValue(
+    object,
+    path
+  ) {
+    if (
+      object === null ||
+      object === undefined ||
+      !path
+    ) {
+      return undefined;
+    }
+
+    return String(path)
+      .split(".")
+      .reduce(
+        (
+          current,
+          key
+        ) =>
+          current !==
+              null &&
+          current !==
+              undefined
+            ? current[key]
+            : undefined,
+        object
+      );
+  }
+
+  function setNestedValue(
+    object,
+    path,
+    value
+  ) {
+    if (
+      !object ||
+      !path
+    ) {
+      return object;
+    }
+
+    const keys =
+      String(path).split(
+        "."
+      );
+
+    let current =
+      object;
+
+    keys.forEach(
+      (key, index) => {
+        if (
+          index ===
+          keys.length - 1
+        ) {
+          current[key] =
+            value;
+          return;
+        }
+
+        if (
+          typeof current[key] !==
+            "object" ||
+          current[key] === null ||
+          Array.isArray(
+            current[key]
+          )
+        ) {
+          current[key] = {};
+        }
+
+        current =
+          current[key];
+      }
+    );
+
+    return object;
   }
 
   function sortBy(
@@ -282,8 +654,8 @@
     }
 
     return array.filter(
-      (item) => {
-        return Object.entries(
+      (item) =>
+        Object.entries(
           filters
         ).every(
           ([key, expected]) => {
@@ -313,6 +685,22 @@
               );
             }
 
+            if (
+              Array.isArray(
+                expected
+              )
+            ) {
+              return expected.some(
+                (value) =>
+                  normalizeText(
+                    actual
+                  ) ===
+                  normalizeText(
+                    value
+                  )
+              );
+            }
+
             return (
               normalizeText(
                 actual
@@ -322,80 +710,27 @@
               )
             );
           }
-        );
-      }
+        )
     );
   }
 
-  function getNestedValue(
-    object,
-    path
-  ) {
-    if (
-      !object ||
-      !path
-    ) {
-      return undefined;
-    }
+  /* =========================================
+     NUMBER / CURRENCY / DATE
+  ========================================= */
 
-    return String(path)
-      .split(".")
-      .reduce(
-        (current, key) =>
-          current !==
-              null &&
-          current !==
-              undefined
-            ? current[key]
-            : undefined,
-        object
-      );
-  }
+  function getCurrentLocale() {
+    const language =
+      document.documentElement.getAttribute(
+        "lang"
+      ) ||
+      window.AlDahayanLanguage?.getCurrent?.() ||
+      getEffectiveConfig().site
+        ?.defaultLanguage ||
+      "en";
 
-  function setNestedValue(
-    object,
-    path,
-    value
-  ) {
-    if (
-      !object ||
-      !path
-    ) {
-      return object;
-    }
-
-    const keys =
-      String(path).split(
-        "."
-      );
-
-    let current = object;
-
-    keys.forEach(
-      (key, index) => {
-        if (
-          index ===
-          keys.length - 1
-        ) {
-          current[key] =
-            value;
-          return;
-        }
-
-        if (
-          typeof current[key] !==
-            "object" ||
-          current[key] === null
-        ) {
-          current[key] = {};
-        }
-
-        current =
-          current[key];
-      }
-    );
-
-    return object;
+    return language === "ar"
+      ? "ar-SA"
+      : "en-SA";
   }
 
   function formatNumber(
@@ -414,10 +749,15 @@
     }
 
     try {
+      const {
+        locale,
+        ...formatOptions
+      } = options;
+
       return new Intl.NumberFormat(
-        options.locale ||
+        locale ||
           getCurrentLocale(),
-        options
+        formatOptions
       ).format(number);
     } catch {
       return String(number);
@@ -441,13 +781,18 @@
     }
 
     try {
+      const {
+        locale,
+        ...formatOptions
+      } = options;
+
       return new Intl.NumberFormat(
-        options.locale ||
+        locale ||
           getCurrentLocale(),
         {
           style: "currency",
           currency,
-          ...options
+          ...formatOptions
         }
       ).format(number);
     } catch {
@@ -475,29 +820,24 @@
     }
 
     try {
+      const {
+        locale,
+        ...formatOptions
+      } = options;
+
       return new Intl.DateTimeFormat(
-        options.locale ||
+        locale ||
           getCurrentLocale(),
-        options
+        formatOptions
       ).format(date);
     } catch {
       return date.toLocaleDateString();
     }
   }
 
-  function getCurrentLocale() {
-    const language =
-      document.documentElement.getAttribute(
-        "lang"
-      ) ||
-      window.APP_CONFIG?.site
-        ?.defaultLanguage ||
-      "en";
-
-    return language === "ar"
-      ? "ar-SA"
-      : "en-SA";
-  }
+  /* =========================================
+     URL
+  ========================================= */
 
   function getURLParams() {
     const params =
@@ -519,6 +859,10 @@
   function getURLParam(
     name
   ) {
+    if (!name) {
+      return null;
+    }
+
     return new URLSearchParams(
       window.location.search
     ).get(name);
@@ -529,6 +873,10 @@
     value,
     options = {}
   ) {
+    if (!name) {
+      return null;
+    }
+
     const url =
       new URL(
         window.location.href
@@ -571,25 +919,144 @@
     return url;
   }
 
+  function isSafeExternalURL(
+    value,
+    options = {}
+  ) {
+    if (!value) {
+      return false;
+    }
+
+    try {
+      const url =
+        new URL(
+          value,
+          window.location.origin
+        );
+
+      if (
+        url.protocol !==
+          "http:" &&
+        url.protocol !==
+          "https:"
+      ) {
+        return false;
+      }
+
+      if (
+        options.sameOriginOnly ===
+        true
+      ) {
+        return (
+          url.origin ===
+          window.location.origin
+        );
+      }
+
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function isSafeWhatsAppURL(
+    value
+  ) {
+    if (!value) {
+      return false;
+    }
+
+    try {
+      const url =
+        new URL(
+          value,
+          window.location.origin
+        );
+
+      return (
+        url.protocol ===
+          "https:" &&
+        (
+          url.hostname ===
+            "wa.me" ||
+          url.hostname ===
+            "api.whatsapp.com" ||
+          url.hostname.endsWith(
+            ".whatsapp.com"
+          )
+        )
+      );
+    } catch {
+      return false;
+    }
+  }
+
+  function buildWhatsAppURL(
+    phone,
+    message = ""
+  ) {
+    const normalized =
+      normalizePhone(phone);
+
+    if (
+      !normalized
+    ) {
+      return "";
+    }
+
+    const url =
+      new URL(
+        `https://wa.me/${normalized}`
+      );
+
+    if (message) {
+      url.searchParams.set(
+        "text",
+        String(message)
+      );
+    }
+
+    return url.toString();
+  }
+
+  /* =========================================
+     TIMING
+  ========================================= */
+
   function debounce(
     callback,
     delay = 300
   ) {
-    let timeoutId = null;
+    let timeoutId =
+      null;
 
-    return function (...args) {
-      clearTimeout(
-        timeoutId
-      );
+    const debounced =
+      function (...args) {
+        clearTimeout(
+          timeoutId
+        );
 
-      timeoutId =
-        setTimeout(() => {
-          callback.apply(
-            this,
-            args
+        timeoutId =
+          setTimeout(
+            () => {
+              callback.apply(
+                this,
+                args
+              );
+            },
+            delay
           );
-        }, delay);
-    };
+      };
+
+    debounced.cancel =
+      function () {
+        clearTimeout(
+          timeoutId
+        );
+        timeoutId = null;
+      };
+
+    return debounced;
   }
 
   function throttle(
@@ -597,9 +1064,13 @@
     delay = 300
   ) {
     let waiting = false;
+    let lastArgs = null;
+    let lastThis = null;
 
     return function (...args) {
       if (waiting) {
+        lastArgs = args;
+        lastThis = this;
         return;
       }
 
@@ -610,16 +1081,92 @@
 
       waiting = true;
 
-      setTimeout(() => {
-        waiting = false;
-      }, delay);
+      setTimeout(
+        () => {
+          waiting = false;
+
+          if (lastArgs) {
+            const argsToUse =
+              lastArgs;
+            const thisToUse =
+              lastThis;
+
+            lastArgs = null;
+            lastThis = null;
+
+            callback.apply(
+              thisToUse,
+              argsToUse
+            );
+          }
+        },
+        delay
+      );
     };
   }
+
+  /* =========================================
+     NETWORK / JSON
+  ========================================= */
 
   async function fetchJSON(
     url,
     options = {}
   ) {
+    if (!url) {
+      throw new Error(
+        "A JSON URL is required."
+      );
+    }
+
+    const response =
+      await fetch(
+        url,
+        {
+          ...options,
+          headers: {
+            Accept:
+              "application/json",
+            ...(options.headers ||
+              {})
+          }
+        }
+      );
+
+    if (!response.ok) {
+      throw new Error(
+        `Request failed: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const contentType =
+      response.headers.get(
+        "content-type"
+      ) || "";
+
+    if (
+      !contentType.includes(
+        "application/json"
+      )
+    ) {
+      throw new Error(
+        "Expected a JSON response."
+      );
+    }
+
+    return response.json();
+  }
+
+  async function fetchText(
+    url,
+    options = {}
+  ) {
+    if (!url) {
+      throw new Error(
+        "A URL is required."
+      );
+    }
+
     const response =
       await fetch(
         url,
@@ -632,13 +1179,21 @@
       );
     }
 
-    return response.json();
+    return response.text();
   }
+
+  /* =========================================
+     LOCAL STORAGE
+  ========================================= */
 
   function readLocalStorage(
     key,
     fallback = null
   ) {
+    if (!key) {
+      return fallback;
+    }
+
     try {
       const value =
         localStorage.getItem(
@@ -663,6 +1218,10 @@
     key,
     value
   ) {
+    if (!key) {
+      return false;
+    }
+
     try {
       localStorage.setItem(
         key,
@@ -678,6 +1237,10 @@
   function removeLocalStorage(
     key
   ) {
+    if (!key) {
+      return false;
+    }
+
     try {
       localStorage.removeItem(
         key
@@ -688,6 +1251,10 @@
       return false;
     }
   }
+
+  /* =========================================
+     ID / TIMESTAMP
+  ========================================= */
 
   function generateID(
     prefix = "ID"
@@ -703,8 +1270,18 @@
         .substring(2, 8)
         .toUpperCase();
 
-    return `${prefix}-${timestamp}-${random}`;
+    return `${String(
+      prefix
+    ).toUpperCase()}-${timestamp}-${random}`;
   }
+
+  function getTimestamp() {
+    return new Date().toISOString();
+  }
+
+  /* =========================================
+     UI
+  ========================================= */
 
   function scrollToElement(
     element,
@@ -736,7 +1313,9 @@
     value
   ) {
     if (
-      !navigator.clipboard
+      !navigator.clipboard ||
+      typeof navigator.clipboard.writeText !==
+        "function"
     ) {
       return false;
     }
@@ -781,6 +1360,10 @@
     ).matches;
   }
 
+  /* =========================================
+     CLASS / EVENTS
+  ========================================= */
+
   function addClass(
     element,
     className
@@ -788,7 +1371,10 @@
     const target =
       getElement(element);
 
-    if (!target) {
+    if (
+      !target ||
+      !className
+    ) {
       return false;
     }
 
@@ -806,7 +1392,10 @@
     const target =
       getElement(element);
 
-    if (!target) {
+    if (
+      !target ||
+      !className
+    ) {
       return false;
     }
 
@@ -825,7 +1414,10 @@
     const target =
       getElement(element);
 
-    if (!target) {
+    if (
+      !target ||
+      !className
+    ) {
       return false;
     }
 
@@ -844,7 +1436,12 @@
     const target =
       getElement(element);
 
-    if (!target) {
+    if (
+      !target ||
+      !event ||
+      typeof handler !==
+        "function"
+    ) {
       return false;
     }
 
@@ -857,11 +1454,48 @@
     return true;
   }
 
+  function off(
+    element,
+    event,
+    handler,
+    options
+  ) {
+    const target =
+      getElement(element);
+
+    if (
+      !target ||
+      !event ||
+      typeof handler !==
+        "function"
+    ) {
+      return false;
+    }
+
+    target.removeEventListener(
+      event,
+      handler,
+      options
+    );
+
+    return true;
+  }
+
   function dispatch(
     eventName,
-    detail = {}
+    detail = {},
+    target = document
   ) {
-    document.dispatchEvent(
+    if (
+      !eventName ||
+      !target ||
+      typeof target.dispatchEvent !==
+        "function"
+    ) {
+      return false;
+    }
+
+    target.dispatchEvent(
       new CustomEvent(
         eventName,
         {
@@ -869,62 +1503,109 @@
         }
       )
     );
+
+    return true;
   }
 
+  /* =========================================
+     PUBLIC API
+  ========================================= */
+
   window.AlDahayanUtils = {
+
+    /* Config / paths */
+    getConfig,
+    getEffectiveConfig,
+    getRootPath,
+    getDataPath,
+    getPagePath,
+    getComponentPath,
+
+    /* DOM */
     qs,
     qsa,
     getElement,
     createElement,
 
+    /* Normalization */
     normalizeText,
     normalizeOEM,
+    isValidOEM,
     normalizeVIN,
+    isValidVIN,
     normalizePhone,
+    isValidPhone,
 
+    /* Safety */
     escapeHTML,
-    isEmpty,
+    isSafeExternalURL,
+    isSafeWhatsAppURL,
+    buildWhatsAppURL,
 
+    /* Values */
+    isEmpty,
     getUniqueValues,
+
+    /* Objects / arrays */
     sortBy,
     filterBy,
     getNestedValue,
     setNestedValue,
 
+    /* Formatting */
     formatNumber,
     formatCurrency,
     formatDate,
     getCurrentLocale,
 
+    /* URL */
     getURLParams,
     getURLParam,
     setURLParam,
 
+    /* Timing */
     debounce,
     throttle,
 
+    /* Network */
     fetchJSON,
+    fetchText,
 
+    /* Storage */
     readLocalStorage,
     writeLocalStorage,
     removeLocalStorage,
 
+    /* IDs */
     generateID,
+    getTimestamp,
 
+    /* UI */
     scrollToElement,
     copyToClipboard,
 
+    /* Responsive / RTL */
     isRTL,
     isMobile,
     isTablet,
     isDesktop,
 
+    /* Classes */
     addClass,
     removeClass,
     toggleClass,
 
+    /* Events */
     on,
+    off,
     dispatch
   };
+
+  /* =========================================
+     LEGACY GLOBAL SUPPORT
+  ========================================= */
+
+  window.AlDahayanUtilsReady =
+    true;
 
 })();
