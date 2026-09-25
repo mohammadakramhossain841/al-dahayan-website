@@ -1,0 +1,803 @@
+openapi: 3.0.3
+
+info:
+  title: Al-Dahayan Admin API
+  version: 1.0.0
+  description: >
+    Protected administrative API contract for managing Toyota and Lexus
+    OEM catalog, inventory, pricing, images, compatibility and imports.
+
+servers:
+  - url: /api/v1/admin
+    description: Protected Admin API
+
+tags:
+  - name: OEM
+  - name: Inventory
+  - name: Pricing
+  - name: Images
+  - name: Compatibility
+  - name: Import
+  - name: Export
+  - name: Audit
+
+security:
+  - bearerAuth: []
+
+paths:
+
+  /oem:
+    get:
+      tags:
+        - OEM
+      summary: List OEM records
+      operationId: adminListOem
+
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Search"
+
+      responses:
+        "200":
+          description: OEM records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OemListResponse"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+    post:
+      tags:
+        - OEM
+      summary: Create OEM record
+      operationId: adminCreateOem
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OemCreateRequest"
+
+      responses:
+        "201":
+          description: OEM record created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OemResponse"
+
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+        "409":
+          $ref: "#/components/responses/Conflict"
+
+
+  /oem/{oemId}:
+    get:
+      tags:
+        - OEM
+      summary: Get OEM record
+      operationId: adminGetOem
+
+      parameters:
+        - $ref: "#/components/parameters/OemId"
+
+      responses:
+        "200":
+          description: OEM record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OemResponse"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    patch:
+      tags:
+        - OEM
+      summary: Update OEM record
+      operationId: adminUpdateOem
+
+      parameters:
+        - $ref: "#/components/parameters/OemId"
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OemUpdateRequest"
+
+      responses:
+        "200":
+          description: OEM record updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OemResponse"
+
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+
+  /oem/{oemId}/archive:
+    post:
+      tags:
+        - OEM
+      summary: Archive OEM record
+      operationId: adminArchiveOem
+
+      parameters:
+        - $ref: "#/components/parameters/OemId"
+
+      responses:
+        "200":
+          description: OEM record archived
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+
+  /inventory/{oemId}:
+    get:
+      tags:
+        - Inventory
+      summary: Get inventory information
+      operationId: adminGetInventory
+
+      parameters:
+        - $ref: "#/components/parameters/OemId"
+
+      responses:
+        "200":
+          description: Inventory information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InventoryResponse"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+    patch:
+      tags:
+        - Inventory
+      summary: Update inventory
+      operationId: adminUpdateInventory
+
+      parameters:
+        - $ref: "#/components/parameters/OemId"
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InventoryUpdateRequest"
+
+      responses:
+        "200":
+          description: Inventory updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InventoryResponse"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+
+  /pricing/{oemId}:
+    patch:
+      tags:
+        - Pricing
+      summary: Update public pricing
+      operationId: adminUpdatePricing
+
+      parameters:
+        - $ref: "#/components/parameters/OemId"
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PricingUpdateRequest"
+
+      responses:
+        "200":
+          description: Pricing updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PricingResponse"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+
+  /images/{oemId}:
+    post:
+      tags:
+        - Images
+      summary: Add OEM image
+      operationId: adminAddImage
+
+      parameters:
+        - $ref: "#/components/parameters/OemId"
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImageRequest"
+
+      responses:
+        "201":
+          description: Image added
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+
+  /compatibility/{oemId}:
+    put:
+      tags:
+        - Compatibility
+      summary: Replace OEM compatibility
+      operationId: adminUpdateCompatibility
+
+      parameters:
+        - $ref: "#/components/parameters/OemId"
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CompatibilityUpdateRequest"
+
+      responses:
+        "200":
+          description: Compatibility updated
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+
+  /import:
+    post:
+      tags:
+        - Import
+      summary: Import OEM catalog file
+      operationId: adminImportOem
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImportRequest"
+
+      responses:
+        "202":
+          description: Import accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImportResponse"
+
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+
+  /export:
+    post:
+      tags:
+        - Export
+      summary: Export OEM catalog
+      operationId: adminExportOem
+
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExportRequest"
+
+      responses:
+        "202":
+          description: Export accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExportResponse"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+
+  /audit:
+    get:
+      tags:
+        - Audit
+      summary: Get administrative audit records
+      operationId: adminGetAudit
+
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+
+      responses:
+        "200":
+          description: Audit records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuditResponse"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+
+components:
+
+  securitySchemes:
+
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+
+  parameters:
+
+    OemId:
+      name: oemId
+      in: path
+      required: true
+      schema:
+        type: string
+
+    Page:
+      name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+
+    PageSize:
+      name: pageSize
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
+
+    Search:
+      name: search
+      in: query
+      required: false
+      schema:
+        type: string
+        maxLength: 120
+
+
+  schemas:
+
+    OemCreateRequest:
+      type: object
+      required:
+        - oemNumber
+        - partName
+        - brand
+      properties:
+        oemNumber:
+          type: string
+        partName:
+          type: string
+        brand:
+          type: string
+          enum:
+            - Toyota
+            - Lexus
+        category:
+          type: string
+        description:
+          type: string
+
+
+    OemUpdateRequest:
+      type: object
+      properties:
+        partName:
+          type: string
+        category:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        verificationStatus:
+          type: string
+
+
+    OemRecord:
+      type: object
+      properties:
+        id:
+          type: string
+        oemNumber:
+          type: string
+        partName:
+          type: string
+        brand:
+          type: string
+        category:
+          type: string
+        status:
+          type: string
+        verificationStatus:
+          type: string
+
+
+    OemResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/OemRecord"
+        requestId:
+          type: string
+
+
+    OemListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/OemRecord"
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        requestId:
+          type: string
+
+
+    InventoryUpdateRequest:
+      type: object
+      required:
+        - stockStatus
+      properties:
+        stockStatus:
+          type: string
+        quantity:
+          type: integer
+          minimum: 0
+        reorderLevel:
+          type: integer
+          minimum: 0
+
+
+    InventoryResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        oemId:
+          type: string
+        stockStatus:
+          type: string
+        quantity:
+          type: integer
+        reorderLevel:
+          type: integer
+        requestId:
+          type: string
+
+
+    PricingUpdateRequest:
+      type: object
+      properties:
+        regularPrice:
+          type: number
+          format: float
+        salePrice:
+          type: number
+          format: float
+        currency:
+          type: string
+        discountPercent:
+          type: number
+          format: float
+
+
+    PricingResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        oemId:
+          type: string
+        regularPrice:
+          type: number
+        salePrice:
+          type: number
+        currency:
+          type: string
+        discountPercent:
+          type: number
+        requestId:
+          type: string
+
+
+    ImageRequest:
+      type: object
+      required:
+        - imageUrl
+      properties:
+        imageUrl:
+          type: string
+          format: uri
+        altText:
+          type: string
+        isPrimary:
+          type: boolean
+
+
+    CompatibilityUpdateRequest:
+      type: object
+      required:
+        - vehicles
+      properties:
+        vehicles:
+          type: array
+          items:
+            type: object
+            properties:
+              make:
+                type: string
+              model:
+                type: string
+              modelYear:
+                type: integer
+              engineCode:
+                type: string
+
+
+    ImportRequest:
+      type: object
+      required:
+        - fileName
+        - fileType
+      properties:
+        fileName:
+          type: string
+        fileType:
+          type: string
+          enum:
+            - csv
+            - xlsx
+            - json
+        importMode:
+          type: string
+          enum:
+            - preview
+            - validate
+            - commit
+          default: preview
+
+
+    ImportResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        importId:
+          type: string
+        status:
+          type: string
+        totalRows:
+          type: integer
+        validRows:
+          type: integer
+        invalidRows:
+          type: integer
+        duplicateRows:
+          type: integer
+        requestId:
+          type: string
+
+
+    ExportRequest:
+      type: object
+      properties:
+        format:
+          type: string
+          enum:
+            - csv
+            - xlsx
+            - json
+        includeArchived:
+          type: boolean
+          default: false
+
+
+    ExportResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        exportId:
+          type: string
+        status:
+          type: string
+        requestId:
+          type: string
+
+
+    AuditResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              action:
+                type: string
+              resource:
+                type: string
+              resourceId:
+                type: string
+              timestamp:
+                type: string
+                format: date-time
+              adminId:
+                type: string
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        requestId:
+          type: string
+
+
+    Pagination:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+        pageSize:
+          type: integer
+        totalRecords:
+          type: integer
+        totalPages:
+          type: integer
+        hasNextPage:
+          type: boolean
+        hasPreviousPage:
+          type: boolean
+
+
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+
+
+  responses:
+
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    Forbidden:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    Conflict:
+      description: Resource conflict
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
