@@ -1,0 +1,158 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin audit and change history view configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM History",
+    "defaultPageSize": 20,
+    "allowFiltering": true,
+    "allowSorting": true,
+    "allowSearch": true
+  },
+
+  "historyTypes": [
+    "create",
+    "update",
+    "import",
+    "export",
+    "price_update",
+    "stock_update",
+    "compatibility_update",
+    "verification_update",
+    "image_update",
+    "category_update",
+    "archive",
+    "restore",
+    "publish",
+    "unpublish",
+    "rollback"
+  ],
+
+  "columns": [
+    {
+      "field": "historyId",
+      "label": "History ID",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "oemNumber",
+      "label": "OEM Number",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "action",
+      "label": "Action",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "changedFields",
+      "label": "Changed Fields",
+      "visible": true,
+      "sortable": false,
+      "searchable": true
+    },
+    {
+      "field": "changedBy",
+      "label": "Changed By",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "reason",
+      "label": "Reason",
+      "visible": true,
+      "sortable": false,
+      "searchable": true
+    },
+    {
+      "field": "timestamp",
+      "label": "Timestamp",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    }
+  ],
+
+  "filters": [
+    "action",
+    "changedBy",
+    "dateRange",
+    "oemNumber"
+  ],
+
+  "search": {
+    "enabled": true,
+    "fields": [
+      "historyId",
+      "oemNumber",
+      "action",
+      "changedBy",
+      "reason"
+    ],
+    "allowPartialMatch": true,
+    "allowExactMatch": true
+  },
+
+  "recordDetails": {
+    "showPreviousValues": true,
+    "showNewValues": true,
+    "showChangedFields": true,
+    "showReason": true,
+    "showChangedBy": true,
+    "showTimestamp": true,
+    "showSource": true
+  },
+
+  "actions": {
+    "view": true,
+    "viewRecord": true,
+    "viewFullChange": true,
+    "export": true,
+    "rollback": true
+  },
+
+  "rollback": {
+    "enabled": true,
+    "requirePermission": true,
+    "requireConfirmation": true,
+    "requireReason": true,
+    "createRestorePointBeforeRollback": true,
+    "preserveRollbackHistory": true
+  },
+
+  "permissions": {
+    "view": "oem.history_view",
+    "export": "oem.export",
+    "rollback": "oem.rollback"
+  },
+
+  "audit": {
+    "enabled": true,
+    "recordUser": true,
+    "recordTimestamp": true,
+    "recordAction": true,
+    "recordPreviousValues": true,
+    "recordNewValues": true,
+    "recordChangedFields": true,
+    "recordReason": true,
+    "recordSource": true
+  },
+
+  "safety": {
+    "historyReadOnly": true,
+    "neverDeleteHistory": true,
+    "neverModifyHistoricalRecords": true,
+    "neverAllowUnauthorizedRollback": true,
+    "requireConfirmationBeforeRollback": true,
+    "preserveCompleteAuditTrail": true
+  }
+}
