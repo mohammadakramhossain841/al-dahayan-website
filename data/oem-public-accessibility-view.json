@@ -1,0 +1,77 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public accessibility configuration for Toyota and Lexus OEM catalog pages.",
+  "enabled": true,
+
+  "keyboard": {
+    "enabled": true,
+    "keyboardNavigation": true,
+    "visibleFocus": true,
+    "skipLinks": true,
+    "escapeClosesDialogs": true
+  },
+
+  "navigation": {
+    "logicalTabOrder": true,
+    "breadcrumbNavigation": true,
+    "ariaCurrentPage": true,
+    "accessiblePagination": true
+  },
+
+  "images": {
+    "requireAltText": true,
+    "descriptiveAltText": true,
+    "decorativeImagesMarked": true
+  },
+
+  "forms": {
+    "associatedLabels": true,
+    "requiredFieldsIdentified": true,
+    "errorMessagesAssociated": true,
+    "helpTextAssociated": true,
+    "keyboardSubmission": true
+  },
+
+  "controls": {
+    "buttonsHaveAccessibleNames": true,
+    "linksHaveDescriptiveLabels": true,
+    "filtersHaveAccessibleLabels": true,
+    "searchHasAccessibleLabel": true
+  },
+
+  "content": {
+    "useSemanticHeadings": true,
+    "maintainHeadingHierarchy": true,
+    "languageAttribute": true,
+    "directionAttribute": true
+  },
+
+  "responsive": {
+    "mobileAccessible": true,
+    "tabletAccessible": true,
+    "desktopAccessible": true,
+    "avoidHorizontalOverflow": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "standards": {
+    "target": "WCAG 2.1 AA",
+    "followSemanticHtml": true,
+    "supportScreenReaders": true
+  },
+
+  "safety": {
+    "neverExposeInternalData": true,
+    "neverExposePrivateInformation": true,
+    "preserveAccessibleErrorMessages": true
+  }
+}
