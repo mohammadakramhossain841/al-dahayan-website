@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public API security configuration for Toyota and Lexus OEM catalog services.",
+  "enabled": true,
+
+  "access": {
+    "publicCatalogRead": true,
+    "publicRecordRead": true,
+    "publicSearchRead": true,
+    "publicVehicleRead": true,
+    "publicCategoryRead": true,
+    "publicCompatibilityRead": true,
+    "publicAvailabilityRead": true,
+    "publicInquiryCreate": true
+  },
+
+  "protectedOperations": {
+    "createOemRecord": true,
+    "updateOemRecord": true,
+    "deleteOemRecord": true,
+    "archiveOemRecord": true,
+    "bulkImport": true,
+    "bulkUpdate": true,
+    "bulkDelete": true,
+    "bulkExport": true,
+    "changePricing": true,
+    "changeStock": true,
+    "changeVerification": true,
+    "changeImages": true
+  },
+
+  "authentication": {
+    "publicReadRequiresLogin": false,
+    "publicWriteRequiresLogin": true,
+    "adminOperationsRequireLogin": true,
+    "adminOperationsRequirePermission": true
+  },
+
+  "dataProtection": {
+    "hideInternalRecordIds": true,
+    "hideInternalNotes": true,
+    "hideSupplierInformation": true,
+    "hidePurchasePrices": true,
+    "hideProfitMargins": true,
+    "hidePrivatePricingRules": true,
+    "hideExactInventoryLocation": true,
+    "hideCustomerInformation": true,
+    "hideAdminPermissions": true,
+    "hideAuditHistory": true
+  },
+
+  "validation": {
+    "validateQueryParameters": true,
+    "validateRequestBody": true,
+    "sanitizeInput": true,
+    "rejectUnexpectedFields": true,
+    "rejectInvalidRecordReferences": true
+  },
+
+  "rateLimiting": {
+    "enabled": true,
+    "limitPublicSearchRequests": true,
+    "limitInquiryRequests": true,
+    "limitRepeatedFailedRequests": true
+  },
+
+  "cors": {
+    "enabled": true,
+    "allowOnlyConfiguredOrigins": true,
+    "allowCredentials": false
+  },
+
+  "errors": {
+    "hideStackTraces": true,
+    "hideDatabaseErrors": true,
+    "hideInternalPaths": true,
+    "returnSafeMessages": true
+  },
+
+  "logging": {
+    "logSecurityEvents": true,
+    "logFailedRequests": true,
+    "logUnauthorizedRequests": true,
+    "neverLogCustomerSensitiveData": true
+  },
+
+  "visibility": {
+    "allowPublishedRecordsOnly": true,
+    "allowPublicRecordsOnly": true,
+    "hideArchivedRecords": true,
+    "hideDisabledRecords": true
+  }
+}
