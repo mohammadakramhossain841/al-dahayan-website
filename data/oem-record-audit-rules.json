@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level audit rules for tracking Toyota and Lexus OEM catalog changes in the Al-Dahayan platform.",
+  "enabled": true,
+  "trackedActions": [
+    "create",
+    "update",
+    "publish",
+    "archive",
+    "restore",
+    "disable",
+    "price_update",
+    "stock_update",
+    "image_update",
+    "compatibility_update",
+    "verification_update",
+    "category_update",
+    "metadata_update",
+    "import_update",
+    "rollback"
+  ],
+  "requiredFields": [
+    "auditId",
+    "recordId",
+    "action",
+    "timestamp",
+    "userId"
+  ],
+  "recordData": {
+    "recordPreviousValues": true,
+    "recordNewValues": true,
+    "recordChangedFields": true,
+    "recordOemNumber": true,
+    "recordRecordStatus": true,
+    "recordVerificationLevel": true
+  },
+  "userData": {
+    "recordUserId": true,
+    "recordUserRole": true,
+    "recordDisplayName": false,
+    "recordEmail": false
+  },
+  "source": {
+    "recordSource": true,
+    "recordSourceFile": true,
+    "recordImportId": true,
+    "recordOperationId": true
+  },
+  "reason": {
+    "requiredForSensitiveActions": true,
+    "minimumLength": 3,
+    "maximumLength": 500,
+    "sensitiveActions": [
+      "publish",
+      "archive",
+      "restore",
+      "disable",
+      "verification_update",
+      "rollback"
+    ]
+  },
+  "history": {
+    "preservePreviousValues": true,
+    "allowBeforeAfterComparison": true,
+    "recordChangedFieldsOnly": false,
+    "preserveRollbackRecords": true
+  },
+  "retention": {
+    "enabled": true,
+    "retainAuditHistory": true,
+    "allowAutomaticDeletion": false,
+    "allowManualDeletion": false
+  },
+  "security": {
+    "publicAccess": false,
+    "requireAuthentication": true,
+    "requireAdminPermission": true,
+    "auditRecordsReadOnly": true,
+    "preventAuditModification": true,
+    "excludeCredentials": true,
+    "excludeSecurityTokens": true
+  },
+  "search": {
+    "enabled": true,
+    "searchFields": [
+      "recordId",
+      "oemNumber",
+      "action",
+      "userId",
+      "operationId"
+    ],
+    "allowDateRangeFilter": true,
+    "allowActionFilter": true,
+    "allowUserFilter": true
+  },
+  "reporting": {
+    "generateRecordAuditReport": true,
+    "includeTotalChanges": true,
+    "includeChangedFields": true,
+    "includeUser": true,
+    "includeTimestamp": true,
+    "includeRollbackActions": true
+  },
+  "safety": {
+    "neverExposePrivateAuditDataPublicly": true,
+    "neverModifyAuditHistory": true,
+    "neverDeleteAuditHistoryAutomatically": true,
+    "neverStoreCredentials": true,
+    "preserveArabicText": true
+  }
+}
