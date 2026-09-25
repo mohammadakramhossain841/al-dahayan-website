@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level export rules for Toyota and Lexus OEM catalog records from the Al-Dahayan platform.",
+  "supportedFormats": [
+    "csv",
+    "xlsx",
+    "json"
+  ],
+  "exportModes": [
+    "all",
+    "selected",
+    "filtered",
+    "active",
+    "archived",
+    "disabled"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requiredPermission": "oem.export",
+    "allowPublicExport": false,
+    "requireConfirmation": true
+  },
+  "selection": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 5000,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requirePreview": true
+  },
+  "fields": {
+    "includeId": true,
+    "includeOemNumber": true,
+    "includePartName": true,
+    "includeArabicName": true,
+    "includeBrand": true,
+    "includeCategory": true,
+    "includeSubcategory": true,
+    "includeDescription": true,
+    "includeArabicDescription": true,
+    "includeVehicleCompatibility": true,
+    "includeCompatibleOemNumbers": true,
+    "includeSupersededOemNumbers": true,
+    "includePartType": true,
+    "includeCondition": true,
+    "includeGenuine": true,
+    "includeAftermarket": true,
+    "includeImages": true,
+    "includePricing": true,
+    "includeInventory": true,
+    "includeVerification": true,
+    "includeStatus": true,
+    "includeAuditMetadata": false,
+    "includePrivateNotes": false
+  },
+  "security": {
+    "excludePrivateData": true,
+    "excludeInternalNotes": true,
+    "excludeAuthenticationData": true,
+    "excludeUserCredentials": true,
+    "excludeSecurityTokens": true
+  },
+  "formatting": {
+    "preserveOemNumberFormatting": true,
+    "preserveArabicText": true,
+    "preserveArrayValues": true,
+    "preserveDecimalValues": true,
+    "includeColumnHeaders": true,
+    "useUtf8Encoding": true
+  },
+  "sorting": {
+    "defaultField": "oemNumber",
+    "defaultDirection": "ascending",
+    "allowCustomSorting": true
+  },
+  "filename": {
+    "prefix": "al-dahayan-oem-record-export",
+    "includeDate": true,
+    "includeTime": true,
+    "includeFormat": true
+  },
+  "validation": {
+    "validateBeforeExport": true,
+    "allowExportWithWarnings": true,
+    "blockExportOnErrors": false,
+    "showValidationSummary": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordExportAction": true,
+    "recordExportFormat": true,
+    "recordRecordCount": true,
+    "recordFilterCriteria": true,
+    "recordExportedBy": true,
+    "recordTimestamp": true
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalExported": true,
+    "showTotalSkipped": true,
+    "showValidationWarnings": true,
+    "generateExportReport": true
+  },
+  "safety": {
+    "neverModifyCatalogRecords": true,
+    "neverDeleteCatalogRecords": true,
+    "neverExposePrivateData": true,
+    "neverExposeSecurityCredentials": true,
+    "preserveArabicText": true
+  }
+}
