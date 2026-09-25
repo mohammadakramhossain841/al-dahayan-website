@@ -1,0 +1,119 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level bulk operation rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "enabled": true,
+  "supportedOperations": [
+    "update",
+    "price_update",
+    "stock_update",
+    "compatibility_update",
+    "status_update",
+    "verification_update",
+    "image_update",
+    "category_update",
+    "metadata_update",
+    "archive",
+    "restore"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requirePermission": true,
+    "requireConfirmation": true,
+    "requireReason": true
+  },
+  "selection": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 5000,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "requirePreview": true
+  },
+  "execution": {
+    "validateBeforeExecution": true,
+    "createOperationId": true,
+    "createAuditRecord": true,
+    "createHistoryRecord": true,
+    "processInBatches": true,
+    "batchSize": 100,
+    "showProgress": true,
+    "allowCancellationBeforeCommit": true
+  },
+  "validation": {
+    "blockCriticalErrors": true,
+    "allowWarnings": true,
+    "showValidationSummary": true,
+    "showAffectedRecords": true,
+    "showChangeSummary": true,
+    "requireFinalConfirmation": true
+  },
+  "duplicateProtection": {
+    "enabled": true,
+    "checkWithinOperation": true,
+    "checkAgainstCatalog": true,
+    "blockConfirmedDuplicates": true,
+    "requireReviewForPossibleDuplicates": true,
+    "automaticMerge": false
+  },
+  "recordProtection": {
+    "neverModifyRecordId": true,
+    "neverModifyOemNumberByDefault": true,
+    "neverDeleteRecordsAutomatically": true,
+    "neverAutomaticallyVerifyRecords": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "preserveAuditHistory": true,
+    "preserveChangeHistory": true
+  },
+  "transaction": {
+    "createRestorePoint": true,
+    "commitOnlyAfterValidation": true,
+    "preservePreviousValues": true,
+    "rollbackOnCriticalFailure": true,
+    "allowPartialSuccess": true,
+    "recordPartialSuccess": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordOperationType": true,
+    "recordSelection": true,
+    "recordPreviousValues": true,
+    "recordNewValues": true,
+    "recordChangedFields": true,
+    "recordUser": true,
+    "recordTimestamp": true,
+    "recordReason": true,
+    "recordResult": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeExecution": true,
+    "allowRollbackAfterCompletion": true,
+    "rollbackRequiresPermission": true,
+    "preserveRollbackHistory": true
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalProcessed": true,
+    "showTotalUpdated": true,
+    "showTotalSkipped": true,
+    "showTotalWarnings": true,
+    "showTotalErrors": true,
+    "generateOperationReport": true,
+    "generateChangeReport": true
+  },
+  "security": {
+    "publicExecution": false,
+    "publicAccessToOperationHistory": false,
+    "neverExposePrivateData": true,
+    "neverExposeCredentials": true,
+    "neverExposeSecurityTokens": true
+  },
+  "safety": {
+    "neverPermanentlyDeleteRecords": true,
+    "neverAutomaticallyMergeDuplicates": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "neverAutomaticallyVerifyRecords": true,
+    "neverOverwriteWithoutValidation": true,
+    "preserveDataIntegrity": true
+  }
+}
