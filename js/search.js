@@ -1,5 +1,6 @@
 /* =========================================
    AL-DAHAYAN SPARE PARTS SEARCH
+   OEM / PART SEARCH + VERIFIED INVENTORY
 ========================================= */
 
 (function () {
@@ -32,6 +33,7 @@
     for (const key of keys) {
       if (
         object &&
+        key &&
         object[key] !== undefined &&
         object[key] !== null
       ) {
@@ -40,6 +42,27 @@
     }
 
     return "";
+  }
+
+  function getDataPath(file) {
+    if (
+      window.AlDahayanConfig &&
+      typeof window.AlDahayanConfig.getDataPath ===
+        "function"
+    ) {
+      return window.AlDahayanConfig.getDataPath(
+        file
+      );
+    }
+
+    if (
+      typeof window.getDataPath ===
+      "function"
+    ) {
+      return window.getDataPath(file);
+    }
+
+    return `../data/${file}`;
   }
 
   function getPartOEM(part) {
@@ -99,21 +122,15 @@
 
   async function loadParts() {
     try {
-      if (
-        typeof window.getDataPath !==
-        "function"
-      ) {
-        throw new Error(
-          "getDataPath() is unavailable."
+      const path =
+        getDataPath(
+          "oem-parts.json"
         );
-      }
-
-      const path = window.getDataPath(
-        "oem-parts.json"
-      );
 
       const response =
-        await fetch(path);
+        await fetch(path, {
+          cache: "no-cache"
+        });
 
       if (!response.ok) {
         throw new Error(
@@ -137,6 +154,15 @@
       } else {
         parts = [];
       }
+
+      /*
+       * Do not expose inactive OEM records
+       * on the public website.
+       */
+      parts = parts.filter(
+        (part) =>
+          part.active !== false
+      );
 
       filteredParts = [...parts];
 
@@ -182,7 +208,9 @@
 
     return searchable.some(
       (value) =>
-        value.includes(normalizedQuery)
+        value.includes(
+          normalizedQuery
+        )
     );
   }
 
@@ -196,18 +224,32 @@
     }
 
     const partValue =
-      getValue(part, [
-        key,
-        key === "brand"
-          ? "make"
-          : "",
-        key === "category"
-          ? "partCategory"
-          : "",
-        key === "model"
-          ? "vehicleModel"
-          : ""
-      ].filter(Boolean));
+      getValue(
+        part,
+        [
+          key,
+          key === "brand"
+            ? "make"
+            : "",
+          key === "category"
+            ? "partCategory"
+            : "",
+          key === "model"
+            ? "vehicleModel"
+            : ""
+        ].filter(Boolean)
+      );
+
+    /*
+     * Model may be an array.
+     */
+    if (Array.isArray(partValue)) {
+      return partValue.some(
+        (item) =>
+          normalize(item) ===
+          normalize(value)
+      );
+    }
 
     return (
       normalize(partValue) ===
@@ -245,10 +287,18 @@
         ? String(options.category)
         : state.category;
 
-    state.query = query.trim();
-    state.oem = oem.trim();
-    state.brand = brand.trim();
-    state.model = model.trim();
+    state.query =
+      query.trim();
+
+    state.oem =
+      oem.trim();
+
+    state.brand =
+      brand.trim();
+
+    state.model =
+      model.trim();
+
     state.category =
       category.trim();
 
@@ -306,6 +356,8 @@
     updateResultSummary(
       filteredParts.length
     );
+
+    dispatchSearchEvent();
 
     return [
       ...filteredParts
@@ -393,9 +445,16 @@
       const candidates = [
         oem,
         name,
-        brand,
-        model
+        brand
       ];
+
+      if (Array.isArray(model)) {
+        candidates.push(
+          ...model
+        );
+      } else {
+        candidates.push(model);
+      }
 
       const matched =
         candidates.some(
@@ -440,18 +499,31 @@
       let value = "";
 
       if (key === "brand") {
-        value = getPartBrand(part);
+        value =
+          getPartBrand(part);
       }
 
       if (key === "model") {
-        value = getPartModel(part);
+        value =
+          getPartModel(part);
       }
 
       if (key === "category") {
-        value = getPartCategory(part);
+        value =
+          getPartCategory(part);
       }
 
-      if (value) {
+      if (Array.isArray(value)) {
+        value.forEach(
+          (item) => {
+            if (item) {
+              values.add(
+                String(item).trim()
+              );
+            }
+          }
+        );
+      } else if (value) {
         values.add(
           String(value).trim()
         );
@@ -529,6 +601,211 @@
   }
 
   /* =========================================
+     Inventory Integration
+  ========================================= */
+
+  function getInventoryModule() {
+    return (
+      window.AlDahayanInventory ||
+      null
+    );
+  }
+
+  function getInventoryResult(
+    part
+  ) {
+    const inventory =
+      getInventoryModule();
+
+    if (
+      !inventory ||
+      typeof inventory
+        .getVerifiedAvailability !==
+        "function"
+    ) {
+      return {
+        status: "unknown",
+        verified: false,
+        records: [],
+        message:
+          "Stock availability requires confirmation."
+      };
+    }
+
+    const oem =
+      getPartOEM(part);
+
+    if (!oem) {
+      return {
+        status: "unknown",
+        verified: false,
+        records: [],
+        message:
+          "Stock availability requires confirmation."
+      };
+    }
+
+    return inventory
+      .getVerifiedAvailability({
+        oemNumber: oem
+      });
+  }
+
+  function getStockLabel(
+    status
+  ) {
+    const labels = {
+      in_stock:
+        "IN STOCK",
+
+      low_stock:
+        "LOW STOCK",
+
+      out_of_stock:
+        "OUT OF STOCK",
+
+      on_request:
+        "ON REQUEST",
+
+      unknown:
+        "AVAILABILITY TO BE CONFIRMED"
+    };
+
+    return (
+      labels[status] ||
+      labels.unknown
+    );
+  }
+
+  function getStockClass(
+    status
+  ) {
+    const classes = {
+      in_stock:
+        "stock-in",
+
+      low_stock:
+        "stock-low",
+
+      out_of_stock:
+        "stock-out",
+
+      on_request:
+        "stock-request",
+
+      unknown:
+        "stock-unknown"
+    };
+
+    return (
+      classes[status] ||
+      classes.unknown
+    );
+  }
+
+  function createStockHTML(
+    part
+  ) {
+    const result =
+      getInventoryResult(part);
+
+    /*
+     * IMPORTANT:
+     * Unverified inventory is never
+     * presented as confirmed stock.
+     */
+
+    const label =
+      getStockLabel(
+        result.status
+      );
+
+    const stockClass =
+      getStockClass(
+        result.status
+      );
+
+    const verified =
+      result.verified === true;
+
+    let quantityHTML = "";
+
+    const config =
+      window.AlDahayanConfig;
+
+    let showQuantity = false;
+
+    if (
+      config &&
+      typeof config.getEffectiveAppConfig ===
+        "function"
+    ) {
+      const effectiveConfig =
+        config.getEffectiveAppConfig();
+
+      showQuantity =
+        effectiveConfig
+          ?.inventory
+          ?.quantityDisplay === true;
+    }
+
+    if (
+      showQuantity &&
+      verified &&
+      Array.isArray(result.records)
+    ) {
+      const quantity =
+        result.records.reduce(
+          (total, record) =>
+            total +
+            Number(
+              record.availableQuantity ||
+              0
+            ),
+          0
+        );
+
+      if (quantity > 0) {
+        quantityHTML = `
+          <span class="stock-quantity">
+            ${quantity} available
+          </span>
+        `;
+      }
+    }
+
+    return `
+      <div
+        class="part-stock-summary ${stockClass}"
+        data-stock-status="${escapeHTML(
+          result.status
+        )}"
+      >
+        <span class="stock-badge">
+          ${escapeHTML(label)}
+        </span>
+
+        ${
+          quantityHTML
+            ? quantityHTML
+            : ""
+        }
+
+        ${
+          !verified
+            ? `
+              <small class="stock-verification-note">
+                Final availability will be confirmed
+                by Al-Dahayan.
+              </small>
+            `
+            : ""
+        }
+      </div>
+    `;
+  }
+
+  /* =========================================
      Result Rendering
   ========================================= */
 
@@ -549,6 +826,7 @@
               <h3 data-i18n="noResults">
                 No results found.
               </h3>
+
               <p>
                 Try another OEM number,
                 part name or filter.
@@ -595,9 +873,14 @@
         getPartBrand(part)
       );
 
+    const rawModel =
+      getPartModel(part);
+
     const model =
       escapeHTML(
-        getPartModel(part)
+        Array.isArray(rawModel)
+          ? rawModel.join(", ")
+          : rawModel
       );
 
     const category =
@@ -615,6 +898,7 @@
         <div class="part-card-content">
 
           <div class="part-card-header">
+
             <span class="part-card-oem">
               ${oem || "—"}
             </span>
@@ -628,6 +912,7 @@
                 `
                 : ""
             }
+
           </div>
 
           <h3 class="part-card-title">
@@ -655,6 +940,8 @@
               `
               : ""
           }
+
+          ${createStockHTML(part)}
 
           <div class="part-card-actions">
 
@@ -696,7 +983,9 @@
       .forEach((element) => {
         element.textContent =
           `${count} result${
-            count === 1 ? "" : "s"
+            count === 1
+              ? ""
+              : "s"
           }`;
       });
   }
@@ -734,6 +1023,7 @@
                     )
                   }"
                 >
+
                   <strong>
                     ${
                       escapeHTML(
@@ -751,6 +1041,7 @@
                       )
                     }
                   </span>
+
                 </button>
               `
             )
@@ -801,7 +1092,9 @@
       input.addEventListener(
         "focus",
         () => {
-          if (input.value.trim()) {
+          if (
+            input.value.trim()
+          ) {
             renderSuggestions(
               getSuggestions(
                 input.value
@@ -824,7 +1117,7 @@
               : "";
 
           searchParts({
-            query: query
+            query
           });
 
           const suggestions =
@@ -855,37 +1148,40 @@
       (selector) => {
 
         document
-          .querySelectorAll(selector)
-          .forEach((element) => {
+          .querySelectorAll(
+            selector
+          )
+          .forEach(
+            (element) => {
 
-            element.addEventListener(
-              "change",
-              () => {
+              element.addEventListener(
+                "change",
+                () => {
 
-                const brand =
-                  document.querySelector(
-                    "[data-search-brand]"
-                  )?.value || "";
+                  const brand =
+                    document.querySelector(
+                      "[data-search-brand]"
+                    )?.value || "";
 
-                const model =
-                  document.querySelector(
-                    "[data-search-model]"
-                  )?.value || "";
+                  const model =
+                    document.querySelector(
+                      "[data-search-model]"
+                    )?.value || "";
 
-                const category =
-                  document.querySelector(
-                    "[data-search-category]"
-                  )?.value || "";
+                  const category =
+                    document.querySelector(
+                      "[data-search-category]"
+                    )?.value || "";
 
-                searchParts({
-                  brand,
-                  model,
-                  category
-                });
-              }
-            );
-          }
-        );
+                  searchParts({
+                    brand,
+                    model,
+                    category
+                  });
+                }
+              );
+            }
+          );
       }
     );
   }
@@ -942,8 +1238,25 @@
   }
 
   /* =========================================
-     Dynamic Component Events
+     Events
   ========================================= */
+
+  function dispatchSearchEvent() {
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanSearchCompleted",
+        {
+          detail: {
+            query: {
+              ...state
+            },
+            results:
+              [...filteredParts]
+          }
+        }
+      )
+    );
+  }
 
   function initializeComponentEvents() {
     document.addEventListener(
@@ -978,7 +1291,8 @@
             )
             .forEach(
               (container) => {
-                container.hidden = true;
+                container.hidden =
+                  true;
               }
             );
 
@@ -1016,7 +1330,7 @@
                 "alDahayanPartSelected",
                 {
                   detail: {
-                    part: part
+                    part
                   }
                 }
               )
@@ -1046,7 +1360,7 @@
                 "alDahayanPartInquiry",
                 {
                   detail: {
-                    part: part
+                    part
                   }
                 }
               )
@@ -1084,6 +1398,20 @@
       filteredParts.length
     );
 
+    /*
+     * Inventory may initialize after Search.
+     * Re-render results when verified
+     * inventory becomes available.
+     */
+    document.addEventListener(
+      "alDahayanInventoryReady",
+      () => {
+        renderResults(
+          filteredParts
+        );
+      }
+    );
+
     document.dispatchEvent(
       new CustomEvent(
         "alDahayanSearchReady",
@@ -1102,6 +1430,7 @@
   ========================================= */
 
   window.AlDahayanSearch = {
+
     initialize:
       initializeSearch,
 
@@ -1112,10 +1441,14 @@
       resetSearch,
 
     getAll:
-      () => [...parts],
+      () => [
+        ...parts
+      ],
 
     getResults:
-      () => [...filteredParts],
+      () => [
+        ...filteredParts
+      ],
 
     getPartByOEM:
       getPartByOEM,
@@ -1134,6 +1467,12 @@
 
     getCategories:
       getCategories,
+
+    getInventoryResult:
+      getInventoryResult,
+
+    getStockLabel:
+      getStockLabel,
 
     getState:
       () => ({
