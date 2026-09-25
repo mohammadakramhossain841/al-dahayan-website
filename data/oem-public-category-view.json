@@ -1,0 +1,73 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public category display configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "category": {
+    "enabled": true,
+    "showCategoryName": true,
+    "showArabicCategoryName": true,
+    "showSubcategoryName": true,
+    "showPartCount": true,
+    "showCategoryImage": true,
+    "showDescription": true
+  },
+
+  "navigation": {
+    "allowCategoryNavigation": true,
+    "allowSubcategoryNavigation": true,
+    "openPartResults": true,
+    "preserveLanguage": true
+  },
+
+  "filters": {
+    "allowBrandFilter": true,
+    "allowModelFilter": true,
+    "allowYearFilter": true,
+    "allowEngineFilter": true,
+    "allowStockFilter": true
+  },
+
+  "results": {
+    "showPublishedRecordsOnly": true,
+    "showPublicRecordsOnly": true,
+    "showResultCount": true,
+    "showPagination": true,
+    "pageSize": 24
+  },
+
+  "display": {
+    "showImage": true,
+    "showOemNumber": true,
+    "showPartName": true,
+    "showBrand": true,
+    "showModel": true,
+    "showPrice": true,
+    "showStockStatus": true,
+    "showVerificationBadge": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "visibility": {
+    "hideArchived": true,
+    "hideDisabled": true,
+    "hidePrivateCategories": true
+  },
+
+  "safety": {
+    "neverExposeInternalCategoryNotes": true,
+    "neverExposeAdminPermissions": true,
+    "neverExposeSupplierInformation": true,
+    "neverExposePrivateInventoryData": true,
+    "neverShowUnpublishedRecords": true
+  }
+}
