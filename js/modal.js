@@ -1,6 +1,7 @@
 /* =========================================
    AL-DAHAYAN MODAL SYSTEM
    Centralized, Accessible & Config-Aware
+   Dynamic Component Compatible
 ========================================= */
 
 (function () {
@@ -34,6 +35,65 @@
     return {};
   }
 
+  function isModalEnabled() {
+    const config =
+      getEffectiveConfig();
+
+    if (
+      config &&
+      config.features &&
+      config.features.modal === false
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  /* =========================================
+     LANGUAGE
+  ========================================= */
+
+  function translate(
+    key,
+    fallback = key
+  ) {
+    if (
+      window.AlDahayanLanguage &&
+      typeof window.AlDahayanLanguage.translate ===
+        "function"
+    ) {
+      const translated =
+        window.AlDahayanLanguage.translate(
+          key
+        );
+
+      if (
+        translated &&
+        translated !== key
+      ) {
+        return translated;
+      }
+    }
+
+    if (
+      typeof window.translate ===
+      "function"
+    ) {
+      const translated =
+        window.translate(key);
+
+      if (
+        translated &&
+        translated !== key
+      ) {
+        return translated;
+      }
+    }
+
+    return fallback;
+  }
+
   /* =========================================
      MODAL HELPERS
   ========================================= */
@@ -42,11 +102,21 @@
     selector = DEFAULT_SELECTOR
   ) {
     if (!selector) {
-      selector = DEFAULT_SELECTOR;
+      selector =
+        DEFAULT_SELECTOR;
+    }
+
+    if (
+      selector instanceof
+      HTMLElement
+    ) {
+      return selector;
     }
 
     try {
-      return document.querySelector(selector);
+      return document.querySelector(
+        selector
+      );
     } catch (error) {
       console.warn(
         "Al-Dahayan Modal: invalid selector.",
@@ -55,6 +125,14 @@
 
       return null;
     }
+  }
+
+  function getAllModals() {
+    return Array.from(
+      document.querySelectorAll(
+        DEFAULT_SELECTOR
+      )
+    );
   }
 
   function getElements(modal) {
@@ -100,7 +178,9 @@
     };
   }
 
-  function getFocusableElements(modal) {
+  function getFocusableElements(
+    modal
+  ) {
     if (!modal) {
       return [];
     }
@@ -109,68 +189,63 @@
       modal.querySelectorAll(
         [
           "button:not([disabled])",
-          "[href]",
+          "[href]:not([aria-disabled='true'])",
           "input:not([disabled])",
           "select:not([disabled])",
           "textarea:not([disabled])",
           "[tabindex]:not([tabindex='-1'])"
         ].join(",")
       )
-    ).filter(function (element) {
+    ).filter(function (
+      element
+    ) {
       return (
         !element.hidden &&
         element.getAttribute(
           "aria-hidden"
-        ) !== "true"
+        ) !== "true" &&
+        element.offsetParent !== null
       );
     });
   }
 
   /* =========================================
-     CONTENT
+     ACCESSIBILITY PREPARATION
   ========================================= */
 
-  function setContent(
+  function createStableId(
     modal,
-    options = {}
+    prefix
   ) {
-    const elements =
-      getElements(modal);
+    const modalId =
+      modal.getAttribute(
+        "data-modal-id"
+      );
 
-    if (elements.title) {
-      elements.title.textContent =
-        options.title ||
-        "Information";
+    if (modalId) {
+      return (
+        prefix +
+        "-" +
+        String(modalId)
+          .replace(
+            /[^a-zA-Z0-9_-]/g,
+            "-"
+          )
+      );
     }
 
-    if (elements.body) {
-      if (
-        options.html !== undefined
-      ) {
-        elements.body.innerHTML =
-          options.html;
-      } else if (
-        options.content !== undefined
-      ) {
-        elements.body.textContent =
-          options.content;
-      }
-    }
-
-    if (
-      elements.footer &&
-      options.footerHTML !== undefined
-    ) {
-      elements.footer.innerHTML =
-        options.footerHTML;
-    }
+    return (
+      prefix +
+      "-" +
+      Math.random()
+        .toString(36)
+        .slice(2, 10)
+    );
   }
 
-  /* =========================================
-     ACCESSIBILITY
-  ========================================= */
-
-  function prepareModal(modal) {
+  function prepareModal(
+    modal
+  ) {
     if (!modal) {
       return;
     }
@@ -184,16 +259,10 @@
       );
     }
 
-    if (
-      !modal.hasAttribute(
-        "aria-modal"
-      )
-    ) {
-      modal.setAttribute(
-        "aria-modal",
-        "true"
-      );
-    }
+    modal.setAttribute(
+      "aria-modal",
+      "true"
+    );
 
     if (
       !modal.hasAttribute(
@@ -206,7 +275,11 @@
       );
     }
 
-    if (!modal.hasAttribute("tabindex")) {
+    if (
+      !modal.hasAttribute(
+        "tabindex"
+      )
+    ) {
       modal.setAttribute(
         "tabindex",
         "-1"
@@ -233,23 +306,135 @@
       !elements.title.id
     ) {
       elements.title.id =
-        "al-dahayan-modal-title-" +
-        Math.random()
-          .toString(36)
-          .slice(2, 9);
+        createStableId(
+          modal,
+          "al-dahayan-modal-title"
+        );
     }
 
     if (
-      elements.title &&
-      !modal.hasAttribute(
-        "aria-labelledby"
-      )
+      elements.title
     ) {
       modal.setAttribute(
         "aria-labelledby",
         elements.title.id
       );
     }
+
+    if (
+      elements.body &&
+      !elements.body.id
+    ) {
+      elements.body.id =
+        createStableId(
+          modal,
+          "al-dahayan-modal-body"
+        );
+    }
+
+    if (
+      elements.body
+    ) {
+      modal.setAttribute(
+        "aria-describedby",
+        elements.body.id
+      );
+    }
+  }
+
+  function prepareAllModals() {
+    getAllModals().forEach(
+      function (modal) {
+        prepareModal(modal);
+
+        if (
+          modal !== activeModal
+        ) {
+          modal.hidden = true;
+
+          modal.classList.remove(
+            "is-open"
+          );
+
+          modal.setAttribute(
+            "aria-hidden",
+            "true"
+          );
+
+          modal.setAttribute(
+            "data-modal-open",
+            "false"
+          );
+        }
+      }
+    );
+  }
+
+  /* =========================================
+     CONTENT
+  ========================================= */
+
+  function setContent(
+    modal,
+    options = {}
+  ) {
+    if (!modal) {
+      return false;
+    }
+
+    prepareModal(modal);
+
+    const elements =
+      getElements(modal);
+
+    const titleKey =
+      options.titleKey ||
+      "";
+
+    const title =
+      options.title !== undefined
+        ? options.title
+        : titleKey
+          ? translate(
+              titleKey,
+              translate(
+                "information",
+                "Information"
+              )
+            )
+          : translate(
+              "information",
+              "Information"
+            );
+
+    if (elements.title) {
+      elements.title.textContent =
+        title;
+    }
+
+    if (elements.body) {
+      if (
+        options.html !== undefined
+      ) {
+        elements.body.innerHTML =
+          String(options.html);
+      } else if (
+        options.content !== undefined
+      ) {
+        elements.body.textContent =
+          String(options.content);
+      }
+    }
+
+    if (
+      elements.footer &&
+      options.footerHTML !== undefined
+    ) {
+      elements.footer.innerHTML =
+        String(options.footerHTML);
+    }
+
+    return true;
   }
 
   /* =========================================
@@ -259,6 +444,10 @@
   function openModal(
     options = {}
   ) {
+    if (!isModalEnabled()) {
+      return false;
+    }
+
     const modal =
       options.modal ||
       getModal(
@@ -276,17 +465,6 @@
 
     if (activeModal) {
       closeModal();
-    }
-
-    const config =
-      getEffectiveConfig();
-
-    if (
-      config &&
-      config.features &&
-      config.features.modal === false
-    ) {
-      return false;
     }
 
     prepareModal(modal);
@@ -315,18 +493,30 @@
       "true"
     );
 
-    document.body.classList.add(
-      "modal-open"
-    );
+    if (document.body) {
+      document.body.classList.add(
+        "modal-open"
+      );
+
+      document.body.setAttribute(
+        "data-modal-active",
+        "true"
+      );
+    }
 
     activeModal = modal;
 
     const elements =
       getElements(modal);
 
+    const focusable =
+      getFocusableElements(
+        modal
+      );
+
     const focusTarget =
       elements.close ||
-      getFocusableElements(modal)[0] ||
+      focusable[0] ||
       elements.container ||
       modal;
 
@@ -361,7 +551,9 @@
      CLOSE
   ========================================= */
 
-  function closeModal() {
+  function closeModal(
+    options = {}
+  ) {
     if (!activeModal) {
       return false;
     }
@@ -385,29 +577,44 @@
       "false"
     );
 
-    document.body.classList.remove(
-      "modal-open"
-    );
+    if (document.body) {
+      document.body.classList.remove(
+        "modal-open"
+      );
+
+      document.body.setAttribute(
+        "data-modal-active",
+        "false"
+      );
+    }
 
     activeModal = null;
 
+    const restoreFocus =
+      options.restoreFocus !==
+      false;
+
+    const focusTarget =
+      previousFocusedElement;
+
+    previousFocusedElement =
+      null;
+
     if (
-      previousFocusedElement &&
+      restoreFocus &&
+      focusTarget &&
       document.contains(
-        previousFocusedElement
+        focusTarget
       ) &&
-      typeof previousFocusedElement.focus ===
+      typeof focusTarget.focus ===
         "function"
     ) {
       window.requestAnimationFrame(
         function () {
-          previousFocusedElement.focus();
+          focusTarget.focus();
         }
       );
     }
-
-    previousFocusedElement =
-      null;
 
     document.dispatchEvent(
       new CustomEvent(
@@ -440,7 +647,7 @@
   }
 
   /* =========================================
-     BUTTON DATA
+     BUTTON OPTIONS
   ========================================= */
 
   function getButtonOptions(
@@ -453,6 +660,10 @@
     const title =
       button.dataset
         .modalTitle || "";
+
+    const titleKey =
+      button.dataset
+        .modalTitleKey || "";
 
     const content =
       button.dataset
@@ -472,6 +683,7 @@
 
     const options = {
       title,
+      titleKey,
       selector:
         target ||
         DEFAULT_SELECTOR
@@ -545,7 +757,14 @@
       target ===
         elements.overlay
     ) {
-      closeModal();
+      if (
+        activeModal.getAttribute(
+          "data-modal-static"
+        ) !== "true"
+      ) {
+        closeModal();
+      }
+
       return;
     }
 
@@ -578,6 +797,14 @@
       event.key ===
       "Escape"
     ) {
+      if (
+        activeModal.getAttribute(
+          "data-modal-static"
+        ) === "true"
+      ) {
+        return;
+      }
+
       event.preventDefault();
 
       closeModal();
@@ -652,6 +879,60 @@
   }
 
   /* =========================================
+     DYNAMIC COMPONENT SYNC
+  ========================================= */
+
+  function handleComponentsLoaded() {
+    prepareAllModals();
+
+    if (
+      activeModal &&
+      document.contains(
+        activeModal
+      )
+    ) {
+      prepareModal(
+        activeModal
+      );
+    }
+  }
+
+  /* =========================================
+     LANGUAGE SYNC
+  ========================================= */
+
+  function handleLanguageChange() {
+    prepareAllModals();
+
+    if (
+      activeModal &&
+      document.contains(
+        activeModal
+      )
+    ) {
+      prepareModal(
+        activeModal
+      );
+    }
+  }
+
+  /* =========================================
+     CONFIG SYNC
+  ========================================= */
+
+  function handleConfigUpdate() {
+    if (!isModalEnabled()) {
+      if (activeModal) {
+        closeModal({
+          restoreFocus: false
+        });
+      }
+    }
+
+    prepareAllModals();
+  }
+
+  /* =========================================
      INITIALIZATION
   ========================================= */
 
@@ -672,34 +953,32 @@
       handleKeydown
     );
 
-    document
-      .querySelectorAll(
-        DEFAULT_SELECTOR
-      )
-      .forEach(function (
-        modal
-      ) {
-        prepareModal(
-          modal
-        );
+    document.addEventListener(
+      "alDahayanComponentsLoaded",
+      handleComponentsLoaded
+    );
 
-        modal.hidden =
-          true;
+    document.addEventListener(
+      "alDahayanLanguageChanged",
+      handleLanguageChange
+    );
 
-        modal.classList.remove(
-          "is-open"
-        );
+    document.addEventListener(
+      "alDahayanLanguageApplied",
+      handleLanguageChange
+    );
 
-        modal.setAttribute(
-          "aria-hidden",
-          "true"
-        );
+    document.addEventListener(
+      "alDahayanConfigUpdated",
+      handleConfigUpdate
+    );
 
-        modal.setAttribute(
-          "data-modal-open",
-          "false"
-        );
-      });
+    document.addEventListener(
+      "alDahayanSettingsUpdated",
+      handleConfigUpdate
+    );
+
+    prepareAllModals();
 
     document.dispatchEvent(
       new CustomEvent(
@@ -713,6 +992,7 @@
   ========================================= */
 
   window.AlDahayanModal = {
+
     init:
       initializeModal,
 
@@ -734,11 +1014,20 @@
     get:
       getModal,
 
+    getAll:
+      getAllModals,
+
     getElements:
       getElements,
 
     getFocusableElements:
       getFocusableElements,
+
+    prepare:
+      prepareModal,
+
+    prepareAll:
+      prepareAllModals,
 
     getActive:
       function () {
@@ -749,6 +1038,9 @@
       function () {
         return !!activeModal;
       },
+
+    isEnabled:
+      isModalEnabled,
 
     isInitialized:
       function () {
