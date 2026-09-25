@@ -1,0 +1,254 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Structured import template definition for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "format": {
+    "primary": "xlsx",
+    "supported": [
+      "xlsx",
+      "csv"
+    ],
+    "encoding": "UTF-8"
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "editable": false
+    },
+    {
+      "name": "oemNumber",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "partName",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "arabicName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "brand",
+      "type": "enum",
+      "required": true,
+      "allowedValues": [
+        "Toyota",
+        "Lexus"
+      ]
+    },
+    {
+      "name": "category",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "subcategory",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "arabicDescription",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "models",
+      "type": "array",
+      "required": false,
+      "separator": "|"
+    },
+    {
+      "name": "modelYears",
+      "type": "array",
+      "required": false,
+      "separator": "|"
+    },
+    {
+      "name": "engineCodes",
+      "type": "array",
+      "required": false,
+      "separator": "|"
+    },
+    {
+      "name": "bodyTypes",
+      "type": "array",
+      "required": false,
+      "separator": "|"
+    },
+    {
+      "name": "marketSpecs",
+      "type": "array",
+      "required": false,
+      "separator": "|"
+    },
+    {
+      "name": "compatibleOemNumbers",
+      "type": "array",
+      "required": false,
+      "separator": "|"
+    },
+    {
+      "name": "supersededOemNumbers",
+      "type": "array",
+      "required": false,
+      "separator": "|"
+    },
+    {
+      "name": "partType",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "condition",
+      "type": "enum",
+      "required": false,
+      "allowedValues": [
+        "new",
+        "used",
+        "refurbished",
+        "unknown"
+      ]
+    },
+    {
+      "name": "genuine",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "aftermarket",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "primaryImage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "galleryImages",
+      "type": "array",
+      "required": false,
+      "separator": "|"
+    },
+    {
+      "name": "regularPrice",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "salePrice",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "discountPercent",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "currency",
+      "type": "enum",
+      "required": false,
+      "default": "SAR",
+      "allowedValues": [
+        "SAR"
+      ]
+    },
+    {
+      "name": "priceVisibility",
+      "type": "enum",
+      "required": false,
+      "default": "visible",
+      "allowedValues": [
+        "visible",
+        "hidden",
+        "contact_for_price"
+      ]
+    },
+    {
+      "name": "stockStatus",
+      "type": "enum",
+      "required": false,
+      "default": "unknown",
+      "allowedValues": [
+        "in_stock",
+        "low_stock",
+        "out_of_stock",
+        "on_order",
+        "unknown"
+      ]
+    },
+    {
+      "name": "quantity",
+      "type": "integer",
+      "required": false
+    },
+    {
+      "name": "locationIds",
+      "type": "array",
+      "required": false,
+      "separator": "|"
+    },
+    {
+      "name": "status",
+      "type": "enum",
+      "required": false,
+      "default": "draft",
+      "allowedValues": [
+        "draft",
+        "active",
+        "archived",
+        "disabled"
+      ]
+    },
+    {
+      "name": "verificationLevel",
+      "type": "enum",
+      "required": false,
+      "default": "unverified",
+      "allowedValues": [
+        "unverified",
+        "reviewed",
+        "verified"
+      ]
+    },
+    {
+      "name": "verificationSource",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "importBehavior": {
+    "createNewRecords": true,
+    "updateExistingRecords": true,
+    "matchField": "oemNumber",
+    "normalizeOemNumberBeforeMatch": true,
+    "preserveUnmappedFields": true,
+    "emptyValueAction": "preserve_existing"
+  },
+  "validation": {
+    "useFieldValidationRules": true,
+    "useRecordValidationRules": true,
+    "useDuplicateRules": true,
+    "requirePreview": true,
+    "blockCriticalErrors": true,
+    "allowWarnings": true
+  },
+  "safety": {
+    "neverAutomaticallyVerifyRecords": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "neverPermanentlyDeleteRecords": true,
+    "preserveOriginalValues": true,
+    "preserveArabicText": true
+  }
+}
