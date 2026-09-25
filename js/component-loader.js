@@ -1,5 +1,6 @@
 /* =========================================
    AL-DAHAYAN COMPONENT LOADER
+   Centralized, Reliable & Dynamic
 ========================================= */
 
 (function () {
@@ -8,18 +9,43 @@
   let initialized = false;
   let loadingPromise = null;
 
-  /**
-   * Get the correct project root.
-   */
+  const COMPONENT_SELECTOR =
+    "[data-component]";
+
+  /* =========================================
+     CONFIG / PATH
+  ========================================= */
+
+  function getConfig() {
+    return window.AlDahayanConfig || null;
+  }
+
   function getRootPath() {
     if (
-      typeof window.getProjectRoot === "function"
+      typeof window.getProjectRoot ===
+      "function"
     ) {
       return window.getProjectRoot();
     }
 
+    const config =
+      getConfig();
+
+    if (
+      config &&
+      config.paths &&
+      typeof config.paths.root ===
+        "string"
+    ) {
+      /*
+       * Admin/pages paths in the current
+       * project use ../ as their root.
+       */
+      return config.paths.root;
+    }
+
     const path =
-      window.location.pathname;
+      window.location.pathname || "";
 
     if (
       path.includes("/pages/") ||
@@ -31,23 +57,76 @@
     return "./";
   }
 
-  /**
-   * Build component file path.
-   */
   function getComponentPath(
     componentName
   ) {
-    const root =
-      getRootPath();
+    if (!componentName) {
+      return "";
+    }
+
+    const config =
+      getConfig();
+
+    let componentsPath =
+      "components/";
+
+    if (
+      config &&
+      config.paths &&
+      typeof config.paths.components ===
+        "string"
+    ) {
+      componentsPath =
+        config.paths.components;
+    }
+
+    /*
+     * When config paths already contain
+     * ../components/, do not duplicate
+     * the project root.
+     */
+    if (
+      componentsPath.startsWith("../") ||
+      componentsPath.startsWith("./") ||
+      componentsPath.startsWith("/")
+    ) {
+      return (
+        componentsPath +
+        `${componentName}.html`
+      );
+    }
 
     return (
-      `${root}components/${componentName}.html`
+      `${getRootPath()}${componentsPath}` +
+      `${componentName}.html`
     );
   }
 
-  /**
-   * Load one component.
-   */
+  /* =========================================
+     COMPONENT NAME SAFETY
+  ========================================= */
+
+  function isValidComponentName(
+    name
+  ) {
+    if (!name) {
+      return false;
+    }
+
+    /*
+     * Prevent accidental path traversal.
+     */
+    return !(
+      name.includes("..") ||
+      name.includes("\\") ||
+      name.startsWith("/")
+    );
+  }
+
+  /* =========================================
+     LOAD ONE COMPONENT
+  ========================================= */
+
   async function loadComponent(
     element
   ) {
@@ -69,6 +148,27 @@
         success: false,
         error:
           "Component name is missing."
+      };
+    }
+
+    if (
+      !isValidComponentName(
+        componentName
+      )
+    ) {
+      const error =
+        "Invalid component name.";
+
+      element.setAttribute(
+        "data-component-error",
+        "true"
+      );
+
+      return {
+        success: false,
+        component:
+          componentName,
+        error
       };
     }
 
@@ -106,8 +206,41 @@
       ) ||
       componentName;
 
+    if (
+      !isValidComponentName(
+        fileName
+      )
+    ) {
+      const error =
+        "Invalid component file name.";
+
+      element.setAttribute(
+        "data-component-error",
+        "true"
+      );
+
+      return {
+        success: false,
+        component:
+          componentName,
+        error
+      };
+    }
+
     const componentPath =
-      getComponentPath(fileName);
+      getComponentPath(
+        fileName
+      );
+
+    if (!componentPath) {
+      return {
+        success: false,
+        component:
+          componentName,
+        error:
+          "Component path could not be created."
+      };
+    }
 
     element.setAttribute(
       "data-component-loading",
@@ -119,7 +252,9 @@
         await fetch(
           componentPath,
           {
-            cache: "no-cache"
+            method: "GET",
+            cache: "no-cache",
+            credentials: "same-origin"
           }
         );
 
@@ -154,6 +289,8 @@
         success: true,
         component:
           componentName,
+        file:
+          fileName,
         path:
           componentPath
       };
@@ -173,6 +310,8 @@
         success: false,
         component:
           componentName,
+        file:
+          fileName,
         path:
           componentPath,
         error:
@@ -186,9 +325,10 @@
     }
   }
 
-  /**
-   * Find component elements.
-   */
+  /* =========================================
+     FIND COMPONENTS
+  ========================================= */
+
   function findComponents(
     root = document
   ) {
@@ -211,10 +351,10 @@
     ) {
       root
         .querySelectorAll(
-          "[data-component]"
+          COMPONENT_SELECTOR
         )
         .forEach(
-          (element) => {
+          function (element) {
             if (
               !elements.includes(
                 element
@@ -231,85 +371,119 @@
     return elements;
   }
 
-  /**
-   * Load all components.
-   */
+  /* =========================================
+     LOAD ALL COMPONENTS
+  ========================================= */
+
   async function loadComponents(
     root = document
   ) {
-    const elements =
-      findComponents(root);
+    const processed =
+      new Set();
 
     const results = [];
 
     /*
-     * Load current-level components
-     * in parallel.
+     * Continue loading until no new
+     * unloaded components remain.
+     *
+     * This supports components that
+     * themselves contain components.
      */
-    const loaded =
-      await Promise.all(
-        elements.map(
-          (element) =>
-            loadComponent(
-              element
-            )
-        )
-      );
+    let safetyPasses = 0;
 
-    results.push(
-      ...loaded
-    );
+    const MAX_PASSES = 20;
 
-    /*
-     * Check for nested components
-     * added by loaded HTML.
-     */
-    const nestedElements =
-      findComponents(root).filter(
-        (element) =>
-          element.getAttribute(
-            "data-component-loaded"
-          ) !== "true"
-      );
-
-    if (
-      nestedElements.length
+    while (
+      safetyPasses <
+      MAX_PASSES
     ) {
-      const nestedResults =
-        await Promise.all(
-          nestedElements.map(
-            (element) =>
-              loadComponent(
+      safetyPasses += 1;
+
+      const elements =
+        findComponents(root).filter(
+          function (element) {
+            return (
+              element.getAttribute(
+                "data-component-loaded"
+              ) !== "true" &&
+              !processed.has(
                 element
               )
+            );
+          }
+        );
+
+      if (!elements.length) {
+        break;
+      }
+
+      elements.forEach(
+        function (element) {
+          processed.add(
+            element
+          );
+        }
+      );
+
+      const loaded =
+        await Promise.all(
+          elements.map(
+            function (element) {
+              return loadComponent(
+                element
+              );
+            }
           )
         );
 
       results.push(
-        ...nestedResults
+        ...loaded
       );
     }
+
+    if (
+      safetyPasses >=
+        MAX_PASSES &&
+      findComponents(root).some(
+        function (element) {
+          return (
+            element.getAttribute(
+              "data-component-loaded"
+            ) !== "true"
+          );
+        }
+      )
+    ) {
+      console.warn(
+        "Al-Dahayan Component Loader: maximum nested component passes reached."
+      );
+    }
+
+    const detail = {
+      results:
+        results,
+      total:
+        results.length,
+      successful:
+        results.filter(
+          function (item) {
+            return item.success;
+          }
+        ).length,
+      failed:
+        results.filter(
+          function (item) {
+            return !item.success;
+          }
+        ).length
+    };
 
     document.dispatchEvent(
       new CustomEvent(
         "alDahayanComponentsLoaded",
         {
-          detail: {
-            results:
-              results,
-            total:
-              results.length,
-            successful:
-              results.filter(
-                (item) =>
-                  item.success
-              ).length,
-            failed:
-              results.filter(
-                (item) =>
-                  !item.success
-              ).length
-          }
+          detail
         }
       )
     );
@@ -317,9 +491,10 @@
     return results;
   }
 
-  /**
-   * Reload all components.
-   */
+  /* =========================================
+     RELOAD
+  ========================================= */
+
   async function reloadComponents(
     root = document
   ) {
@@ -327,7 +502,7 @@
       findComponents(root);
 
     elements.forEach(
-      (element) => {
+      function (element) {
         element.removeAttribute(
           "data-component-loaded"
         );
@@ -347,9 +522,67 @@
     );
   }
 
-  /**
-   * Initialize component loader.
-   */
+  /* =========================================
+     LOAD WITH RETRY
+  ========================================= */
+
+  async function loadWithRetry(
+    element,
+    attempts = 2
+  ) {
+    const maxAttempts =
+      Math.max(
+        1,
+        Number(attempts) || 1
+      );
+
+    let lastResult = null;
+
+    for (
+      let attempt = 1;
+      attempt <= maxAttempts;
+      attempt += 1
+    ) {
+      if (
+        attempt > 1
+      ) {
+        element.removeAttribute(
+          "data-component-loaded"
+        );
+
+        element.removeAttribute(
+          "data-component-error"
+        );
+
+        await new Promise(
+          function (resolve) {
+            setTimeout(
+              resolve,
+              250
+            );
+          }
+        );
+      }
+
+      lastResult =
+        await loadComponent(
+          element
+        );
+
+      if (
+        lastResult.success
+      ) {
+        return lastResult;
+      }
+    }
+
+    return lastResult;
+  }
+
+  /* =========================================
+     INITIALIZATION
+  ========================================= */
+
   function initializeComponents() {
     if (initialized) {
       return loadingPromise;
@@ -360,15 +593,20 @@
     loadingPromise =
       loadComponents();
 
-    window.AlDahayanComponents.ready =
-      loadingPromise;
+    if (
+      window.AlDahayanComponents
+    ) {
+      window.AlDahayanComponents.ready =
+        loadingPromise;
+    }
 
     return loadingPromise;
   }
 
-  /**
-   * Public API.
-   */
+  /* =========================================
+     PUBLIC API
+  ========================================= */
+
   window.AlDahayanComponents = {
     load:
       loadComponents,
@@ -376,11 +614,20 @@
     loadOne:
       loadComponent,
 
+    loadWithRetry:
+      loadWithRetry,
+
     reload:
       reloadComponents,
 
+    find:
+      findComponents,
+
     getPath:
       getComponentPath,
+
+    getRoot:
+      getRootPath,
 
     ready:
       null,
@@ -394,12 +641,23 @@
   window.initializeComponents =
     initializeComponents;
 
-  /**
-   * Start after DOM is ready.
-   */
-  document.addEventListener(
-    "DOMContentLoaded",
-    initializeComponents
-  );
+  /* =========================================
+     DOM READY
+  ========================================= */
+
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializeComponents,
+      {
+        once: true
+      }
+    );
+  } else {
+    initializeComponents();
+  }
 
 })();
