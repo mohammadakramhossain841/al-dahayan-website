@@ -1,0 +1,160 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Filtering rules for Toyota and Lexus OEM catalog records on the Al-Dahayan platform.",
+  "enabled": true,
+  "filters": {
+    "oemNumber": {
+      "enabled": true,
+      "type": "text",
+      "allowExactMatch": true,
+      "allowPartialMatch": true
+    },
+    "partName": {
+      "enabled": true,
+      "type": "text",
+      "allowPartialMatch": true
+    },
+    "brand": {
+      "enabled": true,
+      "type": "multi_select",
+      "allowedValues": [
+        "Toyota",
+        "Lexus"
+      ]
+    },
+    "category": {
+      "enabled": true,
+      "type": "multi_select"
+    },
+    "subcategory": {
+      "enabled": true,
+      "type": "multi_select"
+    },
+    "model": {
+      "enabled": true,
+      "type": "multi_select"
+    },
+    "modelYear": {
+      "enabled": true,
+      "type": "range"
+    },
+    "engineCode": {
+      "enabled": true,
+      "type": "multi_select"
+    },
+    "bodyType": {
+      "enabled": true,
+      "type": "multi_select"
+    },
+    "marketSpec": {
+      "enabled": true,
+      "type": "multi_select"
+    },
+    "condition": {
+      "enabled": true,
+      "type": "multi_select",
+      "allowedValues": [
+        "new",
+        "used",
+        "refurbished",
+        "unknown"
+      ]
+    },
+    "genuine": {
+      "enabled": true,
+      "type": "boolean"
+    },
+    "aftermarket": {
+      "enabled": true,
+      "type": "boolean"
+    },
+    "stockStatus": {
+      "enabled": true,
+      "type": "multi_select",
+      "allowedValues": [
+        "in_stock",
+        "low_stock",
+        "out_of_stock",
+        "on_order",
+        "unknown"
+      ]
+    },
+    "quantity": {
+      "enabled": true,
+      "type": "range",
+      "minimum": 0
+    },
+    "price": {
+      "enabled": true,
+      "type": "range",
+      "minimum": 0,
+      "currency": "SAR"
+    },
+    "status": {
+      "enabled": true,
+      "type": "multi_select",
+      "allowedValues": [
+        "draft",
+        "active",
+        "archived",
+        "disabled"
+      ]
+    },
+    "verificationLevel": {
+      "enabled": true,
+      "type": "multi_select",
+      "allowedValues": [
+        "unverified",
+        "reviewed",
+        "verified"
+      ]
+    }
+  },
+  "logic": {
+    "defaultOperator": "AND",
+    "allowOrWithinSameFilter": true,
+    "allowMultipleFilters": true,
+    "allowEmptyFilter": true
+  },
+  "publicWebsite": {
+    "allowedFilters": [
+      "oemNumber",
+      "partName",
+      "brand",
+      "category",
+      "subcategory",
+      "model",
+      "modelYear",
+      "engineCode",
+      "bodyType",
+      "marketSpec",
+      "stockStatus",
+      "price"
+    ],
+    "includeOnlyActiveRecords": true
+  },
+  "adminPanel": {
+    "allowAllConfiguredFilters": true,
+    "allowArchivedRecords": true,
+    "allowDisabledRecords": true,
+    "allowDraftRecords": true,
+    "allowFilterCombination": true
+  },
+  "validation": {
+    "ignoreInvalidFilterValues": false,
+    "showInvalidFilterMessage": true,
+    "preserveSelectedFilters": true
+  },
+  "performance": {
+    "useIndexedFieldsWhenAvailable": true,
+    "avoidUnnecessaryFullCatalogScans": true,
+    "allowServerSideFiltering": true
+  },
+  "safety": {
+    "filteringMustNotModifyRecords": true,
+    "filteringMustNotChangeCatalogData": true,
+    "doNotTreatFilteredResultsAsVerifiedCompatibility": true,
+    "preserveArabicText": true
+  }
+}
