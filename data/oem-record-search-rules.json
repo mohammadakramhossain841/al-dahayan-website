@@ -1,0 +1,123 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Search behavior rules for Toyota and Lexus OEM catalog records on the Al-Dahayan platform.",
+  "search": {
+    "enabled": true,
+    "minimumQueryLength": 1,
+    "maximumQueryLength": 100,
+    "trimWhitespace": true,
+    "ignoreCase": true,
+    "normalizeOemNumbers": true,
+    "allowPartialMatch": true,
+    "allowExactMatch": true
+  },
+  "searchableFields": {
+    "oemNumber": {
+      "enabled": true,
+      "weight": 100,
+      "exactMatchPriority": true
+    },
+    "compatibleOemNumbers": {
+      "enabled": true,
+      "weight": 90
+    },
+    "supersededOemNumbers": {
+      "enabled": true,
+      "weight": 85
+    },
+    "partName": {
+      "enabled": true,
+      "weight": 80
+    },
+    "arabicName": {
+      "enabled": true,
+      "weight": 80,
+      "preserveArabicText": true
+    },
+    "brand": {
+      "enabled": true,
+      "weight": 50
+    },
+    "category": {
+      "enabled": true,
+      "weight": 40
+    },
+    "subcategory": {
+      "enabled": true,
+      "weight": 35
+    },
+    "models": {
+      "enabled": true,
+      "weight": 70
+    },
+    "engineCodes": {
+      "enabled": true,
+      "weight": 65
+    }
+  },
+  "filters": {
+    "brand": true,
+    "category": true,
+    "subcategory": true,
+    "model": true,
+    "modelYear": true,
+    "engineCode": true,
+    "bodyType": true,
+    "marketSpec": true,
+    "stockStatus": true,
+    "status": true,
+    "verificationLevel": true,
+    "priceRange": true
+  },
+  "resultRules": {
+    "defaultLimit": 20,
+    "maximumLimit": 100,
+    "sortBy": "relevance",
+    "allowSorting": true,
+    "showOemNumber": true,
+    "showPartName": true,
+    "showBrand": true,
+    "showCategory": true,
+    "showStockStatus": true,
+    "showPrice": true,
+    "showVerificationStatus": true
+  },
+  "ranking": {
+    "exactOemMatch": 1000,
+    "normalizedOemMatch": 950,
+    "compatibleOemMatch": 900,
+    "supersededOemMatch": 850,
+    "exactPartNameMatch": 800,
+    "modelMatch": 700,
+    "engineMatch": 650,
+    "categoryMatch": 500,
+    "partialTextMatch": 300
+  },
+  "publicWebsite": {
+    "includeOnlyActiveRecords": true,
+    "includeArchivedRecords": false,
+    "includeDisabledRecords": false,
+    "includeDraftRecords": false
+  },
+  "adminPanel": {
+    "includeDraftRecords": true,
+    "includeActiveRecords": true,
+    "includeArchivedRecords": true,
+    "includeDisabledRecords": true
+  },
+  "suggestions": {
+    "enabled": true,
+    "minimumCharacters": 2,
+    "maximumSuggestions": 10,
+    "showOemNumbers": true,
+    "showPartNames": true,
+    "showModels": true
+  },
+  "safety": {
+    "neverExposePrivateNotes": true,
+    "neverExposeSecurityCredentials": true,
+    "preserveArabicText": true,
+    "doNotTreatSearchMatchAsCompatibilityVerification": true
+  }
+}
