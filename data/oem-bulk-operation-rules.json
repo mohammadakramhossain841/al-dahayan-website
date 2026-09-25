@@ -1,0 +1,122 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Common execution and safety rules for bulk OEM catalog operations in the Al-Dahayan Admin Panel.",
+  "supportedOperationTypes": [
+    "import",
+    "update",
+    "price_update",
+    "stock_update",
+    "compatibility_update",
+    "status_update",
+    "verification_update",
+    "image_update",
+    "archive",
+    "restore",
+    "category_update",
+    "metadata_update",
+    "export",
+    "duplicate_review"
+  ],
+  "permissions": {
+    "requireAuthentication": true,
+    "requireOperationPermission": true,
+    "requireConfirmation": true,
+    "requireReason": true
+  },
+  "selection": {
+    "minimumRecords": 1,
+    "maximumRecordsPerOperation": 5000,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "allowImportedRecords": true,
+    "requirePreview": true
+  },
+  "execution": {
+    "validateBeforeExecution": true,
+    "createOperationId": true,
+    "createAuditRecord": true,
+    "createHistoryRecord": true,
+    "processInBatches": true,
+    "batchSize": 100,
+    "showProgress": true,
+    "allowCancellationBeforeCommit": true
+  },
+  "validation": {
+    "blockOnCriticalErrors": true,
+    "allowWarnings": true,
+    "showValidationSummary": true,
+    "showAffectedRecords": true,
+    "showChangeSummary": true,
+    "requireFinalConfirmationAfterPreview": true
+  },
+  "transaction": {
+    "createRestorePoint": true,
+    "commitOnlyAfterValidation": true,
+    "preservePreviousValues": true,
+    "rollbackOnCriticalFailure": true,
+    "allowPartialSuccess": true,
+    "recordPartialSuccess": true
+  },
+  "duplicateProtection": {
+    "enabled": true,
+    "checkWithinOperation": true,
+    "checkAgainstCatalog": true,
+    "blockConfirmedDuplicates": true,
+    "requireReviewForPossibleDuplicates": true,
+    "automaticMerge": false
+  },
+  "recordProtection": {
+    "neverModifyRecordId": true,
+    "neverModifyOemNumberByDefault": true,
+    "neverDeleteRecordsAutomatically": true,
+    "neverAutomaticallyVerifyRecords": true,
+    "preserveAuditHistory": true,
+    "preserveChangeHistory": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordOperationType": true,
+    "recordOperationMode": true,
+    "recordSelection": true,
+    "recordPreviousValues": true,
+    "recordNewValues": true,
+    "recordChangedFields": true,
+    "recordUser": true,
+    "recordTimestamp": true,
+    "recordReason": true,
+    "recordResult": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeExecution": true,
+    "allowRollbackAfterCompletion": true,
+    "rollbackRequiresPermission": true,
+    "preserveRollbackHistory": true
+  },
+  "result": {
+    "showTotalSelected": true,
+    "showTotalProcessed": true,
+    "showTotalUpdated": true,
+    "showTotalSkipped": true,
+    "showTotalWarnings": true,
+    "showTotalErrors": true,
+    "generateOperationReport": true,
+    "generateChangeReport": true
+  },
+  "security": {
+    "publicExecution": false,
+    "publicAccessToOperationHistory": false,
+    "neverExposePrivateData": true,
+    "neverExposeCredentials": true,
+    "neverExposeSecurityTokens": true
+  },
+  "safety": {
+    "neverPermanentlyDeleteRecords": true,
+    "neverAutomaticallyMergeDuplicates": true,
+    "neverAutomaticallyVerifyCompatibility": true,
+    "neverAutomaticallyVerifyRecords": true,
+    "neverOverwriteWithoutValidation": true,
+    "preserveDataIntegrity": true
+  }
+}
