@@ -6,6 +6,10 @@
   "use strict";
 
   let initialized = false;
+  let eventsBound = false;
+  let lastFocusedElement = null;
+
+  const MOBILE_BREAKPOINT = 900;
 
   const SELECTORS = {
     menuToggle:
@@ -60,8 +64,54 @@
 
     return (
       menu.classList.contains("is-open") ||
-      menu.getAttribute("aria-hidden") ===
-        "false"
+      menu.getAttribute("aria-hidden") === "false"
+    );
+  }
+
+  function isMobileViewport() {
+    return (
+      window.innerWidth <= MOBILE_BREAKPOINT
+    );
+  }
+
+  function isModifiedClick(event) {
+    return (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    );
+  }
+
+  function isExternalLink(link) {
+    if (!link) {
+      return false;
+    }
+
+    const href =
+      link.getAttribute("href") || "";
+
+    return (
+      href.startsWith("http://") ||
+      href.startsWith("https://") ||
+      href.startsWith("//") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:")
+    );
+  }
+
+  function isHashLink(link) {
+    if (!link) {
+      return false;
+    }
+
+    const href =
+      link.getAttribute("href") || "";
+
+    return (
+      href === "#" ||
+      href.startsWith("#")
     );
   }
 
@@ -89,8 +139,10 @@
       return false;
     }
 
-    menu.classList.add("is-open");
+    lastFocusedElement =
+      document.activeElement;
 
+    menu.classList.add("is-open");
     menu.removeAttribute("hidden");
 
     menu.setAttribute(
@@ -109,6 +161,19 @@
       );
     }
 
+    const closeButton =
+      getCloseButton();
+
+    if (closeButton) {
+      window.requestAnimationFrame(() => {
+        try {
+          closeButton.focus();
+        } catch (error) {
+          /* Ignore focus errors */
+        }
+      });
+    }
+
     document.dispatchEvent(
       new CustomEvent(
         "alDahayanMenuOpened"
@@ -122,7 +187,9 @@
      Close Menu
   ========================================= */
 
-  function closeMenu() {
+  function closeMenu(
+    restoreFocus = false
+  ) {
     const menu = getMenu();
     const toggle = getMenuToggle();
 
@@ -136,6 +203,11 @@
       "aria-hidden",
       "true"
     );
+
+    /*
+     * Do not use hidden immediately here.
+     * CSS can control the closing animation.
+     */
 
     document.body.classList.remove(
       "menu-open"
@@ -154,6 +226,23 @@
       )
     );
 
+    if (
+      restoreFocus &&
+      lastFocusedElement &&
+      typeof lastFocusedElement.focus ===
+        "function"
+    ) {
+      window.requestAnimationFrame(() => {
+        try {
+          lastFocusedElement.focus();
+        } catch (error) {
+          /* Ignore focus errors */
+        }
+      });
+    }
+
+    lastFocusedElement = null;
+
     return true;
   }
 
@@ -163,7 +252,7 @@
 
   function toggleMenu() {
     if (isMobileMenuOpen()) {
-      closeMenu();
+      closeMenu(true);
     } else {
       openMenu();
     }
@@ -178,12 +267,24 @@
       return "/";
     }
 
-    return (
-      path
-        .split("?")[0]
-        .split("#")[0]
-        .replace(/\/+$/, "") || "/"
-    );
+    try {
+      const parsed =
+        new URL(path, window.location.href);
+
+      return (
+        parsed.pathname
+          .split("?")[0]
+          .split("#")[0]
+          .replace(/\/+$/, "") || "/"
+      );
+    } catch (error) {
+      return (
+        String(path)
+          .split("?")[0]
+          .split("#")[0]
+          .replace(/\/+$/, "") || "/"
+      );
+    }
   }
 
   function getCurrentPage() {
@@ -209,44 +310,68 @@
     const fileName =
       pathname.split("/").pop();
 
+    if (!fileName) {
+      return "";
+    }
+
     return fileName
-      ? fileName.replace(".html", "")
-      : "";
+      .replace(/\.html$/i, "")
+      .toLowerCase();
   }
 
   function getLinkPage(link) {
+    if (!link) {
+      return "";
+    }
+
     const explicitPage =
-      link.getAttribute(
-        "data-page"
-      );
+      link.getAttribute("data-page");
 
     if (explicitPage) {
-      return explicitPage;
+      return explicitPage
+        .trim()
+        .toLowerCase();
     }
 
     const href =
       link.getAttribute("href");
 
-    if (!href || href === "#") {
-      return "";
-    }
-
     if (
-      href.startsWith("http://") ||
-      href.startsWith("https://") ||
-      href.startsWith("mailto:") ||
-      href.startsWith("tel:")
+      !href ||
+      href === "#" ||
+      href.startsWith("javascript:")
     ) {
       return "";
     }
 
-    const cleanHref =
-      href
+    if (isExternalLink(link)) {
+      return "";
+    }
+
+    let cleanHref = href;
+
+    try {
+      const url =
+        new URL(
+          href,
+          window.location.href
+        );
+
+      cleanHref = url.pathname;
+    } catch (error) {
+      cleanHref = href
+        .split("?")[0]
+        .split("#")[0];
+    }
+
+    cleanHref =
+      cleanHref
         .split("?")[0]
         .split("#")[0];
 
     if (
       cleanHref === "/" ||
+      cleanHref.endsWith("/") ||
       cleanHref.endsWith("index.html")
     ) {
       return "home";
@@ -256,7 +381,9 @@
       cleanHref.split("/").pop();
 
     return fileName
-      ? fileName.replace(".html", "")
+      ? fileName
+          .replace(/\.html$/i, "")
+          .toLowerCase()
       : "";
   }
 
@@ -272,12 +399,16 @@
         getLinkPage(link);
 
       const active =
-        linkPage &&
-        linkPage === currentPage;
+        Boolean(
+          linkPage &&
+          currentPage &&
+          linkPage ===
+            currentPage.toLowerCase()
+        );
 
       link.classList.toggle(
         "active",
-        Boolean(active)
+        active
       );
 
       if (active) {
@@ -291,6 +422,18 @@
         );
       }
     });
+
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanNavigationUpdated",
+        {
+          detail: {
+            currentPage,
+            links
+          }
+        }
+      )
+    );
   }
 
   /* =========================================
@@ -308,14 +451,31 @@
     }
 
     const href =
-      link.getAttribute("href");
+      link.getAttribute("href") || "";
+
+    /*
+     * Keep external links, mail and telephone
+     * links working normally.
+     */
+
+    if (
+      isExternalLink(link) ||
+      isHashLink(link)
+    ) {
+      if (
+        isMobileMenuOpen() &&
+        href !== "#"
+      ) {
+        closeMenu();
+      }
+
+      return;
+    }
 
     if (
       href &&
       href !== "#" &&
-      !href.startsWith(
-        "javascript:"
-      )
+      !href.startsWith("javascript:")
     ) {
       closeMenu();
     }
@@ -347,24 +507,87 @@
       return;
     }
 
-    closeMenu();
+    closeMenu(true);
   }
 
   /* =========================================
      Keyboard
   ========================================= */
 
+  function getFocusableElements() {
+    const menu = getMenu();
+
+    if (!menu) {
+      return [];
+    }
+
+    return Array.from(
+      menu.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter((element) => {
+      const style =
+        window.getComputedStyle(
+          element
+        );
+
+      return (
+        style.display !== "none" &&
+        style.visibility !== "hidden"
+      );
+    });
+  }
+
   function handleKeyboard(event) {
+    if (!isMobileMenuOpen()) {
+      return;
+    }
+
     if (event.key === "Escape") {
-      if (isMobileMenuOpen()) {
-        closeMenu();
+      event.preventDefault();
 
-        const toggle =
-          getMenuToggle();
+      closeMenu(true);
 
-        if (toggle) {
-          toggle.focus();
-        }
+      return;
+    }
+
+    /*
+     * Keep keyboard focus inside the open
+     * mobile navigation.
+     */
+
+    if (event.key === "Tab") {
+      const focusable =
+        getFocusableElements();
+
+      if (!focusable.length) {
+        return;
+      }
+
+      const first =
+        focusable[0];
+
+      const last =
+        focusable[
+          focusable.length - 1
+        ];
+
+      if (
+        event.shiftKey &&
+        document.activeElement === first
+      ) {
+        event.preventDefault();
+        last.focus();
+
+        return;
+      }
+
+      if (
+        !event.shiftKey &&
+        document.activeElement === last
+      ) {
+        event.preventDefault();
+        first.focus();
       }
     }
   }
@@ -375,15 +598,16 @@
 
   function handleResize() {
     /*
-     * Remove mobile-menu state when returning
+     * Reset mobile menu when returning
      * to desktop layout.
      */
 
     if (
-      window.innerWidth > 900 &&
+      window.innerWidth >
+        MOBILE_BREAKPOINT &&
       isMobileMenuOpen()
     ) {
-      closeMenu();
+      closeMenu(false);
     }
   }
 
@@ -399,6 +623,10 @@
       return;
     }
 
+    if (!menu.id) {
+      menu.id = "al-dahayan-mobile-menu";
+    }
+
     if (
       !menu.hasAttribute("aria-hidden")
     ) {
@@ -406,6 +634,10 @@
         "aria-hidden",
         "true"
       );
+    }
+
+    if (menu.hasAttribute("hidden")) {
+      menu.removeAttribute("hidden");
     }
 
     if (toggle) {
@@ -423,14 +655,39 @@
       if (
         !toggle.hasAttribute(
           "aria-controls"
-        ) &&
-        menu.id
+        )
       ) {
         toggle.setAttribute(
           "aria-controls",
           menu.id
         );
       }
+
+      if (
+        !toggle.hasAttribute("type") &&
+        toggle.tagName === "BUTTON"
+      ) {
+        toggle.setAttribute(
+          "type",
+          "button"
+        );
+      }
+    }
+  }
+
+  /* =========================================
+     Dynamic Navigation Refresh
+  ========================================= */
+
+  function refreshNavigation() {
+    setupAccessibility();
+    setActiveNavigation();
+
+    if (
+      !isMobileViewport() &&
+      isMobileMenuOpen()
+    ) {
+      closeMenu(false);
     }
   }
 
@@ -439,6 +696,12 @@
   ========================================= */
 
   function bindEvents() {
+    if (eventsBound) {
+      return;
+    }
+
+    eventsBound = true;
+
     document.addEventListener(
       "click",
       (event) => {
@@ -463,7 +726,7 @@
         if (close) {
           event.preventDefault();
 
-          closeMenu();
+          closeMenu(true);
 
           return;
         }
@@ -492,20 +755,29 @@
       setActiveNavigation
     );
 
+    window.addEventListener(
+      "hashchange",
+      setActiveNavigation
+    );
+
     document.addEventListener(
       "alDahayanComponentsLoaded",
-      () => {
-        setupAccessibility();
-        setActiveNavigation();
-      }
+      refreshNavigation
     );
 
     document.addEventListener(
       "alDahayanLanguageChanged",
-      () => {
-        setupAccessibility();
-        setActiveNavigation();
-      }
+      refreshNavigation
+    );
+
+    document.addEventListener(
+      "alDahayanConfigUpdated",
+      refreshNavigation
+    );
+
+    document.addEventListener(
+      "alDahayanNavigationRefresh",
+      refreshNavigation
     );
   }
 
@@ -514,17 +786,15 @@
   ========================================= */
 
   function initializeNavigation() {
-    if (initialized) {
-      return;
+    if (!initialized) {
+      initialized = true;
+      bindEvents();
     }
 
-    initialized = true;
-
     setupAccessibility();
-
     setActiveNavigation();
 
-    bindEvents();
+    return true;
   }
 
   /* =========================================
@@ -550,13 +820,30 @@
     setActive:
       setActiveNavigation,
 
+    refresh:
+      refreshNavigation,
+
     navigateTo:
       navigateTo,
 
     getCurrentPage:
-      getCurrentPage
+      getCurrentPage,
+
+    getNavigationLinks:
+      getNavigationLinks,
+
+    isMobileViewport:
+      isMobileViewport,
+
+    isInitialized:
+      function () {
+        return initialized;
+      }
   };
 
+  /*
+   * Backward compatibility
+   */
   window.initializeNavigation =
     initializeNavigation;
 
@@ -564,11 +851,19 @@
      DOM Ready
   ========================================= */
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-      initializeNavigation();
-    }
-  );
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializeNavigation,
+      {
+        once: true
+      }
+    );
+  } else {
+    initializeNavigation();
+  }
 
 })();
