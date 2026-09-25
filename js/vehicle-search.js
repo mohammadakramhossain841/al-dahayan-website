@@ -1,11 +1,15 @@
 /* =========================================
    AL-DAHAYAN VEHICLE SEARCH
+   ADMIN + VIN + INQUIRY INTEGRATION
 ========================================= */
 
 (function () {
   "use strict";
 
+  const CONFIG = window.AlDahayanConfig || null;
+
   let initialized = false;
+  let eventsBound = false;
   let vehicles = [];
   let filteredVehicles = [];
 
@@ -16,6 +20,12 @@
     engine: "",
     query: ""
   };
+
+  /**
+   * ---------------------------------------------------------
+   * Basic Helpers
+   * ---------------------------------------------------------
+   */
 
   function normalize(value) {
     return String(value ?? "")
@@ -31,6 +41,29 @@
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
   }
+
+  function getDataPath(fileName) {
+    if (
+      CONFIG &&
+      typeof CONFIG.getDataPath === "function"
+    ) {
+      return CONFIG.getDataPath(fileName);
+    }
+
+    if (
+      typeof window.getDataPath === "function"
+    ) {
+      return window.getDataPath(fileName);
+    }
+
+    return `../data/${fileName}`;
+  }
+
+  /**
+   * ---------------------------------------------------------
+   * Vehicle Field Helpers
+   * ---------------------------------------------------------
+   */
 
   function getVehicleId(vehicle) {
     return (
@@ -54,6 +87,7 @@
     return (
       vehicle.model ||
       vehicle.modelName ||
+      vehicle.model_name ||
       ""
     );
   }
@@ -86,12 +120,24 @@
       .join(" ");
   }
 
+  function isActive(vehicle) {
+    return vehicle.active !== false;
+  }
+
+  /**
+   * ---------------------------------------------------------
+   * Unique Sorted Values
+   * ---------------------------------------------------------
+   */
+
   function uniqueSorted(values) {
     return [
       ...new Set(
         values
           .filter(Boolean)
-          .map((value) => String(value).trim())
+          .map((value) =>
+            String(value).trim()
+          )
       )
     ].sort((a, b) =>
       a.localeCompare(b, undefined, {
@@ -101,17 +147,22 @@
     );
   }
 
-  async function loadVehicles() {
-    if (vehicles.length) {
+  /**
+   * ---------------------------------------------------------
+   * Load Vehicles
+   * ---------------------------------------------------------
+   */
+
+  async function loadVehicles(force = false) {
+    if (
+      vehicles.length &&
+      !force
+    ) {
       return vehicles;
     }
 
-    if (typeof window.getDataPath !== "function") {
-      throw new Error("getDataPath() is not available.");
-    }
-
     const response = await fetch(
-      window.getDataPath("vehicles.json"),
+      getDataPath("vehicles.json"),
       {
         cache: "no-cache"
       }
@@ -123,22 +174,41 @@
       );
     }
 
-    const data = await response.json();
+    const data =
+      await response.json();
 
     if (Array.isArray(data)) {
       vehicles = data;
-    } else if (Array.isArray(data.vehicles)) {
+    } else if (
+      Array.isArray(data.vehicles)
+    ) {
       vehicles = data.vehicles;
-    } else if (Array.isArray(data.data)) {
+    } else if (
+      Array.isArray(data.data)
+    ) {
       vehicles = data.data;
     } else {
       vehicles = [];
     }
 
-    filteredVehicles = [...vehicles];
+    /*
+     * Inactive vehicles are not shown
+     * in the public search.
+     */
+    vehicles =
+      vehicles.filter(isActive);
+
+    filteredVehicles =
+      [...vehicles];
 
     return vehicles;
   }
+
+  /**
+   * ---------------------------------------------------------
+   * DOM Elements
+   * ---------------------------------------------------------
+   */
 
   function getElements() {
     return {
@@ -180,6 +250,12 @@
     };
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Select Options
+   * ---------------------------------------------------------
+   */
+
   function setSelectOptions(
     select,
     values,
@@ -189,7 +265,8 @@
       return;
     }
 
-    const currentValue = select.value;
+    const currentValue =
+      select.value;
 
     select.innerHTML = "";
 
@@ -197,13 +274,18 @@
       document.createElement("option");
 
     placeholderOption.value = "";
-    placeholderOption.textContent = placeholder;
+    placeholderOption.textContent =
+      placeholder;
 
-    select.appendChild(placeholderOption);
+    select.appendChild(
+      placeholderOption
+    );
 
     values.forEach((value) => {
       const option =
-        document.createElement("option");
+        document.createElement(
+          "option"
+        );
 
       option.value = value;
       option.textContent = value;
@@ -214,16 +296,75 @@
     if (
       values.includes(currentValue)
     ) {
-      select.value = currentValue;
+      select.value =
+        currentValue;
     }
   }
 
-  function updateMakeOptions() {
-    const elements = getElements();
+  /**
+   * ---------------------------------------------------------
+   * Filter Source
+   * ---------------------------------------------------------
+   */
 
-    const makes = uniqueSorted(
-      vehicles.map(getMake)
-    );
+  function filterByState(
+    source,
+    options = {}
+  ) {
+    let result = [
+      ...source
+    ];
+
+    const {
+      make = state.make,
+      model = state.model,
+      year = state.year
+    } = options;
+
+    if (make) {
+      result = result.filter(
+        (vehicle) =>
+          normalize(
+            getMake(vehicle)
+          ) === normalize(make)
+      );
+    }
+
+    if (model) {
+      result = result.filter(
+        (vehicle) =>
+          normalize(
+            getModel(vehicle)
+          ) === normalize(model)
+      );
+    }
+
+    if (year) {
+      result = result.filter(
+        (vehicle) =>
+          normalize(
+            getYear(vehicle)
+          ) === normalize(year)
+      );
+    }
+
+    return result;
+  }
+
+  /**
+   * ---------------------------------------------------------
+   * Dependent Filters
+   * ---------------------------------------------------------
+   */
+
+  function updateMakeOptions() {
+    const elements =
+      getElements();
+
+    const makes =
+      uniqueSorted(
+        vehicles.map(getMake)
+      );
 
     setSelectOptions(
       elements.make,
@@ -233,21 +374,23 @@
   }
 
   function updateModelOptions() {
-    const elements = getElements();
+    const elements =
+      getElements();
 
-    let source = vehicles;
-
-    if (state.make) {
-      source = source.filter(
-        (vehicle) =>
-          normalize(getMake(vehicle)) ===
-          normalize(state.make)
+    const source =
+      filterByState(
+        vehicles,
+        {
+          make: state.make,
+          model: "",
+          year: ""
+        }
       );
-    }
 
-    const models = uniqueSorted(
-      source.map(getModel)
-    );
+    const models =
+      uniqueSorted(
+        source.map(getModel)
+      );
 
     setSelectOptions(
       elements.model,
@@ -257,29 +400,23 @@
   }
 
   function updateYearOptions() {
-    const elements = getElements();
+    const elements =
+      getElements();
 
-    let source = vehicles;
-
-    if (state.make) {
-      source = source.filter(
-        (vehicle) =>
-          normalize(getMake(vehicle)) ===
-          normalize(state.make)
+    const source =
+      filterByState(
+        vehicles,
+        {
+          make: state.make,
+          model: state.model,
+          year: ""
+        }
       );
-    }
 
-    if (state.model) {
-      source = source.filter(
-        (vehicle) =>
-          normalize(getModel(vehicle)) ===
-          normalize(state.model)
+    const years =
+      uniqueSorted(
+        source.map(getYear)
       );
-    }
-
-    const years = uniqueSorted(
-      source.map(getYear)
-    );
 
     setSelectOptions(
       elements.year,
@@ -289,37 +426,23 @@
   }
 
   function updateEngineOptions() {
-    const elements = getElements();
+    const elements =
+      getElements();
 
-    let source = vehicles;
-
-    if (state.make) {
-      source = source.filter(
-        (vehicle) =>
-          normalize(getMake(vehicle)) ===
-          normalize(state.make)
+    const source =
+      filterByState(
+        vehicles,
+        {
+          make: state.make,
+          model: state.model,
+          year: state.year
+        }
       );
-    }
 
-    if (state.model) {
-      source = source.filter(
-        (vehicle) =>
-          normalize(getModel(vehicle)) ===
-          normalize(state.model)
+    const engines =
+      uniqueSorted(
+        source.map(getEngine)
       );
-    }
-
-    if (state.year) {
-      source = source.filter(
-        (vehicle) =>
-          normalize(getYear(vehicle)) ===
-          normalize(state.year)
-      );
-    }
-
-    const engines = uniqueSorted(
-      source.map(getEngine)
-    );
 
     setSelectOptions(
       elements.engine,
@@ -334,77 +457,139 @@
     updateEngineOptions();
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Apply Filters
+   * ---------------------------------------------------------
+   */
+
   function applyFilters() {
-    const query = normalize(state.query);
+    const query =
+      normalize(state.query);
 
     filteredVehicles =
-      vehicles.filter((vehicle) => {
-        const make = normalize(
-          getMake(vehicle)
-        );
+      vehicles.filter(
+        (vehicle) => {
+          if (!isActive(vehicle)) {
+            return false;
+          }
 
-        const model = normalize(
-          getModel(vehicle)
-        );
+          const make =
+            normalize(
+              getMake(vehicle)
+            );
 
-        const year = normalize(
-          getYear(vehicle)
-        );
+          const model =
+            normalize(
+              getModel(vehicle)
+            );
 
-        const engine = normalize(
-          getEngine(vehicle)
-        );
+          const year =
+            normalize(
+              getYear(vehicle)
+            );
 
-        const matchesMake =
-          !state.make ||
-          make === normalize(state.make);
+          const engine =
+            normalize(
+              getEngine(vehicle)
+            );
 
-        const matchesModel =
-          !state.model ||
-          model === normalize(state.model);
+          const matchesMake =
+            !state.make ||
+            make ===
+              normalize(
+                state.make
+              );
 
-        const matchesYear =
-          !state.year ||
-          year === normalize(state.year);
+          const matchesModel =
+            !state.model ||
+            model ===
+              normalize(
+                state.model
+              );
 
-        const matchesEngine =
-          !state.engine ||
-          engine === normalize(state.engine);
+          const matchesYear =
+            !state.year ||
+            year ===
+              normalize(
+                state.year
+              );
 
-        const searchableText = [
-          make,
-          model,
-          year,
-          engine,
-          normalize(
-            vehicle.name
-          ),
-          normalize(
-            vehicle.fullName
-          ),
-          normalize(
-            vehicle.description
-          )
-        ].join(" ");
+          const matchesEngine =
+            !state.engine ||
+            engine ===
+              normalize(
+                state.engine
+              );
 
-        const matchesQuery =
-          !query ||
-          searchableText.includes(query);
+          const searchableText = [
+            make,
+            model,
+            year,
+            engine,
+            normalize(
+              vehicle.name
+            ),
+            normalize(
+              vehicle.fullName
+            ),
+            normalize(
+              vehicle.description
+            ),
+            normalize(
+              vehicle.bodyType
+            ),
+            normalize(
+              vehicle.fuelType
+            ),
+            normalize(
+              vehicle.driveType
+            )
+          ].join(" ");
 
-        return (
-          matchesMake &&
-          matchesModel &&
-          matchesYear &&
-          matchesEngine &&
-          matchesQuery
-        );
-      });
+          const matchesQuery =
+            !query ||
+            searchableText.includes(
+              query
+            );
+
+          return (
+            matchesMake &&
+            matchesModel &&
+            matchesYear &&
+            matchesEngine &&
+            matchesQuery
+          );
+        }
+      );
 
     renderResults();
+
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanVehicleSearchCompleted",
+        {
+          detail: {
+            filters: {
+              ...state
+            },
+            count:
+              filteredVehicles.length
+          }
+        }
+      )
+    );
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Summary
+   * ---------------------------------------------------------
+   */
+
   function renderSummary() {
-    const elements = getElements();
+    const elements =
+      getElements();
 
     if (!elements.summary) {
       return;
@@ -414,15 +599,36 @@
       filteredVehicles.length;
 
     elements.summary.textContent =
-      `${count} vehicle${count === 1 ? "" : "s"} found`;
+      `${count} vehicle${
+        count === 1
+          ? ""
+          : "s"
+      } found`;
   }
 
-  function renderVehicleCard(vehicle) {
-    const id = getVehicleId(vehicle);
-    const make = getMake(vehicle);
-    const model = getModel(vehicle);
-    const year = getYear(vehicle);
-    const engine = getEngine(vehicle);
+  /**
+   * ---------------------------------------------------------
+   * Vehicle Card
+   * ---------------------------------------------------------
+   */
+
+  function renderVehicleCard(
+    vehicle
+  ) {
+    const id =
+      getVehicleId(vehicle);
+
+    const make =
+      getMake(vehicle);
+
+    const model =
+      getModel(vehicle);
+
+    const year =
+      getYear(vehicle);
+
+    const engine =
+      getEngine(vehicle);
 
     const image =
       vehicle.image ||
@@ -460,6 +666,7 @@
         <div class="vehicle-card-content">
 
           <div class="vehicle-card-header">
+
             <span class="vehicle-card-brand">
               ${escapeHTML(make)}
             </span>
@@ -473,6 +680,7 @@
                 `
                 : ""
             }
+
           </div>
 
           <h3 class="vehicle-card-title">
@@ -483,7 +691,9 @@
             engine
               ? `
                 <p class="vehicle-card-engine">
-                  <strong>Engine:</strong>
+                  <strong>
+                    Engine:
+                  </strong>
                   ${escapeHTML(engine)}
                 </p>
               `
@@ -494,7 +704,9 @@
             description
               ? `
                 <p class="vehicle-card-description">
-                  ${escapeHTML(description)}
+                  ${escapeHTML(
+                    description
+                  )}
                 </p>
               `
               : ""
@@ -528,8 +740,15 @@
     `;
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Render Results
+   * ---------------------------------------------------------
+   */
+
   function renderResults() {
-    const elements = getElements();
+    const elements =
+      getElements();
 
     renderSummary();
 
@@ -540,10 +759,16 @@
     if (!filteredVehicles.length) {
       elements.results.innerHTML = `
         <div class="search-empty">
-          <h3>No vehicles found</h3>
+
+          <h3>
+            No vehicles found
+          </h3>
+
           <p>
-            Try changing your search filters.
+            Try changing your
+            search filters.
           </p>
+
         </div>
       `;
 
@@ -552,30 +777,51 @@
 
     elements.results.innerHTML =
       filteredVehicles
-        .map(renderVehicleCard)
+        .map(
+          renderVehicleCard
+        )
         .join("");
   }
 
-  function findVehicleById(id) {
-    const target = normalize(id);
+  /**
+   * ---------------------------------------------------------
+   * Find Vehicle
+   * ---------------------------------------------------------
+   */
 
-    return vehicles.find(
-      (vehicle) =>
-        normalize(getVehicleId(vehicle)) ===
-        target
-    ) || null;
+  function findVehicleById(id) {
+    const target =
+      normalize(id);
+
+    return (
+      vehicles.find(
+        (vehicle) =>
+          normalize(
+            getVehicleId(vehicle)
+          ) === target
+      ) || null
+    );
   }
 
   function getVehicleDetails(id) {
     return findVehicleById(id);
   }
 
-  function selectVehicle(vehicle) {
+  /**
+   * ---------------------------------------------------------
+   * Vehicle Selection
+   * ---------------------------------------------------------
+   */
+
+  function selectVehicle(
+    vehicle
+  ) {
     if (!vehicle) {
       return;
     }
 
-    const id = getVehicleId(vehicle);
+    const id =
+      getVehicleId(vehicle);
 
     document.dispatchEvent(
       new CustomEvent(
@@ -590,7 +836,9 @@
     );
   }
 
-  function handleViewVehicle(id) {
+  function handleViewVehicle(
+    id
+  ) {
     const vehicle =
       findVehicleById(id);
 
@@ -601,7 +849,15 @@
     selectVehicle(vehicle);
   }
 
-  function handleInquiry(vehicle) {
+  /**
+   * ---------------------------------------------------------
+   * Vehicle Inquiry
+   * ---------------------------------------------------------
+   */
+
+  function handleInquiry(
+    vehicle
+  ) {
     if (!vehicle) {
       return;
     }
@@ -611,32 +867,59 @@
         "alDahayanVehicleInquiry",
         {
           detail: {
-            vehicle
+            vehicle,
+            vehicleId:
+              getVehicleId(vehicle),
+            make:
+              getMake(vehicle),
+            model:
+              getModel(vehicle),
+            year:
+              getYear(vehicle),
+            engine:
+              getEngine(vehicle)
           }
         }
       )
     );
 
     const inquiryPage =
-      typeof window.getPagePath === "function"
-        ? window.getPagePath("inquiry.html")
+      typeof window.getPagePath ===
+      "function"
+        ? window.getPagePath(
+            "inquiry.html"
+          )
         : "../pages/inquiry.html";
 
-    const id = getVehicleId(vehicle);
+    const id =
+      getVehicleId(vehicle);
 
     if (id) {
       window.location.href =
-        `${inquiryPage}?vehicle=${encodeURIComponent(id)}`;
+        `${inquiryPage}?vehicle=${encodeURIComponent(
+          id
+        )}`;
     } else {
       window.location.href =
         inquiryPage;
     }
   }
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
+  /**
+   * ---------------------------------------------------------
+   * Form Submit
+   * ---------------------------------------------------------
+   */
 
-    const elements = getElements();
+  function handleFormSubmit(
+    event
+  ) {
+    if (event) {
+      event.preventDefault();
+    }
+
+    const elements =
+      getElements();
 
     state.make =
       elements.make?.value || "";
@@ -653,70 +936,144 @@
     state.query =
       elements.query?.value || "";
 
+    updateDependentFilters();
     applyFilters();
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Filter Change
+   * ---------------------------------------------------------
+   */
+
   function handleFilterChange() {
-    const elements = getElements();
+    const elements =
+      getElements();
 
     state.make =
       elements.make?.value || "";
 
+    /*
+     * When Make changes, reset
+     * dependent filters.
+     */
+    if (
+      document.activeElement ===
+      elements.make
+    ) {
+      state.model = "";
+      state.year = "";
+      state.engine = "";
+
+      if (elements.model) {
+        elements.model.value = "";
+      }
+
+      if (elements.year) {
+        elements.year.value = "";
+      }
+
+      if (elements.engine) {
+        elements.engine.value = "";
+      }
+    }
+
     state.model =
       elements.model?.value || "";
 
+    /*
+     * When Model changes,
+     * reset Year + Engine.
+     */
+    if (
+      document.activeElement ===
+      elements.model
+    ) {
+      state.year = "";
+      state.engine = "";
+
+      if (elements.year) {
+        elements.year.value = "";
+      }
+
+      if (elements.engine) {
+        elements.engine.value = "";
+      }
+    }
+
     state.year =
       elements.year?.value || "";
+
+    /*
+     * When Year changes,
+     * reset Engine.
+     */
+    if (
+      document.activeElement ===
+      elements.year
+    ) {
+      state.engine = "";
+
+      if (elements.engine) {
+        elements.engine.value = "";
+      }
+    }
 
     state.engine =
       elements.engine?.value || "";
 
     updateDependentFilters();
 
-    if (
-      elements.model &&
-      state.model &&
-      [...elements.model.options]
-        .some(
-          (option) =>
-            option.value === state.model
-        )
-    ) {
-      elements.model.value =
-        state.model;
-    }
+    /*
+     * Restore selected values
+     * when still valid.
+     */
+    restoreSelectValue(
+      elements.model,
+      state.model
+    );
 
-    if (
-      elements.year &&
-      state.year &&
-      [...elements.year.options]
-        .some(
-          (option) =>
-            option.value === state.year
-        )
-    ) {
-      elements.year.value =
-        state.year;
-    }
+    restoreSelectValue(
+      elements.year,
+      state.year
+    );
 
-    if (
-      elements.engine &&
-      state.engine &&
-      [...elements.engine.options]
-        .some(
-          (option) =>
-            option.value === state.engine
-        )
-    ) {
-      elements.engine.value =
-        state.engine;
-    }
+    restoreSelectValue(
+      elements.engine,
+      state.engine
+    );
 
     applyFilters();
   }
 
+  function restoreSelectValue(
+    select,
+    value
+  ) {
+    if (!select || !value) {
+      return;
+    }
+
+    const exists =
+      [...select.options].some(
+        (option) =>
+          option.value === value
+      );
+
+    if (exists) {
+      select.value = value;
+    }
+  }
+
+  /**
+   * ---------------------------------------------------------
+   * Reset
+   * ---------------------------------------------------------
+   */
+
   function resetSearch() {
-    const elements = getElements();
+    const elements =
+      getElements();
 
     state.make = "";
     state.model = "";
@@ -737,8 +1094,31 @@
     renderResults();
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Refresh
+   * ---------------------------------------------------------
+   */
+
+  function refresh() {
+    updateMakeOptions();
+    updateDependentFilters();
+    applyFilters();
+  }
+
+  /**
+   * ---------------------------------------------------------
+   * Bind Events
+   * ---------------------------------------------------------
+   */
+
   function bindEvents() {
-    const elements = getElements();
+    if (eventsBound) {
+      return;
+    }
+
+    const elements =
+      getElements();
 
     elements.form?.addEventListener(
       "submit",
@@ -765,9 +1145,18 @@
       handleFilterChange
     );
 
+    /*
+     * Query input should search
+     * immediately without submitting.
+     */
     elements.query?.addEventListener(
       "input",
-      handleFormSubmit
+      () => {
+        state.query =
+          elements.query?.value || "";
+
+        applyFilters();
+      }
     );
 
     elements.reset?.addEventListener(
@@ -806,18 +1195,57 @@
               )
             );
 
-          handleInquiry(vehicle);
+          handleInquiry(
+            vehicle
+          );
         }
+      }
+    );
+
+    eventsBound = true;
+  }
+
+  /**
+   * ---------------------------------------------------------
+   * Admin / Data Refresh Events
+   * ---------------------------------------------------------
+   */
+
+  function bindDataRefreshEvents() {
+    document.addEventListener(
+      "alDahayanVehiclesUpdated",
+      async () => {
+        try {
+          await loadVehicles(true);
+          refresh();
+        } catch (error) {
+          console.warn(
+            "Vehicle data refresh failed:",
+            error
+          );
+        }
+      }
+    );
+
+    document.addEventListener(
+      "alDahayanConfigUpdated",
+      () => {
+        refresh();
       }
     );
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Initialize
+   * ---------------------------------------------------------
+   */
+
   async function initializeVehicleSearch() {
     if (initialized) {
+      refresh();
       return;
     }
-
-    initialized = true;
 
     try {
       await loadVehicles();
@@ -826,15 +1254,19 @@
       updateDependentFilters();
 
       bindEvents();
+      bindDataRefreshEvents();
 
       renderResults();
+
+      initialized = true;
 
       document.dispatchEvent(
         new CustomEvent(
           "alDahayanVehicleSearchReady",
           {
             detail: {
-              count: vehicles.length
+              count:
+                vehicles.length
             }
           }
         )
@@ -846,15 +1278,21 @@
         error
       );
 
-      const elements = getElements();
+      const elements =
+        getElements();
 
       if (elements.results) {
         elements.results.innerHTML = `
           <div class="search-error">
-            <h3>Unable to load vehicles</h3>
+
+            <h3>
+              Unable to load vehicles
+            </h3>
+
             <p>
               Please try again later.
             </p>
+
           </div>
         `;
       }
@@ -866,50 +1304,128 @@
     }
   }
 
+  /**
+   * ---------------------------------------------------------
+   * Public API
+   * ---------------------------------------------------------
+   */
+
   window.AlDahayanVehicleSearch = {
-    init: initializeVehicleSearch,
 
-    load: loadVehicles,
+    init:
+      initializeVehicleSearch,
 
-    search: function (filters = {}) {
-      state.make = filters.make || "";
-      state.model = filters.model || "";
-      state.year = filters.year || "";
-      state.engine = filters.engine || "";
-      state.query = filters.query || "";
+    load:
+      loadVehicles,
 
+    refresh,
+
+    search: function (
+      filters = {}
+    ) {
+      state.make =
+        filters.make || "";
+
+      state.model =
+        filters.model || "";
+
+      state.year =
+        filters.year || "";
+
+      state.engine =
+        filters.engine || "";
+
+      state.query =
+        filters.query || "";
+
+      updateDependentFilters();
       applyFilters();
 
-      return filteredVehicles;
+      return [
+        ...filteredVehicles
+      ];
     },
 
-    reset: resetSearch,
+    reset:
+      resetSearch,
 
     getAll: function () {
-      return [...vehicles];
+      return [
+        ...vehicles
+      ];
     },
 
     getResults: function () {
-      return [...filteredVehicles];
+      return [
+        ...filteredVehicles
+      ];
     },
 
-    findById: findVehicleById,
+    findById:
+      findVehicleById,
 
-    getDetails: getVehicleDetails,
+    getDetails:
+      getVehicleDetails,
+
+    getMakes: function () {
+      return uniqueSorted(
+        vehicles.map(
+          getMake
+        )
+      );
+    },
+
+    getModels: function () {
+      return uniqueSorted(
+        vehicles.map(
+          getModel
+        )
+      );
+    },
+
+    getYears: function () {
+      return uniqueSorted(
+        vehicles.map(
+          getYear
+        )
+      );
+    },
+
+    getEngines: function () {
+      return uniqueSorted(
+        vehicles.map(
+          getEngine
+        )
+      );
+    },
 
     getState: function () {
       return {
         ...state
       };
+    },
+
+    isInitialized: function () {
+      return initialized;
     }
   };
 
   window.initializeVehicleSearch =
     initializeVehicleSearch;
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    initializeVehicleSearch
-  );
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializeVehicleSearch,
+      {
+        once: true
+      }
+    );
+  } else {
+    initializeVehicleSearch();
+  }
 
 })();
