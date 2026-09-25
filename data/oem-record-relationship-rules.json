@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Relationship rules for linking Toyota and Lexus OEM catalog records with related parts, vehicles, and replacement numbers.",
+  "enabled": true,
+  "relationshipTypes": [
+    "compatible_oem",
+    "superseded_oem",
+    "vehicle_compatibility",
+    "related_part",
+    "replacement_part",
+    "alternative_part"
+  ],
+  "fields": {
+    "compatibleOemNumbers": {
+      "enabled": true,
+      "type": "array",
+      "allowMultiple": true,
+      "searchable": true
+    },
+    "supersededOemNumbers": {
+      "enabled": true,
+      "type": "array",
+      "allowMultiple": true,
+      "searchable": true
+    },
+    "relatedPartIds": {
+      "enabled": true,
+      "type": "array",
+      "allowMultiple": true,
+      "searchable": false
+    },
+    "replacementPartIds": {
+      "enabled": true,
+      "type": "array",
+      "allowMultiple": true,
+      "searchable": false
+    },
+    "alternativePartIds": {
+      "enabled": true,
+      "type": "array",
+      "allowMultiple": true,
+      "searchable": false
+    }
+  },
+  "validation": {
+    "validateReferencedRecords": true,
+    "validateReferencedOemNumbers": true,
+    "preventSelfReference": true,
+    "removeDuplicateRelationships": true,
+    "preventCircularReplacement": true,
+    "blockInvalidReferences": true,
+    "showWarnings": true
+  },
+  "compatibility": {
+    "requireManualVerification": true,
+    "automaticCompatibilityVerification": false,
+    "relationshipDoesNotEqualCompatibilityProof": true
+  },
+  "search": {
+    "includeCompatibleOemNumbers": true,
+    "includeSupersededOemNumbers": true,
+    "includeRelatedParts": true,
+    "includeReplacementParts": true,
+    "includeAlternativeParts": true
+  },
+  "publicWebsite": {
+    "showCompatibleOemNumbers": true,
+    "showSupersededOemNumbers": true,
+    "showRelatedParts": true,
+    "showReplacementParts": true,
+    "showAlternativeParts": true,
+    "showUnverifiedRelationshipNotice": true
+  },
+  "adminPanel": {
+    "allowRelationshipEdit": true,
+    "allowBulkRelationshipUpdate": true,
+    "showRelationshipHistory": true,
+    "showReferencedRecords": true
+  },
+  "permissions": {
+    "view": "oem.view",
+    "edit": "oem.edit",
+    "bulkEdit": "oem.edit",
+    "export": "oem.export"
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousRelationships": true,
+    "recordNewRelationships": true,
+    "recordChangedFields": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.edit",
+    "preserveRollbackHistory": true
+  },
+  "safety": {
+    "neverAutomaticallyVerifyCompatibility": true,
+    "neverAutomaticallyCreateReplacementRelationships": true,
+    "neverAutomaticallyDeleteReferencedRecords": true,
+    "neverTreatRelationshipAsManufacturerConfirmation": true,
+    "preserveRelationshipHistory": true,
+    "preserveAuditHistory": true
+  }
+}
