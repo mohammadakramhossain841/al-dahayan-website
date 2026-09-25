@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public trust and verification display configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "verification": {
+    "enabled": true,
+    "showVerificationBadge": true,
+    "showVerificationStatus": true,
+    "showVerificationDate": false,
+    "showVerifiedBy": false
+  },
+
+  "statuses": {
+    "verified": {
+      "enabled": true,
+      "label": "Verified"
+    },
+    "pending": {
+      "enabled": true,
+      "label": "Verification Pending"
+    },
+    "unverified": {
+      "enabled": true,
+      "label": "Not Verified"
+    }
+  },
+
+  "genuineStatus": {
+    "enabled": true,
+    "showGenuineLabel": true,
+    "showAftermarketLabel": true,
+    "showUnknownLabel": true,
+    "neverAssumeGenuine": true
+  },
+
+  "publicInformation": {
+    "showVerificationSummary": true,
+    "showCatalogSource": false,
+    "showInternalVerificationNotes": false,
+    "showAuditHistory": false
+  },
+
+  "search": {
+    "allowVerifiedFilter": true,
+    "allowGenuineFilter": true,
+    "excludeUnpublishedRecords": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "visibility": {
+    "publishedRecordsOnly": true,
+    "publicRecordsOnly": true,
+    "hideArchived": true,
+    "hideDisabled": true
+  },
+
+  "safety": {
+    "neverPresentUnverifiedDataAsVerified": true,
+    "neverAssumeGenuineStatus": true,
+    "neverExposeInternalVerificationNotes": true,
+    "neverExposeAdminPermissions": true,
+    "neverExposeAuditHistory": true
+  }
+}
