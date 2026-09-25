@@ -1,0 +1,79 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public analytics configuration for Toyota and Lexus OEM catalog interactions.",
+  "enabled": true,
+
+  "tracking": {
+    "pageView": true,
+    "catalogView": true,
+    "recordView": true,
+    "search": true,
+    "filter": true,
+    "sort": true,
+    "pagination": true,
+    "inquiryStart": true,
+    "inquirySubmit": true,
+    "whatsappClick": true,
+    "phoneClick": true,
+    "copyOemNumber": true,
+    "share": true
+  },
+
+  "searchEvents": {
+    "trackOemSearch": true,
+    "trackPartNameSearch": true,
+    "trackVehicleSearch": true,
+    "trackCategorySearch": true,
+    "trackNoResultSearch": true,
+    "trackResultCount": true
+  },
+
+  "catalogEvents": {
+    "trackCategoryView": true,
+    "trackModelView": true,
+    "trackPartView": true,
+    "trackStockStatusView": true
+  },
+
+  "conversionEvents": {
+    "inquiryStarted": true,
+    "inquirySubmitted": true,
+    "whatsappOpened": true,
+    "phoneOpened": true
+  },
+
+  "privacy": {
+    "enabled": true,
+    "doNotTrackSensitiveCustomerData": true,
+    "doNotTrackCustomerMessages": true,
+    "doNotTrackPhoneNumbers": true,
+    "doNotTrackEmailAddresses": true,
+    "doNotTrackVinNumbers": true,
+    "doNotTrackPrivateInventoryData": true,
+    "doNotTrackInternalNotes": true
+  },
+
+  "performance": {
+    "allowDeferredTracking": true,
+    "avoidBlockingPageLoad": true,
+    "allowEventBatching": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "safety": {
+    "neverExposeAnalyticsConfigurationPublicly": false,
+    "neverExposeCustomerPersonalData": true,
+    "neverExposeAdminData": true,
+    "neverExposeSupplierInformation": true,
+    "neverExposeInternalInventoryLocation": true
+  }
+}
