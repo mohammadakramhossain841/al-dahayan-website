@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public filter configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "filters": {
+    "brand": {
+      "enabled": true,
+      "multiSelect": true,
+      "showCount": true
+    },
+
+    "category": {
+      "enabled": true,
+      "multiSelect": true,
+      "showCount": true
+    },
+
+    "subcategory": {
+      "enabled": true,
+      "multiSelect": true,
+      "showCount": true
+    },
+
+    "model": {
+      "enabled": true,
+      "multiSelect": true,
+      "showCount": true
+    },
+
+    "modelYear": {
+      "enabled": true,
+      "multiSelect": true,
+      "showRange": true
+    },
+
+    "engineCode": {
+      "enabled": true,
+      "multiSelect": true
+    },
+
+    "bodyType": {
+      "enabled": true,
+      "multiSelect": true
+    },
+
+    "transmission": {
+      "enabled": true,
+      "multiSelect": true
+    },
+
+    "driveType": {
+      "enabled": true,
+      "multiSelect": true
+    },
+
+    "marketSpec": {
+      "enabled": true,
+      "multiSelect": true
+    },
+
+    "region": {
+      "enabled": true,
+      "multiSelect": true
+    },
+
+    "stockStatus": {
+      "enabled": true,
+      "multiSelect": true
+    },
+
+    "verificationStatus": {
+      "enabled": true,
+      "multiSelect": true
+    }
+  },
+
+  "behavior": {
+    "applyImmediately": true,
+    "allowMultipleFilters": true,
+    "allowClearAll": true,
+    "preserveFiltersInUrl": true,
+    "preserveFiltersOnBack": true,
+    "resetPaginationAfterFilter": true
+  },
+
+  "sorting": {
+    "enabled": true,
+    "default": "relevance",
+    "options": [
+      "relevance",
+      "nameAsc",
+      "nameDesc",
+      "priceAsc",
+      "priceDesc",
+      "newest"
+    ]
+  },
+
+  "results": {
+    "showFilteredResultCount": true,
+    "showTotalResultCount": true,
+    "pageSize": 24,
+    "allowPagination": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "safety": {
+    "showOnlyPublishedRecords": true,
+    "showOnlyPubliclyVisibleRecords": true,
+    "hideArchivedRecords": true,
+    "hideDisabledRecords": true,
+    "neverExposeInternalFilters": true,
+    "neverExposeSupplierInformation": true,
+    "neverExposePrivateInventoryLocation": true
+  }
+}
