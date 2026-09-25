@@ -1,0 +1,128 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public website display configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "listing": {
+    "defaultPageSize": 24,
+    "allowedPageSizes": [
+      24,
+      48,
+      96
+    ],
+    "allowPagination": true,
+    "allowSorting": true,
+    "allowFiltering": true
+  },
+
+  "search": {
+    "enabled": true,
+    "fields": [
+      "oemNumber",
+      "partName",
+      "arabicName",
+      "brand",
+      "model"
+    ],
+    "allowPartialMatch": true,
+    "allowExactMatch": true,
+    "allowArabicSearch": true
+  },
+
+  "filters": [
+    "brand",
+    "category",
+    "model",
+    "modelYear",
+    "engineCode",
+    "stockStatus"
+  ],
+
+  "card": {
+    "showImage": true,
+    "showOemNumber": true,
+    "showPartName": true,
+    "showBrand": true,
+    "showModel": true,
+    "showModelYear": true,
+    "showRegularPrice": true,
+    "showSalePrice": true,
+    "showDiscount": true,
+    "showStockStatus": true,
+    "showExactQuantity": false,
+    "showExactLocation": false,
+    "showVerificationBadge": true
+  },
+
+  "details": {
+    "showDescription": true,
+    "showCompatibility": true,
+    "showCompatibleOemNumbers": true,
+    "showSupersededOemNumbers": false,
+    "showImages": true,
+    "showPricing": true,
+    "showAvailability": true,
+    "showInquiryAction": true
+  },
+
+  "pricing": {
+    "showRegularPrice": true,
+    "showSalePrice": true,
+    "showDiscountPercent": true,
+    "hidePriceWhenUnavailable": true,
+    "currencySource": "record"
+  },
+
+  "availability": {
+    "showStatus": true,
+    "showMessage": true,
+    "showExactQuantity": false,
+    "showExactLocation": false,
+    "allowInquiryForAllStatuses": true
+  },
+
+  "verification": {
+    "showVerificationBadge": true,
+    "publicLevels": [
+      "document_verified",
+      "manually_verified",
+      "fully_verified"
+    ],
+    "hideInternalVerificationNotes": true
+  },
+
+  "actions": {
+    "viewDetails": true,
+    "inquire": true,
+    "whatsapp": true,
+    "copyOemNumber": true,
+    "share": true
+  },
+
+  "publication": {
+    "showOnlyPublishedRecords": true,
+    "showOnlyPubliclyVisibleRecords": true,
+    "hideArchivedRecords": true,
+    "hideDisabledRecords": true,
+    "hideUnverifiedRecordsWhenPublicationRequiresVerification": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "preserveArabicContent": true,
+    "supportRtl": true
+  },
+
+  "safety": {
+    "neverExposeInternalNotes": true,
+    "neverExposeAdminPermissions": true,
+    "neverExposeExactInventoryLocation": true,
+    "neverExposePrivateAuditHistory": true,
+    "neverExposeUnpublishedRecords": true
+  }
+}
