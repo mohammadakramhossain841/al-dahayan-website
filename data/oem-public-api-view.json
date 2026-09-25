@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public API configuration for Toyota and Lexus OEM catalog data.",
+  "enabled": true,
+
+  "endpoints": {
+    "catalog": true,
+    "record": true,
+    "search": true,
+    "filters": true,
+    "categories": true,
+    "vehicles": true,
+    "compatibility": true,
+    "availability": true,
+    "inquiry": true
+  },
+
+  "methods": {
+    "catalog": [
+      "GET"
+    ],
+    "record": [
+      "GET"
+    ],
+    "search": [
+      "GET"
+    ],
+    "filters": [
+      "GET"
+    ],
+    "categories": [
+      "GET"
+    ],
+    "vehicles": [
+      "GET"
+    ],
+    "compatibility": [
+      "GET"
+    ],
+    "availability": [
+      "GET"
+    ],
+    "inquiry": [
+      "POST"
+    ]
+  },
+
+  "query": {
+    "allowOemNumber": true,
+    "allowPartName": true,
+    "allowBrand": true,
+    "allowCategory": true,
+    "allowModel": true,
+    "allowModelYear": true,
+    "allowEngineCode": true,
+    "allowBodyType": true,
+    "allowStockStatus": true,
+    "allowPage": true,
+    "allowPageSize": true,
+    "allowSort": true
+  },
+
+  "response": {
+    "includeOemNumber": true,
+    "includePartName": true,
+    "includeBrand": true,
+    "includeCategory": true,
+    "includeImages": true,
+    "includePricing": true,
+    "includeStockStatus": true,
+    "includeCompatibility": true,
+    "includeVerificationStatus": true,
+    "excludeInternalFields": true
+  },
+
+  "pagination": {
+    "enabled": true,
+    "defaultPageSize": 24,
+    "maximumPageSize": 96
+  },
+
+  "caching": {
+    "enabled": true,
+    "catalogSeconds": 300,
+    "searchSeconds": 300,
+    "vehicleSeconds": 600,
+    "categorySeconds": 600
+  },
+
+  "security": {
+    "publicReadOnlyCatalog": true,
+    "requireAuthenticationForAdminData": true,
+    "requireAuthenticationForWriteOperations": true,
+    "neverExposeInternalNotes": true,
+    "neverExposeSupplierInformation": true,
+    "neverExposePrivateInventoryLocation": true,
+    "neverExposeCustomerData": true,
+    "neverExposeAdminPermissions": true,
+    "neverExposeAuditHistory": true
+  },
+
+  "visibility": {
+    "publishedRecordsOnly": true,
+    "publicRecordsOnly": true,
+    "hideArchived": true,
+    "hideDisabled": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true
+  },
+
+  "errorHandling": {
+    "hideInternalErrors": true,
+    "returnSafeErrorMessages": true,
+    "allowRetry": true
+  }
+}
