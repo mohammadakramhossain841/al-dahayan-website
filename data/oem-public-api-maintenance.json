@@ -1,0 +1,65 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Maintenance mode configuration for the public Toyota and Lexus OEM catalog API.",
+  "enabled": true,
+
+  "maintenance": {
+    "enabled": false,
+    "mode": "normal",
+    "allowPublicRead": true,
+    "allowInquirySubmission": true,
+    "allowAdminAccess": true
+  },
+
+  "scheduledMaintenance": {
+    "enabled": false,
+    "startTime": null,
+    "endTime": null,
+    "timezone": "Asia/Riyadh"
+  },
+
+  "endpointBehavior": {
+    "catalog": "available",
+    "record": "available",
+    "search": "available",
+    "filters": "available",
+    "categories": "available",
+    "vehicles": "available",
+    "compatibility": "available",
+    "availability": "available",
+    "inquiry": "available"
+  },
+
+  "maintenanceResponse": {
+    "httpStatusCode": 503,
+    "errorCode": "SERVICE_UNAVAILABLE",
+    "retryAfter": true,
+    "includeExpectedRecoveryTime": true,
+    "includeRequestId": true
+  },
+
+  "messages": {
+    "en": {
+      "title": "Service temporarily unavailable",
+      "message": "The service is temporarily under maintenance. Please try again later."
+    },
+    "ar": {
+      "title": "الخدمة غير متاحة مؤقتًا",
+      "message": "الخدمة قيد الصيانة مؤقتًا. يرجى المحاولة مرة أخرى لاحقًا."
+    }
+  },
+
+  "security": {
+    "hideInternalMaintenanceDetails": true,
+    "hideAdminInformation": true,
+    "hideDatabaseInformation": true,
+    "hideDeploymentInformation": true
+  },
+
+  "monitoring": {
+    "logMaintenanceStart": true,
+    "logMaintenanceEnd": true,
+    "notifyOnMaintenanceFailure": true
+  }
+}
