@@ -1,0 +1,160 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin category management view configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Categories",
+    "defaultPageSize": 20,
+    "allowFiltering": true,
+    "allowSorting": true,
+    "allowSearch": true
+  },
+
+  "columns": [
+    {
+      "field": "categoryId",
+      "label": "Category ID",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "categoryName",
+      "label": "Category",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "arabicName",
+      "label": "Arabic Name",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "parentCategory",
+      "label": "Parent Category",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "partCount",
+      "label": "Parts",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "status",
+      "label": "Status",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "updatedAt",
+      "label": "Updated",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    }
+  ],
+
+  "filters": [
+    "parentCategory",
+    "status",
+    "brand"
+  ],
+
+  "search": {
+    "enabled": true,
+    "fields": [
+      "categoryId",
+      "categoryName",
+      "arabicName",
+      "description"
+    ],
+    "allowPartialMatch": true,
+    "allowExactMatch": true,
+    "allowArabicSearch": true
+  },
+
+  "categoryRules": {
+    "allowCreate": true,
+    "allowEdit": true,
+    "allowArchive": true,
+    "allowRestore": true,
+    "allowParentCategory": true,
+    "allowSubcategories": true,
+    "preventDuplicateCategoryIds": true,
+    "preventCircularParentRelations": true
+  },
+
+  "actions": {
+    "view": true,
+    "create": true,
+    "edit": true,
+    "archive": true,
+    "restore": true,
+    "viewParts": true,
+    "viewHistory": true,
+    "export": true
+  },
+
+  "bulkActions": {
+    "enabled": true,
+    "allowBulkCategoryUpdate": true,
+    "allowBulkArchive": true,
+    "allowBulkRestore": true,
+    "requirePreview": true,
+    "requireConfirmation": true,
+    "maximumSelectedRecords": 1000
+  },
+
+  "validation": {
+    "enabled": true,
+    "validateCategoryId": true,
+    "validateCategoryName": true,
+    "validateArabicName": true,
+    "validateParentCategory": true,
+    "detectDuplicateCategories": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "blockInvalidCategoryChanges": true
+  },
+
+  "history": {
+    "enabled": true,
+    "recordPreviousValues": true,
+    "recordNewValues": true,
+    "recordChangedFields": true,
+    "recordChangedBy": true,
+    "recordTimestamp": true,
+    "requireChangeReason": true
+  },
+
+  "permissions": {
+    "view": "oem.category_view",
+    "create": "oem.category_create",
+    "edit": "oem.category_update",
+    "archive": "oem.category_archive",
+    "restore": "oem.category_restore",
+    "export": "oem.export",
+    "history": "oem.history_view"
+  },
+
+  "safety": {
+    "neverDeleteCategoriesPermanently": true,
+    "neverArchiveCategoryWithActivePartsWithoutWarning": true,
+    "neverCreateDuplicateCategories": true,
+    "neverCreateCircularCategoryRelations": true,
+    "requireValidationBeforeSave": true,
+    "requireConfirmationForBulkChanges": true,
+    "preserveCategoryHistory": true,
+    "preserveAuditHistory": true
+  }
+}
