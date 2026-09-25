@@ -1,0 +1,135 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Record-level vehicle compatibility rules for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "compatibility": {
+    "enabled": true,
+    "allowMultipleVehicles": true,
+    "allowMultipleModels": true,
+    "allowMultipleModelYears": true,
+    "allowMultipleEngineCodes": true,
+    "allowMultipleBodyTypes": true,
+    "allowMultipleMarketSpecs": true
+  },
+  "fields": {
+    "models": {
+      "enabled": true,
+      "type": "array",
+      "required": false
+    },
+    "modelYears": {
+      "enabled": true,
+      "type": "array",
+      "required": false
+    },
+    "engineCodes": {
+      "enabled": true,
+      "type": "array",
+      "required": false
+    },
+    "bodyTypes": {
+      "enabled": true,
+      "type": "array",
+      "required": false
+    },
+    "marketSpecs": {
+      "enabled": true,
+      "type": "array",
+      "required": false
+    },
+    "compatibleOemNumbers": {
+      "enabled": true,
+      "type": "array",
+      "required": false
+    },
+    "supersededOemNumbers": {
+      "enabled": true,
+      "type": "array",
+      "required": false
+    }
+  },
+  "matching": {
+    "requireExactVehicleMatchForVerification": true,
+    "allowModelLevelMatch": true,
+    "allowYearRangeMatch": true,
+    "allowEngineMatch": true,
+    "allowBodyTypeMatch": true,
+    "allowMarketSpecMatch": true,
+    "allowFuzzyVehicleMatching": false,
+    "allowAutomaticCompatibilityVerification": false
+  },
+  "validation": {
+    "validateVehicleReferences": true,
+    "validateModelReferences": true,
+    "validateEngineReferences": true,
+    "validateBodyTypeReferences": true,
+    "validateMarketSpecReferences": true,
+    "validateOemNumberReferences": true,
+    "removeDuplicateValues": true,
+    "blockInvalidReferences": true,
+    "showWarnings": true,
+    "requirePreviewBeforeBulkUpdate": true
+  },
+  "verification": {
+    "defaultLevel": "unverified",
+    "allowedLevels": [
+      "unverified",
+      "reviewed",
+      "verified"
+    ],
+    "verifiedRequiresSource": true,
+    "verifiedRequiresManualConfirmation": true,
+    "automaticVerification": false
+  },
+  "publicWebsite": {
+    "showModels": true,
+    "showModelYears": true,
+    "showEngineCodes": true,
+    "showBodyTypes": true,
+    "showMarketSpecs": true,
+    "showCompatibleOemNumbers": true,
+    "showSupersededOemNumbers": true,
+    "showVerificationStatus": true,
+    "showUnverifiedCompatibilityNotice": true
+  },
+  "adminPanel": {
+    "allowCompatibilityEdit": true,
+    "showAllCompatibilityFields": true,
+    "showVerificationLevel": true,
+    "showVerificationSource": true,
+    "allowManualVerification": true
+  },
+  "permissions": {
+    "view": "oem.view",
+    "edit": "oem.edit",
+    "verify": "oem.verify",
+    "export": "oem.export"
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousCompatibility": true,
+    "recordNewCompatibility": true,
+    "recordChangedFields": true,
+    "recordVerificationChanges": true,
+    "recordUpdatedBy": true,
+    "recordTimestamp": true,
+    "requireReason": true
+  },
+  "rollback": {
+    "enabled": true,
+    "createRestorePointBeforeUpdate": true,
+    "allowRollback": true,
+    "rollbackRequiresPermission": true,
+    "rollbackPermission": "oem.edit",
+    "preserveRollbackHistory": true
+  },
+  "safety": {
+    "neverAutomaticallyVerifyCompatibility": true,
+    "neverTreatSearchMatchAsCompatibilityProof": true,
+    "neverSilentlyAddVehicleCompatibility": true,
+    "neverSilentlyRemoveCompatibility": true,
+    "neverModifyOemNumber": true,
+    "preserveCompatibilityHistory": true,
+    "preserveAuditHistory": true
+  }
+}
