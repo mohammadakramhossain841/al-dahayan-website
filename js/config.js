@@ -1,789 +1,1002 @@
-/**
- * Al-Dahayan Trading Company
- * Global Application Configuration
- *
- * Central configuration for:
- * - Public website
- * - Admin Panel
- * - OEM / Parts
- * - Vehicle
- * - VIN
- * - Inventory
- * - Inquiry
- * - AI Assistant
- * - Contact
- * - Future Payment
- */
+/* =========================================
+   AL-DAHAYAN CENTRAL APPLICATION CONFIG
+========================================= */
 
-const APP_CONFIG = {
+(function () {
+  "use strict";
 
-    /* =========================
-       COMPANY
-    ========================== */
+  /* =========================================
+     APP CONFIGURATION
+  ========================================= */
 
+  const APP_CONFIG = {
     company: {
-        name: "Al-Dahayan Trading Company",
-        arabicName: "شركة الضحيان التجارية",
-        country: "Saudi Arabia"
+      name: "Al-Dahayan Trading Company",
+      arabicName: "شركة الضحيان التجارية",
+      country: "Saudi Arabia"
     },
-
-
-    /* =========================
-       SITE
-    ========================== */
 
     site: {
+      name: "Al-Dahayan Trading Company",
 
-        name: "Al-Dahayan Trading Company",
+      defaultLanguage: "en",
 
-        defaultLanguage: "en",
+      supportedLanguages: [
+        "en",
+        "ar"
+      ],
 
-        supportedLanguages: [
-            "en",
-            "ar"
-        ],
-
-        direction: {
-            en: "ltr",
-            ar: "rtl"
-        }
-
+      direction: {
+        en: "ltr",
+        ar: "rtl"
+      }
     },
 
-
-    /* =========================
-       PATHS
-    ========================== */
-
+    /*
+     * Project paths are resolved dynamically
+     * from the current HTML document.
+     */
     paths: {
-
-        root: "../",
-
-        data: "../data/",
-
-        pages: "./",
-
-        components: "../components/",
-
-        api: "../api/",
-
-        css: "../css/",
-
-        js: "../js/"
-
+      root: "../",
+      data: "../data/",
+      pages: "../pages/",
+      components: "../components/",
+      api: "../api/",
+      css: "../css/",
+      js: "../js/"
     },
 
-
-    /* =========================
+    /* =========================================
        DATA FILES
-    ========================== */
+    ========================================= */
 
     dataFiles: {
+      company: "company.json",
 
-        company: "company.json",
+      vehicles: "vehicles.json",
 
-        vehicles: "vehicles.json",
+      models: "models.json",
 
-        models: "models.json",
+      oemParts: "oem-parts.json",
 
-        oemParts: "oem-parts.json",
+      partCategories:
+        "part-categories.json",
 
-        partCategories: "part-categories.json",
+      compatibility:
+        "compatibility.json",
 
-        compatibility: "compatibility.json",
+      locations:
+        "locations.json",
 
-        locations: "locations.json",
+      inventory:
+        "inventory.json",
 
-        inventory: "inventory.json",
+      partPrices:
+        "part-prices.json",
 
-        partPrices: "part-prices.json",
+      inquiries:
+        "inquiries.json",
 
-        inquiries: "inquiries.json",
-
-        services: "services.json"
-
+      services:
+        "services.json"
     },
 
-
-    /* =========================
+    /* =========================================
        CONTACT
-    ========================== */
+    ========================================= */
 
     contact: {
+      country: "Saudi Arabia",
 
-        country: "Saudi Arabia",
+      phone: "",
 
-        phone: "",
+      whatsapp: "",
 
-        whatsapp: "",
+      email: "",
 
-        email: "",
-
-        preferredContact: "whatsapp"
-
+      preferredContact:
+        "whatsapp"
     },
 
-
-    /* =========================
+    /* =========================================
        FEATURES
-    ========================== */
+    ========================================= */
 
     features: {
+      oemSearch: true,
 
-        oemSearch: true,
+      vehicleSearch: true,
 
-        vehicleSearch: true,
+      vinSearch: true,
 
-        vinSearch: true,
+      inventory: true,
 
-        inventory: true,
+      inquiry: true,
 
-        inquiry: true,
+      bilingual: true,
 
-        bilingual: true,
+      aiAssistant: true,
 
-        aiAssistant: true
+      branches: true,
 
+      socialChannels: true,
+
+      adminPanel: true
     },
 
-
-    /* =========================
+    /* =========================================
        INVENTORY
-    ========================== */
+    ========================================= */
 
     inventory: {
+      enabled: true,
 
-        enabled: true,
+      /*
+       * Automatic stock calculation:
+       * 0      = OUT OF STOCK
+       * 1–5    = LOW STOCK
+       * 6+     = IN STOCK
+       */
+      lowStockThreshold: 5,
 
-        lowStockThreshold: 5,
+      /*
+       * Customer exact quantity is hidden
+       * unless Admin enables it.
+       */
+      quantityDisplay: false,
 
-        quantityDisplay: false,
+      /*
+       * Admin can manually override
+       * automatic stock status.
+       */
+      allowManualOverride: true,
 
-        allowManualOverride: true,
+      /*
+       * Admin may mark a part as
+       * ON REQUEST.
+       */
+      allowOnRequest: true,
 
-        allowOnRequest: true,
+      /*
+       * Customer/AI must only use
+       * explicitly verified inventory.
+       */
+      requireVerifiedStock: true,
 
-        requireVerifiedStock: true,
+      defaultStatus: "unknown",
 
-        defaultStatus: "unknown"
+      /*
+       * Inventory records use Branch ID
+       * instead of duplicating branch data.
+       */
+      useBranchReference: true,
 
+      allowInactiveRecords: true,
+
+      changeHistory: true
     },
 
-
-    /* =========================
+    /* =========================================
        AI ASSISTANT
-    ========================== */
+    ========================================= */
 
     ai: {
+      enabled: true,
 
-        enabled: true,
+      salesMode: true,
 
-        salesMode: true,
+      inventoryVerificationRequired:
+        true,
 
-        inventoryVerificationRequired: true,
+      whatsappConnection:
+        true,
 
-        whatsappConnection: true,
+      languages: [
+        "en",
+        "ar"
+      ],
 
-        languages: [
-            "en",
-            "ar"
-        ],
+      /*
+       * Customer location must not
+       * be collected by AI.
+       */
+      customerLocationCollection:
+        false,
 
-        customerLocationCollection: false,
+      /*
+       * AI must not proactively
+       * recommend/request branches.
+       */
+      proactiveBranchRecommendation:
+        false,
 
-        proactiveBranchRecommendation: false,
+      allowUnverifiedStock:
+        false,
 
-        allowUnverifiedStock: false,
+      allowUnverifiedPrice:
+        false,
 
-        allowUnverifiedPrice: false,
+      allowUnverifiedCompanyFacts:
+        false,
 
-        allowUnverifiedCompanyFacts: false,
-
-        handoverToHuman: true
-
+      handoverToHuman:
+        true
     },
 
-
-    /* =========================
-       CUSTOMER INQUIRY
-    ========================== */
+    /* =========================================
+       CUSTOMER INQUIRY / LEAD MANAGEMENT
+    ========================================= */
 
     inquiry: {
+      enabled: true,
 
-        enabled: true,
+      collectCustomerName:
+        true,
 
-        collectCustomerName: true,
+      collectContact:
+        true,
 
-        collectContact: true,
+      collectPart:
+        true,
 
-        collectPart: true,
+      collectOEM:
+        true,
 
-        collectOEM: true,
+      collectVehicle:
+        true,
 
-        collectVehicle: true,
+      collectModelYear:
+        true,
 
-        collectModelYear: true,
+      collectQuantity:
+        true,
 
-        collectQuantity: true,
+      collectMessage:
+        true,
 
-        collectMessage: true,
+      /*
+       * Customer location is intentionally
+       * excluded.
+       */
+      collectCustomerLocation:
+        false,
 
-        collectCustomerLocation: false,
+      defaultStatus:
+        "new",
 
-        defaultStatus: "new",
+      defaultCommunicationStatus:
+        "not_contacted",
 
-        defaultCommunicationStatus:
-            "not_contacted"
+      defaultPriority:
+        "normal",
 
+      allowStaffAssignment:
+        true,
+
+      allowFollowUp:
+        true,
+
+      allowQuotationStatus:
+        true
     },
 
-
-    /* =========================
+    /* =========================================
        BRANCHES / LOCATIONS
-    ========================== */
+    ========================================= */
 
     locations: {
+      enabled: true,
 
-        enabled: true,
+      adminManaged: true,
 
-        adminManaged: true,
+      customerLocationCollection:
+        false,
 
-        customerLocationCollection: false,
+      aiProactiveRecommendation:
+        false,
 
-        aiProactiveRecommendation: false
+      allowDeactivate:
+        true,
 
+      allowMultipleBranches:
+        true
     },
 
-
-    /* =========================
-       SOCIAL / ONLINE CHANNELS
-    ========================== */
+    /* =========================================
+       SOCIAL CHANNELS
+    ========================================= */
 
     social: {
+      enabled: true,
 
-        adminManaged: true,
+      adminManaged: true,
 
-        platforms: [
-
-            "Facebook",
-
-            "YouTube",
-
-            "TikTok",
-
-            "X",
-
-            "Instagram",
-
-            "LinkedIn",
-
-            "WhatsApp",
-
-            "Google Maps",
-
-            "Website",
-
-            "Other"
-
-        ]
-
+      platforms: [
+        "Facebook",
+        "YouTube",
+        "TikTok",
+        "X",
+        "Instagram",
+        "LinkedIn",
+        "WhatsApp",
+        "Google Maps",
+        "Website",
+        "Other"
+      ]
     },
 
-
-    /* =========================
+    /* =========================================
        PAYMENT
-    ========================== */
+       CURRENTLY DISABLED
+    ========================================= */
 
     payment: {
+      enabled: false,
 
-        enabled: false,
+      onlinePayment: false,
 
-        onlinePayment: false,
+      orderPayment: false,
 
-        orderPayment: false,
+      gatewayConnected: false,
 
-        gatewayConnected: false,
+      gateway: "",
 
-        gateway: "",
-
-        currency: "SAR"
-
+      currency: "SAR"
     },
 
-
-    /* =========================
+    /* =========================================
        ADMIN PANEL
-    ========================== */
+    ========================================= */
 
     admin: {
+      enabled: true,
 
-        enabled: true,
+      dashboard: true,
 
-        dashboard: true,
+      inventory: true,
 
-        inventory: true,
+      parts: true,
 
-        parts: true,
+      inquiries: true,
 
-        inquiries: true,
+      branches: true,
 
-        branches: true,
+      vehicles: true,
 
-        vehicles: true,
+      ai: true,
 
-        ai: true,
+      social: true,
 
-        social: true,
+      settings: true,
 
-        settings: true
+      payment: true,
 
+      audit: true
     },
 
-
-    /* =========================
-       API
-    ========================== */
+    /* =========================================
+       API / BACKEND
+    ========================================= */
 
     api: {
+      version: "v1",
 
-        version: "v1",
+      publicBasePath:
+        "/api/v1",
 
-        publicBasePath: "/api/v1",
+      adminBasePath:
+        "/api/v1/admin",
 
-        adminBasePath: "/api/v1/admin",
+      enabled: false,
 
-        enabled: false,
+      backendConnected: false,
 
-        backendConnected: false
+      useLocalJSON:
+        true,
 
+      timeout: 10000
     },
 
+    /* =========================================
+       SECURITY
+    ========================================= */
 
-    /* =========================
+    security: {
+      requireVerifiedInventory:
+        true,
+
+      allowCustomerLocation:
+        false,
+
+      allowAIUnverifiedClaims:
+        false,
+
+      allowClientSideAdminWrites:
+        false,
+
+      sanitizeCustomerOutput:
+        true
+    },
+
+    /* =========================================
        ENVIRONMENT
-    ========================== */
+    ========================================= */
 
     environment: {
+      mode: "development",
 
-        mode: "development",
+      production: false,
 
-        production: false
+      debug: true
+    }
+  };
 
+
+  /* =========================================
+     PROJECT ROOT
+  ========================================= */
+
+  function getProjectRoot() {
+    const pathname =
+      window.location.pathname || "";
+
+    /*
+     * GitHub Pages / repository paths
+     * and local paths are handled without
+     * hard-coding a repository name.
+     */
+
+    if (
+      pathname.includes("/pages/") ||
+      pathname.includes("/admin/")
+    ) {
+      return "../";
     }
 
-};
+    return "./";
+  }
 
 
-/* =========================================================
-   PATH HELPERS
-========================================================= */
+  /* =========================================
+     PROJECT PATH
+  ========================================= */
 
-function getAppPath(type, file = "") {
+  function getProjectPath(type) {
+    const root =
+      getProjectRoot();
 
-    const base =
-        APP_CONFIG.paths[type] || "";
+    const paths = {
+      root: root,
 
-    return `${base}${file}`;
+      data:
+        root + "data/",
 
-}
+      pages:
+        root + "pages/",
 
+      components:
+        root + "components/",
 
-function getDataPath(file) {
+      api:
+        root + "api/",
 
-    return getAppPath(
-        "data",
-        file
+      css:
+        root + "css/",
+
+      js:
+        root + "js/"
+    };
+
+    return (
+      paths[type] || root
     );
+  }
 
-}
 
+  /* =========================================
+     DATA PATH
+  ========================================= */
 
-function getComponentPath(file) {
+  function getDataPath(
+    fileName
+  ) {
+    if (!fileName) {
+      return getProjectPath(
+        "data"
+      );
+    }
 
-    return getAppPath(
-        "components",
-        file
+    return (
+      getProjectPath("data") +
+      String(fileName).replace(
+        /^\/+/,
+        ""
+      )
     );
+  }
 
-}
 
+  /* =========================================
+     PAGE PATH
+  ========================================= */
 
-function getPagePath(file) {
+  function getPagePath(
+    fileName
+  ) {
+    if (!fileName) {
+      return getProjectPath(
+        "pages"
+      );
+    }
 
-    return getAppPath(
-        "pages",
-        file
+    return (
+      getProjectPath("pages") +
+      String(fileName).replace(
+        /^\/+/,
+        ""
+      )
     );
+  }
 
-}
+
+  /* =========================================
+     COMPONENT PATH
+  ========================================= */
+
+  function getComponentPath(
+    fileName
+  ) {
+    if (!fileName) {
+      return getProjectPath(
+        "components"
+      );
+    }
+
+    return (
+      getProjectPath(
+        "components"
+      ) +
+      String(fileName).replace(
+        /^\/+/,
+        ""
+      )
+    );
+  }
 
 
-function getApiPath(path = "") {
+  /* =========================================
+     API PATH
+  ========================================= */
 
+  function getApiPath(
+    path = ""
+  ) {
+    return (
+      getProjectPath("api") +
+      String(path).replace(
+        /^\/+/,
+        ""
+      )
+    );
+  }
+
+
+  /* =========================================
+     FEATURE CHECK
+  ========================================= */
+
+  function isFeatureEnabled(
+    feature
+  ) {
+    if (!feature) {
+      return false;
+    }
+
+    return (
+      APP_CONFIG.features?.[
+        feature
+      ] === true
+    );
+  }
+
+
+  /* =========================================
+     ADMIN FEATURE CHECK
+  ========================================= */
+
+  function isAdminFeatureEnabled(
+    feature
+  ) {
+    if (
+      !APP_CONFIG.admin.enabled
+    ) {
+      return false;
+    }
+
+    return (
+      APP_CONFIG.admin?.[
+        feature
+      ] === true
+    );
+  }
+
+
+  /* =========================================
+     INVENTORY STATUS
+  ========================================= */
+
+  function calculateStockStatus(
+    quantity,
+    threshold =
+      APP_CONFIG.inventory
+        .lowStockThreshold
+  ) {
+    const qty =
+      Number(quantity);
+
+    const lowThreshold =
+      Number(threshold);
+
+    if (
+      !Number.isFinite(qty)
+    ) {
+      return "unknown";
+    }
+
+    if (qty <= 0) {
+      return "out_of_stock";
+    }
+
+    if (
+      qty <=
+      (
+        Number.isFinite(
+          lowThreshold
+        )
+          ? lowThreshold
+          : 5
+      )
+    ) {
+      return "low_stock";
+    }
+
+    return "in_stock";
+  }
+
+
+  /* =========================================
+     STOCK CONFIG
+  ========================================= */
+
+  function getInventorySettings() {
+    return {
+      ...APP_CONFIG.inventory
+    };
+  }
+
+
+  /* =========================================
+     AI SETTINGS
+  ========================================= */
+
+  function getAISettings() {
+    return {
+      ...APP_CONFIG.ai
+    };
+  }
+
+
+  /* =========================================
+     INQUIRY SETTINGS
+  ========================================= */
+
+  function getInquirySettings() {
+    return {
+      ...APP_CONFIG.inquiry
+    };
+  }
+
+
+  /* =========================================
+     PAYMENT SETTINGS
+  ========================================= */
+
+  function getPaymentSettings() {
+    return {
+      ...APP_CONFIG.payment
+    };
+  }
+
+
+  /* =========================================
+     EFFECTIVE APPLICATION CONFIG
+     Admin local settings override defaults
+     where supported.
+  ========================================= */
+
+  function getEffectiveAppConfig() {
     const base =
-        APP_CONFIG.api.publicBasePath;
+      APP_CONFIG;
 
-    return `${base}${path}`;
+    let websiteSettings =
+      {};
 
-}
+    let aiSettings =
+      {};
 
-
-function getAdminApiPath(path = "") {
-
-    const base =
-        APP_CONFIG.api.adminBasePath;
-
-    return `${base}${path}`;
-
-}
-
-
-/* =========================================================
-   ADMIN SETTINGS STORAGE
-========================================================= */
-
-const ADMIN_SETTINGS_STORAGE_KEY =
-    "alDahayanWebsiteSettings";
-
-
-const ADMIN_AI_STORAGE_KEY =
-    "alDahayanAISettings";
-
-
-const ADMIN_SOCIAL_STORAGE_KEY =
-    "alDahayanSocialChannels";
-
-
-/* =========================================================
-   SAFE JSON STORAGE
-========================================================= */
-
-function readLocalSettings(
-    storageKey,
-    fallback = null
-) {
+    let socialChannels =
+      null;
 
     try {
+      const storedWebsite =
+        localStorage.getItem(
+          "alDahayanWebsiteSettings"
+        );
 
-        const raw =
-            localStorage.getItem(
-                storageKey
-            );
-
-        if (!raw) {
-            return fallback;
-        }
-
-        return JSON.parse(raw);
-
+      if (storedWebsite) {
+        websiteSettings =
+          JSON.parse(
+            storedWebsite
+          ) || {};
+      }
     } catch (error) {
+      websiteSettings =
+        {};
+    }
 
-        console.warn(
-            "Unable to read local settings:",
-            storageKey,
-            error
+    try {
+      const storedAI =
+        localStorage.getItem(
+          "alDahayanAISettings"
         );
 
-        return fallback;
-
+      if (storedAI) {
+        aiSettings =
+          JSON.parse(
+            storedAI
+          ) || {};
+      }
+    } catch (error) {
+      aiSettings =
+        {};
     }
 
-}
-
-
-/* =========================================================
-   ADMIN WEBSITE SETTINGS
-========================================================= */
-
-function getAdminWebsiteSettings() {
-
-    return readLocalSettings(
-        ADMIN_SETTINGS_STORAGE_KEY,
-        null
-    );
-
-}
-
-
-/* =========================================================
-   ADMIN AI SETTINGS
-========================================================= */
-
-function getAdminAISettings() {
-
-    return readLocalSettings(
-        ADMIN_AI_STORAGE_KEY,
-        null
-    );
-
-}
-
-
-/* =========================================================
-   ADMIN SOCIAL CHANNELS
-========================================================= */
-
-function getAdminSocialChannels() {
-
-    return readLocalSettings(
-        ADMIN_SOCIAL_STORAGE_KEY,
-        []
-    );
-
-}
-
-
-/* =========================================================
-   EFFECTIVE WEBSITE SETTINGS
-========================================================= */
-
-function getEffectiveAppConfig() {
-
-    const settings =
-        getAdminWebsiteSettings();
-
-    const aiSettings =
-        getAdminAISettings();
-
-
-    const config =
-        JSON.parse(
-            JSON.stringify(
-                APP_CONFIG
-            )
+    try {
+      const storedSocial =
+        localStorage.getItem(
+          "alDahayanSocialChannels"
         );
 
-
-    /* -------------------------
-       Company
-    -------------------------- */
-
-    if (settings?.company) {
-
-        config.company.name =
-            settings.company.name ||
-            config.company.name;
-
-        config.company.arabicName =
-            settings.company.arabicName ||
-            config.company.arabicName;
-
-        config.company.country =
-            settings.company.country ||
-            config.company.country;
-
+      if (storedSocial) {
+        socialChannels =
+          JSON.parse(
+            storedSocial
+          );
+      }
+    } catch (error) {
+      socialChannels =
+        null;
     }
 
+    return {
+      ...base,
 
-    /* -------------------------
-       Contact
-    -------------------------- */
+      company: {
+        ...base.company,
+        ...(websiteSettings
+          .company || {})
+      },
 
-    if (settings?.contact) {
+      contact: {
+        ...base.contact,
+        ...(websiteSettings
+          .contact || {})
+      },
 
-        config.contact.phone =
-            settings.contact.phone || "";
+      site: {
+        ...base.site,
+        ...(websiteSettings
+          .site || {})
+      },
 
-        config.contact.whatsapp =
-            settings.contact.whatsapp || "";
+      features: {
+        ...base.features,
+        ...(websiteSettings
+          .features || {})
+      },
 
-        config.contact.email =
-            settings.contact.email || "";
+      inventory: {
+        ...base.inventory,
+        ...(websiteSettings
+          .inventory || {})
+      },
 
-        config.contact.preferredContact =
-            settings.contact.preferredContact ||
-            "whatsapp";
+      ai: {
+        ...base.ai,
+        ...aiSettings
+      },
 
-    }
+      inquiry: {
+        ...base.inquiry,
+        ...(websiteSettings
+          .inquiry || {})
+      },
 
+      locations: {
+        ...base.locations,
+        ...(websiteSettings
+          .locations || {})
+      },
 
-    /* -------------------------
-       Website Features
-    -------------------------- */
+      social: {
+        ...base.social,
 
-    if (settings?.features) {
+        ...(Array.isArray(
+          socialChannels
+        )
+          ? {
+              channels:
+                socialChannels
+            }
+          : {})
+      },
 
-        config.features.oemSearch =
-            settings.features.oemSearch !== false;
+      payment: {
+        ...base.payment,
+        ...(websiteSettings
+          .payment || {})
+      },
 
-        config.features.vehicleSearch =
-            settings.features.vehicleSearch !== false;
-
-        config.features.vinSearch =
-            settings.features.vinSearch !== false;
-
-        config.features.inventory =
-            settings.features.inventory !== false;
-
-        config.features.inquiry =
-            settings.features.inquiry !== false;
-
-        config.features.aiAssistant =
-            settings.features.aiAssistant !== false;
-
-    }
-
-
-    /* -------------------------
-       Inventory
-    -------------------------- */
-
-    if (settings?.inventoryDisplay) {
-
-        config.inventory.lowStockThreshold =
-            Number(
-                settings.inventoryDisplay.lowStockThreshold
-            ) || 5;
-
-        config.inventory.quantityDisplay =
-            settings.inventoryDisplay.quantityDisplay ===
-            "show";
-
-    }
-
-
-    /* -------------------------
-       AI
-    -------------------------- */
-
-    if (aiSettings) {
-
-        config.ai.enabled =
-            aiSettings.aiEnabled !== false;
-
-        config.ai.salesMode =
-            aiSettings.salesMode !== false;
-
-        config.ai.inventoryVerificationRequired =
-            aiSettings.inventoryVerification !== false;
-
-        config.ai.whatsappConnection =
-            aiSettings.whatsappConnection !== false;
-
-    }
+      admin: {
+        ...base.admin,
+        ...(websiteSettings
+          .admin || {})
+      }
+    };
+  }
 
 
-    return config;
+  /* =========================================
+     CONFIG UPDATE EVENT
+  ========================================= */
 
-}
-
-
-/* =========================================================
-   FEATURE CHECK
-========================================================= */
-
-function isFeatureEnabled(
-    featureName
-) {
-
-    const config =
-        getEffectiveAppConfig();
-
-    return (
-        config.features &&
-        config.features[featureName] === true
+  function emitConfigUpdated() {
+    document.dispatchEvent(
+      new CustomEvent(
+        "alDahayanConfigUpdated",
+        {
+          detail:
+            getEffectiveAppConfig()
+        }
+      )
     );
-
-}
-
-
-/* =========================================================
-   AI CHECK
-========================================================= */
-
-function isAIEnabled() {
-
-    const config =
-        getEffectiveAppConfig();
-
-    return (
-        config.ai.enabled === true
-    );
-
-}
+  }
 
 
-/* =========================================================
-   INVENTORY CHECK
-========================================================= */
+  /* =========================================
+     STORAGE CHANGE
+  ========================================= */
 
-function isInventoryEnabled() {
+  window.addEventListener(
+    "storage",
+    (event) => {
+      const supportedKeys = [
+        "alDahayanWebsiteSettings",
+        "alDahayanAISettings",
+        "alDahayanSocialChannels"
+      ];
 
-    const config =
-        getEffectiveAppConfig();
-
-    return (
-        config.inventory.enabled === true &&
-        config.features.inventory === true
-    );
-
-}
-
-
-/* =========================================================
-   INQUIRY CHECK
-========================================================= */
-
-function isInquiryEnabled() {
-
-    const config =
-        getEffectiveAppConfig();
-
-    return (
-        config.inquiry.enabled === true &&
-        config.features.inquiry === true
-    );
-
-}
+      if (
+        supportedKeys.includes(
+          event.key
+        )
+      ) {
+        emitConfigUpdated();
+      }
+    }
+  );
 
 
-/* =========================================================
-   PUBLIC API
-========================================================= */
+  /* =========================================
+     PUBLIC GLOBALS
+  ========================================= */
 
-window.AlDahayanConfig = {
+  window.APP_CONFIG =
+    APP_CONFIG;
 
-    config: APP_CONFIG,
+  window.getProjectRoot =
+    getProjectRoot;
 
-    getDataPath,
+  window.getProjectPath =
+    getProjectPath;
 
-    getComponentPath,
+  window.getDataPath =
+    getDataPath;
 
-    getPagePath,
+  window.getPagePath =
+    getPagePath;
 
-    getApiPath,
+  window.getComponentPath =
+    getComponentPath;
 
-    getAdminApiPath,
-
-    getAdminWebsiteSettings,
-
-    getAdminAISettings,
-
-    getAdminSocialChannels,
-
-    getEffectiveAppConfig,
-
-    isFeatureEnabled,
-
-    isAIEnabled,
-
-    isInventoryEnabled,
-
-    isInquiryEnabled
-
-};
+  window.getApiPath =
+    getApiPath;
 
 
-/* =========================================================
-   COMMONJS / MODULE SUPPORT
-========================================================= */
+  /* =========================================
+     CENTRAL CONFIG API
+  ========================================= */
 
-if (
-    typeof module !== "undefined" &&
-    module.exports
-) {
+  window.AlDahayanConfig = {
 
-    module.exports =
-        APP_CONFIG;
+    getConfig:
+      function () {
+        return APP_CONFIG;
+      },
 
-}
+    getEffectiveAppConfig:
+      getEffectiveAppConfig,
+
+    getProjectRoot:
+      getProjectRoot,
+
+    getProjectPath:
+      getProjectPath,
+
+    getDataPath:
+      getDataPath,
+
+    getPagePath:
+      getPagePath,
+
+    getComponentPath:
+      getComponentPath,
+
+    getApiPath:
+      getApiPath,
+
+    isFeatureEnabled:
+      isFeatureEnabled,
+
+    isAdminFeatureEnabled:
+      isAdminFeatureEnabled,
+
+    calculateStockStatus:
+      calculateStockStatus,
+
+    getInventorySettings:
+      getInventorySettings,
+
+    getAISettings:
+      getAISettings,
+
+    getInquirySettings:
+      getInquirySettings,
+
+    getPaymentSettings:
+      getPaymentSettings,
+
+    getEnvironment:
+      function () {
+        return {
+          ...APP_CONFIG.environment
+        };
+      },
+
+    refresh:
+      function () {
+        emitConfigUpdated();
+
+        return getEffectiveAppConfig();
+      }
+  };
+
+
+  /* =========================================
+     BACKWARD COMPATIBILITY
+  ========================================= */
+
+  window.AlDahayanAppConfig =
+    window.AlDahayanConfig;
+
+})();
