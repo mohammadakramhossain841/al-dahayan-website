@@ -1,0 +1,158 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Admin verification view configuration for Toyota and Lexus OEM catalog records.",
+  "enabled": true,
+
+  "page": {
+    "title": "OEM Verification",
+    "defaultPageSize": 20,
+    "allowFiltering": true,
+    "allowSorting": true,
+    "allowSearch": true
+  },
+
+  "verificationLevels": [
+    "unverified",
+    "source_checked",
+    "document_verified",
+    "manually_verified",
+    "fully_verified"
+  ],
+
+  "columns": [
+    {
+      "field": "oemNumber",
+      "label": "OEM Number",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "partName",
+      "label": "Part Name",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "brand",
+      "label": "Brand",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "verificationLevel",
+      "label": "Verification",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "verificationSource",
+      "label": "Source",
+      "visible": true,
+      "sortable": false,
+      "searchable": true
+    },
+    {
+      "field": "verificationDate",
+      "label": "Verified Date",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    },
+    {
+      "field": "verifiedBy",
+      "label": "Verified By",
+      "visible": true,
+      "sortable": true,
+      "searchable": true
+    },
+    {
+      "field": "status",
+      "label": "Record Status",
+      "visible": true,
+      "sortable": true,
+      "searchable": false
+    }
+  ],
+
+  "filters": [
+    "brand",
+    "category",
+    "verificationLevel",
+    "status",
+    "publicationStatus"
+  ],
+
+  "search": {
+    "enabled": true,
+    "fields": [
+      "oemNumber",
+      "partName",
+      "verificationSource",
+      "verifiedBy"
+    ],
+    "allowPartialMatch": true,
+    "allowExactMatch": true
+  },
+
+  "verificationActions": {
+    "viewRecord": true,
+    "reviewRecord": true,
+    "markSourceChecked": true,
+    "markDocumentVerified": true,
+    "markManuallyVerified": true,
+    "markFullyVerified": true,
+    "returnToUnverified": true,
+    "addVerificationNote": true,
+    "viewHistory": true
+  },
+
+  "requiredVerificationData": {
+    "verificationSource": true,
+    "verificationDate": true,
+    "verifiedBy": true,
+    "verificationNotes": true
+  },
+
+  "bulkActions": {
+    "enabled": true,
+    "allowBulkReview": true,
+    "allowBulkVerification": true,
+    "allowBulkReturnToUnverified": true,
+    "requireConfirmation": true,
+    "maximumSelectedRecords": 500
+  },
+
+  "permissions": {
+    "view": "oem.verification_view",
+    "review": "oem.verification_review",
+    "verify": "oem.verification_update",
+    "bulkVerify": "oem.verification_update",
+    "history": "oem.history_view"
+  },
+
+  "audit": {
+    "enabled": true,
+    "recordPreviousLevel": true,
+    "recordNewLevel": true,
+    "recordSource": true,
+    "recordDate": true,
+    "recordVerifiedBy": true,
+    "recordNotes": true,
+    "recordTimestamp": true,
+    "requireReasonForStatusChange": true
+  },
+
+  "safety": {
+    "neverMarkAsVerifiedAutomatically": true,
+    "neverSkipVerificationHistory": true,
+    "neverDeleteVerificationHistory": true,
+    "requireVerificationEvidence": true,
+    "requireUserPermission": true,
+    "preservePreviousVerificationState": true
+  }
+}
