@@ -1,0 +1,122 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Public OEM search configuration for connecting OEM, vehicle and catalog discovery on the Al-Dahayan website.",
+  "enabled": true,
+
+  "searchModes": [
+    "oem",
+    "partName",
+    "vehicle",
+    "model",
+    "category"
+  ],
+
+  "defaultMode": "oem",
+
+  "oemSearch": {
+    "enabled": true,
+    "exactMatch": true,
+    "partialMatch": true,
+    "normalizeInput": true,
+    "ignoreSpaces": true,
+    "ignoreHyphens": true,
+    "showSuggestions": true,
+    "maximumSuggestions": 10
+  },
+
+  "vehicleSearch": {
+    "enabled": true,
+    "brand": true,
+    "model": true,
+    "modelYear": true,
+    "engineCode": true,
+    "bodyType": true,
+    "marketSpec": true
+  },
+
+  "partSearch": {
+    "enabled": true,
+    "partName": true,
+    "arabicName": true,
+    "category": true,
+    "subcategory": true
+  },
+
+  "filters": [
+    "brand",
+    "category",
+    "model",
+    "modelYear",
+    "engineCode",
+    "bodyType",
+    "stockStatus"
+  ],
+
+  "results": {
+    "pageSize": 24,
+    "allowPagination": true,
+    "allowSorting": true,
+    "showResultCount": true,
+    "showNoResultsMessage": true,
+    "showSearchSuggestions": true,
+    "showRelatedResults": true
+  },
+
+  "resultCard": {
+    "showImage": true,
+    "showOemNumber": true,
+    "showPartName": true,
+    "showBrand": true,
+    "showModel": true,
+    "showPrice": true,
+    "showDiscount": true,
+    "showStockStatus": true,
+    "showVerificationBadge": true,
+    "showInquiryButton": true
+  },
+
+  "relatedSearch": {
+    "enabled": true,
+    "showCompatibleModels": true,
+    "showRelatedOemNumbers": true,
+    "showRelatedCategories": true,
+    "showAlternativeResults": true,
+    "requireVerifiedRelation": true
+  },
+
+  "navigation": {
+    "openRecordDetails": true,
+    "openVehicleDetails": true,
+    "openInquiry": true,
+    "preserveSearchQuery": true,
+    "preserveFilters": true
+  },
+
+  "language": {
+    "supported": [
+      "en",
+      "ar"
+    ],
+    "default": "en",
+    "supportRtl": true,
+    "allowArabicSearch": true
+  },
+
+  "performance": {
+    "cacheSearchResults": true,
+    "cacheDurationSeconds": 300,
+    "maximumResults": 1000,
+    "debounceMilliseconds": 250
+  },
+
+  "safety": {
+    "showOnlyPublishedRecords": true,
+    "showOnlyPubliclyVisibleRecords": true,
+    "hideArchivedRecords": true,
+    "hideDisabledRecords": true,
+    "neverAssumeCompatibility": true,
+    "neverShowUnverifiedCompatibilityAsVerified": true,
+    "neverExposeInternalData": true
+  }
+}
