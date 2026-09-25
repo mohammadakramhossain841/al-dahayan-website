@@ -1,0 +1,226 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Structured export template definition for Toyota and Lexus OEM catalog records in the Al-Dahayan platform.",
+  "format": {
+    "primary": "xlsx",
+    "supported": [
+      "xlsx",
+      "csv",
+      "json"
+    ],
+    "encoding": "UTF-8"
+  },
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "oemNumber",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "partName",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "arabicName",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "brand",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "category",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "subcategory",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "arabicDescription",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "models",
+      "type": "array",
+      "include": true,
+      "separator": "|"
+    },
+    {
+      "name": "modelYears",
+      "type": "array",
+      "include": true,
+      "separator": "|"
+    },
+    {
+      "name": "engineCodes",
+      "type": "array",
+      "include": true,
+      "separator": "|"
+    },
+    {
+      "name": "bodyTypes",
+      "type": "array",
+      "include": true,
+      "separator": "|"
+    },
+    {
+      "name": "marketSpecs",
+      "type": "array",
+      "include": true,
+      "separator": "|"
+    },
+    {
+      "name": "compatibleOemNumbers",
+      "type": "array",
+      "include": true,
+      "separator": "|"
+    },
+    {
+      "name": "supersededOemNumbers",
+      "type": "array",
+      "include": true,
+      "separator": "|"
+    },
+    {
+      "name": "partType",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "condition",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "genuine",
+      "type": "boolean",
+      "include": true
+    },
+    {
+      "name": "aftermarket",
+      "type": "boolean",
+      "include": true
+    },
+    {
+      "name": "primaryImage",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "galleryImages",
+      "type": "array",
+      "include": true,
+      "separator": "|"
+    },
+    {
+      "name": "regularPrice",
+      "type": "number",
+      "include": true
+    },
+    {
+      "name": "salePrice",
+      "type": "number",
+      "include": true
+    },
+    {
+      "name": "discountPercent",
+      "type": "number",
+      "include": true
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "priceVisibility",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "stockStatus",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "quantity",
+      "type": "integer",
+      "include": true
+    },
+    {
+      "name": "locationIds",
+      "type": "array",
+      "include": true,
+      "separator": "|"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "verificationLevel",
+      "type": "string",
+      "include": true
+    },
+    {
+      "name": "verificationSource",
+      "type": "string",
+      "include": true
+    }
+  ],
+  "exportBehavior": {
+    "includeActiveRecords": true,
+    "includeDraftRecords": true,
+    "includeArchivedRecords": true,
+    "includeDisabledRecords": true,
+    "allowSelectedRecords": true,
+    "allowFilteredRecords": true,
+    "preserveOriginalValues": true,
+    "preserveArabicText": true
+  },
+  "formatting": {
+    "includeColumnHeaders": true,
+    "preserveOemNumberFormatting": true,
+    "preserveArrayValues": true,
+    "preserveDecimalValues": true,
+    "useUtf8Encoding": true
+  },
+  "validation": {
+    "validateBeforeExport": true,
+    "allowWarnings": true,
+    "showValidationSummary": true,
+    "generateExportReport": true
+  },
+  "security": {
+    "excludePrivateNotes": true,
+    "excludeCredentials": true,
+    "excludeSecurityTokens": true,
+    "excludeAuthenticationData": true,
+    "publicExport": false
+  },
+  "safety": {
+    "neverModifyCatalogRecords": true,
+    "neverDeleteCatalogRecords": true,
+    "neverExposePrivateData": true,
+    "preserveArabicText": true
+  }
+}
