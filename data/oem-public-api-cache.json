@@ -1,0 +1,81 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Caching configuration for the public Toyota and Lexus OEM catalog API.",
+  "enabled": true,
+
+  "defaults": {
+    "enabled": true,
+    "cacheType": "server",
+    "respectCacheHeaders": true
+  },
+
+  "endpoints": {
+    "catalog": {
+      "enabled": true,
+      "ttlSeconds": 300
+    },
+    "record": {
+      "enabled": true,
+      "ttlSeconds": 300
+    },
+    "search": {
+      "enabled": true,
+      "ttlSeconds": 300
+    },
+    "filters": {
+      "enabled": true,
+      "ttlSeconds": 600
+    },
+    "categories": {
+      "enabled": true,
+      "ttlSeconds": 600
+    },
+    "vehicles": {
+      "enabled": true,
+      "ttlSeconds": 600
+    },
+    "compatibility": {
+      "enabled": true,
+      "ttlSeconds": 300
+    },
+    "availability": {
+      "enabled": true,
+      "ttlSeconds": 60
+    },
+    "inquiry": {
+      "enabled": false
+    }
+  },
+
+  "cacheRules": {
+    "doNotCacheCustomerData": true,
+    "doNotCacheInquiryData": true,
+    "doNotCachePrivateInventoryData": true,
+    "doNotCacheAdminData": true,
+    "doNotCacheSupplierData": true,
+    "invalidateAfterCatalogUpdate": true,
+    "invalidateAfterPricingUpdate": true,
+    "invalidateAfterStockUpdate": true,
+    "invalidateAfterCompatibilityUpdate": true
+  },
+
+  "headers": {
+    "includeCacheControl": true,
+    "includeETag": true,
+    "includeLastModified": true
+  },
+
+  "language": {
+    "cacheByLanguage": true,
+    "supported": [
+      "en",
+      "ar"
+    ]
+  },
+
+  "limits": {
+    "maximumCacheEntries": 10000,
+    "maximumResponseSizeMb": 10
+  }
+}
