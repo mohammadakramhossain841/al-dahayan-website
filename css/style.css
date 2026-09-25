@@ -2039,3 +2039,33 @@ button[data-action="primary"]:hover,
 html[dir="rtl"] .brand {
     text-align: right;
 }
+
+/* =========================================================
+   AL-DAHAYAN BRAND LOGO
+   ========================================================= */
+
+.site-logo-image {
+    display: block;
+    width: auto;
+    height: 58px;
+    max-width: 220px;
+    object-fit: contain;
+}
+
+/* Keep the logo area aligned inside the header */
+.site-logo,
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Prevent the logo from becoming too large on smaller screens */
+@media (max-width: 768px) {
+
+    .site-logo-image {
+        height: 48px;
+        max-width: 180px;
+    }
+
+}
