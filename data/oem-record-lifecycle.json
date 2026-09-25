@@ -1,0 +1,108 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "OEM catalog record lifecycle from creation through publication, archival, and restoration.",
+  "states": [
+    "draft",
+    "active",
+    "archived",
+    "disabled"
+  ],
+  "initialState": "draft",
+  "transitions": {
+    "draft": [
+      "active",
+      "archived",
+      "disabled"
+    ],
+    "active": [
+      "draft",
+      "archived",
+      "disabled"
+    ],
+    "archived": [
+      "draft",
+      "active"
+    ],
+    "disabled": [
+      "draft",
+      "active",
+      "archived"
+    ]
+  },
+  "creation": {
+    "defaultStatus": "draft",
+    "requireOemNumber": true,
+    "requirePartName": true,
+    "requireBrand": true,
+    "requireCategory": true,
+    "requireValidation": true,
+    "defaultVerificationLevel": "unverified"
+  },
+  "publication": {
+    "targetStatus": "active",
+    "requireValidation": true,
+    "requireValidOemNumber": true,
+    "requirePartName": true,
+    "requireBrand": true,
+    "requireCategory": true,
+    "allowUnverifiedRecords": true,
+    "automaticallyVerifyRecord": false
+  },
+  "archive": {
+    "targetStatus": "archived",
+    "preserveRecord": true,
+    "preserveImages": true,
+    "preservePricing": true,
+    "preserveInventory": true,
+    "preserveCompatibility": true,
+    "preserveVerification": true,
+    "preserveAuditHistory": true
+  },
+  "restore": {
+    "allowedFrom": [
+      "archived",
+      "disabled"
+    ],
+    "defaultTargetStatus": "draft",
+    "requireValidation": true,
+    "requireConfirmation": true,
+    "preserveHistory": true
+  },
+  "disable": {
+    "allowed": true,
+    "requirePermission": true,
+    "requireReason": true,
+    "requireConfirmation": true,
+    "automaticallyDeleteRecord": false
+  },
+  "permissions": {
+    "create": "oem.create",
+    "edit": "oem.edit",
+    "publish": "oem.publish",
+    "archive": "oem.archive",
+    "restore": "oem.restore",
+    "disable": "oem.disable"
+  },
+  "validation": {
+    "validateBeforeTransition": true,
+    "blockInvalidTransitions": true,
+    "showTransitionSummary": true,
+    "recordValidationResult": true
+  },
+  "audit": {
+    "enabled": true,
+    "recordPreviousStatus": true,
+    "recordNewStatus": true,
+    "recordUser": true,
+    "recordReason": true,
+    "recordTimestamp": true,
+    "preserveHistory": true
+  },
+  "safety": {
+    "neverPermanentlyDeleteRecords": true,
+    "neverAutomaticallyVerifyRecords": true,
+    "neverAutomaticallyDeleteImages": true,
+    "neverRemoveAuditHistory": true
+  }
+}
