@@ -1,0 +1,599 @@
+openapi: 3.0.3
+
+info:
+  title: Al-Dahayan Public OEM API
+  version: 1.0.0
+  description: >
+    Public API contract for Toyota and Lexus OEM spare-parts catalog,
+    vehicle compatibility, availability and customer inquiries.
+
+servers:
+  - url: /api/v1
+    description: Production API base path
+
+tags:
+  - name: Catalog
+  - name: Search
+  - name: Vehicles
+  - name: Compatibility
+  - name: Availability
+  - name: Inquiry
+
+paths:
+
+  /oem/catalog:
+    get:
+      tags:
+        - Catalog
+      summary: Get published OEM catalog
+      operationId: getOemCatalog
+
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Brand"
+        - $ref: "#/components/parameters/Category"
+        - $ref: "#/components/parameters/Model"
+        - $ref: "#/components/parameters/ModelYear"
+        - $ref: "#/components/parameters/StockStatus"
+        - $ref: "#/components/parameters/Sort"
+
+      responses:
+        "200":
+          description: OEM catalog results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogResponse"
+
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+        "429":
+          $ref: "#/components/responses/RateLimited"
+
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+
+  /oem/record:
+    get:
+      tags:
+        - Catalog
+      summary: Get a single OEM record
+      operationId: getOemRecord
+
+      parameters:
+        - name: oemNumber
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 2
+            maxLength: 40
+
+      responses:
+        "200":
+          description: OEM record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OemRecordResponse"
+
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+        "429":
+          $ref: "#/components/responses/RateLimited"
+
+
+  /oem/search:
+    get:
+      tags:
+        - Search
+      summary: Search OEM parts
+      operationId: searchOemParts
+
+      parameters:
+        - name: q
+          in: query
+          required: false
+          schema:
+            type: string
+            maxLength: 120
+
+        - name: oemNumber
+          in: query
+          required: false
+          schema:
+            type: string
+            maxLength: 40
+
+        - $ref: "#/components/parameters/Brand"
+        - $ref: "#/components/parameters/Category"
+        - $ref: "#/components/parameters/Model"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogResponse"
+
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+
+  /oem/vehicles:
+    get:
+      tags:
+        - Vehicles
+      summary: Get vehicles compatible with OEM records
+      operationId: getOemVehicles
+
+      parameters:
+        - name: oemNumber
+          in: query
+          required: false
+          schema:
+            type: string
+
+        - $ref: "#/components/parameters/Brand"
+        - $ref: "#/components/parameters/Model"
+        - $ref: "#/components/parameters/ModelYear"
+
+      responses:
+        "200":
+          description: Compatible vehicles
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VehicleResponse"
+
+
+  /oem/compatibility:
+    get:
+      tags:
+        - Compatibility
+      summary: Check OEM compatibility
+      operationId: checkOemCompatibility
+
+      parameters:
+        - name: oemNumber
+          in: query
+          required: true
+          schema:
+            type: string
+
+        - name: brand
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - Toyota
+              - Lexus
+
+        - $ref: "#/components/parameters/Model"
+        - $ref: "#/components/parameters/ModelYear"
+        - $ref: "#/components/parameters/EngineCode"
+
+      responses:
+        "200":
+          description: Compatibility result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompatibilityResponse"
+
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+
+  /oem/availability:
+    get:
+      tags:
+        - Availability
+      summary: Check public stock availability
+      operationId: getOemAvailability
+
+      parameters:
+        - name: oemNumber
+          in: query
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: Public availability information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AvailabilityResponse"
+
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+
+  /oem/inquiry:
+    post:
+      tags:
+        - Inquiry
+      summary: Submit customer spare-parts inquiry
+      operationId: createOemInquiry
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InquiryRequest"
+
+      responses:
+        "201":
+          description: Inquiry created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InquiryResponse"
+
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+        "422":
+          $ref: "#/components/responses/ValidationError"
+
+        "429":
+          $ref: "#/components/responses/RateLimited"
+
+
+components:
+
+  parameters:
+
+    Page:
+      name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+
+    PageSize:
+      name: pageSize
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 96
+        default: 24
+
+    Brand:
+      name: brand
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+          - Toyota
+          - Lexus
+
+    Category:
+      name: category
+      in: query
+      required: false
+      schema:
+        type: string
+
+    Model:
+      name: model
+      in: query
+      required: false
+      schema:
+        type: string
+
+    ModelYear:
+      name: modelYear
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1900
+        maximum: 2100
+
+    EngineCode:
+      name: engineCode
+      in: query
+      required: false
+      schema:
+        type: string
+
+    StockStatus:
+      name: stockStatus
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+          - in_stock
+          - low_stock
+          - out_of_stock
+          - on_order
+          - unknown
+
+    Sort:
+      name: sort
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+          - relevance
+          - oem_asc
+          - oem_desc
+          - name_asc
+          - name_desc
+          - price_asc
+          - price_desc
+          - newest
+
+
+  schemas:
+
+    OemRecord:
+      type: object
+      properties:
+        oemNumber:
+          type: string
+        partName:
+          type: string
+        brand:
+          type: string
+        category:
+          type: string
+        description:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+        pricing:
+          $ref: "#/components/schemas/Pricing"
+        stockStatus:
+          type: string
+        compatibility:
+          type: array
+          items:
+            $ref: "#/components/schemas/Vehicle"
+        verificationStatus:
+          type: string
+
+
+    Pricing:
+      type: object
+      properties:
+        regularPrice:
+          type: number
+          format: float
+        salePrice:
+          type: number
+          format: float
+        discountPercent:
+          type: number
+          format: float
+        currency:
+          type: string
+          example: SAR
+
+
+    Vehicle:
+      type: object
+      properties:
+        make:
+          type: string
+        model:
+          type: string
+        modelYear:
+          type: integer
+        engineCode:
+          type: string
+        bodyType:
+          type: string
+
+
+    CatalogResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/OemRecord"
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        requestId:
+          type: string
+
+
+    OemRecordResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/OemRecord"
+        requestId:
+          type: string
+
+
+    VehicleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Vehicle"
+        requestId:
+          type: string
+
+
+    CompatibilityResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        compatible:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Vehicle"
+        requestId:
+          type: string
+
+
+    AvailabilityResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        oemNumber:
+          type: string
+        stockStatus:
+          type: string
+        requestId:
+          type: string
+
+
+    InquiryRequest:
+      type: object
+      required:
+        - name
+        - phone
+        - message
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 40
+        email:
+          type: string
+          format: email
+        oemNumber:
+          type: string
+        partName:
+          type: string
+        quantity:
+          type: integer
+          minimum: 1
+        make:
+          type: string
+        model:
+          type: string
+        modelYear:
+          type: integer
+        engineCode:
+          type: string
+        vin:
+          type: string
+          maxLength: 17
+        message:
+          type: string
+          maxLength: 2000
+
+
+    InquiryResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        inquiryId:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+
+
+    Pagination:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+        pageSize:
+          type: integer
+        totalRecords:
+          type: integer
+        totalPages:
+          type: integer
+        hasNextPage:
+          type: boolean
+        hasPreviousPage:
+          type: boolean
+
+
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+
+
+  responses:
+
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    ValidationError:
+      description: Validation failed
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    RateLimited:
+      description: Too many requests
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
