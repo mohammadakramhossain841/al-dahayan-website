@@ -7,8 +7,7 @@
 (function () {
   "use strict";
 
-  const LANGUAGE_STORAGE_KEY =
-    "alDahayanLanguage";
+  const LANGUAGE_STORAGE_KEY = "alDahayanLanguage";
 
   const DEFAULT_LANGUAGE = "en";
 
@@ -2842,12 +2841,8 @@
      UTILITY
   ========================================= */
 
-  function isSupportedLanguage(
-    language
-  ) {
-    return SUPPORTED_LANGUAGES.includes(
-      language
-    );
+  function isSupportedLanguage(language) {
+    return SUPPORTED_LANGUAGES.includes(language);
   }
 
 
@@ -2858,9 +2853,7 @@
           LANGUAGE_STORAGE_KEY
         );
 
-      return isSupportedLanguage(
-        stored
-      )
+      return isSupportedLanguage(stored)
         ? stored
         : null;
 
@@ -2870,20 +2863,13 @@
   }
 
 
+  /*
+   * IMPORTANT:
+   * Saved language has priority over <html lang>.
+   * This prevents the HTML default language from
+   * overriding the user's saved language after reload.
+   */
   function getCurrentLanguage() {
-    const htmlLanguage =
-      document.documentElement.getAttribute(
-        "lang"
-      );
-
-    if (
-      isSupportedLanguage(
-        htmlLanguage
-      )
-    ) {
-      return htmlLanguage;
-    }
-
     const storedLanguage =
       getStoredLanguage();
 
@@ -2891,13 +2877,20 @@
       return storedLanguage;
     }
 
+    const htmlLanguage =
+      document.documentElement.getAttribute(
+        "lang"
+      );
+
+    if (isSupportedLanguage(htmlLanguage)) {
+      return htmlLanguage;
+    }
+
     return DEFAULT_LANGUAGE;
   }
 
 
-  function getDirection(
-    language
-  ) {
+  function getDirection(language) {
     return language === "ar"
       ? "rtl"
       : "ltr";
@@ -2906,466 +2899,172 @@
 
   /* =========================================
      TRANSLATION KEY ALIASES
-     Supports existing HTML dotted keys
-     with the centralized flat dictionaries.
   ========================================= */
 
   const keyAliases = {
 
-    /* Navigation */
-
-    "nav.home":
-      "home",
-
-    "nav.about":
-      "about",
-
-    "nav.parts":
-      "parts",
-
-    "nav.vehicles":
-      "vehicles",
-
-    "nav.vin":
-      "vinSearch",
-
-    "nav.inventory":
-      "inventory",
-
-    "nav.services":
-      "services",
-
-    "nav.contact":
-      "contact",
-
-    "nav.inquiry":
-      "inquiry",
-
-
-    /* Hero */
-
-    "hero.title":
-      "heroTitle",
-
-    "hero.subtitle":
-      "heroSubtitle",
-
-    "hero.description":
-      "heroDescription",
-
-    "hero.findParts":
-      "searchParts",
-
-    "hero.findYourPart":
-      "findYourPart",
-
-    "hero.connect":
-      "connectWithUs",
-
-    "hero.makeInquiry":
-      "submitInquiry",
-
-
-    /* Search */
-
-    "search.title":
-      "searchPartsTitle",
-
-    "search.description":
-      "searchPartsDescription",
-
-    "search.button":
-      "search",
-
-    "search.reset":
-      "reset",
-
-    "search.oem.title":
-      "searchByOEM",
-
-    "search.oem.description":
-      "enterOEM",
-
-    "search.oem.number":
-      "oemNumber",
-
-    "search.oem.placeholder":
-      "enterOEM",
-
-
-    /* Company */
-
-    "company.name":
-      "companyName",
-
-    "company.description":
-      "companyDescription",
-
-    "company.about":
-      "aboutCompany",
-
-    "company.overview":
-      "companyOverview",
-
-    "company.learnMore":
-      "learnMore",
-
-    "company.mission":
-      "mission",
-
-    "company.missionText":
-      "missionText",
-
-    "company.vision":
-      "vision",
-
-    "company.visionText":
-      "visionText",
-
-
-    /* Services */
-
-    "services.title":
-      "servicesTitle",
-
-    "services.description":
-      "servicesDescription",
-
-    "services.parts":
-      "sparePartsService",
-
-    "services.oem":
-      "oemSourcing",
-
-    "services.vin":
-      "vinIdentification",
-
-    "services.vehicle":
-      "vehicleSearchService",
-
-    "services.identification":
-      "partIdentification",
-
-    "services.stock":
-      "stockAvailability",
-
-    "services.inquiry":
-      "inquirySupport",
-
-
-    /* Customer Connection */
-
-    "connection.title":
-      "customerConnection",
-
-    "connection.description":
-      "customerConnectionText",
-
-    "connection.inquiry":
-      "requestPart",
-
-    "connection.contact":
-      "contactUs",
-
-    "connection.availability":
-      "askAvailability",
-
-
-    /* CTA */
-
-    "cta.title":
-      "customerConnection",
-
-    "cta.description":
-      "customerConnectionText",
-
-    "cta.parts":
-      "searchParts",
-
-    "cta.inquiry":
-      "submitInquiry",
-
-    "cta.contact":
-      "contactUs",
-
-
-    /* Inventory */
-
-    "inventory.title":
-      "inventoryTitle",
-
-    "inventory.description":
-      "inventoryDescription",
-
-    "inventory.stock":
-      "stock",
-
-    "inventory.status":
-      "stockStatus",
-
-    "inventory.available":
-      "available",
-
-    "inventory.inStock":
-      "inStock",
-
-    "inventory.lowStock":
-      "lowStock",
-
-    "inventory.outOfStock":
-      "outOfStock",
-
-    "inventory.onRequest":
-      "onRequest",
-
-    "inventory.quantity":
-      "quantity",
-
-    "inventory.lastUpdated":
-      "lastUpdated",
-
-
-    /* Vehicle */
-
-    "vehicle.title":
-      "vehicleSearchTitle",
-
-    "vehicle.description":
-      "vehicleSearchDescription",
-
-    "vehicle.make":
-      "make",
-
-    "vehicle.model":
-      "model",
-
-    "vehicle.year":
-      "year",
-
-    "vehicle.engine":
-      "engine",
-
-    "vehicle.search":
-      "search",
-
-    "vehicle.details":
-      "vehicleDetails",
-
-    "vehicle.compatibleParts":
-      "compatibleParts",
-
-
-    /* VIN */
-
-    "vin.title":
-      "vinSearchTitle",
-
-    "vin.description":
-      "vinSearchDescription",
-
-    "vin.input":
-      "enterVIN",
-
-    "vin.search":
-      "searchVIN",
-
-    "vin.validate":
-      "validateVIN",
-
-    "vin.results":
-      "vinResults",
-
-
-    /* Inquiry */
-
-    "inquiry.title":
-      "inquiryTitle",
-
-    "inquiry.description":
-      "inquiryDescription",
-
-    "inquiry.name":
-      "customerName",
-
-    "inquiry.phone":
-      "phone",
-
-    "inquiry.whatsapp":
-      "whatsapp",
-
-    "inquiry.email":
-      "email",
-
-    "inquiry.message":
-      "customerMessage",
-
-    "inquiry.part":
-      "requestedPart",
-
-    "inquiry.quantity":
-      "requestedQuantity",
-
-    "inquiry.submit":
-      "submitInquiry",
-
-    "inquiry.send":
-      "sendInquiry",
-
-    "inquiry.whatsappButton":
-      "whatsappInquiry",
-
-    "inquiry.status":
-      "inquiryStatus",
-
-
-    /* Contact */
-
-    "contact.title":
-      "contactTitle",
-
-    "contact.description":
-      "contactDescription",
-
-    "contact.phone":
-      "phoneNumber",
-
-    "contact.email":
-      "emailAddress",
-
-    "contact.hours":
-      "workingHours",
-
-    "contact.message":
-      "sendMessage",
-
-    "contact.call":
-      "callNow",
-
-
-    /* Branches */
-
-    "branches.title":
-      "branches",
-
-    "branches.name":
-      "branchName",
-
-    "branches.address":
-      "branchAddress",
-
-    "branches.phone":
-      "branchPhone",
-
-    "branches.whatsapp":
-      "branchWhatsApp",
-
-    "branches.services":
-      "branchServices",
-
-    "branches.hours":
-      "branchHours",
-
-    "branches.status":
-      "branchStatus",
-
-
-    /* AI */
-
-    "ai.title":
-      "aiAssistantTitle",
-
-    "ai.description":
-      "aiAssistantDescription",
-
-    "ai.welcome":
-      "aiWelcome",
-
-    "ai.placeholder":
-      "aiInputPlaceholder",
-
-    "ai.send":
-      "aiSend",
-
-    "ai.thinking":
-      "aiThinking",
-
-    "ai.whatsapp":
-      "aiConnectWhatsApp",
-
-    "ai.handover":
-      "aiHandover",
-
-
-    /* Footer */
-
-    "footer.quickLinks":
-      "quickLinks",
-
-    "footer.company":
-      "company",
-
-    "footer.support":
-      "customerSupport",
-
-    "footer.followUs":
-      "followUs",
-
-    "footer.privacy":
-      "privacyPolicy",
-
-    "footer.terms":
-      "terms",
-
-    "footer.rights":
-      "allRightsReserved",
-
-
-    /* Common */
-
-    "common.search":
-      "search",
-
-    "common.reset":
-      "reset",
-
-    "common.submit":
-      "submit",
-
-    "common.save":
-      "save",
-
-    "common.update":
-      "update",
-
-    "common.edit":
-      "edit",
-
-    "common.delete":
-      "delete",
-
-    "common.cancel":
-      "cancel",
-
-    "common.close":
-      "close",
-
-    "common.loading":
-      "loading",
-
-    "common.noResults":
-      "noResults",
-
-    "common.error":
-      "error",
-
-    "common.status":
-      "status",
-
-    "common.active":
-      "active",
-
-    "common.inactive":
-      "inactive"
+    "nav.home": "home",
+    "nav.about": "about",
+    "nav.parts": "parts",
+    "nav.vehicles": "vehicles",
+    "nav.vin": "vinSearch",
+    "nav.vinSearch": "vinSearch",
+    "nav.inventory": "inventory",
+    "nav.services": "services",
+    "nav.contact": "contact",
+    "nav.inquiry": "inquiry",
+
+    "nav.mainNavigation": "mainNavigation",
+    "nav.openMenu": "openMenu",
+    "nav.closeMenu": "closeMenu",
+
+    "hero.title": "heroTitle",
+    "hero.subtitle": "heroSubtitle",
+    "hero.description": "heroDescription",
+    "hero.findParts": "searchParts",
+    "hero.findYourPart": "findYourPart",
+    "hero.connect": "connectWithUs",
+    "hero.makeInquiry": "submitInquiry",
+
+    "search.title": "searchPartsTitle",
+    "search.description": "searchPartsDescription",
+    "search.button": "search",
+    "search.reset": "reset",
+    "search.oem.title": "searchByOEM",
+    "search.oem.description": "enterOEM",
+    "search.oem.number": "oemNumber",
+    "search.oem.placeholder": "enterOEM",
+
+    "company.name": "companyName",
+    "company.arabicName": "companyArabicName",
+    "company.tagline": "companyTagline",
+    "company.description": "companyDescription",
+    "company.about": "aboutCompany",
+    "company.overview": "companyOverview",
+    "company.learnMore": "learnMore",
+    "company.mission": "mission",
+    "company.missionText": "missionText",
+    "company.vision": "vision",
+    "company.visionText": "visionText",
+
+    "language.selectLanguage": "language",
+    "language.switchEnglish": "switchToEnglish",
+    "language.switchArabic": "switchToArabic",
+
+    "services.title": "servicesTitle",
+    "services.description": "servicesDescription",
+    "services.parts": "sparePartsService",
+    "services.oem": "oemSourcing",
+    "services.vin": "vinIdentification",
+    "services.vehicle": "vehicleSearchService",
+    "services.identification": "partIdentification",
+    "services.stock": "stockAvailability",
+    "services.inquiry": "inquirySupport",
+
+    "connection.title": "customerConnection",
+    "connection.description": "customerConnectionText",
+    "connection.inquiry": "requestPart",
+    "connection.contact": "contactUs",
+    "connection.availability": "askAvailability",
+
+    "cta.title": "customerConnection",
+    "cta.description": "customerConnectionText",
+    "cta.parts": "searchParts",
+    "cta.inquiry": "submitInquiry",
+    "cta.contact": "contactUs",
+
+    "inventory.title": "inventoryTitle",
+    "inventory.description": "inventoryDescription",
+    "inventory.stock": "stock",
+    "inventory.status": "stockStatus",
+    "inventory.available": "available",
+    "inventory.inStock": "inStock",
+    "inventory.lowStock": "lowStock",
+    "inventory.outOfStock": "outOfStock",
+    "inventory.onRequest": "onRequest",
+    "inventory.quantity": "quantity",
+    "inventory.lastUpdated": "lastUpdated",
+
+    "vehicle.title": "vehicleSearchTitle",
+    "vehicle.description": "vehicleSearchDescription",
+    "vehicle.make": "make",
+    "vehicle.model": "model",
+    "vehicle.year": "year",
+    "vehicle.engine": "engine",
+    "vehicle.search": "search",
+    "vehicle.details": "vehicleDetails",
+    "vehicle.compatibleParts": "compatibleParts",
+
+    "vin.title": "vinSearchTitle",
+    "vin.description": "vinSearchDescription",
+    "vin.input": "enterVIN",
+    "vin.search": "searchVIN",
+    "vin.validate": "validateVIN",
+    "vin.results": "vinResults",
+
+    "inquiry.title": "inquiryTitle",
+    "inquiry.description": "inquiryDescription",
+    "inquiry.name": "customerName",
+    "inquiry.phone": "phone",
+    "inquiry.whatsapp": "whatsapp",
+    "inquiry.email": "email",
+    "inquiry.message": "customerMessage",
+    "inquiry.part": "requestedPart",
+    "inquiry.quantity": "requestedQuantity",
+    "inquiry.submit": "submitInquiry",
+    "inquiry.send": "sendInquiry",
+    "inquiry.whatsappButton": "whatsappInquiry",
+    "inquiry.status": "inquiryStatus",
+
+    "contact.title": "contactTitle",
+    "contact.description": "contactDescription",
+    "contact.phone": "phoneNumber",
+    "contact.email": "emailAddress",
+    "contact.hours": "workingHours",
+    "contact.message": "sendMessage",
+    "contact.call": "callNow",
+
+    "branches.title": "branches",
+    "branches.name": "branchName",
+    "branches.address": "branchAddress",
+    "branches.phone": "branchPhone",
+    "branches.whatsapp": "branchWhatsApp",
+    "branches.services": "branchServices",
+    "branches.hours": "branchHours",
+    "branches.status": "branchStatus",
+
+    "ai.title": "aiAssistantTitle",
+    "ai.description": "aiAssistantDescription",
+    "ai.welcome": "aiWelcome",
+    "ai.placeholder": "aiInputPlaceholder",
+    "ai.send": "aiSend",
+    "ai.thinking": "aiThinking",
+    "ai.whatsapp": "aiConnectWhatsApp",
+    "ai.handover": "aiHandover",
+
+    "footer.quickLinks": "quickLinks",
+    "footer.company": "company",
+    "footer.support": "customerSupport",
+    "footer.followUs": "followUs",
+    "footer.privacy": "privacyPolicy",
+    "footer.terms": "terms",
+    "footer.rights": "allRightsReserved",
+
+    "common.search": "search",
+    "common.reset": "reset",
+    "common.submit": "submit",
+    "common.save": "save",
+    "common.update": "update",
+    "common.edit": "edit",
+    "common.delete": "delete",
+    "common.cancel": "cancel",
+    "common.close": "close",
+    "common.loading": "loading",
+    "common.noResults": "noResults",
+    "common.error": "error",
+    "common.status": "status",
+    "common.active": "active",
+    "common.inactive": "inactive"
   };
 
 
@@ -3373,28 +3072,17 @@
      NESTED TRANSLATION SUPPORT
   ========================================= */
 
-  function getNestedTranslation(
-    object,
-    key
-  ) {
-    if (
-      !object ||
-      !key
-    ) {
+  function getNestedTranslation(object, key) {
+    if (!object || !key) {
       return undefined;
     }
 
-    const parts =
-      key.split(".");
+    const parts = key.split(".");
 
-    let current =
-      object;
+    let current = object;
 
-    for (
-      let i = 0;
-      i < parts.length;
-      i++
-    ) {
+    for (let i = 0; i < parts.length; i++) {
+
       if (
         current === null ||
         current === undefined ||
@@ -3404,8 +3092,7 @@
         return undefined;
       }
 
-      current =
-        current[parts[i]];
+      current = current[parts[i]];
     }
 
     return typeof current === "string"
@@ -3418,14 +3105,9 @@
      RESOLVE TRANSLATION
   ========================================= */
 
-  function resolveTranslation(
-    dictionary,
-    key
-  ) {
-    if (
-      !dictionary ||
-      !key
-    ) {
+  function resolveTranslation(dictionary, key) {
+
+    if (!dictionary || !key) {
       return undefined;
     }
 
@@ -3466,9 +3148,7 @@
         key
       );
 
-    if (
-      nested !== undefined
-    ) {
+    if (nested !== undefined) {
       return nested;
     }
 
@@ -3482,9 +3162,9 @@
 
   function translate(
     key,
-    language =
-      getCurrentLanguage()
+    language = getCurrentLanguage()
   ) {
+
     if (!key) {
       return "";
     }
@@ -3493,9 +3173,7 @@
       translations[language] || {};
 
     const fallback =
-      translations[
-        DEFAULT_LANGUAGE
-      ] || {};
+      translations[DEFAULT_LANGUAGE] || {};
 
 
     /* Selected language */
@@ -3540,32 +3218,27 @@
      TEXT
   ========================================= */
 
-  function applyTextTranslations(
-    language
-  ) {
+  function applyTextTranslations(language) {
+
     document
-      .querySelectorAll(
-        "[data-i18n]"
-      )
-      .forEach(
-        function (element) {
+      .querySelectorAll("[data-i18n]")
+      .forEach(function (element) {
 
-          const key =
-            element.getAttribute(
-              "data-i18n"
-            );
+        const key =
+          element.getAttribute(
+            "data-i18n"
+          );
 
-          if (!key) {
-            return;
-          }
-
-          element.textContent =
-            translate(
-              key,
-              language
-            );
+        if (!key) {
+          return;
         }
-      );
+
+        element.textContent =
+          translate(
+            key,
+            language
+          );
+      });
   }
 
 
@@ -3573,34 +3246,31 @@
      PLACEHOLDERS
   ========================================= */
 
-  function applyPlaceholderTranslations(
-    language
-  ) {
+  function applyPlaceholderTranslations(language) {
+
     document
       .querySelectorAll(
         "[data-i18n-placeholder]"
       )
-      .forEach(
-        function (element) {
+      .forEach(function (element) {
 
-          const key =
-            element.getAttribute(
-              "data-i18n-placeholder"
-            );
-
-          if (!key) {
-            return;
-          }
-
-          element.setAttribute(
-            "placeholder",
-            translate(
-              key,
-              language
-            )
+        const key =
+          element.getAttribute(
+            "data-i18n-placeholder"
           );
+
+        if (!key) {
+          return;
         }
-      );
+
+        element.setAttribute(
+          "placeholder",
+          translate(
+            key,
+            language
+          )
+        );
+      });
   }
 
 
@@ -3608,32 +3278,29 @@
      VALUE TRANSLATION
   ========================================= */
 
-  function applyValueTranslations(
-    language
-  ) {
+  function applyValueTranslations(language) {
+
     document
       .querySelectorAll(
         "[data-i18n-value]"
       )
-      .forEach(
-        function (element) {
+      .forEach(function (element) {
 
-          const key =
-            element.getAttribute(
-              "data-i18n-value"
-            );
+        const key =
+          element.getAttribute(
+            "data-i18n-value"
+          );
 
-          if (!key) {
-            return;
-          }
-
-          element.value =
-            translate(
-              key,
-              language
-            );
+        if (!key) {
+          return;
         }
-      );
+
+        element.value =
+          translate(
+            key,
+            language
+          );
+      });
   }
 
 
@@ -3649,35 +3316,25 @@
 
     const pageMap = {
 
-      home:
-        "pageTitleHome",
+      home: "pageTitleHome",
 
-      about:
-        "pageTitleAbout",
+      about: "pageTitleAbout",
 
-      parts:
-        "pageTitleParts",
+      parts: "pageTitleParts",
 
-      vehicles:
-        "pageTitleVehicles",
+      vehicles: "pageTitleVehicles",
 
-      "vin-search":
-        "pageTitleVIN",
+      "vin-search": "pageTitleVIN",
 
-      inventory:
-        "pageTitleInventory",
+      inventory: "pageTitleInventory",
 
-      services:
-        "pageTitleServices",
+      services: "pageTitleServices",
 
-      contact:
-        "pageTitleContact",
+      contact: "pageTitleContact",
 
-      inquiry:
-        "pageTitleInquiry",
+      inquiry: "pageTitleInquiry",
 
-      admin:
-        "pageTitleAdmin"
+      admin: "pageTitleAdmin"
     };
 
     return (
@@ -3687,9 +3344,8 @@
   }
 
 
-  function applyDocumentTitle(
-    language
-  ) {
+  function applyDocumentTitle(language) {
+
     const customTitle =
       document.documentElement.getAttribute(
         "data-title-i18n"
@@ -3700,6 +3356,7 @@
       getPageTitleKey();
 
     if (pageTitleKey) {
+
       document.title =
         translate(
           pageTitleKey,
@@ -3713,62 +3370,56 @@
      ACCESSIBILITY
   ========================================= */
 
-  function applyAccessibilityTranslations(
-    language
-  ) {
+  function applyAccessibilityTranslations(language) {
 
     document
       .querySelectorAll(
         "[data-i18n-aria-label]"
       )
-      .forEach(
-        function (element) {
+      .forEach(function (element) {
 
-          const key =
-            element.getAttribute(
-              "data-i18n-aria-label"
-            );
-
-          if (!key) {
-            return;
-          }
-
-          element.setAttribute(
-            "aria-label",
-            translate(
-              key,
-              language
-            )
+        const key =
+          element.getAttribute(
+            "data-i18n-aria-label"
           );
+
+        if (!key) {
+          return;
         }
-      );
+
+        element.setAttribute(
+          "aria-label",
+          translate(
+            key,
+            language
+          )
+        );
+      });
 
 
     document
       .querySelectorAll(
         "[data-i18n-title]"
       )
-      .forEach(
-        function (element) {
+      .forEach(function (element) {
 
-          const key =
-            element.getAttribute(
-              "data-i18n-title"
-            );
-
-          if (!key) {
-            return;
-          }
-
-          element.setAttribute(
-            "title",
-            translate(
-              key,
-              language
-            )
+        const key =
+          element.getAttribute(
+            "data-i18n-title"
           );
+
+        if (!key) {
+          return;
         }
-      );
+
+        element.setAttribute(
+          "title",
+          translate(
+            key,
+            language
+          )
+        );
+      });
   }
 
 
@@ -3776,13 +3427,11 @@
      DIRECTION
   ========================================= */
 
-  function applyDirection(
-    language
-  ) {
+  function applyDirection(language) {
+
     const direction =
-      getDirection(
-        language
-      );
+      getDirection(language);
+
 
     document.documentElement.setAttribute(
       "lang",
@@ -3794,13 +3443,16 @@
       direction
     );
 
+
     if (document.body) {
+
       document.body.setAttribute(
         "dir",
         direction
       );
     }
 
+
     document.documentElement.classList.toggle(
       "is-rtl",
       direction === "rtl"
@@ -3811,15 +3463,19 @@
       direction === "ltr"
     );
 
-    document.body?.classList.toggle(
-      "is-rtl",
-      direction === "rtl"
-    );
 
-    document.body?.classList.toggle(
-      "is-ltr",
-      direction === "ltr"
-    );
+    if (document.body) {
+
+      document.body.classList.toggle(
+        "is-rtl",
+        direction === "rtl"
+      );
+
+      document.body.classList.toggle(
+        "is-ltr",
+        direction === "ltr"
+      );
+    }
   }
 
 
@@ -3827,61 +3483,55 @@
      LANGUAGE SWITCHER
   ========================================= */
 
-  function updateLanguageSwitcher(
-    language
-  ) {
+  function updateLanguageSwitcher(language) {
 
     document
       .querySelectorAll(
         "[data-language-option]"
       )
-      .forEach(
-        function (element) {
+      .forEach(function (element) {
 
-          const option =
-            element.getAttribute(
-              "data-language-option"
-            );
-
-          const active =
-            option === language;
-
-          element.classList.toggle(
-            "active",
-            active
+        const option =
+          element.getAttribute(
+            "data-language-option"
           );
 
-          element.setAttribute(
-            "aria-selected",
-            String(active)
-          );
+        const active =
+          option === language;
 
-          element.setAttribute(
-            "data-active",
-            String(active)
-          );
-        }
-      );
+        element.classList.toggle(
+          "active",
+          active
+        );
+
+        element.setAttribute(
+          "aria-selected",
+          String(active)
+        );
+
+        element.setAttribute(
+          "data-active",
+          String(active)
+        );
+      });
 
 
     document
       .querySelectorAll(
         "[data-language-switch]"
       )
-      .forEach(
-        function (element) {
+      .forEach(function (element) {
 
-          const target =
-            element.getAttribute(
-              "data-language-switch"
-            );
-
-          element.classList.toggle(
-            "active",
-            target === language
+        const target =
+          element.getAttribute(
+            "data-language-switch"
           );
-        }
-      );
+
+        element.classList.toggle(
+          "active",
+          target === language
+        );
+      });
   }
 
 
@@ -3890,54 +3540,39 @@
   ========================================= */
 
   function applyLanguage(
-    language =
-      getCurrentLanguage()
+    language = getCurrentLanguage()
   ) {
 
     if (
-      !isSupportedLanguage(
-        language
-      )
+      !isSupportedLanguage(language)
     ) {
       language =
         DEFAULT_LANGUAGE;
     }
 
 
-    applyDirection(
-      language
-    );
+    applyDirection(language);
 
-    applyTextTranslations(
-      language
-    );
+    applyTextTranslations(language);
 
-    applyPlaceholderTranslations(
-      language
-    );
+    applyPlaceholderTranslations(language);
 
-    applyValueTranslations(
-      language
-    );
+    applyValueTranslations(language);
 
-    applyAccessibilityTranslations(
-      language
-    );
+    applyAccessibilityTranslations(language);
 
-    applyDocumentTitle(
-      language
-    );
+    applyDocumentTitle(language);
 
-    updateLanguageSwitcher(
-      language
-    );
+    updateLanguageSwitcher(language);
 
 
     try {
+
       localStorage.setItem(
         LANGUAGE_STORAGE_KEY,
         language
       );
+
     } catch (error) {
       /* Storage may be unavailable. */
     }
@@ -3950,9 +3585,7 @@
           detail: {
             language,
             direction:
-              getDirection(
-                language
-              )
+              getDirection(language)
           }
         }
       )
@@ -3967,14 +3600,10 @@
      SET LANGUAGE
   ========================================= */
 
-  function setLanguage(
-    language
-  ) {
+  function setLanguage(language) {
 
     if (
-      !isSupportedLanguage(
-        language
-      )
+      !isSupportedLanguage(language)
     ) {
       return false;
     }
@@ -3982,9 +3611,8 @@
     const previousLanguage =
       getCurrentLanguage();
 
-    applyLanguage(
-      language
-    );
+
+    applyLanguage(language);
 
 
     if (
@@ -4000,9 +3628,7 @@
               previousLanguage,
               language,
               direction:
-                getDirection(
-                  language
-                )
+                getDirection(language)
             }
           }
         )
@@ -4027,9 +3653,7 @@
         ? "ar"
         : "en";
 
-    return setLanguage(
-      next
-    );
+    return setLanguage(next);
   }
 
 
@@ -4073,9 +3697,7 @@
             "data-language-switch"
           );
 
-        setLanguage(
-          language
-        );
+        setLanguage(language);
       }
     );
 
@@ -4100,9 +3722,7 @@
             "data-language-option"
           );
 
-        setLanguage(
-          language
-        );
+        setLanguage(language);
       }
     );
   }
@@ -4114,6 +3734,20 @@
 
   let componentSyncInitialized =
     false;
+
+  let componentMutationObserver =
+    null;
+
+
+  function syncComponentsLanguage() {
+
+    const currentLanguage =
+      getCurrentLanguage();
+
+    applyLanguage(
+      currentLanguage
+    );
+  }
 
 
   function initializeComponentLanguageSync() {
@@ -4128,15 +3762,84 @@
       true;
 
 
+    /*
+     * Component loader event.
+     */
     document.addEventListener(
       "alDahayanComponentsLoaded",
       function () {
 
-        applyLanguage(
-          getCurrentLanguage()
-        );
+        syncComponentsLanguage();
       }
     );
+
+
+    /*
+     * Fallback observer.
+     *
+     * This catches dynamically inserted
+     * header/footer/components even when
+     * the custom event is fired before the
+     * language system receives it.
+     */
+    if (
+      typeof MutationObserver !==
+        "undefined" &&
+      document.body
+    ) {
+
+      componentMutationObserver =
+        new MutationObserver(
+          function (mutations) {
+
+            let hasNewNodes =
+              false;
+
+
+            for (
+              const mutation
+              of mutations
+            ) {
+
+              if (
+                mutation.type ===
+                  "childList" &&
+                mutation.addedNodes &&
+                mutation.addedNodes.length >
+                  0
+              ) {
+
+                hasNewNodes =
+                  true;
+
+                break;
+              }
+            }
+
+
+            if (!hasNewNodes) {
+              return;
+            }
+
+
+            window.requestAnimationFrame(
+              function () {
+
+                syncComponentsLanguage();
+              }
+            );
+          }
+        );
+
+
+      componentMutationObserver.observe(
+        document.body,
+        {
+          childList: true,
+          subtree: true
+        }
+      );
+    }
   }
 
 
@@ -4164,9 +3867,7 @@
       "alDahayanConfigUpdated",
       function () {
 
-        applyLanguage(
-          getCurrentLanguage()
-        );
+        syncComponentsLanguage();
       }
     );
 
@@ -4180,9 +3881,16 @@
           LANGUAGE_STORAGE_KEY
         ) {
 
+          const newLanguage =
+            isSupportedLanguage(
+              event.newValue
+            )
+              ? event.newValue
+              : DEFAULT_LANGUAGE;
+
+
           applyLanguage(
-            event.newValue ||
-              DEFAULT_LANGUAGE
+            newLanguage
           );
         }
       }
