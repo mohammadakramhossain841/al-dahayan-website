@@ -5,12 +5,11 @@
 
    Brand:
    Red / Black / White
-   ========================================================= */
-
+========================================================= */
 
 /* =========================================================
    1. ROOT VARIABLES
-   ========================================================= */
+========================================================= */
 
 :root {
     /* Brand */
@@ -51,10 +50,9 @@
     --transition: 0.25s ease;
 }
 
-
 /* =========================================================
    2. RESET / BASE
-   ========================================================= */
+========================================================= */
 
 *,
 *::before,
@@ -124,10 +122,9 @@ ol {
     display: none !important;
 }
 
-
 /* =========================================================
    3. GLOBAL CONTAINER
-   ========================================================= */
+========================================================= */
 
 .container {
     width: min(
@@ -138,10 +135,9 @@ ol {
     margin: 0 auto;
 }
 
-
 /* =========================================================
    4. HEADER
-   ========================================================= */
+========================================================= */
 
 .site-header {
     position: sticky;
@@ -155,9 +151,17 @@ ol {
     box-shadow: var(--shadow-sm);
 }
 
+/*
+Current index.html uses:
+.container.header-inner
+
+Older pages may use:
+.header-container
+*/
+
 .header-inner,
 .header-container {
-    min-height: 82px;
+    min-height: 88px;
 
     display: flex;
     align-items: center;
@@ -166,34 +170,9 @@ ol {
     gap: 25px;
 }
 
-
 /* =========================================================
    5. LOGO / BRAND
-   ========================================================= */
-
-/*
-   The confirmed official Al-Dahayan logo is:
-
-   assets/images/1000018142-removebg-preview.png
-
-   The HTML references the logo.
-   This CSS controls its display size and alignment.
-*/
-
-.brand {
-    display: inline-flex;
-    align-items: center;
-
-    flex-shrink: 0;
-
-    min-width: 0;
-
-    gap: 13px;
-
-    line-height: 1.1;
-
-    text-decoration: none;
-}
+========================================================= */
 
 .site-logo {
     display: flex;
@@ -204,38 +183,50 @@ ol {
     text-decoration: none;
 }
 
+/*
+IMPORTANT:
+The official Al-Dahayan logo file is:
+
+assets/images/1000018142-removebg-preview.png
+
+The image ratio is approximately 1.87:1.
+Therefore width is used as the main size control
+instead of height so the logo does not appear too small.
+*/
+
 .site-logo-image {
     display: block;
 
-    width: auto;
-    height: 66px;
+    width: 180px;
+    height: auto;
 
-    max-width: 145px;
-    max-height: 66px;
-
-    flex-shrink: 0;
+    max-width: 100%;
 
     object-fit: contain;
+
+    flex-shrink: 0;
 }
 
-.brand-text {
+.brand {
     display: flex;
     flex-direction: column;
 
-    justify-content: center;
+    align-items: flex-start;
 
-    min-width: 0;
+    min-width: 190px;
+
+    line-height: 1.1;
+
+    text-decoration: none;
 }
 
 .brand-name {
     color: var(--primary);
 
-    font-size: 21px;
+    font-size: 22px;
     font-weight: 800;
 
-    letter-spacing: 1.2px;
-
-    white-space: nowrap;
+    letter-spacing: 1.5px;
 }
 
 .brand-subtitle {
@@ -248,14 +239,11 @@ ol {
 
     text-transform: uppercase;
     letter-spacing: 1px;
-
-    white-space: nowrap;
 }
-
 
 /* =========================================================
    6. MAIN NAVIGATION
-   ========================================================= */
+========================================================= */
 
 .main-navigation {
     display: flex;
@@ -294,10 +282,9 @@ ol {
     color: var(--accent);
 }
 
-
 /* =========================================================
    7. HEADER ACTIONS
-   ========================================================= */
+========================================================= */
 
 .header-actions {
     display: flex;
@@ -341,18 +328,15 @@ ol {
     transform: translateY(-2px);
 }
 
-
 /* =========================================================
    8. LANGUAGE SWITCHER
-   ========================================================= */
+========================================================= */
 
 .language-switcher {
     display: inline-flex;
     align-items: center;
 
     gap: 6px;
-
-    flex-shrink: 0;
 }
 
 .language-switcher button,
@@ -401,10 +385,9 @@ ol {
     border-color: var(--accent);
 }
 
-
 /* =========================================================
    9. HERO SECTION
-   ========================================================= */
+========================================================= */
 
 .hero-section {
     position: relative;
@@ -516,10 +499,9 @@ ol {
     line-height: 1.8;
 }
 
-
 /* =========================================================
    10. BUTTONS
-   ========================================================= */
+========================================================= */
 
 .button,
 .btn {
@@ -581,10 +563,9 @@ ol {
     background: rgba(255, 255, 255, 0.08);
 }
 
-
 /* =========================================================
    11. ACTION GROUPS
-   ========================================================= */
+========================================================= */
 
 .hero-actions,
 .connection-actions,
@@ -597,10 +578,9 @@ ol {
     flex-wrap: wrap;
 }
 
-
 /* =========================================================
    12. COMMON SECTION
-   ========================================================= */
+========================================================= */
 
 section {
     padding: 90px 0;
@@ -641,10 +621,9 @@ section {
     font-size: 16px;
 }
 
-
 /* =========================================================
    13. SEARCH SECTION
-   ========================================================= */
+========================================================= */
 
 .search-section {
     background: var(--white);
@@ -716,10 +695,9 @@ section {
     font-size: 14px;
 }
 
-
 /* =========================================================
    14. SEARCH FORM
-   ========================================================= */
+========================================================= */
 
 .part-search-form {
     width: 100%;
@@ -756,10 +734,9 @@ section {
     width: 100%;
 }
 
-
 /* =========================================================
    15. SCREEN READER ONLY
-   ========================================================= */
+========================================================= */
 
 .sr-only {
     position: absolute !important;
@@ -778,10 +755,9 @@ section {
     border: 0 !important;
 }
 
-
 /* =========================================================
    16. COMPANY SECTION
-   ========================================================= */
+========================================================= */
 
 .company-section {
     background: var(--background);
@@ -833,10 +809,9 @@ section {
     color: var(--accent);
 }
 
-
 /* =========================================================
    17. SERVICES
-   ========================================================= */
+========================================================= */
 
 .services-section {
     background: var(--white);
@@ -886,10 +861,9 @@ section {
     font-size: 14px;
 }
 
-
 /* =========================================================
    18. CUSTOMER CONNECTION
-   ========================================================= */
+========================================================= */
 
 .connection-section {
     background:
@@ -940,10 +914,9 @@ section {
     justify-content: center;
 }
 
-
 /* =========================================================
    19. TRUST SECTION
-   ========================================================= */
+========================================================= */
 
 .trust-section {
     background: var(--background);
@@ -998,10 +971,9 @@ section {
     font-size: 14px;
 }
 
-
 /* =========================================================
    20. FINAL CTA
-   ========================================================= */
+========================================================= */
 
 .final-cta,
 .cta-section {
@@ -1048,10 +1020,9 @@ section {
     background: transparent;
 }
 
-
 /* =========================================================
    21. FOOTER
-   ========================================================= */
+========================================================= */
 
 .site-footer {
     background: #111111;
@@ -1135,10 +1106,9 @@ section {
     font-size: 12px;
 }
 
-
 /* =========================================================
    22. MODAL COMPONENT
-   ========================================================= */
+========================================================= */
 
 .modal-component {
     position: fixed;
@@ -1311,10 +1281,9 @@ section {
     border-color: var(--accent);
 }
 
-
 /* =========================================================
    23. LOADING COMPONENT
-   ========================================================= */
+========================================================= */
 
 .loading-component {
     display: flex;
@@ -1350,10 +1319,9 @@ section {
     }
 }
 
-
 /* =========================================================
    24. STOCK BADGES / STATUS
-   ========================================================= */
+========================================================= */
 
 .stock-badge {
     display: inline-flex;
@@ -1402,10 +1370,9 @@ section {
     color: var(--text-light);
 }
 
-
 /* =========================================================
    25. VEHICLE & PART CARDS
-   ========================================================= */
+========================================================= */
 
 .vehicle-card,
 .part-card {
@@ -1457,10 +1424,9 @@ section {
     line-height: 1.7;
 }
 
-
 /* =========================================================
    26. PART DETAILS
-   ========================================================= */
+========================================================= */
 
 .part-details {
     padding: 24px;
@@ -1490,10 +1456,9 @@ section {
     line-height: 1.7;
 }
 
-
 /* =========================================================
    27. PRICE DISPLAY
-   ========================================================= */
+========================================================= */
 
 .price-display {
     padding: 18px;
@@ -1521,10 +1486,9 @@ section {
     font-size: 13px;
 }
 
-
 /* =========================================================
    28. CONTACT CARD
-   ========================================================= */
+========================================================= */
 
 .contact-card {
     padding: 22px;
@@ -1556,10 +1520,9 @@ section {
     color: var(--accent);
 }
 
-
 /* =========================================================
    29. WHATSAPP BUTTON
-   ========================================================= */
+========================================================= */
 
 .whatsapp-button,
 .btn-whatsapp {
@@ -1600,10 +1563,9 @@ section {
     transform: translateY(-2px);
 }
 
-
 /* =========================================================
    30. SEARCH BOX
-   ========================================================= */
+========================================================= */
 
 .search-box {
     width: 100%;
@@ -1636,10 +1598,9 @@ section {
         0 0 0 3px rgba(215, 25, 32, 0.12);
 }
 
-
 /* =========================================================
    31. VEHICLE / PART FILTERS
-   ========================================================= */
+========================================================= */
 
 .vehicle-filter,
 .part-filter {
@@ -1679,10 +1640,9 @@ section {
         0 0 0 3px rgba(215, 25, 32, 0.12);
 }
 
-
 /* =========================================================
    32. BREADCRUMBS
-   ========================================================= */
+========================================================= */
 
 .breadcrumbs {
     display: flex;
@@ -1716,10 +1676,9 @@ section {
     color: var(--text-light);
 }
 
-
 /* =========================================================
    33. INQUIRY FORM
-   ========================================================= */
+========================================================= */
 
 .inquiry-form {
     width: 100%;
@@ -1773,10 +1732,9 @@ section {
         0 0 0 3px rgba(215, 25, 32, 0.12);
 }
 
-
 /* =========================================================
    34. PRIMARY ACTION STATES
-   ========================================================= */
+========================================================= */
 
 button[data-action="primary"],
 [data-primary-action] {
@@ -1793,10 +1751,9 @@ button[data-action="primary"]:hover,
     border-color: var(--accent-light);
 }
 
-
 /* =========================================================
    35. GLOBAL ACCESSIBILITY
-   ========================================================= */
+========================================================= */
 
 :focus-visible {
     outline: 3px solid var(--accent);
@@ -1830,10 +1787,9 @@ button:disabled,
     transform: none;
 }
 
-
 /* =========================================================
    36. RTL SUPPORT
-   ========================================================= */
+========================================================= */
 
 html[dir="rtl"] {
     direction: rtl;
@@ -1849,15 +1805,9 @@ html[dir="rtl"] .main-navigation {
 }
 
 html[dir="rtl"] .brand {
-    flex-direction: row-reverse;
-
-    align-items: center;
+    align-items: flex-end;
 
     text-align: right;
-}
-
-html[dir="rtl"] .brand-text {
-    align-items: flex-end;
 }
 
 html[dir="rtl"] .footer-company,
@@ -1880,10 +1830,9 @@ html[dir="rtl"] .part-details {
     text-align: right;
 }
 
-
 /* =========================================================
    37. DATA COMPONENT BASE
-   ========================================================= */
+========================================================= */
 
 [data-component] {
     box-sizing: border-box;
@@ -1895,10 +1844,9 @@ html[dir="rtl"] .part-details {
     box-sizing: border-box;
 }
 
-
 /* =========================================================
    38. TABLET RESPONSIVE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 1000px) {
 
@@ -1933,25 +1881,19 @@ html[dir="rtl"] .part-details {
         gap: 15px;
     }
 
+    /*
+     * Keep the actual logo proportional.
+     * Do not force a fixed height.
+     */
     .site-logo-image {
-        height: 60px;
-        max-width: 132px;
-        max-height: 60px;
-    }
-
-    .brand-name {
-        font-size: 19px;
-    }
-
-    .brand-subtitle {
-        font-size: 10px;
+        width: 165px;
+        height: auto;
     }
 }
 
-
 /* =========================================================
    39. MOBILE RESPONSIVE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 720px) {
 
@@ -1974,39 +1916,21 @@ html[dir="rtl"] .part-details {
     .header-container {
         min-height: auto;
 
-        padding: 12px 0;
+        padding: 14px 0;
 
         flex-wrap: wrap;
     }
 
-    .brand {
-        gap: 10px;
-
-        max-width: calc(100% - 55px);
-    }
-
+    /*
+     * Mobile logo
+     */
     .site-logo-image {
-        height: 56px;
-        max-width: 120px;
-        max-height: 56px;
+        width: 150px;
+        height: auto;
     }
 
-    .brand-text {
-        min-width: 0;
-    }
-
-    .brand-name {
-        font-size: 17px;
-
-        letter-spacing: 0.8px;
-    }
-
-    .brand-subtitle {
-        margin-top: 4px;
-
-        font-size: 9px;
-
-        letter-spacing: 0.7px;
+    .brand {
+        min-width: auto;
     }
 
     .main-navigation {
@@ -2107,10 +2031,9 @@ html[dir="rtl"] .part-details {
     }
 }
 
-
 /* =========================================================
    40. SMALL MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 430px) {
 
@@ -2121,28 +2044,17 @@ html[dir="rtl"] .part-details {
         );
     }
 
-    .brand {
-        gap: 8px;
-
-        max-width: calc(100% - 50px);
-    }
-
     .site-logo-image {
-        height: 48px;
-        max-width: 105px;
-        max-height: 48px;
+        width: 135px;
+        height: auto;
     }
 
     .brand-name {
-        font-size: 15px;
-
-        letter-spacing: 0.5px;
+        font-size: 19px;
     }
 
     .brand-subtitle {
-        font-size: 8px;
-
-        letter-spacing: 0.4px;
+        font-size: 9px;
     }
 
     .language-switcher {
@@ -2185,10 +2097,9 @@ html[dir="rtl"] .part-details {
     }
 }
 
-
 /* =========================================================
    41. REDUCED MOTION
-   ========================================================= */
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -2205,43 +2116,54 @@ html[dir="rtl"] .part-details {
     }
 }
 
+/* =========================================================
+   END OF AL-DAHAYAN MAIN STYLESHEET
+========================================================= */
 
 /* =========================================================
-   42. AL-DAHAYAN ADMIN PANEL
-   ========================================================= */
+   AL-DAHAYAN ADMIN PANEL
+   Dashboard Styles
+========================================================= */
 
 .admin-dashboard {
     min-height: 100vh;
     padding: 48px 0 80px;
+
     background: var(--background);
 }
 
 .admin-header-title {
     margin-left: auto;
+
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+
     line-height: 1.2;
 }
 
 .admin-header-title span {
     font-size: 0.72rem;
     font-weight: 700;
+
     letter-spacing: 0.12em;
+
     color: var(--text-light);
+
     text-transform: uppercase;
 }
 
 .admin-header-title strong {
     margin-top: 3px;
+
     font-size: 1rem;
+
     color: var(--accent);
 }
 
-
-/* =========================================
+/* =========================================================
    PAGE HEADING
-   ========================================= */
+========================================================= */
 
 .admin-page-heading {
     margin-bottom: 42px;
@@ -2249,32 +2171,42 @@ html[dir="rtl"] .part-details {
 
 .admin-eyebrow {
     display: inline-block;
+
     margin-bottom: 8px;
+
     font-size: 0.72rem;
     font-weight: 800;
+
     letter-spacing: 0.12em;
+
     color: var(--accent);
+
     text-transform: uppercase;
 }
 
 .admin-page-heading h1 {
     margin: 0 0 10px;
+
     font-size: clamp(2rem, 4vw, 3rem);
+
     line-height: 1.1;
+
     color: var(--primary);
 }
 
 .admin-page-heading p {
     max-width: 720px;
+
     margin: 0;
+
     color: var(--text-light);
+
     line-height: 1.7;
 }
 
-
-/* =========================================
+/* =========================================================
    ADMIN SECTIONS
-   ========================================= */
+========================================================= */
 
 .admin-section {
     margin-bottom: 42px;
@@ -2284,34 +2216,44 @@ html[dir="rtl"] .part-details {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+
     gap: 20px;
+
     margin-bottom: 20px;
 }
 
 .admin-section-heading h2 {
     margin: 0;
+
     font-size: 1.35rem;
+
     color: var(--primary);
 }
 
-
-/* =========================================
+/* =========================================================
    STAT CARDS
-   ========================================= */
+========================================================= */
 
 .admin-stat-grid {
     display: grid;
+
     grid-template-columns: repeat(5, minmax(0, 1fr));
+
     gap: 16px;
 }
 
 .admin-stat-card {
     min-height: 150px;
+
     padding: 22px;
+
     background: var(--surface);
+
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
+
     box-shadow: var(--shadow-sm);
+
     transition:
         transform var(--transition),
         box-shadow var(--transition),
@@ -2320,54 +2262,74 @@ html[dir="rtl"] .part-details {
 
 .admin-stat-card:hover {
     transform: translateY(-2px);
+
     border-color: rgba(215, 25, 32, 0.3);
+
     box-shadow: var(--shadow-md);
 }
 
 .admin-stat-label {
     display: block;
+
     margin-bottom: 14px;
+
     font-size: 0.82rem;
     font-weight: 700;
+
     color: var(--text-light);
 }
 
 .admin-stat-card strong {
     display: block;
+
     margin-bottom: 8px;
+
     font-size: 2rem;
+
     line-height: 1;
+
     color: var(--primary);
 }
 
 .admin-stat-card small {
     display: block;
+
     color: var(--text-light);
+
     font-size: 0.78rem;
 }
 
-
-/* =========================================
+/* =========================================================
    QUICK ACTIONS
-   ========================================= */
+========================================================= */
 
 .admin-action-grid {
     display: grid;
+
     grid-template-columns: repeat(4, minmax(0, 1fr));
+
     gap: 16px;
 }
 
 .admin-action-card {
     display: flex;
     flex-direction: column;
+
     min-height: 190px;
+
     padding: 24px;
+
     color: inherit;
+
     text-decoration: none;
+
     background: var(--surface);
+
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
+
     box-shadow: var(--shadow-sm);
+
     transition:
         transform var(--transition),
         box-shadow var(--transition),
@@ -2376,7 +2338,9 @@ html[dir="rtl"] .part-details {
 
 .admin-action-card:hover {
     transform: translateY(-3px);
+
     border-color: var(--accent);
+
     box-shadow: var(--shadow-md);
 }
 
@@ -2384,50 +2348,68 @@ html[dir="rtl"] .part-details {
     display: flex;
     align-items: center;
     justify-content: center;
+
     width: 46px;
     height: 46px;
+
     margin-bottom: 22px;
+
     border-radius: 50%;
+
     background: var(--accent);
     color: var(--white);
+
     font-size: 1.35rem;
     font-weight: 700;
 }
 
 .admin-action-card strong {
     margin-bottom: 8px;
+
     color: var(--primary);
+
     font-size: 1rem;
 }
 
 .admin-action-card > span:last-child {
     color: var(--text-light);
+
     font-size: 0.84rem;
+
     line-height: 1.6;
 }
 
-
-/* =========================================
+/* =========================================================
    MANAGEMENT CARDS
-   ========================================= */
+========================================================= */
 
 .admin-management-grid {
     display: grid;
+
     grid-template-columns: repeat(3, minmax(0, 1fr));
+
     gap: 14px;
 }
 
 .admin-management-card {
     display: flex;
     flex-direction: column;
+
     gap: 7px;
+
     padding: 20px;
+
     color: inherit;
+
     text-decoration: none;
+
     background: var(--surface);
+
     border: 1px solid var(--border);
     border-left: 4px solid var(--accent);
+
     border-radius: var(--radius-sm);
+
     transition:
         background var(--transition),
         transform var(--transition),
@@ -2436,32 +2418,40 @@ html[dir="rtl"] .part-details {
 
 .admin-management-card:hover {
     background: var(--white);
+
     transform: translateX(3px);
+
     box-shadow: var(--shadow-sm);
 }
 
 .admin-management-card strong {
     color: var(--primary);
+
     font-size: 0.98rem;
 }
 
 .admin-management-card span {
     color: var(--text-light);
+
     font-size: 0.82rem;
+
     line-height: 1.55;
 }
 
-
-/* =========================================
+/* =========================================================
    TABLE / EMPTY STATE
-   ========================================= */
+========================================================= */
 
 .admin-table-container {
     overflow: hidden;
+
     min-height: 120px;
+
     background: var(--surface);
+
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
+
     box-shadow: var(--shadow-sm);
 }
 
@@ -2470,96 +2460,121 @@ html[dir="rtl"] .part-details {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     min-height: 150px;
+
     padding: 30px;
+
     text-align: center;
 }
 
 .admin-empty-state strong {
     margin-bottom: 7px;
+
     color: var(--primary);
 }
 
 .admin-empty-state p {
     max-width: 560px;
+
     margin: 0;
+
     color: var(--text-light);
+
     font-size: 0.84rem;
+
     line-height: 1.6;
 }
 
-
-/* =========================================
+/* =========================================================
    SYSTEM STATUS
-   ========================================= */
+========================================================= */
 
 .admin-status-grid {
     display: grid;
+
     grid-template-columns: repeat(4, minmax(0, 1fr));
+
     gap: 14px;
 }
 
 .admin-status-card {
     display: flex;
     align-items: flex-start;
+
     gap: 12px;
+
     padding: 20px;
+
     background: var(--surface);
+
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
 }
 
 .admin-status-dot {
     flex: 0 0 auto;
+
     width: 10px;
     height: 10px;
+
     margin-top: 5px;
+
     border-radius: 50%;
+
     background: var(--success);
-    box-shadow: 0 0 0 4px rgba(22, 131, 74, 0.1);
+
+    box-shadow:
+        0 0 0 4px rgba(22, 131, 74, 0.1);
 }
 
 .admin-status-card div {
     display: flex;
     flex-direction: column;
+
     gap: 4px;
 }
 
 .admin-status-card strong {
     color: var(--primary);
+
     font-size: 0.9rem;
 }
 
 .admin-status-card span:not(.admin-status-dot) {
     color: var(--text-light);
+
     font-size: 0.76rem;
+
     line-height: 1.5;
 }
 
-
-/* =========================================
+/* =========================================================
    ADMIN RESPONSIVE
-   ========================================= */
+========================================================= */
 
 @media (max-width: 1100px) {
 
     .admin-stat-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
     }
 
     .admin-action-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 
     .admin-management-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 
     .admin-status-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 }
-
 
 @media (max-width: 700px) {
 
@@ -2577,6 +2592,7 @@ html[dir="rtl"] .part-details {
 
     .admin-section-heading {
         align-items: flex-start;
+
         flex-direction: column;
     }
 
@@ -2599,8 +2615,3 @@ html[dir="rtl"] .part-details {
         display: none;
     }
 }
-
-
-/* =========================================================
-   END OF AL-DAHAYAN MAIN STYLESHEET
-   ========================================================= */
