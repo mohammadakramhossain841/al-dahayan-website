@@ -2,27 +2,58 @@
      AL-DAHAYAN REUSABLE HEADER
 ========================================= -->
 
-<header class="site-header" data-component="header">
+<header
+  class="site-header"
+  data-component="header"
+>
 
   <div class="container header-inner">
 
-    <!-- Brand -->
+    <!-- =====================================
+         Brand / Logo
+    ====================================== -->
+
     <a
       href="../index.html"
       class="brand"
       aria-label="Al-Dahayan Trading Company Home"
+      data-i18n-aria-label="company.name"
     >
-      <span class="brand-name">
-        AL-DAHAYAN
+
+      <!-- Company Logo -->
+      <img
+        src="../assets/images/al-dahayan-logo.png"
+        alt="Al-Dahayan Trading Company"
+        class="site-logo-image"
+        data-i18n-alt="company.name"
+      >
+
+      <!-- Text fallback / SEO brand name -->
+      <span class="brand-text">
+
+        <span
+          class="brand-name"
+          data-i18n="company.name"
+        >
+          Al-Dahayan Trading Company
+        </span>
+
+        <span
+          class="brand-subtitle"
+          data-i18n="company.arabicName"
+        >
+          شركة الضحيان التجارية
+        </span>
+
       </span>
 
-      <span class="brand-subtitle">
-        Trading Company
-      </span>
     </a>
 
 
-    <!-- Mobile Menu Button -->
+    <!-- =====================================
+         Mobile Menu Button
+    ====================================== -->
+
     <button
       type="button"
       class="mobile-menu-toggle"
@@ -30,6 +61,7 @@
       aria-label="Open navigation menu"
       aria-expanded="false"
       aria-controls="main-navigation"
+      data-i18n-aria-label="nav.openMenu"
     >
       <span></span>
       <span></span>
@@ -37,66 +69,85 @@
     </button>
 
 
-    <!-- Navigation -->
+    <!-- =====================================
+         Main Navigation
+    ====================================== -->
+
     <nav
       id="main-navigation"
       class="main-navigation"
       data-main-navigation
       aria-label="Main Navigation"
+      data-i18n-aria-label="nav.mainNavigation"
     >
 
       <a
         href="../index.html"
         data-nav-page="home"
+        data-i18n="nav.home"
       >
         Home
       </a>
 
+
       <a
         href="../pages/about.html"
         data-nav-page="about"
+        data-i18n="nav.about"
       >
         About
       </a>
 
+
       <a
         href="../pages/parts.html"
         data-nav-page="parts"
+        data-i18n="nav.parts"
       >
         Parts
       </a>
 
+
       <a
         href="../pages/vehicles.html"
         data-nav-page="vehicles"
+        data-i18n="nav.vehicles"
       >
         Vehicles
       </a>
 
+
       <a
         href="../pages/vin-search.html"
         data-nav-page="vin-search"
+        data-i18n="nav.vinSearch"
       >
         VIN Search
       </a>
 
+
       <a
         href="../pages/inventory.html"
         data-nav-page="inventory"
+        data-i18n="nav.inventory"
       >
         Inventory
       </a>
 
+
       <a
         href="../pages/services.html"
         data-nav-page="services"
+        data-i18n="nav.services"
       >
         Services
       </a>
 
+
       <a
         href="../pages/contact.html"
         data-nav-page="contact"
+        data-i18n="nav.contact"
       >
         Contact
       </a>
@@ -104,27 +155,38 @@
     </nav>
 
 
-    <!-- Language Switcher -->
+    <!-- =====================================
+         Language Switcher
+    ====================================== -->
+
     <div
       class="language-switcher"
       data-language-switcher
       aria-label="Language selection"
+      data-i18n-aria-label="language.selectLanguage"
     >
+
+      <!-- English -->
 
       <button
         type="button"
         class="language-btn"
-        data-language="en"
+        data-language-option="en"
         aria-label="Switch to English"
+        data-i18n-aria-label="language.switchEnglish"
       >
         EN
       </button>
 
+
+      <!-- Arabic -->
+
       <button
         type="button"
         class="language-btn"
-        data-language="ar"
+        data-language-option="ar"
         aria-label="Switch to Arabic"
+        data-i18n-aria-label="language.switchArabic"
       >
         AR
       </button>
