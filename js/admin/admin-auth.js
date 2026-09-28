@@ -20,8 +20,8 @@
 
   /*
    * IMPORTANT:
-   * The authentication endpoint should come from
-   * the existing project configuration.
+   * The authentication endpoint comes from
+   * the verified backend API route.
    *
    * Do not hard-code credentials, passwords,
    * JWT tokens, or secrets in this file.
@@ -70,27 +70,31 @@
      ========================================= */
 
   function showError(message) {
-    const errorElement = getElement(ERROR_MESSAGE_ID);
+    const errorElement =
+      getElement(ERROR_MESSAGE_ID);
 
     if (!errorElement) {
       return;
     }
 
     errorElement.textContent =
-      message || "Unable to sign in. Please try again.";
+      message ||
+      "Unable to sign in. Please try again.";
 
     errorElement.hidden = false;
   }
 
 
   function clearError() {
-    const errorElement = getElement(ERROR_MESSAGE_ID);
+    const errorElement =
+      getElement(ERROR_MESSAGE_ID);
 
     if (!errorElement) {
       return;
     }
 
     errorElement.textContent = "";
+
     errorElement.hidden = true;
   }
 
@@ -100,17 +104,23 @@
      ========================================= */
 
   function setLoading(isLoading) {
-    const button = getElement(LOGIN_BUTTON_ID);
+
+    const button =
+      getElement(LOGIN_BUTTON_ID);
 
     if (!button) {
       return;
     }
 
     const normalText =
-      button.querySelector(".admin-login-button-text");
+      button.querySelector(
+        ".admin-login-button-text"
+      );
 
     const loadingText =
-      button.querySelector(".admin-login-loading");
+      button.querySelector(
+        ".admin-login-loading"
+      );
 
     button.disabled = isLoading;
 
@@ -129,11 +139,14 @@
      ========================================= */
 
   function getResponseMessage(data) {
+
     if (!data) {
       return "Unable to sign in. Please try again.";
     }
 
-    if (typeof data.message === "string") {
+    if (
+      typeof data.message === "string"
+    ) {
       return data.message;
     }
 
@@ -160,15 +173,11 @@
      ========================================= */
 
   function saveSession(data) {
-    /*
-     * The verified backend currently returns a
-     * successful authentication response containing
-     * the authenticated admin information and JWT.
-     *
-     * We only store values returned by the backend.
-     */
 
-    if (!data || typeof data !== "object") {
+    if (
+      !data ||
+      typeof data !== "object"
+    ) {
       return false;
     }
 
@@ -209,9 +218,13 @@
      LOGIN REQUEST
      ========================================= */
 
-  async function login(username, password) {
+  async function login(
+    username,
+    password
+  ) {
 
-    const apiBaseUrl = getApiBaseUrl();
+    const apiBaseUrl =
+      getApiBaseUrl();
 
     if (!apiBaseUrl) {
       throw new Error(
@@ -221,61 +234,75 @@
 
 
     /*
-     * Authentication route.
+     * VERIFIED BACKEND ROUTE:
      *
-     * This is kept in one place so it can be aligned
-     * with the verified backend route without changing
-     * the rest of the Admin Panel.
+     * POST /api/v1/admin/login
      */
 
     const loginUrl =
-      `${apiBaseUrl}/api/admin/login`;
+      `${apiBaseUrl}/api/v1/admin/login`;
 
 
-    const response = await fetch(
-      loginUrl,
-      {
-        method: "POST",
+    const response =
+      await fetch(
+        loginUrl,
+        {
+          method: "POST",
 
-        headers: {
-          "Content-Type": "application/json"
-        },
+          headers: {
+            "Content-Type": "application/json"
+          },
 
-        body: JSON.stringify({
-          username: username,
-          password: password
-        })
-      }
-    );
+          body: JSON.stringify({
+            username: username,
+            password: password
+          })
+        }
+      );
 
 
     let data = null;
 
+
     try {
-      data = await response.json();
+
+      data =
+        await response.json();
+
     } catch (error) {
+
       data = null;
+
     }
 
 
     if (!response.ok) {
+
       throw new Error(
         getResponseMessage(data)
       );
+
     }
 
 
-    if (!data || data.success !== true) {
+    if (
+      !data ||
+      data.success !== true
+    ) {
+
       throw new Error(
         getResponseMessage(data)
       );
+
     }
 
 
     if (!saveSession(data)) {
+
       throw new Error(
         "Login succeeded but no authentication token was returned."
       );
+
     }
 
 
@@ -305,11 +332,16 @@
 
         clearError();
 
+
         const usernameInput =
-          getElement(USERNAME_FIELD_ID);
+          getElement(
+            USERNAME_FIELD_ID
+          );
 
         const passwordInput =
-          getElement(PASSWORD_FIELD_ID);
+          getElement(
+            PASSWORD_FIELD_ID
+          );
 
 
         const username =
@@ -317,15 +349,19 @@
             ? usernameInput.value.trim()
             : "";
 
+
         const password =
           passwordInput
             ? passwordInput.value
             : "";
 
 
-        /* Validation */
+        /* =====================================
+           VALIDATION
+           ===================================== */
 
         if (!username) {
+
           showError(
             "Please enter your username or email."
           );
@@ -339,6 +375,7 @@
 
 
         if (!password) {
+
           showError(
             "Please enter your password."
           );
@@ -364,8 +401,6 @@
 
           /*
            * Authentication successful.
-           *
-           * Dashboard page will be created next.
            */
 
           window.location.href =
@@ -400,9 +435,11 @@
      ========================================= */
 
   function getAdminToken() {
+
     return sessionStorage.getItem(
       STORAGE_KEYS.token
     );
+
   }
 
 
@@ -417,18 +454,26 @@
       return null;
     }
 
+
     try {
+
       return JSON.parse(value);
+
     } catch (error) {
+
       return null;
+
     }
+
   }
 
 
   function isAuthenticated() {
+
     return Boolean(
       getAdminToken()
     );
+
   }
 
 
