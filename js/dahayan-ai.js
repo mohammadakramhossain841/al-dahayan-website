@@ -21,7 +21,7 @@
 
     const INVENTORY_API = "/api/v1/inventory";
 
-    const WHATSAPP_NUMBER = "966XXXXXXXXX";
+    const WHATSAPP_NUMBER = "966582327337";
 
     /*
      * Keep false until real premium authentication/subscription
