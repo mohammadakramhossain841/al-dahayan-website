@@ -700,6 +700,336 @@
 
 
     <!-- =========================================
+         INVENTORY ADD / EDIT MODAL
+         ========================================= -->
+
+    <div
+        id="inventoryModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="inventoryModalTitle"
+        hidden
+        style="
+            position:fixed;
+            inset:0;
+            z-index:9999;
+            background:rgba(0,0,0,.65);
+            padding:24px;
+            overflow-y:auto;
+        "
+    >
+
+        <div
+            style="
+                width:min(720px,100%);
+                margin:40px auto;
+                background:#ffffff;
+                border-radius:12px;
+                padding:28px;
+                box-shadow:0 20px 60px rgba(0,0,0,.25);
+            "
+        >
+
+            <div
+                style="
+                    display:flex;
+                    align-items:flex-start;
+                    justify-content:space-between;
+                    gap:20px;
+                    margin-bottom:24px;
+                "
+            >
+
+                <div>
+
+                    <span
+                        style="
+                            display:block;
+                            margin-bottom:6px;
+                            font-size:13px;
+                            font-weight:700;
+                            color:#d71920;
+                            text-transform:uppercase;
+                            letter-spacing:.08em;
+                        "
+                    >
+                        Inventory Control
+                    </span>
+
+                    <h2
+                        id="inventoryModalTitle"
+                        style="
+                            margin:0;
+                            color:#111111;
+                        "
+                    >
+                        Add Inventory
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="closeInventoryModal"
+                    aria-label="Close inventory form"
+                    style="
+                        border:0;
+                        background:transparent;
+                        font-size:28px;
+                        line-height:1;
+                        cursor:pointer;
+                        color:#555555;
+                    "
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- Error -->
+
+            <div
+                id="inventoryFormError"
+                role="alert"
+                hidden
+                style="
+                    margin-bottom:18px;
+                    padding:12px 14px;
+                    border-radius:7px;
+                    background:#fff0f0;
+                    color:#b00020;
+                    border:1px solid #f0b5b5;
+                    font-weight:600;
+                "
+            ></div>
+
+
+
+            <!-- Form -->
+
+            <form id="inventoryForm" novalidate>
+
+                <input
+                    type="hidden"
+                    id="inventoryFormMode"
+                    value="add"
+                >
+
+                <input
+                    type="hidden"
+                    id="inventoryFormId"
+                    value=""
+                >
+
+
+                <!-- OEM -->
+
+                <div style="margin-bottom:18px;">
+
+                    <label
+                        for="inventoryOemNumber"
+                        style="
+                            display:block;
+                            margin-bottom:7px;
+                            font-weight:700;
+                        "
+                    >
+                        OEM Number
+                        <span style="color:#d71920;">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="inventoryOemNumber"
+                        class="form-control"
+                        placeholder="Example: 04152-YZZA1"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Location -->
+
+                <div style="margin-bottom:18px;">
+
+                    <label
+                        for="inventoryLocationId"
+                        style="
+                            display:block;
+                            margin-bottom:7px;
+                            font-weight:700;
+                        "
+                    >
+                        Location / Branch
+                        <span style="color:#d71920;">*</span>
+                    </label>
+
+                    <select
+                        id="inventoryLocationId"
+                        class="form-control"
+                        required
+                    >
+
+                        <option value="">
+                            Select Location
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Quantity / Reserved -->
+
+                <div
+                    style="
+                        display:grid;
+                        grid-template-columns:
+                        repeat(2,minmax(0,1fr));
+                        gap:16px;
+                        margin-bottom:18px;
+                    "
+                >
+
+                    <div>
+
+                        <label
+                            for="inventoryQuantity"
+                            style="
+                                display:block;
+                                margin-bottom:7px;
+                                font-weight:700;
+                            "
+                        >
+                            Quantity
+                            <span style="color:#d71920;">*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="inventoryQuantity"
+                            class="form-control"
+                            min="0"
+                            step="1"
+                            value="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label
+                            for="inventoryReservedQuantity"
+                            style="
+                                display:block;
+                                margin-bottom:7px;
+                                font-weight:700;
+                            "
+                        >
+                            Reserved Quantity
+                        </label>
+
+                        <input
+                            type="number"
+                            id="inventoryReservedQuantity"
+                            class="form-control"
+                            min="0"
+                            step="1"
+                            value="0"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Active -->
+
+                <div style="margin-bottom:24px;">
+
+                    <label
+                        style="
+                            display:flex;
+                            align-items:center;
+                            gap:9px;
+                            font-weight:700;
+                            cursor:pointer;
+                        "
+                    >
+
+                        <input
+                            type="checkbox"
+                            id="inventoryActive"
+                            checked
+                        >
+
+                        Active Inventory Record
+
+                    </label>
+
+                    <small
+                        style="
+                            display:block;
+                            margin-top:6px;
+                            color:#666666;
+                        "
+                    >
+                        Inactive records remain stored and are not
+                        treated as active customer-facing inventory.
+                    </small>
+
+                </div>
+
+
+
+                <!-- Form Actions -->
+
+                <div
+                    style="
+                        display:flex;
+                        justify-content:flex-end;
+                        gap:12px;
+                        flex-wrap:wrap;
+                    "
+                >
+
+                    <button
+                        type="button"
+                        class="btn"
+                        id="cancelInventoryForm"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="saveInventoryButton"
+                    >
+                        Save Inventory
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
          FOOTER
          ========================================= -->
 
@@ -731,6 +1061,653 @@
     <script src="../js/admin/admin-auth.js"></script>
 
     <script src="../js/admin/admin-inventory.js"></script>
+
+
+    <!-- =========================================
+         INVENTORY FORM CONTROLLER
+         ========================================= -->
+
+    <script>
+
+        (function () {
+
+            "use strict";
+
+
+            const modal =
+                document.getElementById("inventoryModal");
+
+            const form =
+                document.getElementById("inventoryForm");
+
+            const modalTitle =
+                document.getElementById("inventoryModalTitle");
+
+            const modeInput =
+                document.getElementById("inventoryFormMode");
+
+            const idInput =
+                document.getElementById("inventoryFormId");
+
+            const oemInput =
+                document.getElementById("inventoryOemNumber");
+
+            const locationInput =
+                document.getElementById("inventoryLocationId");
+
+            const quantityInput =
+                document.getElementById("inventoryQuantity");
+
+            const reservedInput =
+                document.getElementById("inventoryReservedQuantity");
+
+            const activeInput =
+                document.getElementById("inventoryActive");
+
+            const errorBox =
+                document.getElementById("inventoryFormError");
+
+            const saveButton =
+                document.getElementById("saveInventoryButton");
+
+            const addButton =
+                document.getElementById("addInventoryButton");
+
+            const closeButton =
+                document.getElementById("closeInventoryModal");
+
+            const cancelButton =
+                document.getElementById("cancelInventoryForm");
+
+
+            let locationsLoaded = false;
+
+
+
+            /* =====================================
+               ERROR
+               ===================================== */
+
+            function showError(message) {
+
+                errorBox.textContent =
+                    message || "Unable to save inventory.";
+
+                errorBox.hidden = false;
+
+            }
+
+
+            function clearError() {
+
+                errorBox.textContent = "";
+
+                errorBox.hidden = true;
+
+            }
+
+
+
+            /* =====================================
+               LOCATIONS
+               ===================================== */
+
+            async function loadLocations() {
+
+                if (locationsLoaded) {
+                    return;
+                }
+
+
+                try {
+
+                    const response =
+                        await fetch("../data/locations.json", {
+                            cache: "no-store"
+                        });
+
+
+                    if (!response.ok) {
+                        throw new Error(
+                            "Unable to load locations."
+                        );
+                    }
+
+
+                    const data =
+                        await response.json();
+
+
+                    const locations =
+                        Array.isArray(data)
+                            ? data
+                            : Array.isArray(data.locations)
+                                ? data.locations
+                                : [];
+
+
+                    locations.forEach(function (location) {
+
+                        if (!location || !location.id) {
+                            return;
+                        }
+
+
+                        const option =
+                            document.createElement("option");
+
+
+                        option.value =
+                            location.id;
+
+
+                        option.textContent =
+                            location.name
+                            ? `${location.name} (${location.id})`
+                            : location.id;
+
+
+                        locationInput.appendChild(option);
+
+                    });
+
+
+                    locationsLoaded = true;
+
+                } catch (error) {
+
+                    console.error(
+                        "Inventory location loading error:",
+                        error
+                    );
+
+                    showError(
+                        "Unable to load inventory locations."
+                    );
+
+                }
+
+            }
+
+
+
+            /* =====================================
+               OPEN MODAL
+               ===================================== */
+
+            async function openModal(mode, inventory) {
+
+                clearError();
+
+                await loadLocations();
+
+
+                modeInput.value =
+                    mode === "edit"
+                        ? "edit"
+                        : "add";
+
+
+                if (mode === "edit") {
+
+                    modalTitle.textContent =
+                        "Edit Inventory";
+
+
+                    idInput.value =
+                        inventory && inventory.id
+                            ? inventory.id
+                            : "";
+
+
+                    oemInput.value =
+                        inventory && inventory.oemNumber
+                            ? inventory.oemNumber
+                            : "";
+
+
+                    locationInput.value =
+                        inventory && inventory.locationId
+                            ? inventory.locationId
+                            : "";
+
+
+                    quantityInput.value =
+                        Number.isFinite(
+                            Number(inventory && inventory.quantity)
+                        )
+                            ? Number(inventory.quantity)
+                            : 0;
+
+
+                    reservedInput.value =
+                        Number.isFinite(
+                            Number(
+                                inventory &&
+                                inventory.reservedQuantity
+                            )
+                        )
+                            ? Number(
+                                inventory.reservedQuantity
+                            )
+                            : 0;
+
+
+                    activeInput.checked =
+                        inventory &&
+                        inventory.active !== false;
+
+                } else {
+
+                    modalTitle.textContent =
+                        "Add Inventory";
+
+
+                    idInput.value = "";
+
+                    oemInput.value = "";
+
+                    locationInput.value = "";
+
+                    quantityInput.value = 0;
+
+                    reservedInput.value = 0;
+
+                    activeInput.checked = true;
+
+                }
+
+
+                modal.hidden = false;
+
+                document.body.style.overflow = "hidden";
+
+                setTimeout(function () {
+                    oemInput.focus();
+                }, 50);
+
+            }
+
+
+
+            /* =====================================
+               CLOSE MODAL
+               ===================================== */
+
+            function closeModal() {
+
+                modal.hidden = true;
+
+                document.body.style.overflow = "";
+
+                clearError();
+
+                form.reset();
+
+                modeInput.value = "add";
+
+                idInput.value = "";
+
+                quantityInput.value = 0;
+
+                reservedInput.value = 0;
+
+                activeInput.checked = true;
+
+            }
+
+
+
+            /* =====================================
+               VALIDATION
+               ===================================== */
+
+            function getFormData() {
+
+                const oemNumber =
+                    oemInput.value.trim();
+
+                const locationId =
+                    locationInput.value.trim();
+
+                const quantity =
+                    Number(quantityInput.value);
+
+                const reservedQuantity =
+                    Number(reservedInput.value);
+
+
+                if (!oemNumber) {
+
+                    throw new Error(
+                        "OEM Number is required."
+                    );
+
+                }
+
+
+                if (!locationId) {
+
+                    throw new Error(
+                        "Location is required."
+                    );
+
+                }
+
+
+                if (
+                    !Number.isFinite(quantity) ||
+                    quantity < 0
+                ) {
+
+                    throw new Error(
+                        "Quantity must be zero or greater."
+                    );
+
+                }
+
+
+                if (
+                    !Number.isFinite(reservedQuantity) ||
+                    reservedQuantity < 0
+                ) {
+
+                    throw new Error(
+                        "Reserved quantity must be zero or greater."
+                    );
+
+                }
+
+
+                if (reservedQuantity > quantity) {
+
+                    throw new Error(
+                        "Reserved quantity cannot exceed total quantity."
+                    );
+
+                }
+
+
+                return {
+
+                    oemNumber: oemNumber,
+
+                    locationId: locationId,
+
+                    quantity: Math.floor(quantity),
+
+                    reservedQuantity:
+                        Math.floor(reservedQuantity),
+
+                    active:
+                        activeInput.checked
+
+                };
+
+            }
+
+
+
+            /* =====================================
+               SAVE
+               ===================================== */
+
+            async function saveInventory(event) {
+
+                event.preventDefault();
+
+                clearError();
+
+
+                let inventoryData;
+
+
+                try {
+
+                    inventoryData =
+                        getFormData();
+
+                } catch (error) {
+
+                    showError(error.message);
+
+                    return;
+
+                }
+
+
+                const mode =
+                    modeInput.value;
+
+
+                saveButton.disabled = true;
+
+                saveButton.textContent =
+                    "Saving...";
+
+
+                try {
+
+                    const controller =
+                        window.DahayanAdminInventory;
+
+
+                    if (
+                        !controller ||
+                        typeof controller.createInventory !==
+                        "function" ||
+                        typeof controller.updateInventory !==
+                        "function"
+                    ) {
+
+                        throw new Error(
+                            "Inventory controller is not available."
+                        );
+
+                    }
+
+
+                    if (mode === "edit") {
+
+                        const inventoryId =
+                            idInput.value.trim();
+
+
+                        if (!inventoryId) {
+
+                            throw new Error(
+                                "Inventory ID is missing."
+                            );
+
+                        }
+
+
+                        await controller.updateInventory(
+                            inventoryId,
+                            inventoryData
+                        );
+
+                    } else {
+
+                        await controller.createInventory(
+                            inventoryData
+                        );
+
+                    }
+
+
+                    closeModal();
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Inventory save error:",
+                        error
+                    );
+
+
+                    showError(
+                        error.message ||
+                        "Unable to save inventory."
+                    );
+
+                } finally {
+
+                    saveButton.disabled = false;
+
+                    saveButton.textContent =
+                        "Save Inventory";
+
+                }
+
+            }
+
+
+
+            /* =====================================
+               ADD BUTTON
+               ===================================== */
+
+            addButton.addEventListener(
+                "click",
+                function () {
+
+                    openModal("add", null);
+
+                }
+            );
+
+
+
+            /* =====================================
+               CUSTOM ADD EVENT
+               ===================================== */
+
+            document.addEventListener(
+                "dahayan:inventory-add-request",
+                function () {
+
+                    openModal("add", null);
+
+                }
+            );
+
+
+
+            /* =====================================
+               CUSTOM EDIT EVENT
+               ===================================== */
+
+            document.addEventListener(
+                "dahayan:inventory-edit-request",
+                function (event) {
+
+                    const detail =
+                        event.detail || {};
+
+
+                    const inventory =
+                        detail.inventory ||
+                        detail.record ||
+                        detail;
+
+
+                    openModal(
+                        "edit",
+                        inventory
+                    );
+
+                }
+            );
+
+
+
+            /* =====================================
+               FORM
+               ===================================== */
+
+            form.addEventListener(
+                "submit",
+                saveInventory
+            );
+
+
+
+            /* =====================================
+               CLOSE BUTTONS
+               ===================================== */
+
+            closeButton.addEventListener(
+                "click",
+                closeModal
+            );
+
+
+            cancelButton.addEventListener(
+                "click",
+                closeModal
+            );
+
+
+
+            /* =====================================
+               BACKDROP CLOSE
+               ===================================== */
+
+            modal.addEventListener(
+                "click",
+                function (event) {
+
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+
+                }
+            );
+
+
+
+            /* =====================================
+               ESCAPE KEY
+               ===================================== */
+
+            document.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Escape" &&
+                        !modal.hidden
+                    ) {
+
+                        closeModal();
+
+                    }
+
+                }
+            );
+
+
+
+            /* =====================================
+               CURRENT YEAR
+               ===================================== */
+
+            const currentYear =
+                document.getElementById("currentYear");
+
+
+            if (currentYear) {
+
+                currentYear.textContent =
+                    new Date().getFullYear();
+
+            }
+
+        })();
+
+    </script>
 
 
 </body>
