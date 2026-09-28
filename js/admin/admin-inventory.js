@@ -1,91 +1,59 @@
-/* =========================================================
+/* =========================================
    AL-DAHAYAN ADMIN INVENTORY CONTROLLER
-   File: js/admin/admin-inventory.js
-
-   Purpose:
-   - Admin authentication
-   - Load inventory data
-   - Load OEM part data
-   - Load branch/location data
-   - Calculate stock status
-   - Search inventory
-   - Filter inventory
-   - Render inventory table
-   - Update inventory summary
-   - Prepare safe future API integration
-   ========================================================= */
+   Live Inventory + Verified Backend API
+   ========================================= */
 
 (function () {
     "use strict";
 
-    /* =====================================================
-       CONFIGURATION
-       ===================================================== */
+    /* =========================================
+       Configuration
+       ========================================= */
 
     const TOKEN_KEY = "dahayan_admin_token";
 
-    const DATA_FILES = {
-        inventory: "../data/inventory.json",
-        parts: "../data/oem-parts.json",
-        locations: "../data/locations.json"
-    };
+    const LOCAL_INVENTORY_URL = "../data/inventory.json";
+    const LOCAL_PARTS_URL = "../data/oem-parts.json";
+    const LOCAL_LOCATIONS_URL = "../data/locations.json";
 
-
-    /* =====================================================
-       STATE
-       ===================================================== */
+    const ADMIN_INVENTORY_ENDPOINT = "/api/v1/inventory/admin";
 
     let inventoryRecords = [];
     let parts = [];
     let locations = [];
 
+    let backendInventoryLoaded = false;
 
-    /* =====================================================
-       DOM HELPERS
-       ===================================================== */
-
-    function getElement(id) {
-        return document.getElementById(id);
-    }
-
-
-    /* =====================================================
-       AUTHENTICATION
-       ===================================================== */
+    /* =========================================
+       Authentication
+       ========================================= */
 
     function getToken() {
         return sessionStorage.getItem(TOKEN_KEY);
     }
 
-
     function requireAuthentication() {
-
         const token = getToken();
 
         if (!token) {
-
             window.location.href = "login.html";
-
             return false;
         }
 
         return true;
     }
 
-
-    /* =====================================================
-       CONFIGURATION HELPER
-       ===================================================== */
+    /* =========================================
+       API Configuration
+       ========================================= */
 
     function getApiBaseUrl() {
-
         if (
             window.DAHAYAN_CONFIG &&
             window.DAHAYAN_CONFIG.API_BASE_URL
         ) {
             return window.DAHAYAN_CONFIG.API_BASE_URL;
         }
-
 
         if (
             window.CONFIG &&
@@ -94,171 +62,123 @@
             return window.CONFIG.API_BASE_URL;
         }
 
-
         return "";
     }
 
+    /* =========================================
+       Authenticated API Request
+       ========================================= */
 
-    /* =====================================================
-       AUTHENTICATED API HELPER
-       -----------------------------------------------------
-       No unverified inventory endpoint is called here.
-       This helper is reserved for the verified API layer.
-       ===================================================== */
-
-    async function authenticatedRequest(
-        endpoint,
-        options = {}
-    ) {
-
+    async function authenticatedRequest(endpoint, options) {
         const token = getToken();
 
         if (!token) {
-
             window.location.href = "login.html";
-
-            throw new Error(
-                "Admin authentication required."
-            );
+            throw new Error("Authentication required");
         }
 
+        const requestOptions = options || {};
 
-        const apiBaseUrl = getApiBaseUrl();
-
-        if (!apiBaseUrl) {
-
-            throw new Error(
-                "API base URL is not configured."
-            );
-        }
-
-
-        const requestOptions = {
-            ...options,
-
-            headers: {
-                ...(options.headers || {}),
-
-                Authorization:
-                    `Bearer ${token}`,
-
-                "Content-Type":
-                    "application/json"
-            }
-        };
-
-
-        const response = await fetch(
-            `${apiBaseUrl}${endpoint}`,
-            requestOptions
+        const headers = new Headers(
+            requestOptions.headers || {}
         );
 
+        headers.set("Authorization", "Bearer " + token);
+
+        if (
+            requestOptions.body &&
+            !headers.has("Content-Type")
+        ) {
+            headers.set(
+                "Content-Type",
+                "application/json"
+            );
+        }
+
+        const response = await fetch(
+            getApiBaseUrl() + endpoint,
+            {
+                ...requestOptions,
+                headers
+            }
+        );
 
         if (response.status === 401) {
-
-            sessionStorage.removeItem(
-                TOKEN_KEY
-            );
-
+            sessionStorage.removeItem(TOKEN_KEY);
             sessionStorage.removeItem(
                 "dahayan_admin_user"
             );
 
-            window.location.href =
-                "login.html";
+            window.location.href = "login.html";
 
             throw new Error(
-                "Authentication expired."
+                "Authentication expired"
             );
         }
 
-
-        return response;
-    }
-
-
-    /* =====================================================
-       JSON LOADER
-       ===================================================== */
-
-    async function loadJson(url) {
-
-        const response = await fetch(
-            url,
-            {
-                cache: "no-store"
-            }
-        );
-
+        if (response.status === 403) {
+            throw new Error(
+                "You do not have permission to access inventory"
+            );
+        }
 
         if (!response.ok) {
-
             throw new Error(
-                `Unable to load ${url}. HTTP ${response.status}`
+                "Inventory API request failed: " +
+                response.status
             );
         }
-
 
         return response.json();
     }
 
+    /* =========================================
+       Helpers
+       ========================================= */
 
-    /* =====================================================
-       ARRAY NORMALIZER
-       ===================================================== */
-
-    function toArray(
-        data,
-        possibleKeys = []
-    ) {
-
-        if (Array.isArray(data)) {
-
-            return data;
+    function toArray(value) {
+        if (Array.isArray(value)) {
+            return value;
         }
-
 
         if (
-            data &&
-            typeof data === "object"
+            value &&
+            Array.isArray(value.inventory)
         ) {
-
-            for (
-                const key of possibleKeys
-            ) {
-
-                if (
-                    Array.isArray(
-                        data[key]
-                    )
-                ) {
-
-                    return data[key];
-                }
-            }
+            return value.inventory;
         }
 
+        if (
+            value &&
+            Array.isArray(value.records)
+        ) {
+            return value.records;
+        }
+
+        if (
+            value &&
+            Array.isArray(value.parts)
+        ) {
+            return value.parts;
+        }
+
+        if (
+            value &&
+            Array.isArray(value.locations)
+        ) {
+            return value.locations;
+        }
 
         return [];
     }
 
-
-    /* =====================================================
-       GENERAL HELPERS
-       ===================================================== */
-
     function normalizeText(value) {
-
-        return String(
-            value ?? ""
-        )
+        return String(value ?? "")
             .trim()
             .toLowerCase();
     }
 
-
     function normalizeNumber(value) {
-
         const number = Number(value);
 
         return Number.isFinite(number)
@@ -266,1474 +186,920 @@
             : 0;
     }
 
-
     function escapeHtml(value) {
-
-        return String(
-            value ?? ""
-        )
-            .replace(
-                /&/g,
-                "&amp;"
-            )
-            .replace(
-                /</g,
-                "&lt;"
-            )
-            .replace(
-                />/g,
-                "&gt;"
-            )
-            .replace(
-                /"/g,
-                "&quot;"
-            )
-            .replace(
-                /'/g,
-                "&#039;"
-            );
+        return String(value ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 
+    /* =========================================
+       Object Field Helpers
+       ========================================= */
 
-    /* =====================================================
-       PART LOOKUP
-       ===================================================== */
-
-    function findPart(record) {
-
-        const partReference =
-            record.partId ??
-            record.part_id ??
-            record.partID ??
-            record.oemNumber ??
-            record.oem_number;
-
-
-        if (!partReference) {
-
-            return null;
-        }
-
-
-        const reference =
-            normalizeText(
-                partReference
-            );
-
-
+    function getInventoryId(record) {
         return (
-            parts.find(
-                function (part) {
-
-                    const values = [
-
-                        part.id,
-
-                        part.partId,
-
-                        part.part_id,
-
-                        part.oemNumber,
-
-                        part.oem_number,
-
-                        part.partNumber,
-
-                        part.part_number
-
-                    ];
-
-
-                    return values.some(
-                        function (value) {
-
-                            return (
-                                normalizeText(
-                                    value
-                                ) === reference
-                            );
-                        }
-                    );
-                }
-            ) || null
-        );
-    }
-
-
-    /* =====================================================
-       LOCATION / BRANCH LOOKUP
-       ===================================================== */
-
-    function findLocation(record) {
-
-        const locationReference =
-            record.locationId ??
-            record.location_id ??
-            record.branchId ??
-            record.branch_id ??
-            record.location;
-
-
-        if (!locationReference) {
-
-            return null;
-        }
-
-
-        const reference =
-            normalizeText(
-                locationReference
-            );
-
-
-        return (
-            locations.find(
-                function (location) {
-
-                    const values = [
-
-                        location.id,
-
-                        location.locationId,
-
-                        location.location_id,
-
-                        location.branchId,
-
-                        location.branch_id,
-
-                        location.name,
-
-                        location.branchName,
-
-                        location.branch_name
-
-                    ];
-
-
-                    return values.some(
-                        function (value) {
-
-                            return (
-                                normalizeText(
-                                    value
-                                ) === reference
-                            );
-                        }
-                    );
-                }
-            ) || null
-        );
-    }
-
-
-    /* =====================================================
-       FIELD HELPERS
-       ===================================================== */
-
-    function getInventoryId(
-        record,
-        index
-    ) {
-
-        return (
+            record.id ??
             record.inventoryId ??
             record.inventory_id ??
-            record.id ??
-            `INV-${String(
-                index + 1
-            ).padStart(4, "0")}`
+            ""
         );
     }
 
-
-    function getOemNumber(
-        record,
-        part
-    ) {
-
+    function getOEM(record) {
         return (
             record.oemNumber ??
             record.oem_number ??
-            part?.oemNumber ??
-            part?.oem_number ??
-            part?.partNumber ??
-            part?.part_number ??
-            "—"
+            record.oem ??
+            ""
         );
     }
 
-
-    function getPartName(
-        record,
-        part
-    ) {
-
+    function getPartName(record) {
         return (
             record.partName ??
             record.part_name ??
             record.name ??
-            part?.partName ??
-            part?.part_name ??
-            part?.name ??
-            "Unknown Part"
+            ""
         );
     }
 
-
-    function getBrand(
-        record,
-        part
-    ) {
-
+    function getBrand(record) {
         return (
             record.brand ??
-            part?.brand ??
-            "—"
+            ""
         );
     }
 
-
-    function getBranchName(
-        record,
-        location
-    ) {
-
+    function getBranch(record) {
         return (
             record.branchName ??
             record.branch_name ??
             record.locationName ??
             record.location_name ??
-            location?.branchName ??
-            location?.branch_name ??
-            location?.name ??
-            "—"
+            record.location ??
+            record.branch ??
+            ""
         );
     }
 
-
     function getQuantity(record) {
-
         return normalizeNumber(
             record.quantity ??
             record.stockQuantity ??
             record.stock_quantity ??
+            record.stock ??
             0
         );
     }
 
-
     function getReservedQuantity(record) {
-
         return normalizeNumber(
             record.reservedQuantity ??
             record.reserved_quantity ??
+            record.reserved ??
             0
         );
     }
-
 
     function getAvailableQuantity(record) {
-
-        const quantity =
-            getQuantity(record);
-
-        const reserved =
-            getReservedQuantity(record);
-
+        if (
+            record.availableQuantity !== undefined ||
+            record.available_quantity !== undefined
+        ) {
+            return normalizeNumber(
+                record.availableQuantity ??
+                record.available_quantity
+            );
+        }
 
         return Math.max(
-            quantity - reserved,
-            0
+            0,
+            getQuantity(record) -
+            getReservedQuantity(record)
         );
     }
 
-
     function getControlMode(record) {
-
         return normalizeText(
             record.controlMode ??
             record.control_mode ??
-            record.mode ??
+            record.stockControlMode ??
+            record.stock_control_mode ??
             "automatic"
         );
     }
 
-
-    function getActive(record) {
-
-        if (
-            typeof record.active ===
-            "boolean"
-        ) {
-
-            return record.active;
+    function isActive(record) {
+        if (record.active !== undefined) {
+            return Boolean(record.active);
         }
 
-
-        if (
-            typeof record.isActive ===
-            "boolean"
-        ) {
-
-            return record.isActive;
+        if (record.isActive !== undefined) {
+            return Boolean(record.isActive);
         }
 
-
-        if (
-            typeof record.is_active ===
-            "boolean"
-        ) {
-
-            return record.is_active;
+        if (record.status === "inactive") {
+            return false;
         }
 
-
-        const value =
-            normalizeText(
-                record.active ??
-                record.status ??
-                "active"
-            );
-
-
-        return ![
-            "inactive",
-            "disabled",
-            "false",
-            "0"
-        ].includes(value);
+        return true;
     }
 
-
     function getUpdatedAt(record) {
-
         return (
             record.updatedAt ??
             record.updated_at ??
             record.lastUpdated ??
             record.last_updated ??
-            record.updated ??
             ""
         );
     }
 
+    /* =========================================
+       Stock Status
+       ========================================= */
 
-    /* =====================================================
-       STOCK STATUS
-       ===================================================== */
+    function getStockStatus(record) {
+        const controlMode = getControlMode(record);
 
-    function calculateStatus(record) {
-
-        const controlMode =
-            getControlMode(record);
-
+        const explicitStatus = normalizeText(
+            record.stockStatus ??
+            record.stock_status ??
+            record.inventoryStatus ??
+            record.inventory_status ??
+            record.status
+        );
 
         /*
-         * Manual mode:
-         * Respect an explicitly supplied status.
+         * Manual / override mode:
+         * Respect explicit backend status.
          */
-
         if (
             controlMode === "manual" ||
             controlMode === "override" ||
-            controlMode ===
-                "manual_override"
+            controlMode === "manual_override"
         ) {
-
-            const explicitStatus =
-                normalizeText(
-                    record.status ??
-                    record.stockStatus ??
-                    record.stock_status
-                );
-
-
             if (
-                explicitStatus.includes(
-                    "request"
-                ) ||
-                explicitStatus ===
-                    "on_request"
+                explicitStatus === "on_request" ||
+                explicitStatus === "on request"
             ) {
-
                 return "on_request";
             }
 
-
             if (
-                explicitStatus.includes(
-                    "out"
-                ) ||
-                explicitStatus === "0"
+                explicitStatus === "out_of_stock" ||
+                explicitStatus === "out of stock"
             ) {
-
                 return "out_of_stock";
             }
 
-
             if (
-                explicitStatus.includes(
-                    "low"
-                )
+                explicitStatus === "low_stock" ||
+                explicitStatus === "low stock"
             ) {
-
                 return "low_stock";
             }
 
-
-            if (
-                explicitStatus.includes(
-                    "in_stock"
-                ) ||
-                explicitStatus.includes(
-                    "instock"
-                ) ||
-                explicitStatus ===
-                    "available"
-            ) {
-
+            if (explicitStatus === "in_stock") {
                 return "in_stock";
             }
         }
 
-
         /*
          * Automatic mode:
-         * Calculate status from available quantity.
+         * Calculate from available quantity.
          */
-
         const availableQuantity =
-            getAvailableQuantity(
-                record
-            );
+            getAvailableQuantity(record);
 
-
-        if (
-            availableQuantity <= 0
-        ) {
-
+        if (availableQuantity <= 0) {
             return "out_of_stock";
         }
 
-
-        if (
-            availableQuantity <= 5
-        ) {
-
+        if (availableQuantity <= 5) {
             return "low_stock";
         }
-
 
         return "in_stock";
     }
 
+    function getStockStatusLabel(status) {
+        switch (status) {
+            case "in_stock":
+                return "In Stock";
 
-    function getStatusLabel(status) {
+            case "low_stock":
+                return "Low Stock";
 
-        const labels = {
+            case "out_of_stock":
+                return "Out of Stock";
 
-            in_stock:
-                "In Stock",
+            case "on_request":
+                return "On Request";
 
-            low_stock:
-                "Low Stock",
+            default:
+                return "Unknown";
+        }
+    }
 
-            out_of_stock:
-                "Out of Stock",
+    function getStockStatusClass(status) {
+        switch (status) {
+            case "in_stock":
+                return "status-success";
 
-            on_request:
-                "On Request"
-        };
+            case "low_stock":
+                return "status-warning";
 
+            case "out_of_stock":
+                return "status-danger";
 
-        return (
-            labels[status] ||
-            "Unknown"
+            case "on_request":
+                return "status-info";
+
+            default:
+                return "";
+        }
+    }
+
+    /* =========================================
+       Local JSON Loader
+       ========================================= */
+
+    async function loadJson(url) {
+        const response = await fetch(
+            url,
+            {
+                cache: "no-store"
+            }
         );
+
+        if (!response.ok) {
+            throw new Error(
+                "Unable to load " + url
+            );
+        }
+
+        return response.json();
     }
 
-
-    function getStatusClass(status) {
-
-        const classes = {
-
-            in_stock:
-                "status-success",
-
-            low_stock:
-                "status-warning",
-
-            out_of_stock:
-                "status-danger",
-
-            on_request:
-                "status-info"
-        };
-
-
-        return (
-            classes[status] ||
-            "status-neutral"
-        );
-    }
-
-
-    /* =====================================================
-       PREPARE DISPLAY RECORD
-       ===================================================== */
-
-    function prepareRecord(
-        record,
-        index
-    ) {
-
-        const part =
-            findPart(record);
-
-        const location =
-            findLocation(record);
-
-
-        return {
-
-            original:
-                record,
-
-            index,
-
-            inventoryId:
-                getInventoryId(
-                    record,
-                    index
-                ),
-
-            oemNumber:
-                getOemNumber(
-                    record,
-                    part
-                ),
-
-            partName:
-                getPartName(
-                    record,
-                    part
-                ),
-
-            brand:
-                getBrand(
-                    record,
-                    part
-                ),
-
-            branchName:
-                getBranchName(
-                    record,
-                    location
-                ),
-
-            quantity:
-                getQuantity(
-                    record
-                ),
-
-            reservedQuantity:
-                getReservedQuantity(
-                    record
-                ),
-
-            availableQuantity:
-                getAvailableQuantity(
-                    record
-                ),
-
-            status:
-                calculateStatus(
-                    record
-                ),
-
-            controlMode:
-                getControlMode(
-                    record
-                ),
-
-            active:
-                getActive(
-                    record
-                ),
-
-            updatedAt:
-                getUpdatedAt(
-                    record
-                )
-        };
-    }
-
-
-    /* =====================================================
-       SUMMARY
-       ===================================================== */
-
-    function updateSummary() {
-
-        const preparedRecords =
-            inventoryRecords.map(
-                prepareRecord
-            );
-
-
-        const total =
-            preparedRecords.length;
-
-
-        const inStock =
-            preparedRecords.filter(
-                record =>
-                    record.status ===
-                    "in_stock"
-            ).length;
-
-
-        const lowStock =
-            preparedRecords.filter(
-                record =>
-                    record.status ===
-                    "low_stock"
-            ).length;
-
-
-        const outOfStock =
-            preparedRecords.filter(
-                record =>
-                    record.status ===
-                    "out_of_stock"
-            ).length;
-
-
-        const onRequest =
-            preparedRecords.filter(
-                record =>
-                    record.status ===
-                    "on_request"
-            ).length;
-
-
-        const totalElement =
-            getElement(
-                "totalRecords"
-            );
-
-        const inStockElement =
-            getElement(
-                "inStockRecords"
-            );
-
-        const lowStockElement =
-            getElement(
-                "lowStockRecords"
-            );
-
-        const outOfStockElement =
-            getElement(
-                "outOfStockRecords"
-            );
-
-        const onRequestElement =
-            getElement(
-                "onRequestRecords"
-            );
-
-
-        if (totalElement) {
-
-            totalElement.textContent =
-                total;
-        }
-
-
-        if (inStockElement) {
-
-            inStockElement.textContent =
-                inStock;
-        }
-
-
-        if (lowStockElement) {
-
-            lowStockElement.textContent =
-                lowStock;
-        }
-
-
-        if (outOfStockElement) {
-
-            outOfStockElement.textContent =
-                outOfStock;
-        }
-
-
-        if (onRequestElement) {
-
-            onRequestElement.textContent =
-                onRequest;
-        }
-    }
-
-
-    /* =====================================================
-       FILTER
-       ===================================================== */
-
-    function getFilteredRecords() {
-
-        const search =
-            normalizeText(
-                getElement(
-                    "inventorySearch"
-                )?.value
-            );
-
-
-        const brand =
-            normalizeText(
-                getElement(
-                    "brandFilter"
-                )?.value
-            );
-
-
-        const status =
-            normalizeText(
-                getElement(
-                    "statusFilter"
-                )?.value
-            );
-
-
-        const controlMode =
-            normalizeText(
-                getElement(
-                    "controlModeFilter"
-                )?.value
-            );
-
-
-        const active =
-            normalizeText(
-                getElement(
-                    "activeFilter"
-                )?.value
-            );
-
-
-        return inventoryRecords
-            .map(
-                function (
-                    record,
-                    index
-                ) {
-
-                    return prepareRecord(
-                        record,
-                        index
-                    );
-                }
-            )
-            .filter(
-                function (record) {
-
-                    /*
-                     * Search
-                     */
-
-                    if (search) {
-
-                        const searchableText = [
-
-                            record.inventoryId,
-
-                            record.oemNumber,
-
-                            record.partName,
-
-                            record.brand,
-
-                            record.branchName,
-
-                            record.status,
-
-                            record.controlMode
-
-                        ]
-                            .map(
-                                normalizeText
-                            )
-                            .join(" ");
-
-
-                        if (
-                            !searchableText.includes(
-                                search
-                            )
-                        ) {
-
-                            return false;
-                        }
-                    }
-
-
-                    /*
-                     * Brand
-                     */
-
-                    if (
-                        brand &&
-                        brand !== "all" &&
-                        normalizeText(
-                            record.brand
-                        ) !== brand
-                    ) {
-
-                        return false;
-                    }
-
-
-                    /*
-                     * Status
-                     */
-
-                    if (
-                        status &&
-                        status !== "all" &&
-                        record.status !==
-                            status
-                    ) {
-
-                        return false;
-                    }
-
-
-                    /*
-                     * Control Mode
-                     */
-
-                    if (
-                        controlMode &&
-                        controlMode !== "all" &&
-                        record.controlMode !==
-                            controlMode
-                    ) {
-
-                        return false;
-                    }
-
-
-                    /*
-                     * Active / Inactive
-                     */
-
-                    if (
-                        active ===
-                        "active" &&
-                        !record.active
-                    ) {
-
-                        return false;
-                    }
-
-
-                    if (
-                        active ===
-                        "inactive" &&
-                        record.active
-                    ) {
-
-                        return false;
-                    }
-
-
-                    return true;
+    /* =========================================
+       Backend Inventory
+       ========================================= */
+
+    async function loadBackendInventory() {
+        const data =
+            await authenticatedRequest(
+                ADMIN_INVENTORY_ENDPOINT,
+                {
+                    method: "GET"
                 }
             );
+
+        if (
+            !data ||
+            data.success !== true ||
+            !Array.isArray(data.inventory)
+        ) {
+            throw new Error(
+                "Invalid inventory API response"
+            );
+        }
+
+        inventoryRecords = data.inventory;
+
+        backendInventoryLoaded = true;
+
+        return inventoryRecords;
     }
 
+    /* =========================================
+       Local Inventory Fallback
+       ========================================= */
 
-    /* =====================================================
-       TABLE EMPTY STATE
-       ===================================================== */
+    async function loadLocalInventory() {
+        const [
+            inventoryData,
+            partsData,
+            locationsData
+        ] = await Promise.all([
+            loadJson(LOCAL_INVENTORY_URL),
+            loadJson(LOCAL_PARTS_URL),
+            loadJson(LOCAL_LOCATIONS_URL)
+        ]);
 
-    function renderEmptyState(
-        message
+        inventoryRecords = toArray(
+            inventoryData
+        );
+
+        parts = toArray(
+            partsData
+        );
+
+        locations = toArray(
+            locationsData
+        );
+
+        backendInventoryLoaded = false;
+
+        return inventoryRecords;
+    }
+
+    /* =========================================
+       Load Complete Inventory Data
+       ========================================= */
+
+    async function loadInventoryData() {
+        if (!requireAuthentication()) {
+            return;
+        }
+
+        try {
+            /*
+             * Primary source:
+             * Verified authenticated Admin API.
+             */
+            await loadBackendInventory();
+
+            /*
+             * Parts and locations are still loaded
+             * locally because the verified Admin
+             * Inventory endpoint currently returns
+             * the inventory records themselves.
+             */
+            try {
+                const [
+                    partsData,
+                    locationsData
+                ] = await Promise.all([
+                    loadJson(LOCAL_PARTS_URL),
+                    loadJson(LOCAL_LOCATIONS_URL)
+                ]);
+
+                parts = toArray(partsData);
+                locations = toArray(locationsData);
+            } catch (referenceError) {
+                console.warn(
+                    "Reference data could not be loaded:",
+                    referenceError
+                );
+
+                parts = [];
+                locations = [];
+            }
+
+            renderInventory();
+
+        } catch (backendError) {
+            /*
+             * Keep local JSON fallback available
+             * for development / temporary API failure.
+             */
+            console.warn(
+                "Admin Inventory API unavailable. Using local data fallback.",
+                backendError
+            );
+
+            try {
+                await loadLocalInventory();
+
+                renderInventory();
+
+                showInventoryMessage(
+                    "Live inventory API unavailable. Showing local inventory data.",
+                    "warning"
+                );
+            } catch (localError) {
+                console.error(
+                    "Inventory loading failed:",
+                    localError
+                );
+
+                inventoryRecords = [];
+                parts = [];
+                locations = [];
+
+                renderInventory();
+
+                showInventoryMessage(
+                    "Unable to load inventory data.",
+                    "error"
+                );
+            }
+        }
+    }
+
+    /* =========================================
+       Inventory Message
+       ========================================= */
+
+    function showInventoryMessage(
+        message,
+        type
     ) {
-
         const tableBody =
-            getElement(
+            document.getElementById(
                 "inventoryTableBody"
             );
-
 
         if (!tableBody) {
             return;
         }
 
+        const className =
+            type === "error"
+                ? "status-danger"
+                : "status-warning";
 
         tableBody.innerHTML = `
-
             <tr>
-
-                <td
-                    colspan="10"
-                    style="
-                        padding:40px;
-                        text-align:center;
-                        color:#666666;
-                    "
-                >
-
-                    ${escapeHtml(message)}
-
+                <td colspan="10">
+                    <div class="admin-empty-state">
+                        <span class="${className}">
+                            ${escapeHtml(message)}
+                        </span>
+                    </div>
                 </td>
-
             </tr>
-
         `;
     }
 
+    /* =========================================
+       Summary
+       ========================================= */
 
-    /* =====================================================
-       TABLE RENDER
-       ===================================================== */
+    function updateSummary(records) {
+        let inStock = 0;
+        let lowStock = 0;
+        let outOfStock = 0;
+        let onRequest = 0;
 
-    function renderInventory() {
+        records.forEach(function (record) {
+            const status =
+                getStockStatus(record);
 
-        const tableBody =
-            getElement(
-                "inventoryTableBody"
+            if (status === "in_stock") {
+                inStock++;
+            } else if (status === "low_stock") {
+                lowStock++;
+            } else if (status === "out_of_stock") {
+                outOfStock++;
+            } else if (status === "on_request") {
+                onRequest++;
+            }
+        });
+
+        setText(
+            "totalRecords",
+            records.length
+        );
+
+        setText(
+            "inStockRecords",
+            inStock
+        );
+
+        setText(
+            "lowStockRecords",
+            lowStock
+        );
+
+        setText(
+            "outOfStockRecords",
+            outOfStock
+        );
+
+        setText(
+            "onRequestRecords",
+            onRequest
+        );
+    }
+
+    function setText(id, value) {
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+            element.textContent = value;
+        }
+    }
+
+    /* =========================================
+       Filtering
+       ========================================= */
+
+    function getFilteredRecords() {
+        const searchElement =
+            document.getElementById(
+                "inventorySearch"
             );
 
+        const brandElement =
+            document.getElementById(
+                "brandFilter"
+            );
 
-        if (!tableBody) {
-            return;
-        }
+        const statusElement =
+            document.getElementById(
+                "statusFilter"
+            );
 
+        const controlModeElement =
+            document.getElementById(
+                "controlModeFilter"
+            );
+
+        const activeElement =
+            document.getElementById(
+                "activeFilter"
+            );
+
+        const search =
+            normalizeText(
+                searchElement
+                    ? searchElement.value
+                    : ""
+            );
+
+        const brand =
+            normalizeText(
+                brandElement
+                    ? brandElement.value
+                    : ""
+            );
+
+        const status =
+            normalizeText(
+                statusElement
+                    ? statusElement.value
+                    : ""
+            );
+
+        const controlMode =
+            normalizeText(
+                controlModeElement
+                    ? controlModeElement.value
+                    : ""
+            );
+
+        const activeFilter =
+            normalizeText(
+                activeElement
+                    ? activeElement.value
+                    : ""
+            );
+
+        return inventoryRecords.filter(
+            function (record) {
+                const inventoryId =
+                    normalizeText(
+                        getInventoryId(record)
+                    );
+
+                const oem =
+                    normalizeText(
+                        getOEM(record)
+                    );
+
+                const partName =
+                    normalizeText(
+                        getPartName(record)
+                    );
+
+                const recordBrand =
+                    normalizeText(
+                        getBrand(record)
+                    );
+
+                const branch =
+                    normalizeText(
+                        getBranch(record)
+                    );
+
+                const recordStatus =
+                    getStockStatus(record);
+
+                const recordControlMode =
+                    getControlMode(record);
+
+                const recordActive =
+                    isActive(record);
+
+                const searchableText =
+                    [
+                        inventoryId,
+                        oem,
+                        partName,
+                        recordBrand,
+                        branch
+                    ].join(" ");
+
+                if (
+                    search &&
+                    !searchableText.includes(search)
+                ) {
+                    return false;
+                }
+
+                if (
+                    brand &&
+                    recordBrand !== brand
+                ) {
+                    return false;
+                }
+
+                if (
+                    status &&
+                    recordStatus !== status
+                ) {
+                    return false;
+                }
+
+                if (
+                    controlMode &&
+                    recordControlMode !== controlMode
+                ) {
+                    return false;
+                }
+
+                if (
+                    activeFilter === "active" &&
+                    !recordActive
+                ) {
+                    return false;
+                }
+
+                if (
+                    activeFilter === "inactive" &&
+                    recordActive
+                ) {
+                    return false;
+                }
+
+                return true;
+            }
+        );
+    }
+
+    /* =========================================
+       Render Inventory
+       ========================================= */
+
+    function renderInventory() {
+        const tableBody =
+            document.getElementById(
+                "inventoryTableBody"
+            );
 
         const records =
             getFilteredRecords();
 
+        updateSummary(records);
+
+        if (!tableBody) {
+            return;
+        }
 
         if (!records.length) {
-
-            renderEmptyState(
-                "No inventory records found."
-            );
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="10">
+                        <div class="admin-empty-state">
+                            No inventory records found.
+                        </div>
+                    </td>
+                </tr>
+            `;
 
             return;
         }
-
 
         tableBody.innerHTML =
-            records
-                .map(
-                    function (record) {
+            records.map(function (record) {
+                const inventoryId =
+                    getInventoryId(record);
 
-                        const statusLabel =
-                            getStatusLabel(
-                                record.status
-                            );
+                const oem =
+                    getOEM(record);
 
+                const partName =
+                    getPartName(record);
 
-                        const statusClass =
-                            getStatusClass(
-                                record.status
-                            );
+                const brand =
+                    getBrand(record);
 
+                const branch =
+                    getBranch(record);
 
-                        const modeLabel =
-                            record.controlMode
-                                ? record
-                                    .controlMode
-                                    .replace(
-                                        /_/g,
-                                        " "
-                                    )
-                                    .replace(
-                                        /\b\w/g,
-                                        function (
-                                            letter
-                                        ) {
+                const quantity =
+                    getAvailableQuantity(record);
 
-                                            return letter
-                                                .toUpperCase();
-                                        }
-                                    )
-                                : "Automatic";
+                const status =
+                    getStockStatus(record);
 
+                const controlMode =
+                    getControlMode(record);
 
-                        const updated =
-                            record.updatedAt
-                                ? escapeHtml(
-                                    record.updatedAt
-                                )
-                                : "—";
+                const updatedAt =
+                    getUpdatedAt(record);
 
+                const active =
+                    isActive(record);
 
-                        return `
+                return `
+                    <tr>
+                        <td>
+                            ${escapeHtml(inventoryId)}
+                        </td>
 
-                            <tr
-                                data-inventory-id="${escapeHtml(
-                                    record.inventoryId
-                                )}"
+                        <td>
+                            ${escapeHtml(oem)}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(partName)}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(brand)}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(branch)}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(quantity)}
+                        </td>
+
+                        <td>
+                            <span class="${getStockStatusClass(status)}">
+                                ${getStockStatusLabel(status)}
+                            </span>
+                        </td>
+
+                        <td>
+                            ${escapeHtml(
+                                controlMode || "automatic"
+                            )}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(updatedAt)}
+                        </td>
+
+                        <td>
+                            <button
+                                type="button"
+                                class="admin-table-action"
+                                data-action="edit-inventory"
+                                data-id="${escapeHtml(inventoryId)}"
                             >
-
-                                <td>
-                                    ${escapeHtml(
-                                        record.inventoryId
-                                    )}
-                                </td>
-
-                                <td>
-                                    ${escapeHtml(
-                                        record.oemNumber
-                                    )}
-                                </td>
-
-                                <td>
-                                    ${escapeHtml(
-                                        record.partName
-                                    )}
-                                </td>
-
-                                <td>
-                                    ${escapeHtml(
-                                        record.brand
-                                    )}
-                                </td>
-
-                                <td>
-                                    ${escapeHtml(
-                                        record.branchName
-                                    )}
-                                </td>
-
-                                <td>
-                                    ${record.availableQuantity}
-                                </td>
-
-                                <td>
-
-                                    <span
-                                        class="${escapeHtml(
-                                            statusClass
-                                        )}"
-                                    >
-                                        ${escapeHtml(
-                                            statusLabel
-                                        )}
-                                    </span>
-
-                                </td>
-
-                                <td>
-                                    ${escapeHtml(
-                                        modeLabel
-                                    )}
-                                </td>
-
-                                <td>
-                                    ${updated}
-                                </td>
-
-                                <td>
-
-                                    <button
-                                        type="button"
-                                        class="btn btn-secondary"
-                                        data-action="edit-inventory"
-                                        data-inventory-id="${escapeHtml(
-                                            record.inventoryId
-                                        )}"
-                                    >
-                                        Edit
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-                        `;
-                    }
-                )
-                .join("");
+                                Edit
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join("");
     }
 
+    /* =========================================
+       Events
+       ========================================= */
 
-    /* =====================================================
-       LOAD DATA
-       ===================================================== */
+    function setupFilters() {
+        [
+            "inventorySearch",
+            "brandFilter",
+            "statusFilter",
+            "controlModeFilter",
+            "activeFilter"
+        ].forEach(function (id) {
+            const element =
+                document.getElementById(id);
 
-    async function loadInventoryData() {
+            if (!element) {
+                return;
+            }
 
-        try {
-
-            const [
-                inventoryData,
-                partsData,
-                locationsData
-            ] = await Promise.all([
-
-                loadJson(
-                    DATA_FILES.inventory
-                ),
-
-                loadJson(
-                    DATA_FILES.parts
-                ),
-
-                loadJson(
-                    DATA_FILES.locations
-                )
-
-            ]);
-
-
-            inventoryRecords =
-                toArray(
-                    inventoryData,
-                    [
-                        "inventory",
-                        "records",
-                        "items",
-                        "data"
-                    ]
-                );
-
-
-            parts =
-                toArray(
-                    partsData,
-                    [
-                        "parts",
-                        "items",
-                        "data"
-                    ]
-                );
-
-
-            locations =
-                toArray(
-                    locationsData,
-                    [
-                        "locations",
-                        "branches",
-                        "items",
-                        "data"
-                    ]
-                );
-
-
-            updateSummary();
-
-            renderInventory();
-
-
-            return inventoryRecords;
-
-        } catch (error) {
-
-            console.error(
-                "Inventory loading failed:",
-                error
+            element.addEventListener(
+                "input",
+                renderInventory
             );
 
-
-            inventoryRecords = [];
-
-            parts = [];
-
-            locations = [];
-
-
-            updateSummary();
-
-
-            renderEmptyState(
-                "Unable to load inventory data."
+            element.addEventListener(
+                "change",
+                renderInventory
             );
-
-
-            return [];
-        }
+        });
     }
 
-
-    /* =====================================================
-       EVENT HANDLERS
-       ===================================================== */
-
-    function handleFilters() {
-
-        renderInventory();
-    }
-
-
-    function handleAddInventory() {
-
-        /*
-         * Add page/API is intentionally not guessed.
-         * This event keeps the button ready for the next
-         * verified Admin Inventory architecture.
-         */
-
-        window.dispatchEvent(
-            new CustomEvent(
-                "dahayan:inventory-add-request"
-            )
-        );
-
-
-        console.info(
-            "Add Inventory requested."
-        );
-    }
-
-
-    function handleTableClick(event) {
-
-        const button =
-            event.target.closest(
-                '[data-action="edit-inventory"]'
-            );
-
-
-        if (!button) {
-            return;
-        }
-
-
-        const inventoryId =
-            button.getAttribute(
-                "data-inventory-id"
-            );
-
-
-        if (!inventoryId) {
-            return;
-        }
-
-
-        window.dispatchEvent(
-            new CustomEvent(
-                "dahayan:inventory-edit-request",
-                {
-                    detail: {
-                        inventoryId
-                    }
-                }
-            )
-        );
-
-
-        console.info(
-            "Edit Inventory requested:",
-            inventoryId
-        );
-    }
-
-
-    /* =====================================================
-       EVENT BINDING
-       ===================================================== */
-
-    function bindEvents() {
-
-        const search =
-            getElement(
-                "inventorySearch"
-            );
-
-
-        const brand =
-            getElement(
-                "brandFilter"
-            );
-
-
-        const status =
-            getElement(
-                "statusFilter"
-            );
-
-
-        const controlMode =
-            getElement(
-                "controlModeFilter"
-            );
-
-
-        const active =
-            getElement(
-                "activeFilter"
-            );
-
-
-        const tableBody =
-            getElement(
-                "inventoryTableBody"
-            );
-
-
+    function setupActions() {
         const addButton =
-            getElement(
+            document.getElementById(
                 "addInventoryButton"
             );
 
-
-        if (search) {
-
-            search.addEventListener(
-                "input",
-                handleFilters
-            );
-        }
-
-
-        if (brand) {
-
-            brand.addEventListener(
-                "change",
-                handleFilters
-            );
-        }
-
-
-        if (status) {
-
-            status.addEventListener(
-                "change",
-                handleFilters
-            );
-        }
-
-
-        if (controlMode) {
-
-            controlMode.addEventListener(
-                "change",
-                handleFilters
-            );
-        }
-
-
-        if (active) {
-
-            active.addEventListener(
-                "change",
-                handleFilters
-            );
-        }
-
-
-        if (tableBody) {
-
-            tableBody.addEventListener(
-                "click",
-                handleTableClick
-            );
-        }
-
-
         if (addButton) {
-
             addButton.addEventListener(
                 "click",
-                handleAddInventory
+                function () {
+                    document.dispatchEvent(
+                        new CustomEvent(
+                            "dahayan:inventory-add-request"
+                        )
+                    );
+                }
+            );
+        }
+
+        const tableBody =
+            document.getElementById(
+                "inventoryTableBody"
+            );
+
+        if (tableBody) {
+            tableBody.addEventListener(
+                "click",
+                function (event) {
+                    const button =
+                        event.target.closest(
+                            "[data-action='edit-inventory']"
+                        );
+
+                    if (!button) {
+                        return;
+                    }
+
+                    const inventoryId =
+                        button.dataset.id || "";
+
+                    document.dispatchEvent(
+                        new CustomEvent(
+                            "dahayan:inventory-edit-request",
+                            {
+                                detail: {
+                                    id: inventoryId
+                                }
+                            }
+                        )
+                    );
+                }
             );
         }
     }
 
-
-    /* =====================================================
-       INITIALIZATION
-       ===================================================== */
+    /* =========================================
+       Initialize
+       ========================================= */
 
     async function init() {
-
-        if (
-            !requireAuthentication()
-        ) {
-
+        if (!requireAuthentication()) {
             return;
         }
 
-
-        bindEvents();
-
+        setupFilters();
+        setupActions();
 
         await loadInventoryData();
     }
 
-
-    /* =====================================================
-       PUBLIC API
-       ===================================================== */
+    /* =========================================
+       Public API
+       ========================================= */
 
     window.DahayanAdminInventory = {
-
         init,
-
         loadInventoryData,
-
+        loadBackendInventory,
         renderInventory,
-
         getFilteredRecords,
-
-        getRecords:
-            function () {
-                return [
-                    ...inventoryRecords
-                ];
-            },
-
-        getParts:
-            function () {
-                return [
-                    ...parts
-                ];
-            },
-
-        getLocations:
-            function () {
-                return [
-                    ...locations
-                ];
-            },
-
+        getRecords: function () {
+            return inventoryRecords;
+        },
+        getParts: function () {
+            return parts;
+        },
+        getLocations: function () {
+            return locations;
+        },
         getToken,
-
         getApiBaseUrl,
-
-        authenticatedRequest
-
+        authenticatedRequest,
+        isBackendInventoryLoaded: function () {
+            return backendInventoryLoaded;
+        }
     };
 
+    /* =========================================
+       Start
+       ========================================= */
 
-    /* =====================================================
-       START
-       ===================================================== */
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
-        );
-
-    } else {
-
-        init();
-    }
+    document.addEventListener(
+        "DOMContentLoaded",
+        init
+    );
 
 })();
