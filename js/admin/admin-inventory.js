@@ -6,17 +6,14 @@
 (function () {
     "use strict";
 
-    /* =========================================
-       Configuration
-       ========================================= */
-
     const TOKEN_KEY = "dahayan_admin_token";
 
     const LOCAL_INVENTORY_URL = "../data/inventory.json";
     const LOCAL_PARTS_URL = "../data/oem-parts.json";
     const LOCAL_LOCATIONS_URL = "../data/locations.json";
 
-    const ADMIN_INVENTORY_ENDPOINT = "/api/v1/inventory/admin";
+    const ADMIN_INVENTORY_ENDPOINT =
+        "/api/v1/inventory/admin";
 
     let inventoryRecords = [];
     let parts = [];
@@ -33,9 +30,7 @@
     }
 
     function requireAuthentication() {
-        const token = getToken();
-
-        if (!token) {
+        if (!getToken()) {
             window.location.href = "login.html";
             return false;
         }
@@ -66,10 +61,13 @@
     }
 
     /* =========================================
-       Authenticated API Request
+       Authenticated Request
        ========================================= */
 
-    async function authenticatedRequest(endpoint, options) {
+    async function authenticatedRequest(
+        endpoint,
+        options
+    ) {
         const token = getToken();
 
         if (!token) {
@@ -78,12 +76,14 @@
         }
 
         const requestOptions = options || {};
-
         const headers = new Headers(
             requestOptions.headers || {}
         );
 
-        headers.set("Authorization", "Bearer " + token);
+        headers.set(
+            "Authorization",
+            "Bearer " + token
+        );
 
         if (
             requestOptions.body &&
@@ -150,13 +150,6 @@
 
         if (
             value &&
-            Array.isArray(value.records)
-        ) {
-            return value.records;
-        }
-
-        if (
-            value &&
             Array.isArray(value.parts)
         ) {
             return value.parts;
@@ -196,7 +189,7 @@
     }
 
     /* =========================================
-       Object Field Helpers
+       Inventory Fields
        ========================================= */
 
     function getInventoryId(record) {
@@ -213,34 +206,6 @@
             record.oemNumber ??
             record.oem_number ??
             record.oem ??
-            ""
-        );
-    }
-
-    function getPartName(record) {
-        return (
-            record.partName ??
-            record.part_name ??
-            record.name ??
-            ""
-        );
-    }
-
-    function getBrand(record) {
-        return (
-            record.brand ??
-            ""
-        );
-    }
-
-    function getBranch(record) {
-        return (
-            record.branchName ??
-            record.branch_name ??
-            record.locationName ??
-            record.location_name ??
-            record.location ??
-            record.branch ??
             ""
         );
     }
@@ -292,22 +257,6 @@
         );
     }
 
-    function isActive(record) {
-        if (record.active !== undefined) {
-            return Boolean(record.active);
-        }
-
-        if (record.isActive !== undefined) {
-            return Boolean(record.isActive);
-        }
-
-        if (record.status === "inactive") {
-            return false;
-        }
-
-        return true;
-    }
-
     function getUpdatedAt(record) {
         return (
             record.updatedAt ??
@@ -318,25 +267,165 @@
         );
     }
 
+    function isActive(record) {
+        if (record.active !== undefined) {
+            return Boolean(record.active);
+        }
+
+        if (record.isActive !== undefined) {
+            return Boolean(record.isActive);
+        }
+
+        return record.status !== "inactive";
+    }
+
+    /* =========================================
+       Part Mapping
+       ========================================= */
+
+    function findPartByOEM(oemNumber) {
+        const target = normalizeText(oemNumber);
+
+        if (!target) {
+            return null;
+        }
+
+        return (
+            parts.find(function (part) {
+                return (
+                    normalizeText(
+                        part.oemNumber
+                    ) === target
+                );
+            }) || null
+        );
+    }
+
+    function getPart(record) {
+        return findPartByOEM(
+            getOEM(record)
+        );
+    }
+
+    function getPartName(record) {
+        const part = getPart(record);
+
+        return (
+            part?.partName ||
+            record.partName ||
+            record.part_name ||
+            record.name ||
+            "—"
+        );
+    }
+
+    function getBrand(record) {
+        const part = getPart(record);
+
+        return (
+            part?.brand ||
+            record.brand ||
+            "—"
+        );
+    }
+
+    function getModels(record) {
+        const part = getPart(record);
+
+        if (
+            part &&
+            Array.isArray(part.model)
+        ) {
+            return part.model.join(", ");
+        }
+
+        return (
+            record.model ||
+            record.models ||
+            "—"
+        );
+    }
+
+    function getCategory(record) {
+        const part = getPart(record);
+
+        return (
+            part?.category ||
+            record.category ||
+            "—"
+        );
+    }
+
+    /* =========================================
+       Location Mapping
+       ========================================= */
+
+    function findLocationById(locationId) {
+        const target =
+            normalizeText(locationId);
+
+        if (!target) {
+            return null;
+        }
+
+        return (
+            locations.find(function (location) {
+                return (
+                    normalizeText(
+                        location.id
+                    ) === target
+                );
+            }) || null
+        );
+    }
+
+    function getLocation(record) {
+        const locationId =
+            record.locationId ??
+            record.location_id ??
+            record.branchId ??
+            record.branch_id ??
+            "";
+
+        return findLocationById(locationId);
+    }
+
+    function getBranch(record) {
+        const location =
+            getLocation(record);
+
+        return (
+            location?.name ||
+            record.branchName ||
+            record.branch_name ||
+            record.locationName ||
+            record.location_name ||
+            "—"
+        );
+    }
+
     /* =========================================
        Stock Status
        ========================================= */
 
     function getStockStatus(record) {
-        const controlMode = getControlMode(record);
-
-        const explicitStatus = normalizeText(
-            record.stockStatus ??
-            record.stock_status ??
-            record.inventoryStatus ??
-            record.inventory_status ??
-            record.status
-        );
+        const explicitStatus =
+            normalizeText(
+                record.status
+            );
 
         /*
-         * Manual / override mode:
-         * Respect explicit backend status.
+         * Backend explicitly says stock
+         * information is not yet verified.
+         * Do not convert this to Out of Stock.
          */
+        if (explicitStatus === "unknown") {
+            return "unknown";
+        }
+
+        const controlMode =
+            getControlMode(record);
+
         if (
             controlMode === "manual" ||
             controlMode === "override" ||
@@ -368,10 +457,6 @@
             }
         }
 
-        /*
-         * Automatic mode:
-         * Calculate from available quantity.
-         */
         const availableQuantity =
             getAvailableQuantity(record);
 
@@ -400,6 +485,9 @@
             case "on_request":
                 return "On Request";
 
+            case "unknown":
+                return "Not Verified";
+
             default:
                 return "Unknown";
         }
@@ -417,6 +505,7 @@
                 return "status-danger";
 
             case "on_request":
+            case "unknown":
                 return "status-info";
 
             default:
@@ -425,7 +514,7 @@
     }
 
     /* =========================================
-       Local JSON Loader
+       Local JSON
        ========================================= */
 
     async function loadJson(url) {
@@ -468,7 +557,8 @@
             );
         }
 
-        inventoryRecords = data.inventory;
+        inventoryRecords =
+            data.inventory;
 
         backendInventoryLoaded = true;
 
@@ -476,39 +566,7 @@
     }
 
     /* =========================================
-       Local Inventory Fallback
-       ========================================= */
-
-    async function loadLocalInventory() {
-        const [
-            inventoryData,
-            partsData,
-            locationsData
-        ] = await Promise.all([
-            loadJson(LOCAL_INVENTORY_URL),
-            loadJson(LOCAL_PARTS_URL),
-            loadJson(LOCAL_LOCATIONS_URL)
-        ]);
-
-        inventoryRecords = toArray(
-            inventoryData
-        );
-
-        parts = toArray(
-            partsData
-        );
-
-        locations = toArray(
-            locationsData
-        );
-
-        backendInventoryLoaded = false;
-
-        return inventoryRecords;
-    }
-
-    /* =========================================
-       Load Complete Inventory Data
+       Complete Data Loading
        ========================================= */
 
     async function loadInventoryData() {
@@ -517,53 +575,59 @@
         }
 
         try {
-            /*
-             * Primary source:
-             * Verified authenticated Admin API.
-             */
             await loadBackendInventory();
 
             /*
-             * Parts and locations are still loaded
-             * locally because the verified Admin
-             * Inventory endpoint currently returns
-             * the inventory records themselves.
+             * Reference data is currently local.
+             * Inventory itself comes from verified API.
              */
-            try {
-                const [
-                    partsData,
-                    locationsData
-                ] = await Promise.all([
-                    loadJson(LOCAL_PARTS_URL),
-                    loadJson(LOCAL_LOCATIONS_URL)
-                ]);
+            const [
+                partsData,
+                locationsData
+            ] = await Promise.all([
+                loadJson(LOCAL_PARTS_URL),
+                loadJson(LOCAL_LOCATIONS_URL)
+            ]);
 
-                parts = toArray(partsData);
-                locations = toArray(locationsData);
-            } catch (referenceError) {
-                console.warn(
-                    "Reference data could not be loaded:",
-                    referenceError
-                );
-
-                parts = [];
-                locations = [];
-            }
+            parts = toArray(partsData);
+            locations = toArray(locationsData);
 
             renderInventory();
 
-        } catch (backendError) {
-            /*
-             * Keep local JSON fallback available
-             * for development / temporary API failure.
-             */
+        } catch (error) {
             console.warn(
-                "Admin Inventory API unavailable. Using local data fallback.",
-                backendError
+                "Backend inventory unavailable. Using local inventory fallback.",
+                error
             );
 
             try {
-                await loadLocalInventory();
+                const [
+                    inventoryData,
+                    partsData,
+                    locationsData
+                ] = await Promise.all([
+                    loadJson(
+                        LOCAL_INVENTORY_URL
+                    ),
+                    loadJson(
+                        LOCAL_PARTS_URL
+                    ),
+                    loadJson(
+                        LOCAL_LOCATIONS_URL
+                    )
+                ]);
+
+                inventoryRecords =
+                    toArray(inventoryData);
+
+                parts =
+                    toArray(partsData);
+
+                locations =
+                    toArray(locationsData);
+
+                backendInventoryLoaded =
+                    false;
 
                 renderInventory();
 
@@ -571,10 +635,11 @@
                     "Live inventory API unavailable. Showing local inventory data.",
                     "warning"
                 );
-            } catch (localError) {
+
+            } catch (fallbackError) {
                 console.error(
                     "Inventory loading failed:",
-                    localError
+                    fallbackError
                 );
 
                 inventoryRecords = [];
@@ -592,7 +657,7 @@
     }
 
     /* =========================================
-       Inventory Message
+       Message
        ========================================= */
 
     function showInventoryMessage(
@@ -644,9 +709,13 @@
                 inStock++;
             } else if (status === "low_stock") {
                 lowStock++;
-            } else if (status === "out_of_stock") {
+            } else if (
+                status === "out_of_stock"
+            ) {
                 outOfStock++;
-            } else if (status === "on_request") {
+            } else if (
+                status === "on_request"
+            ) {
                 onRequest++;
             }
         });
@@ -778,6 +847,16 @@
                         getBranch(record)
                     );
 
+                const models =
+                    normalizeText(
+                        getModels(record)
+                    );
+
+                const category =
+                    normalizeText(
+                        getCategory(record)
+                    );
+
                 const recordStatus =
                     getStockStatus(record);
 
@@ -793,12 +872,16 @@
                         oem,
                         partName,
                         recordBrand,
-                        branch
+                        branch,
+                        models,
+                        category
                     ].join(" ");
 
                 if (
                     search &&
-                    !searchableText.includes(search)
+                    !searchableText.includes(
+                        search
+                    )
                 ) {
                     return false;
                 }
@@ -819,7 +902,8 @@
 
                 if (
                     controlMode &&
-                    recordControlMode !== controlMode
+                    recordControlMode !==
+                        controlMode
                 ) {
                     return false;
                 }
@@ -905,13 +989,12 @@
                 const updatedAt =
                     getUpdatedAt(record);
 
-                const active =
-                    isActive(record);
-
                 return `
                     <tr>
                         <td>
-                            ${escapeHtml(inventoryId)}
+                            ${escapeHtml(
+                                inventoryId
+                            )}
                         </td>
 
                         <td>
@@ -919,35 +1002,50 @@
                         </td>
 
                         <td>
-                            ${escapeHtml(partName)}
+                            ${escapeHtml(
+                                partName
+                            )}
                         </td>
 
                         <td>
-                            ${escapeHtml(brand)}
+                            ${escapeHtml(
+                                brand
+                            )}
                         </td>
 
                         <td>
-                            ${escapeHtml(branch)}
+                            ${escapeHtml(
+                                branch
+                            )}
                         </td>
 
                         <td>
-                            ${escapeHtml(quantity)}
+                            ${escapeHtml(
+                                quantity
+                            )}
                         </td>
 
                         <td>
-                            <span class="${getStockStatusClass(status)}">
-                                ${getStockStatusLabel(status)}
+                            <span class="${getStockStatusClass(
+                                status
+                            )}">
+                                ${getStockStatusLabel(
+                                    status
+                                )}
                             </span>
                         </td>
 
                         <td>
                             ${escapeHtml(
-                                controlMode || "automatic"
+                                controlMode ||
+                                "automatic"
                             )}
                         </td>
 
                         <td>
-                            ${escapeHtml(updatedAt)}
+                            ${escapeHtml(
+                                updatedAt || "—"
+                            )}
                         </td>
 
                         <td>
@@ -955,7 +1053,9 @@
                                 type="button"
                                 class="admin-table-action"
                                 data-action="edit-inventory"
-                                data-id="${escapeHtml(inventoryId)}"
+                                data-id="${escapeHtml(
+                                    inventoryId
+                                )}"
                             >
                                 Edit
                             </button>
@@ -1033,15 +1133,14 @@
                         return;
                     }
 
-                    const inventoryId =
-                        button.dataset.id || "";
-
                     document.dispatchEvent(
                         new CustomEvent(
                             "dahayan:inventory-edit-request",
                             {
                                 detail: {
-                                    id: inventoryId
+                                    id:
+                                        button.dataset.id ||
+                                        ""
                                 }
                             }
                         )
@@ -1076,21 +1175,33 @@
         loadBackendInventory,
         renderInventory,
         getFilteredRecords,
+
         getRecords: function () {
             return inventoryRecords;
         },
+
         getParts: function () {
             return parts;
         },
+
         getLocations: function () {
             return locations;
         },
+
         getToken,
+
         getApiBaseUrl,
+
         authenticatedRequest,
-        isBackendInventoryLoaded: function () {
-            return backendInventoryLoaded;
-        }
+
+        isBackendInventoryLoaded:
+            function () {
+                return backendInventoryLoaded;
+            },
+
+        findPartByOEM,
+
+        findLocationById
     };
 
     /* =========================================
