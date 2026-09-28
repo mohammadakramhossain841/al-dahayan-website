@@ -1,660 +1,420 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="Al-Dahayan Trading Company Admin Dashboard"
-    >
-    <meta name="robots" content="noindex, nofollow">
+/* =========================================
+   AL-DAHAYAN ADMIN DASHBOARD
+   Dashboard Authentication & Data Controller
+   ========================================= */
 
-    <title>Admin Dashboard | Al-Dahayan Trading Company</title>
+(function () {
+  "use strict";
 
-    <link rel="stylesheet" href="../css/style.css">
-</head>
 
-<body data-page="admin-dashboard">
+  /* =========================================
+     CONFIGURATION
+     ========================================= */
 
-    <!-- =========================
-         ADMIN HEADER
-    ========================== -->
-    <header class="site-header">
-        <div class="container header-inner">
+  const STORAGE_KEYS = {
+    token: "dahayan_admin_token",
+    admin: "dahayan_admin_user"
+  };
 
-            <a
-                href="dashboard.html"
-                class="site-logo"
-                aria-label="Al-Dahayan Admin Dashboard"
-            >
-                <img
-                    src="../assets/images/al-dahayan-logo.png"
-                    alt="ALDAHAYAN TRADING COMPANY"
-                    class="site-logo-image"
-                >
-            </a>
 
-            <div class="admin-header-title">
-                <span>AL-DAHAYAN</span>
-                <strong>Admin Panel</strong>
-            </div>
+  /* =========================================
+     DOM HELPERS
+     ========================================= */
 
-        </div>
-    </header>
+  function getElement(id) {
+    return document.getElementById(id);
+  }
 
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================== -->
-    <main class="admin-dashboard">
+  /* =========================================
+     SESSION
+     ========================================= */
 
-        <div class="container">
+  function getToken() {
+    return sessionStorage.getItem(
+      STORAGE_KEYS.token
+    );
+  }
 
-            <!-- Page Header -->
-            <section class="admin-page-heading">
 
-                <div>
-                    <span class="admin-eyebrow">
-                        AL-DAHAYAN ADMIN PANEL
-                    </span>
+  function getAdmin() {
+    const storedAdmin =
+      sessionStorage.getItem(
+        STORAGE_KEYS.admin
+      );
 
-                    <h1>Dashboard</h1>
+    if (!storedAdmin) {
+      return null;
+    }
 
-                    <p>
-                        Daily control center for parts, inventory,
-                        customer inquiries and website operations.
-                    </p>
-                </div>
+    try {
+      return JSON.parse(storedAdmin);
+    } catch (error) {
+      return null;
+    }
+  }
 
-            </section>
 
+  function requireAuthentication() {
+    const token = getToken();
 
-            <!-- =========================
-                 OVERVIEW
-            ========================== -->
-            <section
-                class="admin-section"
-                aria-labelledby="overview-title"
-            >
+    if (!token) {
+      window.location.href = "login.html";
+      return false;
+    }
 
-                <div class="admin-section-heading">
+    return true;
+  }
 
-                    <div>
-                        <span class="admin-eyebrow">
-                            OVERVIEW
-                        </span>
 
-                        <h2 id="overview-title">
-                            System Overview
-                        </h2>
-                    </div>
+  /* =========================================
+     ADMIN INFORMATION
+     ========================================= */
 
-                </div>
+  function displayAdminInformation() {
 
+    const admin = getAdmin();
 
-                <div class="admin-stat-grid">
+    const accountName =
+      getElement("adminAccountName");
 
-                    <article class="admin-stat-card">
-                        <span class="admin-stat-label">
-                            Total Parts
-                        </span>
+    const accountRole =
+      getElement("adminAccountRole");
 
-                        <strong id="dashboard-total-parts">
-                            —
-                        </strong>
+    const authStatus =
+      getElement("authStatus");
 
-                        <small>
-                            OEM / Parts records
-                        </small>
-                    </article>
 
+    if (authStatus) {
+      authStatus.textContent = "Authenticated";
+      authStatus.classList.add(
+        "admin-status-success"
+      );
+    }
 
-                    <article class="admin-stat-card">
-                        <span class="admin-stat-label">
-                            In Stock
-                        </span>
 
-                        <strong id="dashboard-in-stock">
-                            —
-                        </strong>
+    if (!admin) {
+      return;
+    }
 
-                        <small>
-                            Verified available stock
-                        </small>
-                    </article>
 
+    if (accountName) {
 
-                    <article class="admin-stat-card">
-                        <span class="admin-stat-label">
-                            Low Stock
-                        </span>
+      const name =
+        admin.name ||
+        admin.username ||
+        admin.email ||
+        "Administrator";
 
-                        <strong id="dashboard-low-stock">
-                            —
-                        </strong>
+      accountName.textContent = name;
+    }
 
-                        <small>
-                            Requires attention
-                        </small>
-                    </article>
 
+    if (accountRole) {
 
-                    <article class="admin-stat-card">
-                        <span class="admin-stat-label">
-                            Out of Stock
-                        </span>
+      accountRole.textContent =
+        admin.role ||
+        "Administrator";
+    }
+  }
 
-                        <strong id="dashboard-out-of-stock">
-                            —
-                        </strong>
 
-                        <small>
-                            Currently unavailable
-                        </small>
-                    </article>
+  /* =========================================
+     INITIAL STAT VALUES
+     ========================================= */
 
+  function initializeStatistics() {
 
-                    <article class="admin-stat-card">
-                        <span class="admin-stat-label">
-                            New Inquiries
-                        </span>
+    const statistics = [
+      "dashboard-total-parts",
+      "dashboard-in-stock",
+      "dashboard-low-stock",
+      "dashboard-out-of-stock",
+      "dashboard-new-inquiries"
+    ];
 
-                        <strong id="dashboard-new-inquiries">
-                            —
-                        </strong>
 
-                        <small>
-                            Customer requests
-                        </small>
-                    </article>
+    statistics.forEach(function (id) {
 
-                </div>
+      const element =
+        getElement(id);
 
-            </section>
+      if (element) {
+        element.textContent = "—";
+      }
 
+    });
+  }
 
-            <!-- =========================
-                 QUICK ACTIONS
-            ========================== -->
-            <section
-                class="admin-section"
-                aria-labelledby="quick-actions-title"
-            >
 
-                <div class="admin-section-heading">
+  /* =========================================
+     API CONFIGURATION
+     ========================================= */
 
-                    <div>
-                        <span class="admin-eyebrow">
-                            QUICK ACTIONS
-                        </span>
+  function getApiBaseUrl() {
 
-                        <h2 id="quick-actions-title">
-                            Daily Control
-                        </h2>
-                    </div>
+    if (
+      window.DAHAYAN_CONFIG &&
+      typeof window.DAHAYAN_CONFIG.API_BASE_URL === "string"
+    ) {
+      return window.DAHAYAN_CONFIG.API_BASE_URL
+        .replace(/\/$/, "");
+    }
 
-                </div>
 
+    if (
+      window.CONFIG &&
+      typeof window.CONFIG.API_BASE_URL === "string"
+    ) {
+      return window.CONFIG.API_BASE_URL
+        .replace(/\/$/, "");
+    }
 
-                <div class="admin-action-grid">
 
-                    <a
-                        href="parts.html"
-                        class="admin-action-card"
-                    >
-                        <span class="admin-action-icon">
-                            +
-                        </span>
+    return "";
+  }
 
-                        <strong>
-                            Manage Parts
-                        </strong>
 
-                        <span>
-                            Add, edit or deactivate OEM records.
-                        </span>
-                    </a>
+  /* =========================================
+     AUTHENTICATED API REQUEST
+     ========================================= */
 
+  async function authenticatedRequest(
+    endpoint,
+    options = {}
+  ) {
 
-                    <a
-                        href="inventory.html"
-                        class="admin-action-card"
-                    >
-                        <span class="admin-action-icon">
-                            ▣
-                        </span>
+    const token = getToken();
 
-                        <strong>
-                            Update Inventory
-                        </strong>
+    if (!token) {
+      window.location.href = "login.html";
+      return null;
+    }
 
-                        <span>
-                            Manage stock quantity and availability.
-                        </span>
-                    </a>
 
+    const apiBaseUrl =
+      getApiBaseUrl();
 
-                    <a
-                        href="inquiries.html"
-                        class="admin-action-card"
-                    >
-                        <span class="admin-action-icon">
-                            ✉
-                        </span>
 
-                        <strong>
-                            Customer Inquiries
-                        </strong>
+    if (!apiBaseUrl) {
+      throw new Error(
+        "API configuration is not available."
+      );
+    }
 
-                        <span>
-                            Review and manage customer requests.
-                        </span>
-                    </a>
-
-
-                    <a
-                        href="branches.html"
-                        class="admin-action-card"
-                    >
-                        <span class="admin-action-icon">
-                            ⌖
-                        </span>
 
-                        <strong>
-                            Branches
-                        </strong>
-
-                        <span>
-                            Manage company branches and information.
-                        </span>
-                    </a>
-
-                </div>
-
-            </section>
-
-
-            <!-- =========================
-                 MANAGEMENT AREAS
-            ========================== -->
-            <section
-                class="admin-section"
-                aria-labelledby="management-title"
-            >
-
-                <div class="admin-section-heading">
-
-                    <div>
-                        <span class="admin-eyebrow">
-                            MANAGEMENT
-                        </span>
-
-                        <h2 id="management-title">
-                            Management Areas
-                        </h2>
-                    </div>
-
-                </div>
-
-
-                <div class="admin-management-grid">
-
-                    <a
-                        href="parts.html"
-                        class="admin-management-card"
-                    >
-                        <strong>
-                            OEM & Parts
-                        </strong>
-
-                        <span>
-                            Manage OEM numbers, parts,
-                            categories and compatibility.
-                        </span>
-                    </a>
-
-
-                    <a
-                        href="inventory.html"
-                        class="admin-management-card"
-                    >
-                        <strong>
-                            Live Inventory
-                        </strong>
-
-                        <span>
-                            Manage stock status, quantity,
-                            branches and updates.
-                        </span>
-                    </a>
-
-
-                    <a
-                        href="vehicles.html"
-                        class="admin-management-card"
-                    >
-                        <strong>
-                            Vehicles
-                        </strong>
-
-                        <span>
-                            Manage Toyota and Lexus
-                            vehicle information.
-                        </span>
-                    </a>
-
-
-                    <a
-                        href="inquiries.html"
-                        class="admin-management-card"
-                    >
-                        <strong>
-                            Customer Inquiries
-                        </strong>
-
-                        <span>
-                            Manage status, staff,
-                            follow-up and notes.
-                        </span>
-                    </a>
+    const requestOptions = {
+      ...options,
 
-
-                    <a
-                        href="ai.html"
-                        class="admin-management-card"
-                    >
-                        <strong>
-                            AI Assistant
-                        </strong>
+      headers: {
+        ...(options.headers || {}),
 
-                        <span>
-                            Control AI instructions,
-                            knowledge and availability.
-                        </span>
-                    </a>
+        "Content-Type":
+          "application/json",
 
+        "Authorization":
+          `Bearer ${token}`
+      }
+    };
 
-                    <a
-                        href="social.html"
-                        class="admin-management-card"
-                    >
-                        <strong>
-                            Social Media
-                        </strong>
 
-                        <span>
-                            Manage Facebook, YouTube,
-                            TikTok, X and other links.
-                        </span>
-                    </a>
+    const response =
+      await fetch(
+        `${apiBaseUrl}${endpoint}`,
+        requestOptions
+      );
 
 
-                    <a
-                        href="settings.html"
-                        class="admin-management-card"
-                    >
-                        <strong>
-                            Website Settings
-                        </strong>
+    if (response.status === 401) {
 
-                        <span>
-                            Manage company information,
-                            contact and website settings.
-                        </span>
-                    </a>
+      sessionStorage.removeItem(
+        STORAGE_KEYS.token
+      );
 
-                </div>
+      sessionStorage.removeItem(
+        STORAGE_KEYS.admin
+      );
 
-            </section>
+      window.location.href =
+        "login.html";
 
+      return null;
+    }
 
-            <!-- =========================
-                 INVENTORY ALERTS
-            ========================== -->
-            <section
-                class="admin-section"
-                aria-labelledby="inventory-alerts-title"
-            >
 
-                <div class="admin-section-heading">
+    let data = null;
 
-                    <div>
-                        <span class="admin-eyebrow">
-                            INVENTORY
-                        </span>
+    try {
+      data = await response.json();
+    } catch (error) {
+      data = null;
+    }
 
-                        <h2 id="inventory-alerts-title">
-                            Inventory Alerts
-                        </h2>
-                    </div>
 
+    if (!response.ok) {
 
-                    <a
-                        href="inventory.html"
-                        class="button button-secondary"
-                    >
-                        View Inventory
-                    </a>
+      const message =
+        data?.message ||
+        data?.error ||
+        "Unable to load dashboard data.";
 
-                </div>
+      throw new Error(message);
+    }
 
 
-                <div
-                    id="dashboard-inventory-alerts"
-                    class="admin-table-container"
-                >
+    return data;
+  }
 
-                    <div class="admin-empty-state">
 
-                        <strong>
-                            No inventory alerts loaded
-                        </strong>
+  /* =========================================
+     DASHBOARD DATA
+     ========================================= */
 
-                        <p>
-                            Verified inventory data will appear
-                            here when the inventory system is connected.
-                        </p>
+  async function loadDashboardData() {
 
-                    </div>
+    /*
+     * The existing verified backend APIs are kept
+     * untouched here.
+     *
+     * Dashboard-specific statistics will be connected
+     * after the exact statistics endpoint is confirmed.
+     */
 
-                </div>
+    return null;
+  }
 
-            </section>
 
+  /* =========================================
+     LOGOUT
+     ========================================= */
 
-            <!-- =========================
-                 RECENT INQUIRIES
-            ========================== -->
-            <section
-                class="admin-section"
-                aria-labelledby="recent-inquiries-title"
-            >
+  function setupLogout() {
 
-                <div class="admin-section-heading">
+    const logoutButton =
+      getElement("adminLogoutButton");
 
-                    <div>
-                        <span class="admin-eyebrow">
-                            CUSTOMERS
-                        </span>
 
-                        <h2 id="recent-inquiries-title">
-                            Recent Inquiries
-                        </h2>
-                    </div>
+    if (!logoutButton) {
+      return;
+    }
 
 
-                    <a
-                        href="inquiries.html"
-                        class="button button-secondary"
-                    >
-                        View All
-                    </a>
+    logoutButton.addEventListener(
+      "click",
+      function () {
 
-                </div>
+        sessionStorage.removeItem(
+          STORAGE_KEYS.token
+        );
 
+        sessionStorage.removeItem(
+          STORAGE_KEYS.admin
+        );
 
-                <div
-                    id="dashboard-recent-inquiries"
-                    class="admin-table-container"
-                >
+        window.location.href =
+          "login.html";
+      }
+    );
+  }
 
-                    <div class="admin-empty-state">
 
-                        <strong>
-                            No inquiries loaded
-                        </strong>
+  /* =========================================
+     SIDEBAR ACTIVE STATE
+     ========================================= */
 
-                        <p>
-                            Customer inquiries will appear here
-                            when verified inquiry records are available.
-                        </p>
+  function setupNavigation() {
 
-                    </div>
+    const currentPage =
+      document.body.dataset.adminPage ||
+      "dashboard";
 
-                </div>
 
-            </section>
+    const navigationLinks =
+      document.querySelectorAll(
+        "[data-admin-nav]"
+      );
 
 
-            <!-- =========================
-                 SYSTEM STATUS
-            ========================== -->
-            <section
-                class="admin-section"
-                aria-labelledby="system-status-title"
-            >
+    navigationLinks.forEach(
+      function (link) {
 
-                <div class="admin-section-heading">
+        const page =
+          link.dataset.adminNav;
 
-                    <div>
-                        <span class="admin-eyebrow">
-                            SYSTEM
-                        </span>
 
-                        <h2 id="system-status-title">
-                            System Status
-                        </h2>
-                    </div>
+        if (page === currentPage) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
 
-                </div>
+      }
+    );
+  }
 
 
-                <div class="admin-status-grid">
+  /* =========================================
+     INITIALIZE DASHBOARD
+     ========================================= */
 
-                    <div class="admin-status-card">
+  async function initializeDashboard() {
 
-                        <span class="admin-status-dot"></span>
+    if (!requireAuthentication()) {
+      return;
+    }
 
-                        <div>
-                            <strong>
-                                Website
-                            </strong>
 
-                            <span>
-                                Frontend foundation active
-                            </span>
-                        </div>
+    initializeStatistics();
 
-                    </div>
+    displayAdminInformation();
 
+    setupLogout();
 
-                    <div class="admin-status-card">
+    setupNavigation();
 
-                        <span class="admin-status-dot"></span>
 
-                        <div>
-                            <strong>
-                                OEM Catalog
-                            </strong>
+    try {
 
-                            <span>
-                                Data foundation available
-                            </span>
-                        </div>
+      await loadDashboardData();
 
-                    </div>
+    } catch (error) {
 
+      console.error(
+        "Dashboard data error:",
+        error
+      );
 
-                    <div class="admin-status-card">
+    }
 
-                        <span class="admin-status-dot"></span>
+  }
 
-                        <div>
-                            <strong>
-                                Inventory
-                            </strong>
 
-                            <span>
-                                Inventory architecture available
-                            </span>
-                        </div>
+  /* =========================================
+     PUBLIC DASHBOARD API
+     ========================================= */
 
-                    </div>
+  window.DahayanAdminDashboard = {
 
+    getToken: getToken,
 
-                    <div class="admin-status-card">
+    getAdmin: getAdmin,
 
-                        <span class="admin-status-dot"></span>
+    authenticatedRequest:
+      authenticatedRequest,
 
-                        <div>
-                            <strong>
-                                Backend
-                            </strong>
+    loadDashboardData:
+      loadDashboardData
 
-                            <span>
-                                Production connection pending
-                            </span>
-                        </div>
+  };
 
-                    </div>
 
-                </div>
+  /* =========================================
+     START
+     ========================================= */
 
-            </section>
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializeDashboard
+  );
 
-        </div>
-
-    </main>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-    <footer class="site-footer">
-
-        <div class="container">
-
-            <div class="footer-bottom">
-
-                <p>
-                    ©
-                    <span id="current-year"></span>
-                    Al-Dahayan Trading Company.
-                    Admin Panel.
-                </p>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-    <!-- =========================
-         BASIC ADMIN SCRIPT
-    ========================== -->
-    <script>
-        (function () {
-            const yearElement =
-                document.getElementById("current-year");
-
-            if (yearElement) {
-                yearElement.textContent =
-                    new Date().getFullYear();
-            }
-        })();
-    </script>
-
-</body>
-</html>
+})();
