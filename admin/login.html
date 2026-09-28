@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  >
+
+  <meta
+    name="author"
+    content="Al-Dahayan Trading Company"
+  >
+
+  <title>
+    Admin Login | Al-Dahayan Trading Company
+  </title>
+
+  <!-- Admin Panel CSS -->
+  <link
+    rel="stylesheet"
+    href="../css/admin.css"
+  >
+</head>
+
+<body
+  class="admin-page admin-login-page"
+  data-admin-page="login"
+>
+
+  <!-- =========================
+       ADMIN LOGIN
+  ========================== -->
+
+  <main class="admin-login">
+
+    <section
+      class="admin-login-card"
+      aria-labelledby="adminLoginTitle"
+    >
+
+      <!-- Company Logo -->
+
+      <div class="admin-login-brand">
+
+        <img
+          src="../assets/images/1000018142-removebg-preview.png"
+          alt="ALDAHAYAN TRADING COMPANY"
+          class="admin-login-logo"
+          width="220"
+          height="70"
+          loading="eager"
+          decoding="async"
+        >
+
+      </div>
+
+
+      <!-- Login Heading -->
+
+      <div class="admin-login-header">
+
+        <p class="admin-eyebrow">
+          ADMIN PANEL
+        </p>
+
+        <h1 id="adminLoginTitle">
+          Admin Login
+        </h1>
+
+        <p>
+          Sign in to manage Al-Dahayan Trading Company.
+        </p>
+
+      </div>
+
+
+      <!-- Login Form -->
+
+      <form
+        id="adminLoginForm"
+        class="admin-login-form"
+        novalidate
+      >
+
+        <!-- Username / Email -->
+
+        <div class="admin-form-group">
+
+          <label for="adminUsername">
+            Username or Email
+          </label>
+
+          <input
+            id="adminUsername"
+            name="username"
+            type="text"
+            autocomplete="username"
+            placeholder="Enter username or email"
+            required
+          >
+
+        </div>
+
+
+        <!-- Password -->
+
+        <div class="admin-form-group">
+
+          <label for="adminPassword">
+            Password
+          </label>
+
+          <input
+            id="adminPassword"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Enter your password"
+            required
+          >
+
+        </div>
+
+
+        <!-- Login Error -->
+
+        <div
+          id="adminLoginError"
+          class="admin-login-message admin-login-error"
+          role="alert"
+          aria-live="polite"
+          hidden
+        ></div>
+
+
+        <!-- Login Button -->
+
+        <button
+          type="submit"
+          class="admin-login-button"
+          id="adminLoginButton"
+        >
+          <span class="admin-login-button-text">
+            Sign In
+          </span>
+
+          <span
+            class="admin-login-loading"
+            aria-hidden="true"
+            hidden
+          >
+            Signing in...
+          </span>
+        </button>
+
+      </form>
+
+
+      <!-- Security Notice -->
+
+      <div class="admin-login-security">
+
+        <p>
+          Authorized administrators only.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       ADMIN JAVASCRIPT
+  ========================== -->
+
+  <script src="../js/config.js"></script>
+
+  <script src="../js/admin/admin-auth.js"></script>
+
+</body>
+
+</html>
