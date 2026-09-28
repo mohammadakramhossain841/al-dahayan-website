@@ -1,0 +1,147 @@
+<section class="dahayan-ai" data-dahayan-ai>
+
+    <!-- Floating AI Trigger -->
+    <button
+        class="dahayan-ai-trigger"
+        type="button"
+        aria-label="Open DAHAYAN AI Assistant"
+        data-dahayan-ai-trigger
+        aria-expanded="false"
+    >
+        <img
+            src="../assets/images/file_00000000fff481f488bf6682be5f33c4.png"
+            alt="DAHAYAN AI"
+        >
+        <span>DAHAYAN AI</span>
+    </button>
+
+    <!-- AI Assistant Panel -->
+    <div
+        class="dahayan-ai-panel"
+        id="dahayan-ai-panel"
+        data-dahayan-ai-panel
+        aria-hidden="true"
+    >
+
+        <!-- Header -->
+        <div class="dahayan-ai-header">
+
+            <div class="dahayan-ai-header-brand">
+
+                <img
+                    src="../assets/images/file_00000000fff481f488bf6682be5f33c4.png"
+                    alt="MAHANOOR AI"
+                    class="dahayan-ai-header-icon"
+                >
+
+                <div class="dahayan-ai-header-text">
+                    <strong>MAHANOOR</strong>
+                    <span>Al-Dahayan AI Assistant</span>
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                class="dahayan-ai-close"
+                data-dahayan-ai-close
+                aria-label="Close DAHAYAN AI"
+            ></button>
+
+        </div>
+
+        <!-- Messages -->
+        <div
+            class="dahayan-ai-messages"
+            data-dahayan-ai-messages
+        >
+
+            <!-- Initial Bot Message -->
+            <div class="dahayan-ai-message dahayan-ai-message-bot">
+                <div class="dahayan-ai-bubble">
+                    Hello! I'm Mahanoor, the Al-Dahayan AI Assistant.
+                    How can I help you today?
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dahayan-ai-quick-actions">
+
+                <button
+                    type="button"
+                    data-ai-action="find-part"
+                >
+                    Find a Part
+                </button>
+
+                <button
+                    type="button"
+                    data-ai-action="vehicle"
+                >
+                    Search by Vehicle
+                </button>
+
+                <button
+                    type="button"
+                    data-ai-action="oem"
+                >
+                    Search by OEM
+                </button>
+
+                <button
+                    type="button"
+                    data-ai-action="availability"
+                >
+                    Check Availability
+                </button>
+
+                <button
+                    type="button"
+                    data-ai-action="whatsapp"
+                >
+                    Contact Al-Dahayan
+                </button>
+
+            </div>
+
+            <!-- Typing Indicator -->
+            <div
+                class="dahayan-ai-typing"
+                data-dahayan-ai-typing
+                hidden
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+        <!-- Message Form -->
+        <form
+            class="dahayan-ai-form"
+            data-dahayan-ai-form
+        >
+
+            <input
+                type="text"
+                class="dahayan-ai-input"
+                data-dahayan-ai-input
+                placeholder="Type your message..."
+                autocomplete="off"
+                aria-label="Type your message"
+            >
+
+            <button
+                type="submit"
+                class="dahayan-ai-send"
+                aria-label="Send message"
+            >
+                Send
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
