@@ -52,33 +52,16 @@
 
     dataFiles: {
       company: "company.json",
-
       vehicles: "vehicles.json",
-
       models: "models.json",
-
       oemParts: "oem-parts.json",
-
-      partCategories:
-        "part-categories.json",
-
-      compatibility:
-        "compatibility.json",
-
-      locations:
-        "locations.json",
-
-      inventory:
-        "inventory.json",
-
-      partPrices:
-        "part-prices.json",
-
-      inquiries:
-        "inquiries.json",
-
-      services:
-        "services.json"
+      partCategories: "part-categories.json",
+      compatibility: "compatibility.json",
+      locations: "locations.json",
+      inventory: "inventory.json",
+      partPrices: "part-prices.json",
+      inquiries: "inquiries.json",
+      services: "services.json"
     },
 
     /* =========================================
@@ -87,15 +70,10 @@
 
     contact: {
       country: "Saudi Arabia",
-
       phone: "",
-
       whatsapp: "",
-
       email: "",
-
-      preferredContact:
-        "whatsapp"
+      preferredContact: "whatsapp"
     },
 
     /* =========================================
@@ -104,23 +82,14 @@
 
     features: {
       oemSearch: true,
-
       vehicleSearch: true,
-
       vinSearch: true,
-
       inventory: true,
-
       inquiry: true,
-
       bilingual: true,
-
       aiAssistant: true,
-
       branches: true,
-
       socialChannels: true,
-
       adminPanel: true
     },
 
@@ -182,14 +151,9 @@
 
     ai: {
       enabled: true,
-
       salesMode: true,
-
-      inventoryVerificationRequired:
-        true,
-
-      whatsappConnection:
-        true,
+      inventoryVerificationRequired: true,
+      whatsappConnection: true,
 
       languages: [
         "en",
@@ -200,27 +164,18 @@
        * Customer location must not
        * be collected by AI.
        */
-      customerLocationCollection:
-        false,
+      customerLocationCollection: false,
 
       /*
        * AI must not proactively
        * recommend/request branches.
        */
-      proactiveBranchRecommendation:
-        false,
+      proactiveBranchRecommendation: false,
 
-      allowUnverifiedStock:
-        false,
-
-      allowUnverifiedPrice:
-        false,
-
-      allowUnverifiedCompanyFacts:
-        false,
-
-      handoverToHuman:
-        true
+      allowUnverifiedStock: false,
+      allowUnverifiedPrice: false,
+      allowUnverifiedCompanyFacts: false,
+      handoverToHuman: true
     },
 
     /* =========================================
@@ -230,54 +185,28 @@
     inquiry: {
       enabled: true,
 
-      collectCustomerName:
-        true,
-
-      collectContact:
-        true,
-
-      collectPart:
-        true,
-
-      collectOEM:
-        true,
-
-      collectVehicle:
-        true,
-
-      collectModelYear:
-        true,
-
-      collectQuantity:
-        true,
-
-      collectMessage:
-        true,
+      collectCustomerName: true,
+      collectContact: true,
+      collectPart: true,
+      collectOEM: true,
+      collectVehicle: true,
+      collectModelYear: true,
+      collectQuantity: true,
+      collectMessage: true,
 
       /*
        * Customer location is intentionally
        * excluded.
        */
-      collectCustomerLocation:
-        false,
+      collectCustomerLocation: false,
 
-      defaultStatus:
-        "new",
+      defaultStatus: "new",
+      defaultCommunicationStatus: "not_contacted",
+      defaultPriority: "normal",
 
-      defaultCommunicationStatus:
-        "not_contacted",
-
-      defaultPriority:
-        "normal",
-
-      allowStaffAssignment:
-        true,
-
-      allowFollowUp:
-        true,
-
-      allowQuotationStatus:
-        true
+      allowStaffAssignment: true,
+      allowFollowUp: true,
+      allowQuotationStatus: true
     },
 
     /* =========================================
@@ -286,20 +215,11 @@
 
     locations: {
       enabled: true,
-
       adminManaged: true,
-
-      customerLocationCollection:
-        false,
-
-      aiProactiveRecommendation:
-        false,
-
-      allowDeactivate:
-        true,
-
-      allowMultipleBranches:
-        true
+      customerLocationCollection: false,
+      aiProactiveRecommendation: false,
+      allowDeactivate: true,
+      allowMultipleBranches: true
     },
 
     /* =========================================
@@ -308,7 +228,6 @@
 
     social: {
       enabled: true,
-
       adminManaged: true,
 
       platforms: [
@@ -332,15 +251,10 @@
 
     payment: {
       enabled: false,
-
       onlinePayment: false,
-
       orderPayment: false,
-
       gatewayConnected: false,
-
       gateway: "",
-
       currency: "SAR"
     },
 
@@ -350,27 +264,16 @@
 
     admin: {
       enabled: true,
-
       dashboard: true,
-
       inventory: true,
-
       parts: true,
-
       inquiries: true,
-
       branches: true,
-
       vehicles: true,
-
       ai: true,
-
       social: true,
-
       settings: true,
-
       payment: true,
-
       audit: true
     },
 
@@ -381,18 +284,15 @@
     api: {
       version: "v1",
 
-      publicBasePath:
-        "/api/v1",
+      publicBasePath: "/api/v1",
 
-      adminBasePath:
-        "/api/v1/admin",
+      adminBasePath: "/api/v1/admin",
 
-      enabled: false,
+      enabled: true,
 
-      backendConnected: false,
+      backendConnected: true,
 
-      useLocalJSON:
-        true,
+      useLocalJSON: true,
 
       timeout: 10000
     },
@@ -402,20 +302,11 @@
     ========================================= */
 
     security: {
-      requireVerifiedInventory:
-        true,
-
-      allowCustomerLocation:
-        false,
-
-      allowAIUnverifiedClaims:
-        false,
-
-      allowClientSideAdminWrites:
-        false,
-
-      sanitizeCustomerOutput:
-        true
+      requireVerifiedInventory: true,
+      allowCustomerLocation: false,
+      allowAIUnverifiedClaims: false,
+      allowClientSideAdminWrites: false,
+      sanitizeCustomerOutput: true
     },
 
     /* =========================================
@@ -424,9 +315,7 @@
 
     environment: {
       mode: "development",
-
       production: false,
-
       debug: true
     }
   };
@@ -497,13 +386,9 @@
      DATA PATH
   ========================================= */
 
-  function getDataPath(
-    fileName
-  ) {
+  function getDataPath(fileName) {
     if (!fileName) {
-      return getProjectPath(
-        "data"
-      );
+      return getProjectPath("data");
     }
 
     return (
@@ -520,13 +405,9 @@
      PAGE PATH
   ========================================= */
 
-  function getPagePath(
-    fileName
-  ) {
+  function getPagePath(fileName) {
     if (!fileName) {
-      return getProjectPath(
-        "pages"
-      );
+      return getProjectPath("pages");
     }
 
     return (
@@ -543,19 +424,13 @@
      COMPONENT PATH
   ========================================= */
 
-  function getComponentPath(
-    fileName
-  ) {
+  function getComponentPath(fileName) {
     if (!fileName) {
-      return getProjectPath(
-        "components"
-      );
+      return getProjectPath("components");
     }
 
     return (
-      getProjectPath(
-        "components"
-      ) +
+      getProjectPath("components") +
       String(fileName).replace(
         /^\/+/,
         ""
@@ -568,9 +443,7 @@
      API PATH
   ========================================= */
 
-  function getApiPath(
-    path = ""
-  ) {
+  function getApiPath(path = "") {
     return (
       getProjectPath("api") +
       String(path).replace(
@@ -585,17 +458,13 @@
      FEATURE CHECK
   ========================================= */
 
-  function isFeatureEnabled(
-    feature
-  ) {
+  function isFeatureEnabled(feature) {
     if (!feature) {
       return false;
     }
 
     return (
-      APP_CONFIG.features?.[
-        feature
-      ] === true
+      APP_CONFIG.features?.[feature] === true
     );
   }
 
@@ -604,19 +473,13 @@
      ADMIN FEATURE CHECK
   ========================================= */
 
-  function isAdminFeatureEnabled(
-    feature
-  ) {
-    if (
-      !APP_CONFIG.admin.enabled
-    ) {
+  function isAdminFeatureEnabled(feature) {
+    if (!APP_CONFIG.admin.enabled) {
       return false;
     }
 
     return (
-      APP_CONFIG.admin?.[
-        feature
-      ] === true
+      APP_CONFIG.admin?.[feature] === true
     );
   }
 
@@ -628,8 +491,7 @@
   function calculateStockStatus(
     quantity,
     threshold =
-      APP_CONFIG.inventory
-        .lowStockThreshold
+      APP_CONFIG.inventory.lowStockThreshold
   ) {
     const qty =
       Number(quantity);
@@ -637,9 +499,7 @@
     const lowThreshold =
       Number(threshold);
 
-    if (
-      !Number.isFinite(qty)
-    ) {
+    if (!Number.isFinite(qty)) {
       return "unknown";
     }
 
@@ -650,9 +510,7 @@
     if (
       qty <=
       (
-        Number.isFinite(
-          lowThreshold
-        )
+        Number.isFinite(lowThreshold)
           ? lowThreshold
           : 5
       )
@@ -718,14 +576,9 @@
     const base =
       APP_CONFIG;
 
-    let websiteSettings =
-      {};
-
-    let aiSettings =
-      {};
-
-    let socialChannels =
-      null;
+    let websiteSettings = {};
+    let aiSettings = {};
+    let socialChannels = null;
 
     try {
       const storedWebsite =
@@ -735,13 +588,10 @@
 
       if (storedWebsite) {
         websiteSettings =
-          JSON.parse(
-            storedWebsite
-          ) || {};
+          JSON.parse(storedWebsite) || {};
       }
     } catch (error) {
-      websiteSettings =
-        {};
+      websiteSettings = {};
     }
 
     try {
@@ -752,13 +602,10 @@
 
       if (storedAI) {
         aiSettings =
-          JSON.parse(
-            storedAI
-          ) || {};
+          JSON.parse(storedAI) || {};
       }
     } catch (error) {
-      aiSettings =
-        {};
+      aiSettings = {};
     }
 
     try {
@@ -769,13 +616,10 @@
 
       if (storedSocial) {
         socialChannels =
-          JSON.parse(
-            storedSocial
-          );
+          JSON.parse(storedSocial);
       }
     } catch (error) {
-      socialChannels =
-        null;
+      socialChannels = null;
     }
 
     return {
@@ -783,32 +627,27 @@
 
       company: {
         ...base.company,
-        ...(websiteSettings
-          .company || {})
+        ...(websiteSettings.company || {})
       },
 
       contact: {
         ...base.contact,
-        ...(websiteSettings
-          .contact || {})
+        ...(websiteSettings.contact || {})
       },
 
       site: {
         ...base.site,
-        ...(websiteSettings
-          .site || {})
+        ...(websiteSettings.site || {})
       },
 
       features: {
         ...base.features,
-        ...(websiteSettings
-          .features || {})
+        ...(websiteSettings.features || {})
       },
 
       inventory: {
         ...base.inventory,
-        ...(websiteSettings
-          .inventory || {})
+        ...(websiteSettings.inventory || {})
       },
 
       ai: {
@@ -818,39 +657,32 @@
 
       inquiry: {
         ...base.inquiry,
-        ...(websiteSettings
-          .inquiry || {})
+        ...(websiteSettings.inquiry || {})
       },
 
       locations: {
         ...base.locations,
-        ...(websiteSettings
-          .locations || {})
+        ...(websiteSettings.locations || {})
       },
 
       social: {
         ...base.social,
 
-        ...(Array.isArray(
-          socialChannels
-        )
+        ...(Array.isArray(socialChannels)
           ? {
-              channels:
-                socialChannels
+              channels: socialChannels
             }
           : {})
       },
 
       payment: {
         ...base.payment,
-        ...(websiteSettings
-          .payment || {})
+        ...(websiteSettings.payment || {})
       },
 
       admin: {
         ...base.admin,
-        ...(websiteSettings
-          .admin || {})
+        ...(websiteSettings.admin || {})
       }
     };
   }
@@ -887,9 +719,7 @@
       ];
 
       if (
-        supportedKeys.includes(
-          event.key
-        )
+        supportedKeys.includes(event.key)
       ) {
         emitConfigUpdated();
       }
@@ -903,6 +733,27 @@
 
   window.APP_CONFIG =
     APP_CONFIG;
+
+  /*
+   * Central backend API configuration.
+   *
+   * The backend is served from the same
+   * Codespaces origin/port as the website.
+   *
+   * This keeps the API URL dynamic and
+   * avoids hard-coding a Codespaces URL.
+   */
+  window.DAHAYAN_CONFIG = {
+    API_BASE_URL:
+      window.location.origin
+  };
+
+  /*
+   * Backward-compatible global used by
+   * existing Admin modules.
+   */
+  window.CONFIG =
+    window.DAHAYAN_CONFIG;
 
   window.getProjectRoot =
     getProjectRoot;
