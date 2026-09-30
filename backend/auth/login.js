@@ -1,13 +1,10 @@
 const crypto = require("crypto");
+const fs = require("fs");
+const path = require("path");
 
 /* =========================================
    AL-DAHAYAN ADMIN LOGIN SERVICE
    ========================================= */
-
-/*
- * Credentials and JWT secret must come from environment
- * variables. Never hard-code passwords or JWT secrets.
- */
 
 const ADMIN_USERNAME =
   process.env.ADMIN_USERNAME || "";
@@ -20,6 +17,74 @@ const JWT_SECRET =
 
 const JWT_EXPIRES_IN_SECONDS =
   Number(process.env.JWT_EXPIRES_IN_SECONDS) || 86400;
+
+
+/* =========================================
+   DATA FILES
+   ========================================= */
+
+const ADMIN_USERS_FILE = path.join(
+  __dirname,
+  "..",
+  "..",
+  "data",
+  "admin-users.json"
+);
+
+const ADMIN_PERMISSIONS_FILE = path.join(
+  __dirname,
+  "..",
+  "..",
+  "data",
+  "admin-permissions.json"
+);
+
+
+/* =========================================
+   LOAD ADMIN USERS
+   ========================================= */
+
+function loadAdminUsers() {
+  const data = JSON.parse(
+    fs.readFileSync(
+      ADMIN_USERS_FILE,
+      "utf8"
+    )
+  );
+
+  if (!Array.isArray(data.users)) {
+    throw new Error(
+      "Invalid admin-users.json: users must be an array."
+    );
+  }
+
+  return data.users;
+}
+
+
+/* =========================================
+   LOAD ROLE PERMISSIONS
+   ========================================= */
+
+function loadRolePermissions() {
+  const data = JSON.parse(
+    fs.readFileSync(
+      ADMIN_PERMISSIONS_FILE,
+      "utf8"
+    )
+  );
+
+  if (
+    !data.rolePermissions ||
+    typeof data.rolePermissions !== "object"
+  ) {
+    throw new Error(
+      "Invalid admin-permissions.json: rolePermissions is required."
+    );
+  }
+
+  return data.rolePermissions;
+}
 
 
 /* =========================================
@@ -37,7 +102,10 @@ function safeCompare(valueA, valueB) {
     return false;
   }
 
-  return crypto.timingSafeEqual(aBuffer, bBuffer);
+  return crypto.timingSafeEqual(
+    aBuffer,
+    bBuffer
+  );
 }
 
 
@@ -65,7 +133,8 @@ function createToken(admin) {
     );
   }
 
-  const now = Math.floor(Date.now() / 1000);
+  const now =
+    Math.floor(Date.now() / 1000);
 
   const header = {
     alg: "HS256",
@@ -96,7 +165,10 @@ function createToken(admin) {
 
   const signature =
     crypto
-      .createHmac("sha256", JWT_SECRET)
+      .createHmac(
+        "sha256",
+        JWT_SECRET
+      )
       .update(unsignedToken)
       .digest("base64")
       .replace(/\+/g, "-")
@@ -104,6 +176,56 @@ function createToken(admin) {
       .replace(/=+$/g, "");
 
   return `${unsignedToken}.${signature}`;
+}
+
+
+/* =========================================
+   FIND ADMIN USER
+   ========================================= */
+
+function findAdminUser(username) {
+  const users = loadAdminUsers();
+
+  const normalizedUsername =
+    String(username || "").trim();
+
+  return users.find((user) =>
+    user &&
+    user.active !== false &&
+    safeCompare(
+      String(user.username || "").trim(),
+      normalizedUsername
+    )
+  );
+}
+
+
+/* =========================================
+   BUILD ADMIN PERMISSIONS
+   ========================================= */
+
+function getPermissionsForRole(role) {
+  const rolePermissions =
+    loadRolePermissions();
+
+  const permissions =
+    rolePermissions[role];
+
+  if (!Array.isArray(permissions)) {
+    throw new Error(
+      `No permissions configured for role: ${role}`
+    );
+  }
+
+  return [
+    ...new Set(
+      permissions.filter(
+        (permission) =>
+          typeof permission === "string" &&
+          permission.trim() !== ""
+      )
+    )
+  ];
 }
 
 
@@ -127,29 +249,68 @@ async function login(username, password) {
   const normalizedUsername =
     String(username || "").trim();
 
-  if (!safeCompare(
-    normalizedUsername,
-    ADMIN_USERNAME
-  )) {
+  /*
+   * Environment username remains the
+   * authentication credential source.
+   */
+  if (
+    !safeCompare(
+      normalizedUsername,
+      ADMIN_USERNAME
+    )
+  ) {
     return null;
   }
 
-  if (!safeCompare(
-    String(password || ""),
-    ADMIN_PASSWORD
-  )) {
+  if (
+    !safeCompare(
+      String(password || ""),
+      ADMIN_PASSWORD
+    )
+  ) {
     return null;
   }
+
+  /*
+   * Load the corresponding admin record.
+   */
+  const adminUser =
+    findAdminUser(
+      normalizedUsername
+    );
+
+  if (!adminUser) {
+    throw new Error(
+      "Authenticated admin user is not configured in admin-users.json."
+    );
+  }
+
+  if (!adminUser.id) {
+    throw new Error(
+      "Admin user ID is missing."
+    );
+  }
+
+  if (!adminUser.role) {
+    throw new Error(
+      "Admin user role is missing."
+    );
+  }
+
+  /*
+   * Load permissions from the centralized
+   * role-permission mapping.
+   */
+  const permissions =
+    getPermissionsForRole(
+      adminUser.role
+    );
 
   const admin = {
-    id: "admin-001",
-    username: ADMIN_USERNAME,
-    role: "super_admin",
-
-    permissions: [
-      "oem.view",
-      "oem.stock_update"
-    ]
+    id: adminUser.id,
+    username: normalizedUsername,
+    role: adminUser.role,
+    permissions
   };
 
   const token =
