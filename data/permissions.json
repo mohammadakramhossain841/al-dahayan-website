@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "2.0",
   "status": "foundation",
   "description": "Central permission definitions for the Al-Dahayan Admin Panel.",
   "permissions": [
@@ -59,24 +59,60 @@
       "description": "Update OEM inventory and stock information."
     },
     {
-      "id": "oem.image_manage",
-      "name": "Manage OEM Images",
-      "description": "Upload, replace, remove, reorder and manage OEM images."
-    },
-    {
       "id": "oem.audit_view",
-      "name": "View Audit Logs",
-      "description": "View administrative audit records."
+      "name": "View OEM Audit",
+      "description": "View OEM administrative audit records."
     },
     {
       "id": "oem.history_view",
       "name": "View OEM History",
-      "description": "View OEM record and image management history."
+      "description": "View OEM record history."
     },
     {
       "id": "oem.permissions_manage",
-      "name": "Manage Permissions",
-      "description": "Manage administrative roles and permissions."
+      "name": "Manage OEM Permissions",
+      "description": "Manage administrative permissions."
+    },
+
+    {
+      "id": "image.view",
+      "name": "View Images",
+      "description": "View images and image metadata."
+    },
+    {
+      "id": "image.upload",
+      "name": "Upload Images",
+      "description": "Upload new website images."
+    },
+    {
+      "id": "image.edit",
+      "name": "Edit Images",
+      "description": "Edit image metadata and settings."
+    },
+    {
+      "id": "image.replace",
+      "name": "Replace Images",
+      "description": "Replace an existing image while preserving its relationship and history."
+    },
+    {
+      "id": "image.delete",
+      "name": "Delete Image Reference",
+      "description": "Remove an image reference from the centralized image system."
+    },
+    {
+      "id": "image.set_primary",
+      "name": "Set Primary Image",
+      "description": "Set an image as the primary image for an entity."
+    },
+    {
+      "id": "image.reorder",
+      "name": "Reorder Images",
+      "description": "Change gallery image ordering."
+    },
+    {
+      "id": "image.history_view",
+      "name": "View Image History",
+      "description": "View image management history and audit records."
     }
   ]
 }
