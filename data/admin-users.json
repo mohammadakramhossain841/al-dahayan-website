@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Administrative user definitions for the Al-Dahayan Admin Panel.",
+  "users": [
+    {
+      "id": "admin-001",
+      "username": "admin",
+      "role": "super_admin",
+      "active": true
+    }
+  ],
+  "securityRules": {
+    "requireAuthentication": true,
+    "passwordStoredInEnvironment": true,
+    "passwordStoredInThisFile": false,
+    "jwtSecretStoredInEnvironment": true,
+    "allowDisabledUsersToLogin": false
+  }
+}
