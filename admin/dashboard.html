@@ -1,420 +1,1028 @@
-/* =========================================
-   AL-DAHAYAN ADMIN DASHBOARD
-   Dashboard Authentication & Data Controller
-   ========================================= */
-
-(function () {
-  "use strict";
-
-
-  /* =========================================
-     CONFIGURATION
-     ========================================= */
-
-  const STORAGE_KEYS = {
-    token: "dahayan_admin_token",
-    admin: "dahayan_admin_user"
-  };
-
-
-  /* =========================================
-     DOM HELPERS
-     ========================================= */
-
-  function getElement(id) {
-    return document.getElementById(id);
-  }
-
-
-  /* =========================================
-     SESSION
-     ========================================= */
-
-  function getToken() {
-    return sessionStorage.getItem(
-      STORAGE_KEYS.token
-    );
-  }
-
-
-  function getAdmin() {
-    const storedAdmin =
-      sessionStorage.getItem(
-        STORAGE_KEYS.admin
-      );
-
-    if (!storedAdmin) {
-      return null;
-    }
-
-    try {
-      return JSON.parse(storedAdmin);
-    } catch (error) {
-      return null;
-    }
-  }
-
-
-  function requireAuthentication() {
-    const token = getToken();
-
-    if (!token) {
-      window.location.href = "login.html";
-      return false;
-    }
-
-    return true;
-  }
-
-
-  /* =========================================
-     ADMIN INFORMATION
-     ========================================= */
-
-  function displayAdminInformation() {
-
-    const admin = getAdmin();
-
-    const accountName =
-      getElement("adminAccountName");
-
-    const accountRole =
-      getElement("adminAccountRole");
-
-    const authStatus =
-      getElement("authStatus");
-
-
-    if (authStatus) {
-      authStatus.textContent = "Authenticated";
-      authStatus.classList.add(
-        "admin-status-success"
-      );
-    }
-
-
-    if (!admin) {
-      return;
-    }
-
-
-    if (accountName) {
-
-      const name =
-        admin.name ||
-        admin.username ||
-        admin.email ||
-        "Administrator";
-
-      accountName.textContent = name;
-    }
-
-
-    if (accountRole) {
-
-      accountRole.textContent =
-        admin.role ||
-        "Administrator";
-    }
-  }
-
-
-  /* =========================================
-     INITIAL STAT VALUES
-     ========================================= */
-
-  function initializeStatistics() {
-
-    const statistics = [
-      "dashboard-total-parts",
-      "dashboard-in-stock",
-      "dashboard-low-stock",
-      "dashboard-out-of-stock",
-      "dashboard-new-inquiries"
-    ];
-
-
-    statistics.forEach(function (id) {
-
-      const element =
-        getElement(id);
-
-      if (element) {
-        element.textContent = "—";
-      }
-
-    });
-  }
-
-
-  /* =========================================
-     API CONFIGURATION
-     ========================================= */
-
-  function getApiBaseUrl() {
-
-    if (
-      window.DAHAYAN_CONFIG &&
-      typeof window.DAHAYAN_CONFIG.API_BASE_URL === "string"
-    ) {
-      return window.DAHAYAN_CONFIG.API_BASE_URL
-        .replace(/\/$/, "");
-    }
-
-
-    if (
-      window.CONFIG &&
-      typeof window.CONFIG.API_BASE_URL === "string"
-    ) {
-      return window.CONFIG.API_BASE_URL
-        .replace(/\/$/, "");
-    }
-
-
-    return "";
-  }
-
-
-  /* =========================================
-     AUTHENTICATED API REQUEST
-     ========================================= */
-
-  async function authenticatedRequest(
-    endpoint,
-    options = {}
-  ) {
-
-    const token = getToken();
-
-    if (!token) {
-      window.location.href = "login.html";
-      return null;
-    }
-
-
-    const apiBaseUrl =
-      getApiBaseUrl();
-
-
-    if (!apiBaseUrl) {
-      throw new Error(
-        "API configuration is not available."
-      );
-    }
-
-
-    const requestOptions = {
-      ...options,
-
-      headers: {
-        ...(options.headers || {}),
-
-        "Content-Type":
-          "application/json",
-
-        "Authorization":
-          `Bearer ${token}`
-      }
-    };
-
-
-    const response =
-      await fetch(
-        `${apiBaseUrl}${endpoint}`,
-        requestOptions
-      );
-
-
-    if (response.status === 401) {
-
-      sessionStorage.removeItem(
-        STORAGE_KEYS.token
-      );
-
-      sessionStorage.removeItem(
-        STORAGE_KEYS.admin
-      );
-
-      window.location.href =
-        "login.html";
-
-      return null;
-    }
-
-
-    let data = null;
-
-    try {
-      data = await response.json();
-    } catch (error) {
-      data = null;
-    }
-
-
-    if (!response.ok) {
-
-      const message =
-        data?.message ||
-        data?.error ||
-        "Unable to load dashboard data.";
-
-      throw new Error(message);
-    }
-
-
-    return data;
-  }
-
-
-  /* =========================================
-     DASHBOARD DATA
-     ========================================= */
-
-  async function loadDashboardData() {
-
-    /*
-     * The existing verified backend APIs are kept
-     * untouched here.
-     *
-     * Dashboard-specific statistics will be connected
-     * after the exact statistics endpoint is confirmed.
-     */
-
-    return null;
-  }
-
-
-  /* =========================================
-     LOGOUT
-     ========================================= */
-
-  function setupLogout() {
-
-    const logoutButton =
-      getElement("adminLogoutButton");
-
-
-    if (!logoutButton) {
-      return;
-    }
-
-
-    logoutButton.addEventListener(
-      "click",
-      function () {
-
-        sessionStorage.removeItem(
-          STORAGE_KEYS.token
-        );
-
-        sessionStorage.removeItem(
-          STORAGE_KEYS.admin
-        );
-
-        window.location.href =
-          "login.html";
-      }
-    );
-  }
-
-
-  /* =========================================
-     SIDEBAR ACTIVE STATE
-     ========================================= */
-
-  function setupNavigation() {
-
-    const currentPage =
-      document.body.dataset.adminPage ||
-      "dashboard";
-
-
-    const navigationLinks =
-      document.querySelectorAll(
-        "[data-admin-nav]"
-      );
-
-
-    navigationLinks.forEach(
-      function (link) {
-
-        const page =
-          link.dataset.adminNav;
-
-
-        if (page === currentPage) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <title>
+        Admin Dashboard | Al-Dahayan Trading Company
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <style>
+        /* =====================================================
+           UNIFIED ADMIN PANEL
+           Dashboard shell only
+           ===================================================== */
+
+        .unified-admin {
+            min-height: 100vh;
+            background: #f5f5f5;
         }
 
-      }
-    );
-  }
+        .unified-admin-header {
+            background: #111111;
+            color: #ffffff;
+            border-bottom: 3px solid #d71920;
+        }
+
+        .unified-admin-header-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .unified-admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            text-decoration: none;
+        }
+
+        .unified-admin-logo {
+            display: block;
+            width: auto;
+            height: 58px;
+            max-width: 220px;
+            object-fit: contain;
+        }
+
+        .unified-admin-brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .unified-admin-brand-text span {
+            font-size: 12px;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .unified-admin-brand-text strong {
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        .unified-admin-user {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .unified-admin-user-info {
+            text-align: right;
+        }
+
+        .unified-admin-user-info strong,
+        .unified-admin-user-info span {
+            display: block;
+        }
+
+        .unified-admin-user-info strong {
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .unified-admin-user-info span {
+            margin-top: 3px;
+            color: #bbbbbb;
+            font-size: 12px;
+            text-transform: capitalize;
+        }
+
+        .unified-admin-logout {
+            border: 1px solid #555555;
+            background: transparent;
+            color: #ffffff;
+            border-radius: 6px;
+            padding: 9px 14px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .unified-admin-logout:hover {
+            border-color: #d71920;
+            background: #d71920;
+        }
+
+        .unified-admin-layout {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            min-height: calc(100vh - 82px);
+        }
+
+        .unified-admin-sidebar {
+            background: #ffffff;
+            border-right: 1px solid #dddddd;
+            padding: 22px 14px;
+        }
+
+        .admin-nav-title {
+            padding: 0 12px 10px;
+            color: #777777;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .admin-nav {
+            display: grid;
+            gap: 5px;
+        }
+
+        .admin-nav a {
+            display: flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 10px 12px;
+            border-radius: 7px;
+            color: #333333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+        }
+
+        .admin-nav a:hover {
+            background: #f4f4f4;
+            color: #d71920;
+        }
+
+        .admin-nav a.is-active {
+            background: #111111;
+            color: #ffffff;
+        }
+
+        .admin-nav-divider {
+            height: 1px;
+            margin: 12px 8px;
+            background: #e5e5e5;
+        }
+
+        .unified-admin-content {
+            min-width: 0;
+            padding: 30px;
+        }
+
+        .admin-dashboard-heading {
+            margin-bottom: 26px;
+        }
+
+        .admin-dashboard-heading .eyebrow {
+            display: block;
+            margin-bottom: 6px;
+            color: #d71920;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .admin-dashboard-heading h1 {
+            margin: 0;
+            color: #111111;
+            font-size: 30px;
+        }
+
+        .admin-dashboard-heading p {
+            max-width: 760px;
+            margin: 8px 0 0;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        .unified-stat-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(5, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 26px;
+        }
+
+        .unified-stat-card {
+            background: #ffffff;
+            border: 1px solid #e2e2e2;
+            border-radius: 9px;
+            padding: 20px;
+        }
+
+        .unified-stat-card span,
+        .unified-stat-card strong,
+        .unified-stat-card small {
+            display: block;
+        }
+
+        .unified-stat-card span {
+            color: #777777;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .unified-stat-card strong {
+            margin: 8px 0 5px;
+            color: #111111;
+            font-size: 30px;
+        }
+
+        .unified-stat-card small {
+            color: #888888;
+            font-size: 12px;
+        }
+
+        .unified-module-section {
+            margin-top: 26px;
+        }
+
+        .unified-module-section h2 {
+            margin: 0 0 14px;
+            color: #111111;
+            font-size: 20px;
+        }
+
+        .unified-module-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .unified-module-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 145px;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #e2e2e2;
+            border-radius: 9px;
+        }
+
+        .unified-module-card strong {
+            color: #111111;
+            font-size: 16px;
+        }
+
+        .unified-module-card p {
+            margin: 8px 0 18px;
+            color: #666666;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .unified-module-card a {
+            align-self: flex-start;
+            color: #d71920;
+            font-size: 13px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .unified-module-card a:hover {
+            text-decoration: underline;
+        }
+
+        .unified-admin-notice {
+            margin-top: 26px;
+            padding: 18px 20px;
+            background: #ffffff;
+            border-left: 4px solid #d71920;
+            border-radius: 7px;
+            border-top: 1px solid #e2e2e2;
+            border-right: 1px solid #e2e2e2;
+            border-bottom: 1px solid #e2e2e2;
+        }
+
+        .unified-admin-notice strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #111111;
+        }
+
+        .unified-admin-notice p {
+            margin: 0;
+            color: #666666;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1100px) {
+
+            .unified-stat-grid {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+            .unified-module-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 850px) {
+
+            .unified-admin-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .unified-admin-sidebar {
+                border-right: 0;
+                border-bottom: 1px solid #dddddd;
+                padding: 14px;
+            }
+
+            .admin-nav {
+                display: flex;
+                overflow-x: auto;
+                gap: 6px;
+                padding-bottom: 3px;
+            }
+
+            .admin-nav a {
+                flex: 0 0 auto;
+                white-space: nowrap;
+            }
+
+            .admin-nav-title,
+            .admin-nav-divider {
+                display: none;
+            }
+
+            .unified-admin-content {
+                padding: 22px 16px;
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .unified-admin-header-inner {
+                min-height: 72px;
+                gap: 12px;
+            }
+
+            .unified-admin-logo {
+                height: 48px;
+                max-width: 175px;
+            }
+
+            .unified-admin-brand-text {
+                display: none;
+            }
+
+            .unified-admin-user-info {
+                display: none;
+            }
+
+            .unified-admin-logout {
+                padding: 8px 11px;
+                font-size: 12px;
+            }
+
+            .unified-stat-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .unified-module-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-dashboard-heading h1 {
+                font-size: 25px;
+            }
+
+        }
+    </style>
+</head>
+
+<body class="unified-admin">
+
+    <!-- =====================================================
+         ADMIN HEADER
+         ===================================================== -->
+
+    <header class="unified-admin-header">
+
+        <div class="container">
+
+            <div class="unified-admin-header-inner">
+
+                <a
+                    href="dashboard.html"
+                    class="unified-admin-brand"
+                    aria-label="Al-Dahayan Admin Dashboard"
+                >
+
+                    <img
+                        src="../assets/images/1000018142-removebg-preview.png"
+                        alt="Al-Dahayan Trading Company"
+                        class="unified-admin-logo"
+                    >
+
+                    <div class="unified-admin-brand-text">
+                        <span>Administration</span>
+                        <strong>Unified Admin Panel</strong>
+                    </div>
+
+                </a>
 
 
-  /* =========================================
-     INITIALIZE DASHBOARD
-     ========================================= */
+                <div class="unified-admin-user">
 
-  async function initializeDashboard() {
+                    <div class="unified-admin-user-info">
 
-    if (!requireAuthentication()) {
-      return;
-    }
+                        <strong data-admin-name>
+                            Administrator
+                        </strong>
 
+                        <span data-admin-role>
+                            admin
+                        </span>
 
-    initializeStatistics();
-
-    displayAdminInformation();
-
-    setupLogout();
-
-    setupNavigation();
+                    </div>
 
 
-    try {
+                    <button
+                        type="button"
+                        class="unified-admin-logout"
+                        data-admin-logout
+                    >
+                        Logout
+                    </button>
 
-      await loadDashboardData();
+                </div>
 
-    } catch (error) {
+            </div>
 
-      console.error(
-        "Dashboard data error:",
-        error
-      );
+        </div>
 
-    }
-
-  }
-
-
-  /* =========================================
-     PUBLIC DASHBOARD API
-     ========================================= */
-
-  window.DahayanAdminDashboard = {
-
-    getToken: getToken,
-
-    getAdmin: getAdmin,
-
-    authenticatedRequest:
-      authenticatedRequest,
-
-    loadDashboardData:
-      loadDashboardData
-
-  };
+    </header>
 
 
-  /* =========================================
-     START
-     ========================================= */
+    <!-- =====================================================
+         ADMIN LAYOUT
+         ===================================================== -->
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    initializeDashboard
-  );
+    <div class="unified-admin-layout">
 
-})();
+
+        <!-- =================================================
+             SIDEBAR / NAVIGATION
+             ================================================= -->
+
+        <aside class="unified-admin-sidebar">
+
+            <div class="admin-nav-title">
+                Main Administration
+            </div>
+
+
+            <nav
+                class="admin-nav"
+                aria-label="Admin navigation"
+            >
+
+                <a
+                    href="dashboard.html"
+                    data-admin-nav="dashboard"
+                >
+                    Dashboard
+                </a>
+
+
+                <a
+                    href="parts.html"
+                    data-admin-nav="parts"
+                >
+                    Parts Management
+                </a>
+
+
+                <a
+                    href="vehicles.html"
+                    data-admin-nav="vehicles"
+                >
+                    Vehicle Management
+                </a>
+
+
+                <a
+                    href="vin-search.html"
+                    data-admin-nav="vin"
+                >
+                    VIN Search
+                </a>
+
+
+                <a
+                    href="inventory.html"
+                    data-admin-nav="inventory"
+                >
+                    Live Inventory
+                </a>
+
+
+                <a
+                    href="image-management.html"
+                    data-admin-nav="images"
+                >
+                    Image Management
+                </a>
+
+
+                <div class="admin-nav-divider"></div>
+
+
+                <a
+                    href="branches.html"
+                    data-admin-nav="branches"
+                >
+                    Branches & Locations
+                </a>
+
+
+                <a
+                    href="inquiries.html"
+                    data-admin-nav="inquiries"
+                >
+                    Customer Inquiries
+                </a>
+
+
+                <a
+                    href="ai.html"
+                    data-admin-nav="ai"
+                >
+                    MAHANOOR AI
+                </a>
+
+
+                <div class="admin-nav-divider"></div>
+
+
+                <a
+                    href="social.html"
+                    data-admin-nav="social"
+                >
+                    Social & Online Channels
+                </a>
+
+
+                <a
+                    href="settings.html"
+                    data-admin-nav="settings"
+                >
+                    Admin Settings
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+             ================================================= -->
+
+        <main class="unified-admin-content">
+
+            <section class="admin-dashboard-heading">
+
+                <span class="eyebrow">
+                    Al-Dahayan Administration
+                </span>
+
+                <h1>
+                    Unified Admin Panel
+                </h1>
+
+                <p>
+                    Central management area for Toyota and Lexus
+                    spare parts, vehicles, inventory, images,
+                    customer inquiries, branches, AI assistance,
+                    social channels, and website settings.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 STATISTICS
+                 ================================================= -->
+
+            <section aria-label="Dashboard statistics">
+
+                <div class="unified-stat-grid">
+
+                    <article class="unified-stat-card">
+
+                        <span>
+                            Total Parts
+                        </span>
+
+                        <strong id="dashboard-total-parts">
+                            0
+                        </strong>
+
+                        <small>
+                            OEM catalog records
+                        </small>
+
+                    </article>
+
+
+                    <article class="unified-stat-card">
+
+                        <span>
+                            In Stock
+                        </span>
+
+                        <strong id="dashboard-in-stock">
+                            0
+                        </strong>
+
+                        <small>
+                            Verified inventory
+                        </small>
+
+                    </article>
+
+
+                    <article class="unified-stat-card">
+
+                        <span>
+                            Low Stock
+                        </span>
+
+                        <strong id="dashboard-low-stock">
+                            0
+                        </strong>
+
+                        <small>
+                            Inventory attention
+                        </small>
+
+                    </article>
+
+
+                    <article class="unified-stat-card">
+
+                        <span>
+                            Out of Stock
+                        </span>
+
+                        <strong id="dashboard-out-of-stock">
+                            0
+                        </strong>
+
+                        <small>
+                            Current records
+                        </small>
+
+                    </article>
+
+
+                    <article class="unified-stat-card">
+
+                        <span>
+                            New Inquiries
+                        </span>
+
+                        <strong id="dashboard-new-inquiries">
+                            0
+                        </strong>
+
+                        <small>
+                            Customer requests
+                        </small>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 CORE MANAGEMENT
+                 ================================================= -->
+
+            <section class="unified-module-section">
+
+                <h2>
+                    Core Management
+                </h2>
+
+
+                <div class="unified-module-grid">
+
+                    <article class="unified-module-card">
+
+                        <div>
+                            <strong>
+                                Parts Management
+                            </strong>
+
+                            <p>
+                                Manage OEM parts, categories,
+                                compatibility, specifications,
+                                and catalog records.
+                            </p>
+                        </div>
+
+                        <a href="parts.html">
+                            Open Parts
+                        </a>
+
+                    </article>
+
+
+                    <article class="unified-module-card">
+
+                        <div>
+                            <strong>
+                                Vehicle Management
+                            </strong>
+
+                            <p>
+                                Manage Toyota and Lexus vehicle
+                                models, generations, years,
+                                engines, and compatibility data.
+                            </p>
+                        </div>
+
+                        <a href="vehicles.html">
+                            Open Vehicles
+                        </a>
+
+                    </article>
+
+
+                    <article class="unified-module-card">
+
+                        <div>
+                            <strong>
+                                VIN Search
+                            </strong>
+
+                            <p>
+                                Manage the vehicle identification
+                                workflow and VIN-based part
+                                identification system.
+                            </p>
+                        </div>
+
+                        <a href="vin-search.html">
+                            Open VIN Search
+                        </a>
+
+                    </article>
+
+
+                    <article class="unified-module-card">
+
+                        <div>
+                            <strong>
+                                Live Inventory
+                            </strong>
+
+                            <p>
+                                Manage verified stock quantities
+                                and inventory records connected
+                                to locations.
+                            </p>
+                        </div>
+
+                        <a href="inventory.html">
+                            Open Inventory
+                        </a>
+
+                    </article>
+
+
+                    <article class="unified-module-card">
+
+                        <div>
+                            <strong>
+                                Image Management
+                            </strong>
+
+                            <p>
+                                Centrally manage website images,
+                                OEM part images, vehicle images,
+                                banners, and other media.
+                            </p>
+                        </div>
+
+                        <a href="image-management.html">
+                            Open Images
+                        </a>
+
+                    </article>
+
+
+                    <article class="unified-module-card">
+
+                        <div>
+                            <strong>
+                                Branches & Locations
+                            </strong>
+
+                            <p>
+                                Manage branches, sales locations,
+                                warehouses, services, contact
+                                information, and maps.
+                            </p>
+                        </div>
+
+                        <a href="branches.html">
+                            Open Locations
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 CUSTOMER & COMMUNICATION
+                 ================================================= -->
+
+            <section class="unified-module-section">
+
+                <h2>
+                    Customer & Communication
+                </h2>
+
+
+                <div class="unified-module-grid">
+
+                    <article class="unified-module-card">
+
+                        <div>
+                            <strong>
+                                Customer Inquiries
+                            </strong>
+
+                            <p>
+                                Track customer requests,
+                                communication status, quotations,
+                                assignments, and follow-ups.
+                            </p>
+                        </div>
+
+                        <a href="inquiries.html">
+                            Open Inquiries
+                        </a>
+
+                    </article>
+
+
+                    <article class="unified-module-card">
+
+                        <div>
+                            <strong>
+                                MAHANOOR AI
+                            </strong>
+
+                            <p>
+                                Manage AI assistant behavior,
+                                knowledge sources, inventory
+                                verification, and customer handover.
+                            </p>
+                        </div>
+
+                        <a href="ai.html">
+                            Open MAHANOOR
+                        </a>
+
+                    </article>
+
+
+                    <article class="unified-module-card">
+
+                        <div>
+                            <strong>
+                                Social & Online Channels
+                            </strong>
+
+                            <p>
+                                Manage company social channels,
+                                WhatsApp, Google Maps, website
+                                links, and other online channels.
+                            </p>
+                        </div>
+
+                        <a href="social.html">
+                            Open Channels
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SYSTEM
+                 ================================================= -->
+
+            <section class="unified-module-section">
+
+                <h2>
+                    System
+                </h2>
+
+
+                <div class="unified-module-grid">
+
+                    <article class="unified-module-card">
+
+                        <div>
+                            <strong>
+                                Admin Settings
+                            </strong>
+
+                            <p>
+                                Manage website features, company
+                                information, contact settings,
+                                language options, and inventory
+                                display configuration.
+                            </p>
+                        </div>
+
+                        <a href="settings.html">
+                            Open Settings
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ADMIN NOTE
+                 ================================================= -->
+
+            <section class="unified-admin-notice">
+
+                <strong>
+                    Unified Administration
+                </strong>
+
+                <p>
+                    This panel is the central entry point for
+                    Al-Dahayan website administration. Individual
+                    management modules will be progressively
+                    integrated with their verified APIs and data
+                    sources without recreating completed backend
+                    authentication or inventory services.
+                </p>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         SCRIPTS
+         ===================================================== -->
+
+    <script src="../js/config.js"></script>
+
+    <script src="../js/admin/admin-auth.js"></script>
+
+    <script src="../js/admin/dashboard.js"></script>
+
+</body>
+
+</html>
