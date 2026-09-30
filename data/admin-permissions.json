@@ -1,0 +1,100 @@
+{
+  "version": "2.0",
+  "status": "foundation",
+  "description": "Central role-based permission mapping for the Al-Dahayan Admin Panel.",
+  "rolePermissions": {
+    "super_admin": [
+      "oem.create",
+      "oem.view",
+      "oem.edit",
+      "oem.archive",
+      "oem.restore",
+      "oem.disable",
+      "oem.verify",
+      "oem.import",
+      "oem.export",
+      "oem.price_update",
+      "oem.stock_update",
+      "oem.audit_view",
+      "oem.history_view",
+      "oem.permissions_manage",
+
+      "image.view",
+      "image.upload",
+      "image.edit",
+      "image.replace",
+      "image.delete",
+      "image.set_primary",
+      "image.reorder",
+      "image.history_view"
+    ],
+
+    "admin": [
+      "oem.create",
+      "oem.view",
+      "oem.edit",
+      "oem.archive",
+      "oem.restore",
+      "oem.import",
+      "oem.export",
+      "oem.price_update",
+      "oem.stock_update",
+      "oem.history_view",
+
+      "image.view",
+      "image.upload",
+      "image.edit",
+      "image.replace",
+      "image.delete",
+      "image.set_primary",
+      "image.reorder",
+      "image.history_view"
+    ],
+
+    "catalog_manager": [
+      "oem.create",
+      "oem.view",
+      "oem.edit",
+      "oem.archive",
+      "oem.restore",
+      "oem.import",
+      "oem.export",
+
+      "image.view",
+      "image.upload",
+      "image.edit",
+      "image.replace",
+      "image.set_primary",
+      "image.reorder"
+    ],
+
+    "inventory_manager": [
+      "oem.view",
+      "oem.stock_update",
+      "oem.export",
+
+      "image.view"
+    ],
+
+    "viewer": [
+      "oem.view",
+      "image.view"
+    ]
+  },
+
+  "securityRules": {
+    "publicUsersCanManage": false,
+    "requireAuthentication": true,
+    "requirePermissionForEveryAction": true,
+    "recordPermissionFailures": true,
+    "recordAdministrativeActions": true,
+    "physicalFileDeleteRequiresExplicitPermission": true
+  },
+
+  "protectedActions": [
+    "oem.disable",
+    "oem.verify",
+    "oem.permissions_manage",
+    "image.delete"
+  ]
+}
