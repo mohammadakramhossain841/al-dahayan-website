@@ -8,12 +8,17 @@ require("dotenv").config();
 const { login } = require("./auth/login");
 const { requireAuth, requirePermission } = require("./auth/middleware");
 const inventoryRouter = require("./routes/inventory");
+const imageRouter = require("./routes/images");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(helmet());
-app.use(express.json());
+
+// Image upload supports up to 10MB files.
+// Base64 encoding adds extra payload size, so 15MB JSON limit is used.
+app.use(express.json({ limit: "15mb" }));
+
 app.use(cors());
 app.use(express.static(path.join(__dirname, "..")));
 
@@ -133,6 +138,12 @@ app.get("/api/health", (req, res) => {
 // ===============================
 
 app.use("/api/v1/inventory", inventoryRouter);
+
+// ===============================
+// IMAGE MANAGEMENT API
+// ===============================
+
+app.use("/api/v1/images", imageRouter);
 
 // ===============================
 // START SERVER
