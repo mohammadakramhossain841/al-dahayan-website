@@ -8,10 +8,12 @@
  * Purpose:
  * Central Admin UI controller for website image management.
  *
- * NOTE:
- * This file is the frontend UI foundation.
- * Backend API endpoints will be connected after the existing
- * backend image architecture is audited.
+ * Backend:
+ * GET    /api/v1/images
+ * GET    /api/v1/images/:imageId
+ * POST   /api/v1/images
+ * PUT    /api/v1/images/:imageId
+ * DELETE /api/v1/images/:imageId
  */
 
 (() => {
@@ -27,8 +29,10 @@
         selectedIds: new Set(),
         currentEditId: null,
         currentPage: 1,
-        pageSize: 20
+        pageSize: 20,
+        loading: false
     };
+
 
     /* =========================================================
        DOM HELPERS
@@ -40,7 +44,9 @@
     const $$ = (selector, parent = document) =>
         Array.from(parent.querySelectorAll(selector));
 
-    const byId = (id) => document.getElementById(id);
+    const byId = (id) =>
+        document.getElementById(id);
+
 
     /* =========================================================
        ELEMENTS
@@ -85,11 +91,189 @@
         saveButton: byId("saveImageBtn")
     };
 
+
+    /* =========================================================
+       API CONFIGURATION
+    ========================================================= */
+
+    function getApiBaseUrl() {
+        if (
+            window.DAHAYAN_CONFIG &&
+            typeof window.DAHAYAN_CONFIG.API_BASE_URL === "string"
+        ) {
+            return window.DAHAYAN_CONFIG.API_BASE_URL
+                .replace(/\/+$/, "");
+        }
+
+        if (
+            window.CONFIG &&
+            typeof window.CONFIG.API_BASE_URL === "string"
+        ) {
+            return window.CONFIG.API_BASE_URL
+                .replace(/\/+$/, "");
+        }
+
+        return window.location.origin
+            .replace(/\/+$/, "");
+    }
+
+
+    function getApiUrl(path = "") {
+        const baseUrl = getApiBaseUrl();
+
+        return (
+            `${baseUrl}/api/v1/images` +
+            String(path)
+        );
+    }
+
+
+    function getAuthToken() {
+        if (
+            window.DahayanAdminAuth &&
+            typeof window.DahayanAdminAuth.getToken === "function"
+        ) {
+            return window.DahayanAdminAuth.getToken();
+        }
+
+        return sessionStorage.getItem(
+            "dahayan_admin_token"
+        );
+    }
+
+
+    function buildAuthHeaders(includeJson = false) {
+        const token = getAuthToken();
+
+        const headers = {};
+
+        if (includeJson) {
+            headers["Content-Type"] =
+                "application/json";
+        }
+
+        if (token) {
+            headers["Authorization"] =
+                `Bearer ${token}`;
+        }
+
+        return headers;
+    }
+
+
+    /* =========================================================
+       API REQUEST
+    ========================================================= */
+
+    async function apiRequest(
+        path = "",
+        options = {}
+    ) {
+        const requestOptions = {
+            ...options,
+            headers: {
+                ...buildAuthHeaders(
+                    options.body !== undefined
+                ),
+                ...(options.headers || {})
+            }
+        };
+
+        let response;
+
+        try {
+            response = await fetch(
+                getApiUrl(path),
+                requestOptions
+            );
+        } catch (error) {
+            throw new Error(
+                "Unable to connect to the image management API."
+            );
+        }
+
+        let data = null;
+
+        try {
+            data = await response.json();
+        } catch (error) {
+            data = null;
+        }
+
+        if (
+            response.status === 401
+        ) {
+            throw new Error(
+                "Your admin session has expired. Please sign in again."
+            );
+        }
+
+        if (
+            response.status === 403
+        ) {
+            throw new Error(
+                "You do not have permission to perform this image management action."
+            );
+        }
+
+        if (!response.ok) {
+            throw new Error(
+                getApiErrorMessage(data) ||
+                `Image API request failed (${response.status}).`
+            );
+        }
+
+        if (
+            data &&
+            data.success === false
+        ) {
+            throw new Error(
+                getApiErrorMessage(data) ||
+                "Image API request failed."
+            );
+        }
+
+        return data;
+    }
+
+
+    function getApiErrorMessage(data) {
+        if (!data) {
+            return "";
+        }
+
+        if (
+            typeof data.error === "string"
+        ) {
+            return data.error;
+        }
+
+        if (
+            data.error &&
+            typeof data.error.message === "string"
+        ) {
+            return data.error.message;
+        }
+
+        if (
+            typeof data.message === "string"
+        ) {
+            return data.message;
+        }
+
+        return "";
+    }
+
+
     /* =========================================================
        INITIALIZATION
     ========================================================= */
 
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener(
+        "DOMContentLoaded",
+        init
+    );
+
 
     function init() {
         bindEvents();
@@ -97,29 +281,58 @@
         updateBulkActions();
     }
 
+
     /* =========================================================
        EVENTS
     ========================================================= */
 
     function bindEvents() {
-        elements.search?.addEventListener("input", handleFilters);
-        elements.entityFilter?.addEventListener("change", handleFilters);
-        elements.typeFilter?.addEventListener("change", handleFilters);
-        elements.statusFilter?.addEventListener("change", handleFilters);
+        elements.search?.addEventListener(
+            "input",
+            handleFilters
+        );
 
-        elements.selectAll?.addEventListener("change", handleSelectAll);
+        elements.entityFilter?.addEventListener(
+            "change",
+            handleFilters
+        );
 
-        elements.uploadButton?.addEventListener("click", () => {
-            openUploadModal();
-        });
+        elements.typeFilter?.addEventListener(
+            "change",
+            handleFilters
+        );
+
+        elements.statusFilter?.addEventListener(
+            "change",
+            handleFilters
+        );
+
+        elements.selectAll?.addEventListener(
+            "change",
+            handleSelectAll
+        );
+
+        elements.uploadButton?.addEventListener(
+            "click",
+            () => {
+                openUploadModal();
+            }
+        );
 
         elements.bulkDeleteButton?.addEventListener(
             "click",
             handleBulkDelete
         );
 
-        elements.modalClose?.addEventListener("click", closeModal);
-        elements.modalCancel?.addEventListener("click", closeModal);
+        elements.modalClose?.addEventListener(
+            "click",
+            closeModal
+        );
+
+        elements.modalCancel?.addEventListener(
+            "click",
+            closeModal
+        );
 
         elements.imageForm?.addEventListener(
             "submit",
@@ -141,31 +354,243 @@
             handleRowSelection
         );
 
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                closeModal();
+        document.addEventListener(
+            "keydown",
+            (event) => {
+                if (event.key === "Escape") {
+                    closeModal();
+                }
             }
-        });
+        );
     }
+
 
     /* =========================================================
        LOAD IMAGES
     ========================================================= */
 
     async function loadImages() {
-        /*
-         * Backend API connection will be added after
-         * existing backend image architecture is verified.
-         *
-         * Do NOT invent an API endpoint here.
-         */
+        state.loading = true;
 
-        state.images = [];
-        state.filteredImages = [];
+        renderLoadingState();
 
-        renderTable();
-        updateCounters();
+        try {
+            const response =
+                await apiRequest("");
+
+            const rawImages =
+                Array.isArray(response?.images)
+                    ? response.images
+                    : Array.isArray(response?.assets)
+                        ? response.assets
+                        : Array.isArray(response?.data)
+                            ? response.data
+                            : [];
+
+            state.images =
+                rawImages.map(
+                    normalizeImageRecord
+                );
+
+            state.selectedIds.clear();
+            state.currentPage = 1;
+
+            handleFilters();
+
+            showMessage(
+                `Image registry loaded: ${state.images.length} image(s).`
+            );
+        } catch (error) {
+            console.error(
+                "Image registry load error:",
+                error
+            );
+
+            state.images = [];
+            state.filteredImages = [];
+            state.selectedIds.clear();
+
+            renderTable();
+            updateCounters();
+
+            showMessage(
+                error.message ||
+                "Failed to load image registry.",
+                true
+            );
+        } finally {
+            state.loading = false;
+        }
     }
+
+
+    function renderLoadingState() {
+        if (!elements.imageTableBody) {
+            return;
+        }
+
+        elements.imageTableBody.innerHTML = `
+            <tr>
+                <td colspan="10" class="empty-state">
+                    Loading image registry...
+                </td>
+            </tr>
+        `;
+    }
+
+
+    /* =========================================================
+       NORMALIZE BACKEND IMAGE
+    ========================================================= */
+
+    function normalizeImageRecord(image) {
+        const active =
+            image?.active !== false;
+
+        const status =
+            active
+                ? "active"
+                : "disabled";
+
+        const imageId =
+            image?.imageId ||
+            image?.id ||
+            "";
+
+        const imageType =
+            image?.type ||
+            image?.imageType ||
+            "";
+
+        const url =
+            image?.cdnUrl ||
+            image?.url ||
+            image?.storageUrl ||
+            buildStorageUrl(image);
+
+        return {
+            id: imageId,
+
+            imageId: imageId,
+
+            entityType:
+                image?.entityType || "",
+
+            entityId:
+                image?.entityId || "",
+
+            entityName:
+                image?.entityName || "",
+
+            namespace:
+                image?.namespace || "",
+
+            imageType:
+                imageType,
+
+            type:
+                imageType,
+
+            storageProvider:
+                image?.storageProvider ||
+                "",
+
+            storagePath:
+                image?.storagePath ||
+                "",
+
+            cdnUrl:
+                image?.cdnUrl ||
+                null,
+
+            fileName:
+                image?.fileName ||
+                "",
+
+            mimeType:
+                image?.mimeType ||
+                "",
+
+            fileSizeBytes:
+                Number(image?.fileSizeBytes || 0),
+
+            width:
+                image?.width ?? null,
+
+            height:
+                image?.height ?? null,
+
+            url: url,
+
+            altEn:
+                image?.altText ||
+                image?.altEn ||
+                "",
+
+            altAr:
+                image?.altTextArabic ||
+                image?.altAr ||
+                "",
+
+            captionEn:
+                image?.caption ||
+                image?.captionEn ||
+                "",
+
+            captionAr:
+                image?.captionArabic ||
+                image?.captionAr ||
+                "",
+
+            active:
+                active,
+
+            status:
+                image?.status ||
+                status,
+
+            isPrimary:
+                Boolean(image?.isPrimary),
+
+            order:
+                image?.order ??
+                image?.sortOrder ??
+                0,
+
+            createdAt:
+                image?.createdAt ||
+                null,
+
+            updatedAt:
+                image?.updatedAt ||
+                null
+        };
+    }
+
+
+    function buildStorageUrl(image) {
+        if (
+            !image ||
+            !image.storagePath
+        ) {
+            return "";
+        }
+
+        const path =
+            String(image.storagePath)
+                .replace(/^\/+/, "");
+
+        const baseUrl =
+            getApiBaseUrl()
+                .replace(/\/+$/, "");
+
+        /*
+         * The backend serves the repository
+         * root as static content.
+         */
+        return `${baseUrl}/${path}`;
+    }
+
 
     /* =========================================================
        FILTERS
@@ -173,61 +598,83 @@
 
     function handleFilters() {
         const searchValue =
-            (elements.search?.value || "").trim().toLowerCase();
-
-        const entityValue =
-            elements.entityFilter?.value || "";
-
-        const typeValue =
-            elements.typeFilter?.value || "";
-
-        const statusValue =
-            elements.statusFilter?.value || "";
-
-        state.filteredImages = state.images.filter((image) => {
-            const searchableText = [
-                image.id,
-                image.entityId,
-                image.entityType,
-                image.imageType,
-                image.altEn,
-                image.altAr,
-                image.captionEn,
-                image.captionAr
-            ]
-                .filter(Boolean)
-                .join(" ")
+            (
+                elements.search?.value ||
+                ""
+            )
+                .trim()
                 .toLowerCase();
 
-            const matchesSearch =
-                !searchValue ||
-                searchableText.includes(searchValue);
+        const entityValue =
+            elements.entityFilter?.value ||
+            "";
 
-            const matchesEntity =
-                !entityValue ||
-                image.entityType === entityValue;
+        const typeValue =
+            elements.typeFilter?.value ||
+            "";
 
-            const matchesType =
-                !typeValue ||
-                image.imageType === typeValue;
+        const statusValue =
+            elements.statusFilter?.value ||
+            "";
 
-            const matchesStatus =
-                !statusValue ||
-                image.status === statusValue;
+        state.filteredImages =
+            state.images.filter(
+                (image) => {
+                    const searchableText = [
+                        image.id,
+                        image.imageId,
+                        image.entityId,
+                        image.entityName,
+                        image.entityType,
+                        image.imageType,
+                        image.namespace,
+                        image.altEn,
+                        image.altAr,
+                        image.captionEn,
+                        image.captionAr,
+                        image.fileName
+                    ]
+                        .filter(Boolean)
+                        .join(" ")
+                        .toLowerCase();
 
-            return (
-                matchesSearch &&
-                matchesEntity &&
-                matchesType &&
-                matchesStatus
+                    const matchesSearch =
+                        !searchValue ||
+                        searchableText.includes(
+                            searchValue
+                        );
+
+                    const matchesEntity =
+                        !entityValue ||
+                        image.entityType ===
+                            entityValue;
+
+                    const matchesType =
+                        !typeValue ||
+                        image.imageType ===
+                            typeValue;
+
+                    const matchesStatus =
+                        !statusValue ||
+                        image.status ===
+                            statusValue;
+
+                    return (
+                        matchesSearch &&
+                        matchesEntity &&
+                        matchesType &&
+                        matchesStatus
+                    );
+                }
             );
-        });
 
         state.currentPage = 1;
 
         renderTable();
         updateCounters();
+        updateBulkActions();
     }
+
 
     /* =========================================================
        TABLE
@@ -238,7 +685,14 @@
             return;
         }
 
-        if (!state.filteredImages.length) {
+        if (state.loading) {
+            renderLoadingState();
+            return;
+        }
+
+        if (
+            !state.filteredImages.length
+        ) {
             elements.imageTableBody.innerHTML = `
                 <tr>
                     <td colspan="10" class="empty-state">
@@ -247,38 +701,70 @@
                 </tr>
             `;
 
+            updateSelectAllState();
+
             return;
         }
 
+        const startIndex =
+            (
+                state.currentPage - 1
+            ) *
+            state.pageSize;
+
+        const endIndex =
+            startIndex +
+            state.pageSize;
+
+        const pageImages =
+            state.filteredImages.slice(
+                startIndex,
+                endIndex
+            );
+
         elements.imageTableBody.innerHTML =
-            state.filteredImages
+            pageImages
                 .map(renderImageRow)
                 .join("");
 
         updateRowSelectionUI();
     }
 
+
     function renderImageRow(image) {
         const checked =
-            state.selectedIds.has(image.id)
+            state.selectedIds.has(
+                image.id
+            )
                 ? "checked"
                 : "";
 
         const primaryBadge =
             image.isPrimary
-                ? `<span class="badge badge-primary">Primary</span>`
+                ? `
+                    <span class="badge badge-primary">
+                        Primary
+                    </span>
+                `
                 : "";
 
         const statusBadge =
-            renderStatusBadge(image.status);
+            renderStatusBadge(
+                image.status
+            );
 
         const thumbnail =
             image.url
                 ? `
                     <img
-                        src="${escapeAttribute(image.url)}"
-                        alt="${escapeAttribute(image.altEn || "")}"
+                        src="${escapeAttribute(
+                            image.url
+                        )}"
+                        alt="${escapeAttribute(
+                            image.altEn || ""
+                        )}"
                         class="image-management-thumbnail"
+                        loading="lazy"
                     >
                 `
                 : `
@@ -288,13 +774,19 @@
                 `;
 
         return `
-            <tr data-image-id="${escapeAttribute(image.id)}">
+            <tr
+                data-image-id="${escapeAttribute(
+                    image.id
+                )}"
+            >
 
                 <td>
                     <input
                         type="checkbox"
                         class="image-row-checkbox"
-                        data-id="${escapeAttribute(image.id)}"
+                        data-id="${escapeAttribute(
+                            image.id
+                        )}"
                         ${checked}
                     >
                 </td>
@@ -305,20 +797,28 @@
 
                 <td>
                     <strong>
-                        ${escapeHtml(image.id || "-")}
+                        ${escapeHtml(
+                            image.id || "-"
+                        )}
                     </strong>
                 </td>
 
                 <td>
-                    ${escapeHtml(image.entityType || "-")}
+                    ${escapeHtml(
+                        image.entityType || "-"
+                    )}
                 </td>
 
                 <td>
-                    ${escapeHtml(image.entityId || "-")}
+                    ${escapeHtml(
+                        image.entityId || "-"
+                    )}
                 </td>
 
                 <td>
-                    ${escapeHtml(image.imageType || "-")}
+                    ${escapeHtml(
+                        image.imageType || "-"
+                    )}
                     ${primaryBadge}
                 </td>
 
@@ -327,11 +827,15 @@
                 </td>
 
                 <td>
-                    ${escapeHtml(image.altEn || "-")}
+                    ${escapeHtml(
+                        image.altEn || "-"
+                    )}
                 </td>
 
                 <td>
-                    ${escapeHtml(image.order ?? "-")}
+                    ${escapeHtml(
+                        image.order ?? "-"
+                    )}
                 </td>
 
                 <td>
@@ -341,7 +845,9 @@
                             type="button"
                             class="btn btn-sm"
                             data-action="edit"
-                            data-id="${escapeAttribute(image.id)}"
+                            data-id="${escapeAttribute(
+                                image.id
+                            )}"
                         >
                             Edit
                         </button>
@@ -350,16 +856,29 @@
                             type="button"
                             class="btn btn-sm"
                             data-action="primary"
-                            data-id="${escapeAttribute(image.id)}"
+                            data-id="${escapeAttribute(
+                                image.id
+                            )}"
+                            ${
+                                image.isPrimary
+                                    ? "disabled"
+                                    : ""
+                            }
                         >
-                            Set Primary
+                            ${
+                                image.isPrimary
+                                    ? "Primary"
+                                    : "Set Primary"
+                            }
                         </button>
 
                         <button
                             type="button"
                             class="btn btn-sm btn-danger"
                             data-action="remove"
-                            data-id="${escapeAttribute(image.id)}"
+                            data-id="${escapeAttribute(
+                                image.id
+                            )}"
                         >
                             Remove
                         </button>
@@ -371,24 +890,52 @@
         `;
     }
 
+
     function renderStatusBadge(status) {
-        const normalized = String(status || "active")
-            .toLowerCase();
+        const normalized =
+            String(
+                status || "active"
+            ).toLowerCase();
 
-        if (normalized === "active") {
-            return `<span class="badge badge-success">Active</span>`;
+        if (
+            normalized === "active"
+        ) {
+            return `
+                <span class="badge badge-success">
+                    Active
+                </span>
+            `;
         }
 
-        if (normalized === "disabled") {
-            return `<span class="badge badge-warning">Disabled</span>`;
+        if (
+            normalized === "disabled"
+        ) {
+            return `
+                <span class="badge badge-warning">
+                    Disabled
+                </span>
+            `;
         }
 
-        if (normalized === "archived") {
-            return `<span class="badge badge-secondary">Archived</span>`;
+        if (
+            normalized === "archived"
+        ) {
+            return `
+                <span class="badge badge-secondary">
+                    Archived
+                </span>
+            `;
         }
 
-        return `<span class="badge">${escapeHtml(status || "-")}</span>`;
+        return `
+            <span class="badge">
+                ${escapeHtml(
+                    status || "-"
+                )}
+            </span>
+        `;
     }
+
 
     /* =========================================================
        TABLE ACTIONS
@@ -396,14 +943,19 @@
 
     function handleTableAction(event) {
         const button =
-            event.target.closest("[data-action]");
+            event.target.closest(
+                "[data-action]"
+            );
 
         if (!button) {
             return;
         }
 
-        const action = button.dataset.action;
-        const id = button.dataset.id;
+        const action =
+            button.dataset.action;
+
+        const id =
+            button.dataset.id;
 
         if (!id) {
             return;
@@ -427,19 +979,23 @@
         }
     }
 
+
     /* =========================================================
        SELECTION
     ========================================================= */
 
     function handleRowSelection(event) {
         const checkbox =
-            event.target.closest(".image-row-checkbox");
+            event.target.closest(
+                ".image-row-checkbox"
+            );
 
         if (!checkbox) {
             return;
         }
 
-        const id = checkbox.dataset.id;
+        const id =
+            checkbox.dataset.id;
 
         if (!id) {
             return;
@@ -455,56 +1011,104 @@
         updateSelectAllState();
     }
 
-    function handleSelectAll(event) {
-        const checked = event.target.checked;
 
-        state.filteredImages.forEach((image) => {
-            if (checked) {
-                state.selectedIds.add(image.id);
-            } else {
-                state.selectedIds.delete(image.id);
+    function handleSelectAll(event) {
+        const checked =
+            event.target.checked;
+
+        const visibleImages =
+            getCurrentPageImages();
+
+        visibleImages.forEach(
+            (image) => {
+                if (checked) {
+                    state.selectedIds.add(
+                        image.id
+                    );
+                } else {
+                    state.selectedIds.delete(
+                        image.id
+                    );
+                }
             }
-        });
+        );
 
         updateRowSelectionUI();
         updateBulkActions();
     }
 
+
+    function getCurrentPageImages() {
+        const startIndex =
+            (
+                state.currentPage - 1
+            ) *
+            state.pageSize;
+
+        const endIndex =
+            startIndex +
+            state.pageSize;
+
+        return state.filteredImages.slice(
+            startIndex,
+            endIndex
+        );
+    }
+
+
     function updateRowSelectionUI() {
-        $$(".image-row-checkbox").forEach((checkbox) => {
-            checkbox.checked =
-                state.selectedIds.has(checkbox.dataset.id);
-        });
+        $$(".image-row-checkbox").forEach(
+            (checkbox) => {
+                checkbox.checked =
+                    state.selectedIds.has(
+                        checkbox.dataset.id
+                    );
+            }
+        );
 
         updateSelectAllState();
     }
+
 
     function updateSelectAllState() {
         if (!elements.selectAll) {
             return;
         }
 
+        const visibleImages =
+            getCurrentPageImages();
+
         const visibleIds =
-            state.filteredImages.map((image) => image.id);
+            visibleImages.map(
+                (image) => image.id
+            );
 
         if (!visibleIds.length) {
-            elements.selectAll.checked = false;
-            elements.selectAll.indeterminate = false;
+            elements.selectAll.checked =
+                false;
+
+            elements.selectAll.indeterminate =
+                false;
+
             return;
         }
 
         const selectedCount =
-            visibleIds.filter((id) =>
-                state.selectedIds.has(id)
+            visibleIds.filter(
+                (id) =>
+                    state.selectedIds.has(id)
             ).length;
 
         elements.selectAll.checked =
-            selectedCount === visibleIds.length;
+            selectedCount ===
+            visibleIds.length;
 
         elements.selectAll.indeterminate =
             selectedCount > 0 &&
-            selectedCount < visibleIds.length;
+            selectedCount <
+                visibleIds.length;
     }
+
 
     function updateBulkActions() {
         if (!elements.bulkDeleteButton) {
@@ -514,6 +1118,7 @@
         elements.bulkDeleteButton.disabled =
             state.selectedIds.size === 0;
     }
+
 
     /* =========================================================
        UPLOAD MODAL
@@ -532,9 +1137,13 @@
         showModal();
     }
 
+
     function openEditModal(id) {
         const image =
-            state.images.find((item) => item.id === id);
+            state.images.find(
+                (item) =>
+                    item.id === id
+            );
 
         if (!image) {
             return;
@@ -584,36 +1193,58 @@
 
         if (elements.imageStatus) {
             elements.imageStatus.value =
-                image.status || "active";
+                image.status === "disabled"
+                    ? "disabled"
+                    : "active";
         }
 
         if (elements.isPrimary) {
             elements.isPrimary.checked =
-                Boolean(image.isPrimary);
+                Boolean(
+                    image.isPrimary
+                );
         }
 
         if (elements.imagePreview) {
             if (image.url) {
                 elements.imagePreview.innerHTML = `
                     <img
-                        src="${escapeAttribute(image.url)}"
-                        alt="${escapeAttribute(image.altEn || "")}"
+                        src="${escapeAttribute(
+                            image.url
+                        )}"
+                        alt="${escapeAttribute(
+                            image.altEn || ""
+                        )}"
                     >
                 `;
             } else {
-                elements.imagePreview.innerHTML = "";
+                elements.imagePreview.innerHTML =
+                    "";
             }
+        }
+
+        /*
+         * File input cannot be populated
+         * from an existing image for security
+         * reasons. It remains empty during edit.
+         */
+        if (elements.imageFile) {
+            elements.imageFile.value = "";
         }
 
         showModal();
     }
+
 
     function showModal() {
         if (!elements.modal) {
             return;
         }
 
-        elements.modal.classList.add("is-open");
+        elements.modal.classList.add(
+            "is-open"
+        );
+
         elements.modal.setAttribute(
             "aria-hidden",
             "false"
@@ -624,12 +1255,16 @@
         );
     }
 
+
     function closeModal() {
         if (!elements.modal) {
             return;
         }
 
-        elements.modal.classList.remove("is-open");
+        elements.modal.classList.remove(
+            "is-open"
+        );
+
         elements.modal.setAttribute(
             "aria-hidden",
             "true"
@@ -642,17 +1277,21 @@
         state.currentEditId = null;
     }
 
+
     function resetForm() {
         elements.imageForm?.reset();
 
         if (elements.imagePreview) {
-            elements.imagePreview.innerHTML = "";
+            elements.imagePreview.innerHTML =
+                "";
         }
 
         if (elements.imageStatus) {
-            elements.imageStatus.value = "active";
+            elements.imageStatus.value =
+                "active";
         }
     }
+
 
     /* =========================================================
        IMAGE PREVIEW
@@ -670,12 +1309,15 @@
             validateImageFile(file);
 
         if (!validation.valid) {
-            alert(validation.message);
+            alert(
+                validation.message
+            );
 
             event.target.value = "";
 
             if (elements.imagePreview) {
-                elements.imagePreview.innerHTML = "";
+                elements.imagePreview.innerHTML =
+                    "";
             }
 
             return;
@@ -687,12 +1329,15 @@
         if (elements.imagePreview) {
             elements.imagePreview.innerHTML = `
                 <img
-                    src="${escapeAttribute(objectUrl)}"
+                    src="${escapeAttribute(
+                        objectUrl
+                    )}"
                     alt="Image preview"
                 >
             `;
         }
     }
+
 
     function validateImageFile(file) {
         const allowedTypes = [
@@ -704,7 +1349,11 @@
         const maxSize =
             10 * 1024 * 1024;
 
-        if (!allowedTypes.includes(file.type)) {
+        if (
+            !allowedTypes.includes(
+                file.type
+            )
+        ) {
             return {
                 valid: false,
                 message:
@@ -712,7 +1361,9 @@
             };
         }
 
-        if (file.size > maxSize) {
+        if (
+            file.size > maxSize
+        ) {
             return {
                 valid: false,
                 message:
@@ -725,6 +1376,7 @@
         };
     }
 
+
     /* =========================================================
        FORM SUBMIT
     ========================================================= */
@@ -732,11 +1384,23 @@
     async function handleFormSubmit(event) {
         event.preventDefault();
 
+        if (
+            state.loading
+        ) {
+            return;
+        }
+
         const file =
             elements.imageFile?.files?.[0];
 
-        if (!state.currentEditId && !file) {
-            alert("Please select an image.");
+        if (
+            !state.currentEditId &&
+            !file
+        ) {
+            alert(
+                "Please select an image."
+            );
+
             return;
         }
 
@@ -745,90 +1409,302 @@
                 validateImageFile(file);
 
             if (!validation.valid) {
-                alert(validation.message);
+                alert(
+                    validation.message
+                );
+
                 return;
             }
         }
 
         const formData = {
             entityType:
-                elements.entityType?.value || "",
+                elements.entityType?.value ||
+                "",
 
             entityId:
-                elements.entityId?.value.trim() || "",
+                elements.entityId?.value
+                    .trim() || "",
 
             imageType:
-                elements.imageType?.value || "",
+                elements.imageType?.value ||
+                "",
 
             altEn:
-                elements.imageAltEn?.value.trim() || "",
+                elements.imageAltEn?.value
+                    .trim() || "",
 
             altAr:
-                elements.imageAltAr?.value.trim() || "",
+                elements.imageAltAr?.value
+                    .trim() || "",
 
             captionEn:
-                elements.imageCaptionEn?.value.trim() || "",
+                elements.imageCaptionEn?.value
+                    .trim() || "",
 
             captionAr:
-                elements.imageCaptionAr?.value.trim() || "",
+                elements.imageCaptionAr?.value
+                    .trim() || "",
 
             status:
-                elements.imageStatus?.value || "active",
+                elements.imageStatus?.value ||
+                "active",
 
             isPrimary:
-                Boolean(elements.isPrimary?.checked)
+                Boolean(
+                    elements.isPrimary?.checked
+                )
         };
 
-        if (!formData.entityType) {
-            alert("Please select an entity type.");
+        if (
+            !formData.entityType
+        ) {
+            alert(
+                "Please select an entity type."
+            );
+
             return;
         }
 
-        if (!formData.entityId) {
-            alert("Please enter the entity ID.");
+        if (
+            !formData.entityId
+        ) {
+            alert(
+                "Please enter the entity ID."
+            );
+
             return;
         }
 
-        if (!formData.imageType) {
-            alert("Please select an image type.");
+        if (
+            !formData.imageType
+        ) {
+            alert(
+                "Please select an image type."
+            );
+
             return;
         }
+
+        setSaveButtonLoading(true);
+
+        try {
+            if (state.currentEditId) {
+                await updateExistingImage(
+                    state.currentEditId,
+                    formData
+                );
+
+                showMessage(
+                    "Image updated successfully."
+                );
+            } else {
+                const base64 =
+                    await fileToBase64(file);
+
+                await uploadNewImage(
+                    file,
+                    base64,
+                    formData
+                );
+
+                showMessage(
+                    "Image uploaded successfully."
+                );
+            }
+
+            closeModal();
+
+            await loadImages();
+        } catch (error) {
+            console.error(
+                "Image form submission error:",
+                error
+            );
+
+            showMessage(
+                error.message ||
+                "Failed to save image.",
+                true
+            );
+        } finally {
+            setSaveButtonLoading(false);
+        }
+    }
+
+
+    /* =========================================================
+       UPLOAD IMAGE
+    ========================================================= */
+
+    async function uploadNewImage(
+        file,
+        base64,
+        formData
+    ) {
+        const payload = {
+            imageBase64:
+                base64,
+
+            mimeType:
+                file.type,
+
+            entityType:
+                formData.entityType,
+
+            entityId:
+                formData.entityId,
+
+            entityName:
+                "",
+
+            type:
+                formData.imageType,
+
+            altText:
+                formData.altEn,
+
+            altTextArabic:
+                formData.altAr,
+
+            caption:
+                formData.captionEn,
+
+            captionArabic:
+                formData.captionAr,
+
+            isPrimary:
+                formData.isPrimary
+        };
 
         /*
-         * Backend upload/update will be connected here
-         * after the existing backend architecture is audited.
+         * The backend registry uses
+         * active/inactive rather than
+         * a frontend-only status string.
+         *
+         * New uploads are active by default.
          */
-
-        console.log(
-            "Image management form data:",
-            formData
-        );
-
-        if (file) {
-            console.log(
-                "Selected image:",
-                file.name
+        const response =
+            await apiRequest(
+                "",
+                {
+                    method: "POST",
+                    body:
+                        JSON.stringify(
+                            payload
+                        )
+                }
             );
-        }
 
-        alert(
-            state.currentEditId
-                ? "Image update is ready for backend integration."
-                : "Image upload is ready for backend integration."
-        );
-
-        closeModal();
+        return response?.image ||
+            null;
     }
+
+
+    /* =========================================================
+       UPDATE IMAGE
+    ========================================================= */
+
+    async function updateExistingImage(
+        id,
+        formData
+    ) {
+        const payload = {
+            entityType:
+                formData.entityType,
+
+            entityId:
+                formData.entityId,
+
+            type:
+                formData.imageType,
+
+            altText:
+                formData.altEn,
+
+            altTextArabic:
+                formData.altAr,
+
+            caption:
+                formData.captionEn,
+
+            captionArabic:
+                formData.captionAr,
+
+            isPrimary:
+                formData.isPrimary,
+
+            active:
+                formData.status === "active"
+        };
+
+        const response =
+            await apiRequest(
+                `/${encodeURIComponent(
+                    id
+                )}`,
+                {
+                    method: "PUT",
+                    body:
+                        JSON.stringify(
+                            payload
+                        )
+                }
+            );
+
+        return response?.image ||
+            null;
+    }
+
+
+    /* =========================================================
+       FILE TO BASE64
+    ========================================================= */
+
+    function fileToBase64(file) {
+        return new Promise(
+            (resolve, reject) => {
+                const reader =
+                    new FileReader();
+
+                reader.onload = () => {
+                    resolve(
+                        reader.result
+                    );
+                };
+
+                reader.onerror = () => {
+                    reject(
+                        new Error(
+                            "Unable to read the selected image."
+                        )
+                    );
+                };
+
+                reader.readAsDataURL(
+                    file
+                );
+            }
+        );
+    }
+
 
     /* =========================================================
        SET PRIMARY
     ========================================================= */
 
-    function setPrimary(id) {
+    async function setPrimary(id) {
         const image =
-            state.images.find((item) => item.id === id);
+            state.images.find(
+                (item) =>
+                    item.id === id
+            );
 
         if (!image) {
+            return;
+        }
+
+        if (image.isPrimary) {
             return;
         }
 
@@ -841,38 +1717,50 @@
             return;
         }
 
-        /*
-         * Backend operation will be connected later.
-         */
+        try {
+            await apiRequest(
+                `/${encodeURIComponent(
+                    id
+                )}`,
+                {
+                    method: "PUT",
+                    body:
+                        JSON.stringify({
+                            isPrimary: true
+                        })
+                }
+            );
 
-        state.images = state.images.map((item) => {
-            if (
-                item.entityType === image.entityType &&
-                item.entityId === image.entityId
-            ) {
-                return {
-                    ...item,
-                    isPrimary: item.id === id
-                };
-            }
+            showMessage(
+                "Primary image updated successfully."
+            );
 
-            return item;
-        });
+            await loadImages();
+        } catch (error) {
+            console.error(
+                "Set primary error:",
+                error
+            );
 
-        handleFilters();
-
-        showMessage(
-            "Primary image updated locally. Backend integration pending."
-        );
+            showMessage(
+                error.message ||
+                "Failed to update primary image.",
+                true
+            );
+        }
     }
+
 
     /* =========================================================
        REMOVE IMAGE
     ========================================================= */
 
-    function removeImage(id) {
+    async function removeImage(id) {
         const image =
-            state.images.find((item) => item.id === id);
+            state.images.find(
+                (item) =>
+                    item.id === id
+            );
 
         if (!image) {
             return;
@@ -887,36 +1775,49 @@
             return;
         }
 
-        /*
-         * Important:
-         * This is reference removal only.
-         * Physical file deletion must NOT happen automatically.
-         *
-         * Backend removal + audit history will be connected later.
-         */
-
-        state.images =
-            state.images.filter(
-                (item) => item.id !== id
+        try {
+            await apiRequest(
+                `/${encodeURIComponent(
+                    id
+                )}`,
+                {
+                    method: "DELETE"
+                }
             );
 
-        state.selectedIds.delete(id);
+            state.selectedIds.delete(
+                id
+            );
 
-        handleFilters();
-        updateBulkActions();
+            showMessage(
+                "Image reference removed successfully."
+            );
 
-        showMessage(
-            "Image reference removed locally. Backend integration pending."
-        );
+            await loadImages();
+        } catch (error) {
+            console.error(
+                "Remove image error:",
+                error
+            );
+
+            showMessage(
+                error.message ||
+                "Failed to remove image.",
+                true
+            );
+        }
     }
+
 
     /* =========================================================
        BULK REMOVE
     ========================================================= */
 
-    function handleBulkDelete() {
+    async function handleBulkDelete() {
         const ids =
-            Array.from(state.selectedIds);
+            Array.from(
+                state.selectedIds
+            );
 
         if (!ids.length) {
             return;
@@ -932,28 +1833,135 @@
         }
 
         /*
-         * Backend bulk removal will be connected later.
+         * Backend currently exposes
+         * individual DELETE only.
+         *
+         * Therefore bulk removal performs
+         * one verified DELETE request per ID.
          */
-
-        state.images =
-            state.images.filter(
-                (image) => !state.selectedIds.has(image.id)
+        try {
+            setBulkDeleteLoading(
+                true
             );
 
-        state.selectedIds.clear();
+            const results =
+                await Promise.allSettled(
+                    ids.map(
+                        (id) =>
+                            apiRequest(
+                                `/${encodeURIComponent(
+                                    id
+                                )}`,
+                                {
+                                    method:
+                                        "DELETE"
+                                }
+                            )
+                    )
+                );
 
-        handleFilters();
-        updateBulkActions();
+            const failed =
+                results.filter(
+                    (result) =>
+                        result.status ===
+                        "rejected"
+                );
 
-        if (elements.selectAll) {
-            elements.selectAll.checked = false;
-            elements.selectAll.indeterminate = false;
+            state.selectedIds.clear();
+
+            if (
+                failed.length === 0
+            ) {
+                showMessage(
+                    `${ids.length} image reference(s) removed successfully.`
+                );
+            } else {
+                showMessage(
+                    `${ids.length - failed.length} image(s) removed. ${failed.length} image(s) failed.`,
+                    true
+                );
+            }
+
+            await loadImages();
+        } catch (error) {
+            console.error(
+                "Bulk image removal error:",
+                error
+            );
+
+            showMessage(
+                error.message ||
+                "Bulk image removal failed.",
+                true
+            );
+        } finally {
+            setBulkDeleteLoading(
+                false
+            );
+        }
+    }
+
+
+    /* =========================================================
+       BUTTON LOADING
+    ========================================================= */
+
+    function setSaveButtonLoading(
+        loading
+    ) {
+        if (
+            !elements.saveButton
+        ) {
+            return;
         }
 
-        showMessage(
-            "Selected image references removed locally. Backend integration pending."
-        );
+        elements.saveButton.disabled =
+            loading;
+
+        if (loading) {
+            elements.saveButton.dataset
+                .originalText =
+                elements.saveButton.textContent;
+
+            elements.saveButton.textContent =
+                "Saving...";
+        } else {
+            elements.saveButton.textContent =
+                elements.saveButton.dataset
+                    .originalText ||
+                "Save";
+        }
     }
+
+
+    function setBulkDeleteLoading(
+        loading
+    ) {
+        if (
+            !elements.bulkDeleteButton
+        ) {
+            return;
+        }
+
+        elements.bulkDeleteButton.disabled =
+            loading ||
+            state.selectedIds.size === 0;
+
+        if (loading) {
+            elements.bulkDeleteButton.dataset
+                .originalText =
+                elements.bulkDeleteButton.textContent;
+
+            elements.bulkDeleteButton.textContent =
+                "Removing...";
+        } else {
+            elements.bulkDeleteButton.textContent =
+                elements.bulkDeleteButton.dataset
+                    .originalText ||
+                "Bulk Remove";
+        }
+    }
+
 
     /* =========================================================
        COUNTERS
@@ -981,7 +1989,8 @@
             active.textContent =
                 state.images.filter(
                     (image) =>
-                        image.status === "active"
+                        image.status ===
+                        "active"
                 ).length;
         }
 
@@ -989,7 +1998,8 @@
             primary.textContent =
                 state.images.filter(
                     (image) =>
-                        image.isPrimary === true
+                        image.isPrimary ===
+                        true
                 ).length;
         }
 
@@ -997,46 +2007,92 @@
             archived.textContent =
                 state.images.filter(
                     (image) =>
-                        image.status === "archived"
+                        image.status ===
+                        "archived"
                 ).length;
         }
     }
+
 
     /* =========================================================
        MESSAGE
     ========================================================= */
 
-    function showMessage(message) {
+    function showMessage(
+        message,
+        isError = false
+    ) {
         const container =
-            byId("imageManagementMessage");
+            byId(
+                "imageManagementMessage"
+            );
 
         if (!container) {
             return;
         }
 
-        container.textContent = message;
-        container.classList.add("show");
+        container.textContent =
+            message;
 
-        window.setTimeout(() => {
-            container.classList.remove("show");
-        }, 4000);
+        container.classList.toggle(
+            "error",
+            Boolean(isError)
+        );
+
+        container.classList.add(
+            "show"
+        );
+
+        window.setTimeout(
+            () => {
+                container.classList.remove(
+                    "show"
+                );
+
+                container.classList.remove(
+                    "error"
+                );
+            },
+            4000
+        );
     }
+
 
     /* =========================================================
        SECURITY / OUTPUT HELPERS
     ========================================================= */
 
     function escapeHtml(value) {
-        return String(value ?? "")
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+        return String(
+            value ?? ""
+        )
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
     }
 
+
     function escapeAttribute(value) {
-        return escapeHtml(value);
+        return escapeHtml(
+            value
+        );
     }
 
 })();
