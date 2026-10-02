@@ -1,1 +1,64 @@
-
+{
+  "version": "1.0",
+  "status": "foundation",
+  "capacity": {
+    "targetImages": 1000,
+    "maxImagesPerRecord": 20
+  },
+  "defaultStorageProvider": "repository",
+  "futureStorageProviders": [
+    "object_storage"
+  ],
+  "cdn": {
+    "enabled": false,
+    "baseUrl": null
+  },
+  "namespaces": {
+    "banners": [
+      "home",
+      "oem",
+      "vehicles",
+      "other"
+    ],
+    "homepage": [
+      "hero",
+      "sections",
+      "promotional"
+    ],
+    "oem": [
+      "primary",
+      "gallery",
+      "thumbnail",
+      "installation",
+      "diagram"
+    ],
+    "vehicles": [
+      "main",
+      "gallery",
+      "ads"
+    ],
+    "branches": [
+      "main",
+      "gallery"
+    ],
+    "ai": [
+      "avatar",
+      "assets"
+    ]
+  },
+  "limits": {
+    "maxFileSizeMb": 10,
+    "allowedMimeTypes": [
+      "image/jpeg",
+      "image/png",
+      "image/webp"
+    ]
+  },
+  "architectureRules": {
+    "adminUploadRequired": true,
+    "manualRepositoryUploadRequired": false,
+    "physicalFilesMayBeReferencedByMultipleEntities": true,
+    "frontendUsesRegistryMetadata": true,
+    "storageProviderCanBeChangedWithoutFrontendRewrite": true
+  }
+}
