@@ -120,8 +120,7 @@ function loadRegistry() {
 
 
 function saveRegistry(registry) {
-    const tempPath =
-        `${REGISTRY_PATH}.tmp`;
+    const tempPath = `${REGISTRY_PATH}.tmp`;
 
     fs.writeFileSync(
         tempPath,
@@ -166,10 +165,7 @@ function validateFileSize(buffer) {
         );
     }
 
-    if (
-        buffer.length >
-        MAX_FILE_SIZE_BYTES
-    ) {
+    if (buffer.length > MAX_FILE_SIZE_BYTES) {
         throw new Error(
             "Image file exceeds the 10 MB limit"
         );
@@ -209,17 +205,14 @@ function generateImageId(registry) {
     let imageId;
 
     do {
-        const randomNumber =
-            crypto.randomInt(
-                1,
-                1000000
-            );
+        const randomNumber = crypto.randomInt(
+            1,
+            1000000
+        );
 
         imageId =
             `IMG-${String(randomNumber).padStart(6, "0")}`;
-    } while (
-        existingIds.has(imageId)
-    );
+    } while (existingIds.has(imageId));
 
     return imageId;
 }
@@ -229,9 +222,7 @@ function generateImageId(registry) {
    FILE EXTENSION
 ========================================================= */
 
-function getExtensionFromMimeType(
-    mimeType
-) {
+function getExtensionFromMimeType(mimeType) {
     const extensions = {
         "image/jpeg": "jpg",
         "image/png": "png",
@@ -243,7 +234,7 @@ function getExtensionFromMimeType(
 
 
 /* =========================================================
-   SAFE PATH
+   SAFE STORAGE DIRECTORY
 ========================================================= */
 
 function createStorageDirectory(
@@ -260,12 +251,11 @@ function createStorageDirectory(
             ? TYPE_MAP[type]
             : "assets";
 
-    const directory =
-        path.join(
-            DEFAULT_STORAGE_ROOT,
-            safeNamespace,
-            safeType
-        );
+    const directory = path.join(
+        DEFAULT_STORAGE_ROOT,
+        safeNamespace,
+        safeType
+    );
 
     fs.mkdirSync(
         directory,
@@ -343,6 +333,7 @@ function savePhysicalImage({
 
 function registerImage({
     buffer,
+    mimeType,
     entityType,
     entityId,
     entityName = "",
@@ -365,7 +356,7 @@ function registerImage({
     );
 
     validateMimeType(
-        arguments[0].mimeType
+        mimeType
     );
 
     validateFileSize(
@@ -384,15 +375,19 @@ function registerImage({
         savePhysicalImage({
             buffer,
             imageId,
-            mimeType: arguments[0].mimeType,
+            mimeType,
             entityType,
             type
         });
 
     const record = {
         imageId,
+
         entityType,
-        entityId: entityId || null,
+
+        entityId:
+            entityId || null,
+
         entityName,
 
         namespace:
@@ -415,8 +410,7 @@ function registerImage({
         fileName:
             storage.fileName,
 
-        mimeType:
-            arguments[0].mimeType,
+        mimeType,
 
         fileSizeBytes:
             buffer.length,
@@ -428,12 +422,15 @@ function registerImage({
             null,
 
         altText,
+
         altTextArabic,
 
         caption,
+
         captionArabic,
 
-        active: true,
+        active:
+            true,
 
         isPrimary:
             Boolean(isPrimary),
