@@ -1,1 +1,750 @@
+/* =========================================================
+   AL-DAHAYAN — UNIFIED IMAGE MANAGEMENT
+   File: css/admin/image-management.css
+   ========================================================= */
 
+/* ---------------------------------------------------------
+   PAGE ROOT
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] {
+    --im-bg: var(--admin-bg, #f5f6f8);
+    --im-white: var(--admin-white, #ffffff);
+    --im-border: var(--admin-border, #e5e7eb);
+    --im-radius: var(--admin-radius, 12px);
+    --im-primary: var(--admin-primary, #111111);
+    --im-muted: var(--admin-muted, #6b7280);
+    --im-text: var(--admin-text, #1f2937);
+    --im-accent: var(--admin-accent, #d71920);
+    --im-accent-dark: var(--admin-accent-dark, #b31319);
+
+    background: var(--im-bg);
+    color: var(--im-text);
+}
+
+
+/* ---------------------------------------------------------
+   ADMIN HEADER
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 18px 24px;
+
+    background: var(--im-white);
+    border-bottom: 1px solid var(--im-border);
+}
+
+.admin-page[data-page="image-management"] .admin-header-left,
+.admin-page[data-page="image-management"] .admin-header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin-page[data-page="image-management"] .admin-logo {
+    display: block;
+
+    width: auto;
+    max-width: 250px;
+    height: 72px;
+
+    object-fit: contain;
+}
+
+
+/* ---------------------------------------------------------
+   MAIN CONTENT
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .admin-main {
+    width: min(1440px, calc(100% - 32px));
+    margin: 0 auto;
+
+    padding: 28px 0 48px;
+}
+
+
+/* ---------------------------------------------------------
+   PAGE HEADING
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .admin-page-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+
+    margin-bottom: 24px;
+}
+
+.admin-page[data-page="image-management"] .admin-page-heading h1,
+.admin-page[data-page="image-management"] .admin-page-heading h2 {
+    margin: 0;
+    color: var(--im-primary);
+}
+
+
+/* ---------------------------------------------------------
+   MESSAGE / ALERT
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .admin-message {
+    margin-bottom: 20px;
+    padding: 12px 16px;
+
+    border: 1px solid var(--im-border);
+    border-radius: 10px;
+
+    background: var(--im-white);
+}
+
+
+/* ---------------------------------------------------------
+   SECTIONS
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .admin-section {
+    margin-bottom: 24px;
+    padding: 22px;
+
+    background: var(--im-white);
+
+    border: 1px solid var(--im-border);
+    border-radius: var(--im-radius);
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.admin-page[data-page="image-management"] .section-heading {
+    margin: 0 0 16px;
+
+    color: var(--im-primary);
+}
+
+
+/* ---------------------------------------------------------
+   STATISTICS
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .image-management-stats {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+}
+
+.admin-page[data-page="image-management"] .stat-card {
+    padding: 20px;
+
+    background: var(--im-white);
+
+    border: 1px solid var(--im-border);
+    border-radius: var(--im-radius);
+}
+
+.admin-page[data-page="image-management"] .stat-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--im-muted);
+
+    font-size: 0.875rem;
+}
+
+.admin-page[data-page="image-management"] .stat-value {
+    display: block;
+
+    color: var(--im-primary);
+
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+
+/* ---------------------------------------------------------
+   FILTERS
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .image-management-filters {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    align-items: end;
+}
+
+
+/* ---------------------------------------------------------
+   FORM
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .form-group {
+    min-width: 0;
+}
+
+.admin-page[data-page="image-management"] .form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: 600;
+}
+
+.admin-page[data-page="image-management"] .form-control {
+    width: 100%;
+    min-height: 42px;
+
+    box-sizing: border-box;
+
+    padding: 9px 12px;
+
+    border: 1px solid var(--im-border);
+    border-radius: 8px;
+
+    background: var(--im-white);
+    color: var(--im-text);
+
+    font: inherit;
+}
+
+.admin-page[data-page="image-management"] .form-control:focus {
+    outline: 2px solid rgba(215, 25, 32, 0.18);
+
+    border-color: var(--im-accent);
+}
+
+.admin-page[data-page="image-management"] .checkbox-group {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 12px 18px;
+}
+
+.admin-page[data-page="image-management"] .checkbox-group label {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin: 0;
+}
+
+.admin-page[data-page="image-management"] input[type="file"] {
+    padding: 8px;
+}
+
+.admin-page[data-page="image-management"] input[type="checkbox"],
+.admin-page[data-page="image-management"] input[type="radio"] {
+    accent-color: var(--im-accent);
+}
+
+
+/* ---------------------------------------------------------
+   TABLE
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .table-container {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid var(--im-border);
+    border-radius: 10px;
+}
+
+.admin-page[data-page="image-management"] .admin-table {
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: collapse;
+}
+
+.admin-page[data-page="image-management"] .admin-table th,
+.admin-page[data-page="image-management"] .admin-table td {
+    padding: 13px 14px;
+
+    text-align: left;
+    vertical-align: middle;
+
+    border-bottom: 1px solid var(--im-border);
+}
+
+.admin-page[data-page="image-management"] .admin-table th {
+    background: #f8f9fa;
+
+    color: var(--im-primary);
+
+    font-size: 0.875rem;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.admin-page[data-page="image-management"] .admin-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.admin-page[data-page="image-management"] .admin-table tbody tr:hover {
+    background: #fafafa;
+}
+
+
+/* ---------------------------------------------------------
+   IMAGE PREVIEW
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .image-preview {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 220px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--im-border);
+    border-radius: 10px;
+
+    background: #f8f9fa;
+}
+
+.admin-page[data-page="image-management"] .image-preview img {
+    display: block;
+
+    max-width: 100%;
+    max-height: 420px;
+
+    object-fit: contain;
+}
+
+
+/* ---------------------------------------------------------
+   TABLE THUMBNAILS
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .image-management-thumbnail,
+.admin-page[data-page="image-management"] .image-management-placeholder {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 8px;
+
+    object-fit: cover;
+}
+
+.admin-page[data-page="image-management"] .image-management-placeholder {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #f0f1f3;
+
+    color: var(--im-muted);
+
+    font-size: 0.75rem;
+}
+
+
+/* ---------------------------------------------------------
+   ROW ACTIONS
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .image-row-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+
+/* ---------------------------------------------------------
+   BADGES
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 26px;
+
+    padding: 3px 9px;
+
+    border-radius: 999px;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.admin-page[data-page="image-management"] .badge-primary {
+    background: #e8eefc;
+    color: #244b9b;
+}
+
+.admin-page[data-page="image-management"] .badge-success {
+    background: #e8f7ee;
+    color: #176b3a;
+}
+
+.admin-page[data-page="image-management"] .badge-warning {
+    background: #fff5dc;
+    color: #7a5200;
+}
+
+.admin-page[data-page="image-management"] .badge-secondary {
+    background: #eef0f2;
+    color: #4b5563;
+}
+
+
+/* ---------------------------------------------------------
+   BULK ACTIONS
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .bulk-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 14px;
+}
+
+
+/* ---------------------------------------------------------
+   BUTTONS
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 40px;
+
+    padding: 8px 14px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font: inherit;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.admin-page[data-page="image-management"] .btn:hover {
+    transform: translateY(-1px);
+}
+
+.admin-page[data-page="image-management"] .btn-primary {
+    background: var(--im-accent);
+
+    border-color: var(--im-accent);
+
+    color: #ffffff;
+}
+
+.admin-page[data-page="image-management"] .btn-primary:hover {
+    background: var(--im-accent-dark);
+
+    border-color: var(--im-accent-dark);
+}
+
+.admin-page[data-page="image-management"] .btn-secondary {
+    background: var(--im-white);
+
+    border-color: var(--im-border);
+
+    color: var(--im-primary);
+}
+
+.admin-page[data-page="image-management"] .btn-secondary:hover {
+    background: #f5f5f5;
+}
+
+.admin-page[data-page="image-management"] .btn-danger {
+    background: #b42318;
+
+    border-color: #b42318;
+
+    color: #ffffff;
+}
+
+.admin-page[data-page="image-management"] .btn-sm {
+    min-height: 34px;
+
+    padding: 6px 10px;
+
+    font-size: 0.85rem;
+}
+
+
+/* ---------------------------------------------------------
+   EMPTY STATE
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .empty-state {
+    padding: 42px 20px;
+
+    text-align: center;
+
+    color: var(--im-muted);
+}
+
+
+/* ---------------------------------------------------------
+   MODAL
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.admin-page[data-page="image-management"] .modal.is-open {
+    display: flex;
+}
+
+.admin-page[data-page="image-management"] .modal-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.62);
+}
+
+.admin-page[data-page="image-management"] .modal-dialog {
+    position: relative;
+
+    z-index: 1;
+
+    width: min(760px, 100%);
+
+    max-height: min(900px, calc(100vh - 40px));
+
+    overflow: auto;
+
+    background: var(--im-white);
+
+    border-radius: 14px;
+
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.22);
+}
+
+
+/* ---------------------------------------------------------
+   MODAL HEADER / FOOTER
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .modal-header,
+.admin-page[data-page="image-management"] .modal-footer {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 16px 20px;
+
+    border-color: var(--im-border);
+}
+
+.admin-page[data-page="image-management"] .modal-header {
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--im-border);
+}
+
+.admin-page[data-page="image-management"] .modal-footer {
+    justify-content: flex-end;
+
+    border-top: 1px solid var(--im-border);
+}
+
+.admin-page[data-page="image-management"] .modal-header h2,
+.admin-page[data-page="image-management"] .modal-header h3 {
+    margin: 0;
+
+    color: var(--im-primary);
+}
+
+
+/* ---------------------------------------------------------
+   MODAL CLOSE BUTTON
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .modal-close {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    border: 1px solid var(--im-border);
+
+    border-radius: 50%;
+
+    background: var(--im-white);
+
+    color: var(--im-primary);
+
+    cursor: pointer;
+
+    font-size: 1.25rem;
+}
+
+.admin-page[data-page="image-management"] .modal-close:hover {
+    background: #f3f4f6;
+}
+
+
+/* ---------------------------------------------------------
+   MODAL BODY
+   --------------------------------------------------------- */
+
+.admin-page[data-page="image-management"] .modal-body {
+    padding: 20px;
+}
+
+.admin-page[data-page="image-management"] .modal-body .form-group + .form-group {
+    margin-top: 16px;
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE — TABLET
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .admin-page[data-page="image-management"] .image-management-stats,
+    .admin-page[data-page="image-management"] .image-management-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-page[data-page="image-management"] .admin-page-heading {
+        flex-direction: column;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE — MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    .admin-page[data-page="image-management"] .admin-header {
+        padding: 14px 16px;
+    }
+
+    .admin-page[data-page="image-management"] .admin-logo {
+        height: 58px;
+
+        max-width: 210px;
+    }
+
+    .admin-page[data-page="image-management"] .admin-main {
+        width: min(100% - 20px, 1440px);
+
+        padding-top: 20px;
+    }
+
+    .admin-page[data-page="image-management"] .admin-section {
+        padding: 16px;
+    }
+
+    .admin-page[data-page="image-management"] .image-management-stats,
+    .admin-page[data-page="image-management"] .image-management-filters {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE — SMALL MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 480px) {
+
+    .admin-page[data-page="image-management"] .admin-main {
+        width: calc(100% - 16px);
+    }
+
+    .admin-page[data-page="image-management"] .admin-section {
+        padding: 13px;
+
+        border-radius: 10px;
+    }
+
+    .admin-page[data-page="image-management"] .modal {
+        padding: 10px;
+    }
+
+    .admin-page[data-page="image-management"] .modal-body,
+    .admin-page[data-page="image-management"] .modal-header,
+    .admin-page[data-page="image-management"] .modal-footer {
+        padding: 14px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   ACCESSIBILITY
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .admin-page[data-page="image-management"] .btn {
+        transition: none;
+    }
+}
