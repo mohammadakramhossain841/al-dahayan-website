@@ -1,0 +1,118 @@
+{
+  "version": "2.0",
+  "status": "foundation",
+  "description": "Central permission definitions for the Al-Dahayan Admin Panel.",
+  "permissions": [
+    {
+      "id": "oem.create",
+      "name": "Create OEM",
+      "description": "Create new OEM catalog records."
+    },
+    {
+      "id": "oem.view",
+      "name": "View OEM",
+      "description": "View OEM catalog records."
+    },
+    {
+      "id": "oem.edit",
+      "name": "Edit OEM",
+      "description": "Edit existing OEM catalog records."
+    },
+    {
+      "id": "oem.archive",
+      "name": "Archive OEM",
+      "description": "Archive OEM catalog records."
+    },
+    {
+      "id": "oem.restore",
+      "name": "Restore OEM",
+      "description": "Restore archived OEM catalog records."
+    },
+    {
+      "id": "oem.disable",
+      "name": "Disable OEM",
+      "description": "Disable OEM catalog records."
+    },
+    {
+      "id": "oem.verify",
+      "name": "Verify OEM",
+      "description": "Verify OEM catalog records."
+    },
+    {
+      "id": "oem.import",
+      "name": "Import OEM",
+      "description": "Import OEM catalog data."
+    },
+    {
+      "id": "oem.export",
+      "name": "Export OEM",
+      "description": "Export OEM catalog data."
+    },
+    {
+      "id": "oem.price_update",
+      "name": "Update OEM Price",
+      "description": "Update OEM pricing information."
+    },
+    {
+      "id": "oem.stock_update",
+      "name": "Update OEM Stock",
+      "description": "Update OEM inventory and stock information."
+    },
+    {
+      "id": "oem.audit_view",
+      "name": "View OEM Audit",
+      "description": "View OEM administrative audit records."
+    },
+    {
+      "id": "oem.history_view",
+      "name": "View OEM History",
+      "description": "View OEM record history."
+    },
+    {
+      "id": "oem.permissions_manage",
+      "name": "Manage OEM Permissions",
+      "description": "Manage administrative permissions."
+    },
+
+    {
+      "id": "image.view",
+      "name": "View Images",
+      "description": "View images and image metadata."
+    },
+    {
+      "id": "image.upload",
+      "name": "Upload Images",
+      "description": "Upload new website images."
+    },
+    {
+      "id": "image.edit",
+      "name": "Edit Images",
+      "description": "Edit image metadata and settings."
+    },
+    {
+      "id": "image.replace",
+      "name": "Replace Images",
+      "description": "Replace an existing image while preserving its relationship and history."
+    },
+    {
+      "id": "image.delete",
+      "name": "Delete Image Reference",
+      "description": "Remove an image reference from the centralized image system."
+    },
+    {
+      "id": "image.set_primary",
+      "name": "Set Primary Image",
+      "description": "Set an image as the primary image for an entity."
+    },
+    {
+      "id": "image.reorder",
+      "name": "Reorder Images",
+      "description": "Change gallery image ordering."
+    },
+    {
+      "id": "image.history_view",
+      "name": "View Image History",
+      "description": "View image management history and audit records."
+    }
+  ]
+}

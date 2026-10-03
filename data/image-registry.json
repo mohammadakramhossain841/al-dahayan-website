@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Central image registry for all Al-Dahayan website image assets.",
+  "idPrefix": "IMG-",
+  "storageConfig": "data/image-storage.json",
+  "records": [
+    {
+      "imageId": "IMG-000001",
+      "entityType": "oem_part",
+      "entityId": "OEM-DEMO-001",
+      "entityName": "Toyota OEM Demo Part",
+      "namespace": "oem",
+      "type": "primary",
+      "storageProvider": "repository",
+      "storagePath": "assets/images/oem/primary/IMG-000001.webp",
+      "cdnUrl": null,
+      "fileName": "IMG-000001.webp",
+      "mimeType": "image/webp",
+      "fileSizeBytes": 0,
+      "width": null,
+      "height": null,
+      "altText": "Toyota OEM spare part",
+      "altTextArabic": "قطعة غيار تويوتا",
+      "active": false,
+      "createdAt": null,
+      "updatedAt": null
+    }
+  ],
+  "rules": {
+    "imageIdMustBeUnique": true,
+    "physicalFileMayHaveMultipleReferences": true,
+    "frontendMustUseImageId": true,
+    "storagePathIsBackendControlled": true,
+    "cdnUrlIsOptional": true,
+    "inactiveImagesMustNotBeShownPublicly": true,
+    "deletedImagesMustNotBreakExistingReferences": true
+  },
+  "supportedEntityTypes": [
+    "banner",
+    "homepage",
+    "page",
+    "oem_part",
+    "vehicle",
+    "branch",
+    "ai"
+  ],
+  "supportedTypes": [
+    "primary",
+    "gallery",
+    "thumbnail",
+    "installation",
+    "diagram",
+    "main",
+    "ads",
+    "hero",
+    "section",
+    "promotional",
+    "avatar",
+    "asset"
+  ]
+}

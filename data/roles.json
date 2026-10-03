@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "description": "Role definitions for the Al-Dahayan Admin Panel.",
+  "roles": [
+    {
+      "id": "super_admin",
+      "name": "Super Admin",
+      "description": "Full administrative access.",
+      "active": true
+    },
+    {
+      "id": "admin",
+      "name": "Admin",
+      "description": "General administrative access.",
+      "active": true
+    },
+    {
+      "id": "catalog_manager",
+      "name": "Catalog Manager",
+      "description": "Manages OEM catalog and related catalog images.",
+      "active": true
+    },
+    {
+      "id": "inventory_manager",
+      "name": "Inventory Manager",
+      "description": "Manages inventory and stock information.",
+      "active": true
+    },
+    {
+      "id": "viewer",
+      "name": "Viewer",
+      "description": "Read-only administrative access.",
+      "active": true
+    }
+  ]
+}

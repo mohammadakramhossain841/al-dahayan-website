@@ -1,146 +1,385 @@
-<section class="dahayan-ai" data-dahayan-ai>
+<!-- =========================================
+     DAHAYAN AI ASSISTANT
+     Assistant Identity: MAHANOOR
+========================================= -->
 
-    <!-- Floating AI Trigger -->
+<section
+    class="dahayan-ai"
+    data-dahayan-ai
+    aria-label="DAHAYAN AI Assistant"
+    data-i18n-aria-label="ai.ariaLabel"
+>
+
+    <!-- =====================================
+         Floating AI Button
+    ====================================== -->
+
     <button
-        class="dahayan-ai-trigger"
         type="button"
-        aria-label="Open DAHAYAN AI Assistant"
+        class="dahayan-ai-trigger"
         data-dahayan-ai-trigger
+        aria-label="Open DAHAYAN AI"
         aria-expanded="false"
+        aria-controls="dahayan-ai-panel"
+        data-i18n-aria-label="ai.openAssistant"
     >
+
         <img
             src="../assets/images/file_00000000fff481f488bf6682be5f33c4.png"
-            alt="DAHAYAN AI"
+            alt=""
+            class="dahayan-ai-trigger-icon"
+            data-dahayan-ai-logo
+            aria-hidden="true"
         >
-        <span>DAHAYAN AI</span>
+
+        <span class="dahayan-ai-trigger-label">
+            DAHAYAN AI
+        </span>
+
     </button>
 
-    <!-- AI Assistant Panel -->
+
+    <!-- =====================================
+         Chat Panel
+    ====================================== -->
+
     <div
-        class="dahayan-ai-panel"
         id="dahayan-ai-panel"
+        class="dahayan-ai-panel"
         data-dahayan-ai-panel
-        aria-hidden="true"
+        role="dialog"
+        aria-modal="false"
+        aria-labelledby="dahayan-ai-title"
+        hidden
     >
 
-        <!-- Header -->
-        <div class="dahayan-ai-header">
+        <!-- =================================
+             Chat Header
+        ================================== -->
 
-            <div class="dahayan-ai-header-brand">
+        <header class="dahayan-ai-header">
 
-                <img
-                    src="../assets/images/file_00000000fff481f488bf6682be5f33c4.png"
-                    alt="MAHANOOR AI"
-                    class="dahayan-ai-header-icon"
-                >
+            <div class="dahayan-ai-identity">
 
-                <div class="dahayan-ai-header-text">
-                    <strong>MAHANOOR</strong>
-                    <span>Al-Dahayan AI Assistant</span>
+                <div class="dahayan-ai-avatar">
+
+                    <img
+                        src="../assets/Images/mahanoor-avatar-1.png"
+                        alt="MAHANOOR"
+                        data-dahayan-ai-avatar
+                    >
+
                 </div>
 
+
+                <div class="dahayan-ai-identity-text">
+
+                    <h2
+                        id="dahayan-ai-title"
+                        class="dahayan-ai-name"
+                    >
+                        MAHANOOR
+                    </h2>
+
+                    <p class="dahayan-ai-subtitle">
+                        Al-Dahayan AI Assistant
+                    </p>
+
+                    <span class="dahayan-ai-status">
+
+                        <span
+                            class="dahayan-ai-status-dot"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>
+                            Online
+                        </span>
+
+                    </span>
+
+                </div>
+
+
+                <!-- Premium Badge -->
+
+                <span
+                    class="dahayan-ai-premium-badge"
+                    aria-label="Premium AI Assistant"
+                >
+
+                    <span
+                        class="dahayan-ai-premium-badge-icon"
+                        aria-hidden="true"
+                    >
+                        ♛
+                    </span>
+
+                    PREMIUM
+
+                </span>
+
             </div>
+
+
+            <!-- Close Button -->
 
             <button
                 type="button"
                 class="dahayan-ai-close"
                 data-dahayan-ai-close
                 aria-label="Close DAHAYAN AI"
-            ></button>
+                data-i18n-aria-label="ai.closeAssistant"
+            >
 
-        </div>
+                <span aria-hidden="true">
+                    ×
+                </span>
 
-        <!-- Messages -->
+            </button>
+
+        </header>
+
+
+        <!-- =================================
+             Chat Messages
+        ================================== -->
+
         <div
             class="dahayan-ai-messages"
             data-dahayan-ai-messages
+            role="log"
+            aria-live="polite"
+            aria-relevant="additions"
         >
 
-            <!-- Initial Bot Message -->
-            <div class="dahayan-ai-message dahayan-ai-message-bot">
-                <div class="dahayan-ai-bubble">
-                    Hello! I'm Mahanoor, the Al-Dahayan AI Assistant.
-                    How can I help you today?
+            <!-- Welcome Message -->
+
+            <div
+                class="dahayan-ai-message dahayan-ai-message-bot"
+            >
+
+                <div
+                    class="dahayan-ai-message-avatar"
+                >
+
+                    <img
+                        src="../assets/Images/mahanoor-avatar-1.png"
+                        alt="MAHANOOR"
+                        data-dahayan-ai-avatar
+                    >
+
                 </div>
+
+
+                <div
+                    class="dahayan-ai-message-content"
+                >
+
+                    <span
+                        class="dahayan-ai-message-name"
+                    >
+                        MAHANOOR
+                    </span>
+
+                    <p>
+                        Hello! I'm MAHANOOR,
+                        the Al-Dahayan AI Assistant.
+                        How can I help you today?
+                    </p>
+
+                </div>
+
             </div>
 
-            <!-- Quick Actions -->
-            <div class="dahayan-ai-quick-actions">
+
+            <!-- =================================
+                 Premium Information
+            ================================== -->
+
+            <div
+                class="dahayan-ai-premium-lock"
+            >
+
+                <div
+                    class="dahayan-ai-premium-lock-icon"
+                    aria-hidden="true"
+                >
+                    🔒
+                </div>
+
+                <div
+                    class="dahayan-ai-premium-lock-content"
+                >
+
+                    <p
+                        class="dahayan-ai-premium-lock-title"
+                    >
+                        Premium AI Assistant
+                    </p>
+
+                    <p
+                        class="dahayan-ai-premium-lock-text"
+                    >
+                        Premium conversation experience
+                        powered by MAHANOOR.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 Quick Actions
+            ================================== -->
+
+            <div
+                class="dahayan-ai-quick-actions"
+                data-dahayan-ai-quick-actions
+                aria-label="Quick actions"
+            >
 
                 <button
                     type="button"
+                    class="dahayan-ai-quick-action"
                     data-ai-action="find-part"
                 >
-                    Find a Part
+                    🔎 Find a Part
                 </button>
+
 
                 <button
                     type="button"
-                    data-ai-action="vehicle"
+                    class="dahayan-ai-quick-action"
+                    data-ai-action="vehicle-search"
                 >
-                    Search by Vehicle
+                    🚗 Search by Vehicle
                 </button>
+
 
                 <button
                     type="button"
-                    data-ai-action="oem"
+                    class="dahayan-ai-quick-action"
+                    data-ai-action="oem-search"
                 >
-                    Search by OEM
+                    🔢 Search by OEM
                 </button>
+
 
                 <button
                     type="button"
+                    class="dahayan-ai-quick-action"
                     data-ai-action="availability"
                 >
-                    Check Availability
+                    📦 Check Availability
                 </button>
+
 
                 <button
                     type="button"
-                    data-ai-action="whatsapp"
+                    class="dahayan-ai-quick-action"
+                    data-ai-action="contact"
                 >
-                    Contact Al-Dahayan
+                    💬 Contact Al-Dahayan
                 </button>
 
-            </div>
-
-            <!-- Typing Indicator -->
-            <div
-                class="dahayan-ai-typing"
-                data-dahayan-ai-typing
-                hidden
-            >
-                <span></span>
-                <span></span>
-                <span></span>
             </div>
 
         </div>
 
-        <!-- Message Form -->
+
+        <!-- =================================
+             Typing Indicator
+        ================================== -->
+
+        <div
+            class="dahayan-ai-typing"
+            data-dahayan-ai-typing
+            aria-hidden="true"
+            hidden
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <span class="sr-only">
+                MAHANOOR is typing
+            </span>
+
+        </div>
+
+
+        <!-- =================================
+             Chat Input
+        ================================== -->
+
         <form
-            class="dahayan-ai-form"
+            class="dahayan-ai-input-area"
             data-dahayan-ai-form
         >
 
+            <label
+                for="dahayan-ai-input"
+                class="sr-only"
+            >
+                Type your message
+            </label>
+
+
             <input
+                id="dahayan-ai-input"
                 type="text"
                 class="dahayan-ai-input"
                 data-dahayan-ai-input
-                placeholder="Type your message..."
                 autocomplete="off"
-                aria-label="Type your message"
+                maxlength="500"
+                placeholder="Type your message..."
+                data-i18n-placeholder="ai.inputPlaceholder"
             >
+
 
             <button
                 type="submit"
                 class="dahayan-ai-send"
+                data-dahayan-ai-send
                 aria-label="Send message"
+                data-i18n-aria-label="ai.sendMessage"
             >
-                Send
+
+                <span aria-hidden="true">
+                    ➤
+                </span>
+
             </button>
 
         </form>
+
+
+        <!-- =================================
+             WhatsApp Connection
+        ================================== -->
+
+        <div class="dahayan-ai-footer">
+
+            <button
+                type="button"
+                class="dahayan-ai-whatsapp"
+                data-ai-action="whatsapp"
+            >
+
+                <span aria-hidden="true">
+                    💬
+                </span>
+
+                <span>
+                    Connect with Al-Dahayan
+                </span>
+
+            </button>
+
+        </div>
 
     </div>
 

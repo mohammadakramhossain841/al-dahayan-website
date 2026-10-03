@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <title>
+        Edit Part | Al-Dahayan Trading Company
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body data-page="admin-part-edit">
+
+
+    <!-- =========================================
+         ADMIN HEADER
+         ========================================= -->
+
+    <header class="site-header">
+
+        <div class="container">
+
+            <div class="header-inner">
+
+                <a
+                    href="dashboard.html"
+                    class="logo"
+                    aria-label="Al-Dahayan Admin Dashboard"
+                >
+
+                    <img
+                        src="../assets/images/1000018142-removebg-preview.png"
+                        alt="Al-Dahayan Trading Company"
+                    >
+
+                </a>
+
+
+                <div class="admin-header-title">
+
+                    <span>
+                        Administration
+                    </span>
+
+                    <strong>
+                        Edit Part
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN
+         ========================================= -->
+
+    <main class="admin-dashboard">
+
+        <div class="container">
+
+
+            <!-- =====================================
+                 PAGE HEADING
+                 ===================================== -->
+
+            <section class="admin-page-heading">
+
+                <span class="admin-eyebrow">
+                    Admin Panel
+                </span>
+
+                <h1>
+                    Edit Part
+                </h1>
+
+                <p>
+                    Update Toyota or Lexus OEM catalog
+                    information from the Admin Panel.
+                </p>
+
+            </section>
+
+
+
+            <!-- =====================================
+                 NAVIGATION
+                 ===================================== -->
+
+            <section
+                class="admin-section"
+                style="margin-bottom:20px;"
+            >
+
+                <a
+                    href="parts.html"
+                    class="btn btn-secondary"
+                >
+                    ← Back to Parts
+                </a>
+
+            </section>
+
+
+
+            <!-- =====================================
+                 LOADING STATE
+                 ===================================== -->
+
+            <section
+                id="editPartLoading"
+                class="admin-section"
+            >
+
+                <div class="admin-empty-state">
+
+                    <strong>
+                        Loading Part
+                    </strong>
+
+                    <p>
+                        Please wait while the catalog record
+                        is being loaded.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================
+                 EDIT FORM
+                 ===================================== -->
+
+            <section
+                id="editPartSection"
+                class="admin-section"
+                style="display:none;"
+            >
+
+                <div class="admin-table-container">
+
+                    <form
+                        id="editPartForm"
+                        novalidate
+                        style="padding:28px;"
+                    >
+
+
+                        <!-- =================================
+                             BASIC INFORMATION
+                             ================================= -->
+
+                        <div
+                            class="admin-section-heading"
+                            style="margin-bottom:20px;"
+                        >
+
+                            <div>
+
+                                <span class="admin-eyebrow">
+                                    Catalog Information
+                                </span>
+
+                                <h2>
+                                    Basic Information
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            style="
+                                display:grid;
+                                grid-template-columns:
+                                repeat(2, minmax(0, 1fr));
+                                gap:20px;
+                            "
+                        >
+
+
+                            <!-- Part ID -->
+
+                            <div>
+
+                                <label
+                                    for="partId"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Part ID
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="partId"
+                                    name="partId"
+                                    class="form-control"
+                                    readonly
+                                >
+
+                                <small
+                                    style="
+                                        display:block;
+                                        margin-top:6px;
+                                        color:#666;
+                                    "
+                                >
+                                    Part ID cannot be changed
+                                    from this editor.
+                                </small>
+
+                            </div>
+
+
+                            <!-- OEM Number -->
+
+                            <div>
+
+                                <label
+                                    for="oemNumber"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    OEM Number
+                                    <span style="color:#d71920;">
+                                        *
+                                    </span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="oemNumber"
+                                    name="oemNumber"
+                                    class="form-control"
+                                    autocomplete="off"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- Part Name -->
+
+                            <div>
+
+                                <label
+                                    for="partName"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Part Name
+                                    <span style="color:#d71920;">
+                                        *
+                                    </span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="partName"
+                                    name="partName"
+                                    class="form-control"
+                                    autocomplete="off"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- Brand -->
+
+                            <div>
+
+                                <label
+                                    for="brand"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Brand
+                                    <span style="color:#d71920;">
+                                        *
+                                    </span>
+                                </label>
+
+                                <select
+                                    id="brand"
+                                    name="brand"
+                                    class="form-control"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Brand
+                                    </option>
+
+                                    <option value="Toyota">
+                                        Toyota
+                                    </option>
+
+                                    <option value="Lexus">
+                                        Lexus
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- Category -->
+
+                            <div>
+
+                                <label
+                                    for="category"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Category
+                                    <span style="color:#d71920;">
+                                        *
+                                    </span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="category"
+                                    name="category"
+                                    class="form-control"
+                                    autocomplete="off"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- Subcategory -->
+
+                            <div>
+
+                                <label
+                                    for="subcategory"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Subcategory
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="subcategory"
+                                    name="subcategory"
+                                    class="form-control"
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+
+                            <!-- Part Number -->
+
+                            <div>
+
+                                <label
+                                    for="partNumber"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Part Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="partNumber"
+                                    name="partNumber"
+                                    class="form-control"
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+
+                            <!-- Status -->
+
+                            <div>
+
+                                <label
+                                    for="status"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Catalog Status
+                                </label>
+
+                                <select
+                                    id="status"
+                                    name="status"
+                                    class="form-control"
+                                >
+
+                                    <option value="active">
+                                        Active
+                                    </option>
+
+                                    <option value="inactive">
+                                        Inactive
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             DESCRIPTION
+                             ================================= -->
+
+                        <div style="margin-top:24px;">
+
+                            <label
+                                for="description"
+                                style="
+                                    display:block;
+                                    margin-bottom:7px;
+                                    font-weight:700;
+                                "
+                            >
+                                Description
+                            </label>
+
+                            <textarea
+                                id="description"
+                                name="description"
+                                class="form-control"
+                                rows="5"
+                                placeholder="Part description or additional catalog information..."
+                            ></textarea>
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             VEHICLE COMPATIBILITY
+                             ================================= -->
+
+                        <div style="margin-top:36px;">
+
+                            <div
+                                class="admin-section-heading"
+                                style="margin-bottom:20px;"
+                            >
+
+                                <div>
+
+                                    <span class="admin-eyebrow">
+                                        Compatibility
+                                    </span>
+
+                                    <h2>
+                                        Vehicle Compatibility
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                style="
+                                    display:grid;
+                                    grid-template-columns:
+                                    repeat(3, minmax(0, 1fr));
+                                    gap:20px;
+                                "
+                            >
+
+                                <!-- Make -->
+
+                                <div>
+
+                                    <label
+                                        for="vehicleMake"
+                                        style="
+                                            display:block;
+                                            margin-bottom:7px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        Vehicle Make
+                                    </label>
+
+                                    <select
+                                        id="vehicleMake"
+                                        name="vehicleMake"
+                                        class="form-control"
+                                    >
+
+                                        <option value="">
+                                            Select Make
+                                        </option>
+
+                                        <option value="Toyota">
+                                            Toyota
+                                        </option>
+
+                                        <option value="Lexus">
+                                            Lexus
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Model -->
+
+                                <div>
+
+                                    <label
+                                        for="vehicleModel"
+                                        style="
+                                            display:block;
+                                            margin-bottom:7px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        Model
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="vehicleModel"
+                                        name="vehicleModel"
+                                        class="form-control"
+                                        autocomplete="off"
+                                    >
+
+                                </div>
+
+
+                                <!-- Year -->
+
+                                <div>
+
+                                    <label
+                                        for="vehicleYear"
+                                        style="
+                                            display:block;
+                                            margin-bottom:7px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        Year / Year Range
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="vehicleYear"
+                                        name="vehicleYear"
+                                        class="form-control"
+                                        autocomplete="off"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             SUPPLY INFORMATION
+                             ================================= -->
+
+                        <div style="margin-top:36px;">
+
+                            <div
+                                class="admin-section-heading"
+                                style="margin-bottom:20px;"
+                            >
+
+                                <div>
+
+                                    <span class="admin-eyebrow">
+                                        Product Source
+                                    </span>
+
+                                    <h2>
+                                        Supply Information
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                style="
+                                    display:grid;
+                                    grid-template-columns:
+                                    repeat(2, minmax(0, 1fr));
+                                    gap:20px;
+                                "
+                            >
+
+                                <div>
+
+                                    <label
+                                        for="madeIn"
+                                        style="
+                                            display:block;
+                                            margin-bottom:7px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        Made In
+                                    </label>
+
+                                    <select
+                                        id="madeIn"
+                                        name="madeIn"
+                                        class="form-control"
+                                    >
+
+                                        <option value="">
+                                            Select Country
+                                        </option>
+
+                                        <option value="Thailand">
+                                            Thailand
+                                        </option>
+
+                                        <option value="Japan">
+                                            Japan
+                                        </option>
+
+                                        <option value="Indonesia">
+                                            Indonesia
+                                        </option>
+
+                                        <option value="Saudi Arabia">
+                                            Saudi Arabia
+                                        </option>
+
+                                        <option value="Other">
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div>
+
+                                    <label
+                                        for="supplier"
+                                        style="
+                                            display:block;
+                                            margin-bottom:7px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        Supplier
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="supplier"
+                                        name="supplier"
+                                        class="form-control"
+                                        autocomplete="off"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             PRICING
+                             ================================= -->
+
+                        <div style="margin-top:36px;">
+
+                            <div
+                                class="admin-section-heading"
+                                style="margin-bottom:20px;"
+                            >
+
+                                <div>
+
+                                    <span class="admin-eyebrow">
+                                        Commercial Data
+                                    </span>
+
+                                    <h2>
+                                        Pricing
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                style="
+                                    display:grid;
+                                    grid-template-columns:
+                                    repeat(3, minmax(0, 1fr));
+                                    gap:20px;
+                                "
+                            >
+
+                                <div>
+
+                                    <label
+                                        for="price"
+                                        style="
+                                            display:block;
+                                            margin-bottom:7px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        Price
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="price"
+                                        name="price"
+                                        class="form-control"
+                                        min="0"
+                                        step="0.01"
+                                    >
+
+                                </div>
+
+
+                                <div>
+
+                                    <label
+                                        for="salePrice"
+                                        style="
+                                            display:block;
+                                            margin-bottom:7px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        Sale Price
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="salePrice"
+                                        name="salePrice"
+                                        class="form-control"
+                                        min="0"
+                                        step="0.01"
+                                    >
+
+                                </div>
+
+
+                                <div>
+
+                                    <label
+                                        for="discount"
+                                        style="
+                                            display:block;
+                                            margin-bottom:7px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        Discount %
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="discount"
+                                        name="discount"
+                                        class="form-control"
+                                        min="0"
+                                        max="100"
+                                        step="0.01"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             INVENTORY
+                             ================================= -->
+
+                        <div style="margin-top:36px;">
+
+                            <div
+                                class="admin-section-heading"
+                                style="margin-bottom:20px;"
+                            >
+
+                                <div>
+
+                                    <span class="admin-eyebrow">
+                                        Stock Management
+                                    </span>
+
+                                    <h2>
+                                        Inventory
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                style="
+                                    display:grid;
+                                    grid-template-columns:
+                                    repeat(3, minmax(0, 1fr));
+                                    gap:20px;
+                                "
+                            >
+
+                                <div>
+
+                                    <label
+                                        for="stockQuantity"
+                                        style="
+                                            display:block;
+                                            margin-bottom:7px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        Stock Quantity
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="stockQuantity"
+                                        name="stockQuantity"
+                                        class="form-control"
+                                        min="0"
+                                        step="1"
+                                    >
+
+                                </div>
+
+
+                                <div>
+
+                                    <label
+                                        for="stockStatus"
+                                        style="
+                                            display:block;
+                                            margin-bottom:7px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        Stock Status
+                                    </label>
+
+                                    <select
+                                        id="stockStatus"
+                                        name="stockStatus"
+                                        class="form-control"
+                                    >
+
+                                        <option value="in_stock">
+                                            In Stock
+                                        </option>
+
+                                        <option value="low_stock">
+                                            Low Stock
+                                        </option>
+
+                                        <option value="out_of_stock">
+                                            Out of Stock
+                                        </option>
+
+                                        <option value="on_order">
+                                            On Order
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div>
+
+                                    <label
+                                        for="minimumStock"
+                                        style="
+                                            display:block;
+                                            margin-bottom:7px;
+                                            font-weight:700;
+                                        "
+                                    >
+                                        Minimum Stock
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="minimumStock"
+                                        name="minimumStock"
+                                        class="form-control"
+                                        min="0"
+                                        step="1"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             IMAGE
+                             ================================= -->
+
+                        <div style="margin-top:36px;">
+
+                            <div
+                                class="admin-section-heading"
+                                style="margin-bottom:20px;"
+                            >
+
+                                <div>
+
+                                    <span class="admin-eyebrow">
+                                        Product Media
+                                    </span>
+
+                                    <h2>
+                                        Part Image
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div>
+
+                                <label
+                                    for="partImage"
+                                    style="
+                                        display:block;
+                                        margin-bottom:7px;
+                                        font-weight:700;
+                                    "
+                                >
+                                    Replace Image
+                                </label>
+
+                                <input
+                                    type="file"
+                                    id="partImage"
+                                    name="partImage"
+                                    class="form-control"
+                                    accept="image/jpeg,image/png,image/webp"
+                                >
+
+                            </div>
+
+
+                            <div
+                                id="imagePreview"
+                                style="
+                                    display:none;
+                                    margin-top:18px;
+                                "
+                            >
+
+                                <img
+                                    id="partImagePreview"
+                                    src=""
+                                    alt="Part preview"
+                                    style="
+                                        max-width:220px;
+                                        max-height:220px;
+                                        object-fit:contain;
+                                        border:1px solid #ddd;
+                                        border-radius:8px;
+                                        padding:8px;
+                                        background:#fff;
+                                    "
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             MESSAGE
+                             ================================= -->
+
+                        <div
+                            id="partFormMessage"
+                            role="alert"
+                            aria-live="polite"
+                            style="
+                                display:none;
+                                margin-top:28px;
+                                padding:14px 16px;
+                                border-radius:8px;
+                                font-weight:600;
+                            "
+                        ></div>
+
+
+
+                        <!-- =================================
+                             ACTIONS
+                             ================================= -->
+
+                        <div
+                            style="
+                                display:flex;
+                                flex-wrap:wrap;
+                                gap:12px;
+                                align-items:center;
+                                margin-top:32px;
+                                padding-top:24px;
+                                border-top:1px solid #e4e4e4;
+                            "
+                        >
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                id="savePartButton"
+                            >
+                                Save Changes
+                            </button>
+
+
+                            <a
+                                href="parts.html"
+                                class="btn btn-secondary"
+                            >
+                                Cancel
+                            </a>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================
+                 ERROR STATE
+                 ===================================== -->
+
+            <section
+                id="editPartError"
+                class="admin-section"
+                style="display:none;"
+            >
+
+                <div class="admin-empty-state">
+
+                    <strong>
+                        Part Could Not Be Loaded
+                    </strong>
+
+                    <p id="editPartErrorText">
+                        The requested catalog record could
+                        not be found.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <p>
+
+                ©
+                <span id="currentYear"></span>
+                Al-Dahayan Trading Company.
+                All rights reserved.
+
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================
+         SCRIPTS
+         ========================================= -->
+
+    <script src="../js/config.js"></script>
+
+    <script src="../js/admin/admin-auth.js"></script>
+
+
+    <script>
+
+        (function () {
+
+            "use strict";
+
+
+            const STORAGE_TOKEN =
+                "dahayan_admin_token";
+
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+
+            const partId =
+                params.get("id");
+
+
+            const loading =
+                document.getElementById(
+                    "editPartLoading"
+                );
+
+
+            const section =
+                document.getElementById(
+                    "editPartSection"
+                );
+
+
+            const errorSection =
+                document.getElementById(
+                    "editPartError"
+                );
+
+
+            const errorText =
+                document.getElementById(
+                    "editPartErrorText"
+                );
+
+
+            const form =
+                document.getElementById(
+                    "editPartForm"
+                );
+
+
+            const imageInput =
+                document.getElementById(
+                    "partImage"
+                );
+
+
+            const imagePreview =
+                document.getElementById(
+                    "imagePreview"
+                );
+
+
+            const previewImage =
+                document.getElementById(
+                    "partImagePreview"
+                );
+
+
+            const message =
+                document.getElementById(
+                    "partFormMessage"
+                );
+
+
+            const saveButton =
+                document.getElementById(
+                    "savePartButton"
+                );
+
+
+            const currentYear =
+                document.getElementById(
+                    "currentYear"
+                );
+
+
+
+            /* =====================================
+               YEAR
+               ===================================== */
+
+            if (currentYear) {
+
+                currentYear.textContent =
+                    new Date()
+                        .getFullYear();
+
+            }
+
+
+
+            /* =====================================
+               AUTH
+               ===================================== */
+
+            const token =
+                sessionStorage.getItem(
+                    STORAGE_TOKEN
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
+
+            /* =====================================
+               HELPERS
+               ===================================== */
+
+            function showError(text) {
+
+                if (loading) {
+                    loading.style.display =
+                        "none";
+                }
+
+
+                if (section) {
+                    section.style.display =
+                        "none";
+                }
+
+
+                if (errorSection) {
+                    errorSection.style.display =
+                        "block";
+                }
+
+
+                if (errorText) {
+                    errorText.textContent =
+                        text;
+                }
+
+            }
+
+
+
+            function showMessage(
+                text,
+                type
+            ) {
+
+                if (!message) {
+                    return;
+                }
+
+
+                message.textContent =
+                    text;
+
+
+                message.style.display =
+                    "block";
+
+
+                if (type === "error") {
+
+                    message.style.background =
+                        "#fdecec";
+
+                    message.style.color =
+                        "#b42318";
+
+                } else {
+
+                    message.style.background =
+                        "#e9f7ef";
+
+                    message.style.color =
+                        "#16834a";
+
+                }
+
+            }
+
+
+
+            function setValue(
+                id,
+                value
+            ) {
+
+                const element =
+                    document.getElementById(
+                        id
+                    );
+
+
+                if (!element) {
+                    return;
+                }
+
+
+                if (
+                    value === undefined
+                    || value === null
+                ) {
+
+                    element.value =
+                        "";
+
+                    return;
+
+                }
+
+
+                element.value =
+                    String(value);
+
+            }
+
+
+
+            function firstValue(
+                object,
+                keys
+            ) {
+
+                for (
+                    let index = 0;
+                    index < keys.length;
+                    index++
+                ) {
+
+                    const key =
+                        keys[index];
+
+
+                    if (
+                        object[key] !==
+                        undefined
+                        && object[key] !== null
+                    ) {
+
+                        return object[key];
+
+                    }
+
+                }
+
+
+                return "";
+
+            }
+
+
+
+            /* =====================================
+               LOAD LOCAL CATALOG RECORD
+               ===================================== */
+
+            async function loadPart() {
+
+                if (!partId) {
+
+                    showError(
+                        "No Part ID was provided."
+                    );
+
+                    return;
+
+                }
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "../data/oem-parts.json",
+                            {
+                                method: "GET",
+                                cache: "no-store"
+                            }
+                        );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Unable to load catalog."
+                        );
+
+                    }
+
+
+                    const data =
+                        await response.json();
+
+
+                    const parts =
+                        Array.isArray(data)
+                            ? data
+                            : (
+                                Array.isArray(
+                                    data.parts
+                                )
+                                    ? data.parts
+                                    : []
+                            );
+
+
+                    const part =
+                        parts.find(
+                            function (item) {
+
+                                const id =
+                                    firstValue(
+                                        item,
+                                        [
+                                            "id",
+                                            "partId"
+                                        ]
+                                    );
+
+
+                                return String(id)
+                                    === String(partId);
+
+                            }
+                        );
+
+
+                    if (!part) {
+
+                        showError(
+                            "Part ID "
+                            + partId
+                            + " was not found in the current catalog."
+                        );
+
+                        return;
+
+                    }
+
+
+                    populateForm(part);
+
+
+                    if (loading) {
+                        loading.style.display =
+                            "none";
+                    }
+
+
+                    if (section) {
+                        section.style.display =
+                            "block";
+                    }
+
+                } catch (error) {
+
+                    console.error(
+                        "Al-Dahayan Admin Edit Part:",
+                        error
+                    );
+
+
+                    showError(
+                        "Unable to load the requested part."
+                    );
+
+                }
+
+            }
+
+
+
+            /* =====================================
+               POPULATE FORM
+               ===================================== */
+
+            function populateForm(part) {
+
+                setValue(
+                    "partId",
+                    firstValue(
+                        part,
+                        [
+                            "id",
+                            "partId"
+                        ]
+                    )
+                );
+
+
+                setValue(
+                    "oemNumber",
+                    firstValue(
+                        part,
+                        [
+                            "oemNumber",
+                            "oem",
+                            "partNumber"
+                        ]
+                    )
+                );
+
+
+                setValue(
+                    "partName",
+                    firstValue(
+                        part,
+                        [
+                            "partName",
+                            "name"
+                        ]
+                    )
+                );
+
+
+                setValue(
+                    "brand",
+                    part.brand
+                );
+
+
+                setValue(
+                    "category",
+                    part.category
+                );
+
+
+                setValue(
+                    "subcategory",
+                    firstValue(
+                        part,
+                        [
+                            "subcategory",
+                            "subCategory"
+                        ]
+                    )
+                );
+
+
+                setValue(
+                    "partNumber",
+                    part.partNumber
+                );
+
+
+                setValue(
+                    "description",
+                    part.description
+                );
+
+
+                setValue(
+                    "status",
+                    part.active === false
+                        ? "inactive"
+                        : "active"
+                );
+
+
+                setValue(
+                    "vehicleMake",
+                    firstValue(
+                        part,
+                        [
+                            "vehicleMake",
+                            "make"
+                        ]
+                    )
+                );
+
+
+                setValue(
+                    "vehicleModel",
+                    firstValue(
+                        part,
+                        [
+                            "vehicleModel",
+                            "model"
+                        ]
+                    )
+                );
+
+
+                setValue(
+                    "vehicleYear",
+                    firstValue(
+                        part,
+                        [
+                            "vehicleYear",
+                            "year",
+                            "yearRange"
+                        ]
+                    )
+                );
+
+
+                setValue(
+                    "madeIn",
+                    firstValue(
+                        part,
+                        [
+                            "madeIn",
+                            "countryOfOrigin"
+                        ]
+                    )
+                );
+
+
+                setValue(
+                    "supplier",
+                    part.supplier
+                );
+
+
+                setValue(
+                    "price",
+                    part.price
+                );
+
+
+                setValue(
+                    "salePrice",
+                    part.salePrice
+                );
+
+
+                setValue(
+                    "discount",
+                    firstValue(
+                        part,
+                        [
+                            "discount",
+                            "discountPercent"
+                        ]
+                    )
+                );
+
+
+                setValue(
+                    "stockQuantity",
+                    firstValue(
+                        part,
+                        [
+                            "stockQuantity",
+                            "quantity"
+                        ]
+                    )
+                );
+
+
+                setValue(
+                    "stockStatus",
+                    firstValue(
+                        part,
+                        [
+                            "stockStatus",
+                            "inventoryStatus"
+                        ]
+                    )
+                );
+
+
+                setValue(
+                    "minimumStock",
+                    firstValue(
+                        part,
+                        [
+                            "minimumStock",
+                            "minStock"
+                        ]
+                    )
+                );
+
+
+                const image =
+                    firstValue(
+                        part,
+                        [
+                            "image",
+                            "imageUrl",
+                            "imagePath"
+                        ]
+                    );
+
+
+                if (image) {
+
+                    previewImage.src =
+                        image;
+
+                    imagePreview.style.display =
+                        "block";
+
+                }
+
+            }
+
+
+
+            /* =====================================
+               IMAGE PREVIEW
+               ===================================== */
+
+            if (imageInput) {
+
+                imageInput.addEventListener(
+                    "change",
+                    function () {
+
+                        const file =
+                            this.files &&
+                            this.files[0];
+
+
+                        if (!file) {
+                            return;
+                        }
+
+
+                        if (
+                            !file.type.startsWith(
+                                "image/"
+                            )
+                        ) {
+
+                            showMessage(
+                                "Please select a valid image file.",
+                                "error"
+                            );
+
+                            return;
+
+                        }
+
+
+                        const reader =
+                            new FileReader();
+
+
+                        reader.onload =
+                            function (event) {
+
+                                previewImage.src =
+                                    event.target.result;
+
+                                imagePreview.style.display =
+                                    "block";
+
+                            };
+
+
+                        reader.readAsDataURL(
+                            file
+                        );
+
+                    }
+                );
+
+            }
+
+
+
+            /* =====================================
+               FORM SUBMIT
+               ===================================== */
+
+            if (form) {
+
+                form.addEventListener(
+                    "submit",
+                    function (event) {
+
+                        event.preventDefault();
+
+
+                        const oemNumber =
+                            document
+                                .getElementById(
+                                    "oemNumber"
+                                )
+                                .value
+                                .trim();
+
+
+                        const partName =
+                            document
+                                .getElementById(
+                                    "partName"
+                                )
+                                .value
+                                .trim();
+
+
+                        const brand =
+                            document
+                                .getElementById(
+                                    "brand"
+                                )
+                                .value
+                                .trim();
+
+
+                        const category =
+                            document
+                                .getElementById(
+                                    "category"
+                                )
+                                .value
+                                .trim();
+
+
+                        if (!oemNumber) {
+
+                            showMessage(
+                                "OEM Number is required.",
+                                "error"
+                            );
+
+                            return;
+
+                        }
+
+
+                        if (!partName) {
+
+                            showMessage(
+                                "Part Name is required.",
+                                "error"
+                            );
+
+                            return;
+
+                        }
+
+
+                        if (!brand) {
+
+                            showMessage(
+                                "Please select a brand.",
+                                "error"
+                            );
+
+                            return;
+
+                        }
+
+
+                        if (!category) {
+
+                            showMessage(
+                                "Category is required.",
+                                "error"
+                            );
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * IMPORTANT:
+                         *
+                         * No guessed backend endpoint is used.
+                         *
+                         * The verified Admin Parts update
+                         * API will be connected after the
+                         * existing backend route/schema is
+                         * inspected.
+                         */
+
+
+                        showMessage(
+                            "Part editor is ready. The verified Admin Parts update API will be connected in the next step.",
+                            "success"
+                        );
+
+
+                        if (saveButton) {
+
+                            saveButton.disabled =
+                                true;
+
+
+                            setTimeout(
+                                function () {
+
+                                    saveButton.disabled =
+                                        false;
+
+                                },
+                                1500
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+
+            /* =====================================
+               INITIALIZE
+               ===================================== */
+
+            loadPart();
+
+        })();
+
+    </script>
+
+
+</body>
+
+</html>

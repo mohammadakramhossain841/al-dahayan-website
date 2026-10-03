@@ -8,19 +8,23 @@ require("dotenv").config();
 const { login } = require("./auth/login");
 const { requireAuth, requirePermission } = require("./auth/middleware");
 const inventoryRouter = require("./routes/inventory");
+const imageRouter = require("./routes/images");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(helmet());
 app.use(express.json());
+
+// Image upload supports up to 10MB files.
+// Base64 encoding adds extra payload size, so 15MB JSON limit is used.
+app.use(express.json({ limit: "15mb" }));
+
 app.use(cors());
 app.use(express.static(path.join(__dirname, "..")));
 
-// ===============================
-// ADMIN LOGIN
-// ===============================
-
+// ========================// ADMIN LOGIN
+// ========================
 app.post("/api/v1/admin/login", async (req, res) => {
   const { username, password } = req.body || {};
 
@@ -56,10 +60,8 @@ app.post("/api/v1/admin/login", async (req, res) => {
   }
 });
 
-// ===============================
-// ADMIN OEM CATALOG
-// ===============================
-
+// ========================// ADMIN OEM CATALOG
+// ========================
 app.get(
   "/api/v1/admin/oem",
   requireAuth,
@@ -99,10 +101,8 @@ app.get(
   }
 );
 
-// ===============================
-// ADMIN AUTH TEST
-// ===============================
-
+// ========================// ADMIN AUTH TEST
+// ========================
 app.get(
   "/api/v1/admin/test",
   requireAuth,
@@ -116,10 +116,8 @@ app.get(
   }
 );
 
-// ===============================
-// HEALTH CHECK
-// ===============================
-
+// ========================// HEALTH CHECK
+// ========================
 app.get("/api/health", (req, res) => {
   res.json({
     success: true,
@@ -128,16 +126,16 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// ===============================
-// INVENTORY API
-// ===============================
-
+// ========================// INVENTORY API
+// ========================
 app.use("/api/v1/inventory", inventoryRouter);
 
-// ===============================
-// START SERVER
-// ===============================
+// ========================// IMAGE MANAGEMENT API
+// ========================
+app.use("/api/v1/images", imageRouter);
 
+// ========================// START SERVER
+// ========================
 app.listen(PORT, () => {
   console.log(`Al-Dahayan API running on port ${PORT}`);
 });
