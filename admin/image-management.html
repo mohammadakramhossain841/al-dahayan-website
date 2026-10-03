@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Al-Dahayan Trading Company - Unified Image Management"
+    >
+
+    <title>Image Management | Al-Dahayan Admin</title>
+
+    <!-- Admin / Global CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <!-- Admin CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/admin/admin.css"
+    >
+
+    <!-- Image Management CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/admin/image-management.css"
+    >
+</head>
+
+<body
+    data-page="image-management"
+    class="admin-page"
+>
+
+    <!-- =====================================================
+         ADMIN HEADER
+    ====================================================== -->
+
+    <header class="admin-header">
+
+        <div class="admin-header-left">
+
+            <a
+                href="./dashboard.html"
+                class="admin-brand"
+                aria-label="Al-Dahayan Admin Dashboard"
+            >
+
+                <img
+                    src="../assets/images/1000018142-removebg-preview.png"
+                    alt="Al-Dahayan Trading Company"
+                    class="admin-logo"
+                >
+
+            </a>
+
+            <div class="admin-page-heading">
+
+                <h1>Image Management</h1>
+
+                <p>
+                    Unified website image management
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="admin-header-right">
+
+            <a
+                href="./dashboard.html"
+                class="btn btn-secondary"
+            >
+                Dashboard
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="admin-main">
+
+        <!-- =================================================
+             PAGE INTRO
+        ================================================== -->
+
+        <section class="admin-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Unified Image Management
+                    </h2>
+
+                    <p>
+                        Manage images for OEM parts, vehicles,
+                        branches, services, pages, company media
+                        and MAHANOOR.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="uploadImageBtn"
+                    class="btn btn-primary"
+                >
+                    + Upload Image
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="image-management-stats">
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    Total Images
+                </span>
+
+                <strong
+                    id="totalImageCount"
+                    class="stat-value"
+                >
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    Active
+                </span>
+
+                <strong
+                    id="activeImageCount"
+                    class="stat-value"
+                >
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    Primary
+                </span>
+
+                <strong
+                    id="primaryImageCount"
+                    class="stat-value"
+                >
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    Archived
+                </span>
+
+                <strong
+                    id="archivedImageCount"
+                    class="stat-value"
+                >
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             MESSAGE
+        ================================================== -->
+
+        <div
+            id="imageManagementMessage"
+            class="admin-message"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+
+        <!-- =================================================
+             FILTERS
+        ================================================== -->
+
+        <section class="admin-section">
+
+            <div class="image-management-filters">
+
+                <div class="form-group">
+
+                    <label for="imageSearch">
+                        Search
+                    </label>
+
+                    <input
+                        type="search"
+                        id="imageSearch"
+                        class="form-control"
+                        placeholder="Search image ID, OEM, vehicle, branch..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="entityFilter">
+                        Entity
+                    </label>
+
+                    <select
+                        id="entityFilter"
+                        class="form-control"
+                    >
+
+                        <option value="">
+                            All Entities
+                        </option>
+
+                        <option value="oem">
+                            OEM / Part
+                        </option>
+
+                        <option value="vehicle">
+                            Vehicle
+                        </option>
+
+                        <option value="branch">
+                            Branch
+                        </option>
+
+                        <option value="service">
+                            Service
+                        </option>
+
+                        <option value="page">
+                            Page
+                        </option>
+
+                        <option value="company">
+                            Company
+                        </option>
+
+                        <option value="mahan oor">
+                            MAHANOOR
+                        </option>
+
+                        <option value="media">
+                            Website Media
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="typeFilter">
+                        Image Type
+                    </label>
+
+                    <select
+                        id="typeFilter"
+                        class="form-control"
+                    >
+
+                        <option value="">
+                            All Types
+                        </option>
+
+                        <option value="primary">
+                            Primary
+                        </option>
+
+                        <option value="gallery">
+                            Gallery
+                        </option>
+
+                        <option value="thumbnail">
+                            Thumbnail
+                        </option>
+
+                        <option value="installation">
+                            Installation
+                        </option>
+
+                        <option value="diagram">
+                            Diagram
+                        </option>
+
+                        <option value="banner">
+                            Banner
+                        </option>
+
+                        <option value="main">
+                            Main
+                        </option>
+
+                        <option value="icon">
+                            Icon
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="statusFilter">
+                        Status
+                    </label>
+
+                    <select
+                        id="statusFilter"
+                        class="form-control"
+                    >
+
+                        <option value="">
+                            All Status
+                        </option>
+
+                        <option value="active">
+                            Active
+                        </option>
+
+                        <option value="disabled">
+                            Disabled
+                        </option>
+
+                        <option value="archived">
+                            Archived
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BULK ACTIONS
+        ================================================== -->
+
+        <section class="admin-section">
+
+            <div class="bulk-actions">
+
+                <button
+                    type="button"
+                    id="bulkDeleteBtn"
+                    class="btn btn-danger"
+                    disabled
+                >
+                    Remove Selected
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             IMAGE TABLE
+        ================================================== -->
+
+        <section class="admin-section">
+
+            <div class="table-container">
+
+                <table class="admin-table image-management-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                <input
+                                    type="checkbox"
+                                    id="selectAllImages"
+                                    aria-label="Select all images"
+                                >
+                            </th>
+
+                            <th>
+                                Preview
+                            </th>
+
+                            <th>
+                                Image ID
+                            </th>
+
+                            <th>
+                                Entity
+                            </th>
+
+                            <th>
+                                Entity ID
+                            </th>
+
+                            <th>
+                                Type
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Alt Text
+                            </th>
+
+                            <th>
+                                Order
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="imageTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="10"
+                                class="empty-state"
+                            >
+                                Loading images...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         IMAGE MODAL
+    ====================================================== -->
+
+    <div
+        id="imageModal"
+        class="modal-component"
+        aria-hidden="true"
+    >
+
+        <div class="modal-overlay"></div>
+
+        <div
+            class="modal-container"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="imageModalTitle"
+        >
+
+            <div class="modal-header">
+
+                <h2 id="imageModalTitle">
+                    Upload Image
+                </h2>
+
+                <button
+                    type="button"
+                    id="imageModalClose"
+                    class="modal-close"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="imageForm">
+
+                <div class="modal-body">
+
+                    <!-- =====================================
+                         IMAGE FILE
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="imageFile">
+                            Image File
+                        </label>
+
+                        <input
+                            type="file"
+                            id="imageFile"
+                            class="form-control"
+                            accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+                        >
+
+                        <small>
+                            JPG, JPEG, PNG or WEBP.
+                            Maximum 10 MB.
+                        </small>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         PREVIEW
+                    ====================================== -->
+
+                    <div
+                        id="imagePreview"
+                        class="image-preview"
+                    ></div>
+
+
+                    <!-- =====================================
+                         ENTITY TYPE
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="entityType">
+                            Entity Type
+                        </label>
+
+                        <select
+                            id="entityType"
+                            class="form-control"
+                            required
+                        >
+
+                            <option value="">
+                                Select Entity
+                            </option>
+
+                            <option value="oem">
+                                OEM / Part
+                            </option>
+
+                            <option value="vehicle">
+                                Vehicle
+                            </option>
+
+                            <option value="branch">
+                                Branch
+                            </option>
+
+                            <option value="service">
+                                Service
+                            </option>
+
+                            <option value="page">
+                                Page
+                            </option>
+
+                            <option value="company">
+                                Company
+                            </option>
+
+                            <option value="mahan oor">
+                                MAHANOOR
+                            </option>
+
+                            <option value="media">
+                                Website Media
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         ENTITY ID
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="entityId">
+                            Entity ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="entityId"
+                            class="form-control"
+                            placeholder="Example: 90915-YZZD1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- =====================================
+                         IMAGE TYPE
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="imageType">
+                            Image Type
+                        </label>
+
+                        <select
+                            id="imageType"
+                            class="form-control"
+                            required
+                        >
+
+                            <option value="">
+                                Select Image Type
+                            </option>
+
+                            <option value="primary">
+                                Primary
+                            </option>
+
+                            <option value="gallery">
+                                Gallery
+                            </option>
+
+                            <option value="thumbnail">
+                                Thumbnail
+                            </option>
+
+                            <option value="installation">
+                                Installation
+                            </option>
+
+                            <option value="diagram">
+                                Diagram
+                            </option>
+
+                            <option value="banner">
+                                Banner
+                            </option>
+
+                            <option value="main">
+                                Main
+                            </option>
+
+                            <option value="icon">
+                                Icon
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         ALT ENGLISH
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="imageAltEn">
+                            Alt Text — English
+                        </label>
+
+                        <input
+                            type="text"
+                            id="imageAltEn"
+                            class="form-control"
+                            maxlength="250"
+                        >
+
+                    </div>
+
+
+                    <!-- =====================================
+                         ALT ARABIC
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="imageAltAr">
+                            Alt Text — Arabic
+                        </label>
+
+                        <input
+                            type="text"
+                            id="imageAltAr"
+                            class="form-control"
+                            maxlength="250"
+                            dir="rtl"
+                        >
+
+                    </div>
+
+
+                    <!-- =====================================
+                         CAPTION ENGLISH
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="imageCaptionEn">
+                            Caption — English
+                        </label>
+
+                        <textarea
+                            id="imageCaptionEn"
+                            class="form-control"
+                            rows="3"
+                            maxlength="500"
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         CAPTION ARABIC
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="imageCaptionAr">
+                            Caption — Arabic
+                        </label>
+
+                        <textarea
+                            id="imageCaptionAr"
+                            class="form-control"
+                            rows="3"
+                            maxlength="500"
+                            dir="rtl"
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         STATUS
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="imageStatus">
+                            Status
+                        </label>
+
+                        <select
+                            id="imageStatus"
+                            class="form-control"
+                        >
+
+                            <option value="active">
+                                Active
+                            </option>
+
+                            <option value="disabled">
+                                Disabled
+                            </option>
+
+                            <option value="archived">
+                                Archived
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         PRIMARY
+                    ====================================== -->
+
+                    <div class="form-group checkbox-group">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="isPrimary"
+                            >
+
+                            Set as Primary Image
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     MODAL FOOTER
+                ========================================== -->
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        id="imageModalCancel"
+                        class="btn btn-secondary"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="saveImageBtn"
+                        class="btn btn-primary"
+                    >
+                        Save Image
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ONLY IMAGE MANAGEMENT JAVASCRIPT
+         Do not add another inline script here.
+    ====================================================== -->
+
+    <script src="../js/admin/image-management.js"></script>
+
+</body>
+</html>
