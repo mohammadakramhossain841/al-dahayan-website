@@ -1044,7 +1044,7 @@ async function lookupInventoryByOEM(
        ========================================= */
 
     function init() {
-
+console.log("MAHANOOR DEBUG: init() started");
         if (initialized) {
             return;
         }
