@@ -744,9 +744,8 @@
    * avoids hard-coding a Codespaces URL.
    */
   window.DAHAYAN_CONFIG = {
-    API_BASE_URL:
-      window.location.origin
-  };
+    API_BASE_URL: "https://studious-broccoli-vprrp4wrvw6v2665-3000.app.github.dev"
+};
 
   /*
    * Backward-compatible global used by

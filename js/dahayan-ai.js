@@ -21,6 +21,24 @@
 
     const INVENTORY_API = "/api/v1/inventory";
 
+    function getApiBaseUrl() {
+        if (
+            window.DAHAYAN_CONFIG &&
+            window.DAHAYAN_CONFIG.API_BASE_URL
+        ) {
+            return window.DAHAYAN_CONFIG.API_BASE_URL.replace(/\/$/, "");
+        }
+
+        if (
+            window.CONFIG &&
+            window.CONFIG.API_BASE_URL
+        ) {
+            return window.CONFIG.API_BASE_URL.replace(/\/$/, "");
+        }
+
+        return window.location.origin;
+    }
+
     const WHATSAPP_NUMBER = "966582327337";
 
     /*
@@ -35,7 +53,7 @@
         "assets/images/file_00000000fff481f488bf6682be5f33c4.png";
 
     const MAHANOOR_AVATAR_PATH =
-        "assets/Images/mahanoor-avatar-1.png";
+        "assets/images/mahanoor-avatar-1.png";
 
     let initialized = false;
 
@@ -503,7 +521,37 @@
        Inventory API
        ========================================= */
 
-    async function lookupInventoryByOEM(
+    async function askMahanoorAI(message) {
+  const response = await fetch(`${getApiBaseUrl()}/api/v1/ai/chat`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      messages: [
+        {
+          role: "user",
+          content: message
+        }
+      ]
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`MAHANOOR AI request failed: ${response.status}`);
+  }
+
+  const data = await response.json();
+
+  if (!data.success || typeof data.response !== "string") {
+    throw new Error("Invalid MAHANOOR AI response");
+  }
+
+  return data.response.trim();
+}
+
+async function lookupInventoryByOEM(
         oemNumber
     ) {
 
@@ -779,22 +827,23 @@
         }
 
         /*
-         * Generic conversation response.
-         */
+         *   /* Generic conversation response - Real MAHANOOR AI */
+  setTyping(true);
 
-        respond(
-            "I can help you find Toyota or Lexus spare parts, search by vehicle, check an OEM number, or connect you with Al-Dahayan.",
-            500
-        );
-    }
+  try {
+    const aiResponse = await askMahanoorAI(normalized);
+    appendMessage(aiResponse, "bot");
+  } catch (error) {
+    console.error("MAHANOOR AI error:", error);
+    appendMessage(
+      "I'm having trouble connecting to MAHANOOR right now. Please try again or use WhatsApp.",
+      "bot"
+    );
+  } finally {
+    setTyping(false);
+  }
 
-    /* =========================================
-       WhatsApp
-       ========================================= */
-
-    function openWhatsApp() {
-
-        if (
+  if (
             !WHATSAPP_NUMBER ||
             WHATSAPP_NUMBER.includes(
                 "XXXXXXXX"
@@ -809,11 +858,10 @@
             return;
         }
 
-        const message =
-            "Hello Al-Dahayan, I would like assistance with Toyota/Lexus spare parts.";
+        const whatsappMessage = "Hello Al-Dahayan, I would like assistance with Toyota/Lexus spare parts.";
 
         const url =
-            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
         window.open(
             url,
@@ -838,18 +886,7 @@
         if (!input) {
             return;
         }
-
-        if (
-            PREMIUM_CHAT_LOCKED
-        ) {
-
-            appendMessage(
-                "Premium AI conversation access is required for chat.",
-                "bot"
-            );
-
-            return;
-        }
+  /* Premium chat lock disabled: MAHANOOR conversation is enabled. */
 
         const message =
             input.value.trim();

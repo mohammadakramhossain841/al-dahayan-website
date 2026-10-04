@@ -7,8 +7,8 @@
     "use strict";
 
     const STORAGE_KEYS = {
-        TOKEN: "dahayan_admin_token",
-        ADMIN: "dahayan_admin_user"
+        TOKEN: "alDahayanAdminToken",
+        ADMIN: "alDahayanAdmin"
     };
 
     const MODULE_ROUTES = {

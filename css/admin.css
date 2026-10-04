@@ -139,9 +139,9 @@
   display: block;
 
   width: auto;
-  height: 90px;
+  height: 130px;
 
-  max-width: 280px;
+  max-width: 250px;
 
   object-fit: contain;
 }

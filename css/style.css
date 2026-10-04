@@ -197,7 +197,7 @@ instead of height so the logo does not appear too small.
 .site-logo-image {
     display: block;
 
-    width: 180px;
+    width: 250px;
     height: auto;
 
     max-width: 100%;
@@ -1886,7 +1886,7 @@ html[dir="rtl"] .part-details {
      * Do not force a fixed height.
      */
     .site-logo-image {
-        width: 165px;
+        width: 220px;
         height: auto;
     }
 }
@@ -1925,7 +1925,7 @@ html[dir="rtl"] .part-details {
      * Mobile logo
      */
     .site-logo-image {
-        width: 150px;
+        width: 200px;
         height: auto;
     }
 
@@ -2045,7 +2045,7 @@ html[dir="rtl"] .part-details {
     }
 
     .site-logo-image {
-        width: 135px;
+        width: 250px;
         height: auto;
     }
 

@@ -9,6 +9,7 @@ const { login } = require("./auth/login");
 const { requireAuth, requirePermission } = require("./auth/middleware");
 const inventoryRouter = require("./routes/inventory");
 const imageRouter = require("./routes/images");
+const { generateAIResponse } = require("./services/aiService");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -134,7 +135,32 @@ app.use("/api/v1/inventory", inventoryRouter);
 // ========================
 app.use("/api/v1/images", imageRouter);
 
-// ========================// START SERVER
+// ========================// MAHANOOR AI CHAT API
+app.post("/api/v1/ai/chat", async (req, res) => {
+  try {
+    const { messages } = req.body || {};
+
+    if (!Array.isArray(messages) || messages.length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: "Messages are required"
+      });
+    }
+
+    const result = await generateAIResponse(messages);
+
+    return res.json(result);
+  } catch (error) {
+    console.error("MAHANOOR AI error:", error);
+
+    return res.status(500).json({
+      success: false,
+      error: "MAHANOOR AI service is unavailable"
+    });
+  }
+});
+
+// START SERVER
 // ========================
 app.listen(PORT, () => {
   console.log(`Al-Dahayan API running on port ${PORT}`);
